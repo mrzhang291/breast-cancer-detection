@@ -1,0 +1,445 @@
+{# AI 助手侧栏：在 home / result / records 页面 include 使用。
+   页面可通过 window.AGENT_CONTEXT 注入上下文：
+   {recordId, values, prediction, confidence, tier, title} #}
+<style>
+    .as-toggle {
+        position: fixed; right: 24px; bottom: 26px; z-index: 60;
+        width: 54px; height: 54px; border-radius: 16px; border: 0;
+        display: grid; place-items: center; cursor: pointer;
+        color: #fff; background: linear-gradient(135deg, #4f46e5, #7c3aed);
+        box-shadow: 0 16px 34px -12px rgba(79, 70, 229, .85);
+        transition: transform .18s, box-shadow .18s;
+    }
+    .as-toggle:hover { transform: translateY(-2px); box-shadow: 0 20px 40px -12px rgba(79,70,229,.95); }
+    .as-toggle.hidden { display: none; }
+
+    .as-panel {
+        position: fixed; top: 0; right: 0; bottom: 0; z-index: 70;
+        width: 400px; max-width: 100vw;
+        display: flex; flex-direction: column;
+        background: #fff; border-left: 1px solid #e6ebf3;
+        box-shadow: -18px 0 50px -30px rgba(15, 23, 42, .45);
+        transform: translateX(102%);
+        transition: transform .28s cubic-bezier(.22,.8,.3,1);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC",
+                     "PingFang SC", "Microsoft YaHei", sans-serif;
+    }
+    .as-panel.open { transform: none; }
+
+    .as-head {
+        display: flex; align-items: center; gap: 11px;
+        padding: 16px 16px 14px; border-bottom: 1px solid #eef2f8;
+    }
+    .as-avatar {
+        width: 38px; height: 38px; flex: 0 0 38px; border-radius: 12px;
+        display: grid; place-items: center; color: #4f46e5; background: #eef2ff;
+    }
+    .as-name { font-size: 14.5px; font-weight: 700; color: #0f172a; line-height: 1.25; }
+    .as-sub { font-size: 11.5px; color: #94a3b8; margin-top: 2px; }
+    .as-close {
+        margin-left: auto; width: 32px; height: 32px; border-radius: 9px;
+        border: 0; background: transparent; color: #94a3b8; cursor: pointer;
+        font-size: 18px; line-height: 1;
+    }
+    .as-close:hover { background: #f1f5f9; color: #475569; }
+
+    .as-ctx {
+        display: flex; align-items: center; gap: 8px;
+        margin: 12px 16px 0; padding: 9px 12px;
+        background: #f7f9fd; border: 1px solid #e8eef7; border-radius: 11px;
+        font-size: 12px; color: #475569;
+    }
+    .as-ctx b { color: #0f172a; font-weight: 600; }
+    .as-ctx .dot { width: 7px; height: 7px; border-radius: 50%; background: #22c55e; flex: 0 0 7px; }
+
+    .as-quick { display: flex; flex-wrap: wrap; gap: 7px; padding: 12px 16px 4px; }
+    .as-chip {
+        font-size: 12px; padding: 6px 11px; border-radius: 999px;
+        border: 1px solid #e2e8f0; background: #fff; color: #475569;
+        cursor: pointer; transition: .16s; font-family: inherit;
+    }
+    .as-chip:hover { border-color: #c7d2fe; background: #eef2ff; color: #4f46e5; }
+
+    .as-body { flex: 1; overflow-y: auto; padding: 14px 16px 8px; display: flex; flex-direction: column; gap: 12px; }
+    .as-body::-webkit-scrollbar { width: 6px; }
+    .as-body::-webkit-scrollbar-thumb { background: #dbe3ee; border-radius: 3px; }
+
+    .as-msg { display: flex; gap: 9px; }
+    .as-msg.user { justify-content: flex-end; }
+    .as-bubble {
+        max-width: 88%; padding: 11px 13px; border-radius: 13px;
+        font-size: 13px; line-height: 1.72; color: #1e293b;
+        background: #f7f9fd; border: 1px solid #eef2f8;
+    }
+    .as-msg.user .as-bubble {
+        background: linear-gradient(135deg, #4f46e5, #6d5ce7); color: #fff; border: 0;
+    }
+    .as-bubble p { margin: 0 0 8px; }
+    .as-bubble p:last-child { margin-bottom: 0; }
+    .as-bubble ul { margin: 4px 0 8px; padding-left: 18px; }
+    .as-bubble li { margin: 3px 0; }
+    .as-bubble strong { font-weight: 700; }
+
+    .as-cites { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 9px; }
+    .as-cite {
+        font-size: 10.5px; padding: 3px 8px; border-radius: 6px;
+        background: #eef2ff; color: #4338ca; border: 1px solid #e0e7ff;
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+
+    .as-steps { margin-top: 9px; border-top: 1px dashed #e2e8f0; padding-top: 8px; }
+    .as-steps summary {
+        cursor: pointer; font-size: 11.5px; color: #64748b; list-style: none;
+        display: flex; align-items: center; gap: 6px;
+    }
+    .as-steps summary::-webkit-details-marker { display: none; }
+    .as-steps summary:hover { color: #4f46e5; }
+    .as-steps ol { margin: 8px 0 0; padding-left: 16px; }
+    .as-steps li { font-size: 11.5px; color: #64748b; margin: 4px 0; line-height: 1.5; }
+    .as-steps li b { color: #334155; }
+
+    .as-clarify { display: flex; flex-direction: column; gap: 7px; margin-top: 10px; }
+    .as-clarify button {
+        text-align: left; padding: 9px 12px; border-radius: 10px;
+        border: 1px solid #e0e7ff; background: #fff; color: #4338ca;
+        font-size: 12.5px; cursor: pointer; font-family: inherit; transition: .16s;
+    }
+    .as-clarify button:hover { background: #eef2ff; }
+
+    .as-foot { border-top: 1px solid #eef2f8; padding: 10px 16px 14px; }
+    .as-input-row {
+        display: flex; gap: 8px; align-items: flex-end;
+        background: #f7f9fd; border: 1.5px solid #e6ebf3; border-radius: 13px;
+        padding: 8px 8px 8px 12px; transition: border-color .16s, box-shadow .16s;
+    }
+    .as-input-row:focus-within { border-color: #c7d2fe; box-shadow: 0 0 0 3px rgba(79,70,229,.1); }
+    .as-input {
+        flex: 1; border: 0; background: transparent; resize: none; outline: none;
+        font-size: 13px; line-height: 1.6; max-height: 110px; min-height: 24px;
+        font-family: inherit; color: #0f172a;
+    }
+    .as-send {
+        width: 34px; height: 34px; flex: 0 0 34px; border: 0; border-radius: 10px;
+        display: grid; place-items: center; cursor: pointer; color: #fff;
+        background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    }
+    .as-send:disabled { opacity: .45; cursor: not-allowed; }
+    .as-tools { display: flex; justify-content: space-between; margin-top: 8px; font-size: 11px; color: #94a3b8; }
+    .as-tools button {
+        border: 0; background: transparent; color: #94a3b8; cursor: pointer;
+        font-size: 11px; font-family: inherit; padding: 2px 4px;
+    }
+    .as-tools button:hover { color: #4f46e5; }
+
+    .as-dots span {
+        display: inline-block; width: 5px; height: 5px; margin-right: 3px;
+        border-radius: 50%; background: #a5b4fc; animation: as-bounce 1s infinite;
+    }
+    .as-dots span:nth-child(2) { animation-delay: .15s; }
+    .as-dots span:nth-child(3) { animation-delay: .3s; }
+    @keyframes as-bounce { 0%,100% { transform: translateY(0); opacity: .4; } 50% { transform: translateY(-4px); opacity: 1; } }
+
+    @media (max-width: 720px) {
+        .as-panel { width: 100vw; }
+        .as-toggle { right: 16px; bottom: 18px; }
+    }
+</style>
+
+<button class="as-toggle" id="asToggle" title="AI 助手" aria-label="打开 AI 助手">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+         stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 3v3m0 12v3M3 12h3m12 0h3M5.6 5.6l2.1 2.1m8.6 8.6 2.1 2.1m0-12.8-2.1 2.1M7.7 16.3l-2.1 2.1"/>
+    </svg>
+</button>
+
+<aside class="as-panel" id="asPanel" aria-label="AI 助手">
+    <div class="as-head">
+        <div class="as-avatar">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3v3m0 12v3M3 12h3m12 0h3M5.6 5.6l2.1 2.1m8.6 8.6 2.1 2.1m0-12.8-2.1 2.1M7.7 16.3l-2.1 2.1"/>
+            </svg>
+        </div>
+        <div>
+            <div class="as-name">AI 助手</div>
+            <div class="as-sub">每条结论都能溯源</div>
+        </div>
+        <button class="as-close" id="asClose" aria-label="收起">&times;</button>
+    </div>
+
+    <div class="as-ctx" id="asCtx">
+        <span class="dot"></span>
+        <span id="asCtxText">当前没有进行预测，可以问我系统怎么用</span>
+    </div>
+
+    <div class="as-quick" id="asQuick">
+        <button class="as-chip" data-q="解释这次预测结果">解释这次判断</button>
+        <button class="as-chip" data-q="这次和上次比，差异在哪">和上次比</button>
+        <button class="as-chip" data-q="这类病例一共多少条">同类病例多少</button>
+        <button class="as-chip" data-q="怎么填写这些特征">怎么填特征</button>
+    </div>
+
+    <div class="as-body" id="asBody">
+        <div class="as-msg">
+            <div class="as-bubble">
+                <p>我是这个系统的助手。每个回答都会给出依据，证据不够时我会直接说不够。</p>
+                <p>你可以让我解释这次结果、和上次对比，或者查一下数据。</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="as-foot">
+        <div class="as-input-row">
+            <textarea class="as-input" id="asInput" rows="1"
+                      placeholder="问点什么，比如：为什么判为恶性？"></textarea>
+            <button class="as-send" id="asSend" aria-label="发送">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                     stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15m-6-6 6 6-6 6"/></svg>
+            </button>
+        </div>
+        <div class="as-tools">
+            <span id="asHint">Enter 发送 · Shift+Enter 换行</span>
+            <button id="asExport" type="button">导出对话</button>
+        </div>
+    </div>
+</aside>
+
+<script>
+(function () {
+    var panel = document.getElementById('asPanel');
+    var toggle = document.getElementById('asToggle');
+    var close = document.getElementById('asClose');
+    var body = document.getElementById('asBody');
+    var input = document.getElementById('asInput');
+    var send = document.getElementById('asSend');
+    var ctxText = document.getElementById('asCtxText');
+    var exportBtn = document.getElementById('asExport');
+
+    if (!panel || !body) { return; }
+
+    var history = [];
+    var busy = false;
+    var context = window.AGENT_CONTEXT || {};
+    var lastAnswer = '';
+
+    function openPanel() {
+        panel.classList.add('open');
+        toggle.classList.add('hidden');
+        setTimeout(function () { input.focus(); }, 260);
+    }
+    function closePanel() {
+        panel.classList.remove('open');
+        toggle.classList.remove('hidden');
+    }
+
+    toggle.addEventListener('click', openPanel);
+    close.addEventListener('click', closePanel);
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && panel.classList.contains('open')) { closePanel(); }
+    });
+
+    function renderContext() {
+        if (!ctxText) { return; }
+        if (context.recordId) {
+            var bits = ['记录 #' + context.recordId];
+            if (context.prediction) { bits.push(context.prediction); }
+            if (context.confidence) { bits.push('置信度 ' + Number(context.confidence).toFixed(3)); }
+            if (context.tier) { bits.push(context.tier === 'confident' ? '证据充分'
+                : context.tier === 'cautious' ? '证据一般' : '证据不足'); }
+            ctxText.innerHTML = '<b>' + bits.join(' · ') + '</b>';
+        } else {
+            ctxText.textContent = '当前没有进行预测，可以问我系统怎么用';
+        }
+    }
+    renderContext();
+
+    function escapeHtml(text) {
+        return String(text).replace(/[&<>"']/g, function (ch) {
+            return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[ch];
+        });
+    }
+
+    function renderMarkdown(text) {
+        var lines = escapeHtml(text || '').split('\n');
+        var html = '', inList = false;
+        for (var i = 0; i < lines.length; i++) {
+            var line = lines[i].trim();
+            if (/^[-*]\s+/.test(line)) {
+                if (!inList) { html += '<ul>'; inList = true; }
+                html += '<li>' + line.replace(/^[-*]\s+/, '') + '</li>';
+                continue;
+            }
+            if (inList) { html += '</ul>'; inList = false; }
+            if (!line) { continue; }
+            html += '<p>' + line + '</p>';
+        }
+        if (inList) { html += '</ul>'; }
+        html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+        return html;
+    }
+
+    function addUser(text) {
+        var row = document.createElement('div');
+        row.className = 'as-msg user';
+        row.innerHTML = '<div class="as-bubble">' + escapeHtml(text) + '</div>';
+        body.appendChild(row);
+        body.scrollTop = body.scrollHeight;
+    }
+
+    function addLoading() {
+        var row = document.createElement('div');
+        row.className = 'as-msg';
+        row.id = 'asLoading';
+        row.innerHTML = '<div class="as-bubble"><span class="as-dots"><span></span><span></span><span></span></span></div>';
+        body.appendChild(row);
+        body.scrollTop = body.scrollHeight;
+    }
+
+    function removeLoading() {
+        var node = document.getElementById('asLoading');
+        if (node) { node.remove(); }
+    }
+
+    function addAssistant(result) {
+        removeLoading();
+        var answer = result.answer_md || '（没有拿到回答）';
+        lastAnswer = answer;
+
+        var wrap = document.createElement('div');
+        wrap.className = 'as-msg';
+        var bubble = document.createElement('div');
+        bubble.className = 'as-bubble';
+        bubble.innerHTML = renderMarkdown(answer);
+
+        var cites = result.citations || [];
+        if (cites.length) {
+            var box = document.createElement('div');
+            box.className = 'as-cites';
+            cites.slice(0, 6).forEach(function (cid) {
+                var chip = document.createElement('span');
+                chip.className = 'as-cite';
+                chip.textContent = cid;
+                chip.title = '引用条款 ' + cid;
+                box.appendChild(chip);
+            });
+            bubble.appendChild(box);
+        }
+
+        var steps = result.graph || [];
+        if (steps.length) {
+            var det = document.createElement('details');
+            det.className = 'as-steps';
+            var summary = document.createElement('summary');
+            summary.textContent = '处理过程（' + steps.length + ' 步）';
+            det.appendChild(summary);
+            var ol = document.createElement('ol');
+            steps.forEach(function (step) {
+                var li = document.createElement('li');
+                var verdict = step.verdict && step.verdict !== 'ok' ? ' · ' + step.verdict : '';
+                li.innerHTML = '<b>' + escapeHtml(step.node || 'step') + '</b>' + escapeHtml(verdict);
+                ol.appendChild(li);
+            });
+            det.appendChild(ol);
+            bubble.appendChild(det);
+        }
+
+        if (result.clarify && result.clarify.length) {
+            var options = document.createElement('div');
+            options.className = 'as-clarify';
+            result.clarify.forEach(function (option) {
+                var btn = document.createElement('button');
+                btn.type = 'button';
+                btn.textContent = option;
+                btn.addEventListener('click', function () { ask(option); });
+                options.appendChild(btn);
+            });
+            bubble.appendChild(options);
+        }
+
+        wrap.appendChild(bubble);
+        body.appendChild(wrap);
+        body.scrollTop = body.scrollHeight;
+
+        history.push({ question: result.question || '', intent: result.intent || '' });
+        if (history.length > 8) { history = history.slice(-8); }
+    }
+
+    function ask(question) {
+        if (busy || !question) { return; }
+        busy = true;
+        send.disabled = true;
+        addUser(question);
+        addLoading();
+
+        fetch('/api/agent/run-sync', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                question: question,
+                values: context.values || null,
+                history: history.slice(-6),
+                context: { record_id: context.recordId || null }
+            })
+        }).then(function (resp) {
+            return resp.json().then(function (data) { return { ok: resp.ok, data: data }; });
+        }).then(function (res) {
+            if (!res.ok || !res.data.ok) {
+                throw new Error((res.data && res.data.error) || '请求失败');
+            }
+            addAssistant(res.data.result || {});
+        }).catch(function (err) {
+            removeLoading();
+            var row = document.createElement('div');
+            row.className = 'as-msg';
+            row.innerHTML = '<div class="as-bubble">出错了：' + escapeHtml(err.message || err) + '</div>';
+            body.appendChild(row);
+            body.scrollTop = body.scrollHeight;
+        }).then(function () {
+            busy = false;
+            send.disabled = false;
+            input.focus();
+        });
+    }
+
+    send.addEventListener('click', function () {
+        var text = input.value.trim();
+        if (!text) { return; }
+        input.value = '';
+        ask(text);
+    });
+
+    input.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            send.click();
+        }
+    });
+
+    input.addEventListener('input', function () {
+        input.style.height = 'auto';
+        input.style.height = Math.min(input.scrollHeight, 110) + 'px';
+    });
+
+    document.querySelectorAll('.as-chip').forEach(function (chip) {
+        chip.addEventListener('click', function () {
+            var q = chip.getAttribute('data-q');
+            if (q) { openPanel(); ask(q); }
+        });
+    });
+
+    if (exportBtn) {
+        exportBtn.addEventListener('click', function () {
+            if (!lastAnswer) { return; }
+            var blob = new Blob([lastAnswer], { type: 'text/markdown;charset=utf-8' });
+            var a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'ai-answer-' + Date.now() + '.md';
+            a.click();
+            setTimeout(function () { URL.revokeObjectURL(a.href); }, 2000);
+        });
+    }
+
+    window.ASAssistant = { open: openPanel, close: closePanel, ask: ask,
+                           setContext: function (ctx) { context = ctx || {}; renderContext(); } };
+})();
+</script>
