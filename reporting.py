@@ -151,7 +151,7 @@ class Report(FPDF):
     def para(self, text, size=9.5):
         self.use(size)
         self.set_text_color(*INK)
-        self.multi_cell(0, 5.6, text)
+        self.multi_cell(0, 5.6, text, new_x="LMARGIN", new_y="NEXT")
         self.ln(1)
 
     def kv_table(self, rows):
@@ -160,7 +160,7 @@ class Report(FPDF):
             self.set_text_color(*MUTED)
             self.cell(38, 6.5, str(key))
             self.set_text_color(*INK)
-            self.multi_cell(0, 6.5, str(value))
+            self.multi_cell(0, 6.5, str(value), new_x="LMARGIN", new_y="NEXT")
         self.ln(1)
 
     def footer_note(self, text):
@@ -170,7 +170,7 @@ class Report(FPDF):
         self.ln(2)
         self.use(7.5)
         self.set_text_color(*MUTED)
-        self.multi_cell(0, 4.4, text)
+        self.multi_cell(0, 4.4, text, new_x="LMARGIN", new_y="NEXT")
 
 
 def _stamp():
