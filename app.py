@@ -1026,6 +1026,28 @@ def features_page():
                            active_nav='features')
 
 
+@app.route('/knowledge')
+def knowledge_page():
+    """知识库：RAG 条款总览与检索。"""
+    if 'username' not in session:
+        return redirect('/login')
+
+    from agent import db as _db
+    conn = _db.connect()
+    try:
+        docs = [dict(r) for r in conn.execute(
+            'SELECT doc_id, source, COUNT(*) AS clauses FROM rag_chunks'
+            ' GROUP BY doc_id, source ORDER BY doc_id')]
+        clauses = [dict(r) for r in conn.execute(
+            'SELECT clause_id, doc_id, section, text FROM rag_chunks'
+            ' ORDER BY doc_id, clause_id')]
+    finally:
+        conn.close()
+
+    return render_template('knowledge.html', docs=docs, clauses=clauses,
+                           total=len(clauses))
+
+
 @app.route('/records')
 def records():
     if 'username' not in session:
