@@ -1,0 +1,30 @@
+[
+ {
+  "clause_id": "WEB-NCI-SIDE-001",
+  "doc_id": "WEB-NCI-SIDE",
+  "section": "Side Effects of Cancer Treatment",
+  "text": "Cancer treatments and cancer can cause side effects.Side effects are problems that occur when treatment affects healthy tissues or organs.Speak up about any problems you have.Your health care team can treat and/or talk with you about ways to reduce these side effects, so you feel better.",
+  "source": "美国国家癌症研究所 NCI",
+  "url": "https://www.cancer.gov/about-cancer/treatment/side-effects",
+  "title": "Cancer Treatment Side Effects",
+  "lang": "en",
+  "domain": "MED-DISEASE",
+  "level": 3,
+  "license": "美国联邦政府作品（公有领域）",
+  "retrieved_at": "2026-10-18"
+ },
+ {
+  "clause_id": "WEB-NCI-SIDE-002",
+  "doc_id": "WEB-NCI-SIDE",
+  "section": "Side Effects of Cancer Treatment",
+  "text": "Learn about steps you can take to prevent or manage the side effects listed below:\nBleeding and Bruising (Thrombocytopenia)\nFertility Issues in Females\nFertility Issues in Males\nHair Loss (Alopecia)\nInfection and Neutropenia\nMemory or Concentration Problems\nMouth and Throat Problems\nNerve Problems (Peripheral Neuropathy)\nOrgan-Related Inflammation and Immunotherapy\nSexual Health Issues in Men\nSexual Health Issues in Women\nSkin and Nail Changes\nUrinary and Bladder Problems\nWeight Changes and Malnutrition\nKeep in mind that side effects vary from person to person, even among people receiving the same type of cancer treatment.",
+  "source": "美国国家癌症研究所 NCI",
+  "url": "https://www.cancer.gov/about-cancer/treatment/side-effects",
+  "title": "Cancer Treatment Side Effects",
+  "lang": "en",
+  "domain": "MED-DISEASE",
+  "level": 3,
+  "license": "美国联邦政府作品（公有领域）",
+  "retrieved_at": "2026-10-18"
+ }
+]
