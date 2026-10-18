@@ -1087,6 +1087,9 @@
         .rp-feat { grid-template-columns: 132px 1fr 64px; }
         .rp-feat { grid-template-columns: 132px 1fr 64px !important; }
         .rp-ev-reason { margin: 0; font-size: 12.5px; line-height: 1.7; color: #475569; }
+
+        .rp-ev-meta { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 12px; font-size: 11.5px; color: #94a3b8; }
+        .rp-ev-meta b { color: #475569; font-weight: 600; }
         .rp-ev-list { margin: 10px 0 0; padding-left: 18px; font-size: 12px; color: #64748b; line-height: 1.7; }
 
         .rp-top5 { display: grid; gap: 10px; }
@@ -1194,6 +1197,18 @@
         {% for r in evidence.reasons %}<li>{{ r }}</li>{% endfor %}
       </ul>
       {% endif %}
+      <div class="rp-ev-meta">
+        {% if evidence.thresholds %}
+        <span>置信度阈值 <b>{{ '%.2f'|format(evidence.thresholds.confident or 0) }}</b></span>
+        <span>谨慎阈值 <b>{{ '%.2f'|format(evidence.thresholds.cautious or 0) }}</b></span>
+        {% endif %}
+        {% if evidence.mahalanobis is not none %}
+        <span>输入距离 <b>{{ evidence.mahalanobis }}</b></span>
+        {% endif %}
+        {% if evidence.thresholds and evidence.thresholds.d_abstain %}
+        <span>距离上限 <b>{{ '%.1f'|format(evidence.thresholds.d_abstain) }}</b></span>
+        {% endif %}
+      </div>
     </aside>
   </div>
 
@@ -1207,8 +1222,8 @@
 
   <section class="rp-card">
     <div class="rp-sec-head">
-      <h3>相似历史病例</h3>
-      <span class="rp-dim">按 30 维特征距离检索</span>
+      <h3>相似病例对照</h3>
+      <span class="rp-dim">数据集近邻 · 按 30 维特征距离</span>
     </div>
     <div class="rp-similar" id="rpSimilar"><div class="rp-skel"></div></div>
   </section>
@@ -1230,11 +1245,9 @@
     <!-- ===== Agent 智能解读（工具调用 + RAG，可溯源） ===== -->
     <div class="rp-card rp-agent" id="agentCard">
       <h2 style="font-size:1.35em;display:flex;align-items:center;gap:10px;justify-content:center;">
-        <i class="fa fa-robot" style="color:#6366f1;"></i> AI 智能解读
+        <i class="fa fa-robot" style="color:#6366f1;"></i> AI 解读 <span class="rp-dim" style="font-size:11px;font-weight:400;">自动生成</span>
       </h2>
-      <p style="text-align:center;color:#718096;font-size:.85em;margin-top:6px;">
-        模型预测 + 特征归因 + 知识库检索，每个数字都能溯源
-      </p>
+      <p style="color:#94a3b8;font-size:11.5px;margin:4px 0 12px;">模型预测 + 特征归因 + 知识库检索，每个数字都能溯源</p>
       <div class="rp-agent-tools" style="display:flex;gap:10px;flex-wrap:wrap;margin:16px 0;justify-content:center;">
         <button id="agentRunBtn" class="btn btn-primary"><i class="fa fa-play"></i> 解读这次结果</button>
         <button id="agentCaseBtn" class="btn btn-info"><i class="fa fa-users"></i> 找相似病例</button>
