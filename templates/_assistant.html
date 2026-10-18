@@ -256,6 +256,7 @@
     if (!panel || !body) { return; }
 
     var history = [];
+    var recentArtifacts = [];
     var busy = false;
     var context = window.AGENT_CONTEXT || {};
     var lastAnswer = '';
@@ -518,8 +519,14 @@
                     answerEl.innerHTML = renderMarkdown(answerText);
                     lastAnswer = answerText;
                     renderArtifacts(bubble, data.artifacts, data.run_id);
-                    history.push({ question: payload.question || '', intent: 'llm' });
-                    if (history.length > 8) { history = history.slice(-8); }
+                    (data.artifacts || []).forEach(function (a) {
+                        recentArtifacts.unshift({ filename: a.filename, kind: a.kind,
+                                                  size: a.size, run_id: data.run_id });
+                    });
+                    recentArtifacts = recentArtifacts.slice(0, 5);
+                    history.push({ question: payload.question || '', intent: 'llm',
+                                   answer: (answerText || '').slice(0, 200) });
+                    if (history.length > 6) { history = history.slice(-6); }
                 } else if (event === 'error') {
                     answerEl.classList.remove('as-cursor');
                     answerEl.textContent = '出错了：' + ((data && data.message) || '未知错误');
@@ -569,7 +576,8 @@
             question: question,
             values: (window.getAgentValues && window.getAgentValues()) || context.values || null,
             history: history.slice(-6),
-            context: { record_id: context.recordId || null }
+            context: { record_id: context.recordId || null },
+            recent_artifacts: recentArtifacts.slice(0, 3)
         };
 
         streamAsk(payload, function () {

@@ -2237,7 +2237,10 @@ def api_agent_llm_stream():
     def generate():
         answer_parts = []
         try:
-            for item in stream_llm_agent(question, ctx, values=values):
+            history = data.get('history') or []
+            recent = data.get('recent_artifacts') or []
+            for item in stream_llm_agent(question, ctx, values=values,
+                                        history=history, recent_artifacts=recent):
                 event = item['event']
                 payload = item['data']
                 if event == 'token':
