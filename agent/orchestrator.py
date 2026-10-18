@@ -34,6 +34,7 @@ INTENT = {
     'export': 'report_export',
     'compare': 'record_compare',
     'clarify': 'clarify',
+    'medical': 'medical_qa',
 }
 
 INTENT_LABEL = {
@@ -103,6 +104,13 @@ _INTERPRET_HINTS = ['这个结果', '结果什么', '什么意思', '严重', '�
 _TASK_HINTS = ['逐条', '每条', '分别', '依次', '一条一条', '批量解释', '对比这几', '都解释']
 _SQL_HINTS = ['占比', '数量', '最高', '最低', '分布', '汇总', '统计一下']
 
+# 医学知识问题：走 MED 域检索，不跟系统文档混在一起
+_MED_HINTS = ['症状', '早期', '晚期', '筛查', '钼靶', '化疗', '放疗', '靶向',
+              '内分泌治疗', '手术', '复发', '转移', '预后', '副作用', 'HER2',
+              '三阴', '分期', '乳腺炎', '增生', '溢液', '肿块', '疼痛', '结节',
+              '他莫昔芬', '曲妥珠', '免疫治疗', '生存率', '活检', '穿刺', '预防',
+              '遗传', 'BRCA', '治疗', '怎么治', '癌']
+
 
 
 def classify(question: str, has_features: bool) -> str:
@@ -136,6 +144,8 @@ def classify(question: str, has_features: bool) -> str:
         if item['feature'].lower() in text or item['name_zh'] in text:
             return INTENT['feature']
 
+    if any(h in text for h in _MED_HINTS):
+        return INTENT['medical']
     if any(h in text for h in _INTERPRET_HINTS):
         return INTENT['interpret'] if has_features else INTENT['general']
     if any(h in text for h in _USAGE_HINTS):
@@ -218,7 +228,8 @@ def _act_interpret(ctx: AgentContext, values: List[float], emit=None) -> None:
     shap_fact = _shap_fact(ctx)
     if shap_fact:
         for item in shap_fact['payload'].get('top_features', [])[:3]:
-            _call(ctx, 'search_knowledge', {'query': item['name'], 'k': 2}, emit)
+            _call(ctx, 'search_knowledge',
+                  {'query': item['name'], 'k': 2, 'domains': ['FEAT', 'MED-DISEASE']}, emit)
 
     _call(ctx, 'similar_cases', {'features': values, 'k': 5}, emit)
 
@@ -235,7 +246,13 @@ def _act_features(ctx: AgentContext, question: str,
 
 
 def _act_usage(ctx: AgentContext, question: str, emit=None) -> None:
-    _call(ctx, 'search_knowledge', {'query': question, 'k': 5}, emit)
+    _call(ctx, 'search_knowledge',
+          {'query': question, 'k': 5, 'domains': ['SYS', 'FEAT']}, emit)
+
+
+def _act_medical(ctx: AgentContext, question: str, emit=None) -> None:
+    _call(ctx, 'search_knowledge',
+          {'query': question, 'k': 4, 'domains': ['MED-DISEASE', 'MED-DRUG']}, emit)
 
 
 def _act_history(ctx: AgentContext, emit=None) -> None:
@@ -603,6 +620,46 @@ def _rag_hits(ctx: AgentContext, limit: int = 3) -> List[Dict]:
     return hits
 
 
+LEVEL_LABEL = {4: '指南', 3: 'NCI PDQ', 2: 'WHO / NHS / MedlinePlus', 1: '维基百科（科普级）'}
+MED_SCORE_MIN = 8.0
+
+
+def _compose_medical(ctx: AgentContext, question: str):
+    """医学问题：只引用分数过线的 top3 条款，逐段标来源与级别。"""
+    hits = []
+    for fact in _clause_facts(ctx):
+        for hit in fact['payload'].get('hits') or []:
+            hits.append(hit)
+    hits.sort(key=lambda h: float(h.get('score') or 0), reverse=True)
+
+    picked, seen = [], set()
+    for hit in hits:
+        cid = hit.get('clause_id')
+        if not cid or cid in seen:
+            continue
+        seen.add(cid)
+        if float(hit.get('score') or 0) < MED_SCORE_MIN:
+            continue
+        picked.append(hit)
+        if len(picked) >= 3:
+            break
+
+    if not picked:
+        return ('没有在知识库里找到与这个问题直接相关的依据。'
+                '可以换个更具体的问法，或者补充分期、分子分型等信息。'), []
+
+    lines = ['**说明**：以下内容整理自知识库资料，供参考，不能替代医生的诊断与治疗建议。', '']
+    for hit in picked:
+        label = LEVEL_LABEL.get(int(hit.get('level') or 0), '资料')
+        lines.append('### %s' % (hit.get('section') or ''))
+        lines.append('')
+        lines.append((hit.get('text') or '').strip())
+        lines.append('')
+        lines.append('> 来源：%s · %s · [%s]' % (hit.get('source') or '', label,
+                                                hit.get('clause_id')))
+        lines.append('')
+    return '\n'.join(lines).strip(), [h['clause_id'] for h in picked]
+
 def _compose_usage(ctx: AgentContext) -> Tuple[str, List[str]]:
     """使用类问题：检索强则用文档（可溯源），弱则回退策展 FAQ。"""
     from .knowledge import faq
@@ -858,6 +915,8 @@ def _node_act(state, ctx):
             _act_sql(ctx, state['question'], state.get('_emit'))
         elif intent == INTENT['compare']:
             _act_compare(ctx, values, state.get('_emit'))
+        elif intent == INTENT['medical']:
+            _act_medical(ctx, state['question'], state.get('_emit'))
         elif intent == INTENT['export']:
             _act_export(ctx, values, state, state.get('_emit'))
         else:
@@ -934,6 +993,7 @@ def _node_compose(state, ctx):
         INTENT['task']: lambda: _compose_task(ctx),
         INTENT['sql']: lambda: _compose_sql(ctx),
         INTENT['compare']: lambda: _compose_compare(ctx),
+        INTENT['medical']: lambda: _compose_medical(ctx, question),
         INTENT['export']: lambda: _compose_export(ctx),
     }
     answer, citations = composers.get(intent, lambda: _compose_usage(ctx))()
@@ -968,6 +1028,11 @@ def _node_verify(state, ctx):
     if state.get('status') in ('refused', 'error'):
         return
     answer = state.get('answer', '')
+    if state.get('intent') == INTENT.get('medical'):
+        state['verify'] = {'ok': True, 'skipped': 'medical_source_text', 'checked': 0,
+                           'unmatched': []}
+        state['model_used'] = 'template'
+        return
     if state.get('curated'):
         state['verify'] = {'ok': True, 'curated': True, 'checked': 0, 'unmatched': []}
         state['model_used'] = 'template'

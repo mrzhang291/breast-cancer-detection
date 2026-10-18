@@ -971,7 +971,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "酒精",
+  "summary_zh": "汇总激素治疗、辐射暴露等环境因素与乳腺癌风险的文献证据。"
  },
  {
   "clause_id": "WEB-NCI-PREV-062",
@@ -985,7 +987,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "酒精",
+  "summary_zh": "胸部X线及霍奇金病治疗后辐射增加BRCA携带者等乳腺癌风险。"
  },
  {
   "clause_id": "WEB-NCI-PREV-063",
@@ -999,7 +1003,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "酒精",
+  "summary_zh": "儿童霍奇金病患者后续乳腺癌风险与放疗剂量、化疗及激素因素相关。"
  },
  {
   "clause_id": "WEB-NCI-PREV-064",
@@ -1013,7 +1019,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "酒精",
+  "summary_zh": "乳腺癌手术方式随机试验长期随访，比较乳房切除、保乳及放疗。"
  },
  {
   "clause_id": "WEB-NCI-PREV-065",
@@ -1027,7 +1035,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "酒精",
+  "summary_zh": "肥胖、高胰岛素血症及饮酒与乳腺癌风险的流行病学研究证据。"
  },
  {
   "clause_id": "WEB-NCI-PREV-066",
@@ -1041,7 +1051,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "早孕",
+  "summary_zh": "生育后短期乳腺癌风险升高，长期降低，年轻初产者获益更大。"
  },
  {
   "clause_id": "WEB-NCI-PREV-067",
@@ -1055,7 +1067,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "早孕",
+  "summary_zh": "经产与乳腺癌风险关系复杂，受产后时间及肿瘤表型影响。"
  },
  {
   "clause_id": "WEB-NCI-PREV-068",
@@ -1069,7 +1083,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "母乳喂养",
+  "summary_zh": "母乳喂养降低乳腺癌风险，每12个月哺乳风险降4.3%。"
  },
  {
   "clause_id": "WEB-NCI-PREV-069",
@@ -1083,7 +1099,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "运动",
+  "summary_zh": "多项研究显示休闲体育活动与绝经后浸润性乳腺癌风险降低相关。"
  },
  {
   "clause_id": "WEB-NCI-PREV-070",
@@ -1097,7 +1115,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "运动",
+  "summary_zh": "荟萃分析显示运动使乳腺癌风险降低约12%至22%。"
  },
  {
   "clause_id": "WEB-NCI-PREV-071",
@@ -1111,7 +1131,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "运动",
+  "summary_zh": "生育后乳腺癌风险短暂升高，与月经、体型等因素相关。"
  },
  {
   "clause_id": "WEB-NCI-PREV-072",
@@ -1125,7 +1147,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "运动",
+  "summary_zh": "哺乳及近期休闲体育活动与乳腺癌风险关系的队列研究证据。"
  },
  {
   "clause_id": "WEB-NCI-PREV-073",
@@ -1139,7 +1163,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "运动",
+  "summary_zh": "荟萃分析显示体育活动及减重可降低乳腺癌风险。"
  },
  {
   "clause_id": "WEB-NCI-PREV-074",
@@ -1153,7 +1179,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "他莫昔芬",
+  "summary_zh": "他莫昔芬用于治疗及预防乳腺癌，BCPT显示高危者发病降49%。"
  },
  {
   "clause_id": "WEB-NCI-PREV-075",
@@ -1167,7 +1195,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "他莫昔芬",
+  "summary_zh": "BCPT七年随访证实他莫昔芬获益持续，但无总生存获益。"
  },
  {
   "clause_id": "WEB-NCI-PREV-076",
@@ -1181,7 +1211,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "他莫昔芬",
+  "summary_zh": "他莫昔芬显著降低ER阳性乳腺癌风险，效应多见于治疗后期。"
  },
  {
   "clause_id": "WEB-NCI-PREV-077",
@@ -1195,7 +1227,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "他莫昔芬",
+  "summary_zh": "IBIS-I试验显示他莫昔芬使浸润性及原位癌风险降低32%。"
  },
  {
   "clause_id": "WEB-NCI-PREV-078",
@@ -1209,7 +1243,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "他莫昔芬",
+  "summary_zh": "荟萃分析显示他莫昔芬使乳腺癌发病降38%，但增加内膜癌及血栓风险。"
  },
  {
   "clause_id": "WEB-NCI-PREV-079",
@@ -1223,7 +1259,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "他莫昔芬",
+  "summary_zh": "标准剂量他莫昔芬可降低发病，但毒性限制其广泛应用。"
  },
  {
   "clause_id": "WEB-NCI-PREV-080",
@@ -1237,7 +1275,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "他莫昔芬",
+  "summary_zh": "他莫昔芬降低对侧乳腺癌风险，低剂量2.5mg效果与20mg相当。"
  },
  {
   "clause_id": "WEB-NCI-PREV-081",
@@ -1251,7 +1291,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "他莫昔芬",
+  "summary_zh": "TAM-01试验评估低剂量他莫昔芬（5mg/日，3年）预防高危女性浸润性乳腺癌的效果。"
  },
  {
   "clause_id": "WEB-NCI-PREV-082",
@@ -1265,7 +1307,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "他莫昔芬",
+  "summary_zh": "中位随访9.7年，他莫昔芬组乳腺癌25例、安慰剂组41例（HR 0.58），对侧乳腺癌亦显著减少。"
  },
  {
   "clause_id": "WEB-NCI-PREV-083",
@@ -1279,7 +1323,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "雷洛昔芬",
+  "summary_zh": "MORE试验纳入7705例骨质疏松绝经后女性，雷洛昔芬使浸润性乳腺癌风险显著降低（RR 0.25）。"
  },
  {
   "clause_id": "WEB-NCI-PREV-084",
@@ -1293,7 +1339,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "雷洛昔芬",
+  "summary_zh": "CORE扩展研究显示，MORE与CORE共8年间雷洛昔芬使浸润性乳腺癌风险降低66%，ER阳性者降低76%。"
  },
  {
   "clause_id": "WEB-NCI-PREV-085",
@@ -1307,7 +1355,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "雷洛昔芬",
+  "summary_zh": "RUTH试验证实雷洛昔芬降低浸润性乳腺癌风险（HR 0.56）；STAR试验中他莫昔芬与雷洛昔芬疗效相近。"
  },
  {
   "clause_id": "WEB-NCI-PREV-086",
@@ -1321,7 +1371,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "雷洛昔芬",
+  "summary_zh": "他莫昔芬组子宫内膜癌、静脉血栓及白内障更多；两药在缺血性心脏病、卒中及骨折方面无差异。"
  },
  {
   "clause_id": "WEB-NCI-PREV-087",
@@ -1335,7 +1387,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂或灭活剂",
+  "summary_zh": "阿那曲唑、来曲唑抑制芳香化酶，依西美坦使其灭活，可预防激素敏感性乳腺癌，但有关节痛等副作用。"
  },
  {
   "clause_id": "WEB-NCI-PREV-088",
@@ -1349,7 +1403,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂或灭活剂",
+  "summary_zh": "ATAC试验中阿那曲唑较他莫昔芬更有效减少对侧新发乳腺癌；来曲唑辅助治疗亦降低复发风险。"
  },
  {
   "clause_id": "WEB-NCI-PREV-089",
@@ -1363,7 +1419,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂或灭活剂",
+  "summary_zh": "延长来曲唑治疗5年可改善无病生存率（95% vs 91%），并显著减少对侧新发乳腺癌。"
  },
  {
   "clause_id": "WEB-NCI-PREV-090",
@@ -1377,7 +1435,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂或灭活剂",
+  "summary_zh": "他莫昔芬2年后换用依西美坦可降低局部或转移复发及对侧新发乳腺癌；依西美坦亦用于一级预防。"
  },
  {
   "clause_id": "WEB-NCI-PREV-091",
@@ -1391,7 +1451,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂或灭活剂",
+  "summary_zh": "IBIS-II试验显示阿那曲唑使高危绝经后女性乳腺癌风险降低（HR 0.47），主要降低激素受体阳性乳腺癌。"
  },
  {
   "clause_id": "WEB-NCI-PREV-092",
@@ -1405,7 +1467,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂或灭活剂",
+  "summary_zh": "阿那曲唑组乳腺癌死亡率无差异，但肌肉骨骼症状、关节痛、高血压及血管舒缩症状更常见。"
  },
  {
   "clause_id": "WEB-NCI-PREV-093",
@@ -1419,7 +1483,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预防性乳房切除术",
+  "summary_zh": "回顾性队列显示双侧预防性乳房切除术使中高危女性乳腺癌风险降低约89%–94%，死亡率亦下降。"
  },
  {
   "clause_id": "WEB-NCI-PREV-094",
@@ -1433,7 +1499,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预防性乳房切除术",
+  "summary_zh": "对侧预防性乳房切除术在单侧乳腺癌女性中应用增加（1998年1.9%至2011年11.2%），但生存获益存疑。"
  },
  {
   "clause_id": "WEB-NCI-PREV-095",
@@ -1447,7 +1515,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预防性卵巢切除术",
+  "summary_zh": "BRCA1/2突变携带者行预防性卵巢切除术与乳腺癌风险降低约50%相关，但研究存在选择偏倚。"
  },
  {
   "clause_id": "WEB-NCI-PREV-096",
@@ -1461,7 +1531,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预防性卵巢切除术",
+  "summary_zh": "前瞻性队列研究显示预防性卵巢切除术降低乳腺癌风险，BRCA2突变携带者获益大于BRCA1携带者。"
  },
  {
   "clause_id": "WEB-NCI-PREV-097",
@@ -1475,7 +1547,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预防性卵巢切除术",
+  "summary_zh": "本条为参考文献列表，涉及他莫昔芬对心脏、血栓及子宫内膜癌风险的研究文献。"
  },
  {
   "clause_id": "WEB-NCI-PREV-098",
@@ -1489,7 +1563,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预防性卵巢切除术",
+  "summary_zh": "本条为参考文献列表，涵盖他莫昔芬预防乳腺癌试验及肝脏、子宫内膜癌风险评估文献。"
  },
  {
   "clause_id": "WEB-NCI-PREV-099",
@@ -1503,7 +1579,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预防性卵巢切除术",
+  "summary_zh": "本条为参考文献列表，涉及皇家马斯登及意大利他莫昔芬化学预防试验等文献。"
  },
  {
   "clause_id": "WEB-NCI-PREV-100",
@@ -1517,7 +1595,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预防性卵巢切除术",
+  "summary_zh": "本条为参考文献列表，包含他莫昔芬预防试验长期结果及SERM预防乳腺癌比较文献。"
  },
  {
   "clause_id": "WEB-NCI-PREV-101",
@@ -1531,7 +1611,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预防性卵巢切除术",
+  "summary_zh": "他莫昔芬治疗导管内乳腺癌及低剂量他莫昔芬降低乳腺密度、预防非浸润性肿瘤复发的随机对照研究。"
  },
  {
   "clause_id": "WEB-NCI-PREV-102",
@@ -1545,7 +1627,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预防性卵巢切除术",
+  "summary_zh": "雷洛昔芬降低绝经后女性乳腺癌风险的MORE试验4年结果及后续随访研究。"
  },
  {
   "clause_id": "WEB-NCI-PREV-103",
@@ -1559,7 +1643,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预防性卵巢切除术",
+  "summary_zh": "雷洛昔芬降低冠心病高危女性浸润性乳腺癌发生率，及STAR试验比较他莫昔芬与雷洛昔芬。"
  },
  {
   "clause_id": "WEB-NCI-PREV-104",
@@ -1573,7 +1659,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预防性卵巢切除术",
+  "summary_zh": "阿那曲唑、来曲唑等芳香化酶抑制剂用于绝经后早期乳腺癌辅助治疗的随机试验。"
  },
  {
   "clause_id": "WEB-NCI-PREV-105",
@@ -1587,7 +1675,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预防性卵巢切除术",
+  "summary_zh": "依西美坦和阿那曲唑用于绝经后高危女性乳腺癌预防的随机对照试验。"
  },
  {
   "clause_id": "WEB-NCI-PREV-106",
@@ -1601,7 +1691,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预防性卵巢切除术",
+  "summary_zh": "降低风险乳房切除术及BRCA突变携带者双侧预防性卵巢切除术后的乳腺癌风险研究。"
  },
  {
   "clause_id": "WEB-NCI-PREV-107",
@@ -1615,7 +1707,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预防性卵巢切除术",
+  "summary_zh": "多中心前瞻性研究：降低风险输卵管卵巢切除术预防BRCA1/2相关乳腺癌和妇科肿瘤。"
  },
  {
   "clause_id": "WEB-NCI-PREV-108",
@@ -1629,7 +1723,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "激素避孕药",
+  "summary_zh": "口服及孕激素避孕药与乳腺癌风险的小幅关联，停药后风险随时间下降。"
  },
  {
   "clause_id": "WEB-NCI-PREV-109",
@@ -1643,7 +1739,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "环境因素",
+  "summary_zh": "职业、环境或化学暴露被提出为乳腺癌病因，但现有数据大多无定论。"
  },
  {
   "clause_id": "WEB-NCI-PREV-110",
@@ -1657,7 +1755,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "环境因素",
+  "summary_zh": "确定特定环境暴露对乳腺癌风险的影响面临暴露复杂、潜伏期长和回忆困难等挑战。"
  },
  {
   "clause_id": "WEB-NCI-PREV-111",
@@ -1671,7 +1771,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "环境因素",
+  "summary_zh": "观察性关联易受多重比较、测量、回忆和发表偏倚影响，动物高剂量结果未必适用于人群。"
  },
  {
   "clause_id": "WEB-NCI-PREV-112",
@@ -1685,7 +1787,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "环境因素",
+  "summary_zh": "现有评估乳腺癌与特定环境暴露关联的人群研究尚无定论，并附激素避孕药相关文献。"
  },
  {
   "clause_id": "WEB-NCI-PREV-113",
@@ -1699,7 +1803,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "环境因素",
+  "summary_zh": "环境污染物、饮食、体力活动与乳腺癌研究综述，及环境化学物与乳腺癌的流行病学更新。"
  },
  {
   "clause_id": "WEB-NCI-PREV-114",
@@ -1713,7 +1819,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "环境因素",
+  "summary_zh": "讨论癌症研究中的多重比较问题及发表偏倚的存在与风险因素。"
  },
  {
   "clause_id": "WEB-NCI-PREV-115",
@@ -1727,7 +1835,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "流产",
+  "summary_zh": "支持流产与乳腺癌关联的观察性研究存在回忆偏倚，更严谨研究未显示因果关系。"
  },
  {
   "clause_id": "WEB-NCI-PREV-116",
@@ -1741,7 +1851,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "饮食",
+  "summary_zh": "少有证据表明饮食调整影响乳腺癌发病率，多数研究为易受偏倚影响的观察性研究。"
  },
  {
   "clause_id": "WEB-NCI-PREV-117",
@@ -1755,7 +1867,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "饮食",
+  "summary_zh": "七项队列研究汇总分析未发现总膳食脂肪摄入与乳腺癌风险关联；WHI饮食干预试验结果。"
  },
  {
   "clause_id": "WEB-NCI-PREV-118",
@@ -1769,7 +1883,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "饮食",
+  "summary_zh": "WHI干预组浸润性乳腺癌发生率数值略低但无统计学意义；果蔬摄入与风险关联甚微。"
  },
  {
   "clause_id": "WEB-NCI-PREV-119",
@@ -1783,7 +1899,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "饮食",
+  "summary_zh": "WHEL试验未显示饮食干预减少新原发癌或改善生存；西班牙地中海饮食试验乳腺癌结果。"
  },
  {
   "clause_id": "WEB-NCI-PREV-120",
@@ -1797,7 +1915,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "饮食",
+  "summary_zh": "西班牙试验中仅35例浸润性乳腺癌，各组差异的统计学意义难以确定。"
  },
  {
   "clause_id": "WEB-NCI-PREV-121",
@@ -1811,7 +1931,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "维生素",
+  "summary_zh": "多项随机试验显示，β-胡萝卜素、维生素E、维生素C等补充剂未降低乳腺癌发病率。"
  },
  {
   "clause_id": "WEB-NCI-PREV-122",
@@ -1825,7 +1947,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "维生素",
+  "summary_zh": "维生素A类似物芬维A胺III期试验未显著降低对侧或同侧乳腺癌及远处转移发生率。"
  },
  {
   "clause_id": "WEB-NCI-PREV-123",
@@ -1839,7 +1963,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "主动与被动吸烟",
+  "summary_zh": "三十余年研究无明确证据表明主动吸烟与乳腺癌相关；荟萃分析亦未发现被动吸烟总体关联。"
  },
  {
   "clause_id": "WEB-NCI-PREV-124",
@@ -1853,7 +1979,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "腋下除臭剂/止汗剂",
+  "summary_zh": "病例对照研究未发现止汗剂、除臭剂或剃毛与乳腺癌风险相关，无证据支持其致癌担忧。"
  },
  {
   "clause_id": "WEB-NCI-PREV-125",
@@ -1867,7 +1995,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "双膦酸盐",
+  "summary_zh": "观察性研究提示双膦酸盐使用与较低乳腺癌风险相关，但受骨密度混杂影响，需随机试验验证。"
  },
  {
   "clause_id": "WEB-NCI-PREV-126",
@@ -1881,7 +2011,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "双膦酸盐",
+  "summary_zh": "FIT和HORIZON-PRT两项大型随机试验均未发现阿仑膦酸或唑来膦酸降低乳腺癌发病率。"
  },
  {
   "clause_id": "WEB-NCI-PREV-127",
@@ -1895,7 +2027,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "夜班工作",
+  "summary_zh": "IARC将昼夜节律紊乱的轮班工作列为可能致癌因素，但多项流行病学研究仅见弱证据或无关联。"
  },
  {
   "clause_id": "WEB-NCI-PREV-128",
@@ -1909,7 +2043,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "夜班工作",
+  "summary_zh": "英国大型前瞻队列未发现卧室夜间光照水平与乳腺癌风险相关，排除中度关联。"
  },
  {
   "clause_id": "WEB-NCI-PREV-129",
@@ -1923,7 +2059,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "夜班工作",
+  "summary_zh": "最高与最低夜间光照水平相比乳腺癌风险比1.01，无关联；附人工流产与乳腺癌文献。"
  },
  {
   "clause_id": "WEB-NCI-PREV-130",
@@ -1937,7 +2075,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "夜班工作",
+  "summary_zh": "文献列表：多项研究及ACOG意见认为人工流产与乳腺癌风险无关联。"
  },
  {
   "clause_id": "WEB-NCI-PREV-131",
@@ -1951,7 +2091,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "夜班工作",
+  "summary_zh": "文献列表：中国及丹麦研究、系统综述均未发现人工流产与乳腺癌风险相关。"
  },
  {
   "clause_id": "WEB-NCI-PREV-132",
@@ -1965,7 +2107,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "夜班工作",
+  "summary_zh": "文献列表：低脂饮食干预试验及水果蔬菜摄入汇总分析未显示降低乳腺癌风险。"
  },
  {
   "clause_id": "WEB-NCI-PREV-133",
@@ -1979,7 +2123,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "夜班工作",
+  "summary_zh": "文献列表：WHEL试验及PREDIMED试验评估饮食模式与乳腺癌风险或预后关系。"
  },
  {
   "clause_id": "WEB-NCI-PREV-134",
@@ -1993,7 +2139,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "夜班工作",
+  "summary_zh": "文献列表：女性健康研究等随机试验评估维生素E、C、β-胡萝卜素及B族维生素与癌症风险。"
  },
  {
   "clause_id": "WEB-NCI-PREV-135",
@@ -2007,7 +2155,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "夜班工作",
+  "summary_zh": "文献列表：芬维A胺随机试验及美国卫生总监吸烟后果报告。"
  },
  {
   "clause_id": "WEB-NCI-PREV-136",
@@ -2021,7 +2171,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "夜班工作",
+  "summary_zh": "文献列表：被动吸烟前瞻研究、止汗剂病例对照研究及他汀类与癌症风险荟萃分析。"
  },
  {
   "clause_id": "WEB-NCI-PREV-137",
@@ -2035,7 +2187,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "夜班工作",
+  "summary_zh": "文献列表：多项观察性研究提示口服双膦酸盐与绝经后乳腺癌风险降低相关。"
  },
  {
   "clause_id": "WEB-NCI-PREV-138",
@@ -2049,7 +2203,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "夜班工作",
+  "summary_zh": "文献列表：双膦酸盐随机试验未降低风险；夜班工作系统综述及前瞻研究。"
  },
  {
   "clause_id": "WEB-NCI-PREV-139",
@@ -2063,7 +2219,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "本摘要最新更新（2025年4月9日）",
+  "summary_zh": "更新2025年发病与死亡统计；SEER数据显示1989至2022年乳腺癌死亡率下降44%，黑人女性仍高38%。"
  },
  {
   "clause_id": "WEB-NCI-PREV-140",
@@ -2077,7 +2235,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "本摘要目的",
+  "summary_zh": "本PDQ摘要为卫生专业人员提供乳腺癌预防的循证信息，供临床参考，不构成正式指南。"
  },
  {
   "clause_id": "WEB-NCI-PREV-141",
@@ -2091,6 +2251,8 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "审稿人与更新",
+  "summary_zh": "PDQ筛查与预防编辑委员会定期审阅并更新本摘要，独立评估文献，不代表NCI或NIH政策。"
  }
 ]
