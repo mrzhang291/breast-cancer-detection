@@ -1670,16 +1670,7 @@
     // 下载报告
     $('#downloadSummaryBtn').click(function() {
       var content = $('#summaryContent').html();
-      var html = '<!DOCTYPE html><html><head><meta charset="utf-8"><title>AI分析总结报告</title><style>body{font-family: "Microsoft YaHei", sans-serif; line-height: 1.8; padding: 30px;}</style></head><body>' + content + '
-<script>
-    window.AGENT_CONTEXT = {
-        values: {{ (session.get('last_prediction') or {}).get('data') | tojson }},
-        prediction: "{{ output }}",
-        confidence: {{ confidence }}
-    };
-</script>
-
-</body></html>';
+      var html = '<!DOCTYPE html><html><head><meta charset="utf-8"><title>AI分析总结报告</title><style>body{font-family: "Microsoft YaHei", sans-serif; line-height: 1.8; padding: 30px;}</style></head><body>' + content + '</body></html>';
       
       var blob = new Blob([html], { type: 'text/html' });
       var url = URL.createObjectURL(blob);
@@ -2140,5 +2131,12 @@
 <a href="/" class="btn-return-floating" title="{{ _('return_home') }}"><i class="fa fa-home"></i> {{ _('home') }}</a>
 
 {% include '_assistant.html' %}
+<script>
+    window.AGENT_CONTEXT = {
+        values: {{ (session.get('last_prediction') or {}).get('data') | tojson }},
+        prediction: "{{ output }}",
+        confidence: {{ confidence }}
+    };
+</script>
 </body>
 </html>
