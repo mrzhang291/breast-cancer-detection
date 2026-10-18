@@ -1,0 +1,10 @@
+﻿import io, re, sys
+sys.stdout.reconfigure(encoding="utf-8")
+s = io.open(r"admin_backend\api\coze_api.py", encoding="utf-8").read()
+print("路由:", re.findall(r'@coze_api\.route\("([^"]+)", methods=\[([^\]]+)\]', s))
+print("\n状态返回结构:")
+i = s.find("def coze_status")
+print(s[i:i+420])
+print("\n聊天入口参数:")
+j = s.find("def coze_chat")
+print(s[j:j+500])
