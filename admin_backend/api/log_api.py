@@ -13,11 +13,18 @@ def get_operation_logs():
     user_id = request.args.get('user_id', type=int)
     start_time = request.args.get('start_time')
     end_time = request.args.get('end_time')
+    search = request.args.get('search', '')
+    date_str = request.args.get('date', '')
+    if date_str and not start_time:
+        start_time = f'{date_str}T00:00:00'
+        end_time = f'{date_str}T23:59:59'
     
     query = OperationLog.query
     
     if user_id:
         query = query.filter_by(user_id=user_id)
+    if search:
+        query = query.filter(OperationLog.operation.like(f'%{search}%'))
     if start_time:
         query = query.filter(OperationLog.created_at >= datetime.fromisoformat(start_time))
     if end_time:

@@ -39,7 +39,11 @@ def get_predictions():
     search = request.args.get('search')
     start_time = request.args.get('start_time')
     end_time = request.args.get('end_time')
-    prediction_result = request.args.get('prediction_result')
+    date_str = request.args.get('date', '')
+    if date_str and not start_time:
+        start_time = f'{date_str}T00:00:00'
+        end_time = f'{date_str}T23:59:59'
+    prediction_result = request.args.get('prediction_result') or request.args.get('result')
     sort_by = request.args.get('sort_by', 'created_at')
     sort_order = request.args.get('sort_order', 'desc')
     

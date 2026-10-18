@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coze 智能体 · 乳腺癌检测系统</title>
+    <link rel="stylesheet" href="/console/static/vendor/fa6/all.min.css">
+    <link rel="stylesheet" href="/console/static/css/style.css">
+    <style>
+        :root { --coze-brand: #4f46e5; --coze-brand2: #7c3aed; }
+        body.coze-body {
+            min-height: 100vh;
+            background:
+                radial-gradient(800px 380px at 8% -10%, rgba(99, 102, 241, .20), transparent 60%),
+                radial-gradient(760px 420px at 100% 100%, rgba(168, 85, 247, .14), transparent 62%),
+                #f3f6fc;
+            display: flex;
+            flex-direction: column;
+        }
+        .coze-top {
+            display: flex; align-items: center; gap: 14px;
+            padding: 14px 26px;
+            background: rgba(255,255,255,.86);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--line);
+            position: sticky; top: 0; z-index: 50;
+        }
+        .coze-brand { display: flex; align-items: center; gap: 11px; text-decoration: none; color: var(--ink); }
+        .coze-brand .mark {
+            width: 38px; height: 38px; border-radius: 12px;
+            display: grid; place-items: center; color: #fff; font-size: 15px;
+            background: linear-gradient(135deg, var(--coze-brand), var(--coze-brand2));
+            box-shadow: 0 10px 22px -12px rgba(79,70,229,.8);
+        }
+        .coze-brand strong { display: block; font-size: 14px; letter-spacing: -.01em; }
+        .coze-brand small { display: block; font-size: 10.5px; color: var(--muted); margin-top: 2px; letter-spacing: .04em; }
+        .coze-top-actions { margin-left: auto; display: flex; align-items: center; gap: 9px; }
+        .coze-status {
+            display: inline-flex; align-items: center; gap: 7px;
+            font-size: 11.5px; color: var(--muted);
+            padding: 6px 11px; border-radius: 999px;
+            background: #f8fafc; border: 1px solid var(--line);
+        }
+        .coze-status .dot { width: 7px; height: 7px; border-radius: 50%; background: #f59e0b; }
+        .coze-status.ok .dot { background: #10b981; box-shadow: 0 0 0 3px rgba(16,185,129,.14); }
+        .coze-status.err .dot { background: #e11d48; }
+
+        .coze-shell {
+            width: min(1280px, calc(100% - 40px));
+            margin: 22px auto 28px;
+            display: grid;
+            grid-template-columns: 290px minmax(0, 1fr);
+            gap: 18px;
+            flex: 1;
+        }
+        .coze-side { display: flex; flex-direction: column; gap: 14px; }
+        .coze-side-card {
+            background: var(--surface); border: 1px solid var(--line);
+            border-radius: 16px; padding: 20px; box-shadow: var(--shadow-soft);
+        }
+        .coze-side-card h2 { font-size: 17px; letter-spacing: -.02em; margin-bottom: 6px; }
+        .coze-side-card p { font-size: 12px; color: var(--muted); line-height: 1.7; }
+        .coze-meta {
+            display: flex; justify-content: space-between; gap: 10px;
+            padding: 8px 0; border-top: 1px dashed var(--line);
+            font-size: 11px; color: var(--muted); margin-top: 10px;
+        }
+        .coze-meta:first-of-type { margin-top: 14px; }
+        .coze-meta code {
+            color: var(--ink-2); background: #f1f5f9; padding: 2px 6px;
+            border-radius: 5px; font-size: 10.5px; max-width: 160px;
+            overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+        }
+        .coze-side h3 {
+            font-size: 10.5px; color: var(--muted-2); letter-spacing: .13em;
+            text-transform: uppercase; padding: 2px 4px;
+        }
+        .coze-suggestions { display: flex; flex-direction: column; gap: 8px; }
+        .coze-suggestions button {
+            text-align: left; border: 1px solid var(--line); background: var(--surface);
+            border-radius: 11px; padding: 10px 12px; color: var(--ink-2);
+            font-size: 12.5px; line-height: 1.5; transition: .16s;
+        }
+        .coze-suggestions button:hover {
+            border-color: #c7d2fe; background: var(--brand-soft); transform: translateX(2px);
+        }
+        .coze-suggestions button i { color: var(--coze-brand); margin-right: 7px; }
+        .coze-tip {
+            margin-top: auto; font-size: 10.5px; color: var(--muted-2);
+            line-height: 1.7; padding: 12px 14px; border-radius: 11px;
+            background: #f8fafc; border: 1px solid var(--line);
+        }
+        .coze-tip i { color: var(--ok); margin-right: 5px; }
+        .coze-live-head {
+            display: flex; align-items: center; justify-content: space-between;
+            gap: 8px; margin-bottom: 10px;
+        }
+        .coze-live-head strong { font-size: 12.5px; }
+        .coze-live-head span { font-size: 10px; color: var(--muted-2); }
+        .coze-live-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+        }
+        .coze-live-grid div {
+            background: #f8fafc; border: 1px solid var(--line);
+            border-radius: 9px; padding: 8px 10px;
+        }
+        .coze-live-grid span { display: block; font-size: 10px; color: var(--muted); }
+        .coze-live-grid strong {
+            display: block; margin-top: 2px; font-size: 16px;
+            letter-spacing: -.02em; color: var(--ink);
+        }
+        .coze-live-refresh {
+            margin-top: 9px; width: 100%; padding: 7px 10px;
+            border: 1px solid var(--line); border-radius: 9px;
+            background: #fff; color: var(--muted); font-size: 11px;
+        }
+        .coze-live-refresh:hover { color: var(--brand); border-color: #c7d2fe; background: var(--brand-soft); }
+
+        .coze-chat {
+            background: var(--surface); border: 1px solid var(--line);
+            border-radius: 18px; box-shadow: var(--shadow);
+            display: flex; flex-direction: column; overflow: hidden;
+            min-height: calc(100vh - 130px);
+        }
+        .coze-head {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 14px 20px; border-bottom: 1px solid var(--line);
+            font-size: 12.5px; color: var(--ink-2); font-weight: 650;
+            background: linear-gradient(180deg, #fbfcff, #fff);
+        }
+        .coze-head span:last-child {
+            font-size: 10.5px; color: var(--muted-2); font-weight: 500;
+            padding: 3px 8px; background: #f8fafc; border-radius: 999px;
+        }
+        .coze-messages {
+            flex: 1; overflow-y: auto; padding: 24px;
+            background:
+                radial-gradient(600px 300px at 100% 0%, rgba(99,102,241,.05), transparent 60%),
+                #fbfcff;
+            scroll-behavior: smooth;
+        }
+        .coze-msg { display: flex; gap: 10px; margin-bottom: 20px; align-items: flex-start; }
+        .coze-msg.user { flex-direction: row-reverse; }
+        .coze-avatar {
+            flex: 0 0 auto; width: 32px; height: 32px; border-radius: 10px;
+            display: grid; place-items: center; font-size: 12px; color: #fff;
+            background: linear-gradient(135deg, var(--coze-brand), var(--coze-brand2));
+            box-shadow: 0 8px 16px -10px rgba(79,70,229,.75);
+        }
+        .coze-msg.user .coze-avatar { background: #e2e8f0; color: var(--ink-2); box-shadow: none; }
+        .coze-bubble {
+            max-width: min(820px, 84%); padding: 13px 16px; border-radius: 14px;
+            background: #fff; border: 1px solid var(--line); color: var(--ink-2);
+            font-size: 13.5px; line-height: 1.8; overflow-wrap: anywhere;
+            box-shadow: 0 6px 20px -16px rgba(15,23,42,.25);
+        }
+        .coze-msg.user .coze-bubble {
+            background: linear-gradient(135deg, var(--coze-brand), #6d28d9);
+            border-color: transparent; color: #fff;
+        }
+        .coze-bubble p { margin: 0 0 8px; }
+        .coze-bubble p:last-child { margin-bottom: 0; }
+        .coze-bubble h1, .coze-bubble h2, .coze-bubble h3 { font-size: 15px; margin: 10px 0 6px; }
+        .coze-bubble ul, .coze-bubble ol { margin: 4px 0 8px 18px; }
+        .coze-bubble li { margin: 2px 0; }
+        .coze-bubble code {
+            background: #f1f5f9; color: #4338ca; border-radius: 5px;
+            padding: 1px 5px; font-size: 12px;
+        }
+        .coze-bubble pre {
+            background: #0f172a; color: #e2e8f0; padding: 12px 14px;
+            border-radius: 10px; overflow-x: auto; margin: 8px 0;
+            font-size: 12px; line-height: 1.6;
+        }
+        .coze-bubble pre code { background: transparent; color: inherit; padding: 0; }
+        .coze-bubble table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 12px; }
+        .coze-bubble th, .coze-bubble td { border-bottom: 1px solid var(--line); padding: 7px 8px; text-align: left; }
+        .coze-bubble th { background: #f8fafc; color: var(--muted); }
+        .coze-typing { display: inline-flex; gap: 4px; padding: 4px 0; }
+        .coze-typing i {
+            width: 5px; height: 5px; border-radius: 50%; background: #a5b4fc;
+            animation: cozeBlink 1.2s infinite;
+        }
+        .coze-typing i:nth-child(2) { animation-delay: .18s; }
+        .coze-typing i:nth-child(3) { animation-delay: .36s; }
+        @keyframes cozeBlink { 0%,80%,100%{opacity:.25} 40%{opacity:1} }
+        .coze-composer {
+            display: flex; gap: 10px; align-items: flex-end;
+            padding: 14px 18px; border-top: 1px solid var(--line); background: #fff;
+        }
+        .coze-composer textarea {
+            flex: 1; min-height: 46px; max-height: 140px; resize: none;
+            border: 1px solid var(--line-strong); border-radius: 12px;
+            padding: 12px 14px; font-size: 13px; line-height: 1.5;
+            background: #fbfcff; color: var(--ink); outline: none; transition: .16s;
+        }
+        .coze-composer textarea:focus {
+            border-color: #818cf8; background: #fff;
+            box-shadow: 0 0 0 3px rgba(99,102,241,.14);
+        }
+        .coze-send {
+            width: 46px; height: 46px; border: none; border-radius: 12px; color: #fff;
+            background: linear-gradient(135deg, var(--coze-brand), var(--coze-brand2));
+            box-shadow: 0 10px 20px -12px rgba(79,70,229,.85);
+        }
+        .coze-send:disabled { opacity: .5; cursor: not-allowed; }
+        .coze-stop { background: linear-gradient(135deg, #e11d48, #f43f5e); }
+        .coze-foot {
+            padding: 0 18px 12px; font-size: 10.5px; color: var(--muted-2); text-align: center;
+        }
+        .coze-error {
+            margin: 0 0 16px; padding: 10px 13px; border-radius: 10px;
+            background: #fff1f4; color: #be123c; border: 1px solid #fecdd3;
+            font-size: 12px;
+        }
+        .coze-chip-row { display: flex; gap: 7px; flex-wrap: wrap; margin-top: 9px; }
+        .coze-chip-row button {
+            border: 1px solid #ddd6fe; background: #f5f3ff; color: #5b21b6;
+            border-radius: 999px; padding: 4px 10px; font-size: 11px;
+        }
+        @media (max-width: 900px) {
+            .coze-shell { grid-template-columns: 1fr; width: calc(100% - 24px); margin: 14px auto 18px; }
+            .coze-side { order: 2; }
+            .coze-chat { order: 1; min-height: 72vh; }
+            .coze-side h3, .coze-suggestions { display: none; }
+            .coze-tip { display: none; }
+            .coze-top { padding: 10px 14px; }
+            .coze-brand small { display: none; }
+            .coze-status { display: none; }
+            .coze-messages { padding: 16px; }
+            .coze-bubble { max-width: 90%; font-size: 13px; }
+        }
+    </style>
+</head>
+<body class="coze-body">
+    <header class="coze-top">
+        <a class="coze-brand" href="/console/admin" id="brandLink">
+            <span class="mark"><i class="fa-solid fa-robot"></i></span>
+            <span>
+                <strong>Coze 智能体</strong>
+                <small>乳腺癌检测系统 · 运营助手</small>
+            </span>
+        </a>
+        <div class="coze-top-actions">
+            <span class="coze-status" id="cozeStatus"><span class="dot"></span> 连接中</span>
+            <button class="btn btn-secondary" id="newChatBtn"><i class="fa-solid fa-plus"></i> 新对话</button>
+            <a class="btn btn-secondary" id="backAdmin" href="/console/admin"><i class="fa-solid fa-arrow-left"></i> 后台</a>
+        </div>
+    </header>
+
+    <main class="coze-shell">
+        <aside class="coze-side">
+            <div class="coze-side-card">
+                <h2>运营智能体</h2>
+                <p>基于 Coze 工作流的多轮对话。适合查询运营数据、解释指标、生成分析思路。</p>
+                <div class="coze-meta"><span>Bot</span><code id="botId">—</code></div>
+                <div class="coze-meta"><span>会话</span><code id="convId">新会话</code></div>
+            </div>
+            <div class="coze-side-card">
+                <div class="coze-live-head">
+                    <strong>后台实时数据</strong>
+                    <span id="liveStamp">读取中…</span>
+                </div>
+                <div class="coze-live-grid">
+                    <div><span>今日预测</span><strong id="liveToday">—</strong></div>
+                    <div><span>累计预测</span><strong id="liveTotal">—</strong></div>
+                    <div><span>恶性占比</span><strong id="liveRatio">—</strong></div>
+                    <div><span>用户</span><strong id="liveUsers">—</strong></div>
+                </div>
+                <button type="button" class="coze-live-refresh" id="refreshContext">
+                    <i class="fa-solid fa-rotate"></i> 刷新数据
+                </button>
+            </div>
+            <h3>可以这样问</h3>
+            <div class="coze-suggestions" id="cozeSuggestions">
+                <button data-q="今天新增了多少条预测？"><i class="fa-solid fa-chart-line"></i>今天新增了多少条预测？</button>
+                <button data-q="恶性占比最近有变化吗？"><i class="fa-solid fa-percent"></i>恶性占比最近有变化吗？</button>
+                <button data-q="帮我总结一下最近一周的运营情况"><i class="fa-solid fa-file-lines"></i>总结最近一周的运营情况</button>
+                <button data-q="用户活跃度怎么样？"><i class="fa-solid fa-users"></i>用户活跃度怎么样？</button>
+            </div>
+            <div class="coze-tip">
+                <i class="fa-solid fa-lock"></i>
+                Coze 令牌仅保存在服务端环境变量，浏览器只访问本机 Flask 代理，不会接触 PAT。
+            </div>
+        </aside>
+
+        <section class="coze-chat">
+            <div class="coze-head">
+                <span>对话</span>
+                <span id="connState">SSE 流式</span>
+            </div>
+            <div class="coze-messages" id="cozeMessages">
+                <div class="coze-msg">
+                    <div class="coze-avatar"><i class="fa-solid fa-robot"></i></div>
+                    <div class="coze-bubble">
+                        <p>你好，我是接入 Coze 的运营智能体。可以问我预测数据、用户情况、模型指标或运营分析。</p>
+                        <p class="muted" style="font-size:12px;color:#64748b;">回答由 Coze 智能体生成，重要结论请人工核对。</p>
+                    </div>
+                </div>
+            </div>
+            <form class="coze-composer" id="cozeForm">
+                <textarea id="cozeInput" rows="1" placeholder="输入问题，Enter 发送，Shift+Enter 换行"></textarea>
+                <button type="submit" class="coze-send" id="cozeSend" aria-label="发送">
+                    <i class="fa-solid fa-paper-plane"></i>
+                </button>
+            </form>
+            <div class="coze-foot">Coze Bot · 仅供运营辅助参考，不构成医疗诊断</div>
+        </section>
+    </main>
+
+    <script>
+        const COZE_PREFIX = location.pathname.indexOf('/console') === 0 ? '/console' : '';
+        const COZE_API = COZE_PREFIX + '/api';
+        const COZE_LOGIN = COZE_PREFIX + '/admin/login';
+        const COZE_ADMIN = COZE_PREFIX + '/admin';
+
+        let cozeToken = null;
+        let cozeConversation = sessionStorage.getItem('coze_conversation_id') || '';
+        let cozeBusy = false;
+        let cozeAbort = null;
+
+        document.getElementById('brandLink').href = COZE_ADMIN;
+        document.getElementById('backAdmin').href = COZE_ADMIN;
+
+        function cozeGetToken() {
+            try { return localStorage.getItem('token'); } catch (e) { return null; }
+        }
+
+        function cozeEscape(text) {
+            return String(text ?? '').replace(/[&<>"']/g, m => ({
+                '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;'
+            }[m]));
+        }
+
+        function cozeMarkdown(md) {
+            let text = cozeEscape(md || '');
+            const blocks = [];
+            text = text.replace(/```([\s\S]*?)```/g, (_, code) => {
+                blocks.push('<pre><code>' + code.replace(/^\n+|\n+$/g, '') + '</code></pre>');
+                return '\u0000BLOCK' + (blocks.length - 1) + '\u0000';
+            });
+            const lines = text.split(/\r?\n/);
+            const out = [];
+            let listOpen = false;
+            const closeList = () => { if (listOpen) { out.push('</ul>'); listOpen = false; } };
+            const inline = s => s
+                .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+                .replace(/`([^`]+)`/g, '<code>$1</code>');
+            for (const raw of lines) {
+                const line = raw.trim();
+                if (!line) { closeList(); continue; }
+                if (/^\u0000BLOCK\d+\u0000$/.test(line)) { closeList(); out.push(line); continue; }
+                const h = line.match(/^(#{1,3})\s+(.*)$/);
+                if (h) { closeList(); out.push('<h3>' + inline(h[2]) + '</h3>'); continue; }
+                const li = line.match(/^[-*]\s+(.*)$/);
+                if (li) {
+                    if (!listOpen) { out.push('<ul>'); listOpen = true; }
+                    out.push('<li>' + inline(li[1]) + '</li>');
+                    continue;
+                }
+                closeList();
+                out.push('<p>' + inline(line) + '</p>');
+            }
+            closeList();
+            let html = out.join('');
+            blocks.forEach((b, i) => { html = html.replace('\u0000BLOCK' + i + '\u0000', b); });
+            return html;
+        }
+
+        function cozeScroll() {
+            const box = document.getElementById('cozeMessages');
+            box.scrollTop = box.scrollHeight;
+        }
+
+        function cozeAdd(role, html) {
+            const box = document.getElementById('cozeMessages');
+            const wrap = document.createElement('div');
+            wrap.className = 'coze-msg ' + role;
+            const avatar = document.createElement('div');
+            avatar.className = 'coze-avatar';
+            avatar.innerHTML = role === 'user'
+                ? '<i class="fa-solid fa-user"></i>'
+                : '<i class="fa-solid fa-robot"></i>';
+            const bubble = document.createElement('div');
+            bubble.className = 'coze-bubble';
+            bubble.innerHTML = html;
+            wrap.appendChild(avatar);
+            wrap.appendChild(bubble);
+            box.appendChild(wrap);
+            cozeScroll();
+            return bubble;
+        }
+
+        function cozeSetStatus(text, cls) {
+            const el = document.getElementById('cozeStatus');
+            el.className = 'coze-status ' + (cls || '');
+            el.innerHTML = '<span class="dot"></span> ' + cozeEscape(text);
+        }
+
+        async function cozeCheckStatus() {
+            try {
+                const resp = await fetch(COZE_API + '/coze/status', {
+                    headers: { 'Authorization': 'Bearer ' + cozeToken }
+                });
+                if (resp.status === 401) { location.href = COZE_LOGIN; return; }
+                const data = await resp.json();
+                if (resp.ok && data.code === 200) {
+                    document.getElementById('botId').textContent = data.data.bot_id || '—';
+                    if (!data.data.configured) {
+                        cozeSetStatus('未配置 COZE_API_TOKEN', 'err');
+                    } else {
+                        cozeSetStatus('Coze 已连接', 'ok');
+                    }
+                } else {
+                    cozeSetStatus(data.message || '连接失败', 'err');
+                }
+            } catch (e) {
+                cozeSetStatus('连接失败', 'err');
+            }
+        }
+
+        async function cozeLoadContext() {
+            try {
+                const resp = await fetch(COZE_API + '/coze/context', {
+                    headers: { 'Authorization': 'Bearer ' + cozeToken }
+                });
+                if (resp.status === 401) { location.href = COZE_LOGIN; return; }
+                const data = await resp.json();
+                if (resp.ok && data.code === 200 && data.data) {
+                    const d = data.data;
+                    document.getElementById('liveToday').textContent = d.predictions_today ?? '—';
+                    document.getElementById('liveTotal').textContent = d.predictions_total ?? '—';
+                    document.getElementById('liveRatio').textContent = (d.malignant_ratio ?? 0) + '%';
+                    document.getElementById('liveUsers').textContent = d.users_total ?? '—';
+                    document.getElementById('liveStamp').textContent = (d.generated_at || '').slice(11, 16) + ' 更新';
+                }
+            } catch (e) {
+                document.getElementById('liveStamp').textContent = '读取失败';
+            }
+        }
+
+        function cozeUpdateConversation(id) {
+            cozeConversation = id || '';
+            if (cozeConversation) sessionStorage.setItem('coze_conversation_id', cozeConversation);
+            else sessionStorage.removeItem('coze_conversation_id');
+            document.getElementById('convId').textContent = cozeConversation
+                ? cozeConversation.slice(-8) : '新会话';
+            document.getElementById('convId').title = cozeConversation;
+        }
+
+        async function cozeSendMessage(preset) {
+            if (cozeBusy) return;
+            const input = document.getElementById('cozeInput');
+            const text = (typeof preset === 'string' ? preset : input.value).trim();
+            if (!text) return;
+
+            cozeBusy = true;
+            const sendBtn = document.getElementById('cozeSend');
+            sendBtn.disabled = false;
+            sendBtn.classList.add('coze-stop');
+            sendBtn.innerHTML = '<i class="fa-solid fa-stop"></i>';
+            cozeAdd('user', '<p>' + cozeEscape(text) + '</p>');
+            input.value = '';
+            input.style.height = 'auto';
+
+            const bubble = cozeAdd('assistant', '<span class="coze-typing"><i></i><i></i><i></i></span>');
+            let raw = '';
+            let gotDelta = false;
+            let waited = 0;
+            const typingTimer = setInterval(() => {
+                if (gotDelta) return;
+                waited += 1;
+                bubble.innerHTML = '<span class="coze-typing"><i></i><i></i><i></i></span>'
+                    + '<p class="muted" style="font-size:11.5px;color:#94a3b8;margin-top:4px;">'
+                    + (waited < 8 ? '正在生成…' : 'Coze 正在生成，复杂问题可能需要 1–2 分钟… ' + waited + 's')
+                    + '</p>';
+            }, 1000);
+            cozeAbort = new AbortController();
+
+            try {
+                const resp = await fetch(COZE_API + '/coze/chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + cozeToken
+                    },
+                    body: JSON.stringify({ message: text, conversation_id: cozeConversation || undefined }),
+                    signal: cozeAbort.signal
+                });
+                if (resp.status === 401) { location.href = COZE_LOGIN; return; }
+                if (!resp.ok) {
+                    let msg = '请求失败 (' + resp.status + ')';
+                    try { const j = await resp.json(); msg = j.message || msg; } catch (e) {}
+                    bubble.innerHTML = '<p class="coze-error">' + cozeEscape(msg) + '</p>';
+                    return;
+                }
+
+                const reader = resp.body.getReader();
+                const decoder = new TextDecoder('utf-8');
+                let buffer = '';
+                while (true) {
+                    const { value, done } = await reader.read();
+                    if (done) break;
+                    buffer += decoder.decode(value, { stream: true });
+                    let idx;
+                    while ((idx = buffer.indexOf('\n\n')) >= 0) {
+                        const frame = buffer.slice(0, idx);
+                        buffer = buffer.slice(idx + 2);
+                        let event = 'message';
+                        const dataLines = [];
+                        for (const line of frame.split('\n')) {
+                            if (line.startsWith('event:')) event = line.slice(6).trim();
+                            else if (line.startsWith('data:')) dataLines.push(line.slice(5).trim());
+                        }
+                        if (!dataLines.length) continue;
+                        let payload = {};
+                        try { payload = JSON.parse(dataLines.join('\n')); } catch (e) { continue; }
+
+                        if (event === 'meta') {
+                            if (payload.conversation_id) cozeUpdateConversation(payload.conversation_id);
+                        } else if (event === 'delta') {
+                            if (payload.content) {
+                                raw += payload.content;
+                                gotDelta = true;
+                                bubble.innerHTML = cozeMarkdown(raw);
+                                cozeScroll();
+                            }
+                        } else if (event === 'error') {
+                            bubble.innerHTML = '<p class="coze-error">' + cozeEscape(payload.message || '对话失败') + '</p>';
+                        } else if (event === 'done') {
+                            if (payload.conversation_id) cozeUpdateConversation(payload.conversation_id);
+                            cozeLoadContext();
+                        }
+                    }
+                }
+                if (!gotDelta && !raw) {
+                    bubble.innerHTML = '<p class="muted">（没有收到回复内容）</p>';
+                } else {
+                    bubble.innerHTML = cozeMarkdown(raw);
+                }
+            } catch (e) {
+                if (e.name === 'AbortError') {
+                    bubble.innerHTML = cozeMarkdown(raw) + '<p class="muted">（已停止）</p>';
+                } else {
+                    bubble.innerHTML = '<p class="coze-error">连接中断：' + cozeEscape(e.message) + '</p>';
+                }
+            } finally {
+                clearInterval(typingTimer);
+                cozeBusy = false;
+                cozeAbort = null;
+                sendBtn.disabled = false;
+                sendBtn.classList.remove('coze-stop');
+                sendBtn.innerHTML = '<i class="fa-solid fa-paper-plane"></i>';
+                input.focus();
+            }
+        }
+
+        function cozeNewChat() {
+            if (cozeAbort) cozeAbort.abort();
+            cozeUpdateConversation('');
+            const box = document.getElementById('cozeMessages');
+            box.innerHTML = `
+                <div class="coze-msg">
+                    <div class="coze-avatar"><i class="fa-solid fa-robot"></i></div>
+                    <div class="coze-bubble">
+                        <p>新会话已开始。可以问我预测数据、用户情况、模型指标或运营分析。</p>
+                    </div>
+                </div>`;
+            document.getElementById('cozeInput').focus();
+        }
+
+        function cozeBind() {
+            document.getElementById('cozeForm').addEventListener('submit', e => {
+                e.preventDefault();
+                cozeSendMessage();
+            });
+            const input = document.getElementById('cozeInput');
+            input.addEventListener('keydown', e => {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    cozeSendMessage();
+                }
+            });
+            input.addEventListener('input', () => {
+                input.style.height = 'auto';
+                input.style.height = Math.min(input.scrollHeight, 140) + 'px';
+            });
+            document.querySelectorAll('#cozeSuggestions [data-q]').forEach(btn => {
+                btn.addEventListener('click', () => cozeSendMessage(btn.getAttribute('data-q')));
+            });
+            document.getElementById('cozeSend').addEventListener('click', e => {
+                if (cozeBusy && cozeAbort) {
+                    e.preventDefault();
+                    cozeAbort.abort();
+                }
+            });
+            document.getElementById('newChatBtn').addEventListener('click', cozeNewChat);
+            document.getElementById('refreshContext').addEventListener('click', cozeLoadContext);
+        }
+
+        (function init() {
+            cozeToken = cozeGetToken();
+            if (!cozeToken) {
+                location.href = COZE_LOGIN;
+                return;
+            }
+            cozeUpdateConversation(cozeConversation);
+            cozeBind();
+            cozeCheckStatus();
+            cozeLoadContext();
+            cozeSendMessage; // keep reference for console debugging
+            document.getElementById('cozeInput').focus();
+        })();
+    </script>
+</body>
+</html>

@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify
+﻿from flask import Blueprint, request, jsonify
 from models import db, User, Role, OperationLog
 from auth import requires_permission, get_jwt_identity
 from datetime import datetime
@@ -95,7 +95,6 @@ def create_user():
             'id': user.id,
             'username': user.username,
             'email': user.email,
-            'password': user.password_hash,
             'role_id': user.role_id,
             'role_name': user.role.name if user.role else None,
             'is_active': user.is_active,
@@ -139,7 +138,6 @@ def get_users():
             'id': user.id,
             'username': user.username,
             'email': user.email,
-            'password': user.password_hash,
             'role_id': user.role_id,
             'role_name': user.role.name if user.role else None,
             'is_active': user.is_active,
@@ -169,7 +167,6 @@ def get_user(user_id):
         'id': user.id,
         'username': user.username,
         'email': user.email,
-        'password': user.password_hash,
         'role_id': user.role_id,
         'role_name': user.role.name if user.role else None,
         'is_active': user.is_active,
@@ -221,7 +218,6 @@ def update_user(user_id):
             'id': user.id,
             'username': user.username,
             'email': user.email,
-            'password': user.password_hash,
             'role_id': user.role_id,
             'role_name': user.role.name if user.role else None,
             'is_active': user.is_active,
@@ -329,3 +325,4 @@ def log_operation(user_id, operation):
     )
     db.session.add(log)
     db.session.commit()
+

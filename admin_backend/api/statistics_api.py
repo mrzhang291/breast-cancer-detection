@@ -80,7 +80,13 @@ def get_prediction_trend():
     else:
         return jsonify({'code': 400, 'message': '无效的时间周期', 'data': {}}), 400
     
-    start_time = now - delta * intervals
+    today = now.replace(hour=0, minute=0, second=0, microsecond=0)
+    if period == 'day':
+        start_time = now.replace(minute=0, second=0, microsecond=0) - delta * (intervals - 1)
+    elif period == 'year':
+        start_time = today - delta * intervals
+    else:
+        start_time = today - delta * (intervals - 1)
     data = []
     
     for i in range(intervals):
@@ -93,13 +99,13 @@ def get_prediction_trend():
         ).count()
         
         benign_count = PredictionRecord.query.filter(
-            PredictionRecord.prediction_result == '良性',
+            PredictionRecord.prediction_result.in_(['良性', 'Benign', 'benign', 'BENIGN']),
             PredictionRecord.created_at >= interval_start,
             PredictionRecord.created_at < interval_end
         ).count()
         
         malignant_count = PredictionRecord.query.filter(
-            PredictionRecord.prediction_result == '恶性',
+            PredictionRecord.prediction_result.in_(['恶性', 'Malignant', 'malignant', 'MALIGNANT']),
             PredictionRecord.created_at >= interval_start,
             PredictionRecord.created_at < interval_end
         ).count()

@@ -1,6 +1,6 @@
-from flask import Blueprint, request, jsonify
+﻿from flask import Blueprint, request, jsonify
 from models import db, Role, Permission, role_permissions, OperationLog
-from auth import requires_permission
+from auth import requires_permission, get_jwt_identity
 from datetime import datetime
 
 permission_api = Blueprint('permission_api', __name__)

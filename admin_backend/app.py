@@ -1,4 +1,4 @@
-import os
+﻿import os
 import json
 import sys
 import signal
@@ -23,6 +23,7 @@ from api.log_api import log_api
 from api.permission_api import permission_api
 from api.ai_api import ai_api
 from api.batch_api import batch_api
+from api.coze_api import coze_api
 
 load_dotenv()
 
@@ -33,6 +34,7 @@ app.config['JWT_DECODE_LEEWAY'] = 0
 app.config['JWT_ALGORITHM'] = 'HS256'
 app.config['JWT_SECRET_KEY'] = os.getenv('JWT_SECRET_KEY', 'dev-jwt-secret')
 basedir = os.path.abspath(os.path.dirname(__file__))
+os.makedirs(os.path.join(basedir, 'instance'), exist_ok=True)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URI', f'sqlite:///{os.path.join(basedir, "instance", "admin.db")}')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['UPLOAD_FOLDER'] = os.path.join(os.path.dirname(__file__), 'uploads')
@@ -52,6 +54,23 @@ app.register_blueprint(log_api)
 app.register_blueprint(permission_api)
 app.register_blueprint(ai_api)
 app.register_blueprint(batch_api)
+app.register_blueprint(coze_api)
+
+
+@app.route('/console/static/<path:filename>')
+def console_static(filename):
+    """本地开发时兼容生产 /console/static 前缀；生产由 nginx 直接处理。"""
+    return app.send_static_file(filename)
+
+
+@app.route('/console/admin/login')
+def console_login_alias():
+    return redirect('/admin/login')
+
+
+@app.route('/console/admin')
+def console_admin_alias():
+    return redirect('/admin')
 
 def init_permissions():
     permissions = [
@@ -131,41 +150,13 @@ def init_roles():
 @app.route('/api/login', methods=['POST'])
 def login():
     from flask import make_response
-    import sys
-    print(f"\n=== /api/login 被调用 ===", flush=True)
-    print(f"时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}", flush=True)
-    print(f"请求方法: {request.method}", flush=True)
-    print(f"客户端IP: {request.remote_addr}", flush=True)
-    print(f"User-Agent: {request.user_agent.string[:100]}", flush=True)
-    print(f"请求数据长度: {len(request.data)}", flush=True)
-    print(f"请求数据: {request.data[:500]}", flush=True)
-    print(f"Content-Type: {request.content_type}", flush=True)
-    sys.stdout.flush()
-    
-    data = request.get_json()
-    
-    print(f"解析后的JSON数据: {data}", flush=True)
-    sys.stdout.flush()
-    
+    data = request.get_json(silent=True) or {}
     if not data or 'username' not in data or 'password' not in data:
-        print("错误: 缺少用户名或密码", flush=True)
         return jsonify({'code': 400, 'message': '缺少用户名或密码', 'data': {}}), 400
-    
+
     username = data['username']
-    password = data['password']
-    print(f"用户名: '{username}' (长度: {len(username)})", flush=True)
-    print(f"密码: '{password}' (长度: {len(password)})", flush=True)
-    
     user = User.query.filter_by(username=username).first()
-    print(f"查询到的用户: {user.username if user else 'None'}", flush=True)
-    
-    if user:
-        print(f"用户ID: {user.id}", flush=True)
-        print(f"用户激活状态: {user.is_active}", flush=True)
-        print(f"密码验证结果: {user.check_password(data['password'])}", flush=True)
-        print(f"密码哈希值: '{user.password_hash}'", flush=True)
-        print(f"输入密码: '{data['password']}'", flush=True)
-    
+
     if user and user.check_password(data['password']):
         if not user.is_active:
             log_login(user.id, request.remote_addr, request.user_agent.string, 'failed')
@@ -179,7 +170,6 @@ def login():
             'type': 'access'
         }
         access_token = jwt.encode(payload, app.config['JWT_SECRET_KEY'], algorithm='HS256')
-        print(f"DEBUG LOGIN: Token created with sub={payload['sub']}, type={type(payload['sub'])}", flush=True)
         
         log_login(user.id, request.remote_addr, request.user_agent.string, 'success')
         
@@ -203,10 +193,6 @@ def login():
             max_age=3600,
             path='/'
         )
-        
-        print(f"=== 调试信息 ===", flush=True)
-        print(f"Set-Cookie: {response.headers.get('Set-Cookie')}", flush=True)
-        sys.stdout.flush()
         
         return response
     
@@ -266,6 +252,10 @@ def admin_login_page():
 @app.route('/admin', methods=['GET'])
 def admin_dashboard():
     return render_template('admin.html')
+
+@app.route('/coze', methods=['GET'])
+def coze_page():
+    return render_template('coze_chat.html')
 
 @app.route('/api/me', methods=['GET'])
 def get_current_user():
@@ -437,3 +427,4 @@ if __name__ == '__main__':
         print(f"启动失败: {e}")
         import traceback
         traceback.print_exc()
+

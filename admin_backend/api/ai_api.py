@@ -1,6 +1,6 @@
-from flask import Blueprint, request, jsonify
+﻿from flask import Blueprint, request, jsonify
 from models import db, AIChatRecord, SystemConfig, OperationLog
-from auth import requires_permission
+from auth import requires_permission, get_jwt_identity
 from datetime import datetime
 
 ai_api = Blueprint('ai_api', __name__)
