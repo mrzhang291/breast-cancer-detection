@@ -1096,10 +1096,34 @@ def knowledge_page():
         rag_stats = {'chunks': len(clauses), 'vectors': 0, 'rerank': False}
 
     domain_counts = {row['domain'] or 'SYS': row['c'] for row in clauses}
-
     total = sum(domain_counts.values())
-    return render_template('knowledge.html', docs=docs, total=total,
-                           rag_stats=rag_stats, domain_counts=domain_counts)
+
+    # 首屏 40 条直接渲染，避免 JS/接口异常时整页空白
+    conn = _db.connect()
+    try:
+        rows = conn.execute(
+            'SELECT clause_id, doc_id, section, text, source, domain, meta_json'
+            ' FROM rag_chunks ORDER BY doc_id, clause_id LIMIT 40').fetchall()
+    finally:
+        conn.close()
+    initial_clauses = []
+    for row in rows:
+        try:
+            meta = json.loads(row['meta_json'] or '{}')
+        except ValueError:
+            meta = {}
+        initial_clauses.append({
+            'clause_id': row['clause_id'], 'doc_id': row['doc_id'],
+            'section': row['section'], 'text': row['text'], 'source': row['source'],
+            'domain': row['domain'] or meta.get('domain') or 'SYS',
+            'level': meta.get('level') or 0, 'url': meta.get('url') or '',
+        })
+
+    response = make_response(render_template(
+        'knowledge.html', docs=docs, total=total, rag_stats=rag_stats,
+        domain_counts=domain_counts, initial_clauses=initial_clauses))
+    response.headers['Cache-Control'] = 'no-store, max-age=0'
+    return response
 
 
 @app.route('/records')

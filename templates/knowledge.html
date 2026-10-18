@@ -120,7 +120,22 @@
         {% endfor %}
     </div>
 
-    <div class="kb-list" id="kbList"></div>
+    <div class="kb-list" id="kbList">
+        {% for c in initial_clauses %}
+        <article class="kb-clause" data-id="{{ c.clause_id }}">
+            <div class="kb-head">
+                <span class="kb-id">{{ c.clause_id }}</span>
+                <b>{{ c.section }}</b>
+                <span class="kb-score"></span>
+            </div>
+            <p>{{ c.text }}</p>
+            <div class="kb-src">来源：{{ c.source }} ·
+                {% if c.level >= 4 %}指南{% elif c.level == 3 %}NCI PDQ{% elif c.level == 2 %}WHO / NHS / MedlinePlus{% else %}维基百科（科普级）{% endif %}
+                {% if c.url %} · <a href="{{ c.url }}" target="_blank" rel="noopener">原文 ↗</a>{% endif %}
+            </div>
+        </article>
+        {% endfor %}
+    </div>
     <div class="kb-loading" id="kbLoading" style="display:none;">加载中…</div>
     <div class="kb-empty" id="kbEmpty" style="display:none;">没有匹配的条款，换个关键词试试。</div>
     <button class="kb-btn" id="kbMore" type="button" style="margin-top:14px;display:none;">加载更多</button>
@@ -170,7 +185,14 @@
         function load(reset) {
             if (state.busy) { return; }
             state.busy = true;
-            if (reset) { state.page = 1; list.innerHTML = ''; }
+            if (reset) {
+                state.page = 1;
+                list.innerHTML = '';
+            } else if (!state.started) {
+                // 首屏已服务端渲染 40 条，第一次"加载更多"从第 2 页开始
+                state.page = 2;
+            }
+            state.started = true;
             loading.style.display = '';
             var url = '/api/knowledge/clauses?domain=' + encodeURIComponent(state.domain) +
                 '&q=' + encodeURIComponent(state.q) + '&page=' + state.page + '&page_size=40';
@@ -255,7 +277,9 @@
                 .then(function () { btn.disabled = false; btn.textContent = '混合检索'; });
         });
 
-        load(true);
+        state.hasMore = {{ total }} > 40;
+        moreBtn.style.display = state.hasMore ? '' : 'none';
+        bindCards();
     })();
 </script>
 </body>
