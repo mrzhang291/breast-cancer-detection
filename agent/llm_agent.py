@@ -23,7 +23,8 @@ SYSTEM_PROMPT = """你是乳腺癌辅助分析系统的 AI 助手。你的回答
 6. 一次只调用必要的工具，能一步解决就不要拆成多步。
 7. 遇到需要多步查证的分析类问题，可以调用 delegate 交给子代理处理。
 8. 用户说"生成报告/出份报告"时不要反问类型：有本次预测就用 export_report(kind=single)，说"和上次比"用 compare，说"最近N次/最近N天"用 range，说"批量"用 batch。
-9. 查用户自己的数据优先用 records / statistics，不要用 sql_query；sql_query 只用于跨用户的聚合统计。
+9. 用户提到"刚才的报告/上一份报告"时，指代上下文里列出的最近产物，按其类型说明结构即可，不要要求用户重新提供。
+10. 查用户自己的数据优先用 records / statistics，不要用 sql_query；sql_query 只用于跨用户的聚合统计。
 """
 
 DEFAULT_TOOLS = [
@@ -72,7 +73,25 @@ def run_llm_agent(question: str, ctx, emit: Optional[Callable] = None,
         return None
 
     session = build_session(ctx)
+
+    # 短期记忆：把最近几轮问答压成文本，模型才知道"刚才那份报告"指什么
+    for item in (history or [])[-3:]:
+        q = (item.get('question') or '').strip()
+        a = (item.get('answer') or '').strip()[:160]
+        if q:
+            session.user(q)
+            session.assistant(a or '（已处理）')
+
     brief = _context_brief(ctx)
+    if recent_artifacts:
+        names = ['%s（%s, %d KB）' % (i.get('filename'), str(i.get('kind', 'pdf')).upper(),
+                                     int((i.get('size') or 0) / 1024))
+                 for i in (recent_artifacts or [])[:3]]
+        brief += '\n最近生成的产物：' + '；'.join(names)
+        brief += ('\n如果用户提到"刚才的报告/那份 PDF"，指的就是上面这些文件。'
+                  '单次报告的固定结构是：结论与校准置信度、置信度刻度图、Top8 特征贡献图、'
+                  '30 项特征与良恶性组均值对照表、方法说明、引用条款。'
+                  '用户问"能补充什么"时，直接基于这个结构说清已有内容，不要声称看不到文件。')
     if values:
         brief += '\n本次输入的 30 项特征值：%s' % ', '.join('%.6g' % float(v) for v in values)
     if brief:
@@ -110,7 +129,8 @@ def run_llm_agent(question: str, ctx, emit: Optional[Callable] = None,
     }
 
 
-def stream_llm_agent(question: str, ctx, values=None, max_steps: int = 5):
+def stream_llm_agent(question: str, ctx, values=None, max_steps: int = 5,
+                     history=None, recent_artifacts=None):
     """流式执行：产出 {event, data}，最后一个事件补上产物与 run_id。"""
     from .core.streaming import StreamingAgentLoop
     from .core.streaming_provider import StreamingDeepSeekProvider
@@ -121,7 +141,25 @@ def stream_llm_agent(question: str, ctx, values=None, max_steps: int = 5):
         return
 
     session = build_session(ctx)
+
+    # 短期记忆：最近几轮问答 + 最近产物，模型才知道"刚才那份报告"指什么
+    for item in (history or [])[-3:]:
+        q = (item.get('question') or '').strip()
+        a = (item.get('answer') or '').strip()[:160]
+        if q:
+            session.user(q)
+            session.assistant(a or '（已处理）')
+
     brief = _context_brief(ctx)
+    if recent_artifacts:
+        names = ['%s（%s, %d KB）' % (it.get('filename'), str(it.get('kind', 'pdf')).upper(),
+                                     int((it.get('size') or 0) / 1024))
+                 for it in (recent_artifacts or [])[:3]]
+        brief += '\n最近生成的产物：' + '；'.join(names)
+        brief += ('\n如果用户提到"刚才的报告/那份 PDF"，指的就是上面这些文件。'
+                  '单次报告的固定结构是：结论与校准置信度、置信度刻度图、Top8 特征贡献图、'
+                  '30 项特征与良恶性组均值对照表、方法说明、引用条款。'
+                  '用户问"能补充什么"时，直接基于这个结构说清已有内容，不要声称看不到文件。')
     if values:
         brief += '\n本次输入的 30 项特征值：%s' % ', '.join('%.6g' % float(v) for v in values)
     if brief:

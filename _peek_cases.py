@@ -1,10 +1,8 @@
-﻿import io, json, sys
+﻿import io, sys
 sys.stdout.reconfigure(encoding="utf-8")
-path = r"agent\eval\cases.jsonl"
-lines = io.open(path, encoding="utf-8").read().splitlines()
-for i, line in enumerate(lines):
-    if not line.strip():
-        continue
-    case = json.loads(line)
-    if case.get("id") in ("E20", "E07"):
-        print(i, json.dumps(case, ensure_ascii=False))
+o = io.open(r"agent\orchestrator.py", encoding="utf-8").read()
+i = o.find("def _cases_fact")
+print(o[i:i+300])
+t = io.open(r"agent\tools\cases.py", encoding="utf-8").read()
+j = t.find("make_fact")
+print(t[j:j+260])

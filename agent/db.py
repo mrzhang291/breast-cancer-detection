@@ -82,6 +82,25 @@ CREATE TABLE IF NOT EXISTS graph_checkpoints (
 
 CREATE INDEX IF NOT EXISTS idx_runs_user ON agent_runs(user_id, created_at);
 CREATE INDEX IF NOT EXISTS idx_steps_run ON agent_steps(run_id, seq);
+
+CREATE TABLE IF NOT EXISTS agent_sessions (
+    id TEXT PRIMARY KEY,
+    user_id TEXT,
+    title TEXT,
+    created_at TEXT DEFAULT (datetime('now', 'localtime')),
+    updated_at TEXT DEFAULT (datetime('now', 'localtime'))
+);
+
+CREATE TABLE IF NOT EXISTS agent_messages (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    session_id TEXT,
+    role TEXT,
+    content TEXT,
+    meta_json TEXT,
+    created_at TEXT DEFAULT (datetime('now', 'localtime'))
+);
+
+CREATE INDEX IF NOT EXISTS idx_messages_session ON agent_messages(session_id, id);
 """
 
 
@@ -279,5 +298,105 @@ def load_checkpoint(run_id: str) -> Optional[Dict]:
             'pending': json.loads(row['pending_json']) if row['pending_json'] else None,
             'updated_at': row['updated_at'],
         }
+    finally:
+        conn.close()
+
+
+# ------------------------------------------------------------------ 会话
+
+def create_session(user_id: str, title: str = '新会话') -> str:
+    import uuid
+    sid = uuid.uuid4().hex[:16]
+    conn = connect()
+    try:
+        conn.execute('INSERT INTO agent_sessions (id, user_id, title) VALUES (?,?,?)',
+                     (sid, str(user_id), (title or '新会话')[:60]))
+        conn.commit()
+        return sid
+    finally:
+        conn.close()
+
+
+def list_sessions(user_id: str, limit: int = 20):
+    conn = connect()
+    try:
+        rows = conn.execute(
+            'SELECT s.id, s.title, s.created_at, s.updated_at,'
+            ' (SELECT COUNT(*) FROM agent_messages m WHERE m.session_id = s.id) AS messages'
+            ' FROM agent_sessions s WHERE s.user_id = ?'
+            ' ORDER BY s.updated_at DESC LIMIT ?',
+            (str(user_id), int(limit))).fetchall()
+        return [dict(r) for r in rows]
+    finally:
+        conn.close()
+
+
+def get_session(session_id: str, user_id: str = None):
+    conn = connect()
+    try:
+        row = conn.execute('SELECT * FROM agent_sessions WHERE id = ?', (session_id,)).fetchone()
+        if not row:
+            return None
+        data = dict(row)
+        if user_id is not None and str(data.get('user_id')) != str(user_id):
+            return None
+        return data
+    finally:
+        conn.close()
+
+
+def delete_session(session_id: str, user_id: str) -> bool:
+    conn = connect()
+    try:
+        row = conn.execute('SELECT user_id FROM agent_sessions WHERE id = ?',
+                           (session_id,)).fetchone()
+        if not row or str(row['user_id']) != str(user_id):
+            return False
+        conn.execute('DELETE FROM agent_messages WHERE session_id = ?', (session_id,))
+        conn.execute('DELETE FROM agent_sessions WHERE id = ?', (session_id,))
+        conn.commit()
+        return True
+    finally:
+        conn.close()
+
+
+def add_message(session_id: str, role: str, content: str, meta=None) -> None:
+    conn = connect()
+    try:
+        conn.execute('INSERT INTO agent_messages (session_id, role, content, meta_json)'
+                     ' VALUES (?,?,?,?)',
+                     (session_id, role, content or '',
+                      json.dumps(meta or {}, ensure_ascii=False)))
+        conn.execute("UPDATE agent_sessions SET updated_at = datetime('now','localtime')"
+                     ' WHERE id = ?', (session_id,))
+        conn.commit()
+    finally:
+        conn.close()
+
+
+def list_messages(session_id: str, limit: int = 40):
+    conn = connect()
+    try:
+        rows = conn.execute(
+            'SELECT role, content, meta_json, created_at FROM agent_messages'
+            ' WHERE session_id = ? ORDER BY id DESC LIMIT ?',
+            (session_id, int(limit))).fetchall()
+        items = [dict(r) for r in rows][::-1]
+        for item in items:
+            try:
+                item['meta'] = json.loads(item.get('meta_json') or '{}')
+            except ValueError:
+                item['meta'] = {}
+            item.pop('meta_json', None)
+        return items
+    finally:
+        conn.close()
+
+def update_session_title(session_id: str, title: str) -> None:
+    conn = connect()
+    try:
+        conn.execute('UPDATE agent_sessions SET title = ? WHERE id = ?',
+                     ((title or '')[:40], session_id))
+        conn.commit()
     finally:
         conn.close()

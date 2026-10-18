@@ -154,6 +154,7 @@
     .as-tl-item.done .as-tl-dot { background: #10b981; }
     .as-tl-item.fail .as-tl-dot { background: #ef4444; }
     .as-tl-label { color: #334155; font-weight: 600; }
+    .as-tl-sub { padding-left: 16px; font-size: 11px; opacity: .85; }
     .as-tl-meta { color: #94a3b8; }
     .as-cursor::after {
         content: '▍'; color: #6366f1; animation: as-blink 1s steps(1) infinite;
@@ -175,6 +176,34 @@
         white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 190px; }
     .as-artifact-meta i { font-style: normal; font-size: 10.5px; color: #94a3b8; }
     .as-artifact-dl { margin-left: auto; font-size: 11.5px; color: #4f46e5; font-weight: 600; }
+
+
+    .as-sessions {
+        margin: 10px 16px 0; border: 1px solid #e6ebf3; border-radius: 12px;
+        background: #fbfcff; max-height: 220px; overflow-y: auto;
+    }
+    .as-sessions-head {
+        display: flex; align-items: center; justify-content: space-between;
+        padding: 9px 12px; border-bottom: 1px solid #eef2f8; font-size: 12px;
+        color: #475569; font-weight: 600;
+    }
+    .as-new-session {
+        border: 0; background: #eef2ff; color: #4338ca; border-radius: 8px;
+        font-size: 11.5px; padding: 4px 9px; cursor: pointer; font-family: inherit;
+    }
+    .as-session-item {
+        display: flex; align-items: center; gap: 8px; padding: 8px 12px;
+        font-size: 12px; color: #475569; cursor: pointer; border-bottom: 1px solid #f4f7fc;
+    }
+    .as-session-item:hover { background: #f2f6ff; }
+    .as-session-item.active { background: #eef2ff; color: #4338ca; font-weight: 600; }
+    .as-session-title { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .as-session-del {
+        border: 0; background: transparent; color: #cbd5e1; cursor: pointer;
+        font-size: 14px; line-height: 1; padding: 0 2px;
+    }
+    .as-session-del:hover { color: #ef4444; }
+    .as-session-meta { font-size: 10.5px; color: #94a3b8; }
 
     @media (max-width: 720px) {
         .as-panel { width: 100vw; }
@@ -201,7 +230,17 @@
             <div class="as-name">AI 助手</div>
             <div class="as-sub">每条结论都能溯源</div>
         </div>
+        <button class="as-close" id="asSessionsBtn" title="会话" aria-label="会话"
+                style="margin-left:auto;margin-right:4px;font-size:13px;">☰</button>
         <button class="as-close" id="asClose" aria-label="收起">&times;</button>
+    </div>
+
+    <div class="as-sessions" id="asSessionsPanel" style="display:none;">
+        <div class="as-sessions-head">
+            <span>会话</span>
+            <button type="button" class="as-new-session" id="asNewSession">＋ 新建</button>
+        </div>
+        <div class="as-session-list" id="asSessionList"></div>
     </div>
 
     <div class="as-ctx" id="asCtx">
@@ -255,6 +294,7 @@
     if (!panel || !body) { return; }
 
     var history = [];
+    var recentArtifacts = [];
     var busy = false;
     var context = window.AGENT_CONTEXT || {};
     var lastAnswer = '';
@@ -491,6 +531,15 @@
                     var label = (data.tool || '').replace(/_/g, ' ');
                     pending.tool = timelineItem(tl, '调用 ' + label, JSON.stringify(data.args || {}).slice(0, 40));
                     if (pending.think) { markItem(pending.think, true, ''); pending.think = null; }
+                } else if (event === 'sub_steps') {
+                    (data.steps || []).forEach(function (sub) {
+                        var row = document.createElement('div');
+                        row.className = 'as-tl-item as-tl-sub ' + (sub.ok ? 'done' : 'fail');
+                        row.innerHTML = '<span class="as-tl-dot"></span>' +
+                            '<span class="as-tl-label">子代理 · ' + escapeHtml(sub.label || sub.tool) + '</span>' +
+                            '<span class="as-tl-meta">' + (sub.latency_ms || 0) + ' ms</span>';
+                        tl.appendChild(row);
+                    });
                 } else if (event === 'tool_result') {
                     if (pending.tool) {
                         markItem(pending.tool, !!data.ok,
@@ -508,8 +557,14 @@
                     answerEl.innerHTML = renderMarkdown(answerText);
                     lastAnswer = answerText;
                     renderArtifacts(bubble, data.artifacts, data.run_id);
-                    history.push({ question: payload.question || '', intent: 'llm' });
-                    if (history.length > 8) { history = history.slice(-8); }
+                    (data.artifacts || []).forEach(function (a) {
+                        recentArtifacts.unshift({ filename: a.filename, kind: a.kind,
+                                                  size: a.size, run_id: data.run_id });
+                    });
+                    recentArtifacts = recentArtifacts.slice(0, 5);
+                    history.push({ question: payload.question || '', intent: 'llm',
+                                   answer: (answerText || '').slice(0, 200) });
+                    if (history.length > 6) { history = history.slice(-6); }
                 } else if (event === 'error') {
                     answerEl.classList.remove('as-cursor');
                     answerEl.textContent = '出错了：' + ((data && data.message) || '未知错误');
@@ -550,6 +605,7 @@
 
     function ask(question) {
         if (busy || !question) { return; }
+        var done2 = function () { busy = false; send.disabled = false; input.focus(); };
         busy = true;
         send.disabled = true;
         addUser(question);
@@ -559,9 +615,18 @@
             question: question,
             values: (window.getAgentValues && window.getAgentValues()) || context.values || null,
             history: history.slice(-6),
-            context: { record_id: context.recordId || null }
+            context: { record_id: context.recordId || null },
+            recent_artifacts: recentArtifacts.slice(0, 3),
+            session_id: currentSession
         };
 
+        if (!currentSession) {
+            newSession().then(function () {
+                payload.session_id = currentSession;   // 会话是刚建的，必须回填
+                streamAsk(payload, done2);
+            });
+            return;
+        }
         streamAsk(payload, function () {
             busy = false;
             send.disabled = false;
@@ -606,6 +671,103 @@
             setTimeout(function () { URL.revokeObjectURL(a.href); }, 2000);
         });
     }
+
+
+    // ---------------- 会话管理 ----------------
+    var currentSession = null;
+    var sessionsPanel = document.getElementById('asSessionsPanel');
+    var sessionsBtn = document.getElementById('asSessionsBtn');
+    var sessionList = document.getElementById('asSessionList');
+    var newSessionBtn = document.getElementById('asNewSession');
+
+    function renderSessions(items) {
+        if (!sessionList) { return; }
+        sessionList.innerHTML = '';
+        (items || []).forEach(function (item) {
+            var row = document.createElement('div');
+            row.className = 'as-session-item' + (item.id === currentSession ? ' active' : '');
+            row.innerHTML = '<span class="as-session-title">' + escapeHtml(item.title || '未命名') +
+                            '</span><span class="as-session-meta">' + (item.messages || 0) + '</span>';
+            var del = document.createElement('button');
+            del.className = 'as-session-del';
+            del.type = 'button';
+            del.textContent = '×';
+            del.title = '删除会话';
+            del.addEventListener('click', function (ev) {
+                ev.stopPropagation();
+                if (!confirm('删除这个会话？')) { return; }
+                fetch('/api/agent/sessions/' + encodeURIComponent(item.id), { method: 'DELETE' })
+                    .then(function () {
+                        if (currentSession === item.id) { currentSession = null; clearChat(); }
+                        loadSessions();
+                    });
+            });
+            row.appendChild(del);
+            row.addEventListener('click', function () { openSession(item.id); });
+            sessionList.appendChild(row);
+        });
+        if (!(items || []).length) {
+            sessionList.innerHTML = '<div class="as-session-item"><span class="as-session-title">还没有会话</span></div>';
+        }
+    }
+
+    function loadSessions() {
+        fetch('/api/agent/sessions').then(function (r) { return r.json(); })
+            .then(function (data) { renderSessions((data && data.sessions) || []); })
+            .catch(function () {});
+    }
+
+    function clearChat() {
+        body.innerHTML = '';
+        history = [];
+        recentArtifacts = [];
+    }
+
+    function renderMessage(msg) {
+        if (msg.role === 'user') {
+            addUser(msg.content || '');
+            return;
+        }
+        var bubble = newBubble();
+        bubble.innerHTML = renderMarkdown(msg.content || '');
+        var meta = msg.meta || {};
+        renderArtifacts(bubble, meta.artifacts || [], meta.run_id || '');
+    }
+
+    function openSession(sid) {
+        currentSession = sid;
+        loadSessions();
+        fetch('/api/agent/sessions/' + encodeURIComponent(sid) + '/messages')
+            .then(function (r) { return r.json(); })
+            .then(function (data) {
+                clearChat();
+                (data.messages || []).forEach(renderMessage);
+                body.scrollTop = body.scrollHeight;
+            });
+    }
+
+    function newSession() {
+        return fetch('/api/agent/sessions', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ title: '新会话' })
+        }).then(function (r) { return r.json(); }).then(function (data) {
+            currentSession = (data && data.session && data.session.id) || null;
+            clearChat();
+            loadSessions();
+            return currentSession;
+        });
+    }
+
+    if (sessionsBtn) {
+        sessionsBtn.addEventListener('click', function () {
+            var open = sessionsPanel.style.display !== 'none';
+            sessionsPanel.style.display = open ? 'none' : 'block';
+            if (!open) { loadSessions(); }
+        });
+    }
+    if (newSessionBtn) { newSessionBtn.addEventListener('click', function () { newSession(); }); }
+    loadSessions();
 
     window.ASAssistant = { open: openPanel, close: closePanel, ask: ask,
                            setContext: function (ctx) { context = ctx || {}; renderContext(); } };

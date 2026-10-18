@@ -2204,6 +2204,46 @@ def api_agent_run_sync():
     return jsonify({'ok': True, 'result': result})
 
 
+@app.route('/api/agent/sessions', methods=['GET', 'POST'])
+def api_agent_sessions():
+    """会话列表 / 新建会话。"""
+    if 'username' not in session:
+        return jsonify({'ok': False, 'error': '请先登录'}), 403
+    uid = session.get('user_id', session.get('username'))
+    _agent_db.init_schema()
+
+    if request.method == 'POST':
+        data = request.get_json(silent=True) or {}
+        sid = _agent_db.create_session(uid, (data.get('title') or '新会话')[:40])
+        return jsonify({'ok': True, 'session': {'id': sid,
+                                                'title': data.get('title') or '新会话'}})
+
+    return jsonify({'ok': True, 'sessions': _agent_db.list_sessions(uid)})
+
+
+@app.route('/api/agent/sessions/<session_id>', methods=['DELETE'])
+def api_agent_session_delete(session_id):
+    if 'username' not in session:
+        return jsonify({'ok': False, 'error': '请先登录'}), 403
+    uid = session.get('user_id', session.get('username'))
+    ok = _agent_db.delete_session(session_id, uid)
+    if not ok:
+        return jsonify({'ok': False, 'error': '会话不存在或无权删除'}), 404
+    return jsonify({'ok': True})
+
+
+@app.route('/api/agent/sessions/<session_id>/messages', methods=['GET'])
+def api_agent_session_messages(session_id):
+    if 'username' not in session:
+        return jsonify({'ok': False, 'error': '请先登录'}), 403
+    uid = session.get('user_id', session.get('username'))
+    info = _agent_db.get_session(session_id, uid)
+    if not info:
+        return jsonify({'ok': False, 'error': '会话不存在'}), 404
+    return jsonify({'ok': True, 'session': info,
+                    'messages': _agent_db.list_messages(session_id, 40)})
+
+
 @app.route('/api/agent/llm/stream', methods=['POST'])
 def api_agent_llm_stream():
     """流式 agent：SSE 推送 思考/工具调用/工具结果/答案。"""
@@ -2222,6 +2262,22 @@ def api_agent_llm_stream():
         return jsonify({'ok': False, 'error': str(exc)}), 400
 
     ctx = _agent_ctx(question, data)
+
+    uid = session.get('user_id', session.get('username'))
+    session_id = (data.get('session_id') or '').strip()
+    history = []
+    if session_id and _agent_db.get_session(session_id, uid):
+        pairs, pending = [], None
+        for msg in _agent_db.list_messages(session_id, 12):
+            if msg['role'] == 'user':
+                pending = msg['content']
+            elif msg['role'] == 'assistant' and pending:
+                pairs.append({'question': pending, 'answer': msg['content'][:300]})
+                pending = None
+        history = pairs[-3:]
+    else:
+        session_id = ''
+
     if values:
         try:
             _agent_orch._act_interpret(ctx, values)
@@ -2237,7 +2293,9 @@ def api_agent_llm_stream():
     def generate():
         answer_parts = []
         try:
-            for item in stream_llm_agent(question, ctx, values=values):
+            recent = data.get('recent_artifacts') or []
+            for item in stream_llm_agent(question, ctx, values=values,
+                                        history=history, recent_artifacts=recent):
                 event = item['event']
                 payload = item['data']
                 if event == 'token':
@@ -2251,6 +2309,19 @@ def api_agent_llm_stream():
                                                       ensure_ascii=False))
                     except Exception:  # noqa: BLE001
                         app.logger.exception('llm stream 落库失败')
+                    if session_id:
+                        try:
+                            _agent_db.add_message(session_id, 'user', question)
+                            _agent_db.add_message(session_id, 'assistant',
+                                                  ''.join(answer_parts),
+                                                  {'artifacts': payload.get('artifacts') or [],
+                                                   'run_id': ctx.run_id})
+                            info = _agent_db.get_session(session_id)
+                            if info and (info.get('title') in ('', None, '新会话')):
+                                conn_title = question[:24]
+                                _agent_db.update_session_title(session_id, conn_title)
+                        except Exception:  # noqa: BLE001
+                            app.logger.exception('会话消息落库失败')
                 yield 'event: %s\ndata: %s\n\n' % (
                     event, json.dumps(payload, ensure_ascii=False, default=str))
         except Exception as exc:  # noqa: BLE001

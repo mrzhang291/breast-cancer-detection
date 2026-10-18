@@ -13,6 +13,23 @@ from .loop import AgentLoop
 from .provider import ToolCall
 
 
+def _extract_sub_steps(output: str):
+    """子代理返回的 JSON 里带 steps 时，抽出来单独展示。"""
+    try:
+        data = json.loads(output or '{}')
+    except ValueError:
+        return []
+    steps = data.get('steps') or []
+    out = []
+    for step in steps[:5]:
+        tool = step.get('tool') or ''
+        out.append({'tool': tool,
+                    'label': tool.replace('_', ' '),
+                    'ok': bool(step.get('ok')),
+                    'verdict': step.get('verdict') or '',
+                    'latency_ms': step.get('latency_ms') or 0})
+    return out
+
 class StreamingAgentLoop(AgentLoop):
     """在 AgentLoop 基础上增加 stream()，事件与同步版语义一致。"""
 
@@ -92,6 +109,10 @@ class StreamingAgentLoop(AgentLoop):
                                                       'args': call.arguments}}
                 started = time.time()
                 output = self._run_tool(call)
+                sub_steps = _extract_sub_steps(output)
+                if sub_steps:
+                    yield {'event': 'sub_steps', 'data': {'tool': call.name,
+                                                          'steps': sub_steps}}
                 yield {'event': 'tool_result', 'data': {
                     'tool': call.name,
                     'ok': self.steps[-1]['ok'] if self.steps else False,
