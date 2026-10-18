@@ -9,7 +9,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "发病率和死亡率",
+  "summary_zh": "2025年美国女性乳腺癌新发约31.7万例、死亡约4.2万例，为最常见非皮肤癌，男性占1%。"
  },
  {
   "section": "Incidence and Mortality（续2）",
@@ -21,7 +23,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "发病率和死亡率（续2）",
+  "summary_zh": "近几十年乳腺癌发病率上升与绝经激素治疗和钼靶筛查普及有关，近十年激素使用减少后发病率有所下降。"
  },
  {
   "section": "Anatomy",
@@ -33,7 +37,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "解剖结构",
+  "summary_zh": "图示女性乳房解剖，包括乳头、乳晕及内部淋巴结、小叶、小管和导管等结构。"
  },
  {
   "section": "Risk Factors",
@@ -45,7 +51,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "危险因素",
+  "summary_zh": "年龄增长是最重要危险因素，其他包括家族史、BRCA等基因突变、饮酒、乳腺密度、雌激素暴露及生育史等。"
  },
  {
   "section": "Risk Factors（续2）",
@@ -57,7 +65,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "危险因素（续2）",
+  "summary_zh": "常用Gail和IBIS模型评估风险；5%–10%患者携带BRCA突变，终生风险40%–85%。"
  },
  {
   "section": "Risk Factors（续3）",
@@ -69,7 +79,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "危险因素（续3）",
+  "summary_zh": "更多信息参见乳腺及妇科肿瘤遗传学、乳腺癌预防和筛查相关章节。"
  },
  {
   "section": "Protective Factors",
@@ -81,7 +93,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "保护因素",
+  "summary_zh": "降低女性乳腺癌风险的因素包括子宫切除后雌激素使用、运动、早孕、哺乳、SERM、芳香化酶抑制剂及预防性手术。"
  },
  {
   "section": "Screening",
@@ -93,7 +107,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "筛查",
+  "summary_zh": "临床试验证实，对无症状女性行钼靶筛查（联合或不联合临床乳腺检查）可降低乳腺癌死亡率。"
  },
  {
   "section": "Patient evaluation",
@@ -105,7 +121,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "患者评估",
+  "summary_zh": "疑似乳腺癌时通常需确认诊断、评估分期并选择治疗，常用钼靶、超声及必要时乳腺MRI。"
  },
  {
   "section": "Contralateral disease",
@@ -117,7 +135,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "对侧病变",
+  "summary_zh": "乳腺癌可多中心及双侧发生；10年对侧原发癌风险3%–5%，BRCA突变者25年内可近50%。"
  },
  {
   "section": "Contralateral disease（续2）",
@@ -129,7 +149,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "对侧病变（续2）",
+  "summary_zh": "保乳治疗后MRI补充筛查应用增多，但仅25%阳性为恶性，治疗前需病理确认，获益尚不明确。"
  },
  {
   "section": "Prognostic and Predictive Factors",
@@ -141,7 +163,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预后和预测因素",
+  "summary_zh": "预后和治疗选择受绝经状态、分期、分级、ER/PR状态、HER2表达及组织学类型等临床病理特征影响。"
  },
  {
   "section": "Prognostic and Predictive Factors（续2）",
@@ -153,7 +177,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预后和预测因素（续2）",
+  "summary_zh": "基因检测如MammaPrint、Oncotype DX、BCI有助评估；按ER、PR、HER2分为激素受体阳性、HER2阳性和三阴性。"
  },
  {
   "section": "Prognostic and Predictive Factors（续3）",
@@ -165,7 +191,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预后和预测因素（续3）",
+  "summary_zh": "Oncotype DX 21基因检测适用于HER2阴性激素受体阳性乳腺癌，复发评分指导预后和化疗决策。"
  },
  {
   "section": "Prognostic and Predictive Factors（续4）",
@@ -177,7 +205,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预后和预测因素（续4）",
+  "summary_zh": "淋巴结阴性者按复发评分分层：≤11低危不化疗，>11–≤25中危个体化，>25高危需化疗。"
  },
  {
   "section": "Prognostic and Predictive Factors（续5）",
@@ -189,7 +219,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预后和预测因素（续5）",
+  "summary_zh": "NSABP B-14试验显示，他莫昔芬治疗者10年远处复发风险随复发评分升高而增加。"
  },
  {
   "section": "Prognostic and Predictive Factors（续6）",
@@ -201,7 +233,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预后和预测因素（续6）",
+  "summary_zh": "NSABP B-14中低、中、高复发评分组10年远处复发风险分别为7%、14%和31%。"
  },
  {
   "section": "Prognostic and Predictive Factors（续7）",
@@ -213,7 +247,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预后和预测因素（续7）",
+  "summary_zh": "NSABP B-20显示高危组加化疗后10年无远处病生存由60%升至88%，低危组无获益。"
  },
  {
   "section": "Prognostic and Predictive Factors（续8）",
@@ -225,7 +261,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预后和预测因素（续8）",
+  "summary_zh": "B-20和S8814分析对中危评分者预测效能不足；TAILORx提示>50岁、评分11–25者化疗获益有限。"
  },
  {
   "section": "Prognostic and Predictive Factors（续9）",
@@ -237,7 +275,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预后和预测因素（续9）",
+  "summary_zh": "TAILORx中危组随机比较内分泌单药与联合化疗，中位随访90个月评估疗效差异。"
  },
  {
   "section": "Prognostic and Predictive Factors（续10）",
@@ -249,7 +289,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预后与预测因素（续10）",
+  "summary_zh": "内分泌单药组185例接受化疗，联合组608例未按方案化疗；实际治疗分析IDFS的HR为1.14，各终点无显著差异。"
  },
  {
   "section": "Prognostic and Predictive Factors（续11）",
@@ -261,7 +303,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预后与预测因素（续11）",
+  "summary_zh": "二次分析显示≤50岁、复发评分16-20且临床高危者化疗远处复发率更低，21-25分者不论风险均获益。"
  },
  {
   "section": "Prognostic and Predictive Factors（续12）",
@@ -273,7 +317,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预后与预测因素（续12）",
+  "summary_zh": "TAILORx中危组6907例随机分组，中位随访90个月，内分泌单药在IDFS上达到预设非劣效标准。"
  },
  {
   "section": "Prognostic and Predictive Factors（续13）",
@@ -285,7 +331,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预后与预测因素（续13）",
+  "summary_zh": "实际治疗分析IDFS的HR为1.14；治疗与年龄存在显著交互，提示50岁以下评分11-25者可能获益于化疗。"
  },
  {
   "section": "Prognostic and Predictive Factors（续14）",
@@ -297,7 +345,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预后与预测因素（续14）",
+  "summary_zh": "多数患者以内分泌治疗为他莫昔芬；化疗获益是否源于卵巢功能抑制尚不明确。MINDACT试验评估基因组风险指导化疗。"
  },
  {
   "section": "Prognostic and Predictive Factors（续15）",
@@ -309,7 +359,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预后与预测因素（续15）",
+  "summary_zh": "临床高危基因组低危1550例及临床低危基因组高危592例随机接受或不接受化疗，主要终点为非劣效设计。"
  },
  {
   "section": "Prognostic and Predictive Factors（续16）",
@@ -321,7 +373,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预后与预测因素（续16）",
+  "summary_zh": "临床高危基因组低危组5年无远处转移生存率达94.7%，达到非劣效终点；临床低危基因组高危组化疗获益甚微。"
  },
  {
   "section": "Prognostic and Predictive Factors（续17）",
@@ -333,7 +387,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预后与预测因素（续17）",
+  "summary_zh": "1665例绝经前HER2阴性激素受体阳性、复发评分≤25者随机分组；治疗与绝经状态交互显著，故分开分析。"
  },
  {
   "section": "Prognostic and Predictive Factors（续18）",
@@ -345,7 +401,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预后与预测因素（续18）",
+  "summary_zh": "绝经后患者加化疗无获益（HR 0.97）；绝经前患者加化疗显著改善IDFS（HR 0.54）及OS（HR 0.47）。"
  },
  {
   "section": "Prognostic and Predictive Factors（续19）",
@@ -357,7 +415,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预后与预测因素（续19）",
+  "summary_zh": "348例未化疗患者5年DFS很高，淋巴结阴性与pN1无差异；BCI的H/I比值预后价值已在多项试验中描述。"
  },
  {
   "section": "Prognostic and Predictive Factors（续20）",
@@ -369,7 +429,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预后与预测因素（续20）",
+  "summary_zh": "H/I比值可预测他莫昔芬治疗、激素受体阳性淋巴结阴性患者的DFS；MA.17中高比值与延长来曲唑后晚期复发减少相关。"
  },
  {
   "section": "Prognostic and Predictive Factors（续21）",
@@ -381,7 +443,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预后与预测因素（续21）",
+  "summary_zh": "aTTom试验中BCI H/I高表达预测内分泌应答，淋巴结阳性者10年他莫昔芬获益显著；低表达者延长治疗无显著获益。"
  },
  {
   "section": "Prognostic and Predictive Factors（续22）",
@@ -393,7 +457,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预后与预测因素（续22）",
+  "summary_zh": "IDEAL试验用BCI评估908例延长来曲唑获益，H/I高表达显著预测延长内分泌治疗获益。"
  },
  {
   "section": "Prognostic and Predictive Factors（续23）",
@@ -405,7 +471,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预后与预测因素（续23）",
+  "summary_zh": "BRCA1/BRCA2携带者患乳腺癌后的预后数据存在矛盾，其对侧乳腺癌风险更高。"
  },
  {
   "section": "Hormone replacement therapy",
@@ -417,7 +485,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "激素替代治疗",
+  "summary_zh": "经慎重评估，部分症状严重患者可接受激素替代治疗；文末列出癌症统计与发病率相关参考文献。"
  },
  {
   "section": "Hormone replacement therapy（续2）",
@@ -429,7 +499,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "激素替代治疗（续2）",
+  "summary_zh": "列举乳腺癌家族史、CHEK2突变及BRCA1/2携带者预后等流行病学与遗传风险相关参考文献。"
  },
  {
   "section": "Hormone replacement therapy（续3）",
@@ -441,7 +513,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "激素替代治疗（续3）",
+  "summary_zh": "列举绝经后循环性激素、血清雄激素与雌激素及绝经前性类固醇与乳腺癌风险相关研究参考文献。"
  },
  {
   "section": "Hormone replacement therapy（续4）",
@@ -453,7 +527,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "激素替代治疗（续4）",
+  "summary_zh": "列举肥胖与癌症、导管与小叶乳腺癌危险因素及良性乳腺疾病后续乳腺癌风险等参考文献。"
  },
  {
   "section": "Hormone replacement therapy（续5）",
@@ -465,7 +541,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "激素替代治疗（续5）",
+  "summary_zh": "列举乳腺癌预测模型、BRCA1/2分子遗传学及犹太女性胚系突变等遗传易感性相关参考文献。"
  },
  {
   "section": "Hormone replacement therapy（续6）",
@@ -477,7 +555,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "激素替代治疗（续6）",
+  "summary_zh": "列举遗传性乳腺卵巢癌易感、基于家族史的BRCA1突变概率及遗传咨询与检测相关参考文献。"
  },
  {
   "section": "Hormone replacement therapy（续7）",
