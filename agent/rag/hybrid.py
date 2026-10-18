@@ -90,11 +90,18 @@ def search(query: str, k: int = 5, prefer: str = '') -> List[Dict]:
         return []
 
     details = _load_details([c['clause_id'] for c in fused])
+    lex_scores = {h['clause_id']: float(h.get('score') or 0) for h in lex}
+    vec_scores = {h['clause_id']: float(h.get('score') or 0) for h in vec}
     candidates = []
     for item in fused:
-        row = details.get(item['clause_id'])
+        cid = item['clause_id']
+        row = details.get(cid)
         if not row:
             continue
+        # score 统一成"可读的相关度"：词法分优先，纯向量命中按余弦折算
+        score = lex_scores.get(cid)
+        if not score:
+            score = round(vec_scores.get(cid, 0.0) * 40.0, 3)
         candidates.append({
             'clause_id': row['clause_id'],
             'doc_id': row['doc_id'],
@@ -102,7 +109,8 @@ def search(query: str, k: int = 5, prefer: str = '') -> List[Dict]:
             'version': row['version'],
             'section': row['section'],
             'text': row['text'],
-            'score': item['score'],
+            'score': round(score, 3),
+            'fused': item['score'],
             'meta': row.get('meta') or {},
         })
 
