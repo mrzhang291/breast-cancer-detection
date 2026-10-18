@@ -372,18 +372,6 @@
   "retrieved_at": "2026-10-18"
  },
  {
-  "section": "Women  at increased risk who may benefit more from screening（续5）",
-  "text": ".",
-  "clause_id": "WEB-NCI-SCREEN-032",
-  "doc_id": "WEB-NCI-SCREEN",
-  "source": "美国国家癌症研究所 NCI",
-  "url": "https://www.cancer.gov/types/breast/hp/breast-screening-pdq",
-  "title": "Breast Cancer Screening (PDQ)",
-  "lang": "en",
-  "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
- },
- {
   "section": "Individuals who benefit less from screening",
   "text": "The potential benefits of screening mammography occur well after the examination, often many years later, whereas the harms occur immediately.  Therefore, women with limited life expectancy and comorbidities who suffer harms may  do so without benefit. Nonetheless, many of these women undergo screening mammography.[ 30 ] In one study, approximately 9% of women with advanced cancer underwent  cancer screening tests.[ 31 ]\nScreening mammography may yield cancer diagnoses in approximately 1% of women aged 66 to 79 years, but most of these cancers are low risk.[ 32 ] The question remains whether the diagnosis and treatment of localized breast cancer in older women is beneficial.\nThere is no evidence of benefit in performing screening mammography in average-risk women younger than 40 years.\nApproximately 1% of all breast cancers occur in men.[ 33 ] Most cases are diagnosed during the evaluation of palpable lesions, which are generally easy to detect.  Treatment consists of surgery, radiation, and systemic adjuvant hormone therapy or chemotherapy. For more information, see Male Breast Canc",
   "clause_id": "WEB-NCI-SCREEN-033",
@@ -1071,18 +1059,6 @@
   "section": "Statistical modeling of breast cancer incidence and mortality in the United Stat（续2）",
   "text": "eening.[ 88 ] Women aged 50 to 74 years received most of the mortality benefit of annual screening by having a mammogram every 2 years. The reduction in breast cancer deaths that was maintained because of the move from annual to biennial screening ranged across the six models from 72% to 95%, with a median of 80%.\nData are limited as to how much of the reduction in mortality, seen over time from 1990 onward, is attributable to advances in imaging techniques for screening and as to how much is the result of the improved effectiveness of therapy. In one CISNET study of six simulation models, about one-third of the decrease in breast cancer mortality in 2012 was attributable to screening, with the balance attributed to treatment.[ 109 ]  In this CISNET study, the mean estimated reduction in overall breast cancer mortality rate was 49% (model range, 39%–58%), relative to the estimated baseline rate in 2012 if there was no screening or treatment; 37% (model range, 26%–51%) of this reduction was associated with screening, and 63% (model range, 49%–74%) of this reduction was associated with",
   "clause_id": "WEB-NCI-SCREEN-090",
-  "doc_id": "WEB-NCI-SCREEN",
-  "source": "美国国家癌症研究所 NCI",
-  "url": "https://www.cancer.gov/types/breast/hp/breast-screening-pdq",
-  "title": "Breast Cancer Screening (PDQ)",
-  "lang": "en",
-  "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
- },
- {
-  "section": "Statistical modeling of breast cancer incidence and mortality in the United Stat（续3）",
-  "text": "treatment.",
-  "clause_id": "WEB-NCI-SCREEN-091",
   "doc_id": "WEB-NCI-SCREEN",
   "source": "美国国家癌症研究所 NCI",
   "url": "https://www.cancer.gov/types/breast/hp/breast-screening-pdq",
