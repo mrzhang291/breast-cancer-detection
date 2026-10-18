@@ -569,7 +569,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "激素替代治疗（续7）",
+  "summary_zh": "列举激素替代治疗、运动与乳腺癌风险相关研究文献。"
  },
  {
   "section": "Hormone replacement therapy（续8）",
@@ -581,7 +583,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "激素替代治疗（续8）",
+  "summary_zh": "汇总激素因素、生育哺乳及选择性雌激素受体调节剂预防研究。"
  },
  {
   "section": "Hormone replacement therapy（续9）",
@@ -593,7 +597,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "激素替代治疗（续9）",
+  "summary_zh": "涉及预防性乳房切除与输卵管卵巢切除降低乳腺癌风险研究。"
  },
  {
   "section": "Hormone replacement therapy（续10）",
@@ -605,7 +611,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "激素替代治疗（续10）",
+  "summary_zh": "讨论淋巴结阴性乳腺癌预后因素及对侧乳腺癌风险认知。"
  },
  {
   "section": "Hormone replacement therapy（续11）",
@@ -617,7 +625,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "激素替代治疗（续11）",
+  "summary_zh": "关注BRCA突变者对侧乳腺癌及乳腺MRI评估相关研究。"
  },
  {
   "section": "Hormone replacement therapy（续12）",
@@ -629,7 +639,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "激素替代治疗（续12）",
+  "summary_zh": "涵盖早期乳腺癌长期随访、管状癌预后及基因表达分型。"
  },
  {
   "section": "Hormone replacement therapy（续13）",
@@ -641,7 +653,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "激素替代治疗（续13）",
+  "summary_zh": "介绍70基因MammaPrint预后特征验证与临床应用。"
  },
  {
   "section": "Hormone replacement therapy（续14）",
@@ -653,7 +667,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "激素替代治疗（续14）",
+  "summary_zh": "涉及21基因复发评分预测淋巴结阴性乳腺癌复发研究。"
  },
  {
   "section": "Hormone replacement therapy（续15）",
@@ -665,7 +681,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "激素替代治疗（续15）",
+  "summary_zh": "介绍21基因检测指导辅助化疗的前瞻性验证研究。"
  },
  {
   "section": "Hormone replacement therapy（续16）",
@@ -677,7 +695,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "激素替代治疗（续16）",
+  "summary_zh": "涉及RxPonder试验及HER2阴性早期乳腺癌辅助化疗方案。"
  },
  {
   "section": "Hormone replacement therapy（续17）",
@@ -689,7 +709,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "激素替代治疗（续17）",
+  "summary_zh": "比较乳腺癌指数检测并预测延长内分泌治疗获益。"
  },
  {
   "section": "Histopathological Classification of Breast Cancer",
@@ -701,7 +723,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "乳腺癌组织病理学分类",
+  "summary_zh": "介绍乳腺癌组织学分类，浸润性导管癌最常见，小叶癌次之。"
  },
  {
   "section": "Histopathological Classification of Breast Cancer（续2）",
@@ -713,7 +737,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "乳腺癌组织病理学分类（续2）",
+  "summary_zh": "阐述小叶癌转移模式、雌激素受体表达及PET敏感性较低。"
  },
  {
   "section": "Histopathological Classification of Breast Cancer（续3）",
@@ -725,7 +751,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "乳腺癌组织病理学分类（续3）",
+  "summary_zh": "比较小叶癌与导管癌PET检出远处转移差异，列举非典型肿瘤。"
  },
  {
   "section": "Histopathological Classification of Breast Cancer（续4）",
@@ -737,7 +765,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "乳腺癌组织病理学分类（续4）",
+  "summary_zh": "列举浸润性小叶癌18F-FDG PET相关研究文献。"
  },
  {
   "section": "Stage Information for Breast Cancer",
@@ -749,7 +779,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "乳腺癌分期信息",
+  "summary_zh": "介绍AJCC分期系统及淋巴结、受体、HER2、分级等预后因素。"
  },
  {
   "section": "Stage Information for Breast Cancer（续2）",
@@ -761,7 +793,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "乳腺癌分期信息（续2）",
+  "summary_zh": "介绍ASCO/CAP指南中HER2免疫组化与ISH检测判读标准。"
  },
  {
   "section": "Stage Information for Breast Cancer（续3）",
@@ -773,7 +807,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "乳腺癌分期信息（续3）",
+  "summary_zh": "详述HER2 ISH双探针与单探针检测的阴阳性判读标准。"
  },
  {
   "section": "TNM Definitions",
@@ -785,7 +821,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "TNM定义",
+  "summary_zh": "介绍AJCC采用TNM分类定义乳腺癌分期及肿瘤分级依据。"
  },
  {
   "section": "AJCC Anatomical and Prognostic Stage Groups",
@@ -797,7 +835,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "AJCC解剖与预后分期组",
+  "summary_zh": "介绍浸润癌三套分期表：解剖、临床预后及病理预后分期。"
  },
  {
   "section": "AJCC Anatomical and Prognostic Stage Groups（续2）",
