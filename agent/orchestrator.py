@@ -670,6 +670,13 @@ def _compose_usage(ctx: AgentContext) -> Tuple[str, List[str]]:
     strong = bool(hits) and float(hits[0].get('score') or 0) >= RAG_STRONG_SCORE
 
     curated = faq.match(ctx.question)
+    # 明确的操作类问题（怎么导出/在哪看/怎么填）优先用策展 FAQ：
+    # 文档检索容易被"助手能做什么"这种总览段落抢走
+    howto = any(w in (ctx.question or '') for w in ('怎么', '如何', '在哪', '哪里', '步骤'))
+    if curated and howto and any(k in (ctx.question or '') for k in curated.get('keywords') or []):
+        body = '### %s\n\n%s' % (curated['title'], curated['body'])
+        return body, [curated['id']]
+
     if curated and not strong:
         body = '### %s\n\n%s' % (curated['title'], curated['body'])
         return body, [curated['id']]
