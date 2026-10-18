@@ -16,3 +16,4 @@ venv/
 reports/
 .model_cache/
 !agent/knowledge/rag_vectors.db
+!agent/knowledge/rag_vectors.sqlite

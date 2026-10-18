@@ -21,7 +21,7 @@ def _db():
 
 
 SHIPPED_DB = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(
-    os.path.abspath(__file__)))), 'agent', 'knowledge', 'rag_vectors.db')
+    os.path.abspath(__file__)))), 'agent', 'knowledge', 'rag_vectors.sqlite')
 
 
 def ensure_schema() -> None:
