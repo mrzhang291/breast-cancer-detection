@@ -9,7 +9,9 @@
   "title": "Mammography",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "什么是乳腺X线摄影？",
+  "summary_zh": "乳腺X线摄影是乳腺X光图像，用于发现体检无法触及的乳腺癌早期征象，分为筛查性和诊断性两类。"
  },
  {
   "section": "What is a screening mammogram?",
@@ -21,7 +23,9 @@
   "title": "Mammography",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "什么是筛查性乳腺X线摄影？",
+  "summary_zh": "筛查性乳腺X线摄影用于无症状女性，可降低40至74岁女性乳腺癌死亡率，但也存在假阳性、漏诊和辐射风险。"
  },
  {
   "section": "What is a diagnostic mammogram?",
@@ -33,7 +37,9 @@
   "title": "Mammography",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "什么是诊断性乳腺X线摄影？",
+  "summary_zh": "诊断性乳腺X线摄影耗时稍长，用于有肿块或乳房疼痛、皮肤增厚、乳头溢液等症状者，也用于乳房植入物者。"
  },
  {
   "section": "How is a mammogram done?",
@@ -45,7 +51,9 @@
   "title": "Mammography",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "乳腺X线摄影如何操作？",
+  "summary_zh": "检查时站立于X光机前，乳房置于两块塑料板间压平以获清晰图像，双侧正侧位拍摄，由放射科医生阅片。"
  },
  {
   "section": "What happens if my mammogram is not normal?",
@@ -57,7 +65,9 @@
   "title": "Mammography",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "乳腺X线摄影结果异常怎么办？",
+  "summary_zh": "异常结果不一定意味着癌症，需进一步乳腺X线摄影、检查或转诊乳腺专科医生或外科医生明确诊断。"
  },
  {
   "section": "Start Here",
@@ -69,7 +79,9 @@
   "title": "Mammography",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "从这里开始",
+  "summary_zh": "提供来自CDC、美国卫生与公众服务部妇女健康办公室、国家癌症研究所及放射学会的乳腺X线摄影资源。"
  },
  {
   "section": "Related Issues",
@@ -81,7 +93,9 @@
   "title": "Mammography",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "相关问题",
+  "summary_zh": "涵盖热成像不能替代乳腺X线摄影、致密乳腺、阅片方式、检查准确性及乳房植入物者检查等议题。"
  },
  {
   "section": "Specifics",
@@ -93,7 +107,9 @@
   "title": "Mammography",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "具体内容",
+  "summary_zh": "介绍乳腺断层合成、数字乳腺X线摄影常见问题及乳管造影等具体检查技术。"
  },
  {
   "section": "Statistics and Research",
@@ -105,7 +121,9 @@
   "title": "Mammography",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "统计与研究",
+  "summary_zh": "提供乳腺X线摄影统计快览、新型及实验性乳腺影像检查以及残疾女性乳腺癌筛查等研究信息。"
  },
  {
   "section": "Journal Articles References and abstracts from MEDLINE/PubMed (National Library ",
@@ -117,7 +135,9 @@
   "title": "Mammography",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "期刊文献",
+  "summary_zh": "收录MEDLINE/PubMed中关于乳腺X线摄影监测、移动筛查单元及无症状平均风险女性筛查的文献摘要。"
  },
  {
   "section": "Find an Expert",
@@ -129,6 +149,8 @@
   "title": "Mammography",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "寻找专家",
+  "summary_zh": "提供美国癌症协会、CDC筛查项目查找、FDA乳腺X线摄影机构及国家癌症研究所等专家资源。"
  }
 ]

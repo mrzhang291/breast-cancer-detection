@@ -1,9 +1,5 @@
-"""语料装载与切分。
-
-两类语料：
-    1. features.json   —— 30 条特征词典（含真实统计量）
-    2. docs/*.md       —— 系统文档，按 markdown 标题切成条款
-"""
+"""语料装载：系统文档 + 特征词典 + 网络抓取语料。"""
+import glob
 import io
 import json
 import os
@@ -13,11 +9,11 @@ from typing import Dict, List
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 KNOWLEDGE_DIR = os.path.join(ROOT, 'agent', 'knowledge')
 FEATURES_FILE = os.path.join(KNOWLEDGE_DIR, 'features.json')
+WEB_DIR = os.path.join(KNOWLEDGE_DIR, 'web')
 
-# 参与索引的文档（存在才收录）
+# 只保留对用户有用的系统文档；接口文档（106 条）不再入索引，避免淹没医学内容
 DOC_FILES = [
     ('STARTUP_GUIDE.md', 'DOC-STARTUP', '系统启动与功能说明'),
-    ('乳腺癌检测系统 API.md', 'DOC-API', '系统接口文档'),
     ('SHAP_GUIDE.md', 'DOC-SHAP', 'SHAP 可解释性说明'),
     ('AGENT_GUIDE.md', 'DOC-AGENT', 'AI 助手与报告导出说明'),
     ('MODEL_GUIDE.md', 'DOC-MODEL', '模型与置信度说明'),
@@ -65,7 +61,7 @@ def load_feature_chunks() -> List[Dict]:
 
 
 def load_doc_chunks() -> List[Dict]:
-    """文档 -> 按二级标题切条款。"""
+    """系统文档 -> 按二级标题切条款。"""
     chunks: List[Dict] = []
     for filename, prefix, title in DOC_FILES:
         path = os.path.join(ROOT, filename)
@@ -105,5 +101,34 @@ def load_doc_chunks() -> List[Dict]:
     return chunks
 
 
+def load_web_chunks() -> List[Dict]:
+    """网络语料：英文块带中文标题与摘要，索引与展示都用中文为主。"""
+    chunks: List[Dict] = []
+    for path in sorted(glob.glob(os.path.join(WEB_DIR, '*.json'))):
+        try:
+            data = json.load(io.open(path, encoding='utf-8'))
+        except Exception:  # noqa: BLE001
+            continue
+        for item in data:
+            section = item.get('section_zh') or item.get('section') or '概述'
+            summary = item.get('summary_zh') or ''
+            body = item.get('text') or ''
+            text = body
+            if summary:
+                text = summary + '\n\n' + body
+            chunks.append({
+                'clause_id': item['clause_id'],
+                'doc_id': item['doc_id'],
+                'source': item.get('source') or item.get('title') or item['doc_id'],
+                'version': item.get('retrieved_at') or '',
+                'section': section,
+                'text': text,
+                'meta': {'url': item.get('url', ''), 'title': item.get('title', ''),
+                         'lang': item.get('lang', 'zh'),
+                         'license': item.get('license', '')},
+            })
+    return chunks
+
+
 def all_chunks() -> List[Dict]:
-    return load_feature_chunks() + load_doc_chunks()
+    return load_feature_chunks() + load_doc_chunks() + load_web_chunks()

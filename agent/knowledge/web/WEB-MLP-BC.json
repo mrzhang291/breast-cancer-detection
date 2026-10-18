@@ -9,7 +9,9 @@
   "title": "Breast Cancer",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "什么是乳腺癌？",
+  "summary_zh": "乳腺癌起源于乳腺组织，细胞失控生长形成肿瘤，分原位癌和浸润癌，可经淋巴或血液转移，是美国女性第二常见癌症。"
  },
  {
   "section": "What are the types of breast cancer?",
@@ -21,7 +23,9 @@
   "title": "Breast Cancer",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "乳腺癌有哪些类型？",
+  "summary_zh": "乳腺癌按起源细胞分型，包括最常见的导管癌、小叶癌，以及罕见的炎性乳腺癌和乳头Paget病。"
  },
  {
   "section": "What causes breast cancer?",
@@ -33,7 +37,9 @@
   "title": "Breast Cancer",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "乳腺癌的病因是什么？",
+  "summary_zh": "乳腺癌由DNA遗传物质改变引起，多数原因不明，部分为遗传性，如BRCA1/BRCA2基因突变，生活方式和环境也影响风险。"
  },
  {
   "section": "Who is at risk for breast cancer?",
@@ -45,7 +51,9 @@
   "title": "Breast Cancer",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "哪些人易患乳腺癌？",
+  "summary_zh": "风险因素包括乳腺癌或良性乳腺病史、BRCA基因突变、致密乳腺组织、雌激素暴露多、激素治疗、胸部放疗及饮酒。"
  },
  {
   "section": "What are the signs and symptoms of breast cancer?",
@@ -57,7 +65,9 @@
   "title": "Breast Cancer",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "乳腺癌有哪些体征和症状？",
+  "summary_zh": "症状包括乳房或腋下新肿块、大小形状改变、皮肤凹陷如橘皮、乳头内陷或溢液、乳头区皮肤鳞屑红肿及乳房疼痛。"
  },
  {
   "section": "How is breast cancer diagnosed?",
@@ -69,7 +79,9 @@
   "title": "Breast Cancer",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "乳腺癌如何诊断？",
+  "summary_zh": "诊断工具包括体格检查、病史、乳腺X线、超声、MRI等影像检查、乳腺活检及血液化学检查。"
  },
  {
   "section": "How is breast cancer diagnosed?（续2）",
@@ -81,7 +93,9 @@
   "title": "Breast Cancer",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "乳腺癌如何诊断？（续）",
+  "summary_zh": "还包括雌激素和孕激素受体检测，以及通过影像检查和前哨淋巴结活检进行分期，判断癌症是否扩散。"
  },
  {
   "section": "What are the treatments for breast cancer?",
@@ -93,7 +107,9 @@
   "title": "Breast Cancer",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "乳腺癌有哪些治疗方法？",
+  "summary_zh": "治疗包括乳房切除术或肿块切除术、放疗、化疗、激素治疗、靶向治疗和免疫治疗。"
  },
  {
   "section": "Can breast cancer be prevented?",
@@ -105,7 +121,9 @@
   "title": "Breast Cancer",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "乳腺癌可以预防吗？",
+  "summary_zh": "可通过保持健康体重、限酒、锻炼、母乳喂养、限制激素治疗预防；高危者可服药或切除健康乳房，并定期做乳腺X线检查。"
  },
  {
   "section": "Start Here",
@@ -117,7 +135,9 @@
   "title": "Breast Cancer",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "入门资源",
+  "summary_zh": "提供美国癌症协会、梅奥诊所和国家癌症研究所的乳腺癌入门资料链接，部分含西班牙语版本。"
  },
  {
   "section": "Diagnosis and Tests",
@@ -129,7 +149,9 @@
   "title": "Breast Cancer",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "诊断与检查",
+  "summary_zh": "列出BRCA基因检测、乳腺活检、早期诊断、乳腺MRI、自检、超声、激素受体及HER2检测等诊断资源。"
  },
  {
   "section": "Diagnosis and Tests（续2）",
@@ -141,7 +163,9 @@
   "title": "Breast Cancer",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "诊断与检查（续）",
+  "summary_zh": "补充乳腺癌筛查、前哨淋巴结活检、TP53基因检测、肿瘤标志物检测及病理报告解读等资源。"
  },
  {
   "section": "Prevention and Risk Factors",
@@ -153,7 +177,9 @@
   "title": "Breast Cancer",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预防与风险因素",
+  "summary_zh": "涵盖止汗剂与风险、芳香化酶抑制剂、乳腺癌预防、生活方式风险因素、乳腺X线检查及降低风险手术等资源。"
  },
  {
   "section": "Treatments and Therapies",
@@ -165,7 +191,9 @@
   "title": "Breast Cancer",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "治疗与疗法",
+  "summary_zh": "提供乳腺癌手术、补充整合疗法、获批药物、激素治疗、乳房切除术及整体治疗等资源链接。"
  },
  {
   "section": "Living With",
@@ -177,7 +205,9 @@
   "title": "Breast Cancer",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "带癌生活",
+  "summary_zh": "涵盖压力应对、治疗期间饮食、治疗后随访、失眠与疲劳及生活质量等带癌生活相关资源。"
  },
  {
   "section": "Related Issues",
@@ -189,7 +219,9 @@
   "title": "Breast Cancer",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "相关问题",
+  "summary_zh": "涉及腋窝淋巴结、骨丢失、妊娠期治疗、致密乳腺、DES暴露、生育问题、激素治疗及口服避孕药与癌症风险等议题。"
  },
  {
   "section": "Specifics",
@@ -201,7 +233,9 @@
   "title": "Breast Cancer",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "特定类型",
+  "summary_zh": "介绍导管原位癌、HER2阳性乳腺癌、炎性乳腺癌、小叶原位癌、Paget病、复发及三阴性乳腺癌等特定类型。"
  },
  {
   "section": "Genetics",
@@ -213,7 +247,9 @@
   "title": "Breast Cancer",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "遗传学",
+  "summary_zh": "涵盖遗传性乳腺癌卵巢癌、BRCA基因突变与检测、遗传咨询、Li-Fraumeni综合征及高危人群识别等资源。"
  },
  {
   "section": "Statistics and Research",
@@ -225,7 +261,9 @@
   "title": "Breast Cancer",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "统计与研究",
+  "summary_zh": "提供乳腺癌研究进展、筛查与治疗个性化、统计数据、癌症事实及环境与遗传风险因素研究等资源。"
  },
  {
   "section": "Clinical Trials",
@@ -237,7 +275,9 @@
   "title": "Breast Cancer",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "临床试验",
+  "summary_zh": "列出乳腺肿瘤、导管癌、遗传性乳腺癌卵巢癌综合征及炎性乳腺肿瘤相关的临床试验注册信息。"
  },
  {
   "section": "Journal Articles References and abstracts from MEDLINE/PubMed (National Library ",
@@ -249,7 +289,9 @@
   "title": "Breast Cancer",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "期刊文章：MEDLINE/PubMed参考文献与摘要",
+  "summary_zh": "收录PubMed乳腺癌相关期刊文章，涉及HR+/HER2-精准治疗、辅助化疗症状及镇痛效果比较等研究。"
  },
  {
   "section": "Reference Desk",
@@ -261,7 +303,9 @@
   "title": "Breast Cancer",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "参考咨询台",
+  "summary_zh": "提供乳腺癌类型释义及NCI癌症术语词典等参考资源，部分含西班牙语版本。"
  },
  {
   "section": "Find an Expert",
@@ -273,7 +317,9 @@
   "title": "Breast Cancer",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "寻找专家",
+  "summary_zh": "汇集美国癌症协会、NCI等机构资源，指导选择肿瘤医生、查找筛查项目及支持小组。"
  },
  {
   "section": "Patient Handouts",
@@ -285,6 +331,8 @@
   "title": "Breast Cancer",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "患者手册",
+  "summary_zh": "涵盖化疗后出院、BRCA基因检测、乳腺活检、分期、激素治疗等患者教育手册。"
  }
 ]

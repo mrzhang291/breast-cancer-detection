@@ -849,7 +849,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "AJCC解剖学与预后分期组（续2）",
+  "summary_zh": "介绍AJCC解剖学与预后分期组，临床预后分期用于美国浸润性乳腺癌患者的临床分类与分期。"
  },
  {
   "section": "AJCC Pathological Prognostic Stage Groups",
@@ -861,7 +863,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "AJCC病理预后分期组",
+  "summary_zh": "病理预后分期适用于初治手术的浸润性乳腺癌，整合临床、手术及病理信息，不用于新辅助治疗患者。"
  },
  {
   "section": "AJCC Pathological Prognostic Stage Groups（续2）",
@@ -873,7 +877,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "AJCC病理预后分期组（续2）",
+  "summary_zh": "列出乳腺癌检测相关ASCO/CAP临床实践指南更新文献，涉及ER与HER2检测。"
  },
  {
   "section": "Surgical Treatment for Breast Cancer",
@@ -885,7 +891,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "乳腺癌的外科治疗",
+  "summary_zh": "可手术乳腺癌需多模式治疗，活检确诊后可选择保乳手术或改良根治术，并结合分期分子状态指导治疗。"
  },
  {
   "section": "Surgical Staging of the Primary Tumor",
@@ -897,7 +905,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "原发肿瘤的外科分期",
+  "summary_zh": "局部治疗选择取决于病灶位置大小、影像、乳房大小及保乳意愿；炎性乳腺癌为保乳禁忌。"
  },
  {
   "section": "Surgical Staging of the Primary Tumor（续2）",
@@ -909,7 +919,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "原发肿瘤的外科分期（续2）",
+  "summary_zh": "保乳手术加放疗与各方案等效，局部复发率低，不同激素受体状态疾病控制无差异。"
  },
  {
   "section": "Surgical Staging of the Primary Tumor（续3）",
@@ -921,7 +933,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "原发肿瘤的外科分期（续3）",
+  "summary_zh": "荟萃分析显示切缘阳性使同侧复发风险翻倍，肿瘤无墨染为浸润癌充分切缘新标准。"
  },
  {
   "section": "Surgical Staging of the Primary Tumor（续4）",
@@ -933,7 +947,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "原发肿瘤的外科分期（续4）",
+  "summary_zh": "随机研究显示腔周削切组切缘阳性率及二次手术率显著低于未削切组。"
  },
  {
   "section": "Axillary Lymph Node Management",
@@ -945,7 +961,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "腋窝淋巴结管理",
+  "summary_zh": "腋窝淋巴结状态是重要预后指标，前哨淋巴结活检为浸润性乳腺癌初始腋窝分期标准。"
  },
  {
   "section": "Axillary Lymph Node Management（续2）",
@@ -957,7 +975,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "腋窝淋巴结管理（续2）",
+  "summary_zh": "前哨淋巴结活检组1年生活质量及手臂功能优于腋窝淋巴结清扫组。"
  },
  {
   "section": "Axillary Lymph Node Management（续3）",
@@ -969,7 +989,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "腋窝淋巴结管理（续3）",
+  "summary_zh": "研究显示前哨淋巴结活检加或不加腋窝清扫总生存、无病生存及区域控制无差异。"
  },
  {
   "section": "Axillary Lymph Node Management（续4）",
@@ -981,7 +1003,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "腋窝淋巴结管理（续4）",
+  "summary_zh": "前哨淋巴结阳性患者中，腋窝清扫与单纯活检5年总生存率相近（91.8%对92.5%）。"
  },
  {
   "section": "Axillary Lymph Node Management（续5）",
@@ -993,7 +1017,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "腋窝淋巴结管理（续5）",
+  "summary_zh": "腋窝清扫与单纯前哨淋巴结活检5年无病生存率相近，部分患者接受区域淋巴结放疗。"
  },
  {
   "section": "Axillary Lymph Node Management（续6）",
@@ -1005,7 +1031,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "腋窝淋巴结管理（续6）",
+  "summary_zh": "腋窝清扫与腋窝放疗对T1/T2无淋巴结肿大患者腋窝控制相当，放疗并发症更少。"
  },
  {
   "section": "Axillary Lymph Node Management（续7）",
@@ -1017,7 +1045,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "腋窝淋巴结管理（续7）",
+  "summary_zh": "SOUND试验评估小肿瘤患者省略前哨淋巴结活检，5年远处无病生存率非劣效。"
  },
  {
   "section": "Axillary Lymph Node Management（续8）",
@@ -1029,7 +1059,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "腋窝淋巴结管理（续8）",
+  "summary_zh": "INSEMA试验评估临床淋巴结阴性患者省略前哨淋巴结活检，局部及远处复发率低。"
  },
  {
   "section": "Axillary Lymph Node Management（续9）",
@@ -1041,7 +1073,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "腋窝淋巴结管理（续9）",
+  "summary_zh": "未手术组5年浸润性无病生存率非劣于活检组，且淋巴水肿更少、手臂活动更好。"
  },
  {
   "section": "Breast Reconstruction",
@@ -1053,7 +1087,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "乳房重建",
+  "summary_zh": "全乳切除患者可行即刻或延迟重建，包括假体植入或组织扩张器重建。"
  },
  {
   "section": "Breast Reconstruction（续2）",
@@ -1065,7 +1101,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "乳房重建（续2）",
+  "summary_zh": "假体或皮瓣重建可能影响美观与对称性，并增加包膜纤维化、疼痛及假体取出风险。"
  },
  {
   "section": "Current Clinical Trials",
@@ -1077,7 +1115,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "当前临床试验",
+  "summary_zh": "介绍NCI支持的乳腺癌临床试验检索工具，并列出相关参考文献。"
  },
  {
   "section": "Current Clinical Trials（续2）",
@@ -1089,7 +1129,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "当前临床试验（续2）",
+  "summary_zh": "列举高危淋巴结阴性乳腺癌辅助化疗及早期乳腺癌局部治疗研究文献。"
  },
  {
   "section": "Current Clinical Trials（续3）",
@@ -1101,7 +1143,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "当前临床试验（续3）",
+  "summary_zh": "汇总保乳治疗与乳房切除术随机试验长期随访结果文献。"
  },
  {
   "section": "Current Clinical Trials（续4）",
@@ -1113,7 +1157,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "当前临床试验（续4）",
+  "summary_zh": "收录早期乳腺癌保乳手术与根治性乳房切除术对比研究文献。"
  },
  {
   "section": "Current Clinical Trials（续5）",
@@ -1125,7 +1171,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "当前临床试验（续5）",
+  "summary_zh": "涉及肿瘤切缘评估指导保乳手术及放疗的预后研究文献。"
  },
  {
   "section": "Current Clinical Trials（续6）",
@@ -1137,7 +1185,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "当前临床试验（续6）",
+  "summary_zh": "涵盖腔周切缘及前哨淋巴结活检用于乳腺癌分期研究文献。"
  },
  {
   "section": "Current Clinical Trials（续7）",
@@ -1149,7 +1199,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "当前临床试验（续7）",
+  "summary_zh": "比较前哨淋巴结活检与腋窝清扫的多中心随机试验文献汇总。"
  },
  {
   "section": "Current Clinical Trials（续8）",
@@ -1161,7 +1213,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "当前临床试验（续8）",
+  "summary_zh": "涉及前哨淋巴结活检、省略腋窝手术及乳房重建研究文献。"
  },
  {
   "section": "Current Clinical Trials（续9）",
@@ -1173,7 +1227,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "当前临床试验（续9）",
+  "summary_zh": "收录乳房切除术后乳房重建及放疗剂量学研究文献。"
  },
  {
   "section": "Radiation Therapy for Breast Cancer",
@@ -1185,7 +1241,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "乳腺癌放射治疗",
+  "summary_zh": "放疗是保乳治疗标准组成，高危术后患者亦可考虑，旨在清除残留病灶。"
  },
  {
   "section": "Post–Breast-Conserving Surgery",
@@ -1197,7 +1255,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "保乳术后放疗",
+  "summary_zh": "保乳术后不放疗复发风险高，证据支持全乳放疗降低复发与死亡。"
  },
  {
   "section": "Post–Breast-Conserving Surgery（续2）",
@@ -1209,7 +1269,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "保乳术后放疗（续2）",
+  "summary_zh": "全乳放疗较单纯手术显著降低10年复发及15年乳腺癌死亡风险。"
  },
  {
   "section": "Post–Breast-Conserving Surgery（续3）",
@@ -1221,7 +1283,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "保乳术后放疗（续3）",
+  "summary_zh": "介绍全乳放疗剂量方案及瘤床加量可降低局部复发风险。"
  },
  {
   "section": "Post–Breast-Conserving Surgery（续4）",
@@ -1233,7 +1297,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "保乳术后放疗（续4）",
+  "summary_zh": "短程与常规全乳放疗10年局部区域复发率无劣效差异。"
  },
  {
   "section": "Post–Breast-Conserving Surgery（续5）",
@@ -1245,7 +1311,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "保乳术后放疗（续5）",
+  "summary_zh": "非劣效试验显示短程分次放疗局部复发率不劣于常规放疗。"
  },
  {
   "section": "Post–Breast-Conserving Surgery（续6）",
@@ -1257,7 +1325,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "保乳术后放疗（续6）",
+  "summary_zh": "荟萃分析证实短程与常规分次放疗在复发和美容效果上无显著差异。"
  },
  {
   "section": "Omission of radiation therapy for favorable, early-stage breast cancer",
@@ -1269,7 +1339,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": " favorable早期乳腺癌省略放疗",
+  "summary_zh": "老年早期激素受体阳性患者可安全省略放疗，但10年局部复发约增8%。"
  },
  {
   "section": "Omission of radiation therapy for favorable, early-stage breast cancer（续2）",
@@ -1281,7 +1353,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": " favorable早期乳腺癌省略放疗（续2）",
+  "summary_zh": "他莫昔芬联合放疗组10年局部区域无复发率98%，优于单用他莫昔芬。"
  },
  {
   "section": "Omission of radiation therapy for favorable, early-stage breast cancer（续3）",
@@ -1293,7 +1367,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": " favorable早期乳腺癌省略放疗（续3）",
+  "summary_zh": "65岁以上患者不放疗局部复发9.5%，放疗组0.9%，总生存相近。"
  },
  {
   "section": "Omission of radiation therapy for favorable, early-stage breast cancer（续4）",
@@ -1305,7 +1381,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": " favorable早期乳腺癌省略放疗（续4）",
+  "summary_zh": "两组10年总生存率几乎相同，不放疗组80.8%，放疗组80.7%。"
  },
  {
   "section": "Partial breast irradiation",
@@ -1317,7 +1395,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "部分乳腺照射",
+  "summary_zh": "RAPID试验比较外照射加速部分乳腺照射与全乳放疗的复发结果。"
  },
  {
   "section": "Partial breast irradiation（续2）",
