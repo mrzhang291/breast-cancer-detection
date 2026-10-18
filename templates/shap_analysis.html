@@ -1149,6 +1149,9 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/skin.css') }}">
 </head>
 <body>
+{% set active_nav = 'home' %}
+{% include '_topbar.html' %}
+
     <!-- 加载指示器 -->
     <div id="loadingIndicator">
         <div class="loading-content">

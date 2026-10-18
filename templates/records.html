@@ -322,6 +322,9 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/skin.css') }}">
 </head>
 <body>
+{% set active_nav = 'records' %}
+{% include '_topbar.html' %}
+
     <nav class="top-nav">
         <div class="nav-container">
             <a href="/" class="nav-logo">

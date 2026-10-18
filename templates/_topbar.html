@@ -1,0 +1,39 @@
+{% set nav = active_nav|default('') %}
+<header class="app-topbar">
+    <div class="app-topbar-inner">
+        <a class="app-logo" href="/">
+            <span class="app-logo-mark">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9"
+                     stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 21s7-4.5 7-10a4 4 0 0 0-7-2.6A4 4 0 0 0 5 11c0 5.5 7 10 7 10z"/>
+                </svg>
+            </span>
+            {{ _('breast_cancer_detection') }}
+        </a>
+
+        <nav class="app-nav">
+            <a class="{{ 'active' if nav == 'home' else '' }}" href="/">{{ _('home') }}</a>
+            <a class="{{ 'active' if nav == 'records' else '' }}" href="/records">{{ _('records') }}</a>
+            <a class="{{ 'active' if nav == 'batch' else '' }}" href="/batch">{{ _('batch') }}</a>
+            <a class="{{ 'active' if nav == 'trends' else '' }}" href="/trends">{{ _('trends') }}</a>
+        </nav>
+
+        <div class="app-actions">
+            {% if session.get('username') %}
+            <span class="app-user-btn"><i class="fa fa-user-circle"></i> {{ session.get('username') }}</span>
+            <a class="app-user-btn" href="/logout"><i class="fa fa-sign-out"></i> {{ _('logout') }}</a>
+            {% else %}
+            <a class="app-user-btn" href="/login">{{ _('login') }}</a>
+            {% endif %}
+            <div class="app-lang">
+                {% if is_chinese %}
+                <span class="active">{{ _('chinese') }}</span>
+                <a href="/set-lang/en">{{ _('english') }}</a>
+                {% else %}
+                <a href="/set-lang/zh">{{ _('chinese') }}</a>
+                <span class="active">{{ _('english') }}</span>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</header>

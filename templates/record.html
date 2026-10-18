@@ -135,6 +135,9 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/skin.css') }}">
 </head>
 <body>
+{% set active_nav = 'records' %}
+{% include '_topbar.html' %}
+
     <div class="container">
         <div class="lang-switch">
             {% if is_chinese %}

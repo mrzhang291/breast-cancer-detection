@@ -451,6 +451,9 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/skin.css') }}">
 </head>
 <body>
+{% set active_nav = 'batch' %}
+{% include '_topbar.html' %}
+
     <!-- 导航栏 -->
     <nav class="top-nav">
         <div class="nav-container">
