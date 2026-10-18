@@ -1026,6 +1026,52 @@ def features_page():
                            active_nav='features')
 
 
+@app.route('/api/knowledge/clauses')
+def api_knowledge_clauses():
+    """知识库分页查询：按域 + 关键词过滤。"""
+    if 'username' not in session:
+        return jsonify({'ok': False, 'error': '请先登录'}), 403
+
+    domain = (request.args.get('domain') or 'all').strip()
+    query = (request.args.get('q') or '').strip()
+    page = max(1, int(request.args.get('page', 1) or 1))
+    size = min(60, max(10, int(request.args.get('page_size', 40) or 40)))
+
+    from agent import db as _db
+    conn = _db.connect()
+    try:
+        where, params = [], []
+        if domain and domain != 'all':
+            where.append('domain = ?')
+            params.append(domain)
+        if query:
+            where.append('(section LIKE ? OR text LIKE ?)')
+            params.extend(['%%%s%%' % query, '%%%s%%' % query])
+        clause = (' WHERE ' + ' AND '.join(where)) if where else ''
+        total = conn.execute('SELECT COUNT(*) FROM rag_chunks' + clause, params).fetchone()[0]
+        rows = conn.execute(
+            'SELECT clause_id, doc_id, section, text, source, domain, meta_json'
+            ' FROM rag_chunks' + clause + ' ORDER BY doc_id, clause_id LIMIT ? OFFSET ?',
+            params + [size, (page - 1) * size]).fetchall()
+    finally:
+        conn.close()
+
+    items = []
+    for row in rows:
+        try:
+            meta = json.loads(row['meta_json'] or '{}')
+        except ValueError:
+            meta = {}
+        items.append({
+            'clause_id': row['clause_id'], 'doc_id': row['doc_id'],
+            'section': row['section'], 'text': row['text'], 'source': row['source'],
+            'domain': row['domain'] or meta.get('domain') or 'SYS',
+            'level': meta.get('level') or 0, 'url': meta.get('url') or '',
+        })
+    return jsonify({'ok': True, 'total': total, 'page': page, 'page_size': size,
+                    'has_more': page * size < total, 'clauses': items})
+
+
 @app.route('/knowledge')
 def knowledge_page():
     """知识库：RAG 条款总览与检索。"""
@@ -1039,8 +1085,7 @@ def knowledge_page():
             'SELECT doc_id, source, COUNT(*) AS clauses FROM rag_chunks'
             ' GROUP BY doc_id, source ORDER BY doc_id')]
         clauses = [dict(r) for r in conn.execute(
-            'SELECT clause_id, doc_id, section, text, source, meta_json FROM rag_chunks'
-            ' ORDER BY doc_id, clause_id')]
+            'SELECT domain, COUNT(*) AS c FROM rag_chunks GROUP BY domain')]
     finally:
         conn.close()
 
@@ -1050,20 +1095,11 @@ def knowledge_page():
     except Exception:  # noqa: BLE001
         rag_stats = {'chunks': len(clauses), 'vectors': 0, 'rerank': False}
 
-    domain_counts = {}
-    for clause in clauses:
-        try:
-            meta = json.loads(clause.pop('meta_json', '') or '{}')
-        except ValueError:
-            meta = {}
-        clause['domain'] = meta.get('domain') or 'SYS'
-        clause['level'] = meta.get('level') or 0
-        clause['url'] = meta.get('url') or ''
-        domain_counts[clause['domain']] = domain_counts.get(clause['domain'], 0) + 1
+    domain_counts = {row['domain'] or 'SYS': row['c'] for row in clauses}
 
-    return render_template('knowledge.html', docs=docs, clauses=clauses,
-                           total=len(clauses), rag_stats=rag_stats,
-                           domain_counts=domain_counts)
+    total = sum(domain_counts.values())
+    return render_template('knowledge.html', docs=docs, total=total,
+                           rag_stats=rag_stats, domain_counts=domain_counts)
 
 
 @app.route('/records')

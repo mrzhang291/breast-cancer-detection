@@ -77,6 +77,12 @@ def _conn() -> sqlite3.Connection:
     return conn
 
 
+def _ensure_domain_column(conn) -> None:
+    cols = [row[1] for row in conn.execute('PRAGMA table_info(rag_chunks)')]
+    if 'domain' not in cols:
+        conn.execute('ALTER TABLE rag_chunks ADD COLUMN domain TEXT')
+        conn.commit()
+
 def rebuild() -> Dict:
     """重建索引：清空 -> 写入条款 -> 写倒排。"""
     from . import corpus
@@ -86,17 +92,19 @@ def rebuild() -> Dict:
 
     conn = _conn()
     try:
+        _ensure_domain_column(conn)
         conn.execute('DELETE FROM rag_chunks')
         conn.execute('DELETE FROM rag_terms')
 
         for chunk in chunks:
             conn.execute(
                 'INSERT OR REPLACE INTO rag_chunks'
-                ' (clause_id, doc_id, source, version, section, text, meta_json)'
-                ' VALUES (?,?,?,?,?,?,?)',
+                ' (clause_id, doc_id, source, version, section, text, meta_json, domain)'
+                ' VALUES (?,?,?,?,?,?,?,?)',
                 (chunk['clause_id'], chunk['doc_id'], chunk['source'],
                  chunk['version'], chunk['section'], chunk['text'],
-                 json.dumps(chunk.get('meta', {}), ensure_ascii=False)),
+                 json.dumps(chunk.get('meta', {}), ensure_ascii=False),
+                 chunk.get('meta', {}).get('domain', '')),
             )
             counts: Dict[str, int] = {}
             for token in tokenize(chunk['section'] + ' ' + chunk['text']):
