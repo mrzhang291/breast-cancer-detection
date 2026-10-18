@@ -99,6 +99,11 @@ def export_report(ctx, kind='single', days=None, limit=None):
 
     context = ctx.context or {}
 
+    if kind == 'single' and not _payload_of(ctx, 'prediction'):
+        return registry.ToolResult(ok=False,
+                                   error='当前没有预测结果，先在首页做一次预测再生成报告',
+                                   error_type='empty')
+
     series = stats = None
     if kind == 'range':
         series, stats = _collect_range(ctx, days, limit)
