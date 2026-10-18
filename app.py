@@ -2201,16 +2201,6 @@ def api_agent_run_sync():
     result['steps'] = result.get('steps', [])
     if result.get('clarify'):
         result['clarify'] = result['clarify']
-    try:
-        _agent_db.update_run(ctx.run_id, intent='llm_agent', status='ok',
-                             answer_md=result.get('answer_md') or '',
-                             artifacts_json=json.dumps(result.get('artifacts') or [],
-                                                       ensure_ascii=False),
-                             latency_ms=int(result.get('latency_ms') or 0))
-    except Exception:  # noqa: BLE001
-        app.logger.exception('llm agent 落库失败')
-
-    result['run_id'] = ctx.run_id
     return jsonify({'ok': True, 'result': result})
 
 
@@ -2262,6 +2252,16 @@ def api_agent_llm():
             'hint': '在服务器 .env 里设置 DEEPSEEK_API_KEY 并重启服务',
         }), 503
 
+    try:
+        _agent_db.update_run(ctx.run_id, intent='llm_agent', status='ok',
+                             answer_md=result.get('answer_md') or '',
+                             artifacts_json=json.dumps(result.get('artifacts') or [],
+                                                       ensure_ascii=False),
+                             latency_ms=int(result.get('latency_ms') or 0))
+    except Exception:  # noqa: BLE001
+        app.logger.exception('llm agent 落库失败')
+
+    result['run_id'] = ctx.run_id
     return jsonify({'ok': True, 'result': result})
 
 
