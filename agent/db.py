@@ -391,3 +391,12 @@ def list_messages(session_id: str, limit: int = 40):
         return items
     finally:
         conn.close()
+
+def update_session_title(session_id: str, title: str) -> None:
+    conn = connect()
+    try:
+        conn.execute('UPDATE agent_sessions SET title = ? WHERE id = ?',
+                     ((title or '')[:40], session_id))
+        conn.commit()
+    finally:
+        conn.close()
