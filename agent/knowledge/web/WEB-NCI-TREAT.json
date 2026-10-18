@@ -2529,7 +2529,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂（续7）",
+  "summary_zh": "比较阿那曲唑联合他莫昔芬与他莫昔芬单药辅助治疗，联合组无DFS获益，阿那曲唑单药DFS显著优于他莫昔芬。"
  },
  {
   "section": "Aromatase inhibitors（续8）",
@@ -2541,7 +2543,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂（续8）",
+  "summary_zh": "中位随访100个月，激素受体阳性患者阿那曲唑DFS显著延长，但OS未改善；他莫昔芬组子宫内膜癌更多。"
  },
  {
   "section": "Aromatase inhibitors（续9）",
@@ -2553,7 +2557,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂（续9）",
+  "summary_zh": "IBCSG-1-98研究显示来曲唑5年DFS显著优于他莫昔芬，但两组OS无显著差异。"
  },
  {
   "section": "Aromatase inhibitors（续10）",
@@ -2565,7 +2571,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂（续10）",
+  "summary_zh": "10年总死亡率由24.0%降至21.3%；多项试验表明他莫昔芬序贯AI优于继续他莫昔芬5年。"
  },
  {
   "section": "Aromatase inhibitors（续11）",
@@ -2577,7 +2585,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂（续11）",
+  "summary_zh": "他莫昔芬2年后换用阿那曲唑3年，EFS显著改善但OS无差异。"
  },
  {
   "section": "Aromatase inhibitors（续12）",
@@ -2589,7 +2599,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂（续12）",
+  "summary_zh": "依西美坦换药组DFS显著优于继续他莫昔芬，HR 0.76，OS无显著差异。"
  },
  {
   "section": "Aromatase inhibitors（续13）",
@@ -2601,7 +2613,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂（续13）",
+  "summary_zh": "10年总死亡率AI组低于他莫昔芬组；证据显示他莫昔芬序贯AI5年不优于AI单药5年。"
  },
  {
   "section": "Aromatase inhibitors（续14）",
@@ -2613,7 +2627,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂（续14）",
+  "summary_zh": "两个序贯治疗组与来曲唑5年相比DFS均无差异。"
  },
  {
   "section": "Aromatase inhibitors（续15）",
@@ -2625,7 +2641,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂（续15）",
+  "summary_zh": "7年复发率AI组略低，总死亡率无显著差异；MA27试验比较依西美坦与阿那曲唑。"
  },
  {
   "section": "Aromatase inhibitors（续16）",
@@ -2637,7 +2655,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂（续16）",
+  "summary_zh": "依西美坦与阿那曲唑疗效无差异；FACE研究显示来曲唑与阿那曲唑DFS无显著差异。"
  },
  {
   "section": "Aromatase inhibitors（续17）",
@@ -2649,7 +2669,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂（续17）",
+  "summary_zh": "三种AI的5年DFS无显著差异；证据显示他莫昔芬5年后换用AI优于停药。"
  },
  {
   "section": "Aromatase inhibitors（续18）",
@@ -2661,7 +2683,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂（续18）",
+  "summary_zh": "来曲唑组复发或新原发灶比例低于安慰剂组，远处DFS显著改善。"
  },
  {
   "section": "Aromatase inhibitors（续19）",
@@ -2673,7 +2697,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂（续19）",
+  "summary_zh": "随访3年来曲唑组复发率4.8%低于安慰剂9.8%，远处DFS显著改善。"
  },
  {
   "section": "Aromatase inhibitors（续20）",
@@ -2685,7 +2711,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂（续20）",
+  "summary_zh": "依西美坦意向治疗分析DFS获益未达统计学显著；AI最佳疗程尚不确定。"
  },
  {
   "section": "Aromatase inhibitors（续21）",
@@ -2697,7 +2725,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂（续21）",
+  "summary_zh": "延长来曲唑治疗DFS显著改善，5年DFS由91%升至95%，但骨折更多，OS无差异。"
  },
  {
   "section": "Aromatase inhibitors（续22）",
@@ -2709,7 +2739,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂（续22）",
+  "summary_zh": "延长来曲唑DFS显著改善，OS无差异，骨折发生率更高，生活质量总体无组间差异。"
  },
  {
   "section": "Aromatase inhibitors（续23）",
@@ -2721,7 +2753,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂（续23）",
+  "summary_zh": "AI治疗5年后追加2.5年来曲唑与继续5年相比，DFS事件相似，无额外获益。"
  },
  {
   "section": "Aromatase inhibitors（续24）",
@@ -2733,7 +2767,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂（续24）",
+  "summary_zh": "NSABP-B42研究显示延长来曲唑7年DFS略优，但校正 interim 分析后未达显著。"
  },
  {
   "section": "Aromatase inhibitors（续25）",
@@ -2745,7 +2781,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂（续25）",
+  "summary_zh": "SOLE研究显示间歇性来曲唑方案与持续5年相比DFS无优势，不良事件频率相似。"
  },
  {
   "section": "Aromatase inhibitors（续26）",
@@ -2757,7 +2795,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂（续26）",
+  "summary_zh": "延长治疗组DFS改善但未达统计学显著，肌痛和骨质疏松更常见。"
  },
  {
   "section": "Aromatase inhibitors（续27）",
@@ -2769,7 +2809,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂（续27）",
+  "summary_zh": "延长治疗组12年OS率88%对84%，DFS率67%对62%，关节痛肌痛略增。"
  },
  {
   "section": "Aromatase inhibitors（续28）",
@@ -2781,7 +2823,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂（续28）",
+  "summary_zh": "ABCSG-16研究比较阿那曲唑2年与5年延长治疗，主要终点为DFS。"
  },
  {
   "section": "Aromatase inhibitors（续29）",
@@ -2793,7 +2837,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂（续29）",
+  "summary_zh": "2年与5年延长治疗DFS无差异，5年组骨折趋势略增。"
  },
  {
   "section": "Aromatase inhibitors（续30）",
@@ -2805,7 +2851,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂（续30）",
+  "summary_zh": "日本试验显示继续阿那曲唑改善DFS，但远处DFS与OS无差异。"
  },
  {
   "section": "Endocrine therapy and cyclin-dependent kinase (CDK) inhibitor therapy",
@@ -2817,7 +2865,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "内分泌治疗与CDK抑制剂治疗",
+  "summary_zh": "CDK4/6抑制剂联合内分泌治疗获批晚期乳腺癌，阿贝西利为辅助治疗唯一获批者。"
  },
  {
   "section": "Endocrine therapy and cyclin-dependent kinase (CDK) inhibitor therapy（续2）",
@@ -2829,7 +2879,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "内分泌治疗与CDK抑制剂治疗（续2）",
+  "summary_zh": "monarchE研究显示阿贝西利联合内分泌治疗显著改善IDFS和DRFS，OS无显著差异。"
  },
  {
   "section": "Endocrine therapy and cyclin-dependent kinase (CDK) inhibitor therapy（续3）",
@@ -2841,7 +2893,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "内分泌治疗与CDK抑制剂治疗（续3）",
+  "summary_zh": "阿贝西利组68.1%因不良事件调整剂量，16.6%停药。"
  },
  {
   "section": "Endocrine therapy and cyclin-dependent kinase (CDK) inhibitor therapy（续4）",
@@ -2853,7 +2907,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "内分泌治疗与CDK抑制剂治疗（续4）",
+  "summary_zh": "瑞波西利联合非甾体AI显著改善3年IDFS（90.4%对87.1%）。"
  },
  {
   "section": "Endocrine therapy and cyclin-dependent kinase (CDK) inhibitor therapy（续5）",
@@ -2865,7 +2921,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "内分泌治疗与CDK抑制剂治疗（续5）",
+  "summary_zh": "瑞波西利组中性粒细胞减少和肝脏事件更常见，探索性终点倾向获益。"
  },
  {
   "section": "Endocrine therapy and cyclin-dependent kinase (CDK) inhibitor therapy（续6）",
@@ -2877,7 +2935,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "内分泌治疗与CDK抑制剂治疗（续6）",
+  "summary_zh": "哌柏西利辅助治疗未显著改善IDFS，因无效提前终止。"
  },
  {
   "section": "Endocrine therapy and cyclin-dependent kinase (CDK) inhibitor therapy（续7）",
@@ -2889,7 +2949,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "内分泌治疗与CDK抑制剂治疗（续7）",
+  "summary_zh": "哌柏西利组中性粒细胞和白细胞减少更常见，无治疗相关死亡。"
  },
  {
   "section": "Bone-Modifying Therapy for Stages I, II, and III Breast Cancer",
@@ -2901,7 +2963,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "I、II、III期乳腺癌的骨改良治疗",
+  "summary_zh": "双膦酸盐和地舒单抗辅助治疗作用不明确，双膦酸盐证据更多且可降低死亡率。"
  },
  {
   "section": "Bone-Modifying Therapy for Stages I, II, and III Breast Cancer（续2）",
@@ -2913,7 +2977,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "I、II、III期乳腺癌的骨改良治疗（续2）",
+  "summary_zh": "绝经后女性双膦酸盐显著降低复发、远处复发、骨复发及乳腺癌死亡。"
  },
  {
   "section": "Bone-Modifying Therapy for Stages I, II, and III Breast Cancer（续3）",
@@ -2925,7 +2991,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "I、II、III期乳腺癌的骨改良治疗（续3）",
+  "summary_zh": "地舒单抗改善5年DFS（89.2%对87.3%），不良事件频率相似。"
  },
  {
   "section": "Bone-Modifying Therapy for Stages I, II, and III Breast Cancer（续4）",
@@ -2937,7 +3005,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "I、II、III期乳腺癌的骨改良治疗（续4）",
+  "summary_zh": "骨转移无生存期无显著差异；SUCCESS试验比较唑来膦酸2年与5年疗程。"
  },
  {
   "section": "Bone-Modifying Therapy for Stages I, II, and III Breast Cancer（续5）",
@@ -2949,7 +3019,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "I、II、III期乳腺癌的骨改良治疗（续5）",
+  "summary_zh": "2年与5年唑来膦酸DFS和OS相似，最佳疗程仍未确定。"
  },
  {
   "section": "Adjuvant PARP Inhibitors for Patients with Germline BRCA1 and BRCA2 Variants",
@@ -2961,7 +3033,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "胚系BRCA1/2变异患者的辅助PARP抑制剂",
+  "summary_zh": "OlympiA研究评估奥拉帕利辅助治疗胚系BRCA变异HER2阴性乳腺癌。"
  },
  {
   "section": "Adjuvant PARP Inhibitors for Patients with Germline BRCA1 and BRCA2 Variants（续2）",
@@ -2973,7 +3047,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "胚系BRCA1/2变异患者的辅助PARP抑制剂（续2）",
+  "summary_zh": "研究纳入高危早期乳腺癌，主要终点为无浸润性疾病生存。"
  },
  {
   "section": "Adjuvant PARP Inhibitors for Patients with Germline BRCA1 and BRCA2 Variants（续3）",
@@ -2985,7 +3061,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "胚系BRCA1/2变异患者的辅助PARP抑制剂（续3）",
+  "summary_zh": "奥拉帕利显著改善IDFS，OS差异未达预设显著性，贫血等不良事件增加。"
  },
  {
   "section": "Adjuvant PARP Inhibitors for Patients with Germline BRCA1 and BRCA2 Variants（续4）",
@@ -2997,7 +3075,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "胚系BRCA1/2变异患者的辅助PARP抑制剂（续4）",
+  "summary_zh": "奥拉帕利治疗期间恶心、呕吐和食欲下降评分显著增加。"
  },
  {
   "section": "Adjuvant PARP Inhibitors for Patients with Germline BRCA1 and BRCA2 Variants（续5）",
@@ -3009,7 +3089,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "胚系BRCA1/2突变患者辅助PARP抑制剂（续5）",
+  "summary_zh": "奥拉帕利显著改善IDFS和无远处复发生存，OS有改善趋势但未达预设显著性界值。"
  },
  {
   "section": "Adjuvant PARP Inhibitors for Patients with Germline BRCA1 and BRCA2 Variants（续6）",
@@ -3021,7 +3103,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "胚系BRCA1/2突变患者辅助PARP抑制剂（续6）",
+  "summary_zh": "奥拉帕利组疲劳显著增加但未达临床意义，恶心呕吐及食欲下降轻度增加且具临床意义。"
  },
  {
   "section": "Stages I, II, and III Triple-Negative Breast Cancer (TNBC)",
@@ -3033,7 +3117,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "I、II、III期三阴性乳腺癌",
+  "summary_zh": "三阴性乳腺癌指ER、PR、HER2均无表达，对曲妥珠单抗及内分泌治疗不敏感。"
  },
  {
   "section": "Preoperative therapy for TNBC",
@@ -3045,7 +3131,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "三阴性乳腺癌术前治疗",
+  "summary_zh": "三阴性乳腺癌常行术前全身治疗，蒽环/紫杉类联合卡铂可提高pCR率。"
  },
  {
   "section": "Preoperative therapy for TNBC（续2）",
@@ -3057,7 +3145,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "三阴性乳腺癌术前治疗（续2）",
+  "summary_zh": "加卡铂提高pCR率及3年DFS，但BRCA突变者pCR未进一步提高，且毒性增加。"
  },
  {
   "section": "Preoperative therapy for TNBC（续3）",
@@ -3069,7 +3159,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "三阴性乳腺癌术前治疗（续3）",
+  "summary_zh": "蒽环/紫杉类加卡铂组乳腺及腋窝pCR率54%，优于单纯化疗组41%。"
  },
  {
   "section": "Preoperative therapy for TNBC（续4）",
@@ -3081,7 +3173,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "三阴性乳腺癌术前治疗（续4）",
+  "summary_zh": "帕博利珠单抗联合新辅助化疗提高pCR及EFS，获益不依赖PD-L1状态。"
  },
  {
   "section": "Preoperative therapy for TNBC（续5）",
@@ -3093,7 +3187,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "三阴性乳腺癌术前治疗（续5）",
+  "summary_zh": "帕博利珠单抗组36个月EFS率84.5%优于安慰剂组76.8%，EFS数据尚不成熟。"
  },
  {
   "section": "Postoperative therapy for TNBC",
@@ -3105,7 +3201,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "三阴性乳腺癌术后治疗",
+  "summary_zh": "先手术者通常行辅助联合化疗，PATTERN试验提示非蒽环方案可能适用。"
  },
  {
   "section": "Postoperative therapy for TNBC（续2）",
@@ -3117,7 +3215,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "三阴性乳腺癌术后治疗（续2）",
+  "summary_zh": "PCb与CEF-T方案DFS无显著差异，OS亦无差异；卡培他滨辅助治疗可提高DFS。"
  },
  {
   "section": "Postoperative therapy for TNBC（续3）",
@@ -3129,7 +3229,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "三阴性乳腺癌术后治疗（续3）",
+  "summary_zh": "卡培他滨维持治疗5年DFS率82.5%优于观察组73.0%，手足综合征较常见。"
  },
  {
   "section": "Postoperative therapy for TNBC（续4）",
@@ -3141,7 +3243,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "三阴性乳腺癌术后治疗（续4）",
+  "summary_zh": "卡培他滨组5年DFS及OS均优于无进一步化疗组，激素受体阴性者OS获益显著。"
  },
  {
   "section": "Postoperative therapy for TNBC（续5）",
@@ -3153,7 +3257,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "三阴性乳腺癌术后治疗（续5）",
+  "summary_zh": "术前治疗后残留病灶者应考虑卡培他滨，亦可参加新疗法临床试验。"
  },
  {
   "section": "Postoperative therapy for TNBC（续6）",
@@ -3165,7 +3271,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "三阴性乳腺癌术后治疗（续6）",
+  "summary_zh": "ALEXANDRA/IMpassion030试验因无效提前终止，术后化疗加阿替利珠单抗无获益。"
  },
  {
   "section": "Stages I, II, and III HER2-Positive Breast Cancer",
@@ -3177,7 +3285,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "I、II、III期HER2阳性乳腺癌",
+  "summary_zh": "HER2阳性且激素受体阳性患者应按HER2阴性激素受体阳性章节接受内分泌治疗。"
  },
  {
   "section": "Preoperative therapy for HER2-positive breast cancer",
@@ -3189,7 +3299,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HER2阳性乳腺癌术前治疗",
+  "summary_zh": "II期研究提示蒽环/紫杉类术前方案加曲妥珠单抗可提高pCR率，III期研究证实。"
  },
  {
   "section": "Preoperative therapy for HER2-positive breast cancer（续2）",
@@ -3201,7 +3313,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HER2阳性乳腺癌术前治疗（续2）",
+  "summary_zh": "NOAH研究证实加曲妥珠单抗改善EFS，EFS与pCR强相关，心脏事件少见。"
  },
  {
   "section": "Preoperative therapy for HER2-positive breast cancer（续3）",
@@ -3213,7 +3327,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HER2阳性乳腺癌术前治疗（续3）",
+  "summary_zh": "曲妥珠单抗组EFS的HR为0.64，密切监测LVEF并限制多柔比星剂量可减少心脏事件。"
  },
  {
   "section": "Preoperative therapy for HER2-positive breast cancer（续4）",
@@ -3225,7 +3341,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HER2阳性乳腺癌术前治疗（续4）",
+  "summary_zh": "序贯与同期曲妥珠单抗pCR、DFS及OS均无差异，不支持与蒽环类同期给药。"
  },
  {
   "section": "Preoperative therapy for HER2-positive breast cancer（续5）",
@@ -3237,7 +3355,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HER2阳性乳腺癌术前治疗（续5）",
+  "summary_zh": "曲妥珠单抗皮下制剂已获批，SafeHer及HannaH试验评估其安全性与疗效。"
  },
  {
   "section": "Preoperative therapy for HER2-positive breast cancer（续6）",
