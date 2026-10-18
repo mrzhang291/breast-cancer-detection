@@ -414,6 +414,28 @@ def get_local_answer(prompt: str) -> str:
 			return '感谢您的提问！本系统专注于乳腺癌预测相关领域。如果您有关于乳腺癌的问题，我很乐意为您解答。重要提示：本系统提供的信息仅供参考，不能替代专业医疗建议。'
 
 
+def _save_batch(results):
+    """批量结果存服务端（cookie 放不下 30×N 的浮点数组）。"""
+    from agent import db as _db
+    user_id = str(session.get('user_id', session.get('username')))
+    batch_id = _db.save_batch(user_id, results)
+    session['batch_id'] = batch_id
+    session.pop('batch_results', None)
+    return batch_id
+
+
+def _batch_results():
+    batch_id = session.get('batch_id')
+    if not batch_id:
+        return None
+    from agent import db as _db
+    return _db.get_batch(batch_id, str(session.get('user_id', session.get('username'))))
+
+def _cjk_font():
+    """返回内置中文字体路径（服务器没有系统 CJK 字体）。"""
+    return os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                        'static', 'fonts', 'NotoSansSC-Regular.otf')
+
 app = Flask(__name__)
 app.url_map.strict_slashes = False
 app.secret_key = os.environ.get('APP_SECRET_KEY', 'change_this_secret_key')
@@ -447,13 +469,13 @@ def set_lang(lang):
 			return redirect('/result')
 	# 如果referrer是/batch-predict（POST-only路由），检查是否有批量预测结果
 	if referrer and referrer.endswith('/batch-predict'):
-		batch_results = session.get('batch_results')
+		batch_results = _batch_results()
 		if batch_results:
 			return redirect('/batch-results')
 		return redirect('/batch')
 	# 如果referrer是/batch-results页面，且有批量预测数据，保持在结果页面
 	if referrer and referrer.endswith('/batch-results'):
-		batch_results = session.get('batch_results')
+		batch_results = _batch_results()
 		if batch_results:
 			return redirect('/batch-results')
 	return redirect(referrer)
@@ -1190,7 +1212,7 @@ def export_records_pdf():
         
         # 尝试加载中文字体，支持多种路径
         font_paths = [
-            'C:\\Windows\\Fonts\\simhei.ttf',
+            _cjk_font(),
             'C:\\Windows\\Fonts\\simsun.ttc',
             '/usr/share/fonts/truetype/wqy/wqy-microhei.ttc',
             '/Library/Fonts/SimHei.ttf'
@@ -1350,10 +1372,9 @@ def batch_results():
     if 'username' not in session:
         return redirect('/login')
     
-    if 'batch_results' not in session:
+    results = _batch_results()
+    if not results:
         return redirect('/batch')
-    
-    results = session['batch_results']
     return render_template('batch_results.html', results=results)
 
 
@@ -1578,7 +1599,7 @@ def batch_predict():
                     })
         
         # 保存批量结果到session
-        session['batch_results'] = results
+        _save_batch(results)
 
         # 将批量预测记录上传到管理后台
         username = session.get('username', 'anonymous')
@@ -1634,7 +1655,7 @@ def export_pdf(record_id):
     pdf.add_page()
     
     # 设置中文字体
-    pdf.add_font('SimHei', '', 'C:\\Windows\\Fonts\\simhei.ttf', uni=True)
+    pdf.add_font('SimHei', '', _cjk_font(), uni=True)
     pdf.set_font('SimHei', '', 12)
     
     # 标题
@@ -1708,11 +1729,10 @@ def export_pdf_batch(index):
     if 'username' not in session:
         return redirect('/login')
     
-    if 'batch_results' not in session:
-        print(f"ERROR: batch_results not in session")
+    results = _batch_results()
+    if not results:
+        print("ERROR: batch results missing")
         return redirect('/batch')
-    
-    results = session['batch_results']
     print(f"batch_results length: {len(results)}, requested index: {index}")
     
     if index < 0 or index >= len(results):
@@ -1730,7 +1750,7 @@ def export_pdf_batch(index):
     pdf.add_page()
     
     # 设置中文字体
-    pdf.add_font('SimHei', '', 'C:\\Windows\\Fonts\\simhei.ttf', uni=True)
+    pdf.add_font('SimHei', '', _cjk_font(), uni=True)
     pdf.set_font('SimHei', '', 12)
     
     # 标题
@@ -1802,15 +1822,14 @@ def export_batch_results():
     if 'username' not in session:
         return redirect('/login')
 
-    if 'batch_results' not in session:
+    results = _batch_results()
+    if not results:
         return redirect('/batch')
-
-    results = session['batch_results']
 
     pdf = FPDF()
     pdf.add_page()
 
-    pdf.add_font('SimHei', '', 'C:\\Windows\\Fonts\\simhei.ttf', uni=True)
+    pdf.add_font('SimHei', '', _cjk_font(), uni=True)
     pdf.set_font('SimHei', '', 16)
     pdf.cell(0, 20, '乳腺癌批量检测报告', 0, 1, 'C')
 

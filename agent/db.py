@@ -53,6 +53,13 @@ CREATE TABLE IF NOT EXISTS rag_chunks (
     meta_json TEXT
 );
 
+CREATE TABLE IF NOT EXISTS batch_results (
+    batch_id TEXT PRIMARY KEY,
+    user_id TEXT,
+    payload_json TEXT,
+    created_at TEXT DEFAULT (datetime('now', 'localtime'))
+);
+
 CREATE TABLE IF NOT EXISTS answer_cache (
     cache_key TEXT PRIMARY KEY,
     question TEXT,
@@ -433,3 +440,34 @@ def session_stats(user_id: str, days: int = 30):
         }
     finally:
         conn.close()
+
+def save_batch(user_id: str, results) -> str:
+    import uuid
+    batch_id = uuid.uuid4().hex[:16]
+    conn = connect()
+    try:
+        conn.execute('INSERT INTO batch_results (batch_id, user_id, payload_json)'
+                     ' VALUES (?,?,?)',
+                     (batch_id, str(user_id), json.dumps(results, ensure_ascii=False)))
+        conn.commit()
+        return batch_id
+    finally:
+        conn.close()
+
+
+def get_batch(batch_id: str, user_id: str = None):
+    conn = connect()
+    try:
+        row = conn.execute('SELECT user_id, payload_json FROM batch_results WHERE batch_id = ?',
+                           (batch_id,)).fetchone()
+    finally:
+        conn.close()
+    if not row:
+        return None
+    if user_id is not None and str(row['user_id']) != str(user_id):
+        return None
+    try:
+        return json.loads(row['payload_json'])
+    except ValueError:
+        return None
+
