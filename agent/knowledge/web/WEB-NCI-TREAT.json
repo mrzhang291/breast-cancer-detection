@@ -3531,7 +3531,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "mTOR抑制剂联合内分泌治疗",
+  "summary_zh": "mTOR抑制剂联合内分泌治疗毒性类似既往研究，OS无差异；地塞米松漱口液可降低依西美坦联合依维莫司相关口腔炎发生率。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-222",
@@ -3545,7 +3547,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "AKT抑制剂治疗",
+  "summary_zh": "AKT1激活变异见于5%-10%晚期乳腺癌，PIK3CA/AKT/PTEN通路过度激活约见于半数HER2阴性激素受体阳性乳腺癌，卡匹色替为泛AKT抑制剂。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-223",
@@ -3559,7 +3563,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "AKT抑制剂治疗",
+  "summary_zh": "CAPItello-291显示卡匹色替联合氟维司群在通路改变人群显著改善PFS，常见≥3级不良事件为皮疹和腹泻。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-224",
@@ -3573,7 +3579,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "AKT抑制剂治疗",
+  "summary_zh": "通路改变人群卡匹色替联合氟维司群中位PFS 7.3个月对3.1个月，HR 0.50；基于该试验FDA批准该联合方案。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-225",
@@ -3587,7 +3595,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "阿培利司联合内分泌治疗",
+  "summary_zh": "约40%HER2阴性激素受体阳性乳腺癌存在PIK3CA激活变异，阿培利司为α特异性PIK3CA抑制剂，SOLAR-1评估其联合氟维司群疗效。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-226",
@@ -3601,7 +3611,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "阿培利司联合内分泌治疗",
+  "summary_zh": "PIK3CA变异人群阿培利司联合氟维司群中位PFS 11个月，无变异人群无差异；常见高血糖、腹泻、恶心、厌食和皮疹，需监测血糖。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-227",
@@ -3615,7 +3627,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "阿培利司联合内分泌治疗",
+  "summary_zh": "无PIK3CA变异者两臂PFS无差异，OS数据未成熟；常见毒性包括高血糖、腹泻、恶心、厌食和皮疹，用药需监测管理高血糖。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-228",
@@ -3629,7 +3643,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "艾拉司群",
+  "summary_zh": "艾拉司群为口服选择性ER降解剂，可降解ERα并抑制ESR1变异细胞的雌激素非依赖激活，EMERALD试验评估其用于ER阳性HER2阴性转移性乳腺癌。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-229",
@@ -3643,7 +3659,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "艾拉司群",
+  "summary_zh": "EMERALD显示艾拉司群较标准治疗改善PFS，ESR1变异者6个月PFS率40.8%对19.1%，12个月26.8%对8.2%。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-230",
@@ -3657,7 +3675,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HDAC抑制剂治疗",
+  "summary_zh": "表观遗传修饰可致内分泌耐药，HDAC抑制剂恩替诺特可下调雌激素非依赖生长因子通路并正常化ER水平，但III期试验未显示获益。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-231",
@@ -3671,7 +3691,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "单药内分泌治疗",
+  "summary_zh": "靶向联合内分泌治疗具PFS和OS优势，单药内分泌治疗多用于特定一线及靶向后化疗前仍内分泌敏感者，常用他莫昔芬、AI和氟维司群。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-232",
@@ -3685,7 +3707,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "单药内分泌治疗",
+  "summary_zh": "氟维司群为选择性ER降解剂，FALCON试验比较其与阿那曲唑一线治疗晚期受体阳性乳腺癌，氟维司群组中位PFS 16.6个月。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-233",
@@ -3699,7 +3723,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "单药内分泌治疗",
+  "summary_zh": "FALCON显示氟维司群中位PFS 16.6个月对阿那曲唑13.8个月（HR 0.797），不良事件和生活质量相似，OS未报告。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-234",
@@ -3713,7 +3739,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "单药内分泌治疗",
+  "summary_zh": "两项随机试验显示他莫昔芬进展后氟维司群与阿那曲唑PFS相似；EFECT比较氟维司群负荷剂量与依西美坦。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-235",
@@ -3727,7 +3755,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "单药内分泌治疗",
+  "summary_zh": "EFECT显示两组中位至进展时间均3.7个月（HR 0.93），不良事件和生活质量相似；CONFIRM比较氟维司群500mg与250mg。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-236",
@@ -3741,7 +3771,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "单药内分泌治疗",
+  "summary_zh": "CONFIRM显示氟维司群高剂量组PFS显著更优（HR 0.80），两臂不良事件和生活质量相似；氟维司群联合阿那曲唑试验结果不一。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-237",
@@ -3755,7 +3787,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "单药内分泌治疗",
+  "summary_zh": "SWOG-0226显示AI联合氟维司群较单药显著改善PFS（HR 0.80）和OS（HR 0.81），长期随访获益持续。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-238",
@@ -3769,7 +3803,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "激素受体阳性转移性乳腺癌的序贯治疗",
+  "summary_zh": "激素受体阳性转移性乳腺癌最佳序贯未知，无内脏危象者多先序贯内分泌治疗再化疗，一线首选CDK4/6抑制剂联合内分泌治疗。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-239",
@@ -3783,7 +3819,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "戈沙妥珠单抗",
+  "summary_zh": "戈沙妥珠单抗为抗TROP2抗体偶联伊立替康活性代谢物SN-38的药物，TROP2在HER2阴性ER阳性乳腺癌高表达，TROPiCS-02评估其疗效。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-240",
@@ -3797,7 +3835,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "戈沙妥珠单抗",
+  "summary_zh": "TROPiCS-02显示戈沙妥珠单抗中位PFS 5.5个月对化疗4.0个月，常见≥3级不良事件为中性粒细胞减少和腹泻，OS未成熟。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-241",
@@ -3811,7 +3851,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "转移性HER2低表达乳腺癌",
+  "summary_zh": "约60%的HER2阴性转移性乳腺癌为HER2低表达，德曲妥珠单抗在此亚组显示潜在疗效。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-242",
@@ -3825,7 +3867,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "转移性HER2低表达乳腺癌",
+  "summary_zh": "德曲妥珠单抗组中位PFS 9.9个月、OS 23.4个月，均优于医生选择化疗组。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-243",
@@ -3839,7 +3883,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "转移性HER2低表达乳腺癌",
+  "summary_zh": "激素受体阳性队列中德曲妥珠单抗PFS 10.1个月、OS 23.9个月，优于化疗。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-244",
@@ -3853,7 +3899,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "转移性HER2低表达乳腺癌",
+  "summary_zh": "DESTINY-Breast06试验纳入HER2低表达及超低表达ER阳性转移性乳腺癌患者。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-245",
@@ -3867,7 +3915,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "转移性HER2低表达乳腺癌",
+  "summary_zh": "HER2低表达患者中德曲妥珠单抗中位PFS 13.2个月，优于化疗的8.1个月。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-246",
@@ -3881,7 +3931,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "转移性HER2低表达乳腺癌",
+  "summary_zh": "选用该药需医患共同权衡疾病生物学、毒性风险及费用与保险覆盖。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-247",
@@ -3895,7 +3947,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "化疗联合免疫治疗",
+  "summary_zh": "PD-L1 CPS≥10的转移性TNBC一线标准治疗为化疗联合帕博利珠单抗。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-248",
@@ -3909,7 +3963,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "化疗联合免疫治疗",
+  "summary_zh": "KEYNOTE-355显示CPS≥10者帕博利珠单抗联合化疗PFS获益，获FDA批准。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-249",
@@ -3923,7 +3979,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "化疗联合免疫治疗",
+  "summary_zh": "CPS≥10组总生存显著改善，3-5级治疗相关不良事件发生率与对照组相近。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-250",
@@ -3937,7 +3995,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "化疗联合免疫治疗",
+  "summary_zh": "帕博利珠单抗疗效随PD-L1富集而增强，CPS≥10人群PFS获益最明显。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-251",
@@ -3951,7 +4011,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "化疗联合免疫治疗",
+  "summary_zh": "IMpassion130评估阿替利珠单抗联合一线化疗用于HER2阴性晚期乳腺癌。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-252",
@@ -3965,7 +4027,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "化疗联合免疫治疗",
+  "summary_zh": "PD-L1阳性人群加用阿替利珠单抗PFS改善（7.5 vs 5个月），免疫相关不良事件增多。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-253",
@@ -3979,7 +4043,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "化疗联合免疫治疗",
+  "summary_zh": "IMpassion131显示阿替利珠单抗联合紫杉醇未改善PD-L1阳性人群PFS。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-254",
@@ -3993,7 +4059,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "化疗联合免疫治疗",
+  "summary_zh": "IMpassion131最终OS无差异，安全性与各药已知特征一致。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-255",
@@ -4007,7 +4075,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "戈沙妥珠单抗",
+  "summary_zh": "戈沙妥珠单抗为靶向TROP2的抗体偶联药物，I/II期试验客观缓解率33.3%。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-256",
@@ -4021,7 +4091,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "戈沙妥珠单抗",
+  "summary_zh": "戈沙妥珠单抗组中位PFS 5.6个月、OS 12.1个月，均显著优于化疗组。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-257",
@@ -4035,7 +4107,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "戈沙妥珠单抗",
+  "summary_zh": "客观缓解率35% vs 5%，3级以上中性粒细胞减少、腹泻等不良事件更常见。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-258",
@@ -4049,7 +4123,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "戈沙妥珠单抗",
+  "summary_zh": "戈沙妥珠单抗较化疗显著延长PFS与OS，但血液学及消化道毒性更高。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-259",
@@ -4063,7 +4139,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "免疫单药治疗",
+  "summary_zh": "免疫单药尚未在转移性TNBC显示OS获益，KEYNOTE-119评估帕博利珠单抗单药。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-260",
@@ -4077,7 +4155,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "免疫单药治疗",
+  "summary_zh": "KEYNOTE-119中帕博利珠单抗单药对比化疗未显著改善各CPS亚组OS。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-261",
@@ -4091,7 +4171,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "免疫单药治疗",
+  "summary_zh": "帕博利珠单抗单药对比化疗，CPS≥1及总体人群OS均无显著差异。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-262",
@@ -4105,7 +4187,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "转移性HER2阳性乳腺癌",
+  "summary_zh": "自1990年代起抗HER2抗体治疗革新了HER2阳性转移性乳腺癌治疗，多种药物获批。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-263",
@@ -4119,7 +4203,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "单克隆抗体治疗",
+  "summary_zh": "约20%-25%乳腺癌HER2过表达，曲妥珠单抗单药客观缓解率21%。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-264",
@@ -4133,7 +4219,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "单克隆抗体治疗",
+  "summary_zh": "帕妥珠单抗联合方案使中位PFS延长6.3个月，中位OS显著改善。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-265",
@@ -4147,7 +4235,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "单克隆抗体治疗",
+  "summary_zh": "帕妥珠单抗8年OS率37%对比23%，毒性相似；T-DM1为抗体偶联药物。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-266",
@@ -4161,7 +4251,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "单克隆抗体治疗",
+  "summary_zh": "T-DM1对比拉帕替尼联合卡培他滨，PFS与OS均显著延长。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-267",
@@ -4175,7 +4267,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "单克隆抗体治疗",
+  "summary_zh": "II期研究显示T-DM1一线治疗HER2阳性转移性乳腺癌中位PFS为9.2个月。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-268",
@@ -4189,7 +4283,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "单克隆抗体治疗",
+  "summary_zh": "T-DM1安全性优于曲妥珠单抗联合多西他赛，3级不良事件更少。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-269",
@@ -4203,7 +4299,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "单克隆抗体治疗",
+  "summary_zh": "TH3RESA研究中T-DM1较医生选择方案显著延长PFS与OS。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-270",
@@ -4217,7 +4315,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "单克隆抗体治疗",
+  "summary_zh": "MARIANNE研究评估T-DM1一线治疗，各方案PFS无显著差异。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-271",
@@ -4231,7 +4331,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "单克隆抗体治疗",
+  "summary_zh": "T-DM1联合或不联合帕妥珠单抗均未优于曲妥珠单抗联合紫杉类。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-272",
@@ -4245,7 +4347,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "德曲妥珠单抗",
+  "summary_zh": "德曲妥珠单抗为抗体偶联药物，在晚期HER2阳性乳腺癌中显示抗肿瘤活性。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-273",
@@ -4259,7 +4363,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "德曲妥珠单抗",
+  "summary_zh": "DESTINY-Breast03中德曲妥珠单抗12个月PFS率75.8%，优于T-DM1。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-274",
@@ -4273,7 +4379,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "德曲妥珠单抗",
+  "summary_zh": "该试验改变二线治疗标准，德曲妥珠单抗取代T-DM1用于经治患者。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-275",
@@ -4287,7 +4395,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "德曲妥珠单抗",
+  "summary_zh": "德曲妥珠单抗ORR 79.7%，间质性肺病发生率10.5%，无4-5级事件。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-276",
@@ -4301,7 +4411,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "马吉妥昔单抗",
+  "summary_zh": "马吉妥昔单抗为Fc工程化抗HER2单抗，SOPHIA研究支持其获批。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-277",
@@ -4315,7 +4427,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "马吉妥昔单抗",
+  "summary_zh": "SOPHIA研究中马吉妥昔单抗PFS优于曲妥珠单抗，OS无显著差异。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-278",
@@ -4329,7 +4443,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "马吉妥昔单抗",
+  "summary_zh": "马吉妥昔单抗中位PFS 5.8个月对比4.9个月，OS两组相当。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-279",
@@ -4343,7 +4459,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "酪氨酸激酶抑制剂治疗",
+  "summary_zh": "图卡替尼为高选择性口服HER2 TKI，联合曲妥珠单抗和卡培他滨有效。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-280",
@@ -4357,7 +4475,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "酪氨酸激酶抑制剂治疗",
+  "summary_zh": "HER2CLIMB研究中图卡替尼联合方案显著改善PFS和OS，含脑转移患者获益。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-281",
