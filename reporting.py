@@ -29,6 +29,7 @@ GOOD = (5, 150, 105)
 BAD = (220, 38, 38)
 
 _FONT_READY = False
+MAX_ROWS = 30
 
 
 def _ensure_font():
@@ -326,10 +327,120 @@ def render_compare(payload: dict) -> dict:
     return _save(pdf, payload.get('user_id'), payload.get('run_id'), 'compare',
                  '|'.join('%s:%+.1f' % (i['name_zh'], i['change_pct']) for i in top[:6]))
 
+def chart_trend(series) -> bytes:
+    """置信度随时间的变化。series: [{'at','confidence','result'}]"""
+    _ensure_font()
+    labels = [s['at'][5:10] for s in series][::-1]
+    values = [float(s['confidence']) for s in series][::-1]
+    colors = ['#dc2626' if s['result'] in ('恶性', 'Malignant') else '#059669'
+              for s in series][::-1]
+
+    fig, ax = plt.subplots(figsize=(6.6, 2.2))
+    ax.plot(range(len(values)), values, color='#c7d2fe', lw=1.6, zorder=1)
+    ax.scatter(range(len(values)), values, c=colors, s=26, zorder=2)
+    ax.set_xticks(range(len(labels)))
+    ax.set_xticklabels(labels, fontsize=7.5, color='#94a3b8', rotation=0)
+    ax.set_ylim(0, 1.05)
+    ax.set_yticks([0, 0.5, 1.0])
+    ax.set_yticklabels(['0', '50%', '100%'], fontsize=7.5, color='#94a3b8')
+    ax.grid(axis='y', color='#eef2f8', lw=0.8)
+    for side in ('top', 'right', 'left'):
+        ax.spines[side].set_visible(False)
+    ax.spines['bottom'].set_color('#e2e8f0')
+    ax.tick_params(length=0)
+    ax.set_title('置信度变化（红=恶性 绿=良性）', fontsize=9, color='#64748b', pad=8)
+    return _png(fig)
+
+
+def chart_donut(benign: int, malignant: int) -> bytes:
+    _ensure_font()
+    fig, ax = plt.subplots(figsize=(2.6, 2.6))
+    total = benign + malignant
+    if total == 0:
+        benign, malignant, total = 1, 0, 1
+    ax.pie([benign, malignant], colors=['#34d399', '#f87171'],
+           startangle=90, counterclock=False,
+           wedgeprops={'width': 0.36, 'edgecolor': 'white', 'linewidth': 2})
+    ax.text(0, 0.08, str(total), ha='center', va='center', fontsize=17, color='#0f172a')
+    ax.text(0, -0.18, '总记录', ha='center', va='center', fontsize=8, color='#94a3b8')
+    return _png(fig)
+
+
+def render_range(payload: dict) -> dict:
+    """③ 时间区间小结。"""
+    stats = payload.get('stats') or {}
+    series = payload.get('series') or []
+    window = payload.get('window') or {}
+    user = payload.get('username') or payload.get('user_id')
+
+    mode = window.get('mode')
+    n = window.get('n')
+    if mode == 'days':
+        win_text = '最近 %d 天' % n
+    elif mode == 'limit':
+        win_text = '最近 %d 条记录' % n
+    else:
+        win_text = '全部记录'
+
+    pdf = Report()
+    pdf.header_block('乳腺癌预测区间小结',
+                     '生成时间 %s · 用户 %s · 范围：%s' % (_stamp(), user, win_text))
+
+    pdf.section('概览')
+    pdf.kv_table([
+        ('记录数', stats.get('total', 0)),
+        ('良性 / 恶性', '%d / %d' % (stats.get('benign', 0), stats.get('malignant', 0))),
+        ('平均置信度', '%.2f%%' % (float(stats.get('avg_conf') or 0) * 100)),
+        ('最高 / 最低', '%.2f%% / %.2f%%' % (float(stats.get('max_conf') or 0) * 100,
+                                            float(stats.get('min_conf') or 0) * 100)),
+    ])
+
+    if series:
+        pdf.section('置信度趋势')
+        try:
+            pdf.image(io.BytesIO(chart_trend(series)), w=170)
+        except Exception:  # noqa: BLE001
+            pass
+        try:
+            pdf.image(io.BytesIO(chart_donut(stats.get('benign', 0),
+                                             stats.get('malignant', 0))), w=52)
+        except Exception:  # noqa: BLE001
+            pass
+
+    pdf.section('记录明细')
+    pdf.use(8.5)
+    pdf.set_text_color(*MUTED)
+    pdf.cell(20, 6, 'ID', ln=0)
+    pdf.cell(38, 6, '时间', ln=0)
+    pdf.cell(24, 6, '结果', ln=0)
+    pdf.cell(0, 6, '置信度', ln=1, align='R')
+    for row in series[:MAX_ROWS]:
+        pdf.set_text_color(*INK)
+        pdf.cell(20, 5.6, str(row.get('id', '')), ln=0)
+        pdf.set_text_color(*MUTED)
+        pdf.cell(38, 5.6, str(row.get('at', ''))[:16], ln=0)
+        pdf.set_text_color(*(BAD if row.get('result') in ('恶性', 'Malignant') else GOOD))
+        pdf.cell(24, 5.6, str(row.get('result', ''))[:4], ln=0)
+        pdf.set_text_color(*INK)
+        pdf.cell(0, 5.6, '%.2f%%' % (float(row.get('confidence') or 0) * 100), ln=1, align='R')
+
+    if len(series) > MAX_ROWS:
+        pdf.ln(2)
+        pdf.use(8)
+        pdf.set_text_color(*MUTED)
+        pdf.cell(0, 5, '仅展示最近 %d 条，共 %d 条。' % (MAX_ROWS, len(series)), ln=1)
+
+    pdf.footer_note('本报告由系统自动生成，仅供教学演示，不用于临床诊断。'
+                    '统计口径为当前账号的预测记录。')
+    return _save(pdf, payload.get('user_id'), payload.get('run_id'), 'range',
+                 '%s-%s-%s' % (mode, n, stats.get('total')))
+
 def render(kind: str, payload: dict) -> dict:
     """统一入口，按动作分派。"""
     if kind == 'single':
         return render_single(payload)
     if kind == 'compare':
         return render_compare(payload)
+    if kind == 'range':
+        return render_range(payload)
     raise ValueError('暂不支持的报告类型: %s' % kind)

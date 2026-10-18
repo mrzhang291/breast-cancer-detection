@@ -81,7 +81,7 @@ def parse_llm(text: str) -> Optional[Dict]:
         from . import llm
     except Exception:  # noqa: BLE001
         return None
-    if not getattr(llm, 'enabled', lambda: False)():
+    if not getattr(llm, 'available', lambda: False)():
         return None
     prompt = (
         '把用户的问题转换成 JSON，只输出 JSON，不要解释。格式：\n'
