@@ -139,14 +139,15 @@ def prompt_context() -> str:
         "【本系统后台数据库实时快照】",
         f"生成时间：{data['generated_at']}",
         f"用户：总数 {data['users_total']}，启用 {data['users_active']}，角色分布 {data['role_counts']}",
-        f"预测：累计 {data['predictions_total']} 条，今日新增 {data['predictions_today']} 条；"
+        f"预测：累计 {data['predictions_total']} 条，今日 {data['predictions_today']} 条，"
+        f"近 7 天 {data['predictions_7d']} 条；"
         f"恶性 {data['malignant']} 条，良性 {data['benign']} 条，恶性占比 {data['malignant_ratio']}%；"
         f"平均置信度 {data['avg_confidence']}%",
         f"当前模型：{data['active_model']}；近 24 小时错误日志：{data['errors_24h']} 条",
         f"用户活跃度：今日活跃用户（有预测）{data['active_users_today']} 人，"
         f"近 7 天活跃 {data['active_users_7d']} 人；今日新增用户 {data['new_users_today']}，"
-        f"近 7 天新增 {data['new_users_7d']}；近 7 天预测 {data['predictions_7d']} 条，"
-        f"人均 {data['avg_predictions_per_active_user_7d']} 条",
+        f"近 7 天新增 {data['new_users_7d']}；"
+        f"近 7 天预测 {data['predictions_7d']} 条，人均 {data['avg_predictions_per_active_user_7d']} 条（近 7 天口径）",
         f"AI 助手会话：累计 {data['assistant'].get('sessions_total', 0)} 个会话、"
         f"{data['assistant'].get('messages_total', 0)} 条消息；近 7 天新增 "
         f"{data['assistant'].get('sessions_7d', 0)} 个会话、活跃会话 "
@@ -166,6 +167,7 @@ def prompt_context() -> str:
     lines += [
         "",
         "回答要求：只能依据以上快照和本系统数据回答；快照没有的信息不要编造；"
+        "注意区分「今日」与「近 7 天」两个口径，不要把 7 天数据说成今日；"
         "用中文简洁回答，必要时用列表；不要声称执行了写操作。",
     ]
     return "\n".join(lines)
