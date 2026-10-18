@@ -105,6 +105,7 @@
         font-size: 12.5px; cursor: pointer; font-family: inherit; transition: .16s;
     }
     .as-clarify button:hover { background: #eef2ff; }
+    .as-retry { margin-top: 8px; }
 
     .as-foot { border-top: 1px solid #eef2f8; padding: 10px 16px 14px; }
     .as-input-row {
@@ -362,6 +363,15 @@
                 box.appendChild(card);
             });
             bubble.appendChild(box);
+        }
+
+        if (result.intent === 'report_export' && !(result.artifacts || []).length) {
+            var retry = document.createElement('button');
+            retry.className = 'as-chip as-retry';
+            retry.type = 'button';
+            retry.textContent = '重试';
+            retry.addEventListener('click', function () { ask(result.question || '生成报告'); });
+            bubble.appendChild(retry);
         }
 
         var steps = result.graph || [];
