@@ -78,6 +78,24 @@ _EXPORT_HINTS = ['生成报告', '出份报告', '出一份报告', '导出报�
                  '导出 pdf', '导出pdf', '生成 pdf', '生成pdf', '报告文件', '出报告',
                  '导出我的数据', '导出数据']
 
+_EXPORT_VERBS = ('生成', '出份', '出一份', '出个', '导出', '整理', '做成', '打成',
+                 '汇总', '导出成', '整理成')
+_EXPORT_NOUNS = ('报告', 'pdf', '小结', 'csv', 'excel', '汇总表')
+
+
+def _is_export_request(text: str) -> bool:
+    """判断是不是"要一个产物"，而不是在问功能。"""
+    t = (text or '').lower()
+    if t.rstrip('？? ').endswith('吗'):
+        return False
+    if ('怎么' in t or '如何' in t) and '导出' in t:
+        return False
+    if any(v in t for v in _EXPORT_VERBS) and any(n in t for n in _EXPORT_NOUNS):
+        return True
+    if '报告' in t and any(w in t for w in ('最近', '全部', '记录', '天', '区间', '小结')):
+        return True
+    return False
+
 _REPORT_HINTS = ['生成报告', '总结报告', '出一份', '写一份', '分析报告', '生成一份']
 _INTERPRET_HINTS = ['这个结果', '结果什么', '什么意思', '严重', '要紧', '怎么看',
                     '解读', '意味着', '风险']
@@ -93,7 +111,7 @@ def classify(question: str, has_features: bool) -> str:
         return INTENT['compare']
 
     # 「导出报告」是动作，不是能力询问（后者以「吗」结尾，仍归 usage）
-    if any(h in text for h in _EXPORT_HINTS) and not text.rstrip('？?').endswith('吗'):
+    if _is_export_request(text):
         return INTENT['export']
 
     if any(h in text for h in _TASK_HINTS):
@@ -1017,7 +1035,7 @@ def run(ctx: AgentContext, question: str, values: Optional[List[float]] = None,
     # 「把最近三次整理成报告」这类：先把区间参数解析并校验
     export_window = None
     if plan.get('mode') in ('normal', 'compare_export') \
-            and any(h in question for h in _EXPORT_HINTS) \
+            and _is_export_request(question) \
             and range_params.wants_range(question):
         window = range_params.parse_range(question)
         if window.get('ok'):
