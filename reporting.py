@@ -54,6 +54,18 @@ def _png(fig) -> bytes:
     return buffer.read()
 
 
+def _feature_stats():
+    """读取特征词典里的良性/恶性均值，用于报告对照表。"""
+    import json as _json
+    path = os.path.join(BASE_DIR, 'agent', 'knowledge', 'features.json')
+    try:
+        with io.open(path, encoding='utf-8') as fh:
+            data = _json.load(fh)
+        items = data.get('items', []) if isinstance(data, dict) else data
+        return {it['feature']: it for it in items if isinstance(it, dict)}
+    except Exception:  # noqa: BLE001
+        return {}
+
 def chart_confidence(confidence: float, raw: float) -> bytes:
     """置信度刻度条：一条水平刻度 + 校准值/原始值标记。"""
     _ensure_font()
@@ -184,6 +196,14 @@ def _save(pdf: Report, user_id, run_id, kind, params_key) -> dict:
     os.makedirs(folder, exist_ok=True)
     filename = '%s-%s-%s.pdf' % (kind, str(run_id)[:8], digest)
     path = os.path.join(folder, filename)
+    try:
+        pdf.set_y(-16)
+        pdf.use(7)
+        pdf.set_text_color(*MUTED)
+        pdf.cell(0, 5, 'run_id %s · 第 %d 页' % (str(payload.get('run_id'))[:8], pdf.page_no()),
+                 align='C')
+    except Exception:  # noqa: BLE001
+        pass
     pdf.output(path)
     return {
         'kind': 'pdf',
@@ -235,6 +255,34 @@ def render_single(payload: dict) -> dict:
     if narrative:
         pdf.section('解读')
         pdf.para(narrative)
+
+    features_in = payload.get('input_features') or []
+    if features_in:
+        stats = _feature_stats()
+        pdf.section('30 项特征与人群对照')
+        pdf.use(8)
+        pdf.set_text_color(*MUTED)
+        pdf.cell(62, 6, '特征', ln=0)
+        pdf.cell(30, 6, '本次', ln=0, align='R')
+        pdf.cell(34, 6, '良性组均值', ln=0, align='R')
+        pdf.cell(0, 6, '恶性组均值', ln=1, align='R')
+        for item in features_in[:30]:
+            name = str(item.get('name') or '')
+            meta = stats.get(name) or {}
+            st = meta.get('stats') or {}
+            pdf.set_text_color(*INK)
+            pdf.cell(62, 5.2, name, ln=0)
+            pdf.set_text_color(*BRAND)
+            pdf.cell(30, 5.2, '%.4g' % float(item.get('value') or 0), ln=0, align='R')
+            pdf.set_text_color(*GOOD)
+            pdf.cell(34, 5.2, '%.4g' % float(st.get('benign_mean') or 0), ln=0, align='R')
+            pdf.set_text_color(*BAD)
+            pdf.cell(0, 5.2, '%.4g' % float(st.get('malignant_mean') or 0), ln=1, align='R')
+
+    pdf.section('方法说明')
+    pdf.para('本报告由轻量随机森林模型（RobustScaler + SelectKBest(20) + RF，'
+             '外层 CalibratedClassifierCV 校准）对 30 项细胞核特征给出判别；'
+             '特征贡献采用近似 Shapley 归因，数值只有相对意义，不代表因果。')
 
     if citations:
         pdf.section('引用条款')

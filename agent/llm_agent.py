@@ -72,7 +72,22 @@ def run_llm_agent(question: str, ctx, emit: Optional[Callable] = None,
         return None
 
     session = build_session(ctx)
+
+    # 短期记忆：把最近几轮问答压成文本，模型才知道"刚才那份报告"指什么
+    for item in (history or [])[-3:]:
+        q = (item.get('question') or '').strip()
+        a = (item.get('answer') or '').strip()[:160]
+        if q:
+            session.user(q)
+            session.assistant(a or '（已处理）')
+
     brief = _context_brief(ctx)
+    if recent_artifacts:
+        names = ['%s（%s, %d KB）' % (i.get('filename'), str(i.get('kind', 'pdf')).upper(),
+                                     int((i.get('size') or 0) / 1024))
+                 for i in (recent_artifacts or [])[:3]]
+        brief += '\n最近生成的产物：' + '；'.join(names)
+        brief += '\n如果用户提到"刚才的报告/那份 PDF"，指的就是上面这些文件。'
     if values:
         brief += '\n本次输入的 30 项特征值：%s' % ', '.join('%.6g' % float(v) for v in values)
     if brief:
@@ -110,7 +125,8 @@ def run_llm_agent(question: str, ctx, emit: Optional[Callable] = None,
     }
 
 
-def stream_llm_agent(question: str, ctx, values=None, max_steps: int = 5):
+def stream_llm_agent(question: str, ctx, values=None, max_steps: int = 5,
+                     history=None, recent_artifacts=None):
     """流式执行：产出 {event, data}，最后一个事件补上产物与 run_id。"""
     from .core.streaming import StreamingAgentLoop
     from .core.streaming_provider import StreamingDeepSeekProvider
