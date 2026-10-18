@@ -2251,7 +2251,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "三阴性乳腺癌术前治疗",
+  "summary_zh": "帕博利珠单抗提高pCR且不受PD-L1状态影响，36个月EFS率84.5%对76.8%，HR 0.63。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-142",
@@ -2265,7 +2267,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "三阴性乳腺癌术前治疗",
+  "summary_zh": "帕博利珠单抗组pCR 64.8%对51.2%，但3级及以上及严重不良事件更常见。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-143",
@@ -2279,7 +2283,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "三阴性乳腺癌术前治疗",
+  "summary_zh": "约80%肿瘤PD-L1阳性，但帕博利珠单抗改善pCR与PD-L1状态无关；EFS亦改善。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-144",
@@ -2293,7 +2299,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "三阴性乳腺癌术前治疗",
+  "summary_zh": "EFS数据尚不成熟；帕博利珠单抗组严重治疗相关不良事件32.5%对19.5%。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-145",
@@ -2307,7 +2315,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "三阴性乳腺癌术后治疗",
+  "summary_zh": "PATTERN试验比较含蒽环类CEF-T与非蒽环类PCb方案，提示非蒽环方案可适用。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-146",
@@ -2321,7 +2331,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "三阴性乳腺癌术后治疗",
+  "summary_zh": "PCb组5年DFS率86.5%优于CEF-T的80.3%，OS无显著差异。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-147",
@@ -2335,7 +2347,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "三阴性乳腺癌术后治疗",
+  "summary_zh": "SYSUCC-001试验评估辅助化疗后卡培他滨维持治疗1年对DFS的影响。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-148",
@@ -2349,7 +2363,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "三阴性乳腺癌术后治疗",
+  "summary_zh": "卡培他滨维持组5年DFS率82.5%优于73.0%；45%出现手足综合征。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-149",
@@ -2363,7 +2379,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "三阴性乳腺癌术后治疗",
+  "summary_zh": "日韩研究评估术前化疗后残留病灶者接受卡培他滨辅助化疗的获益。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-150",
@@ -2377,7 +2395,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "三阴性乳腺癌术后治疗",
+  "summary_zh": "卡培他滨组5年OS率89.2%对83.6%；激素受体阴性亚组获益更显著。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-151",
@@ -2391,7 +2411,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "三阴性乳腺癌术后治疗",
+  "summary_zh": "卡培他滨组5年OS率89.2%对83.6%，HR 0.59；激素受体阴性亚组获益显著。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-152",
@@ -2405,7 +2427,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "三阴性乳腺癌术后治疗",
+  "summary_zh": "术前治疗后残留病灶可考虑卡培他滨等方案，并可参与EA1131、S1418等临床试验。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-153",
@@ -2419,7 +2443,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HER2阳性乳腺癌术前治疗",
+  "summary_zh": "II期研究提示在蒽环/紫杉类方案中加入曲妥珠单抗可提高pCR，III期研究证实。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-154",
@@ -2433,7 +2459,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HER2阳性乳腺癌术前治疗",
+  "summary_zh": "NOAH研究证实加用曲妥珠单抗改善EFS；需密切监测LVEF并限制多柔比星剂量。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-155",
@@ -2447,7 +2475,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HER2阳性乳腺癌术前治疗",
+  "summary_zh": "Z1041试验显示序贯与同期曲妥珠单抗pCR无差异，同期使用蒽环类并无必要。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-156",
@@ -2461,7 +2491,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HER2阳性乳腺癌术前治疗",
+  "summary_zh": "两臂无症状LVEF下降比例相似；中位随访5.1年DFS与OS无差异。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-157",
@@ -2475,7 +2507,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HER2阳性乳腺癌术前治疗",
+  "summary_zh": "皮下曲妥珠单抗已获批；SafeHer与HannaH试验显示其安全性与疗效非劣于静脉剂型。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-158",
@@ -2489,7 +2523,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HER2阳性乳腺癌术前治疗",
+  "summary_zh": "拉帕替尼、帕妥珠单抗等双靶向可提高pCR，但尚未显示生存获益。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-159",
@@ -2503,7 +2539,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HER2阳性乳腺癌术前治疗",
+  "summary_zh": "三臂方案pCR率62%至66%，心脏不良事件发生率均不超过5%。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-160",
@@ -2517,7 +2555,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HER2阳性乳腺癌术前治疗",
+  "summary_zh": "基于上述研究，FDA加速批准帕妥珠单抗用于早期HER2阳性乳腺癌术前治疗，后转为常规批准。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-161",
@@ -2531,7 +2571,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HER2阳性乳腺癌术后治疗",
+  "summary_zh": "未接受术前全身治疗者，标准为1年辅助HER2靶向治疗，多项III期试验证实曲妥珠单抗辅助治疗获益。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-162",
@@ -2545,7 +2587,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HER2阳性乳腺癌术后治疗",
+  "summary_zh": "1年曲妥珠单抗改善无病生存与总生存，延长至2年无额外获益，症状性心脏事件发生率低。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-163",
@@ -2559,7 +2603,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HER2阳性乳腺癌术后治疗",
+  "summary_zh": "HERA试验中位随访11年，1年曲妥珠单抗较观察组改善无病生存，10年无病生存率72%对66%。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-164",
@@ -2573,7 +2619,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HER2阳性乳腺癌术后治疗",
+  "summary_zh": "1年与2年曲妥珠单抗无病生存无差异；症状性心脏事件1%对0.1%；NSABP-B-31与NCCTG-N9831联合分析。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-165",
@@ -2587,7 +2635,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HER2阳性乳腺癌术后治疗",
+  "summary_zh": "曲妥珠单抗组无病生存显著改善，风险降低52%，远处复发风险降低53%，死亡风险降低33%。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-166",
@@ -2601,7 +2651,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HER2阳性乳腺癌术后治疗",
+  "summary_zh": "两项研究联合分析共3676例，曲妥珠单抗显著改善无病生存与总生存，10年总生存率由75.2%升至84%。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-167",
@@ -2615,7 +2667,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HER2阳性乳腺癌术后治疗",
+  "summary_zh": "中位随访8.4年更新分析，化疗加曲妥珠单抗使总生存相对改善37%，10年总生存率提高。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-168",
@@ -2629,7 +2683,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HER2阳性乳腺癌术后治疗",
+  "summary_zh": "BCIRG-006试验中，含曲妥珠单抗方案较对照组显著改善无病生存与总生存，5年无病生存率84%。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-169",
@@ -2643,7 +2699,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HER2阳性乳腺癌术后治疗",
+  "summary_zh": "两种含曲妥珠单抗方案无病生存与总生存无显著差异，但AC-T加曲妥珠单抗心脏毒性更高。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-170",
@@ -2657,7 +2715,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HER2阳性乳腺癌术后治疗",
+  "summary_zh": "对照5年无病生存75%、总生存87%；含曲妥珠单抗两方案疗效相近，AC-T方案心衰与心功能不全更多。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-171",
@@ -2671,7 +2731,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HER2阳性乳腺癌术后治疗",
+  "summary_zh": "3年随访曲妥珠单抗显著降低复发死亡风险，无病生存89%对78%；多项研究比较6个月与12个月疗程。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-172",
@@ -2685,7 +2747,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HER2阳性乳腺癌术后治疗",
+  "summary_zh": "PHARE试验未能排除非劣效界值；希腊肿瘤研究组结果相似；PERSEPHONE试验则排除非劣效界值。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-173",
@@ -2699,7 +2763,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HER2阳性乳腺癌术后治疗",
+  "summary_zh": "PHARE最终分析调整HR为1.08，未排除预设非劣效界值1.15；小样本研究结果相似，PERSEPHONE结论不同。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-174",
@@ -2713,7 +2779,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HER2阳性乳腺癌术后治疗",
+  "summary_zh": "SOLD试验未能证明9周曲妥珠单抗非劣效；荟萃分析示1年疗程总生存优于更短疗程。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-175",
@@ -2727,7 +2795,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HER2阳性乳腺癌术后治疗",
+  "summary_zh": "低危患者1年疗程无显著获益；皮下曲妥珠单抗已研究；帕妥珠单抗联合曲妥珠单抗术后随机试验。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-176",
@@ -2741,7 +2811,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HER2阳性乳腺癌术后治疗",
+  "summary_zh": "BIG试验中帕妥珠单抗组3年无浸润病生存94.1%对93.2%，总生存无显著差异，腹泻与心衰更多。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-177",
@@ -2755,7 +2827,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HER2阳性乳腺癌术后治疗",
+  "summary_zh": "帕妥珠单抗组3级腹泻与心衰发生率更高；KATHERINE试验评估术前靶向治疗后T-DM1辅助治疗。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-178",
@@ -2769,7 +2843,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HER2阳性乳腺癌术后治疗",
+  "summary_zh": "T-DM1组3年无浸润病生存88.3%对77%，总生存数据未成熟；不良事件停药与感觉神经病变更多。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-179",
@@ -2783,7 +2859,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HER2阳性乳腺癌术后治疗",
+  "summary_zh": "T-DM1获益见于各亚组，包括术前双靶治疗者；奈拉替尼为不可逆酪氨酸激酶抑制剂，用于延长辅助治疗。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-180",
@@ -2797,7 +2875,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HER2阳性乳腺癌术后治疗",
+  "summary_zh": "奈拉替尼组5年无浸润病生存90.2%对87.7%，总生存未成熟；最常见不良事件为腹泻，建议预防性洛哌丁胺。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-181",
@@ -2811,7 +2891,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HER2阳性乳腺癌术后治疗",
+  "summary_zh": "奈拉替尼组5年IDFS率90.2%，安慰剂组87.7%；OS数据未成熟，腹泻为最常见不良反应。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-182",
@@ -2825,7 +2907,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "淋巴结阴性小肿瘤HER2阳性乳腺癌",
+  "summary_zh": "无对比研究；APT单臂试验显示紫杉醇联合曲妥珠单抗6.5年DFS率93%。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-183",
@@ -2839,7 +2923,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "淋巴结阴性小肿瘤HER2阳性乳腺癌",
+  "summary_zh": "T-DM1组3年IDFS率97.8%，超过预设95%阈值，5年结果相似。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-184",
@@ -2853,7 +2939,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "卡培他滨与氟尿嘧啶剂量",
+  "summary_zh": "DPYD致病性变异者用氟尿嘧啶可致严重致命毒性，建议避免或减量50%。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-185",
@@ -2867,7 +2955,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "辅助化疗毒性",
+  "summary_zh": "早期乳腺癌生存期长，需关注蒽环类心脏毒性及骨髓肿瘤等长期不良反应。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-186",
@@ -2881,7 +2971,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "辅助曲妥珠单抗心脏毒性",
+  "summary_zh": "HERA试验严重心衰0.6%，NSABP B-31曲妥珠单抗组3年心脏事件累积发生率4.1%。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-187",
@@ -2895,7 +2987,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "帕妥珠单抗与拉帕替尼心脏毒性",
+  "summary_zh": "帕妥珠单抗单药无症状左室收缩功能障碍6.9%，联合非蒽环化疗3.4%。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-188",
@@ -2909,7 +3003,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "帕妥珠单抗与拉帕替尼心脏毒性",
+  "summary_zh": "帕妥珠单抗单药症状性心衰0.3%，联合曲妥珠单抗1.1%。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-189",
@@ -2923,7 +3019,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "帕妥珠单抗与拉帕替尼心脏毒性",
+  "summary_zh": "荟萃分析显示抗HER2单药LVEF下降3.1%，双靶治疗2.9%。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-190",
@@ -2937,7 +3035,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "内分泌治疗毒性",
+  "summary_zh": "10年他莫昔芬较5年增加肺栓塞、子宫内膜癌风险，缺血性心脏病风险降低。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-191",
@@ -2951,7 +3051,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "I、II、III期乳腺癌治疗后监测",
+  "summary_zh": "随机试验表明骨扫描、肝超声、胸片及肝功能检查不改善生存或生活质量。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-192",
@@ -2965,7 +3067,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "局部区域复发乳腺癌治疗",
+  "summary_zh": "保乳手术加放疗后复发率低于3%，全乳切除后可达10%，部分患者可长期生存。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-193",
@@ -2979,7 +3083,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "局部区域复发乳腺癌治疗",
+  "summary_zh": "ER阴性患者化疗DFS获益显著（HR 0.29），ER阳性无获益，支持ER阴性者术后辅助化疗。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-194",
@@ -2993,7 +3099,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "局部区域复发乳腺癌治疗",
+  "summary_zh": "ER阴性孤立局部复发完全切除后应考虑辅助化疗，所有复发患者适合临床试验。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-195",
@@ -3007,7 +3115,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "转移性乳腺癌治疗",
+  "summary_zh": "转移性乳腺癌治疗为姑息性，5年相对生存率31.9%，HER2阳性及激素受体阳性预后较好。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-196",
@@ -3021,7 +3131,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "转移性乳腺癌治疗选择概述",
+  "summary_zh": "治疗包括激素治疗、HER2靶向、手术、放疗及骨改良治疗，转移时需检测ER、PR和HER2。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-197",
@@ -3035,7 +3147,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "内分泌治疗与CDK抑制剂治疗",
+  "summary_zh": "CDK4/6抑制剂联合内分泌治疗改善HER2阴性激素受体阳性晚期乳腺癌结局及生活质量。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-198",
@@ -3049,7 +3163,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "内分泌治疗与CDK抑制剂治疗",
+  "summary_zh": "哌柏西利联合来曲唑中位PFS 24.8个月，优于安慰剂组14.5个月，OS未成熟。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-199",
@@ -3063,7 +3179,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "内分泌治疗与CDK抑制剂治疗",
+  "summary_zh": "哌柏西利组3-4级细胞减少66.4%，常见不良事件包括恶心、关节痛、疲乏和脱发。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-200",
@@ -3077,7 +3195,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "内分泌治疗与CDK抑制剂治疗",
+  "summary_zh": "瑞博西利组3-4级中性粒细胞减少63.8%，肝胆毒性14.4%，QTcF延长4.5%。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-201",
