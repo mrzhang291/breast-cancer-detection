@@ -753,6 +753,9 @@ def _node_refuse(state, ctx):
 def _node_cache(state, ctx):
     if state.get('values'):
         return
+    # 有副作用的动作（生成报告等）绝不读缓存，否则会拿到旧文本、拿不到产物
+    if _is_export_request(state.get('question', '')):
+        return
     cached = cache.get(ctx.user_id, ctx.lang, state['question'], state.get('intent_hint', ''))
     if cached:
         state['intent'] = classify(state['question'], bool(state.get('values')))
