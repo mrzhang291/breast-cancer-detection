@@ -2075,10 +2075,15 @@ def _agent_bind_runtime():
 
     from agent.rag import index as _rag_index
 
+    def _render_report(kind, payload):
+        import reporting
+        return reporting.render(kind, payload)
+
     _agent_runtime.get().bind(
         rag=_rag_index,
         predict=_predict,
         explain=_explain,
+        render_report=_render_report,
         fetch_records=lambda uid, page, size: get_predictions_from_admin(
             uid, page=page, page_size=size),
         fetch_stats=lambda uid: get_statistics_from_admin(uid),
@@ -2189,6 +2194,49 @@ def api_agent_run_sync():
     if result.get('clarify'):
         result['clarify'] = result['clarify']
     return jsonify({'ok': True, 'result': result})
+
+
+@app.route('/api/agent/artifact/<run_id>/<path:filename>', methods=['GET'])
+def api_agent_artifact(run_id, filename):
+    """下载 agent 生成的产物。权限：本人或管理员；管理员下载留痕。"""
+    if 'username' not in session:
+        return jsonify({'ok': False, 'error': '请先登录'}), 403
+
+    _agent_db.init_schema()
+    row = _agent_db.get_run(run_id)
+    if not row:
+        return jsonify({'ok': False, 'error': '运行记录不存在'}), 404
+
+    try:
+        artifacts = json.loads(row.get('artifacts_json') or '[]')
+    except (TypeError, ValueError):
+        artifacts = []
+
+    target = next((a for a in artifacts if a.get('filename') == filename), None)
+    if not target:
+        return jsonify({'ok': False, 'error': '产物不存在或不属于该运行'}), 404
+
+    me = str(session.get('user_id', session.get('username', '')))
+    owner = str(row.get('user_id', ''))
+    role_id = session.get('role_id')
+    if role_id is None:
+        role_id = 1 if session.get('username') == 'admin' else 3
+    is_admin = int(role_id) in (1, 2)
+
+    if me != owner and not is_admin:
+        return jsonify({'ok': False, 'error': '无权下载他人的报告'}), 403
+
+    if is_admin and me != owner:
+        app.logger.warning('审计：管理员 %s 下载了用户 %s 的报告 %s',
+                           session.get('username'), owner, filename)
+
+    base = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'reports')
+    full = os.path.abspath(os.path.join(base, owner, os.path.basename(filename)))
+    if not full.startswith(os.path.abspath(base)) or not os.path.exists(full):
+        return jsonify({'ok': False, 'error': '文件已过期或被清理'}), 404
+
+    return send_file(full, as_attachment=True, download_name=filename,
+                     mimetype=target.get('mime') or 'application/octet-stream')
 
 
 @app.route('/api/agent/runs', methods=['GET'])

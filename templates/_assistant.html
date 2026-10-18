@@ -139,6 +139,21 @@
     .as-dots span:nth-child(3) { animation-delay: .3s; }
     @keyframes as-bounce { 0%,100% { transform: translateY(0); opacity: .4; } 50% { transform: translateY(-4px); opacity: 1; } }
 
+
+    .as-artifacts { display: flex; flex-direction: column; gap: 7px; margin-top: 10px; }
+    .as-artifact {
+        display: flex; align-items: center; gap: 9px; padding: 9px 11px;
+        border: 1px solid #e0e7ff; border-radius: 11px; background: #f8faff;
+        text-decoration: none; transition: .16s;
+    }
+    .as-artifact:hover { border-color: #c7d2fe; background: #eef2ff; }
+    .as-artifact-icon { color: #4f46e5; display: grid; place-items: center; }
+    .as-artifact-meta { display: flex; flex-direction: column; line-height: 1.35; min-width: 0; }
+    .as-artifact-meta b { font-size: 12px; color: #1e293b; font-weight: 600;
+        white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 190px; }
+    .as-artifact-meta i { font-style: normal; font-size: 10.5px; color: #94a3b8; }
+    .as-artifact-dl { margin-left: auto; font-size: 11.5px; color: #4f46e5; font-weight: 600; }
+
     @media (max-width: 720px) {
         .as-panel { width: 100vw; }
         .as-toggle { right: 16px; bottom: 18px; }
@@ -321,6 +336,30 @@
                 chip.textContent = cid;
                 chip.title = '引用条款 ' + cid;
                 box.appendChild(chip);
+            });
+            bubble.appendChild(box);
+        }
+
+        var artifacts = result.artifacts || [];
+        if (artifacts.length) {
+            var box = document.createElement('div');
+            box.className = 'as-artifacts';
+            artifacts.forEach(function (a) {
+                var card = document.createElement('a');
+                card.className = 'as-artifact';
+                card.href = '/api/agent/artifact/' + encodeURIComponent(result.run_id || '') +
+                            '/' + encodeURIComponent(a.filename || '');
+                card.setAttribute('download', a.filename || '');
+                var kb = a.size ? Math.round(a.size / 1024) + ' KB' : '';
+                card.innerHTML = '<span class="as-artifact-icon">' +
+                    '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
+                    'stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
+                    '<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/>' +
+                    '<path d="M14 3v5h5"/></svg></span>' +
+                    '<span class="as-artifact-meta"><b>' + escapeHtml(a.filename || '报告') + '</b>' +
+                    '<i>' + escapeHtml((a.kind || 'pdf').toUpperCase()) + (kb ? ' · ' + kb : '') + '</i></span>' +
+                    '<span class="as-artifact-dl">下载</span>';
+                box.appendChild(card);
             });
             bubble.appendChild(box);
         }
