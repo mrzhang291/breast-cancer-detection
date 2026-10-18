@@ -1,0 +1,5 @@
+import io, re, sys
+sys.stdout.reconfigure(encoding="utf-8")
+d = io.open("agent/db.py", encoding="utf-8").read()
+i = d.find("rag_chunks")
+print(d[max(0,i-200):i+700])
