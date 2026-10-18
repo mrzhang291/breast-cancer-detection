@@ -31,6 +31,7 @@ class AgentLoop:
         self.provider = provider
         self.registry_tools = registry_tools
         self.ctx = ctx
+        self.allowed = set(allowed_tools) if allowed_tools is not None else None
         self.tools = build_tools(registry_tools, allowed_tools)
         self.max_steps = max_steps
         self.emit = emit
@@ -48,6 +49,13 @@ class AgentLoop:
         from .. import registry
 
         started = time.time()
+        # 白名单必须在执行处再校验一次：模型可能被诱导调用未授权工具
+        if self.allowed is not None and call.name not in self.allowed:
+            self.steps.append({'tool': call.name, 'args': call.arguments or {},
+                               'ok': False, 'latency_ms': 0, 'verdict': 'unknown_tool'})
+            self._event('step', {'tool': call.name, 'ok': False, 'latency_ms': 0})
+            return json.dumps({'error': '未授权工具: %s' % call.name}, ensure_ascii=False)
+
         spec = self.registry_tools.get(call.name)
         if spec is None:
             self.steps.append({'tool': call.name, 'args': call.arguments or {},

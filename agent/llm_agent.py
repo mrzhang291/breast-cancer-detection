@@ -21,12 +21,13 @@ SYSTEM_PROMPT = """你是乳腺癌辅助分析系统的 AI 助手。你的回答
 4. 证据不足时明确说不下结论，并说明缺什么。
 5. 用简洁中文回答，不要用夸张措辞，不要做诊断承诺。
 6. 一次只调用必要的工具，能一步解决就不要拆成多步。
+7. 遇到需要多步查证的分析类问题，可以调用 delegate 交给子代理处理。
 """
 
 DEFAULT_TOOLS = [
     'predict', 'explain', 'records', 'statistics', 'similar_cases',
     'search_knowledge', 'sql_query', 'compare_records',
-    'export_report', 'export_data',
+    'export_report', 'export_data', 'delegate',
 ]
 
 
