@@ -622,18 +622,22 @@ def _compose_usage(ctx: AgentContext) -> Tuple[str, List[str]]:
         return ('没有在系统文档里找到对应说明。您可以换个问法，'
                 '或者直接说明要操作的功能（例如"批量预测怎么上传文件"）。'), []
 
+    # 只保留足够相关的段落：低于最高分 60% 的一律不拼进去，避免答非所问
+    top_score = float(hits[0].get('score') or 0)
+    picked = [h for h in hits if float(h.get('score') or 0) >= top_score * 0.6][:2]
+
     parts = []
-    for hit in hits:
+    for hit in picked:
         parts.append('### %s' % hit['section'])
         parts.append('')
         parts.append(_clean_clause(hit['text']))
         parts.append('')
 
-    sources = '、'.join(sorted({h['source'] for h in hits}))
+    sources = '、'.join(sorted({h['source'] for h in picked}))
     parts.append('> 依据：%s ｜ 引用编号：%s' % (
-        sources, '、'.join(h['clause_id'] for h in hits)))
+        sources, '、'.join(h['clause_id'] for h in picked)))
 
-    return '\n'.join(parts).strip(), [h['clause_id'] for h in hits]
+    return '\n'.join(parts).strip(), [h['clause_id'] for h in picked]
 
 
 def _compose_history(ctx: AgentContext) -> Tuple[str, List[str]]:
