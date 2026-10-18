@@ -92,7 +92,7 @@ FAQ: List[Dict] = [
         'body': (
             '```powershell\ncd breast-cancer-detection\npython app.py\n```\n\n'
             '- 用户端 http://127.0.0.1:5000\n'
-            '- 管理后台 http://127.0.0.1:5001/admin/login\n'
+            '- 管理后台 /console/admin/login（由管理员开通账号）\n'
             '- 账号 `admin / admin123`（只存在后台数据库里）\n\n'
             '启动时会自动拉起后台子进程；两个服务都起来后才能登录。'
         ),
