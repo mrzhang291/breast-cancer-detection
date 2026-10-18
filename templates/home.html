@@ -498,8 +498,17 @@
         });
 
         $('#prediction-form').on('submit', function () {
+            // 用 setTimeout 再禁用按钮：在 submit 事件里同步 disabled 会让部分浏览器取消提交，
+            // 表现为按钮一直停在「分析中…」而页面不跳转。
             var btn = $(this).find('.primary-btn');
-            btn.prop('disabled', true).html('<i class="fa fa-spinner fa-spin"></i> 分析中…');
+            var label = btn.html();
+            setTimeout(function () {
+                btn.prop('disabled', true).html('<i class="fa fa-spinner fa-spin"></i> 分析中…');
+            }, 0);
+            // 兜底：15 秒还没跳转就恢复按钮，避免卡死
+            setTimeout(function () {
+                btn.prop('disabled', false).html(label);
+            }, 15000);
         });
     });
 </script>
