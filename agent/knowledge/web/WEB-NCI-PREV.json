@@ -11,7 +11,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "谁有患病风险？",
+  "summary_zh": "除女性性别外，年龄增长是乳腺癌最大风险因素。内源性雌激素暴露增加、绝经后联合激素治疗、未生育、饮酒及家族史等均增加风险。"
  },
  {
   "clause_id": "WEB-NCI-PREV-002",
@@ -25,7 +27,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "概述",
+  "summary_zh": "概述部分总结本主题已发表证据，其余摘要详述证据，并列出乳腺癌预防相关PDQ摘要。"
  },
  {
   "clause_id": "WEB-NCI-PREV-003",
@@ -39,7 +43,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "性别与年龄",
+  "summary_zh": "确凿证据表明女性性别和年龄增长是乳腺癌主要风险因素，女性终生风险约为男性100倍，70岁女性短期风险约为30岁女性10倍。"
  },
  {
   "clause_id": "WEB-NCI-PREV-004",
@@ -53,7 +59,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "遗传风险",
+  "summary_zh": "有乳腺癌家族史尤其一级亲属患病者风险增加，一名一级亲属患病风险翻倍，两名则增五倍；遗传基因突变亦增加风险。"
  },
  {
   "clause_id": "WEB-NCI-PREV-005",
@@ -67,7 +75,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "乳腺密度",
+  "summary_zh": "确凿证据表明乳腺致密者乳腺癌风险增加，风险与致密程度成正比，相对风险从1.79至4.64不等。"
  },
  {
   "clause_id": "WEB-NCI-PREV-006",
@@ -81,7 +91,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "绝经激素治疗（MHT）",
+  "summary_zh": "确凿证据表明MHT增加乳腺癌风险，尤其激素敏感性癌症；雌孕激素联用1至4年起风险显著增加，且随用药时间延长而升高。"
  },
  {
   "clause_id": "WEB-NCI-PREV-007",
@@ -95,7 +107,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "联合激素治疗",
+  "summary_zh": "确凿证据表明雌孕激素联合治疗使浸润性乳腺癌发病率约增加26%，每237人治疗可致一例额外乳腺癌，停药后风险下降。"
  },
  {
   "clause_id": "WEB-NCI-PREV-008",
@@ -109,7 +123,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "雌激素治疗",
+  "summary_zh": "确凿证据表明绝经前后开始的雌激素治疗增加乳腺癌风险，幅度17%至33%；亦增加子宫内膜癌和心血管疾病风险。"
  },
  {
   "clause_id": "WEB-NCI-PREV-009",
@@ -123,7 +139,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "雌激素治疗",
+  "summary_zh": "雌激素治疗增加卒中风险（RR 1.12）；子宫切除女性绝经多年后开始雌激素治疗则乳腺癌发病率降低。"
  },
  {
   "clause_id": "WEB-NCI-PREV-010",
@@ -137,7 +155,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "电离辐射",
+  "summary_zh": "确凿证据表明乳腺暴露于电离辐射增加乳腺癌风险，暴露后10年起病并持续终生，风险取决于剂量和暴露年龄，青春期暴露尤高。"
  },
  {
   "clause_id": "WEB-NCI-PREV-011",
@@ -151,7 +171,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "肥胖",
+  "summary_zh": "确凿证据表明肥胖增加未用激素治疗的绝经后女性乳腺癌风险，体重>82.2kg者相对风险为2.85；减重是否降低风险尚不确定。"
  },
  {
   "clause_id": "WEB-NCI-PREV-012",
@@ -165,7 +187,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "酒精",
+  "summary_zh": "确凿证据表明饮酒以剂量依赖方式增加乳腺癌风险，每日约四杯者相对风险1.32，每增加一杯每日风险增7%。"
  },
  {
   "clause_id": "WEB-NCI-PREV-013",
@@ -179,7 +203,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "早孕",
+  "summary_zh": "确凿证据表明20岁前足月妊娠的女性乳腺癌风险降低约50%，相比未生育或35岁后生育者。"
  },
  {
   "clause_id": "WEB-NCI-PREV-014",
@@ -193,7 +219,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "母乳喂养",
+  "summary_zh": "确凿证据表明母乳喂养降低乳腺癌风险，每哺乳12个月相对风险降低4.3%，每次生育另降7%。"
  },
  {
   "clause_id": "WEB-NCI-PREV-015",
@@ -207,7 +235,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "运动",
+  "summary_zh": "确凿证据表明体育锻炼与乳腺癌风险降低相关，绝经前后女性平均相对风险降低约20%，对激素敏感和抵抗型癌症均有效。"
  },
  {
   "clause_id": "WEB-NCI-PREV-016",
@@ -221,7 +251,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "选择性雌激素受体调节剂（SERMs）：获益",
+  "summary_zh": "确凿证据表明他莫昔芬和雷洛昔芬降低绝经后女性乳腺癌发病率，他莫昔芬亦降低高危绝经前女性风险，疗效停药后持续数年。"
  },
  {
   "clause_id": "WEB-NCI-PREV-017",
@@ -235,7 +267,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "选择性雌激素受体调节剂：危害",
+  "summary_zh": "确凿证据表明他莫昔芬增加子宫内膜癌、血栓事件和白内障风险，雷洛昔芬增加静脉血栓栓塞但不增加子宫内膜癌。"
  },
  {
   "clause_id": "WEB-NCI-PREV-018",
@@ -249,7 +283,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂或灭活剂：获益",
+  "summary_zh": "确凿证据表明芳香化酶抑制剂降低高危绝经后女性乳腺癌发病率，依西美坦3年降低65%，阿那曲唑5年降低53%。"
  },
  {
   "clause_id": "WEB-NCI-PREV-019",
@@ -263,7 +299,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂或灭活剂：危害",
+  "summary_zh": "一项4560名女性35个月随机对照试验的较好证据表明，依西美坦相比安慰剂增加潮热（绝对增8%）和疲劳（绝对增2%）。"
  },
  {
   "clause_id": "WEB-NCI-PREV-020",
@@ -277,7 +315,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预防性乳房切除术：获益",
+  "summary_zh": "确凿证据表明双侧预防性乳房切除术降低强家族史等高危女性乳腺癌风险，多数女性术后焦虑缓解。"
  },
  {
   "clause_id": "WEB-NCI-PREV-021",

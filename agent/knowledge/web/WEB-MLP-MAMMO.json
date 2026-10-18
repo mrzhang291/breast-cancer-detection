@@ -11,7 +11,9 @@
   "domain": "MED-DISEASE",
   "level": 2,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "什么是筛查性乳腺X线摄影？",
+  "summary_zh": "筛查性乳腺X线摄影用于无症状女性，可早期发现乳腺癌并降低40至74岁女性死亡率，但也存在假阳性、漏诊和辐射等风险。"
  },
  {
   "clause_id": "WEB-MLP-MAMMO-002",
@@ -25,7 +27,9 @@
   "domain": "MED-DISEASE",
   "level": 2,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "什么是诊断性乳腺X线摄影？",
+  "summary_zh": "诊断性乳腺X线摄影耗时稍长，适用于有乳房肿块、疼痛、乳头溢液或乳房大小形状改变等症状者，也用于植入物等情况。"
  },
  {
   "clause_id": "WEB-MLP-MAMMO-003",
@@ -39,7 +43,9 @@
   "domain": "MED-DISEASE",
   "level": 2,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "乳腺X线摄影如何操作？",
+  "summary_zh": "检查时站立于X线机前，乳房置于两块塑料板间压平以获取清晰图像，双侧乳房从前和侧面拍摄，由放射科医生阅片。"
  },
  {
   "clause_id": "WEB-MLP-MAMMO-004",
@@ -53,7 +59,9 @@
   "domain": "MED-DISEASE",
   "level": 2,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "乳腺X线摄影结果异常怎么办？",
+  "summary_zh": "乳腺X线摄影异常不一定意味着癌症，需进一步检查或转诊乳腺专科医生，以明确诊断并排除或确认乳腺癌。"
  },
  {
   "clause_id": "WEB-MLP-MAMMO-005",
@@ -67,7 +75,9 @@
   "domain": "MED-DISEASE",
   "level": 2,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "从这里开始",
+  "summary_zh": "提供来自CDC、美国卫生与公众服务部妇女健康办公室、国家癌症研究所及放射学会等机构的乳腺X线摄影相关资源。"
  },
  {
   "clause_id": "WEB-MLP-MAMMO-006",
@@ -81,7 +91,9 @@
   "domain": "MED-DISEASE",
   "level": 2,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "相关问题",
+  "summary_zh": "涵盖热成像不能替代乳腺X线摄影、致密乳腺、阅片方式、检查准确性及乳房植入物女性检查等相关问题。"
  },
  {
   "clause_id": "WEB-MLP-MAMMO-007",
@@ -95,6 +107,8 @@
   "domain": "MED-DISEASE",
   "level": 2,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "具体内容",
+  "summary_zh": "介绍乳腺断层合成、数字乳腺X线摄影常见问题及乳管造影等具体检查技术与相关资源。"
  }
 ]
