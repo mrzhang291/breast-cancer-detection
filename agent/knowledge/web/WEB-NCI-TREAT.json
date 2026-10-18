@@ -971,7 +971,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HER2阴性激素受体阳性乳腺癌的术后全身治疗",
+  "summary_zh": "根据分期和分子特征决定辅助全身治疗需求及方式，需权衡复发风险与治疗风险。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-062",
@@ -985,7 +987,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HER2阴性激素受体阳性乳腺癌的术后全身治疗",
+  "summary_zh": "含紫杉烷方案优于不含方案，DFS和OS均获益；E1199研究比较紫杉醇和多西他赛给药方案。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-063",
@@ -999,7 +1003,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HER2阴性激素受体阳性乳腺癌的术后全身治疗",
+  "summary_zh": "每周紫杉醇优于每3周紫杉醇，DFS和OS均改善；每3周多西他赛DFS优于每3周紫杉醇。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-064",
@@ -1013,7 +1019,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HER2阴性激素受体阳性乳腺癌的术后全身治疗",
+  "summary_zh": "每周多西他赛不优于每3周紫杉醇；多项研究支持HER2阴性乳腺癌采用剂量密集化疗。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-065",
@@ -1027,7 +1035,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HER2阴性激素受体阳性乳腺癌的术后全身治疗",
+  "summary_zh": "CALGB-9741研究显示剂量密集方案改善DFS但未改善OS，严重中性粒细胞减少更少。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-066",
@@ -1041,7 +1051,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HER2阴性激素受体阳性乳腺癌的术后全身治疗",
+  "summary_zh": "意大利试验显示每2周方案较每3周方案显著改善5年DFS和OS。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-067",
@@ -1055,7 +1067,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HER2阴性激素受体阳性乳腺癌的术后全身治疗",
+  "summary_zh": "26项随机试验荟萃分析比较标准方案与剂量强化方案，后者无复发生存更优。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-068",
@@ -1069,7 +1083,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HER2阴性激素受体阳性乳腺癌的术后全身治疗",
+  "summary_zh": "剂量强化方案10年RFS和OS均显著优于标准方案，受体阳性和阴性亚组均获益。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-069",
@@ -1083,7 +1099,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HER2阴性激素受体阳性乳腺癌的术后全身治疗",
+  "summary_zh": "含蒽环类与非蒽环类方案疗效数据不一致，两者均可接受，需个体化选择。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-070",
@@ -1097,7 +1115,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HER2阴性激素受体阳性乳腺癌的术后全身治疗",
+  "summary_zh": "EC-T与TC方案5年DFS和OS相似，TC非劣效；EC-T症状性不良事件更常见。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-071",
@@ -1111,7 +1131,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "术后化疗的时机",
+  "summary_zh": "回顾性研究显示术后61天以上开始辅助化疗与II期和III期乳腺癌不良生存相关。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-072",
@@ -1125,7 +1147,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "术后化疗的时机",
+  "summary_zh": "延迟61天以上与II、III期及三阴性、HER2阳性乳腺癌不良结局相关，最佳时机仍不确定。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-073",
@@ -1139,7 +1163,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "术后化疗的时机",
+  "summary_zh": "加州人群研究显示延迟90天以内不影响OS，超过90天显著影响OS，尤其三阴性乳腺癌。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-074",
@@ -1153,7 +1179,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "术后化疗的时机",
+  "summary_zh": "5年他莫昔芬较1至2年显著降低复发风险，死亡率也有一定获益。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-075",
@@ -1167,7 +1195,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "术后化疗的时机",
+  "summary_zh": "ATLAS试验显示10年他莫昔芬优于5年，降低复发和乳腺癌死亡风险。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-076",
@@ -1181,7 +1211,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "术后化疗的时机",
+  "summary_zh": "10年他莫昔芬增加肺栓塞、卒中和子宫内膜癌风险，缺血性心脏病风险降低。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-077",
@@ -1195,7 +1227,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "术后化疗的时机",
+  "summary_zh": "10年他莫昔芬组子宫内膜癌累积风险3.1%，5至14年绝对死亡率降低2.8%。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-078",
@@ -1209,7 +1243,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "术后化疗的时机",
+  "summary_zh": "10年他莫昔芬降低总死亡率，但增加肺栓塞、卒中和子宫内膜癌风险。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-079",
@@ -1223,7 +1259,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "卵巢消融、他莫昔芬与化疗",
+  "summary_zh": "单独卵巢消融不能替代其他全身治疗，联合化疗或他莫昔芬未显著改善结局。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-080",
@@ -1237,7 +1275,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "卵巢消融、他莫昔芬与化疗",
+  "summary_zh": "SOFT试验8年随访显示他莫昔芬联合卵巢抑制较单药改善DFS和OS。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-081",
@@ -1251,7 +1291,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "卵巢消融、他莫昔芬与化疗",
+  "summary_zh": "他莫昔芬联合卵巢抑制组8年OS率93.3%，单药组91.5%；亚组分析提示化疗后绝经前患者可从卵巢抑制获益。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-082",
@@ -1265,7 +1307,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "卵巢消融、他莫昔芬与化疗",
+  "summary_zh": "戈舍瑞林联合他莫昔芬组5年DFS率89.8%，单药组87.3%，OS亦改善（HR 0.31）。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-083",
@@ -1279,7 +1323,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂",
+  "summary_zh": "绝经前卵巢功能抑制女性中，阿那曲唑与他莫昔芬DFS无差异，但他莫昔芬OS更优。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-084",
@@ -1293,7 +1339,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂",
+  "summary_zh": "TEXT与SOFT联合分析显示，依西美坦联合卵巢抑制较他莫昔芬显著改善8年DFS（86.8% vs 82.8%）。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-085",
@@ -1307,7 +1355,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂",
+  "summary_zh": "SOFT试验12年随访OS率89.4% vs 86.8%；他莫昔芬联合卵巢抑制组潮热出汗更明显。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-086",
@@ -1321,7 +1371,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂",
+  "summary_zh": "依西美坦联合卵巢抑制改善DFS与无远处复发率，但OS无差异（93.4% vs 93.3%）。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-087",
@@ -1335,7 +1387,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂",
+  "summary_zh": "生活质量报告：他莫昔芬组潮热出汗更重，依西美坦组阴道干燥及性功能下降更明显。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-088",
@@ -1349,7 +1403,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂",
+  "summary_zh": "他莫昔芬组子宫内膜癌及脑血管事件更多，阿那曲唑组骨折更多；心肌梗死频率相似。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-089",
@@ -1363,7 +1419,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂",
+  "summary_zh": "他莫昔芬组子宫内膜癌及脑血管事件更多，阿那曲唑组骨折更多；心肌梗死频率相似。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-090",
@@ -1377,7 +1435,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂",
+  "summary_zh": "来曲唑组DFS显著优于他莫昔芬（HR 0.82），OS无显著差异；荟萃分析示10年复发风险降低。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-091",
@@ -1391,7 +1451,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂",
+  "summary_zh": "多项试验表明他莫昔芬序贯AI优于继续他莫昔芬满5年，全因死亡率改善。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-092",
@@ -1405,7 +1467,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂",
+  "summary_zh": "他莫昔芬2年后换用阿那曲唑3年，EFS显著改善（HR 0.80），OS无显著差异。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-093",
@@ -1419,7 +1483,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂",
+  "summary_zh": "他莫昔芬2-3年后换用依西美坦，DFS显著改善（HR 0.76），支持序贯治疗。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-094",
@@ -1433,7 +1499,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂",
+  "summary_zh": "换用依西美坦组DFS事件减少3.3%，OS HR 0.85；荟萃分析示10年复发率下降。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-095",
@@ -1447,7 +1515,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂",
+  "summary_zh": "他莫昔芬序贯AI 5年与单用AI 5年相比无额外获益，5年DFS率85% vs 86%。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-096",
@@ -1461,7 +1531,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂",
+  "summary_zh": "IBCSG 1-98试验中两个序贯组与5年来曲唑相比DFS均无差异。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-097",
@@ -1475,7 +1547,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂",
+  "summary_zh": "换药与初始AI的5年DFS率无显著差异（88.5% vs 89.8%）；荟萃分析示单用AI复发率略低。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-098",
@@ -1489,7 +1563,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂",
+  "summary_zh": "MA27试验显示阿那曲唑与依西美坦疗效无差异（HR 1.02），骨密度及骨折影响亦相似。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-099",
@@ -1503,7 +1579,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂",
+  "summary_zh": "FACE研究显示来曲唑与阿那曲唑DFS无显著差异（HR 0.93），不良事件亦无实质差别。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-100",
@@ -1517,7 +1595,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂",
+  "summary_zh": "FATA-GIM3试验中三种AI的5年DFS率无显著差异（阿那曲唑90.0%、依西美坦88.0%、来曲唑89.4%）。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-101",
