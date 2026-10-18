@@ -57,7 +57,28 @@ def bind_runtime():
     agent_runtime.get().bind(predict=_fake_predict, explain=_fake_explain,
                              fetch_records=_fake_records, fetch_stats=_fake_stats)
     from agent import db
+    from agent.rag import index as rag_index
     db.init_schema()
+
+    # 新克隆的仓库里没有预建检索索引，测试前补建，避免依赖本地残留文件
+    try:
+        conn = db.connect()
+        chunks = conn.execute('SELECT COUNT(*) FROM rag_chunks').fetchone()[0]
+        conn.close()
+    except Exception:  # noqa: BLE001
+        chunks = 0
+    if not chunks:
+        rag_index.rebuild()
+
+    # 清掉历史缓存：索引缺失时跑出来的无引用答案会被缓存，污染后续测试
+    try:
+        conn = db.connect()
+        conn.execute('DELETE FROM answer_cache')
+        conn.commit()
+        conn.close()
+    except Exception:  # noqa: BLE001
+        pass
+
     yield
 
 
