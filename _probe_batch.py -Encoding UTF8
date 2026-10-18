@@ -1,0 +1,11 @@
+import io, re, sys
+sys.stdout.reconfigure(encoding="utf-8")
+a = io.open(r"app.py", encoding="utf-8").read()
+for m in re.finditer(r"session\['batch_results'\]\s*=\s*(.{0,160})", a, re.S):
+    print("赋值:", m.group(1)[:160].replace("\n"," "))
+i = a.find("def batch_results(")
+print("\n=== batch_results 路由 ===")
+print(a[i:i+500] if i>0 else "未找到")
+b = io.open(r"templates\batch_results.html", encoding="utf-8").read()
+print("\n模板里 results 变量用法:", sorted(set(re.findall(r"results\[0\]\.([a-z_]+)|\{\{\s*results\[0\]\.([a-z_]+)", b)))[:8])
+print("含 '.prediction' :", ".prediction" in b, "| 'confidence':", "confidence" in b)
