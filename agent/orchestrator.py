@@ -11,6 +11,7 @@ from typing import Dict, List, Optional, Tuple
 
 from . import cache, db, llm, policy, registry, tracing, verify
 from .graph import Graph, Interrupt, JsonCheckpointer
+from . import dialog
 from .context import AgentContext
 
 # 确保工具被注册
@@ -29,6 +30,8 @@ INTENT = {
     'general': 'general',
     'task': 'multi_step_task',
     'sql': 'data_query',
+    'compare': 'record_compare',
+    'clarify': 'clarify',
 }
 
 INTENT_LABEL = {
@@ -42,6 +45,8 @@ INTENT_LABEL = {
     'multi_step_task': '多步任务',
     'data_query': '数据查询',
     'refused': '超出范围',
+    'record_compare': '记录对比',
+    'clarify': '澄清追问',
 }
 
 _FEATURES: List[Dict] = []
@@ -76,6 +81,9 @@ _SQL_HINTS = ['占比', '数量', '最高', '最低', '分布', '汇总', '统�
 
 def classify(question: str, has_features: bool) -> str:
     text = (question or '').lower()
+
+    if dialog.looks_compare(text):
+        return INTENT['compare']
 
     if any(h in text for h in _TASK_HINTS):
         return INTENT['task']
@@ -283,6 +291,80 @@ def _act_task(ctx: AgentContext, question: str, emit=None) -> None:
         'items': rows,
     }, tool='multi_step', run_id=ctx.run_id, ident='task_%s' % ctx.run_id[:8])
     ctx.add_fact(fact)
+
+
+
+def _record_values(item):
+    """从一条记录里取出 30 维特征，兼容 dict / list 两种返回。"""
+    if isinstance(item, dict):
+        feats = item.get('features')
+        if isinstance(feats, dict) and feats:
+            out = []
+            for idx in range(1, 31):
+                value = feats.get('feature_%d' % idx)
+                if value is None:
+                    return None
+                out.append(float(value))
+            return out
+        if isinstance(feats, list) and len(feats) >= 30:
+            return [float(v) for v in feats[:30]]
+        values = item.get('values')
+        if isinstance(values, list) and len(values) >= 30:
+            return [float(v) for v in values[:30]]
+    if isinstance(item, (list, tuple)) and len(item) >= 35:
+        return [float(v) for v in item[5:35]]
+    return None
+
+
+def _act_compare(ctx: AgentContext, values: Optional[List[float]] = None, emit=None) -> None:
+    """取最近两条记录，和当前这次输入做逐项对比。"""
+    _call(ctx, 'records', {'limit': 5}, emit)
+
+    items = []
+    for fact in ctx.facts:
+        if fact.get('kind') == 'record':
+            items = (fact.get('payload') or {}).get('items') or []
+            break
+
+    current = list(values) if values else None
+    if not current and items:
+        current = _record_values(items[0])
+
+    previous = None
+    for item in items:
+        candidate = _record_values(item)
+        if not candidate:
+            continue
+        if current and all(abs(a - b) < 1e-9 for a, b in zip(candidate, current)):
+            continue
+        previous = candidate
+        break
+
+    if current and previous:
+        _call(ctx, 'compare_records', {'current': current, 'previous': previous}, emit)
+
+
+def _compose_compare(ctx: AgentContext):
+    fact = next((f for f in ctx.facts if f.get('kind') == 'compare'), None)
+    if not fact:
+        return ('我暂时凑不齐两条可对比的记录。先做一次预测，再问我和上次比，'
+                '我就能把 30 项特征逐项比给你看。', [])
+
+    payload = fact.get('payload') or {}
+    top = payload.get('top') or []
+    changed = int(payload.get('changed_count') or 0)
+
+    lines = ['我把两条记录逐项比了一遍：有 **%d** 项特征变化超过 5%%。' % changed, '']
+    for item in top[:4]:
+        arrow = '↑' if item['change_pct'] > 0 else '↓'
+        lines.append('- **%s**：%.2f → %.2f（%s %.0f%%）'
+                     % (item['name_zh'], item['previous'], item['current'],
+                        arrow, abs(item['change_pct'])))
+
+    lines += ['',
+              '变化最大的几项通常就是结论差异的来源。如果其中包含「最差值」类指标'
+              '（面积、凹点、concave points），对恶性判断的影响会更直接。']
+    return '\n'.join(lines), []
 
 
 def _act_report(ctx: AgentContext, values: List[float], emit=None) -> None:
@@ -625,7 +707,14 @@ def _router_cache(state):
 
 
 def _node_route(state, ctx):
-    intent = classify(state['question'], bool(state.get('values')))
+    plan = state.get('plan') or {}
+    if plan.get('mode') == 'compare':
+        intent = INTENT['compare']
+    elif state.get('intent_hint'):
+        intent = state['intent_hint']
+    else:
+        intent = classify(dialog.merge_question(state['question'], ctx.history),
+                          bool(state.get('values')))
     if intent in (INTENT['interpret'], INTENT['report']) and not state.get('values'):
         intent = INTENT['usage']
     state['intent'] = intent
@@ -656,6 +745,8 @@ def _node_act(state, ctx):
             _act_task(ctx, state['question'], state.get('_emit'))
         elif intent == INTENT['sql']:
             _act_sql(ctx, state['question'], state.get('_emit'))
+        elif intent == INTENT['compare']:
+            _act_compare(ctx, values, state.get('_emit'))
         else:
             _act_usage(ctx, state['question'], state.get('_emit'))
     except Exception as exc:  # noqa: BLE001
@@ -721,6 +812,7 @@ def _node_compose(state, ctx):
         INTENT['general']: lambda: _compose_usage(ctx),
         INTENT['task']: lambda: _compose_task(ctx),
         INTENT['sql']: lambda: _compose_sql(ctx),
+        INTENT['compare']: lambda: _compose_compare(ctx),
     }
     answer, citations = composers.get(intent, lambda: _compose_usage(ctx))()
     if intent in (INTENT['usage'], INTENT['general']):
@@ -868,6 +960,26 @@ def run(ctx: AgentContext, question: str, values: Optional[List[float]] = None,
         ctx.run_id = db.create_run(ctx)
     ctx.question = question
 
+    plan = dialog.plan(question, ctx.history, ctx.context, bool(values))
+
+    # 问题含糊时先反问，不硬猜
+    if plan.get('mode') == 'clarify':
+        ctx.add_step(node='clarify', verdict='ask', latency_ms=0)
+        answer = plan.get('text') or '能再说清楚一点吗？'
+        db.update_run(ctx.run_id, status='ok', answer_md=answer,
+                      citations_json='[]', latency_ms=0)
+        result = _result(ctx, question, INTENT['clarify'], 'ok', answer, [],
+                         {'risk': 'low'}, {'ok': True, 'checked': 0, 'unmatched': []},
+                         started)
+        result['clarify'] = plan.get('options') or []
+        result['graph'] = [{'seq': 1, 'node': 'clarify', 'verdict': 'ask'}]
+        result['tier'] = 'confident'
+        result['uncertainty'] = {}
+        result['model_used'] = 'template'
+        result['policy_issues'] = []
+        result['cached'] = False
+        return result
+
     state = {
         'run_id': ctx.run_id,
         'question': question,
@@ -878,6 +990,8 @@ def run(ctx: AgentContext, question: str, values: Optional[List[float]] = None,
         'require_confirm': bool(require_confirm),
         'confirmed': False,
         '_emit': emit,
+        'plan': plan,
+        'intent_hint': INTENT.get(plan.get('inherit'), '') if plan.get('inherit') else '',
     }
 
     if emit:
