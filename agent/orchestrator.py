@@ -355,7 +355,12 @@ def _act_compare(ctx: AgentContext, values: Optional[List[float]] = None, emit=N
 
 
 def _act_export(ctx: AgentContext, values, state, emit=None) -> None:
-    """生成报告：先补齐预测/归因事实，再交给 export_report。"""
+    """生成报告：先补齐事实，再交给 export_report。"""
+    kind = (state or {}).get('export_kind') or 'single'
+    if kind == 'compare':
+        _act_compare(ctx, values, emit)
+        _call(ctx, 'export_report', {'kind': 'compare'}, emit)
+        return
     if values:
         _act_interpret(ctx, values, emit)
     _call(ctx, 'export_report', {'kind': 'single'}, emit)
@@ -735,7 +740,10 @@ def _router_cache(state):
 
 def _node_route(state, ctx):
     plan = state.get('plan') or {}
-    if plan.get('mode') == 'compare':
+    if plan.get('mode') == 'compare_export':
+        intent = INTENT['export']
+        state['export_kind'] = 'compare'
+    elif plan.get('mode') == 'compare':
         intent = INTENT['compare']
     elif state.get('intent_hint'):
         intent = state['intent_hint']

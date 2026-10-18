@@ -245,8 +245,91 @@ def render_single(payload: dict) -> dict:
                  '%s|%s' % (out, conf))
 
 
+def chart_diff(items) -> bytes:
+    """两次记录的特征变化（百分比），正负分色。"""
+    _ensure_font()
+    items = list(items)[:8][::-1]
+    names = ['%s' % it['name'] for it in items]
+    values = [float(it['change_pct']) for it in items]
+    colors = ['#4f46e5' if v >= 0 else '#f87171' for v in values]
+
+    fig, ax = plt.subplots(figsize=(6.4, 0.42 * len(items) + 1.0))
+    ax.barh(range(len(items)), values, color=colors, height=0.6)
+    ax.set_yticks(range(len(items)))
+    ax.set_yticklabels(names, fontsize=9, color='#334155')
+    ax.axvline(0, color='#cbd5e1', lw=0.8)
+    span = max(abs(min(values)), abs(max(values))) or 1
+    for idx, value in enumerate(values):
+        offset = span * 0.03
+        ax.text(value + (offset if value >= 0 else -offset), idx,
+                '%+.0f%%' % value, va='center',
+                ha='left' if value >= 0 else 'right',
+                fontsize=8, color='#64748b')
+    ax.set_xlim(-span * 1.35, span * 1.35)
+    ax.set_xlabel('相对上一条记录的变化幅度', fontsize=8.5, color='#94a3b8')
+    for side in ('top', 'right', 'left'):
+        ax.spines[side].set_visible(False)
+    ax.spines['bottom'].set_color('#e2e8f0')
+    ax.tick_params(axis='y', length=0)
+    ax.tick_params(axis='x', length=0, labelsize=8, colors='#94a3b8')
+    return _png(fig)
+
+
+def render_compare(payload: dict) -> dict:
+    """② 两次记录对比报告。"""
+    compare = payload.get('compare') or {}
+    top = compare.get('top') or []
+    changed = int(compare.get('changed_count') or 0)
+    rising = int(compare.get('rising') or 0)
+    falling = int(compare.get('falling') or 0)
+    pred = payload.get('prediction') or {}
+    user = payload.get('username') or payload.get('user_id')
+
+    pdf = Report()
+    pdf.header_block('乳腺癌预测对比报告',
+                     '生成时间 %s · 用户 %s' % (_stamp(), user))
+
+    pdf.section('对比摘要')
+    pdf.kv_table([
+        ('对比对象', '本次输入 vs 上一条记录'),
+        ('本次结果', pred.get('output') or '未知'),
+        ('变化项', '%d 项变化超过 5%%（上升 %d / 下降 %d）' % (changed, rising, falling)),
+        ('最大差异', (top[0]['name_zh'] + ' %+.0f%%' % top[0]['change_pct']) if top else '—'),
+    ])
+
+    if top:
+        pdf.section('特征变化')
+        try:
+            pdf.image(io.BytesIO(chart_diff(top)), w=170)
+        except Exception:  # noqa: BLE001
+            pass
+
+        pdf.section('变化明细')
+        pdf.use(9)
+        pdf.set_text_color(*MUTED)
+        pdf.cell(58, 6, '特征', ln=0)
+        pdf.cell(32, 6, '上一条', ln=0, align='R')
+        pdf.cell(32, 6, '本次', ln=0, align='R')
+        pdf.cell(0, 6, '变化', ln=1, align='R')
+        for item in top[:10]:
+            pdf.set_text_color(*INK)
+            pdf.cell(58, 6, item['name_zh'], ln=0)
+            pdf.set_text_color(*MUTED)
+            pdf.cell(32, 6, '%.2f' % item['previous'], ln=0, align='R')
+            pdf.cell(32, 6, '%.2f' % item['current'], ln=0, align='R')
+            color = BAD if item['change_pct'] > 0 else GOOD
+            pdf.set_text_color(*color)
+            pdf.cell(0, 6, '%+.0f%%' % item['change_pct'], ln=1, align='R')
+
+    pdf.footer_note('本报告由系统自动生成，仅供教学演示，不用于临床诊断。'
+                    '数值为两次输入之间的直接比较，不代表病情变化。')
+    return _save(pdf, payload.get('user_id'), payload.get('run_id'), 'compare',
+                 '|'.join('%s:%+.1f' % (i['name_zh'], i['change_pct']) for i in top[:6]))
+
 def render(kind: str, payload: dict) -> dict:
     """统一入口，按动作分派。"""
     if kind == 'single':
         return render_single(payload)
+    if kind == 'compare':
+        return render_compare(payload)
     raise ValueError('暂不支持的报告类型: %s' % kind)

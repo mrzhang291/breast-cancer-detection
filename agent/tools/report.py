@@ -53,6 +53,7 @@ def export_report(ctx, kind='single'):
         'top_features': _top_features(ctx),
         'narrative': context.get('narrative') or '',
         'citations': list(ctx.citations),
+        'compare': _payload_of(ctx, 'compare'),
     }
 
     try:

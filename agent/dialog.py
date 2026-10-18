@@ -61,6 +61,9 @@ def plan(question: str, history: Optional[List[Dict]] = None,
     last = history[-1] if history else {}
 
     if looks_compare(text):
+        # 「和上次比，出份报告」：既要对比，也要产物
+        if any(h in text for h in ('报告', 'pdf', 'PDF', '导出')):
+            return {'mode': 'compare_export', 'inherit': None, 'text': '', 'options': []}
         if has_values or context.get('record_id') or history:
             return {'mode': 'compare', 'inherit': None, 'text': '', 'options': []}
         return {
