@@ -12,7 +12,8 @@ _CACHE = {}
 def _features():
     if 'items' not in _CACHE:
         with open(_FEATURES_PATH, encoding='utf-8') as fh:
-            _CACHE['items'] = json.load(fh)
+            data = json.load(fh)
+        _CACHE['items'] = data.get('items', []) if isinstance(data, dict) else data
     return _CACHE['items']
 
 
