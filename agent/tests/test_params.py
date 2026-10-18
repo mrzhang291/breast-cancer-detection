@@ -38,8 +38,8 @@ def test_zero_rejected():
 
 
 def test_negative_rejected():
-    result = params.parse_rules('最近 -3 次')
-    assert not result['ok']
+    result = params.parse_range('最近 -3 次')
+    assert result.get('ok') is False and result.get('needs_clarify')
 
 
 def test_garbage_clarify():
