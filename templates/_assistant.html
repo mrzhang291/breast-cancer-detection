@@ -474,6 +474,49 @@
     }
 
 
+
+    function openClause(anchor, clauseId) {
+        var holder = anchor.parentNode;
+        var existing = holder.querySelector('.as-clause-box');
+        if (existing) { existing.remove(); return; }
+        fetch('/api/clause/' + encodeURIComponent(clauseId))
+            .then(function (r) { return r.json(); })
+            .then(function (data) {
+                var div = document.createElement('div');
+                div.className = 'as-clause-box';
+                if (!data.ok) {
+                    div.textContent = data.error || '取条款失败';
+                } else {
+                    var c = data.clause;
+                    div.innerHTML = '<b>' + escapeHtml(c.id) + ' · ' + escapeHtml(c.section || '') + '</b>' +
+                        '<p>' + escapeHtml((c.text || '').slice(0, 240)) + '</p>' +
+                        '<i>' + escapeHtml(c.source || '') + '</i>';
+                }
+                holder.appendChild(div);
+            })
+            .catch(function () {
+                var div = document.createElement('div');
+                div.className = 'as-clause-box';
+                div.textContent = '取条款失败';
+                holder.appendChild(div);
+            });
+    }
+
+    function renderCitations(bubble, citations) {
+        if (!citations || !citations.length) { return; }
+        var box = document.createElement('div');
+        box.className = 'as-cites';
+        citations.slice(0, 10).forEach(function (id) {
+            var chip = document.createElement('button');
+            chip.type = 'button';
+            chip.className = 'as-cite';
+            chip.textContent = id;
+            chip.addEventListener('click', function () { openClause(chip, id); });
+            box.appendChild(chip);
+        });
+        bubble.appendChild(box);
+    }
+
     function renderGrounding(bubble, g) {
         if (!g || !(g.claims || []).length) { return; }
         var claims = g.claims || [];
@@ -547,6 +590,7 @@
         bubble.innerHTML = renderMarkdown(answer);
         renderArtifacts(bubble, result.artifacts, result.run_id);
         renderGrounding(bubble, result.grounding);
+        renderCitations(bubble, result.citations);
 
         if (result.intent === 'report_export' && !(result.artifacts || []).length) {
             var retry = document.createElement('button');
@@ -638,6 +682,7 @@
                     lastAnswer = finalText;
                     renderArtifacts(bubble, data.artifacts, data.run_id);
                     renderGrounding(bubble, data.grounding);
+                    renderCitations(bubble, data.citations);
                     (data.artifacts || []).forEach(function (a) {
                         recentArtifacts.unshift({ filename: a.filename, kind: a.kind,
                                                   size: a.size, run_id: data.run_id });
@@ -872,27 +917,11 @@
     document.addEventListener('input', function () { refreshAgentContext(); });
 
 
+
     document.addEventListener('click', function (ev) {
         var btn = ev.target.closest ? ev.target.closest('.as-src.clickable') : null;
         if (!btn) { return; }
-        var id = btn.getAttribute('data-clause');
-        var box = btn.parentNode.querySelector('.as-clause-box');
-        if (box) { box.remove(); return; }
-        fetch('/api/clause/' + encodeURIComponent(id))
-            .then(function (r) { return r.json(); })
-            .then(function (data) {
-                var div = document.createElement('div');
-                div.className = 'as-clause-box';
-                if (!data.ok) {
-                    div.textContent = data.error || '取条款失败';
-                } else {
-                    var c = data.clause;
-                    div.innerHTML = '<b>' + escapeHtml(c.id) + ' · ' + escapeHtml(c.section || '') + '</b>' +
-                        '<p>' + escapeHtml((c.text || '').slice(0, 220)) + '</p>' +
-                        '<i>' + escapeHtml(c.source || '') + '</i>';
-                }
-                btn.parentNode.appendChild(div);
-            });
+        openClause(btn, btn.getAttribute('data-clause'));
     });
 
     window.ASAssistant = { open: openPanel, close: closePanel, ask: ask,
