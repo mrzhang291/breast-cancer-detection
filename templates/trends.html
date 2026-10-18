@@ -8,11 +8,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ _('trend_analysis') }} - {{ _('breast_cancer_detection') }}</title>
     <link rel="preconnect" href="https://cdn.bootcdn.net">
-    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="{{ url_for('static', filename='vendor/bootstrap.min.css') }}" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="{{ url_for('static', filename='vendor/font-awesome.min.css') }}" media="print" onload="this.media='all'">
     <noscript>
-        <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='vendor/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='vendor/font-awesome.min.css') }}">
     </noscript>
     <style>
         :root {

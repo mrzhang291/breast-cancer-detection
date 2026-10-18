@@ -4,10 +4,10 @@
   <title>{{ _('prediction_result') }} - {{ _('breast_cancer_detection') }}</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='vendor/bootstrap.min.css') }}">
+  <script src="{{ url_for('static', filename='vendor/jquery.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendor/bootstrap.min.js') }}"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='vendor/font-awesome.min.css') }}">
   <style>
     .result-card {
       padding: 28px;
