@@ -29,7 +29,7 @@ def search_knowledge(ctx, query, k=5, domains=None):
         'count': len(hits),
         'hits': [{key: hit.get(key) for key in
                   ('clause_id', 'source', 'version', 'section', 'text', 'score',
-                   'domain', 'level', 'url')}
+                   'domain', 'level', 'url', 'rerank')}
                  for hit in hits],
     }
 
