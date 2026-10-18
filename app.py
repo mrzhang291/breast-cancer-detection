@@ -738,7 +738,7 @@ def result():
 	
 	raw_confidence = prediction_data.get('confidence', 0)
 	confidence = prediction_data.get('confidence_calibrated', raw_confidence)
-	return render_template('result.html', output=output, confidence=confidence, raw_confidence=raw_confidence, time=prediction_data.get('time', 0), model_type=prediction_data.get('model_type', 'enhanced'))
+	return render_template('result.html', output=output, confidence=confidence, raw_confidence=raw_confidence, time=prediction_data.get('time', 0), model_type=prediction_data.get('model_type', 'enhanced'), evidence=prediction_data.get('evidence') or {})
 
 @app.route('/predict', methods=['POST'])
 def predict():
@@ -811,6 +811,13 @@ def predict():
     if t > 0.5:
         print('警告: 预测时间过长: %.4f 秒，建议优化！' % t)
 
+    # 证据档位（三档）：供结果页直接展示，不必再点解读
+    evidence = {}
+    try:
+        evidence = _uncertainty.assess(list(data), float(calibrated), output)
+    except Exception as exc:  # noqa: BLE001
+        app.logger.warning('证据档位计算失败: %s', exc)
+
     # ---------- 4. 写入 session（供结果页、AI 分析、SHAP 使用） ----------
     session['last_prediction'] = {
         'output': output,
@@ -821,6 +828,7 @@ def predict():
         'use_enhanced': (model_type == 'enhanced'),
         'time': t,
         'model_type': model_type,
+        'evidence': evidence,
     }
 
     # ---------- 5. 上报管理后台（失败不影响本次预测） ----------
@@ -2732,6 +2740,40 @@ def api_rag_search():
         return jsonify({'ok': False, 'error': '缺少 q'}), 400
     k = min(int(request.args.get('k', 5) or 5), 20)
     return jsonify({'ok': True, 'query': query, 'hits': _rag_index.search(query, k)})
+
+
+@app.route('/api/explain', methods=['POST'])
+def api_explain_features():
+    """返回本次预测的 Top 特征归因，供结果页内联画条形图。"""
+    if 'username' not in session:
+        return jsonify({'ok': False, 'error': '请先登录'}), 403
+    if not _agent_bind_runtime():
+        return jsonify({'ok': False, 'error': '模型尚未就绪'}), 503
+
+    body = request.get_json(silent=True) or {}
+    try:
+        values = _agent_values(body.get('values'))
+    except (TypeError, ValueError) as exc:
+        return jsonify({'ok': False, 'error': str(exc)}), 400
+
+    prediction = body.get('prediction') or session.get('last_prediction', {}).get('output', '')
+    confidence = float(body.get('confidence') or 0)
+
+    try:
+        result = _agent_runtime.get().explain(values, prediction, confidence) or {}
+    except Exception as exc:  # noqa: BLE001
+        app.logger.exception('归因失败')
+        return jsonify({'ok': False, 'error': '归因失败：%s' % str(exc)[:80]}), 500
+
+    top = []
+    for item in (result.get('top_features') or [])[:6]:
+        top.append({
+            'name': item.get('name_zh') or item.get('name') or '',
+            'value': item.get('value'),
+            'shap': item.get('shap_value') if item.get('shap_value') is not None else item.get('importance'),
+            'direction': item.get('direction') or '',
+        })
+    return jsonify({'ok': True, 'prediction': prediction, 'top': top})
 
 
 @app.route('/api/cases/similar', methods=['POST'])
