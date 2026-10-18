@@ -106,7 +106,7 @@ def sections_from_html(html: str) -> List[Dict]:
     return [s for s in sections if not NOISE_TITLE.search(s['title'])]
 
 
-SENT_RE = re.compile(r'(?<=[。！？!?；;])')
+SENT_RE = re.compile(r'(?<=[。！？!?；;])|(?<=\.\s)')
 
 
 def split_sentences(text: str) -> List[str]:
