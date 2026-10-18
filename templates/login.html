@@ -393,6 +393,24 @@
     </style>
 
     <style>
+
+        .captcha-row { display: flex; gap: 10px; align-items: stretch; }
+        .captcha-row .control { flex: 1; min-width: 0; }
+        .captcha-img {
+            flex: 0 0 132px;
+            width: 132px;
+            height: 50px;
+            border-radius: var(--radius);
+            border: 1.5px solid var(--line);
+            background: #fff;
+            cursor: pointer;
+            object-fit: cover;
+            transition: border-color .18s, transform .12s;
+        }
+        .captcha-img:hover { border-color: var(--brand); }
+        .captcha-img:active { transform: scale(.98); }
+        #captcha { text-transform: uppercase; letter-spacing: .22em; font-weight: 600; }
+
         /* 移动端与横向溢出修正 */
         body { overflow-x: hidden; }
         .shell > * { min-width: 0; }
@@ -533,6 +551,26 @@
                     </div>
                 </div>
 
+
+                <div class="field">
+                    <label for="captcha">{{ _('captcha') }}</label>
+                    <div class="captcha-row">
+                        <div class="control">
+                            <span class="lead">
+                                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                     stroke-width="2" stroke-linecap="round">
+                                    <path d="M4 6h16M4 12h10M4 18h7"/>
+                                </svg>
+                            </span>
+                            <input id="captcha" type="text" name="captcha" maxlength="4"
+                                   placeholder="{{ _('captcha_placeholder') }}"
+                                   required autocomplete="off" spellcheck="false">
+                        </div>
+                        <img id="captchaImg" class="captcha-img" src="/captcha.png"
+                             alt="{{ _('captcha') }}" title="{{ _('captcha_refresh') }}">
+                    </div>
+                </div>
+
                 <div class="row-between">
                     <label class="check">
                         <input type="checkbox" name="remember"> {{ _('remember_me') }}
@@ -571,6 +609,15 @@
             toggle.setAttribute('aria-label', show ? '隐藏密码' : '显示密码');
             toggle.style.color = show ? '#4f46e5' : '';
         });
+
+        var captchaImg = document.getElementById('captchaImg');
+        if (captchaImg) {
+            captchaImg.addEventListener('click', function () {
+                this.src = '/captcha.png?t=' + Date.now();
+                var box = document.getElementById('captcha');
+                if (box) { box.value = ''; box.focus(); }
+            });
+        }
     })();
 </script>
 </body>

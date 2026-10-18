@@ -1,6 +1,7 @@
 # 标准库导入
 import json
 import os
+import random
 import time
 import threading
 import subprocess
@@ -501,6 +502,78 @@ def get_user_from_db(username, password):
 	return None
 
 
+
+# ==================== 登录图形验证码 ====================
+try:
+	from PIL import Image, ImageDraw, ImageFont, ImageFilter
+	_PIL_AVAILABLE = True
+except Exception:  # noqa: BLE001
+	_PIL_AVAILABLE = False
+
+_CAPTCHA_CHARS = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'
+
+
+def _captcha_font(size):
+	"""优先用系统里的粗体字体，找不到就退回默认位图字体。"""
+	for path in ('/usr/share/fonts/dejavu/DejaVuSans-Bold.ttf',
+	             '/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf',
+	             '/usr/share/fonts/dejavu-sans-fonts/DejaVuSans-Bold.ttf',
+	             'C:/Windows/Fonts/arialbd.ttf',
+	             'C:/Windows/Fonts/msyhbd.ttc'):
+		if os.path.exists(path):
+			try:
+				return ImageFont.truetype(path, size)
+			except Exception:  # noqa: BLE001
+				continue
+	return ImageFont.load_default()
+
+
+def _captcha_image(code):
+	width, height = 132, 46
+	img = Image.new('RGB', (width, height), (246, 248, 252))
+	draw = ImageDraw.Draw(img)
+
+	for _ in range(260):
+		draw.point((random.randint(0, width - 1), random.randint(0, height - 1)),
+		           fill=(random.randint(178, 222),) * 3)
+
+	for _ in range(4):
+		draw.line([(random.randint(0, width), random.randint(0, height)),
+		           (random.randint(0, width), random.randint(0, height))],
+		          fill=(random.randint(150, 200), random.randint(150, 200), random.randint(205, 240)),
+		          width=1)
+
+	font = _captcha_font(28)
+	for i, ch in enumerate(code):
+		layer = Image.new('RGBA', (44, height), (0, 0, 0, 0))
+		ImageDraw.Draw(layer).text(
+			(7, 5), ch, font=font,
+			fill=(random.randint(35, 80), random.randint(45, 90), random.randint(120, 180)))
+		layer = layer.rotate(random.uniform(-16, 16), resample=Image.BICUBIC)
+		img.paste(layer, (6 + i * 30, random.randint(0, 5)), layer)
+
+	return img.filter(ImageFilter.SMOOTH)
+
+
+@app.route('/captcha.png')
+def captcha_png():
+	"""生成验证码图片，正确值存在 session 里，登录时一次性校验。"""
+	if not _PIL_AVAILABLE:
+		return '', 503
+	code = ''.join(random.choice(_CAPTCHA_CHARS) for _ in range(4))
+	session['captcha'] = code
+	session['captcha_at'] = time.time()
+
+	buffer = io.BytesIO()
+	_captcha_image(code).save(buffer, 'PNG')
+	buffer.seek(0)
+
+	response = send_file(buffer, mimetype='image/png')
+	response.headers['Cache-Control'] = 'no-store, no-cache, must-revalidate, max-age=0'
+	response.headers['Pragma'] = 'no-cache'
+	return response
+
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
 	if 'username' in session:
@@ -511,7 +584,17 @@ def login():
 		username = request.form.get('username', '').strip()
 		password = request.form.get('password', '')
 		print(f'Login attempt for user: {username}')
-		
+
+		# ---- 验证码校验 ----
+		# 自动化测试/运维可通过内部令牌跳过（令牌不出现在任何前端页面）
+		internal_ok = bool(INTERNAL_TOKEN) and request.headers.get('X-Internal-Token') == INTERNAL_TOKEN
+		if not internal_ok:
+			expected = session.pop('captcha', None)
+			entered = (request.form.get('captcha') or '').strip().upper()
+			if not expected or entered != expected.upper():
+				print(f'验证码校验失败 for user: {username}')
+				return render_template('login.html', error='验证码不正确，请重新输入')
+
 		# 优先从数据库验证用户（管理后台创建的用户）
 		user_from_db = get_user_from_db(username, password)
 		if user_from_db:

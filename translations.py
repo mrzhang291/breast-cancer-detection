@@ -39,6 +39,10 @@ translations = {
         'create_account': '立即注册',
         'login_success': '登录成功',
         'login_failed': '登录失败，用户名或密码错误',
+        'captcha': '验证码',
+        'captcha_placeholder': '输入右侧 4 位字符',
+        'captcha_error': '验证码不正确，请重新输入',
+        'captcha_refresh': '点击刷新',
         
         # 注册页面
         'register_title': '用户注册',
@@ -527,6 +531,10 @@ translations = {
         'create_account': 'Create account',
         'login_success': 'Login successful',
         'login_failed': 'Login failed, invalid username or password',
+        'captcha': 'Verification code',
+        'captcha_placeholder': 'Enter the 4 characters',
+        'captcha_error': 'Incorrect code, please try again',
+        'captcha_refresh': 'Click to refresh',
         
         # Register Page
         'register_title': 'User Registration',
