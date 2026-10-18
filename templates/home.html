@@ -176,7 +176,7 @@
         .primary-btn:hover { color: #fff; transform: translateY(-1px); }
 
         /* ---------- 右侧信息卡 ---------- */
-        .side { display: flex; flex-direction: column; gap: 18px; align-self: start; }
+        .side { display: flex; flex-direction: column; gap: 18px; }
         .tabs-card { padding: 20px; }
         .tabs { display: flex; gap: 4px; background: #f4f7fc; padding: 4px; border-radius: 11px; margin-bottom: 16px; }
         .tab-btn {
@@ -275,7 +275,9 @@
             background: #eef2ff; color: #4f46e5; font-size: 10.5px;
         }
 
-        .cancer-card { padding: 24px; }
+        .side > .card { flex: 1; }
+        .cancer-card { padding: 24px; display: flex; flex-direction: column; }
+        .cancer-card .cc-note { margin-top: auto; }
         .cc-eyebrow {
             font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase;
             color: #0ea5e9; margin-bottom: 8px;
@@ -324,6 +326,29 @@
         .cc-note { margin: 14px 0 0; font-size: 10.5px; line-height: 1.7; color: #94a3b8; }
         @media (max-width: 720px) {
             .cc-compare { grid-template-columns: 1fr; }
+        }
+
+        .feature-band {
+            margin-top: 20px; padding: 24px 28px;
+            display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+            gap: 28px; align-items: center;
+            background: radial-gradient(520px 220px at 100% -30%, #ede9fe 0%, transparent 62%), #fff;
+        }
+        .fb-eyebrow {
+            font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase;
+            color: #7c3aed; margin-bottom: 8px;
+        }
+        .feature-band h3 { margin: 0 0 8px; font-size: 17px; color: #0f172a; letter-spacing: -.01em; }
+        .feature-band p { margin: 0 0 14px; font-size: 12.5px; line-height: 1.8; color: #64748b; max-width: 620px; }
+        .fb-side { display: flex; flex-direction: column; gap: 16px; align-items: flex-start; }
+        .fb-read { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+        .fb-read li { display: flex; gap: 9px; align-items: baseline; font-size: 12px; color: #64748b; line-height: 1.65; }
+        .fb-read b {
+            flex: 0 0 18px; width: 18px; height: 18px; border-radius: 6px; display: grid; place-items: center;
+            background: #eef2ff; color: #4f46e5; font-size: 10.5px;
+        }
+        @media (max-width: 900px) {
+            .feature-band { grid-template-columns: 1fr; gap: 18px; padding: 22px; }
         }
 </style>
 </head>
@@ -549,40 +574,30 @@
 
                 <p class="cc-note">以上为通用科普，具体检查和用药请遵医嘱，本系统不提供诊断。</p>
             </section>
-            <section class="card feature-teaser">
-                <div class="ft-eyebrow">数据说明</div>
-                <h3>30 项特征，分别代表什么？</h3>
-                <p>
-                    半径、纹理、周长、凹度、分形维数…… 10 类细胞核形态，
-                    每类再取「平均值 / 标准误 / 最差值」，组成 30 维输入。
-                    每一项的含义和良恶性参考值都整理好了。
-                </p>
-                <div class="ft-mini">
-                    <span><b>10</b> 类形态</span>
-                    <i></i>
-                    <span><b>3</b> 种口径</span>
-                    <i></i>
-                    <span><b>30</b> 项对照</span>
-                </div>
-                <div class="ft-shapes">
-                    <span>半径</span><span>纹理</span><span>周长</span><span>面积</span><span>平滑度</span>
-                    <span>紧凑度</span><span>凹度</span><span>凹点</span><span>对称性</span><span>分形维数</span>
-                </div>
-                <div class="ft-read">
-                    <div><b>1</b><span>不用背正常范围，看条形对比的相对位置</span></div>
-                    <div><b>2</b><span>看整体 30 项，不看单项高一点就紧张</span></div>
-                    <div><b>3</b><span>结合证据档位，档位低时不宜过度解读</span></div>
-                </div>
-                <a class="ft-btn" href="/features">
-                    查看特征说明
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                         stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M5 12h14M13 6l6 6-6 6"/>
-                    </svg>
-                </a>
-            </section>
+
         </aside>
     </div>
+
+    <section class="card feature-band">
+        <div class="fb-main">
+            <div class="fb-eyebrow">数据说明</div>
+            <h3>30 项特征，分别代表什么？</h3>
+            <p>半径、纹理、周长、凹度、分形维数…… 10 类细胞核形态， 每类再取「平均值 / 标准误 / 最差值」，组成 30 维输入。 每一项的含义和良恶性参考值都整理好了。</p>
+            <div class="ft-shapes"><span>半径</span><span>纹理</span><span>周长</span><span>面积</span><span>平滑度</span>
+                    <span>紧凑度</span><span>凹度</span><span>凹点</span><span>对称性</span><span>分形维数</span></div>
+        </div>
+        <div class="fb-side">
+            <ul class="fb-read"><li><b>1</b>不用背正常范围，看条形对比的相对位置</li><li><b>2</b>看整体 30 项，不看单项高一点就紧张</li><li><b>3</b>结合证据档位，档位低时不宜过度解读</li></ul>
+            <a class="ft-btn" href="/features">
+                查看特征说明
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                     stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 12h14M13 6l6 6-6 6"/>
+                </svg>
+            </a>
+        </div>
+    </section>
+
     <footer class="site-foot">
         <span>乳腺癌预测系统 · 仅供教学演示，不用于临床诊断</span>
         <span>模型：轻量 RF + 校准 · 证据库 152 条</span>
