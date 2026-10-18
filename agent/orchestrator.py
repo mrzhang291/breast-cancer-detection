@@ -577,16 +577,12 @@ def _clean_clause(text: str, limit: int = 420) -> str:
     return body
 
 
-def _compose_usage(ctx: AgentContext) -> Tuple[str, List[str]]:
-    """使用类问题：策展答案优先，检索兜底。"""
-    from .knowledge import faq
+RAG_STRONG_SCORE = 60.0
 
-    curated = faq.match(ctx.question)
-    if curated:
-        body = '### %s\n\n%s' % (curated['title'], curated['body'])
-        return body, [curated['id']]
 
-    hits = []
+def _rag_hits(ctx: AgentContext, limit: int = 3) -> List[Dict]:
+    """把本次检索到的条款按分数收敛成候选。"""
+    hits: List[Dict] = []
     seen = set()
     for clause in _clause_facts(ctx):
         for hit in clause['payload'].get('hits', [])[:5]:
@@ -594,12 +590,27 @@ def _compose_usage(ctx: AgentContext) -> Tuple[str, List[str]]:
                 continue
             seen.add(hit['clause_id'])
             hits.append(hit)
-            if len(hits) >= 3:
-                break
-        if len(hits) >= 3:
-            break
+            if len(hits) >= limit:
+                return hits
+    return hits
+
+
+def _compose_usage(ctx: AgentContext) -> Tuple[str, List[str]]:
+    """使用类问题：检索强则用文档（可溯源），弱则回退策展 FAQ。"""
+    from .knowledge import faq
+
+    hits = _rag_hits(ctx, 3)
+    strong = bool(hits) and float(hits[0].get('score') or 0) >= RAG_STRONG_SCORE
+
+    curated = faq.match(ctx.question)
+    if curated and not strong:
+        body = '### %s\n\n%s' % (curated['title'], curated['body'])
+        return body, [curated['id']]
 
     if not hits:
+        if curated:
+            body = '### %s\n\n%s' % (curated['title'], curated['body'])
+            return body, [curated['id']]
         return ('没有在系统文档里找到对应说明。您可以换个问法，'
                 '或者直接说明要操作的功能（例如"批量预测怎么上传文件"）。'), []
 
