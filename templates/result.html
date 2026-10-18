@@ -1038,53 +1038,90 @@
 {% include '_topbar.html' %}
 
 
-<div class="container-fluid" style="background-color: #fff">
+<div class="rp-wrap">
 
-  {% include "footer.html" %}
+  {% if input_error or model_error or model_not_ready %}
+  <div class="rp-alert">
+    <i class="fa fa-exclamation-triangle"></i>
+    {% if input_error %}{{ input_error }}
+    {% elif model_error %}{{ model_error }}
+    {% else %}模型正在加载，请稍等几秒后重新提交。{% endif %}
+  </div>
+  {% endif %}
 
-
-    <div class="result-card clean">
-      {% if input_error or model_error or model_not_ready %}
-      <div class="alert alert-danger" style="margin-bottom:16px;">
-        <i class="fa fa-exclamation-triangle"></i>
-        {% if input_error %}{{ input_error }}
-        {% elif model_error %}{{ model_error }}
-        {% else %}模型正在加载，请稍等几秒后重新提交。{% endif %}
-      </div>
-      {% endif %}
-
-      <div class="result-hero">
-        <div class="rh-left">
-          <div class="rh-eyebrow">{{ _('prediction_result') }}</div>
-          <div class="rh-verdict {% if output == 'Malignant' or output == '恶性' %}bad{% else %}good{% endif %}">
-            {{ output }}
-          </div>
-          <div class="rh-meta">{{ _('prediction_time') }}：{{ "%.3f"|format(time) }} {{ _('seconds') }}</div>
-        </div>
-        <div class="rh-right">
-          <div class="rh-conf">{{ "%.2f"|format(confidence * 100) }}<span>%</span></div>
-          <div class="rh-conf-label">{{ _('confidence') }}（校准后）</div>
-          <div class="rh-calib">模型原始输出 {{ "%.2f"|format((raw_confidence or confidence) * 100) }}%</div>
-        </div>
-      </div>
-
-      <div class="result-actions">
-        <a href="/" onclick="sessionStorage.setItem('resetForm', 'true');" class="btn btn-primary btn-lg">
-          <i class="fa fa-plus"></i> {{ _('new_prediction') }}
-        </a>
-        <a href="/" class="btn btn-default btn-lg"><i class="fa fa-arrow-left"></i> {{ _('back_to_home') }}</a>
-        <a href="/shap-analysis" class="btn btn-default btn-lg"><i class="fa fa-bar-chart"></i> {{ _('shap_analysis') }}</a>
-        <button id="summaryBtn" class="btn btn-default btn-lg"><i class="fa fa-file-text-o"></i> 生成总结</button>
-        <a href="/logout" class="btn btn-default btn-lg"><i class="fa fa-sign-out"></i> {{ _('logout') }}</a>
-      </div>
-
-      <p class="result-disclaimer"><i class="fa fa-exclamation-triangle"></i> {{ _('disclaimer') }}</p>
-      <input type="hidden" id="featureData" value='{{ session.get("last_prediction", {}).get("data", [])|tojson|safe }}'>
+  <section class="rp-head">
+    <div class="rp-head-left">
+      <div class="rp-eyebrow">{{ _('prediction_result') }}</div>
+      <div class="rp-verdict {% if output == 'Malignant' or output == '恶性' %}bad{% else %}good{% endif %}">{{ output }}</div>
     </div>
+    <div class="rp-head-right">
+      <span class="rp-pill ok"><i class="fa fa-check"></i> 已保存</span>
+      <a class="rp-link" href="/records">查看记录 →</a>
+      <span class="rp-dim">耗时 {{ "%.3f"|format(time) }} 秒 · 模型 {{ model_type }}</span>
+    </div>
+  </section>
 
+  <div class="rp-grid">
+    <section class="rp-card rp-conf-card">
+      <div class="rp-conf-val">{{ "%.2f"|format(confidence * 100) }}<span>%</span></div>
+      <div class="rp-conf-label">校准后置信度</div>
+      <div class="rp-conf-bar"><span style="width: {{ "%.1f"|format(confidence * 100) }}%"></span></div>
+      <div class="rp-conf-meta">模型原始输出 {{ "%.2f"|format((raw_confidence or confidence) * 100) }}%</div>
+    </section>
+
+    {% set tier = evidence.tier or 'confident' %}
+    {% set tier_label = {'confident': '证据充分', 'cautious': '需谨慎', 'abstain': '证据不足'}.get(tier, '证据充分') %}
+    <aside class="rp-card rp-evidence {{ tier }}">
+      <div class="rp-sec-head" style="margin-bottom:10px;">
+        <h3>证据强度</h3>
+        <span class="rp-tier {{ tier }}">{{ tier_label }}</span>
+      </div>
+      <div class="rp-tier-track">
+        <i class="seg {{ 'on' if tier == 'confident' else '' }}"></i>
+        <i class="seg warn {{ 'on' if tier in ('confident', 'cautious') else '' }}"></i>
+        <i class="seg bad {{ 'on' if tier in ('confident', 'cautious', 'abstain') else '' }}"></i>
+      </div>
+      <p class="rp-ev-reason">{{ evidence.reason or '基于校准置信度与输入分布距离综合判断。' }}</p>
+      {% if evidence.reasons %}
+      <ul class="rp-ev-list">
+        {% for r in evidence.reasons %}<li>{{ r }}</li>{% endfor %}
+      </ul>
+      {% endif %}
+    </aside>
+  </div>
+
+  <section class="rp-card">
+    <div class="rp-sec-head">
+      <h3>关键特征 Top 5</h3>
+      <a class="rp-link" href="/shap-analysis">完整归因 →</a>
+    </div>
+    <div class="rp-top5" id="rpTop5"><div class="rp-skel"></div></div>
+  </section>
+
+  <section class="rp-card">
+    <div class="rp-sec-head">
+      <h3>相似历史病例</h3>
+      <span class="rp-dim">按 30 维特征距离检索</span>
+    </div>
+    <div class="rp-similar" id="rpSimilar"><div class="rp-skel"></div></div>
+  </section>
+
+  <section class="rp-actions">
+    <button class="rp-btn primary" id="rpReport" type="button"><i class="fa fa-file-text-o"></i> 生成 PDF 报告</button>
+    <button class="rp-btn" id="rpCompare" type="button"><i class="fa fa-columns"></i> 和上次对比</button>
+    <a class="rp-btn" href="/shap-analysis"><i class="fa fa-bar-chart"></i> SHAP 分析</a>
+    <button class="rp-btn" id="rpCopy" type="button"><i class="fa fa-copy"></i> 复制结论</button>
+    <a class="rp-btn ghost" href="/" onclick="sessionStorage.setItem('resetForm', 'true');"><i class="fa fa-plus"></i> 新建预测</a>
+  </section>
+
+  <p class="rp-disclaimer"><i class="fa fa-exclamation-triangle"></i> {{ _('disclaimer') }}</p>
+
+  <input type="hidden" id="featureData" value='{{ session.get("last_prediction", {}).get("data", [])|tojson|safe }}'>
+  <input type="hidden" id="predOutput" value="{{ output }}">
+  <input type="hidden" id="predConfidence" value="{{ confidence }}">
 
     <!-- ===== Agent 智能解读（工具调用 + RAG，可溯源） ===== -->
-    <div class="result-card" id="agentCard" style="margin-top:24px;text-align:left;">
+    <div class="rp-card rp-agent" id="agentCard">
       <h2 style="font-size:1.35em;display:flex;align-items:center;gap:10px;justify-content:center;">
         <i class="fa fa-robot" style="color:#6366f1;"></i> AI 智能解读
       </h2>
@@ -1108,33 +1145,8 @@
       <div id="agentCitations" style="margin-top:16px;"></div>
     </div>
 
-    <!-- 总结弹窗 -->
-    <div id="summaryModal" class="modal-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; justify-content: center; align-items: center;">
-      <div class="modal-content" style="background: white; border-radius: 16px; width: 90%; max-width: 800px; max-height: 80vh; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.3);">
-        <div class="modal-header" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; padding: 20px; display: flex; justify-content: space-between; align-items: center;">
-          <h3 style="margin: 0; font-size: 1.3em;"><i class="fa fa-file-text-o"></i> AI分析总结报告</h3>
-          <button id="closeSummaryModal" style="background: rgba(255,255,255,0.2); border: none; color: white; width: 32px; height: 32px; border-radius: 50%; font-size: 16px; cursor: pointer; transition: background 0.3s;">×</button>
-        </div>
-        <div id="summaryLoading" style="padding: 40px; text-align: center;">
-          <div style="border: 4px solid #f3f3f3; border-top: 4px solid #10b981; border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite; margin: 0 auto 15px;"></div>
-          <p style="color: #666;">AI正在生成总结报告...</p>
-          <style>@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }</style>
-        </div>
-        <div id="summaryContent" style="padding: 25px; max-height: 60vh; overflow-y: auto; display: none; font-family: 'Segoe UI', sans-serif; line-height: 1.8;">
-        </div>
-        <div class="modal-footer" style="padding: 15px 25px; border-top: 1px solid #eee; display: flex; justify-content: flex-end; gap: 10px;">
-          <button id="copySummaryBtn" class="btn btn-default" style="padding: 10px 20px; border: 1px solid #ddd; border-radius: 8px; cursor: pointer; transition: background 0.3s;">
-            <i class="fa fa-copy"></i> 复制内容
-          </button>
-          <button id="downloadSummaryBtn" class="btn btn-success" style="padding: 10px 25px; background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; border: none; border-radius: 8px; cursor: pointer; transition: transform 0.3s;">
-            <i class="fa fa-download"></i> 下载报告
-          </button>
-        </div>
-      </div>
-    </div>
 
-
-    {% include "copyrights.html" %}
+</div>
 
   </div>  
 
@@ -1669,7 +1681,111 @@
     // 下载报告
     $('#downloadSummaryBtn').click(function() {
       var content = $('#summaryContent').html();
-      var html = '<!DOCTYPE html><html><head><meta charset="utf-8"><title>AI分析总结报告</title><style>body{font-family: "Microsoft YaHei", sans-serif; line-height: 1.8; padding: 30px;}</style></head><body>' + content + '</body></html>';
+      var html = '<!DOCTYPE html><html><head><meta charset="utf-8"><title>AI分析总结报告</title><style>body{font-family: "Microsoft YaHei", sans-serif; line-height: 1.8; padding: 30px;}
+        .rp-wrap { max-width: 1120px; margin: 0 auto; padding: 20px 22px 56px; }
+        .rp-alert {
+            background: #fef2f2; border: 1px solid #fecaca; color: #b91c1c;
+            border-radius: 12px; padding: 12px 16px; font-size: 13px; margin-bottom: 16px;
+        }
+        .rp-head {
+            display: flex; align-items: flex-end; justify-content: space-between; gap: 18px;
+            padding: 6px 4px 18px; flex-wrap: wrap;
+        }
+        .rp-eyebrow { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: #94a3b8; }
+        .rp-verdict { font-size: 40px; font-weight: 700; line-height: 1.1; letter-spacing: -.03em; margin-top: 4px; }
+        .rp-verdict.good { color: #059669; }
+        .rp-verdict.bad { color: #dc2626; }
+        .rp-head-right { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+        .rp-pill {
+            font-size: 11.5px; border-radius: 999px; padding: 5px 11px;
+            background: #ecfdf5; color: #047857; border: 1px solid #d1fae5;
+        }
+        .rp-link { font-size: 12px; color: #4f46e5; text-decoration: none; }
+        .rp-link:hover { color: #4338ca; }
+        .rp-dim { font-size: 11.5px; color: #94a3b8; }
+
+        .rp-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 16px; margin-bottom: 16px; }
+        .rp-card {
+            background: #fff; border: 1px solid #e6ebf3; border-radius: 18px;
+            padding: 20px 22px; margin-bottom: 16px;
+            box-shadow: 0 14px 34px -30px rgba(15, 23, 42, .55);
+        }
+        .rp-grid .rp-card { margin-bottom: 0; }
+        .rp-sec-head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin-bottom: 14px; }
+        .rp-sec-head h3 { margin: 0; font-size: 14px; color: #0f172a; letter-spacing: -.01em; }
+
+        .rp-conf-card { display: flex; flex-direction: column; justify-content: center; }
+        .rp-conf-val { font-size: 46px; font-weight: 700; color: #4f46e5; line-height: 1; letter-spacing: -.03em; }
+        .rp-conf-val span { font-size: 20px; margin-left: 2px; }
+        .rp-conf-label { margin-top: 6px; font-size: 12px; color: #64748b; }
+        .rp-conf-bar { height: 8px; border-radius: 999px; background: #eef2ff; margin: 14px 0 8px; overflow: hidden; }
+        .rp-conf-bar span { display: block; height: 100%; border-radius: 999px; background: linear-gradient(90deg, #818cf8, #4f46e5); }
+        .rp-conf-meta { font-size: 11.5px; color: #94a3b8; }
+
+        .rp-tier { font-size: 11.5px; border-radius: 999px; padding: 4px 10px; }
+        .rp-tier.confident { background: #ecfdf5; color: #047857; border: 1px solid #d1fae5; }
+        .rp-tier.cautious { background: #fffbeb; color: #b45309; border: 1px solid #fef3c7; }
+        .rp-tier.abstain { background: #fef2f2; color: #b91c1c; border: 1px solid #fee2e2; }
+        .rp-tier-track { display: flex; gap: 6px; margin: 6px 0 12px; }
+        .rp-tier-track .seg { flex: 1; height: 7px; border-radius: 999px; background: #eef2f8; }
+        .rp-tier-track .seg.on { background: #10b981; }
+        .rp-tier-track .seg.warn.on { background: #f59e0b; }
+        .rp-tier-track .seg.bad.on { background: #ef4444; }
+        .rp-evidence.abstain .rp-tier-track .seg.bad.on { background: #ef4444; }
+        .rp-ev-reason { margin: 0; font-size: 12.5px; line-height: 1.7; color: #475569; }
+        .rp-ev-list { margin: 10px 0 0; padding-left: 18px; font-size: 12px; color: #64748b; line-height: 1.7; }
+
+        .rp-top5 { display: grid; gap: 10px; }
+        .rp-feat { display: grid; grid-template-columns: 104px 1fr 64px; gap: 10px; align-items: center; font-size: 12px; }
+        .rp-feat-name { color: #334155; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .rp-feat-track { height: 9px; border-radius: 999px; background: #f1f5f9; overflow: hidden; display: flex; }
+        .rp-feat-fill { display: block; height: 100%; border-radius: 999px; }
+        .rp-feat-fill.bad { background: linear-gradient(90deg, #fca5a5, #ef4444); }
+        .rp-feat-fill.good { background: linear-gradient(90deg, #6ee7b7, #10b981); }
+        .rp-feat-val { text-align: right; color: #64748b; font-variant-numeric: tabular-nums; }
+
+        .rp-similar { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+        .rp-case {
+            border: 1px solid #eef2f8; border-radius: 14px; padding: 13px 14px; background: #fbfcff;
+            display: grid; gap: 6px; font-size: 12px; color: #475569;
+        }
+        .rp-case b { font-size: 12.5px; color: #0f172a; }
+        .rp-case .tag { font-size: 10.5px; border-radius: 999px; padding: 2px 8px; justify-self: start; }
+        .rp-case .tag.good { background: #ecfdf5; color: #047857; }
+        .rp-case .tag.bad { background: #fef2f2; color: #b91c1c; }
+
+        .rp-actions { display: flex; gap: 10px; flex-wrap: wrap; margin: 4px 0 14px; }
+        .rp-btn {
+            display: inline-flex; align-items: center; gap: 7px; text-decoration: none;
+            border: 1px solid #e2e8f0; background: #fff; color: #334155;
+            border-radius: 11px; padding: 10px 16px; font-size: 12.5px; cursor: pointer;
+            font-family: inherit; transition: all .15s;
+        }
+        .rp-btn:hover { border-color: #c7d2fe; color: #4338ca; }
+        .rp-btn.primary {
+            background: linear-gradient(135deg, #4f46e5, #7c3aed); border: 0; color: #fff;
+            box-shadow: 0 14px 26px -18px rgba(79, 70, 229, .95);
+        }
+        .rp-btn.primary:hover { color: #fff; opacity: .95; }
+        .rp-btn.ghost { background: transparent; color: #64748b; border-style: dashed; }
+
+        .rp-disclaimer {
+            font-size: 12px; color: #b45309; background: #fffbeb; border: 1px solid #fef3c7;
+            border-radius: 12px; padding: 10px 14px; margin: 0 0 18px;
+        }
+        .rp-skel { height: 42px; border-radius: 12px; background: linear-gradient(90deg, #f4f6fb 25%, #eef2f8 37%, #f4f6fb 63%); background-size: 400% 100%; animation: rpShimmer 1.2s infinite; }
+        .rp-empty { font-size: 12px; color: #94a3b8; padding: 8px 0; }
+        @keyframes rpShimmer { 0% { background-position: 100% 0; } 100% { background-position: -100% 0; } }
+
+        .rp-agent { margin-top: 4px; }
+        .rp-agent h2 { justify-content: flex-start !important; }
+
+        @media (max-width: 900px) {
+            .rp-grid { grid-template-columns: 1fr; }
+            .rp-similar { grid-template-columns: 1fr; }
+            .rp-wrap { padding: 16px 14px 48px; }
+        }
+</style></head><body>' + content + '</body></html>';
       
       var blob = new Blob([html], { type: 'text/html' });
       var url = URL.createObjectURL(blob);
@@ -2136,6 +2252,113 @@
         prediction: "{{ output }}",
         confidence: {{ confidence }}
     };
+</script>
+
+<script>
+(function () {
+    var features = null;
+    try {
+        features = JSON.parse(document.getElementById('featureData').value || '[]');
+    } catch (e) { features = null; }
+    var outputEl = document.getElementById('predOutput');
+    var confEl = document.getElementById('predConfidence');
+    var output = outputEl ? outputEl.value : '';
+    var confidence = confEl ? parseFloat(confEl.value) : 0;
+
+    function esc(text) {
+        return String(text == null ? '' : text).replace(/[&<>"']/g, function (ch) {
+            return {'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[ch];
+        });
+    }
+
+    // Top5 归因
+    if (features && features.length === 30) {
+        fetch('/api/explain', {
+            method: 'POST', headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({values: features, prediction: output, confidence: confidence})
+        }).then(function (r) { return r.json(); }).then(function (data) {
+            var box = document.getElementById('rpTop5');
+            if (!data.ok || !(data.top || []).length) {
+                box.innerHTML = '<div class="rp-empty">暂时拿不到归因结果，可点上方「完整归因」查看。</div>';
+                return;
+            }
+            var max = 0;
+            data.top.forEach(function (f) { max = Math.max(max, Math.abs(parseFloat(f.shap) || 0)); });
+            box.innerHTML = data.top.map(function (f) {
+                var shap = parseFloat(f.shap) || 0;
+                var pct = max ? Math.max(6, Math.round(Math.abs(shap) / max * 100)) : 0;
+                var bad = (f.direction || '').indexOf('恶性') >= 0 || shap > 0;
+                return '<div class="rp-feat">' +
+                    '<span class="rp-feat-name" title="' + esc(f.name) + '">' + esc(f.name) + '</span>' +
+                    '<span class="rp-feat-track"><span class="rp-feat-fill ' + (bad ? 'bad' : 'good') +
+                    '" style="width:' + pct + '%"></span></span>' +
+                    '<span class="rp-feat-val">' + shap.toFixed(3) + '</span></div>';
+            }).join('');
+        }).catch(function () {
+            document.getElementById('rpTop5').innerHTML = '<div class="rp-empty">归因加载失败。</div>';
+        });
+    }
+
+    // 相似病例
+    if (features && features.length === 30) {
+        fetch('/api/cases/similar', {
+            method: 'POST', headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({values: features, limit: 3})
+        }).then(function (r) { return r.json(); }).then(function (data) {
+            var box = document.getElementById('rpSimilar');
+            var items = (data.cases || data.items || data.similar || (data.data && (data.data.items || data.data.cases)) || []);
+            if (!data.ok || !items.length) {
+                box.innerHTML = '<div class="rp-empty">历史记录还不够，暂时没有可对照的相似病例。</div>';
+                return;
+            }
+            box.innerHTML = items.slice(0, 3).map(function (c) {
+                var result = c.prediction_result || c.result || '';
+                var bad = ('恶性 Malignant malignant').indexOf(result) >= 0;
+                var conf = c.confidence != null ? (parseFloat(c.confidence) * 100).toFixed(1) + '%' : '—';
+                var dist = c.distance != null ? parseFloat(c.distance).toFixed(2) : '—';
+                return '<div class="rp-case"><b>记录 #' + esc(c.id || c.record_id || '-') + '</b>' +
+                    '<span class="tag ' + (bad ? 'bad' : 'good') + '">' + esc(result || '未知') + '</span>' +
+                    '<span>置信度 ' + conf + '</span><span>特征距离 ' + dist + '</span></div>';
+            }).join('');
+        }).catch(function () {
+            document.getElementById('rpSimilar').innerHTML = '<div class="rp-empty">相似病例加载失败。</div>';
+        });
+    }
+
+    // 生成报告 / 对比：走侧栏助手
+    function askAssistant(text) {
+        if (window.ASAssistant && window.ASAssistant.open) {
+            window.ASAssistant.open();
+            window.ASAssistant.ask(text);
+        }
+    }
+    var reportBtn = document.getElementById('rpReport');
+    if (reportBtn) {
+        reportBtn.addEventListener('click', function () { askAssistant('生成一份本次预测的 PDF 报告'); });
+    }
+    var compareBtn = document.getElementById('rpCompare');
+    if (compareBtn) {
+        compareBtn.addEventListener('click', function () { askAssistant('这次和上次比，差异在哪'); });
+    }
+    var copyBtn = document.getElementById('rpCopy');
+    if (copyBtn) {
+        copyBtn.addEventListener('click', function () {
+            var text = '预测结果：' + output + '，校准后置信度 ' + (confidence * 100).toFixed(2) + '%';
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(text).then(function () {
+                    copyBtn.innerHTML = '<i class="fa fa-check"></i> 已复制';
+                    setTimeout(function () { copyBtn.innerHTML = '<i class="fa fa-copy"></i> 复制结论'; }, 1600);
+                });
+            }
+        });
+    }
+
+    // 自动解读：进入页面直接触发旧卡片里的“解读这次结果”
+    setTimeout(function () {
+        var runBtn = document.getElementById('agentRunBtn');
+        if (runBtn) { runBtn.click(); }
+    }, 900);
+})();
 </script>
 </body>
 </html>
