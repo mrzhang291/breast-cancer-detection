@@ -461,7 +461,8 @@
                 return res.data;
             });
         }).then(function (res) {
-            addAssistant((res && res.result) || {});.catch(function (err) {
+            addAssistant((res && res.result) || {});
+        }).catch(function (err) {
             removeLoading();
             var row = document.createElement('div');
             row.className = 'as-msg';
