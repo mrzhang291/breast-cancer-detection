@@ -163,6 +163,29 @@
     @keyframes as-pulse { 0%,100% { opacity: .35; transform: scale(.85); } 50% { opacity: 1; transform: scale(1.15); } }
     @keyframes as-blink { 50% { opacity: 0; } }
 
+
+    .as-ground {
+        margin-top: 10px; border: 1px solid #eef2f8; border-radius: 12px;
+        background: #fbfcff; overflow: hidden;
+    }
+    .as-ground summary {
+        cursor: pointer; padding: 9px 12px; font-size: 11.5px; color: #475569;
+        list-style: none;
+    }
+    .as-ground summary::-webkit-details-marker { display: none; }
+    .as-ground summary::after { content: '＋'; float: right; color: #94a3b8; }
+    .as-ground[open] summary::after { content: '−'; }
+    .as-ground-list { padding: 0 12px 10px; display: grid; gap: 8px; }
+    .as-ground-item { border-left: 2px solid #10b981; padding-left: 9px; }
+    .as-ground-item.infer { border-left-color: #f59e0b; }
+    .as-ground-item p { margin: 0 0 4px; font-size: 11.5px; line-height: 1.65; color: #334155; }
+    .as-srcs { display: flex; flex-wrap: wrap; gap: 5px; }
+    .as-src {
+        font-size: 10.5px; color: #047857; background: #ecfdf5;
+        border: 1px solid #d1fae5; border-radius: 999px; padding: 1px 7px;
+    }
+    .as-src.infer { color: #b45309; background: #fffbeb; border-color: #fef3c7; }
+
     .as-artifacts { display: flex; flex-direction: column; gap: 7px; margin-top: 10px; }
     .as-artifact {
         display: flex; align-items: center; gap: 9px; padding: 9px 11px;
@@ -437,6 +460,37 @@
         if (metaEl) { metaEl.textContent = meta || ''; }
     }
 
+
+    function renderGrounding(bubble, g) {
+        if (!g || !(g.claims || []).length) { return; }
+        var claims = g.claims || [];
+        var okCount = claims.filter(function (c) { return c.supported; }).length;
+        var det = document.createElement('details');
+        det.className = 'as-ground';
+        var summary = document.createElement('summary');
+        summary.innerHTML = '逐句溯源 · <b>' + okCount + '/' + claims.length + '</b> 句有出处' +
+            (g.dropped_count ? ' · 已丢弃 ' + g.dropped_count + ' 句无依据内容' : '');
+        det.appendChild(summary);
+
+        var list = document.createElement('div');
+        list.className = 'as-ground-list';
+        claims.forEach(function (c) {
+            var row = document.createElement('div');
+            row.className = 'as-ground-item ' + (c.supported ? 'ok' : 'infer');
+            var srcs = (c.sources || []).map(function (s) {
+                return '<span class="as-src">' + escapeHtml(s.label) + '</span>';
+            }).join('');
+            if (!srcs) {
+                srcs = '<span class="as-src infer">无出处 · 推断</span>';
+            }
+            row.innerHTML = '<p>' + escapeHtml((c.sentence || '').slice(0, 90)) + '</p>' +
+                            '<div class="as-srcs">' + srcs + '</div>';
+            list.appendChild(row);
+        });
+        det.appendChild(list);
+        bubble.appendChild(det);
+    }
+
     function renderStepsFallback(bubble, result) {
         var steps = result.graph || [];
         if (!steps.length && (result.steps || []).length) {
@@ -468,6 +522,7 @@
         var bubble = newBubble();
         bubble.innerHTML = renderMarkdown(answer);
         renderArtifacts(bubble, result.artifacts, result.run_id);
+        renderGrounding(bubble, result.grounding);
 
         if (result.intent === 'report_export' && !(result.artifacts || []).length) {
             var retry = document.createElement('button');
@@ -554,9 +609,11 @@
                     if (pending.think) { markItem(pending.think, true, ''); }
                     if (pending.tool) { markItem(pending.tool, true, ''); }
                     answerEl.classList.remove('as-cursor');
-                    answerEl.innerHTML = renderMarkdown(answerText);
-                    lastAnswer = answerText;
+                    var finalText = data.answer_md || answerText;
+                    answerEl.innerHTML = renderMarkdown(finalText);
+                    lastAnswer = finalText;
                     renderArtifacts(bubble, data.artifacts, data.run_id);
+                    renderGrounding(bubble, data.grounding);
                     (data.artifacts || []).forEach(function (a) {
                         recentArtifacts.unshift({ filename: a.filename, kind: a.kind,
                                                   size: a.size, run_id: data.run_id });
@@ -699,7 +756,26 @@
                 fetch('/api/agent/sessions/' + encodeURIComponent(item.id), { method: 'DELETE' })
                     .then(function () {
                         if (currentSession === item.id) { currentSession = null; clearChat(); }
-                        loadSessions();
+                    
+    function refreshAgentContext() {
+        var has = false;
+        try {
+            has = !!(window.getAgentValues && window.getAgentValues());
+        } catch (e) { has = false; }
+        var text = document.getElementById('asCtxText');
+        if (text) {
+            text.textContent = has
+                ? '已读取本次预测的 30 项特征，可以直接问「解释这次判断」'
+                : '当前没有进行预测，可以问我系统怎么用';
+        }
+        var chip = document.querySelector('.as-chip[data-q="解释这次预测结果"]');
+        if (chip) { chip.style.display = has ? '' : 'none'; }
+    }
+    window.refreshAgentContext = refreshAgentContext;
+    document.addEventListener('DOMContentLoaded', refreshAgentContext);
+    document.addEventListener('input', function () { refreshAgentContext(); });
+
+    loadSessions();
                     });
             });
             row.appendChild(del);
@@ -763,7 +839,7 @@
         sessionsBtn.addEventListener('click', function () {
             var open = sessionsPanel.style.display !== 'none';
             sessionsPanel.style.display = open ? 'none' : 'block';
-            if (!open) { loadSessions(); }
+            if (!open) { loadSessions(); refreshAgentContext(); }
         });
     }
     if (newSessionBtn) { newSessionBtn.addEventListener('click', function () { newSession(); }); }

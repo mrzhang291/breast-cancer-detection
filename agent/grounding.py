@@ -112,6 +112,14 @@ def ground(answer_md: str, facts: List[Dict],
                     sources.append({'kind': kind,
                                     'label': _source_label(kind, payloads[kind], citations)})
 
+        seen = set()
+        deduped = []
+        for src in sources:
+            if src['label'] not in seen:
+                seen.add(src['label'])
+                deduped.append(src)
+        sources = deduped
+
         if kinds and not advice:
             claim_total += 1
             if sources:

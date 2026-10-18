@@ -2272,6 +2272,16 @@
 
 <a href="/" class="btn-return-floating" title="{{ _('return_home') }}"><i class="fa fa-home"></i> {{ _('home') }}</a>
 
+<script>
+window.getAgentValues = function () {
+    try {
+        var raw = document.getElementById('featureData');
+        var values = JSON.parse((raw && raw.value) || '[]');
+        return (values && values.length === 30) ? values : null;
+    } catch (e) { return null; }
+};
+</script>
+
 {% include '_assistant.html' %}
 <script>
     window.AGENT_CONTEXT = {
