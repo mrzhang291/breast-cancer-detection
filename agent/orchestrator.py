@@ -1056,8 +1056,9 @@ def run(ctx: AgentContext, question: str, values: Optional[List[float]] = None,
 
     # 「把最近三次整理成报告」这类：先把区间参数解析并校验
     export_window = None
+    _not_range = any(w in question for w in ('批量', '这批', 'csv', 'excel', '原始数据', '导出数据'))
     if plan.get('mode') in ('normal', 'compare_export') \
-            and _is_export_request(question) \
+            and _is_export_request(question) and not _not_range \
             and range_params.wants_range(question):
         window = range_params.parse_range(question)
         if window.get('ok'):
