@@ -887,12 +887,20 @@ def _node_assess(state, ctx):
 
     payload = pred['payload']
 
-    # 证据强度：取命中的最高检索分，做一次平滑归一
+    # 证据强度：优先看特征词典命中（直接解释本次输入），
+    # 通用医学文档只做兜底，避免"检索到的是科普"就被判成证据不足
     evidence_raw = 0.0
+    fallback_raw = 0.0
     for fact in ctx.facts:
-        if fact.get('kind') == 'clause':
-            for hit in (fact.get('payload') or {}).get('hits') or []:
-                evidence_raw = max(evidence_raw, float(hit.get('score') or 0))
+        if fact.get('kind') != 'clause':
+            continue
+        for hit in (fact.get('payload') or {}).get('hits') or []:
+            score = float(hit.get('score') or 0)
+            fallback_raw = max(fallback_raw, score)
+            if str(hit.get('clause_id') or '').startswith('FEAT-'):
+                evidence_raw = max(evidence_raw, score)
+    if evidence_raw <= 0:
+        evidence_raw = fallback_raw * 0.8
     evidence_score = min(1.0, evidence_raw / 30.0)
 
     assessment = uncertainty.assess(values, payload['confidence'], payload['output'],
