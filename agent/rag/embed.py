@@ -31,16 +31,20 @@ def ensure_schema() -> None:
                      'clause_id TEXT PRIMARY KEY, dim INTEGER, vec BLOB, model TEXT)')
         conn.commit()
         count = conn.execute('SELECT COUNT(*) FROM rag_vectors').fetchone()[0]
-        if count == 0 and os.path.exists(SHIPPED_DB):
+        if os.path.exists(SHIPPED_DB):
             import sqlite3
             src = sqlite3.connect(SHIPPED_DB)
             try:
-                rows = src.execute('SELECT clause_id, dim, vec, model FROM rag_vectors').fetchall()
+                shipped = src.execute('SELECT COUNT(*) FROM rag_vectors').fetchone()[0]
+                if shipped and shipped != count:
+                    rows = src.execute(
+                        'SELECT clause_id, dim, vec, model FROM rag_vectors').fetchall()
+                    conn.execute('DELETE FROM rag_vectors')
+                    conn.executemany('INSERT OR REPLACE INTO rag_vectors'
+                                     ' (clause_id, dim, vec, model) VALUES (?,?,?,?)', rows)
+                    conn.commit()
             finally:
                 src.close()
-            conn.executemany('INSERT OR REPLACE INTO rag_vectors'
-                             ' (clause_id, dim, vec, model) VALUES (?,?,?,?)', rows)
-            conn.commit()
     finally:
         conn.close()
 
