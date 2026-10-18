@@ -3,413 +3,602 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ _('register') }} - {{ _('breast_cancer_detection') }}</title>
-    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <title>{{ _('create_account') }} · {{ _('breast_cancer_detection') }}</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --ink: #0f172a;
+            --ink-2: #475569;
+            --ink-3: #94a3b8;
+            --line: #e2e8f0;
+            --surface: #ffffff;
+            --bg: #f6f8fc;
+            --brand: #4f46e5;
+            --brand-2: #7c3aed;
+            --brand-soft: #eef2ff;
+            --ok: #10b981;
+            --danger: #dc2626;
+            --radius: 14px;
         }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html, body { height: 100%; }
 
         body {
-            font-family: 'Noto Sans SC', sans-serif;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC",
+                         "PingFang SC", "Microsoft YaHei", sans-serif;
+            color: var(--ink);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .shell { min-height: 100vh; display: grid; grid-template-columns: 1fr 1.05fr; }
+
+        /* 品牌区放在右侧，与登录页形成镜像 */
+        .brand {
             position: relative;
             overflow: hidden;
-        }
-
-        body::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
-            animation: pulse 15s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 0.5; }
-            50% { transform: scale(1.1); opacity: 0.3; }
-        }
-
-        .register-container {
-            position: relative;
-            z-index: 1;
-            width: 100%;
-            max-width: 420px;
-            padding: 20px;
-        }
-
-        .register-card {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 24px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-            padding: 48px 40px;
-            backdrop-filter: blur(10px);
-            animation: slideUp 0.6s ease-out;
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .register-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .register-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
-            border-radius: 50%;
+            padding: 56px 56px 40px;
             display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            box-shadow: 0 10px 30px rgba(17, 153, 142, 0.4);
+            flex-direction: column;
+            justify-content: space-between;
+            color: #fff;
+            background:
+                radial-gradient(1000px 520px at 90% 0%, #8b5cf6 0%, transparent 58%),
+                radial-gradient(900px 520px at 0% 100%, #4f46e5 0%, transparent 62%),
+                linear-gradient(200deg, #1e1b4b 0%, #312e81 48%, #4c1d95 100%);
+            order: 2;
         }
 
-        .register-icon svg {
-            width: 40px;
-            height: 40px;
-            fill: white;
+        .brand::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
+            background-size: 44px 44px;
+            mask-image: radial-gradient(circle at 70% 25%, #000 0%, transparent 70%);
         }
 
-        .register-header h1 {
-            font-size: 28px;
+        .brand > * { position: relative; z-index: 1; }
+
+        .logo-row { display: flex; align-items: center; gap: 12px; }
+
+        .logo-mark {
+            width: 40px; height: 40px;
+            border-radius: 12px;
+            display: grid; place-items: center;
+            background: rgba(255,255,255,.14);
+            border: 1px solid rgba(255,255,255,.22);
+        }
+
+        .logo-text { font-size: 15px; font-weight: 600; }
+
+        .brand-main h1 {
+            font-size: clamp(28px, 3vw, 38px);
+            line-height: 1.22;
+            letter-spacing: -.02em;
             font-weight: 700;
-            color: #1a1a2e;
-            margin-bottom: 8px;
+            margin-bottom: 16px;
         }
 
-        .register-header p {
-            font-size: 14px;
-            color: #6b7280;
+        .brand-main h1 em {
+            font-style: normal;
+            background: linear-gradient(90deg, #c4b5fd, #f0abfc);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
 
-        .form-group {
-            margin-bottom: 24px;
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 14px;
-            font-weight: 500;
-            color: #374151;
-            margin-bottom: 8px;
-        }
-
-        .input-wrapper {
-            position: relative;
-        }
-
-        .input-wrapper svg {
-            position: absolute;
-            left: 16px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 20px;
-            height: 20px;
-            fill: #9ca3af;
-            transition: fill 0.3s ease;
-        }
-
-        .input-wrapper input {
-            width: 100%;
-            padding: 14px 16px 14px 48px;
-            border: 2px solid #e5e7eb;
-            border-radius: 12px;
+        .brand-main p {
             font-size: 15px;
-            font-family: 'Noto Sans SC', sans-serif;
-            transition: all 0.3s ease;
-            background: #f9fafb;
+            line-height: 1.75;
+            color: rgba(255,255,255,.72);
+            max-width: 380px;
         }
 
-        .input-wrapper input:focus {
-            outline: none;
-            border-color: #11998e;
-            background: white;
-            box-shadow: 0 0 0 4px rgba(17, 153, 142, 0.1);
-        }
+        .steps { list-style: none; display: grid; gap: 16px; margin-top: 32px; }
 
-        .password-strength {
-            margin-top: 8px;
-            height: 4px;
-            background: #e5e7eb;
-            border-radius: 2px;
-            overflow: hidden;
-        }
+        .steps li { display: flex; gap: 12px; align-items: flex-start; }
 
-        .password-strength-bar {
-            height: 100%;
-            width: 0%;
-            transition: all 0.3s ease;
-            border-radius: 2px;
-        }
-
-        .password-strength-bar.weak { width: 33%; background: #ef4444; }
-        .password-strength-bar.medium { width: 66%; background: #f59e0b; }
-        .password-strength-bar.strong { width: 100%; background: #10b981; }
-
-        .password-hint {
-            margin-top: 6px;
+        .step-no {
+            flex: 0 0 24px;
+            width: 24px; height: 24px;
+            border-radius: 8px;
+            display: grid; place-items: center;
             font-size: 12px;
-            color: #9ca3af;
+            font-weight: 700;
+            background: rgba(255,255,255,.14);
+            border: 1px solid rgba(255,255,255,.18);
         }
 
-        .btn-register {
-            width: 100%;
-            padding: 16px;
-            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
-            border: none;
-            border-radius: 12px;
-            color: white;
-            font-size: 16px;
-            font-weight: 600;
-            font-family: 'Noto Sans SC', sans-serif;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(17, 153, 142, 0.4);
+        .step-text { font-size: 13.5px; line-height: 1.6; color: rgba(255,255,255,.78); }
+        .step-text b { color: #fff; font-weight: 600; }
+
+        .brand-foot {
+            font-size: 12px;
+            color: rgba(255,255,255,.45);
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
         }
 
-        .btn-register:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(17, 153, 142, 0.5);
-        }
+        .brand-foot a { color: rgba(255,255,255,.7); text-decoration: none; }
 
-        .divider {
+        /* 表单区 */
+        .panel {
+            order: 1;
             display: flex;
             align-items: center;
-            margin: 28px 0;
-        }
-
-        .divider::before,
-        .divider::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: #e5e7eb;
-        }
-
-        .divider span {
-            padding: 0 16px;
-            font-size: 13px;
-            color: #9ca3af;
-        }
-
-        .login-link {
-            text-align: center;
-            color: #6b7280;
-            font-size: 14px;
-        }
-
-        .login-link a {
-            color: #11998e;
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
-
-        .login-link a:hover {
-            color: #38ef7d;
-            text-decoration: underline;
-        }
-
-        .alert {
-            padding: 14px 16px;
-            border-radius: 12px;
-            margin-bottom: 24px;
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .alert-error {
-            background: #fef2f2;
-            border: 1px solid #fecaca;
-            color: #dc2626;
-        }
-
-        .footer-hint {
-            text-align: center;
-            margin-top: 24px;
-            font-size: 12px;
-            color: #9ca3af;
-        }
-
-        .footer-hint a {
-            color: #11998e;
-            text-decoration: none;
-        }
-
-        .terms {
-            margin-top: 20px;
-            font-size: 12px;
-            color: #9ca3af;
-            text-align: center;
-        }
-
-        .terms a {
-            color: #11998e;
-            text-decoration: none;
+            justify-content: center;
+            padding: 48px 24px;
+            position: relative;
         }
 
         .lang-switch {
             position: absolute;
-            top: 20px;
-            right: 20px;
+            top: 24px;
+            left: 28px;
             display: flex;
-            gap: 5px;
+            gap: 4px;
+            padding: 4px;
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 999px;
         }
 
-        .lang-switch-btn {
-            padding: 6px 12px;
-            border-radius: 20px;
+        .lang-switch a { text-decoration: none; }
+
+        .lang-switch button {
+            border: 0;
+            background: transparent;
+            padding: 6px 14px;
+            border-radius: 999px;
             font-size: 12px;
-            border: none;
+            font-weight: 600;
+            color: var(--ink-3);
             cursor: pointer;
+            font-family: inherit;
+            transition: .18s;
+        }
+
+        .lang-switch button[disabled] { background: var(--brand-soft); color: var(--brand); cursor: default; }
+        .lang-switch a button:hover { color: var(--brand); }
+
+        .form-card {
+            width: 100%;
+            max-width: 420px;
+            animation: rise .55s cubic-bezier(.22,.8,.3,1) both;
+        }
+
+        @keyframes rise {
+            from { opacity: 0; transform: translateY(18px); }
+            to { opacity: 1; transform: none; }
+        }
+
+        .mobile-brand { display: none; }
+
+        .form-head { margin-bottom: 26px; }
+
+        .form-head .eyebrow {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: var(--brand);
+            margin-bottom: 10px;
+        }
+
+        .form-head h2 { font-size: 27px; letter-spacing: -.02em; font-weight: 700; margin-bottom: 8px; }
+        .form-head p { font-size: 14px; color: var(--ink-2); }
+
+        .alert {
+            display: flex; gap: 10px; align-items: flex-start;
+            padding: 13px 15px;
+            border-radius: 12px;
+            font-size: 13.5px;
+            line-height: 1.55;
+            margin-bottom: 20px;
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            color: #b91c1c;
+            animation: shake .4s ease;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20% { transform: translateX(-4px); }
+            60% { transform: translateX(4px); }
+        }
+
+        .field { margin-bottom: 16px; }
+
+        .field label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: #334155;
+            margin-bottom: 8px;
+        }
+
+        .control { position: relative; display: flex; align-items: center; }
+
+        .control .lead {
+            position: absolute;
+            left: 14px;
+            display: grid;
+            place-items: center;
+            color: var(--ink-3);
+            pointer-events: none;
+            transition: color .18s;
+        }
+
+        .control input {
+            width: 100%;
+            height: 50px;
+            padding: 0 46px 0 44px;
+            font-size: 14.5px;
+            font-family: inherit;
+            color: var(--ink);
+            background: var(--surface);
+            border: 1.5px solid var(--line);
+            border-radius: var(--radius);
+            transition: border-color .18s, box-shadow .18s;
+        }
+
+        .control input::placeholder { color: #b6c2d2; }
+        .control input:hover { border-color: #cbd5e1; }
+
+        .control input:focus {
+            outline: none;
+            border-color: var(--brand);
+            box-shadow: 0 0 0 4px rgba(79, 70, 229, .12);
+        }
+
+        .control:focus-within .lead { color: var(--brand); }
+
+        .control.is-ok input { border-color: #6ee7b7; }
+        .control.is-bad input { border-color: #fca5a5; }
+
+        .reveal {
+            position: absolute;
+            right: 8px;
+            width: 34px; height: 34px;
+            display: grid; place-items: center;
+            border: 0;
+            background: transparent;
+            color: var(--ink-3);
+            border-radius: 9px;
+            cursor: pointer;
+            transition: .18s;
+        }
+
+        .reveal:hover { background: var(--brand-soft); color: var(--brand); }
+
+        .meter { display: flex; gap: 5px; margin-top: 9px; }
+
+        .meter i {
+            height: 4px;
+            flex: 1;
+            border-radius: 999px;
+            background: #e8edf4;
+            transition: background .25s;
+        }
+
+        .meter i.on-1 { background: #f87171; }
+        .meter i.on-2 { background: #fbbf24; }
+        .meter i.on-3 { background: #34d399; }
+        .meter i.on-4 { background: #10b981; }
+
+        .meter-hint {
+            font-size: 12px;
+            margin-top: 7px;
+            min-height: 16px;
+            color: var(--ink-3);
+            transition: color .2s;
+        }
+
+        .terms {
+            font-size: 12.5px;
+            color: var(--ink-3);
+            line-height: 1.7;
+            margin: 4px 0 20px;
+        }
+
+        .terms a { color: var(--brand); text-decoration: none; }
+        .terms a:hover { text-decoration: underline; }
+
+        .btn-primary {
+            width: 100%;
+            height: 50px;
+            border: 0;
+            border-radius: var(--radius);
+            font-size: 15px;
+            font-weight: 600;
+            font-family: inherit;
+            color: #fff;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--brand) 0%, var(--brand-2) 100%);
+            box-shadow: 0 10px 24px -8px rgba(79, 70, 229, .65);
+            transition: transform .18s, box-shadow .18s;
+            display: flex; align-items: center; justify-content: center; gap: 9px;
+        }
+
+        .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 14px 30px -8px rgba(79,70,229,.75); }
+        .btn-primary:active { transform: translateY(0); }
+
+        .divider {
+            display: flex; align-items: center; gap: 14px;
+            margin: 24px 0 18px;
+            font-size: 12px;
+            color: var(--ink-3);
+        }
+
+        .divider::before, .divider::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+
+        .foot-link { text-align: center; font-size: 13.5px; color: var(--ink-2); }
+        .foot-link a { color: var(--brand); font-weight: 600; text-decoration: none; }
+        .foot-link a:hover { text-decoration: underline; }
+
+        .hint { margin-top: 22px; text-align: center; font-size: 12px; color: var(--ink-3); }
+        .hint a { color: var(--ink-2); }
+
+        @media (max-width: 920px) {
+            .shell { grid-template-columns: 1fr; }
+            .brand { display: none; }
+            .panel { order: 1; padding: 84px 20px 44px; align-items: flex-start; }
+            .mobile-brand {
+                display: flex; align-items: center; gap: 10px;
+                margin-bottom: 24px;
+                font-size: 14px; font-weight: 600;
+            }
+            .mobile-brand .logo-mark {
+                background: linear-gradient(135deg, var(--brand), var(--brand-2));
+                border: 0;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="lang-switch">
-        {% if is_chinese %}
-        <button class="lang-switch-btn" disabled>{{ _('chinese') }}</button>
-        <a href="/set-lang/en"><button class="lang-switch-btn">{{ _('english') }}</button></a>
-        {% else %}
-        <a href="/set-lang/zh"><button class="lang-switch-btn">{{ _('chinese') }}</button></a>
-        <button class="lang-switch-btn" disabled>{{ _('english') }}</button>
-        {% endif %}
-    </div>
+<div class="shell">
+    <main class="panel">
+        <div class="lang-switch">
+            {% if is_chinese %}
+            <button disabled>{{ _('chinese') }}</button>
+            <a href="/set-lang/en"><button>{{ _('english') }}</button></a>
+            {% else %}
+            <a href="/set-lang/zh"><button>{{ _('chinese') }}</button></a>
+            <button disabled>{{ _('english') }}</button>
+            {% endif %}
+        </div>
 
-    <div class="register-container">
-        <div class="register-card">
-            <div class="register-header">
-                <div class="register-icon">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M15 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm-9-2V7H4v3H1v2h3v3h2v-3h3v-2H6zm9 4c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+        <div class="form-card">
+            <div class="mobile-brand">
+                <div class="logo-mark">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"
+                         stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 21s7-4.5 7-10a4 4 0 0 0-7-2.6A4 4 0 0 0 5 11c0 5.5 7 10 7 10z"/>
                     </svg>
                 </div>
-                <h1>{{ _('create_account') }}</h1>
+                {{ _('breast_cancer_detection') }}
+            </div>
+
+            <div class="form-head">
+                <div class="eyebrow">{{ _('register') }}</div>
+                <h2>{{ _('create_account') }}</h2>
                 <p>{{ _('join') }} {{ _('breast_cancer_detection') }}</p>
             </div>
 
             {% if error %}
-            <div class="alert alert-error">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+            <div class="alert" role="alert">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2"
+                     stroke-linecap="round" style="flex:0 0 18px;margin-top:1px;">
+                    <circle cx="12" cy="12" r="9"/><path d="M12 8v5m0 3h.01"/>
                 </svg>
-                {{ error }}
+                <div>{{ error }}</div>
             </div>
             {% endif %}
 
-            <form method="post" action="/register">
-                <div class="form-group">
-                    <label>{{ _('username') }}</label>
-                    <div class="input-wrapper">
-                        <input type="text" name="username" placeholder="{{ _('username_placeholder') }}" required autocomplete="username">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-                        </svg>
+            <form method="post" action="/register" id="registerForm" novalidate>
+                <div class="field">
+                    <label for="username">{{ _('username') }}</label>
+                    <div class="control" id="ctrl-username">
+                        <span class="lead">
+                            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                 stroke-width="2" stroke-linecap="round">
+                                <circle cx="12" cy="8" r="3.5"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0"/>
+                            </svg>
+                        </span>
+                        <input id="username" type="text" name="username"
+                               placeholder="{{ _('username_placeholder') }}"
+                               required autocomplete="username" autofocus>
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label>{{ _('password') }}</label>
-                    <div class="input-wrapper">
-                        <input type="password" name="password" id="password" placeholder="{{ _('password_placeholder') }}" required autocomplete="new-password" oninput="checkPasswordStrength()">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>
-                        </svg>
+                <div class="field">
+                    <label for="password">{{ _('password') }}</label>
+                    <div class="control">
+                        <span class="lead">
+                            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                 stroke-width="2" stroke-linecap="round">
+                                <rect x="4" y="10" width="16" height="10" rx="2.5"/>
+                                <path d="M8 10V7a4 4 0 0 1 8 0v3"/>
+                            </svg>
+                        </span>
+                        <input id="password" type="password" name="password"
+                               placeholder="{{ _('password_placeholder') }}"
+                               required autocomplete="new-password" oninput="checkPasswordStrength()">
+                        <button type="button" class="reveal" data-target="password" aria-label="显示密码">
+                            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                 stroke-width="2" stroke-linecap="round">
+                                <path d="M2 12s3.6-6.5 10-6.5S22 12 22 12s-3.6 6.5-10 6.5S2 12 2 12z"/>
+                                <circle cx="12" cy="12" r="2.6"/>
+                            </svg>
+                        </button>
                     </div>
-                    <div class="password-strength">
-                        <div class="password-strength-bar" id="strength-bar"></div>
+                    <div class="meter" id="strength-bar">
+                        <i></i><i></i><i></i><i></i>
                     </div>
-                    <p class="password-hint" id="strength-hint"></p>
+                    <p class="meter-hint" id="strength-hint"></p>
                 </div>
 
-                <div class="form-group">
-                    <label>{{ _('confirm_password') }}</label>
-                    <div class="input-wrapper">
-                        <input type="password" name="confirm_password" id="confirm_password" placeholder="{{ _('confirm_password_placeholder') }}" required autocomplete="new-password">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>
-                        </svg>
+                <div class="field">
+                    <label for="confirm_password">{{ _('confirm_password') }}</label>
+                    <div class="control" id="ctrl-confirm">
+                        <span class="lead">
+                            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                 stroke-width="2" stroke-linecap="round">
+                                <rect x="4" y="10" width="16" height="10" rx="2.5"/>
+                                <path d="M8 10V7a4 4 0 0 1 8 0v3"/><path d="M9.5 15l1.8 1.8 3.4-3.6"/>
+                            </svg>
+                        </span>
+                        <input id="confirm_password" type="password" name="confirm_password"
+                               placeholder="{{ _('confirm_password_placeholder') }}"
+                               required autocomplete="new-password" oninput="checkPasswordStrength()">
+                        <button type="button" class="reveal" data-target="confirm_password" aria-label="显示密码">
+                            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                 stroke-width="2" stroke-linecap="round">
+                                <path d="M2 12s3.6-6.5 10-6.5S22 12 22 12s-3.6 6.5-10 6.5S2 12 2 12z"/>
+                                <circle cx="12" cy="12" r="2.6"/>
+                            </svg>
+                        </button>
                     </div>
                 </div>
-
-                <button type="submit" class="btn-register">{{ _('register') }}</button>
 
                 <p class="terms">
-                    {{ _('agree_terms') }} <a href="#">{{ _('terms_of_service') }}</a> {{ _('and') }} <a href="#">{{ _('privacy_policy') }}</a>
+                    {{ _('agree_terms') }}
+                    <a href="#">{{ _('terms_of_service') }}</a> {{ _('and') }}
+                    <a href="#">{{ _('privacy_policy') }}</a>
                 </p>
+
+                <button type="submit" class="btn-primary">
+                    {{ _('register') }}
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"
+                         stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13m-5-6 6 6-6 6"/></svg>
+                </button>
             </form>
 
-            <div class="divider">
-                <span>{{ _('or') }}</span>
-            </div>
+            <div class="divider">{{ _('or') }}</div>
 
-            <p class="login-link">
+            <p class="foot-link">
                 {{ _('already_have_account') }} <a href="/login">{{ _('login_now') }}</a>
             </p>
 
-            <p class="footer-hint">
-                <a href="/">{{ _('back_to_home') }}</a>
-            </p>
+            <p class="hint"><a href="/">{{ _('back_to_home') }}</a></p>
         </div>
-    </div>
+    </main>
 
-    <script>
-        function checkPasswordStrength() {
-            const password = document.getElementById('password').value;
-            const strengthBar = document.getElementById('strength-bar');
-            const strengthHint = document.getElementById('strength-hint');
+    <aside class="brand">
+        <div class="logo-row">
+            <div class="logo-mark">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"
+                     stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 21s7-4.5 7-10a4 4 0 0 0-7-2.6A4 4 0 0 0 5 11c0 5.5 7 10 7 10z"/>
+                </svg>
+            </div>
+            <div class="logo-text">{{ _('breast_cancer_detection') }}</div>
+        </div>
 
-            strengthBar.className = 'password-strength-bar';
+        <div class="brand-main">
+            <h1>三步开始<br><em>一次可追溯的预测</em></h1>
+            <p>注册后即可使用预测、归因、批量检测与智能解读，所有结论都附带依据。</p>
 
-            if (password.length === 0) {
-                strengthBar.style.width = '0%';
-                strengthHint.textContent = '';
-                return;
-            }
+            <ol class="steps">
+                <li>
+                    <span class="step-no">1</span>
+                    <span class="step-text"><b>填写特征</b><br>30 项细胞核指标，支持随机样本与示例数据</span>
+                </li>
+                <li>
+                    <span class="step-no">2</span>
+                    <span class="step-text"><b>拿到结论</b><br>良恶性判断 + 校准后的置信度</span>
+                </li>
+                <li>
+                    <span class="step-no">3</span>
+                    <span class="step-text"><b>看证据</b><br>特征归因、引用条款与证据强度三档</span>
+                </li>
+            </ol>
+        </div>
 
-            let strength = 0;
-            if (password.length >= 8) strength++;
-            if (/[a-z]/.test(password) && /[A-Z]/.test(password)) strength++;
-            if (/\d/.test(password)) strength++;
-            if (/[^a-zA-Z0-9]/.test(password)) strength++;
+        <div class="brand-foot">
+            <span>仅供教学演示，不用于临床诊断</span>
+            <a href="/">{{ _('back_to_home') }} →</a>
+        </div>
+    </aside>
+</div>
 
-            if (strength <= 1) {
-                strengthBar.classList.add('weak');
-                strengthHint.textContent = '{{ _('password_weak') }}';
-                strengthHint.style.color = '#ef4444';
-            } else if (strength <= 2) {
-                strengthBar.classList.add('medium');
-                strengthHint.textContent = '{{ _('password_medium') }}';
-                strengthHint.style.color = '#f59e0b';
-            } else {
-                strengthBar.classList.add('strong');
-                strengthHint.textContent = '{{ _('password_strong') }}';
-                strengthHint.style.color = '#10b981';
+<script>
+    var MSG_WEAK = '{{ _('password_weak') }}';
+    var MSG_MEDIUM = '{{ _('password_medium') }}';
+    var MSG_STRONG = '{{ _('password_strong') }}';
+
+    function checkPasswordStrength() {
+        var password = document.getElementById('password').value;
+        var confirm = document.getElementById('confirm_password').value;
+        var bars = document.getElementById('strength-bar').children;
+        var hint = document.getElementById('strength-hint');
+        var confirmCtrl = document.getElementById('ctrl-confirm');
+
+        var strength = 0;
+        if (password.length >= 8) strength++;
+        if (/[a-z]/.test(password) && /[A-Z]/.test(password)) strength++;
+        if (/\d/.test(password)) strength++;
+        if (/[^a-zA-Z0-9]/.test(password)) strength++;
+
+        if (password.length === 0) strength = 0;
+
+        for (var i = 0; i < bars.length; i++) {
+            bars[i].className = i < strength ? ('on-' + strength) : '';
+        }
+
+        if (!password) {
+            hint.textContent = '';
+        } else if (strength <= 1) {
+            hint.textContent = MSG_WEAK;
+            hint.style.color = '#ef4444';
+        } else if (strength === 2) {
+            hint.textContent = MSG_MEDIUM;
+            hint.style.color = '#d97706';
+        } else {
+            hint.textContent = MSG_STRONG;
+            hint.style.color = '#059669';
+        }
+
+        if (confirmCtrl) {
+            confirmCtrl.classList.remove('is-ok', 'is-bad');
+            if (confirm.length > 0) {
+                confirmCtrl.classList.add(confirm === password ? 'is-ok' : 'is-bad');
             }
         }
-    </script>
+    }
+
+    (function () {
+        var toggles = document.querySelectorAll('.reveal');
+        for (var i = 0; i < toggles.length; i++) {
+            toggles[i].addEventListener('click', function () {
+                var input = document.getElementById(this.getAttribute('data-target'));
+                if (!input) { return; }
+                var show = input.type === 'password';
+                input.type = show ? 'text' : 'password';
+                this.setAttribute('aria-label', show ? '隐藏密码' : '显示密码');
+                this.style.color = show ? '#4f46e5' : '';
+            });
+        }
+
+        var form = document.getElementById('registerForm');
+        if (form) {
+            form.addEventListener('submit', function (evt) {
+                var pwd = document.getElementById('password').value;
+                var confirm = document.getElementById('confirm_password').value;
+                if (pwd !== confirm) {
+                    evt.preventDefault();
+                    var ctrl = document.getElementById('ctrl-confirm');
+                    if (ctrl) { ctrl.classList.add('is-bad'); }
+                    document.getElementById('confirm_password').focus();
+                }
+            });
+        }
+    })();
+</script>
 </body>
 </html>
