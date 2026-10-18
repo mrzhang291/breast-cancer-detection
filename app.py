@@ -15,7 +15,7 @@ import urllib.error
 # 第三方库导入
 import numpy as np
 import pandas as pd
-from flask import Flask, render_template, request, redirect, session, jsonify, g, send_file, url_for
+from flask import make_response, Flask, render_template, request, redirect, session, jsonify, g, send_file, url_for
 
 from fpdf import FPDF
 import io
