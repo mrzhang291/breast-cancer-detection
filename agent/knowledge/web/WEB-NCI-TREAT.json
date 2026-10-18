@@ -1409,7 +1409,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "部分乳腺照射（续2）",
+  "summary_zh": "APBI与全乳放疗相比，8年同侧复发率2.8%，HR 1.27，未超非劣效界值；APBI短期毒性少但长期毒性多。"
  },
  {
   "section": "Partial breast irradiation（续3）",
@@ -1421,7 +1423,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "部分乳腺照射（续3）",
+  "summary_zh": "4216例随机分组，中位随访10.2年，APBI组同侧复发4%，全乳组3%，HR 1.22，未达等效标准。"
  },
  {
   "section": "Partial breast irradiation（续4）",
@@ -1433,7 +1437,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "部分乳腺照射（续4）",
+  "summary_zh": "结果未满足预设等效标准（HR≤1.50），两组毒性无显著差异；介绍APBI-IMRT-Florence试验设计。"
  },
  {
   "section": "Partial breast irradiation（续5）",
@@ -1445,7 +1451,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "部分乳腺照射（续5）",
+  "summary_zh": "APBI组急慢性毒性更少、美容效果更佳；10年同侧复发率3.7%对2.5%，总生存率两组均91.9%。"
  },
  {
   "section": "Regional nodal irradiation",
@@ -1457,7 +1465,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "区域淋巴结照射",
+  "summary_zh": "保乳术后全乳放疗加区域淋巴结照射可降低复发风险（10年DFS 82%对77%），但未改善总生存。"
  },
  {
   "section": "Regional nodal irradiation（续2）",
@@ -1469,7 +1479,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "区域淋巴结照射（续2）",
+  "summary_zh": "区域淋巴结照射未改善10年OS（82.3%对80.7%），但改善远处无病生存（78%对75%）。"
  },
  {
   "section": "Regional nodal irradiation（续3）",
@@ -1481,7 +1493,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "区域淋巴结照射（续3）",
+  "summary_zh": "荟萃分析纳入16项试验14324例早期乳腺癌患者，比较区域淋巴结放疗与不放疗的疗效。"
  },
  {
   "section": "Postmastectomy",
@@ -1493,7 +1507,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "乳房切除术后放疗",
+  "summary_zh": "高危患者（≥4枚阳性淋巴结、包膜外侵犯、脉管侵犯、大肿瘤、切缘近或阳性）术后放疗可降低局部复发。"
  },
  {
   "section": "Postmastectomy（续2）",
@@ -1505,7 +1521,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "乳房切除术后放疗（续2）",
+  "summary_zh": "淋巴结阳性患者术后放疗使5年局部复发从23%降至6%，乳腺癌死亡率显著降低（54.7%对60.1%）。"
  },
  {
   "section": "Postmastectomy（续3）",
@@ -1517,7 +1535,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "乳房切除术后放疗（续3）",
+  "summary_zh": "淋巴结阳性患者放疗显著降低局部复发和乳腺癌死亡率；淋巴结阴性者绝对获益仅4%，死亡率无显著下降。"
  },
  {
   "section": "Postmastectomy（续4）",
@@ -1529,7 +1549,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "乳房切除术后放疗（续4）",
+  "summary_zh": "低危淋巴结阴性患者5年局部复发绝对降低仅4%，15年乳腺癌死亡率无统计学显著下降。"
  },
  {
   "section": "Timing of Postoperative Radiation Therapy",
@@ -1541,7 +1563,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "术后放疗时机",
+  "summary_zh": "保乳术后延迟放疗至辅助化疗完成不影响总体结局；远处播散高危患者宜尽早开始化疗。"
  },
  {
   "section": "Timing of Postoperative Radiation Therapy（续2）",
@@ -1553,7 +1577,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "术后放疗时机（续2）",
+  "summary_zh": "放疗优先组局部复发5%、化疗优先组14%；远处或区域复发分别为32%和20%，差异接近统计学显著。"
  },
  {
   "section": "Timing of Postoperative Radiation Therapy（续3）",
@@ -1565,7 +1591,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "术后放疗时机（续3）",
+  "summary_zh": "中位随访5年，化疗优先组OS 81%、放疗优先组73%；复发模式差异P=.07，接近显著。"
  },
  {
   "section": "Timing of Postoperative Radiation Therapy（续4）",
@@ -1577,7 +1605,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "术后放疗时机（续4）",
+  "summary_zh": "放疗优先组化疗延迟中位17周且因骨髓抑制剂量偏低；NSABP-B-15等试验提供补充信息。"
  },
  {
   "section": "Timing of Postoperative Radiation Therapy（续5）",
@@ -1589,7 +1619,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "术后放疗时机（续5）",
+  "summary_zh": "NSABP-B-15显示不同化疗与放疗顺序间DFS、远处DFS和OS无差异；IBCSG VI/VII结果相似。"
  },
  {
   "section": "Timing of Postoperative Radiation Therapy（续6）",
@@ -1601,7 +1633,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "术后放疗时机（续6）",
+  "summary_zh": "放疗与曲妥珠单抗同期进行似乎安全，可避免放疗启动的额外延迟。"
  },
  {
   "section": "Acute and Late Toxicities of Radiation Therapy",
@@ -1613,7 +1647,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "放疗急性和晚期毒性",
+  "summary_zh": "急性毒性包括放射性皮炎、乳房肿胀瘙痒、腋窝紧绷和乏力；晚期毒性少见，可通过技术优化减少。"
  },
  {
   "section": "Acute and Late Toxicities of Radiation Therapy（续2）",
@@ -1625,7 +1661,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "放疗急性和晚期毒性（续2）",
+  "summary_zh": "1980年前左侧放疗者10-15年后心脏死亡率升高；1990年代现代技术减少了心肌深部照射。"
  },
  {
   "section": "Acute and Late Toxicities of Radiation Therapy（续3）",
@@ -1637,7 +1675,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "放疗急性和晚期毒性（续3）",
+  "summary_zh": "2168例患者研究显示主要冠脉事件随心脏平均剂量线性增加，每Gy增加7.4%，无明显阈值。"
  },
  {
   "section": "Acute and Late Toxicities of Radiation Therapy（续4）",
@@ -1649,7 +1689,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "放射治疗的急性和晚期毒性（续4）",
+  "summary_zh": "乳腺癌放疗后缺血性心脏病风险随心脏平均剂量线性增加，每Gy增加7.4%，无明确阈值。"
  },
  {
   "section": "Acute and Late Toxicities of Radiation Therapy（续5）",
@@ -1661,7 +1703,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "放射治疗的急性和晚期毒性（续5）",
+  "summary_zh": "腋窝淋巴结放疗后臂丛神经损伤罕见，54Gy/30次照射后症状性损伤发生率低。"
  },
  {
   "section": "Acute and Late Toxicities of Radiation Therapy（续6）",
@@ -1673,7 +1717,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "放射治疗的急性和晚期毒性（续6）",
+  "summary_zh": "辅助放疗后第二恶性肿瘤风险极低，10年肉瘤风险0.2%；吸烟者同侧肺癌风险略增。"
  },
  {
   "section": "Current Clinical Trials",
@@ -1685,7 +1731,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "当前临床试验",
+  "summary_zh": "介绍NCI支持的乳腺癌临床试验检索方法，并引用早期乳腺癌放疗与手术范围的随机试验综述。"
  },
  {
   "section": "Current Clinical Trials（续2）",
@@ -1697,7 +1745,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "当前临床试验（续2）",
+  "summary_zh": "引用早期乳腺癌保乳治疗中10Gy追加照射及全乳照射加或不加追加照射的随机试验文献。"
  },
  {
   "section": "Current Clinical Trials（续3）",
@@ -1709,7 +1759,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "当前临床试验（续3）",
+  "summary_zh": "引用大分割放疗长期结果及START试验10年随访等早期乳腺癌放疗随机对照研究文献。"
  },
  {
   "section": "Current Clinical Trials（续4）",
@@ -1721,7 +1773,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "当前临床试验（续4）",
+  "summary_zh": "引用早期乳腺癌部分乳腺照射ASTRO指南及RAPID等随机试验相关文献。"
  },
  {
   "section": "Current Clinical Trials（续5）",
@@ -1733,7 +1787,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "当前临床试验（续5）",
+  "summary_zh": "引用区域淋巴结照射、内乳及锁骨上照射相关随机试验和EBCTCG荟萃分析文献。"
  },
  {
   "section": "Current Clinical Trials（续6）",
@@ -1745,7 +1801,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "当前临床试验（续6）",
+  "summary_zh": "引用腋窝阳性乳腺癌术后放疗获益及早期乳腺癌放疗长期生存影响的随机试验综述文献。"
  },
  {
   "section": "Current Clinical Trials（续7）",
@@ -1757,7 +1815,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "当前临床试验（续7）",
+  "summary_zh": "引用保乳术后化疗与放疗顺序及NSABP辅助化疗方案比较等乳腺癌治疗相关文献。"
  },
  {
   "section": "Current Clinical Trials（续8）",
@@ -1769,7 +1829,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "当前临床试验（续8）",
+  "summary_zh": "引用放疗联合曲妥珠单抗耐受性、远程监测急性毒性及放射性肺炎等乳腺癌放疗相关文献。"
  },
  {
   "section": "Current Clinical Trials（续9）",
@@ -1781,7 +1843,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "当前临床试验（续9）",
+  "summary_zh": "引用乳腺癌放疗后心脏病与肺癌长期死亡率及缺血性心脏病发病死亡相关队列研究文献。"
  },
  {
   "section": "Current Clinical Trials（续10）",
@@ -1793,7 +1857,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "当前临床试验（续10）",
+  "summary_zh": "引用保乳治疗后晚期心脏死亡与发病、放疗后缺血性心脏病风险及淋巴水肿相关文献。"
  },
  {
   "section": "Current Clinical Trials（续11）",
@@ -1805,7 +1871,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "当前临床试验（续11）",
+  "summary_zh": "引用臂丛损伤分次方案随访、对侧乳腺癌风险及放疗后肉瘤长期风险相关文献。"
  },
  {
   "section": "Systemic Therapy for Stages I, II, and III Breast Cancer",
@@ -1817,7 +1885,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "I、II、III期乳腺癌的系统治疗",
+  "summary_zh": "讨论I至III期乳腺癌系统治疗应在术前还是术后进行，并涉及局部晚期或炎性乳腺癌治疗。"
  },
  {
   "section": "Systemic Therapy for Stages I, II, and III Breast Cancer（续2）",
@@ -1829,7 +1899,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "I、II、III期乳腺癌的系统治疗（续2）",
+  "summary_zh": "荟萃分析显示术前化疗与辅助化疗的无病生存和总生存相同，但提高保乳率。"
  },
  {
   "section": "Systemic Therapy for Stages I, II, and III Breast Cancer（续3）",
@@ -1841,7 +1913,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "I、II、III期乳腺癌的系统治疗（续3）",
+  "summary_zh": "CTNeoBC汇总分析显示pCR与预后改善相关，但未能验证其作为EFS和OS的替代终点。"
  },
  {
   "section": "Systemic Therapy for Stages I, II, and III Breast Cancer（续4）",
@@ -1853,7 +1927,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "I、II、III期乳腺癌的系统治疗（续4）",
+  "summary_zh": "残余肿瘤负荷（RCB）法可标准化量化新辅助化疗后残留病灶，并已验证为早期乳腺癌预后指标。"
  },
  {
   "section": "Systemic Therapy for Stages I, II, and III Breast Cancer（续5）",
@@ -1865,7 +1941,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "I、II、III期乳腺癌的系统治疗（续5）",
+  "summary_zh": "RCB每增加一单位与预后风险相关；三阴性和HER2阳性患者尤其倾向新辅助治疗。"
  },
  {
   "section": "Patient Selection, Staging, Treatment, and Follow-Up",
@@ -1877,7 +1955,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "患者选择、分期、治疗与随访",
+  "summary_zh": "强调多学科管理优化术前治疗的患者选择、系统治疗、腋窝处理、手术及辅助放疗决策。"
  },
  {
   "section": "Patient Selection, Staging, Treatment, and Follow-Up（续2）",
@@ -1889,7 +1969,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "患者选择、分期、治疗与随访（续2）",
+  "summary_zh": "新辅助治疗前需基线乳腺影像定位肿瘤并排除多中心病变，可疑异常应活检并放置标记，腋窝可疑淋巴结宜全身治疗前活检。"
  },
  {
   "section": "Patient Selection, Staging, Treatment, and Follow-Up（续3）",
@@ -1901,7 +1983,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "患者选择、分期、治疗与随访（续3）",
+  "summary_zh": "HER2阴性乳腺癌术前用蒽环/紫杉类化疗，HER2阳性加靶向治疗；绝经后激素受体阳性者可选择化疗或术前内分泌治疗。"
  },
  {
   "section": "Stages I, II, and III HER2-Negative Hormone Receptor–Positive Breast Cancer",
@@ -1913,7 +1997,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "I、II、III期HER2阴性激素受体阳性乳腺癌",
+  "summary_zh": "支持化疗的研究多在术后完成，其结果仍适用于术前治疗，蒽环类方案可提高保乳率。"
  },
  {
   "section": "Stages I, II, and III HER2-Negative Hormone Receptor–Positive Breast Cancer（续2）",
@@ -1925,7 +2011,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "I、II、III期HER2阴性激素受体阳性乳腺癌（续2）",
+  "summary_zh": "NSABP B-27试验显示术前AC序贯多西他赛较单用AC提高临床完全缓解率和病理完全缓解率。"
  },
  {
   "section": "Stages I, II, and III HER2-Negative Hormone Receptor–Positive Breast Cancer（续3）",
@@ -1937,7 +2025,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "I、II、III期HER2阴性激素受体阳性乳腺癌（续3）",
+  "summary_zh": "蒽环/紫杉类方案获支持，同步与序贯给药疗效相似；GeparSepto试验评估白蛋白紫杉醇替代紫杉醇。"
  },
  {
   "section": "Stages I, II, and III HER2-Negative Hormone Receptor–Positive Breast Cancer（续4）",
@@ -1949,7 +2039,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "I、II、III期HER2阴性激素受体阳性乳腺癌（续4）",
+  "summary_zh": "GeparSepto显示白蛋白紫杉醇提高pCR，但ETNA试验未见差异，且中性粒细胞减少和周围神经病变更多。"
  },
  {
   "section": "Preoperative endocrine therapy for HER2-negative hormone receptor–positive breas",
@@ -1961,7 +2053,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HER2阴性激素受体阳性乳腺癌的术前内分泌治疗",
+  "summary_zh": "绝经后不适合化疗者可选择术前内分泌治疗，毒性低但pCR率仅1%–8%，可能需延长疗程。"
  },
  {
   "section": "Preoperative endocrine therapy for HER2-negative hormone receptor–positive breas（续2）",
@@ -1973,7 +2067,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HER2阴性激素受体阳性乳腺癌的术前内分泌治疗（续2）",
+  "summary_zh": "芳香化酶抑制剂3–4个月术前治疗的缓解率和保乳率优于或相当于他莫昔芬；绝经前使用仍属研究性。"
  },
  {
   "section": "Postoperative systemic therapy for HER2-negative hormone receptor–positive breas",
@@ -1985,7 +2081,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HER2阴性激素受体阳性乳腺癌的术后全身治疗",
+  "summary_zh": "未接受术前治疗者，辅助治疗选择应基于分期、分子特征及复发风险与治疗风险的平衡。"
  },
  {
   "section": "Postoperative systemic therapy for HER2-negative hormone receptor–positive breas（续2）",
@@ -1997,7 +2095,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HER2阴性激素受体阳性乳腺癌的术后全身治疗（续2）",
+  "summary_zh": "荟萃分析显示在蒽环类辅助化疗基础上加紫杉类可改善DFS和OS，5年绝对生存获益分别为5%和3%。"
  },
  {
   "section": "Postoperative systemic therapy for HER2-negative hormone receptor–positive breas（续3）",
@@ -2009,7 +2109,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HER2阴性激素受体阳性乳腺癌的术后全身治疗（续3）",
+  "summary_zh": "E1199试验显示每周紫杉醇优于每3周紫杉醇，每3周三周多西他赛DFS亦优于每3周紫杉醇。"
  },
  {
   "section": "Postoperative systemic therapy for HER2-negative hormone receptor–positive breas（续4）",
@@ -2021,7 +2123,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HER2阴性激素受体阳性乳腺癌的术后全身治疗（续4）",
+  "summary_zh": "CALGB-9741试验显示剂量密集方案改善DFS但未显著改善OS，密度与序贯方式无交互作用。"
  },
  {
   "section": "Postoperative systemic therapy for HER2-negative hormone receptor–positive breas（续5）",
@@ -2033,7 +2137,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HER2阴性激素受体阳性乳腺癌的术后全身治疗（续5）",
+  "summary_zh": "意大利试验显示每2周方案较每3周方案改善5年DFS（81%对76%）和OS（94%对89%）。"
  },
  {
   "section": "Postoperative systemic therapy for HER2-negative hormone receptor–positive breas（续6）",
@@ -2045,7 +2151,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HER2阴性激素受体阳性乳腺癌的术后全身治疗（续6）",
+  "summary_zh": "荟萃分析显示剂量密集或序贯增量方案在10年时改善无复发生存和总生存。"
  },
  {
   "section": "Postoperative systemic therapy for HER2-negative hormone receptor–positive breas（续7）",
@@ -2057,7 +2165,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HER2阴性激素受体阳性乳腺癌的术后全身治疗（续7）",
+  "summary_zh": "因蒽环类长期毒性，研究非蒽环方案；两类方案均可接受，需根据风险个体化选择。"
  },
  {
   "section": "Postoperative systemic therapy for HER2-negative hormone receptor–positive breas（续8）",
@@ -2069,7 +2179,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HER2阴性激素受体阳性乳腺癌的术后全身治疗（续8）",
+  "summary_zh": "ABC试验比较TC与TaxAC，4年iDFS为88.2%对90.7%，含蒽环方案略优但绝对差异小。"
  },
  {
   "section": "Postoperative systemic therapy for HER2-negative hormone receptor–positive breas（续9）",
@@ -2081,7 +2193,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HER2阴性激素受体阳性乳腺癌的术后全身治疗（续9）",
+  "summary_zh": "TaxAC获益主要见于三阴性和腋窝淋巴结阳性激素受体阳性患者，支持低危者用非蒽环方案。"
  },
  {
   "section": "Postoperative systemic therapy for HER2-negative hormone receptor–positive breas（续10）",
@@ -2093,7 +2207,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HER2阴性激素受体阳性乳腺癌的术后全身治疗（续10）",
+  "summary_zh": "Plan B试验显示TC与EC-T的5年DFS和OS相似，达到非劣效，但EC-T症状性不良事件更多。"
  },
  {
   "section": "Timing of postoperative chemotherapy",
@@ -2105,7 +2221,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "术后化疗的时机",
+  "summary_zh": "辅助化疗最佳启动时间尚不确定；回顾性研究显示术后61天以上开始化疗与较差生存相关。"
  },
  {
   "section": "Timing of postoperative chemotherapy（续2）",
@@ -2117,7 +2235,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "术后化疗的时机（续2）",
+  "summary_zh": "术后61天以上启动化疗与II、III期及三阴性、HER2阳性乳腺癌更差生存相关。"
  },
  {
   "section": "Timing of postoperative chemotherapy（续3）",
@@ -2129,7 +2249,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "术后化疗时机（续3）",
+  "summary_zh": "探讨术后化疗延迟≤90天的影响，结果不一致，三阴性乳腺癌患者可能更敏感。"
  },
  {
   "section": "Timing of postoperative chemotherapy（续4）",
@@ -2141,7 +2263,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "术后化疗时机（续4）",
+  "summary_zh": "远处复发风险与原发肿瘤及淋巴结状态相关，风险为10%至41%；他莫昔芬使激素受体阳性患者获益。"
  },
  {
   "section": "Timing of postoperative chemotherapy（续5）",
@@ -2153,7 +2277,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "术后化疗时机（续5）",
+  "summary_zh": "荟萃分析证实他莫昔芬对绝经前激素受体阳性患者有益，淋巴结阳性者10年绝对生存获益更大。"
  },
  {
   "section": "Timing of postoperative chemotherapy（续6）",
@@ -2165,7 +2291,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "术后化疗时机（续6）",
+  "summary_zh": "他莫昔芬获益与年龄、孕激素受体状态无关；淋巴结阳性者10年绝对生存改善更明显。"
  },
  {
   "section": "Timing of postoperative chemotherapy（续7）",
@@ -2177,7 +2305,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "术后化疗时机（续7）",
+  "summary_zh": "EBCTCG荟萃分析显示，5年他莫昔芬在降低复发和死亡风险方面优于1至2年疗程。"
  },
  {
   "section": "Timing of postoperative chemotherapy（续8）",
@@ -2189,7 +2319,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "术后化疗时机（续8）",
+  "summary_zh": "10年他莫昔芬较5年进一步降低复发、乳腺癌死亡及总死亡风险，但获益主要在10年后显现。"
  },
  {
   "section": "Timing of postoperative chemotherapy（续9）",
@@ -2201,7 +2333,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "术后化疗时机（续9）",
+  "summary_zh": "ATLAS试验显示，5年他莫昔芬后仍绝经前者继续用药5年有益；已绝经者可考虑芳香化酶抑制剂。"
  },
  {
   "section": "Timing of postoperative chemotherapy（续10）",
@@ -2213,7 +2347,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "术后化疗时机（续10）",
+  "summary_zh": "10年他莫昔芬增加肺栓塞和子宫内膜癌风险，缺血性心脏病风险反而降低。"
  },
  {
   "section": "Timing of postoperative chemotherapy（续11）",
@@ -2225,7 +2361,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "术后化疗时机（续11）",
+  "summary_zh": "10年他莫昔芬使5至14年绝对死亡率降低2.8%；辅助化疗后使用他莫昔芬不削弱化疗获益。"
  },
  {
   "section": "Ovarian ablation, tamoxifen, and chemotherapy",
@@ -2237,7 +2375,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "卵巢消融、他莫昔芬与化疗",
+  "summary_zh": "单独卵巢消融不能替代全身治疗；SOFT试验评估他莫昔芬联合卵巢抑制的疗效。"
  },
  {
   "section": "Ovarian ablation, tamoxifen, and chemotherapy（续2）",
@@ -2249,7 +2389,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "卵巢消融、他莫昔芬与化疗（续2）",
+  "summary_zh": "8年随访显示他莫昔芬联合卵巢抑制较单药改善无病生存和总生存，化疗后仍绝经前患者可能获益。"
  },
  {
   "section": "Ovarian ablation, tamoxifen, and chemotherapy（续3）",
@@ -2261,7 +2403,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "卵巢消融、他莫昔芬与化疗（续3）",
+  "summary_zh": "他莫昔芬联合卵巢抑制8年无病生存83.2%、总生存93.3%，均优于他莫昔芬单药。"
  },
  {
   "section": "Ovarian ablation, tamoxifen, and chemotherapy（续4）",
@@ -2273,7 +2417,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "卵巢消融、他莫昔芬与化疗（续4）",
+  "summary_zh": "韩国研究纳入接受化疗后卵巢功能保留的年轻绝经前患者，随机比较戈舍瑞林联合他莫昔芬与单药。"
  },
  {
   "section": "Ovarian ablation, tamoxifen, and chemotherapy（续5）",
@@ -2285,7 +2431,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "卵巢消融、他莫昔芬与化疗（续5）",
+  "summary_zh": "戈舍瑞林联合他莫昔芬组5年无病生存89.8%，优于单药87.3%，总生存亦改善。"
  },
  {
   "section": "Aromatase inhibitors",
@@ -2297,7 +2445,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂",
+  "summary_zh": "绝经前卵巢功能抑制或消融后，芳香化酶抑制剂与他莫昔芬比较的研究结果不一致。"
  },
  {
   "section": "Aromatase inhibitors（续2）",
@@ -2309,7 +2459,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂（续2）",
+  "summary_zh": "依西美坦联合卵巢抑制较他莫昔芬联合卵巢抑制改善无病生存和远处复发，但总生存无差异。"
  },
  {
   "section": "Aromatase inhibitors（续3）",
@@ -2321,7 +2473,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂（续3）",
+  "summary_zh": "他莫昔芬联合卵巢抑制更多潮热出汗，依西美坦联合卵巢抑制更多阴道干燥和性欲减退。"
  },
  {
   "section": "Aromatase inhibitors（续4）",
@@ -2333,7 +2487,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂（续4）",
+  "summary_zh": "依西美坦联合卵巢抑制8年无病生存优于他莫昔芬联合方案，但总生存无差异；12年随访数据更新。"
  },
  {
   "section": "Aromatase inhibitors（续5）",
@@ -2345,7 +2501,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂（续5）",
+  "summary_zh": "未化疗患者中，他莫昔芬联合卵巢抑制潮热出汗更明显，依西美坦联合方案骨关节痛更突出。"
  },
  {
   "section": "Aromatase inhibitors（续6）",
@@ -2357,7 +2515,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂（续6）",
+  "summary_zh": "依西美坦联合卵巢抑制者阴道干燥、性欲减退更明显且持续；总体生活质量变化小且组间相似。"
  },
  {
   "section": "Aromatase inhibitors（续7）",

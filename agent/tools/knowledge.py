@@ -1,6 +1,6 @@
 """知识检索工具：从特征词典与系统文档里取条款，并把 clause_id 记为引用。"""
 from .. import registry
-from ..rag import index
+from ..rag import hybrid, index
 
 
 @registry.tool(
@@ -15,11 +15,14 @@ from ..rag import index
         'required': ['query'],
     },
     permission='knowledge:read',
-    timeout=5.0,
+    timeout=25.0,
 )
 def search_knowledge(ctx, query, k=5):
     prefer = 'howto' if any(w in query for w in ('怎么', '如何', '在哪', '步骤')) else ''
-    hits = index.search(query, k=int(k), prefer=prefer)
+    try:
+        hits = hybrid.search(query, k=int(k), prefer=prefer)
+    except Exception:  # noqa: BLE001
+        hits = index.search(query, k=int(k), prefer=prefer)
     payload = {
         'query': query,
         'count': len(hits),
