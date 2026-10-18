@@ -488,7 +488,7 @@
                 if (event === 'thinking') {
                     pending.think = timelineItem(tl, '思考中', '第 ' + (data.step || 1) + ' 步');
                 } else if (event === 'tool_call') {
-                    var label = (data.tool || '').replace('_', ' ');
+                    var label = (data.tool || '').replace(/_/g, ' ');
                     pending.tool = timelineItem(tl, '调用 ' + label, JSON.stringify(data.args || {}).slice(0, 40));
                     if (pending.think) { markItem(pending.think, true, ''); pending.think = null; }
                 } else if (event === 'tool_result') {
