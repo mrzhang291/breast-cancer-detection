@@ -1,0 +1,180 @@
+/* 全站统一视觉：覆盖 Bootstrap 3 组件 + 公共组件（顶栏、卡片、表格、按钮、表单） */
+:root {
+    --ink: #0f172a;
+    --ink-2: #475569;
+    --ink-3: #94a3b8;
+    --line: #e6ebf3;
+    --bg: #f6f8fc;
+    --surface: #ffffff;
+    --brand: #4f46e5;
+    --brand-2: #7c3aed;
+    --soft: #eef2ff;
+    --ok: #10b981;
+    --warn: #f59e0b;
+    --danger: #dc2626;
+    --radius: 16px;
+    --shadow: 0 12px 34px -26px rgba(15, 23, 42, .55);
+}
+
+html, body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC",
+                 "PingFang SC", "Microsoft YaHei", sans-serif;
+    font-size: 14px;
+    -webkit-font-smoothing: antialiased;
+}
+body { padding-top: 0 !important; }
+a { color: var(--brand); }
+a:hover, a:focus { color: var(--brand-2); text-decoration: none; }
+
+/* ---------- 顶栏 ---------- */
+.app-topbar {
+    position: sticky; top: 0; z-index: 40;
+    background: rgba(255, 255, 255, .9);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+}
+.app-topbar-inner {
+    max-width: 1280px; margin: 0 auto; padding: 0 28px; height: 62px;
+    display: flex; align-items: center; gap: 22px;
+}
+.app-logo { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 14.5px; color: var(--ink); }
+.app-logo:hover { color: var(--ink); }
+.app-logo-mark {
+    width: 32px; height: 32px; border-radius: 10px; display: grid; place-items: center;
+    color: #fff; background: linear-gradient(135deg, var(--brand), var(--brand-2));
+}
+.app-nav { display: flex; gap: 4px; }
+.app-nav a { padding: 7px 12px; border-radius: 9px; font-size: 13.5px; color: var(--ink-2); }
+.app-nav a:hover { background: #f1f5f9; color: var(--ink); }
+.app-nav a.active { background: var(--soft); color: var(--brand); font-weight: 600; }
+.app-actions { margin-left: auto; display: flex; align-items: center; gap: 10px; }
+.app-user-btn {
+    display: flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 10px;
+    border: 1px solid var(--line); background: #fff; color: var(--ink-2);
+    font-size: 13px; font-weight: 600; cursor: pointer; font-family: inherit;
+}
+.app-user-btn:hover { border-color: #c7d2fe; color: var(--brand); }
+.app-lang { display: flex; gap: 2px; padding: 3px; background: #fff; border: 1px solid var(--line); border-radius: 999px; }
+.app-lang a, .app-lang span { font-size: 11.5px; padding: 5px 11px; border-radius: 999px; color: var(--ink-3); }
+.app-lang .active { background: var(--soft); color: var(--brand); font-weight: 600; }
+
+/* ---------- 页面容器 ---------- */
+.container, .container-fluid { max-width: 1280px; margin: 0 auto; padding: 22px 28px 80px; }
+
+h1, h2, h3, h4, h5 { color: var(--ink); font-weight: 700; letter-spacing: -.01em; }
+h1 { font-size: 26px; }
+h2 { font-size: 19px; }
+h3 { font-size: 16px; margin-top: 4px; }
+.page-header { border: 0; margin: 4px 0 18px; padding: 0; }
+.page-header h1, .page-header h2 { margin: 6px 0; }
+.text-muted, small.text-muted { color: var(--ink-3) !important; }
+
+/* ---------- 卡片 / 面板 ---------- */
+.panel, .card, .well {
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: var(--radius); box-shadow: var(--shadow);
+    margin-bottom: 18px; overflow: hidden;
+}
+.well { padding: 16px; }
+.panel-heading, .panel-footer {
+    background: #fff; border-color: var(--line); padding: 14px 18px;
+    font-weight: 600; color: var(--ink); border-radius: 0;
+}
+.panel-heading .panel-title { font-size: 15px; font-weight: 700; }
+.panel-body { padding: 18px; }
+.panel-default > .panel-heading { border-bottom: 1px solid var(--line); }
+.panel-primary { border-color: #dfe5f5; }
+.panel-primary > .panel-heading { background: linear-gradient(135deg, #eef2ff, #f6f2ff); color: var(--brand); }
+
+/* ---------- 按钮 ---------- */
+.btn {
+    border-radius: 10px; font-size: 13px; font-weight: 600; font-family: inherit;
+    padding: 8px 15px; border: 1px solid transparent; transition: .16s;
+}
+.btn-primary, .btn-success {
+    background: linear-gradient(135deg, var(--brand), var(--brand-2));
+    border: 0; color: #fff; box-shadow: 0 8px 20px -12px rgba(79, 70, 229, .9);
+}
+.btn-primary:hover, .btn-primary:focus, .btn-success:hover {
+    background: linear-gradient(135deg, #4338ca, #6d28d9); color: #fff; transform: translateY(-1px);
+}
+.btn-default, .btn-secondary {
+    background: #fff; border-color: var(--line); color: var(--ink-2);
+}
+.btn-default:hover, .btn-default:focus { background: #fff; border-color: #c7d2fe; color: var(--brand); }
+.btn-danger { background: #fef2f2; border-color: #fecaca; color: #b91c1c; }
+.btn-danger:hover { background: #fee2e2; color: #991b1b; }
+.btn-link { color: var(--brand); }
+.btn-sm { padding: 5px 11px; font-size: 12px; }
+.btn-lg { padding: 11px 20px; font-size: 14.5px; }
+
+/* ---------- 表单 ---------- */
+.form-control {
+    height: 40px; border: 1px solid #e2e8f0; border-radius: 10px;
+    box-shadow: none; font-size: 13.5px; color: var(--ink);
+    transition: border-color .16s, box-shadow .16s;
+}
+textarea.form-control { height: auto; }
+.form-control:focus {
+    border-color: var(--brand); box-shadow: 0 0 0 3px rgba(79, 70, 229, .1);
+}
+.form-group label, .control-label { font-size: 13px; font-weight: 600; color: #334155; }
+.input-group-addon { border-radius: 10px; border-color: var(--line); background: #f8fafc; }
+.form-horizontal .control-label { padding-top: 10px; }
+
+/* ---------- 表格 ---------- */
+.table { margin-bottom: 0; font-size: 13px; }
+.table > thead > tr > th {
+    border-bottom: 1px solid var(--line); background: #f8fafc;
+    color: var(--ink-2); font-weight: 600; font-size: 12.5px; padding: 11px 14px;
+}
+.table > tbody > tr > td { border-top: 1px solid #f1f5f9; padding: 11px 14px; vertical-align: middle; }
+.table-striped > tbody > tr:nth-of-type(odd) { background: #fbfcfe; }
+.table-hover > tbody > tr:hover { background: var(--soft); }
+.table > tbody > tr > td a { font-weight: 600; }
+
+/* ---------- 标签页 ---------- */
+.nav-tabs { border-bottom: 1px solid var(--line); gap: 4px; display: flex; flex-wrap: wrap; }
+.nav-tabs > li > a {
+    border: 0; border-radius: 10px; color: var(--ink-2); font-size: 13px;
+    padding: 9px 14px; margin: 0; font-weight: 600;
+}
+.nav-tabs > li > a:hover { background: #f1f5f9; }
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+    background: var(--soft); color: var(--brand); border: 0;
+}
+.tab-content { padding-top: 16px; }
+
+/* ---------- 提示 / 徽标 ---------- */
+.alert { border-radius: 12px; border: 1px solid transparent; font-size: 13px; padding: 12px 15px; }
+.alert-info { background: #eff6ff; border-color: #dbeafe; color: #1d4ed8; }
+.alert-success { background: #ecfdf5; border-color: #d1fae5; color: #047857; }
+.alert-warning { background: #fffbeb; border-color: #fde68a; color: #b45309; }
+.alert-danger { background: #fef2f2; border-color: #fecaca; color: #b91c1c; }
+.label { border-radius: 999px; font-weight: 600; padding: 3px 9px; font-size: 11.5px; }
+.label-success { background: #dcfce7; color: #15803d; }
+.label-danger { background: #fee2e2; color: #b91c1c; }
+.label-warning { background: #fef3c7; color: #b45309; }
+.label-info { background: var(--soft); color: var(--brand); }
+.badge { background: var(--soft); color: var(--brand); border-radius: 999px; font-weight: 600; }
+
+/* ---------- 列表组 ---------- */
+.list-group-item { border-color: #f1f5f9; padding: 12px 16px; font-size: 13px; }
+.list-group-item:first-child { border-radius: var(--radius) var(--radius) 0 0; }
+.list-group-item:last-child { border-radius: 0 0 var(--radius) var(--radius); }
+
+/* ---------- 统计块 ---------- */
+.stat-card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 20px; }
+.stat-value { font-size: 26px; font-weight: 700; color: var(--ink); line-height: 1.2; }
+.stat-label { font-size: 12.5px; color: var(--ink-3); margin-top: 4px; }
+
+/* ---------- 表格容器滚动 ---------- */
+.table-responsive { border-radius: 12px; }
+
+@media (max-width: 900px) {
+    .app-topbar-inner { padding: 0 16px; gap: 12px; }
+    .app-nav { display: none; }
+    .container, .container-fluid { padding: 16px 16px 70px; }
+}
