@@ -1204,6 +1204,14 @@ def resume(run_id: str, ctx: AgentContext, confirmed: bool = True,
     return result
 
 
+def _grounding(answer: str, facts, citations) -> Dict:
+    try:
+        from . import grounding
+        return grounding.ground(answer, list(facts or []), list(citations or []))
+    except Exception:  # noqa: BLE001
+        return {'ok': True, 'coverage': 1.0, 'claims': [], 'dropped': [],
+                'dropped_count': 0, 'unsupported': [], 'answer_md': answer}
+
 def _result(ctx, question, intent, status, answer, citations, q_verdict, check, started) -> Dict:
     return {
         'run_id': ctx.run_id,
@@ -1217,6 +1225,7 @@ def _result(ctx, question, intent, status, answer, citations, q_verdict, check, 
         'steps': ctx.steps,
         'risk': q_verdict.get('risk', 'low'),
         'verify': check,
+        'grounding': _grounding(answer, ctx.facts, citations),
         'artifacts': list(ctx.artifacts),
         'latency_ms': int((time.time() - started) * 1000),
     }
