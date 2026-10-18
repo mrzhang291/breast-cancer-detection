@@ -139,3 +139,69 @@ def export_report(ctx, kind='single', days=None, limit=None):
     ctx.add_artifact(artifact)
     return registry.ToolResult(ok=True, data={'artifact': artifact['filename']},
                                artifacts=[artifact])
+
+
+def _feature_names():
+    import json as _json
+    import os as _os
+    path = _os.path.join(_os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))),
+                         'knowledge', 'features.json')
+    try:
+        with open(path, encoding='utf-8') as fh:
+            data = _json.load(fh)
+        items = data.get('items', []) if isinstance(data, dict) else data
+        return [it.get('name_zh') or it.get('feature') for it in items]
+    except Exception:  # noqa: BLE001
+        return []
+
+
+@registry.tool(
+    'export_data',
+    description='导出当前账号的原始预测记录为 CSV',
+    schema={'type': 'object', 'properties': {'limit': {'type': 'integer', 'minimum': 1, 'maximum': 50}},
+            'required': []},
+    permission='export',
+    timeout=20.0,
+    idempotent=False,
+)
+def export_data(ctx, limit=30):
+    rt = runtime.get()
+    rt.require('fetch_records', 'render_report')
+
+    page = rt.fetch_records(str(ctx.user_id), 1, 50) or {}
+    items = list(page.get('items') or [])
+    items.sort(key=lambda item: str(item.get('created_at') or ''), reverse=True)
+    items = items[:min(int(limit or 30), 50)]
+
+    names = _feature_names()
+    series = []
+    for item in items:
+        feats = item.get('features') or {}
+        values = []
+        for idx in range(1, 31):
+            values.append(feats.get('feature_%d' % idx, ''))
+        series.append({
+            'id': item.get('id'),
+            'at': str(item.get('created_at') or '')[:19].replace('T', ' '),
+            'result': item.get('prediction_result') or item.get('result') or '',
+            'confidence': round(float(item.get('confidence') or 0), 4),
+            'features': values,
+        })
+
+    if not series:
+        return registry.ToolResult(ok=False, error='没有可导出的记录', error_type='empty')
+
+    payload = {
+        'user_id': ctx.user_id,
+        'run_id': ctx.run_id,
+        'series': series,
+        'feature_names': names,
+    }
+    try:
+        artifact = rt.render_report('csv', payload)
+    except Exception as exc:  # noqa: BLE001
+        return registry.ToolResult(ok=False, error='导出失败: %s' % str(exc)[:100],
+                                   error_type='runtime')
+
+    ctx.add_artifact(artifact)
+    return registry.ToolResult(ok=True, data={'rows': len(series)}, artifacts=[artifact])

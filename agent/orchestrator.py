@@ -375,6 +375,16 @@ def _act_compare(ctx: AgentContext, values: Optional[List[float]] = None, emit=N
 
 def _act_export(ctx: AgentContext, values, state, emit=None) -> None:
     """生成报告：先补齐事实，再交给 export_report。"""
+    question = ((state or {}).get('question') or '').lower()
+    wants_csv = any(w in question for w in ('csv', 'excel', '原始数据', '导出数据'))
+    if wants_csv:
+        from . import policy as _policy
+        if not _policy.can_use_tool(ctx, 'export'):
+            ctx.context['export_error'] = 'permission'
+            return
+        _call(ctx, 'export_data', {'limit': 30}, emit)
+        return
+
     window = (state or {}).get('export_window')
     if window:
         args = {'kind': 'range'}
@@ -396,6 +406,9 @@ def _act_export(ctx: AgentContext, values, state, emit=None) -> None:
 
 
 def _compose_export(ctx: AgentContext):
+    if (ctx.context or {}).get('export_error') == 'permission':
+        return ('原始数据导出需要管理员权限，当前账号是医生角色，做不了这一步。\n\n'
+                '医生可以生成解读报告（PDF），但原始记录属于更高敏感级别。', [])
     artifact = ctx.artifacts[-1] if ctx.artifacts else None
     if not artifact:
         return ('报告没生成出来。可能是当前没有可用的预测结果，先在首页做一次预测，'

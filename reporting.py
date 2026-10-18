@@ -435,6 +435,34 @@ def render_range(payload: dict) -> dict:
     return _save(pdf, payload.get('user_id'), payload.get('run_id'), 'range',
                  '%s-%s-%s' % (mode, n, stats.get('total')))
 
+def render_csv(payload: dict) -> dict:
+    """⑤ 原始记录导出（CSV，带 BOM 以便 Excel 正确识别中文）。"""
+    import csv
+
+    rows = payload.get('series') or []
+    folder = os.path.join(REPORTS_DIR, str(payload.get('user_id')))
+    os.makedirs(folder, exist_ok=True)
+
+    digest = hashlib.sha1(('csv|%s|%s' % (payload.get('run_id'), len(rows))).encode()).hexdigest()[:10]
+    filename = 'records-%s-%s.csv' % (str(payload.get('run_id'))[:8], digest)
+    path = os.path.join(folder, filename)
+
+    with io.open(path, 'w', encoding='utf-8-sig', newline='') as fh:
+        writer = csv.writer(fh)
+        writer.writerow(['记录号', '时间', '结果', '置信度'] + list(payload.get('feature_names') or []))
+        for row in rows:
+            writer.writerow([row.get('id'), row.get('at'), row.get('result'),
+                             row.get('confidence')] + list(row.get('features') or []))
+
+    return {
+        'kind': 'csv',
+        'filename': filename,
+        'path': path,
+        'size': os.path.getsize(path),
+        'mime': 'text/csv',
+        'created_at': int(time.time()),
+    }
+
 def render(kind: str, payload: dict) -> dict:
     """统一入口，按动作分派。"""
     if kind == 'single':
@@ -443,4 +471,6 @@ def render(kind: str, payload: dict) -> dict:
         return render_compare(payload)
     if kind == 'range':
         return render_range(payload)
+    if kind == 'csv':
+        return render_csv(payload)
     raise ValueError('暂不支持的报告类型: %s' % kind)
