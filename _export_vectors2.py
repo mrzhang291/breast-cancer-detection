@@ -1,0 +1,13 @@
+﻿import sqlite3, sys
+sys.stdout.reconfigure(encoding="utf-8")
+src = sqlite3.connect("agent.db")
+print("FAQ 条款:", src.execute("SELECT COUNT(*) FROM rag_chunks WHERE doc_id='FAQ'").fetchone()[0])
+print("总条款:", src.execute("SELECT COUNT(*) FROM rag_chunks").fetchone()[0])
+print("向量:", src.execute("SELECT COUNT(*) FROM rag_vectors").fetchone()[0])
+out = sqlite3.connect("agent/knowledge/rag_vectors.sqlite")
+out.execute("DROP TABLE IF EXISTS rag_vectors")
+out.execute("CREATE TABLE rag_vectors (clause_id TEXT PRIMARY KEY, dim INTEGER, vec BLOB, model TEXT)")
+data = src.execute("SELECT clause_id, dim, vec, model FROM rag_vectors").fetchall()
+out.executemany("INSERT INTO rag_vectors VALUES (?,?,?,?)", data)
+out.commit(); out.close(); src.close()
+print("导出向量", len(data))
