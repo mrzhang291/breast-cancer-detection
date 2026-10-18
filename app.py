@@ -1044,8 +1044,14 @@ def knowledge_page():
     finally:
         conn.close()
 
+    try:
+        from agent.rag import hybrid as _rag_hybrid
+        rag_stats = _rag_hybrid.stats()
+    except Exception:  # noqa: BLE001
+        rag_stats = {'chunks': len(clauses), 'vectors': 0, 'rerank': False}
+
     return render_template('knowledge.html', docs=docs, clauses=clauses,
-                           total=len(clauses))
+                           total=len(clauses), rag_stats=rag_stats)
 
 
 @app.route('/records')
@@ -2774,12 +2780,20 @@ def api_agent_tools():
 def api_rag_search():
     if 'username' not in session:
         return jsonify({'ok': False, 'error': '请先登录'}), 403
+    from agent.rag import hybrid as _rag_hybrid
     from agent.rag import index as _rag_index
     query = (request.args.get('q') or '').strip()
     if not query:
         return jsonify({'ok': False, 'error': '缺少 q'}), 400
     k = min(int(request.args.get('k', 5) or 5), 20)
-    return jsonify({'ok': True, 'query': query, 'hits': _rag_index.search(query, k)})
+    try:
+        hits = _rag_hybrid.search(query, k)
+        engine = 'hybrid+rerank'
+    except Exception:  # noqa: BLE001
+        hits = _rag_index.search(query, k)
+        engine = 'lexical'
+    return jsonify({'ok': True, 'query': query, 'engine': engine,
+                    'hits': hits, 'stats': _rag_hybrid.stats()})
 
 
 @app.route('/api/explain', methods=['POST'])

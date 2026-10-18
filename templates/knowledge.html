@@ -87,12 +87,13 @@
         <div class="kb-eyebrow">RAG · 检索知识库</div>
         <h1>每条结论背后的 {{ total }} 条依据</h1>
         <p>
-            AI 助手的回答不是凭空生成的：判断类结论来自预测与归因数据，解释类结论来自这里的条款。
+            AI 助手的回答不是凭空生成的：判断类结论来自预测与归因数据，解释类结论来自这里的条款。检索走「词法 + 向量」混合召回，再用模型重排。
             检索用中文分词 + 同义词扩展 + IDF 排序，命中后会作为引用附在答案里，点开即可核对原文。
         </p>
         <div class="kb-stats">
             <div><b>{{ total }}</b><span>条款总数</span></div>
             <div><b>{{ docs|length }}</b><span>来源文档</span></div>
+            <div><b>{{ rag_stats.vectors or 0 }}</b><span>向量索引</span></div>
             <div><b>3</b><span>档证据强度</span></div>
         </div>
     </section>
@@ -102,7 +103,7 @@
             <i class="fa fa-search" style="color:#94a3b8;"></i>
             <input id="kbInput" type="search" placeholder="搜索条款，例如：置信度 / 批量导入 / 凹点 / 报告">
         </label>
-        <button class="kb-btn primary" id="kbSearchBtn" type="button">RAG 检索</button>
+        <button class="kb-btn primary" id="kbSearchBtn" type="button">混合检索</button>
         <button class="kb-btn" id="kbResetBtn" type="button">重置</button>
         <span class="kb-count" id="kbCount">{{ total }} 条</span>
     </div>
@@ -221,16 +222,17 @@
                             score.className = 'kb-score';
                             head.appendChild(score);
                         }
-                        score.textContent = '相关度 ' + Number(hit.score).toFixed(1);
+                        score.textContent = (hit.rerank ? '重排 #' + hit.rerank + ' · ' : '') +
+                            '融合分 ' + Number(hit.score).toFixed(3);
                         fragment.appendChild(el);
                     });
                     if (fragment.childNodes.length) { list.insertBefore(fragment, empty); }
-                    countEl.textContent = hits.length + ' 条命中';
+                    countEl.textContent = hits.length + ' 条命中' + (data.engine ? ' · ' + data.engine : '');
                 })
                 .catch(function () { countEl.textContent = '检索失败'; })
                 .then(function () {
                     btn.disabled = false;
-                    btn.textContent = 'RAG 检索';
+                    btn.textContent = '混合检索';
                 });
         });
     })();

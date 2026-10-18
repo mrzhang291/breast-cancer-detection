@@ -19,3 +19,5 @@ Werkzeug>=2.0.0
 shap==0.43.0
 fpdf2>=2.8.0
 requests
+fastembed
+onnxruntime

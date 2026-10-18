@@ -14,3 +14,4 @@ instance/
 myenv310/
 venv/
 reports/
+.model_cache/

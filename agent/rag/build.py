@@ -7,6 +7,12 @@ from . import index
 
 def main() -> int:
     result = index.rebuild()
+    try:
+        from . import embed
+        vec = embed.build()
+        print('向量索引: %d 条（%s）' % (vec['vectors'], vec['model']))
+    except Exception as exc:  # noqa: BLE001
+        print('向量索引失败（降级为词法检索）:', str(exc)[:120])
     st = index.stats()
     print('索引重建完成: 条款 %d 条, 倒排词条 %d 行' % (result['chunks'], result['terms']))
 
