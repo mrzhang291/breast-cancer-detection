@@ -22,14 +22,27 @@ def looks_compare(text: str) -> bool:
     return any(h in text for h in COMPARE_HINTS)
 
 
+BARE_EXACT = ('它呢', '那它呢', '这个呢', '这条呢', '为什么', '为啥', '继续', '展开',
+              '展开说说', '详细点', '详细说说', '还有呢', '依据呢', '证据呢', '然后呢',
+              '具体点', '再说说', '接着说')
+
+
 def is_bare_reference(text: str) -> bool:
-    """「它呢」「为什么」「展开说说」这类没有明确主语的追问。"""
-    t = (text or '').strip()
+    """只把"确实没有主语"的极短追问当指代。
+
+    注意：不要用关键词包含来判断——「这个系统怎么用」「这个病还能活多久」
+    虽然含「这个」，但都是完整问题，误判会让它们走澄清分支。
+    """
+    t = (text or '').strip().strip('。！!？?')
     if not t:
         return True
-    if len(t) <= 8 and (any(w in t for w in REFER_WORDS) or any(w in t for w in FOLLOW_HINTS)):
+    if t in BARE_EXACT:
         return True
-    return len(t) <= 4 and t.endswith(('呢', '吗', '？', '?'))
+    if len(t) <= 4 and t.endswith(('呢', '吗')):
+        return True
+    if len(t) <= 3 and any(w in t for w in ('它', '这个', '这条', '这次', '该')):
+        return True
+    return False
 
 
 def plan(question: str, history: Optional[List[Dict]] = None,
