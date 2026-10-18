@@ -196,6 +196,9 @@
     .as-clause-box b { display: block; color: #0f172a; margin-bottom: 3px; }
     .as-clause-box p { margin: 0 0 4px; }
     .as-clause-box i { color: #94a3b8; font-style: normal; font-size: 10px; }
+
+    .as-ground-item.advice { border-left-color: #60a5fa; }
+    .as-src.advice { color: #1d4ed8; background: #eff6ff; border-color: #dbeafe; }
     .as-dropped { padding: 0 12px 10px; font-size: 11px; color: #b45309; }
     .as-dropped p { margin: 4px 0 0; color: #94a3b8; text-decoration: line-through; }
 
@@ -532,7 +535,7 @@
         list.className = 'as-ground-list';
         claims.forEach(function (c) {
             var row = document.createElement('div');
-            row.className = 'as-ground-item ' + (c.supported ? 'ok' : 'infer');
+            row.className = 'as-ground-item ' + (c.supported ? 'ok' : (c.advice ? 'advice' : 'infer'));
             var srcs = (c.sources || []).map(function (s) {
                 if (s.kind === 'clause' && s.ids && s.ids.length) {
                     return '<button type="button" class="as-src clickable" data-clause="' +
@@ -541,7 +544,9 @@
                 return '<span class="as-src">' + escapeHtml(s.label) + '</span>';
             }).join('');
             if (!srcs) {
-                srcs = '<span class="as-src infer">无出处 · 推断</span>';
+                srcs = c.advice
+                    ? '<span class="as-src advice">建议 · 无需出处</span>'
+                    : '<span class="as-src infer">无出处 · 推断</span>';
             }
             row.innerHTML = '<p>' + escapeHtml((c.sentence || '').slice(0, 90)) + '</p>' +
                             '<div class="as-srcs">' + srcs + '</div>';
