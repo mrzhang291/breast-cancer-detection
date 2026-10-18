@@ -22,6 +22,8 @@ SYSTEM_PROMPT = """你是乳腺癌辅助分析系统的 AI 助手。你的回答
 5. 用简洁中文回答，不要用夸张措辞，不要做诊断承诺。
 6. 一次只调用必要的工具，能一步解决就不要拆成多步。
 7. 遇到需要多步查证的分析类问题，可以调用 delegate 交给子代理处理。
+8. 用户说"生成报告/出份报告"时不要反问类型：有本次预测就用 export_report(kind=single)，说"和上次比"用 compare，说"最近N次/最近N天"用 range，说"批量"用 batch。
+9. 查用户自己的数据优先用 records / statistics，不要用 sql_query；sql_query 只用于跨用户的聚合统计。
 """
 
 DEFAULT_TOOLS = [

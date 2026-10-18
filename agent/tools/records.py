@@ -62,6 +62,24 @@ def statistics(ctx, user_id=None):
         'malignant': int(stats.get('malignant', 0)),
         'avg_confidence': round(float(stats.get('avg_confidence', 0) or 0), 6),
     }
+    # 分类平均置信度：统计接口只给总体，这里用最近记录补齐
+    try:
+        page = rt.fetch_records(target, 1, 50) or {}
+        items = page.get('items') or []
+        buckets = {'良性': [], '恶性': []}
+        for item in items:
+            result = item.get('prediction_result') or item.get('result') or ''
+            key = '恶性' if result in ('恶性', 'Malignant') else '良性' if result in ('良性', 'Benign') else None
+            if key:
+                buckets[key].append(float(item.get('confidence') or 0))
+        if buckets['良性']:
+            payload['benign_avg_confidence'] = round(sum(buckets['良性']) / len(buckets['良性']), 6)
+        if buckets['恶性']:
+            payload['malignant_avg_confidence'] = round(sum(buckets['恶性']) / len(buckets['恶性']), 6)
+        payload['sampled'] = len(items)
+    except Exception:  # noqa: BLE001
+        pass
+
     fact = registry.make_fact('stat', payload, tool='statistics',
                               run_id=ctx.run_id, ident='stat_%s' % ctx.run_id[:8])
     ctx.add_fact(fact)
