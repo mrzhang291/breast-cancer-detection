@@ -361,14 +361,22 @@ def _act_compare(ctx: AgentContext, values: Optional[List[float]] = None, emit=N
         current = _record_values(items[0])
 
     previous = None
+    fallback = None
     for item in items:
         candidate = _record_values(item)
         if not candidate:
             continue
+        if fallback is None:
+            fallback = candidate
         if current and all(abs(a - b) < 1e-9 for a, b in zip(candidate, current)):
             continue
         previous = candidate
         break
+
+    # 历史记录和当前输入完全一致时，仍然拿一条来对比（结果会是 0 项变化），
+    # 而不是回答"凑不齐两条记录"
+    if previous is None:
+        previous = fallback
 
     if current and previous:
         _call(ctx, 'compare_records', {'current': current, 'previous': previous}, emit)
