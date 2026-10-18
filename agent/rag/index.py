@@ -24,6 +24,29 @@ _STOP_TERMS = {
 }
 
 
+_SYNONYMS = {
+    '置信度': ['校准', '概率', 'confidence'],
+    '校准': ['置信度', 'isotonic'],
+    '报告': ['导出', 'pdf', '产物'],
+    '导出': ['下载', '报告', 'csv'],
+    '证据': ['依据', '引用', '条款'],
+    '依据': ['证据', '引用'],
+    '凹点': ['凹陷', 'concave'],
+    '批量': ['csv', 'excel', '导入'],
+    '区间': ['最近', '汇总', '时间范围'],
+    '权限': ['角色', '管理员', '医生'],
+}
+
+
+def expand_query(query: str) -> List[str]:
+    """同义词扩展：把用户说法映射到文档里的术语。"""
+    extra: List[str] = []
+    for word, alts in _SYNONYMS.items():
+        if word in (query or ''):
+            extra.extend(alts)
+    return extra
+
+
 def tokenize(text: str) -> List[str]:
     """中文：单字 + 二元词；英文/数字：小写词。"""
     text = (text or '').lower()
@@ -140,7 +163,8 @@ def search(query: str, k: int = 5, prefer: str = '') -> List[Dict]:
         if not total:
             return []
 
-        uniq = list(dict.fromkeys(tokens))
+        uniq = list(dict.fromkeys(tokens + [t for w in expand_query(query)
+                                              for t in tokenize(w)]))
         placeholders = ','.join('?' * len(uniq))
         rows = conn.execute(
             'SELECT term, clause_id, tf FROM rag_terms WHERE term IN (%s)' % placeholders,
@@ -183,6 +207,11 @@ def search(query: str, k: int = 5, prefer: str = '') -> List[Dict]:
                 scores[clause_id] *= 1.0 + 0.15 * min(overlap, 3)
             scores[clause_id] *= _quality_boost(text, section)
 
+            # 覆盖率重排：命中查询词越多越可信，避免长文档靠单个高频词上位
+            covered = len(token_set & set(tokenize(text)))
+            if token_set:
+                scores[clause_id] *= 0.55 + 0.45 * (covered / float(len(token_set)))
+
             if prefer == 'howto':
                 numbered = len(re.findall(r'^\s*\d+\.', text, re.M))
                 actions = sum(text.count(w) for w in ('点击', '进入', '访问', '上传',
@@ -223,6 +252,10 @@ def search(query: str, k: int = 5, prefer: str = '') -> List[Dict]:
                 'meta': json.loads(row['meta_json'] or '{}'),
                 'score': round(score, 4),
             })
+        # 相对阈值：低于最高分 35% 的命中视为噪音
+        if results:
+            top = results[0]['score']
+            results = [r for r in results if r['score'] >= max(top * 0.35, 1e-6)]
         return results
     finally:
         conn.close()
