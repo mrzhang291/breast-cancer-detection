@@ -133,5 +133,26 @@ def load_web_chunks() -> List[Dict]:
     return chunks
 
 
+def load_faq_chunks() -> List[Dict]:
+    """策展 FAQ 也是知识库的一部分：可检索、可引用、可点开。"""
+    try:
+        from ..knowledge import faq as _faq
+    except Exception:  # noqa: BLE001
+        return []
+    chunks = []
+    for item in getattr(_faq, 'FAQ', []):
+        chunks.append({
+            'clause_id': item['id'],
+            'doc_id': 'FAQ',
+            'source': '常见问题（策展）',
+            'version': '2026-05',
+            'section': item.get('title') or item['id'],
+            'text': item.get('body') or '',
+            'meta': {'domain': 'SYS', 'level': 2,
+                     'keywords': item.get('keywords') or []},
+        })
+    return chunks
+
 def all_chunks() -> List[Dict]:
-    return load_feature_chunks() + load_doc_chunks() + load_web_chunks()
+    return (load_feature_chunks() + load_doc_chunks()
+            + load_faq_chunks() + load_web_chunks())
