@@ -20,6 +20,7 @@ DOC_FILES = [
     ('乳腺癌检测系统 API.md', 'DOC-API', '系统接口文档'),
     ('SHAP_GUIDE.md', 'DOC-SHAP', 'SHAP 可解释性说明'),
     ('AGENT_GUIDE.md', 'DOC-AGENT', 'AI 助手与报告导出说明'),
+    ('MODEL_GUIDE.md', 'DOC-MODEL', '模型与置信度说明'),
 ]
 
 
