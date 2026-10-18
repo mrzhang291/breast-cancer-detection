@@ -26,6 +26,7 @@ CREATE TABLE IF NOT EXISTS agent_runs (
     tokens_in INTEGER DEFAULT 0,
     tokens_out INTEGER DEFAULT 0,
     latency_ms INTEGER DEFAULT 0,
+    artifacts_json TEXT,
     created_at TEXT DEFAULT (datetime('now', 'localtime'))
 );
 
@@ -84,6 +85,13 @@ CREATE INDEX IF NOT EXISTS idx_steps_run ON agent_steps(run_id, seq);
 """
 
 
+def _migrate(conn) -> None:
+    """轻量迁移：老库缺列时补上。"""
+    cols = {row[1] for row in conn.execute("PRAGMA table_info(agent_runs)")}
+    if 'artifacts_json' not in cols:
+        conn.execute("ALTER TABLE agent_runs ADD COLUMN artifacts_json TEXT")
+
+
 def connect() -> sqlite3.Connection:
     conn = sqlite3.connect(DB_PATH, timeout=10)
     conn.row_factory = sqlite3.Row
@@ -133,7 +141,7 @@ def update_run(run_id: str, **fields) -> None:
     if not fields:
         return
     allowed = {'intent', 'status', 'answer_md', 'citations_json', 'model',
-               'tokens_in', 'tokens_out', 'latency_ms'}
+               'tokens_in', 'tokens_out', 'latency_ms', 'artifacts_json'}
     pairs = [(k, v) for k, v in fields.items() if k in allowed]
     if not pairs:
         return

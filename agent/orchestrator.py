@@ -30,6 +30,7 @@ INTENT = {
     'general': 'general',
     'task': 'multi_step_task',
     'sql': 'data_query',
+    'export': 'report_export',
     'compare': 'record_compare',
     'clarify': 'clarify',
 }
@@ -45,6 +46,7 @@ INTENT_LABEL = {
     'multi_step_task': '多步任务',
     'data_query': '数据查询',
     'refused': '超出范围',
+    'report_export': '生成报告',
     'record_compare': '记录对比',
     'clarify': '澄清追问',
 }
@@ -71,6 +73,10 @@ _USAGE_HINTS = ['怎么', '如何', '在哪', '哪里', '使用', '操作', '导
 _HISTORY_HINTS = ['记录', '历史', '统计', '多少条', '多少次', '趋势', '我做过',
                   '做过几次', '预测记录', '我的预测']
 _CASE_HINTS = ['相似', '相近', '类似', '邻居', '对照']
+_EXPORT_HINTS = ['生成报告', '出份报告', '出一份报告', '导出报告', '生成一份报告',
+                 '导出 pdf', '导出pdf', '生成 pdf', '生成pdf', '报告文件', '出报告',
+                 '导出我的数据', '导出数据']
+
 _REPORT_HINTS = ['生成报告', '总结报告', '出一份', '写一份', '分析报告', '生成一份']
 _INTERPRET_HINTS = ['这个结果', '结果什么', '什么意思', '严重', '要紧', '怎么看',
                     '解读', '意味着', '风险']
@@ -84,6 +90,10 @@ def classify(question: str, has_features: bool) -> str:
 
     if dialog.looks_compare(text):
         return INTENT['compare']
+
+    # 「导出报告」是动作，不是能力询问（后者以「吗」结尾，仍归 usage）
+    if any(h in text for h in _EXPORT_HINTS) and not text.rstrip('？?').endswith('吗'):
+        return INTENT['export']
 
     if any(h in text for h in _TASK_HINTS):
         return INTENT['task']
@@ -342,6 +352,23 @@ def _act_compare(ctx: AgentContext, values: Optional[List[float]] = None, emit=N
 
     if current and previous:
         _call(ctx, 'compare_records', {'current': current, 'previous': previous}, emit)
+
+
+def _act_export(ctx: AgentContext, values, state, emit=None) -> None:
+    """生成报告：先补齐预测/归因事实，再交给 export_report。"""
+    if values:
+        _act_interpret(ctx, values, emit)
+    _call(ctx, 'export_report', {'kind': 'single'}, emit)
+
+
+def _compose_export(ctx: AgentContext):
+    artifact = ctx.artifacts[-1] if ctx.artifacts else None
+    if not artifact:
+        return ('报告没生成出来。可能是当前没有可用的预测结果，先在首页做一次预测，'
+                '再让我生成报告。', [])
+    return ('报告已生成：**%s**（%.0f KB）。\n\n'
+            '点击下面的卡片即可下载，文件保留 7 天。'
+            % (artifact.get('filename'), artifact.get('size', 0) / 1024.0), [])
 
 
 def _compose_compare(ctx: AgentContext):
@@ -747,6 +774,8 @@ def _node_act(state, ctx):
             _act_sql(ctx, state['question'], state.get('_emit'))
         elif intent == INTENT['compare']:
             _act_compare(ctx, values, state.get('_emit'))
+        elif intent == INTENT['export']:
+            _act_export(ctx, values, state, state.get('_emit'))
         else:
             _act_usage(ctx, state['question'], state.get('_emit'))
     except Exception as exc:  # noqa: BLE001
@@ -813,6 +842,7 @@ def _node_compose(state, ctx):
         INTENT['task']: lambda: _compose_task(ctx),
         INTENT['sql']: lambda: _compose_sql(ctx),
         INTENT['compare']: lambda: _compose_compare(ctx),
+        INTENT['export']: lambda: _compose_export(ctx),
     }
     answer, citations = composers.get(intent, lambda: _compose_usage(ctx))()
     if intent in (INTENT['usage'], INTENT['general']):
@@ -898,11 +928,14 @@ def _node_persist(state, ctx):
     db.update_run(ctx.run_id, intent=state.get('intent', ''), status=state.get('status', 'ok'),
                   answer_md=state.get('answer', ''),
                   citations_json=json.dumps(state.get('citations') or [], ensure_ascii=False),
+                  artifacts_json=json.dumps(ctx.artifacts, ensure_ascii=False) if ctx.artifacts else None,
                   model=state.get('model_used', 'template'),
                   latency_ms=latency)
 
+    # 生成报告有副作用，绝不写缓存
     if (not state.get('values') and state.get('status') == 'ok' and not state.get('cached')
-            and state.get('intent') not in (INTENT['task'], INTENT['sql'], INTENT['history'])):
+            and state.get('intent') not in (INTENT['task'], INTENT['sql'], INTENT['history'],
+                                            INTENT['export'], INTENT['compare'])):
         cache.put(ctx.user_id, ctx.lang, state['question'],
                   state.get('answer', ''), state.get('citations') or [], '')
 
@@ -1093,6 +1126,7 @@ def _result(ctx, question, intent, status, answer, citations, q_verdict, check, 
         'steps': ctx.steps,
         'risk': q_verdict.get('risk', 'low'),
         'verify': check,
+        'artifacts': list(ctx.artifacts),
         'latency_ms': int((time.time() - started) * 1000),
     }
 

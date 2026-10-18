@@ -12,9 +12,10 @@ from typing import Dict, List, Tuple
 ROLE_PERMISSIONS = {
     1: {'*'},  # 超级管理员
     2: {'predict', 'explain', 'records:read', 'stats:read',
-        'knowledge:read', 'cases:read', 'report', 'export'},  # 普通管理员
+        'knowledge:read', 'cases:read', 'report', 'export',
+        'report:generate'},  # 普通管理员
     3: {'predict', 'explain', 'records:read', 'stats:read',
-        'knowledge:read', 'cases:read'},  # 医生用户
+        'knowledge:read', 'cases:read', 'report:generate'},  # 医生用户
 }
 
 # 可以查看他人数据的角色
