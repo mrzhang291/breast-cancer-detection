@@ -631,7 +631,8 @@ def _compose_medical(ctx: AgentContext, question: str):
     for fact in _clause_facts(ctx):
         for hit in fact['payload'].get('hits') or []:
             hits.append(hit)
-    hits.sort(key=lambda h: float(h.get('score') or 0), reverse=True)
+    # 有重排结果时按重排顺序，否则按检索分；重排更贴近"是否真的相关"
+    hits.sort(key=lambda h: (h.get('rerank') or 999, -float(h.get('score') or 0)))
 
     picked, seen = [], set()
     for hit in hits:
