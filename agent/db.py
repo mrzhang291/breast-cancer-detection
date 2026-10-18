@@ -103,6 +103,7 @@ def init_schema() -> None:
     conn = connect()
     try:
         conn.executescript(_SCHEMA)
+        _migrate(conn)
         # 中文全文检索必须用 trigram，unicode61 对中文几乎不分词
         try:
             conn.execute(
