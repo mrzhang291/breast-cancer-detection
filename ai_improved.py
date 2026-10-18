@@ -4,7 +4,7 @@ import joblib
 import os
 
 # DeepSeek API 配置
-DEEPSEEK_API_KEY = "sk-7b48a7d96cd441eabb27df6fb029b569"
+DEEPSEEK_API_KEY = os.environ.get("DEEPSEEK_API_KEY", "")
 DEEPSEEK_API_URL = "https://api.deepseek.com/v1/chat/completions"
 
 # 加载模型信息

@@ -34,7 +34,7 @@
 ### 第1步：启动应用
 ```powershell
 # 设置 DeepSeek API Key（如果未设置）
-$env:DEEPSEEK_API_KEY = "sk-7b48a7d96cd441eabb27df6fb029b569"
+$env:DEEPSEEK_API_KEY = "sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 
 # 启动 Flask 应用
 python app.py

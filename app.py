@@ -208,7 +208,7 @@ from shap_explainer import SimpleSHAPExplainer, FEATURE_NAMES
 from translations import get_translation, translations
 
 # 配置常量
-DEEPSEEK_API_KEY = 'sk-7b48a7d96cd441eabb27df6fb029b569'
+DEEPSEEK_API_KEY = os.environ.get('DEEPSEEK_API_KEY', '')
 
 # 全局模型变量
 clf = None

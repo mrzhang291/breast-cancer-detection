@@ -32,7 +32,7 @@ python reinit_db.py
 
 ### 第2步：重启 Flask 应用
 ```powershell
-$env:DEEPSEEK_API_KEY = "sk-7b48a7d96cd441eabb27df6fb029b569"
+$env:DEEPSEEK_API_KEY = "sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 python app.py
 ```
 

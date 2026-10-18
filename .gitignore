@@ -1,2 +1,15 @@
-.vscode
+*.db
+*.log
+*.pem
+*.pyc
 .DS_STORE
+.env
+.pytest_cache/
+.venv/
+.vscode
+__pycache__/
+admin_backend/.env
+agent.db
+instance/
+myenv310/
+venv/
