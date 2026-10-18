@@ -9,7 +9,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "谁有风险？",
+  "summary_zh": "除女性性别外，年龄增长是最大风险因素；内源性雌激素暴露、绝经后联合激素、未产、饮酒、家族史、乳腺密度增高等也增加风险。"
  },
  {
   "section": "Who Is at Risk?（续2）",
@@ -21,7 +23,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "谁有风险？（续2）",
+  "summary_zh": "该片段为参考文献列表，涉及良性乳腺疾病与后续乳腺癌风险的队列及记录 linkage 研究。"
  },
  {
   "section": "Overview",
@@ -33,7 +37,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "概述",
+  "summary_zh": "概述部分总结本主题已发表证据，并列出乳腺癌筛查、治疗、男性乳腺癌等相关PDQ摘要。"
  },
  {
   "section": "Sex and age",
@@ -45,7 +51,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "性别与年龄",
+  "summary_zh": "确凿证据表明女性性别和年龄增长是乳腺癌主要风险因素；女性终生风险约为男性100倍，70岁女性短期风险约为30岁女性10倍。"
  },
  {
   "section": "Inherited risk",
@@ -57,7 +65,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "遗传风险",
+  "summary_zh": "一级亲属患乳腺癌使风险约翻倍，两名一级亲属患病增至约五倍；遗传相关基因突变亦增加风险，程度因突变和家族史而异。"
  },
  {
   "section": "Breast density",
@@ -69,7 +79,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "乳腺密度",
+  "summary_zh": "乳腺致密者乳腺癌风险增高，相对风险随密度程度从1.79升至4.64；密度多为固有特征，可受生育、药物和酒精部分影响。"
  },
  {
   "section": "Menopausal hormone therapy (MHT)",
@@ -81,7 +93,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "绝经激素治疗（MHT）",
+  "summary_zh": "MHT增加乳腺癌风险，尤其激素敏感性癌；雌孕激素联合使用1至4年起风险显著增加并随疗程上升，停药后超额风险仍持续。"
  },
  {
   "section": "Combination hormone therapy",
@@ -93,7 +107,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "联合激素治疗",
+  "summary_zh": "雌孕激素联合治疗使浸润性乳腺癌发病率约增加26%，每237人治疗约多1例乳腺癌；停止联合激素治疗后发病率下降。"
  },
  {
   "section": "Estrogen therapy",
@@ -105,7 +121,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "雌激素治疗",
+  "summary_zh": "绝经前后开始雌激素治疗增加乳腺癌风险17%至33%；还增加子宫内膜癌和总心血管病风险，尤其卒中风险增加39%。"
  },
  {
   "section": "Ionizing radiation",
@@ -117,7 +135,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "电离辐射",
+  "summary_zh": "乳腺电离辐射暴露增加乳腺癌风险，暴露后10年起持续终生；风险取决于剂量和年龄，青春期乳腺发育时暴露风险尤高，总体约增六倍。"
  },
  {
   "section": "Obesity",
@@ -129,7 +149,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "肥胖",
+  "summary_zh": "未用激素治疗的绝经后肥胖女性乳腺癌风险增高；体重>82.2kg者较<58.7kg者相对风险2.85，减重是否降低风险尚不确定。"
  },
  {
   "section": "Alcohol",
@@ -141,7 +163,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "酒精",
+  "summary_zh": "饮酒以剂量依赖方式增加乳腺癌风险；每日约四杯者相对风险1.32，每增加一杯每日风险增7%；重度饮酒者减量是否降低风险尚不确定。"
  },
  {
   "section": "Early pregnancy",
@@ -153,7 +177,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "早孕",
+  "summary_zh": "20岁前足月妊娠者乳腺癌风险降低约50%，相比未产或35岁后生育女性。"
  },
  {
   "section": "Breast-feeding",
@@ -165,7 +191,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "母乳喂养",
+  "summary_zh": "母乳喂养降低乳腺癌风险；每哺乳12个月相对风险降低4.3%，此外每次生育另降7%。"
  },
  {
   "section": "Exercise",
@@ -177,7 +205,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "运动",
+  "summary_zh": "体育锻炼与乳腺癌风险降低相关，绝经前后女性平均相对风险降低约20%，对激素敏感和抵抗型癌均有效。"
  },
  {
   "section": "Selective estrogen receptor modulators (SERMs): Benefits",
@@ -189,7 +219,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "选择性雌激素受体调节剂（SERMs）：获益",
+  "summary_zh": "他莫昔芬和雷洛昔芬降低绝经后女性乳腺癌发病率，他莫昔芬亦降低高危绝经前女性风险；SERMs减少骨折，主要见于雷洛昔芬。"
  },
  {
   "section": "Selective estrogen receptor modulators: Harms",
@@ -201,7 +233,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "选择性雌激素受体调节剂：危害",
+  "summary_zh": "他莫昔芬增加子宫内膜癌、血栓事件和白内障风险，子宫内膜癌风险停药后持续5年；雷洛昔芬增加静脉血栓但非子宫内膜癌。"
  },
  {
   "section": "Aromatase inhibitors or inactivators: Benefits",
@@ -213,7 +247,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂或灭活剂：获益",
+  "summary_zh": "芳香化酶抑制剂降低高危绝经后女性乳腺癌发病率；他莫昔芬辅助治疗后改用AI使新原发癌减少50%至67%，依西美坦3年降65%。"
  },
  {
   "section": "Aromatase inhibitors or inactivators: Harms",
@@ -225,7 +261,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂或灭活剂：危害",
+  "summary_zh": "单RCT显示依西美坦较安慰剂增加潮热和疲劳，绝对增幅分别为8%和2%。"
  },
  {
   "section": "Prophylactic mastectomy: Benefits",
@@ -237,7 +275,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预防性乳房切除术：获益",
+  "summary_zh": "双侧预防性乳房切除术降低强家族史等高危女性乳腺癌风险，多数女性焦虑缓解；对侧预防性切除的生存获益尚待证实。"
  },
  {
   "section": "Prophylactic oophorectomy or ovarian ablation: Benefits",
@@ -249,7 +289,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预防性卵巢切除术或卵巢消融：获益",
+  "summary_zh": "BRCA突变绝经前女性预防性卵巢切除可降低乳腺癌发病率，最高约50%。"
  },
  {
   "section": "Prophylactic oophorectomy or ovarian ablation: Harms",
@@ -261,7 +303,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预防性卵巢切除术或卵巢消融：危害",
+  "summary_zh": "去势可致潮热、失眠、焦虑抑郁及骨密度下降等更年期症状，严重程度差异大。"
  },
  {
   "section": "Estrogen use by women with previous hysterectomy: Benefits",
@@ -273,7 +317,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "既往子宫切除女性使用雌激素：获益",
+  "summary_zh": "子宫切除后使用结合马雌激素者乳腺癌发病率较低，但观察性研究结果不一致。"
  },
  {
   "section": "Estrogen use by women with previous hysterectomy: Benefits（续2）",
@@ -285,7 +331,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "既往子宫切除女性使用雌激素：获益（续2）",
+  "summary_zh": "该片段为参考文献列表，涉及结合马雌激素、母乳喂养及SERM预防研究。"
  },
  {
   "section": "Estrogen use by women with previous hysterectomy: Benefits（续3）",
@@ -297,7 +345,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "既往子宫切除女性使用雌激素：获益（续3）",
+  "summary_zh": "该片段为参考文献列表，涉及依西美坦预防乳腺癌及MAP.3生活质量研究。"
  },
  {
   "section": "Incidence and Mortality",
@@ -309,7 +359,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "发病率与死亡率",
+  "summary_zh": "乳腺癌为美国女性最常见非皮肤恶性肿瘤，2025年预计女性31.7万例、死亡4.2万例。"
  },
  {
   "section": "Incidence and Mortality（续2）",
@@ -321,7 +373,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "发病率与死亡率（续2）",
+  "summary_zh": "乳腺癌风险随年龄上升，钼靶筛查降低死亡率但增加发病率（过度诊断）。"
  },
  {
   "section": "Etiology and Pathogenesis of Breast Cancer",
@@ -333,7 +387,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "乳腺癌的病因与发病机制",
+  "summary_zh": "乳腺癌由系列基因突变累积所致，多为体细胞突变，雌激素和孕激素促进增殖。"
  },
  {
   "section": "Etiology and Pathogenesis of Breast Cancer（续2）",
@@ -345,7 +401,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "乳腺癌的病因与发病机制（续2）",
+  "summary_zh": "日本移民研究显示两代内乳腺癌发病率升至美国水平，提示环境因素作用。"
  },
  {
   "section": "Etiology and Pathogenesis of Breast Cancer（续3）",
@@ -357,7 +415,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "乳腺癌的病因与发病机制（续3）",
+  "summary_zh": "该片段为参考文献列表，涉及美日移民及澳大利亚、加拿大移民乳腺癌研究。"
  },
  {
   "section": "Endogenous Estrogen",
@@ -369,7 +429,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "内源性雌激素",
+  "summary_zh": "初潮早、绝经晚及内源性激素水平高增加乳腺癌风险，卵巢消融可显著降低风险。"
  },
  {
   "section": "Endogenous Estrogen（续2）",
@@ -381,7 +443,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "内源性雌激素（续2）",
+  "summary_zh": "生殖危险因素可能与易感基因型交互作用，家族史影响其关联。"
  },
  {
   "section": "Endogenous Estrogen（续3）",
@@ -393,7 +457,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "内源性雌激素（续3）",
+  "summary_zh": "该片段为参考文献列表，涉及绝经后内源性性激素与乳腺癌风险研究。"
  },
  {
   "section": "Endogenous Estrogen（续4）",
@@ -405,7 +471,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "内源性雌激素（续4）",
+  "summary_zh": "该片段为参考文献列表，涉及人工绝经、生育及家族史与乳腺癌风险研究。"
  },
  {
   "section": "Inherited Risk",
@@ -417,7 +485,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "遗传风险",
+  "summary_zh": "一级亲属患病增加风险，多种风险评估模型可量化，约5%乳腺癌与异常等位基因相关。"
  },
  {
   "section": "Inherited Risk（续2）",
@@ -429,7 +499,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "遗传风险（续2）",
+  "summary_zh": "一般人群终生乳腺癌风险13%，部分女性遗传易感性增加风险。"
  },
  {
   "section": "Inherited Risk（续3）",
@@ -441,7 +513,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "遗传风险（续3）",
+  "summary_zh": "该片段为参考文献列表，涉及BRCA1/2突变携带者风险及外显率荟萃分析。"
  },
  {
   "section": "Increased Breast Density",
@@ -453,7 +527,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "乳腺密度增加",
+  "summary_zh": "乳腺致密组织比例高者乳腺癌发病率更高，且影响钼靶检出。"
  },
  {
   "section": "Increased Breast Density（续2）",
@@ -465,7 +541,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "乳腺密度增加（续2）",
+  "summary_zh": "乳腺密度越高相对风险越大（1.79至4.64），但不增加乳腺癌死亡率。"
  },
  {
   "section": "Increased Breast Density（续3）",
@@ -477,7 +555,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "乳腺密度增加（续3）",
+  "summary_zh": "该片段为参考文献，涉及乳腺密度与乳腺癌死亡关系研究。"
  },
  {
   "section": "Menopausal Hormone Therapy (MHT)",
@@ -489,7 +569,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "绝经激素治疗（MHT）",
+  "summary_zh": "MHT可缓解绝经症状；单用雌激素增加子宫内膜癌风险，雌孕激素联用则否；绝经前后开始雌激素治疗均与乳腺癌风险升高相关。"
  },
  {
   "section": "Menopausal Hormone Therapy (MHT)（续2）",
@@ -501,7 +583,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "绝经激素治疗（续2）",
+  "summary_zh": "HERS与WHI研究显示雌孕激素联合治疗增加乳腺癌风险，WHI因卒中风险增加提前终止。"
  },
  {
   "section": "Menopausal Hormone Therapy (MHT)（续3）",
@@ -513,7 +597,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "绝经激素治疗（续3）",
+  "summary_zh": "WHI结果发布后全球MHT使用下降，乳腺癌风险随之降低；雌孕激素联用增加浸润性乳腺癌风险，单用雌激素则未见。"
  },
  {
   "section": "Menopausal Hormone Therapy (MHT)（续4）",
@@ -525,7 +611,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "绝经激素治疗（续4）",
+  "summary_zh": "当前MHT使用者乳腺癌发病与死亡风险升高，既往使用者无风险增加；雌激素、联合MHT及替勃龙均增加发病风险。"
  },
  {
   "section": "Menopausal Hormone Therapy (MHT)（续5）",
@@ -537,7 +625,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "绝经激素治疗（续5）",
+  "summary_zh": "2019年荟萃分析显示MHT使用者乳腺癌风险更高，尤以激素敏感性肿瘤为著；60岁后开始或肥胖女性关联较弱。"
  },
  {
   "section": "Menopausal Hormone Therapy (MHT)（续6）",
@@ -549,7 +639,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "绝经激素治疗（续6）",
+  "summary_zh": "绝经时开始雌激素治疗增加乳腺癌风险，多年后开始则不增加；2022年证据综述认为联合治疗用于慢性病一级预防有一定获益。"
  },
  {
   "section": "Ionizing Radiation Exposure",
@@ -561,7 +653,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "电离辐射暴露",
+  "summary_zh": "电离辐射与乳腺癌风险明确相关，原子弹、频繁透视及放疗均增加风险，年轻尤其青春期者风险更高。"
  },
  {
   "section": "Ionizing Radiation Exposure（续2）",
@@ -573,7 +667,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "电离辐射暴露（续2）",
+  "summary_zh": "10至16岁接受较高剂量放疗者风险更高，治疗相关乳腺癌风险持续超过25年，多发生于照射野内或边缘。"
  },
  {
   "section": "Ionizing Radiation Exposure（续3）",
@@ -585,7 +681,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "电离辐射暴露（续3）",
+  "summary_zh": "卵巢放疗具保护作用，提示减少卵巢激素可限制辐射突变乳腺组织增殖；保乳加放疗与全乳切除的第二肿瘤风险无差异。"
  },
  {
   "section": "Ionizing Radiation Exposure（续4）",
@@ -597,7 +695,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "电离辐射暴露（续4）",
+  "summary_zh": "随机研究比较根治性、全乳切除及全乳切除加放疗，各组对侧乳腺癌发生率无显著差异，总体约6%。"
  },
  {
   "section": "Obesity",
@@ -609,7 +709,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "肥胖",
+  "summary_zh": "肥胖增加乳腺癌风险，尤其未用激素治疗的绝经后女性；体重、BMI、腰臀围及成年体重变化均与风险相关。"
  },
  {
   "section": "Obesity（续2）",
@@ -621,7 +723,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "肥胖（续2）",
+  "summary_zh": "非糖尿病女性胰岛素水平每升高一单位，乳腺癌风险增加；空腹血糖、胰岛素抵抗评分、糖尿病及妊娠糖尿病史亦相关。"
  },
  {
   "section": "Alcohol",
@@ -633,7 +737,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "酒精",
+  "summary_zh": "饮酒增加乳腺癌风险，每日35至44克及45克以上风险升高，每增加10克酒精风险约增7%，校正多种因素后仍存在。"
  },
  {
   "section": "Alcohol（续2）",
@@ -645,7 +751,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "酒精（续2）",
+  "summary_zh": "该段为参考文献列表，涉及激素因素与乳腺癌协作组及HERS II、WHI等研究文献。"
  },
  {
   "section": "Alcohol（续3）",
@@ -657,7 +765,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "酒精（续3）",
+  "summary_zh": "该段为参考文献列表，涉及MHT类型与时机荟萃分析、USPSTF证据综述及辐射环境暴露等文献。"
  },
  {
   "section": "Alcohol（续4）",
@@ -669,7 +779,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "酒精（续4）",
+  "summary_zh": "该段为参考文献列表，涉及BRCA突变携带者、儿童霍奇金病后第二肿瘤及霍奇金病治疗后乳腺癌等文献。"
  },
  {
   "section": "Alcohol（续5）",
@@ -681,7 +793,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "酒精（续5）",
+  "summary_zh": "该段为参考文献列表，涉及霍奇金病放疗剂量与化疗激素因素、早期乳腺癌保乳加放疗与全乳切除第二肿瘤等文献。"
  },
  {
   "section": "Alcohol（续6）",
@@ -693,7 +807,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "酒精（续6）",
+  "summary_zh": "该段为参考文献列表，涉及肥胖与绝经后乳腺癌、肥胖与癌症、高胰岛素血症及酒精烟草与乳腺癌等文献。"
  },
  {
   "section": "Early Pregnancy",
@@ -705,7 +821,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "早孕",
+  "summary_zh": "分娩后数年内乳腺癌风险短暂升高，随后长期降低，年轻女性获益更大；20岁前首次足月妊娠者风险约为未产或35岁后首孕者一半。"
  },
  {
   "section": "Breast-feeding",
@@ -717,7 +835,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "母乳喂养",
+  "summary_zh": "母乳喂养降低乳腺癌风险，且与哺乳时长成比例；每哺乳12个月风险降4.3%，每次分娩另降7.0%。"
  },
  {
   "section": "Exercise",
