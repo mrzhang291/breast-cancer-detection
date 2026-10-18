@@ -11,23 +11,25 @@ from ..rag import hybrid, index
         'properties': {
             'query': {'type': 'string'},
             'k': {'type': 'integer', 'minimum': 1, 'maximum': 10},
+            'domains': {'type': 'array', 'items': {'type': 'string'}},
         },
         'required': ['query'],
     },
     permission='knowledge:read',
     timeout=25.0,
 )
-def search_knowledge(ctx, query, k=5):
+def search_knowledge(ctx, query, k=5, domains=None):
     prefer = 'howto' if any(w in query for w in ('怎么', '如何', '在哪', '步骤')) else ''
     try:
-        hits = hybrid.search(query, k=int(k), prefer=prefer)
+        hits = hybrid.search(query, k=int(k), prefer=prefer, domains=domains)
     except Exception:  # noqa: BLE001
         hits = index.search(query, k=int(k), prefer=prefer)
     payload = {
         'query': query,
         'count': len(hits),
-        'hits': [{key: hit[key] for key in
-                  ('clause_id', 'source', 'version', 'section', 'text', 'score')}
+        'hits': [{key: hit.get(key) for key in
+                  ('clause_id', 'source', 'version', 'section', 'text', 'score',
+                   'domain', 'level', 'url')}
                  for hit in hits],
     }
 

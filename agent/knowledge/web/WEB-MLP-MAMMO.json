@@ -11,7 +11,9 @@
   "domain": "MED-DISEASE",
   "level": 2,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "什么是筛查性乳腺X线摄影？",
+  "summary_zh": "筛查性乳腺X线摄影用于无症状女性，可早期发现乳腺癌并降低40至74岁女性死亡率，但也存在假阳性、漏诊和辐射风险。"
  },
  {
   "clause_id": "WEB-MLP-MAMMO-002",
@@ -25,7 +27,9 @@
   "domain": "MED-DISEASE",
   "level": 2,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "什么是诊断性乳腺X线摄影？",
+  "summary_zh": "诊断性乳腺X线摄影耗时稍长，适用于有乳房肿块、疼痛、乳头溢液等症状者，或乳房假体等致乳腺组织难以观察者。"
  },
  {
   "clause_id": "WEB-MLP-MAMMO-003",
@@ -39,7 +43,9 @@
   "domain": "MED-DISEASE",
   "level": 2,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "乳腺X线摄影如何操作？",
+  "summary_zh": "受检者站立于X线机前，乳房置于两块塑料板间压平，从正侧位拍摄双侧乳房，由放射科医生阅片，通常数周内出结果。"
  },
  {
   "clause_id": "WEB-MLP-MAMMO-004",
@@ -53,7 +59,9 @@
   "domain": "MED-DISEASE",
   "level": 2,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "乳腺X线摄影结果异常怎么办？",
+  "summary_zh": "乳腺X线摄影异常并不一定意味着癌症，需进一步检查或转诊乳腺专科医生，以明确诊断并排除恶性病变。"
  },
  {
   "clause_id": "WEB-MLP-MAMMO-005",
@@ -67,7 +75,9 @@
   "domain": "MED-DISEASE",
   "level": 2,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "开始了解",
+  "summary_zh": "汇集美国CDC、卫生与公众服务部妇女健康办公室、国家癌症研究所及放射学会等权威乳腺X线摄影科普资源。"
  },
  {
   "clause_id": "WEB-MLP-MAMMO-006",
@@ -81,7 +91,9 @@
   "domain": "MED-DISEASE",
   "level": 2,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "相关问题",
+  "summary_zh": "涵盖热成像不能替代乳腺X线摄影、致密乳腺、阅片方法、检查准确性及乳房假体女性检查等常见问题。"
  },
  {
   "clause_id": "WEB-MLP-MAMMO-007",
@@ -95,6 +107,8 @@
   "domain": "MED-DISEASE",
   "level": 2,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "具体检查技术",
+  "summary_zh": "介绍乳腺断层合成、数字乳腺X线摄影常见问题及乳管造影等具体检查技术的原理与适用情况。"
  }
 ]

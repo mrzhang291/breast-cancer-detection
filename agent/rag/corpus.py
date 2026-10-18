@@ -55,7 +55,7 @@ def load_feature_chunks() -> List[Dict]:
             'section': item['name_zh'],
             'text': text,
             'meta': {'feature': item['feature'], 'index': item['index'],
-                     'name_zh': item['name_zh']},
+                     'name_zh': item['name_zh'], 'domain': 'FEAT', 'level': 4},
         })
     return chunks
 
@@ -87,7 +87,7 @@ def load_doc_chunks() -> List[Dict]:
                 'version': '2026-05',
                 'section': section_title,
                 'text': body[:1800],
-                'meta': {'title': title},
+                'meta': {'title': title, 'domain': 'SYS', 'level': 2},
             })
 
         for line in lines:
@@ -125,7 +125,10 @@ def load_web_chunks() -> List[Dict]:
                 'text': text,
                 'meta': {'url': item.get('url', ''), 'title': item.get('title', ''),
                          'lang': item.get('lang', 'zh'),
-                         'license': item.get('license', '')},
+                         'license': item.get('license', ''),
+                         'domain': item.get('domain', 'MED-DISEASE'),
+                         'level': item.get('level', 2),
+                         'retrieved_at': item.get('retrieved_at', '')},
             })
     return chunks
 

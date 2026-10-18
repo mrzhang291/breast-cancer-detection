@@ -151,7 +151,8 @@ def _quality_boost(text: str, section: str) -> float:
     return boost
 
 
-def search(query: str, k: int = 5, prefer: str = '') -> List[Dict]:
+def search(query: str, k: int = 5, prefer: str = '',
+           domains: List[str] = None) -> List[Dict]:
     """IDF 加权检索 + 质量重排，返回带分值的条款。"""
     tokens = tokenize(query)
     if not tokens:
@@ -193,10 +194,18 @@ def search(query: str, k: int = 5, prefer: str = '') -> List[Dict]:
         phrase = (query or '').strip()
         token_set = set(uniq)
         doc_matched = set()
+        allowed = set(domains) if domains else None
         for clause_id in ids:
             row = detail.get(clause_id)
             if not row:
                 continue
+            if allowed:
+                try:
+                    meta = json.loads(row['meta_json'] or '{}')
+                except ValueError:
+                    meta = {}
+                if meta.get('domain') and meta['domain'] not in allowed:
+                    continue
             text = row['text'] or ''
             section = row['section'] or ''
 

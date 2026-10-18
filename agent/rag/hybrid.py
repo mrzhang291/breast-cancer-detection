@@ -76,8 +76,9 @@ def _llm_rerank(query: str, candidates: List[Dict], top_n: int) -> Optional[List
         return None
 
 
-def search(query: str, k: int = 5, prefer: str = '') -> List[Dict]:
-    lex = index.search(query, k=30, prefer=prefer)
+def search(query: str, k: int = 5, prefer: str = '',
+           domains: List[str] = None) -> List[Dict]:
+    lex = index.search(query, k=30, prefer=prefer, domains=domains)
     vec = []
     try:
         if embed.available():
@@ -99,6 +100,9 @@ def search(query: str, k: int = 5, prefer: str = '') -> List[Dict]:
         if not row:
             continue
         # score 统一成"可读的相关度"：词法分优先，纯向量命中按余弦折算
+        meta = row.get('meta') or {}
+        if domains and meta.get('domain') and meta['domain'] not in set(domains):
+            continue
         score = lex_scores.get(cid)
         if not score:
             score = round(vec_scores.get(cid, 0.0) * 40.0, 3)
@@ -111,7 +115,10 @@ def search(query: str, k: int = 5, prefer: str = '') -> List[Dict]:
             'text': row['text'],
             'score': round(score, 3),
             'fused': item['score'],
-            'meta': row.get('meta') or {},
+            'domain': meta.get('domain', ''),
+            'level': meta.get('level', 0),
+            'url': meta.get('url', ''),
+            'meta': meta,
         })
 
     order = _llm_rerank(query, candidates, k)

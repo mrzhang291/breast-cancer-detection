@@ -11,7 +11,9 @@
   "domain": "MED-DISEASE",
   "level": 2,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "什么是乳腺癌？",
+  "summary_zh": "乳腺癌起源于乳腺组织，细胞失控生长形成肿瘤，分原位癌和浸润癌，可经淋巴或血液转移，是美国女性第二常见癌症。"
  },
  {
   "clause_id": "WEB-MLP-BC-002",
@@ -25,7 +27,9 @@
   "domain": "MED-DISEASE",
   "level": 2,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "乳腺癌有哪些类型？",
+  "summary_zh": "乳腺癌按起源细胞分型，包括最常见的导管癌、小叶癌，以及罕见的炎性乳腺癌和乳头Paget病。"
  },
  {
   "clause_id": "WEB-MLP-BC-003",
@@ -39,7 +43,9 @@
   "domain": "MED-DISEASE",
   "level": 2,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "乳腺癌的病因是什么？",
+  "summary_zh": "乳腺癌由基因物质改变引起，多数原因不明，部分为遗传性，如BRCA1/BRCA2基因突变，生活方式和环境也影响风险。"
  },
  {
   "clause_id": "WEB-MLP-BC-004",
@@ -53,7 +59,9 @@
   "domain": "MED-DISEASE",
   "level": 2,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "哪些人易患乳腺癌？",
+  "summary_zh": "风险因素包括乳腺癌或良性乳腺病史、遗传性BRCA基因突变、雌激素暴露增加（早初潮、晚育、晚绝经）、激素治疗及胸部放疗。"
  },
  {
   "clause_id": "WEB-MLP-BC-005",
@@ -67,7 +75,9 @@
   "domain": "MED-DISEASE",
   "level": 2,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "乳腺癌有哪些体征和症状？",
+  "summary_zh": "症状包括乳房或腋下新肿块、大小形状改变、皮肤凹陷呈橘皮样、乳头内陷或溢液、乳头或乳房皮肤鳞屑红肿及疼痛。"
  },
  {
   "clause_id": "WEB-MLP-BC-006",
@@ -81,7 +91,9 @@
   "domain": "MED-DISEASE",
   "level": 2,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "乳腺癌如何诊断？",
+  "summary_zh": "诊断工具包括体格检查、乳腺X线、超声、MRI等影像检查及血液生化检查，确诊后进一步检测以确定类型。"
  },
  {
   "clause_id": "WEB-MLP-BC-007",
@@ -95,7 +107,9 @@
   "domain": "MED-DISEASE",
   "level": 2,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "乳腺癌如何诊断？",
+  "summary_zh": "检测HER2蛋白及雌激素、孕激素受体水平以判断癌症类型，并通过分期检查确定癌症是否扩散。"
  },
  {
   "clause_id": "WEB-MLP-BC-008",
@@ -109,7 +123,9 @@
   "domain": "MED-DISEASE",
   "level": 2,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "乳腺癌有哪些治疗方法？",
+  "summary_zh": "治疗包括乳房切除术、肿块切除术等手术，以及阻断激素的激素疗法和针对特定癌细胞的靶向治疗。"
  },
  {
   "clause_id": "WEB-MLP-BC-009",
@@ -123,7 +139,9 @@
   "domain": "MED-DISEASE",
   "level": 2,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "乳腺癌可以预防吗？",
+  "summary_zh": "健康生活方式如保持体重、限酒、锻炼、母乳喂养、限制激素治疗可助预防；高危者可服药或切除乳房，并定期筛查。"
  },
  {
   "clause_id": "WEB-MLP-BC-010",
@@ -137,7 +155,9 @@
   "domain": "MED-DISEASE",
   "level": 2,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "诊断与检查",
+  "summary_zh": "提供BRCA基因检测、乳腺活检、早期诊断、乳腺MRI、自检、超声及雌激素孕激素受体检测等资源链接。"
  },
  {
   "clause_id": "WEB-MLP-BC-011",
@@ -151,7 +171,9 @@
   "domain": "MED-DISEASE",
   "level": 2,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "诊断与检查",
+  "summary_zh": "提供分子乳腺成像、穿刺活检、PDL1检测、PTEN与TP53基因检测、前哨淋巴结活检及病理报告解读等资源。"
  },
  {
   "clause_id": "WEB-MLP-BC-012",
@@ -165,7 +187,9 @@
   "domain": "MED-DISEASE",
   "level": 2,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预防与风险因素",
+  "summary_zh": "涵盖止汗剂与乳腺癌风险、芳香化酶抑制剂降低风险、预防方法、生活方式风险因素及降低风险的乳房手术。"
  },
  {
   "clause_id": "WEB-MLP-BC-013",
@@ -179,7 +203,9 @@
   "domain": "MED-DISEASE",
   "level": 2,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "治疗与疗法",
+  "summary_zh": "涵盖乳腺癌手术、补充与整合疗法、获批药物、激素治疗、乳房切除术及整体治疗资源。"
  },
  {
   "clause_id": "WEB-MLP-BC-014",
@@ -193,7 +219,9 @@
   "domain": "MED-DISEASE",
   "level": 2,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "带癌生活",
+  "summary_zh": "涵盖应对压力、治疗前后饮食建议、治疗后随访护理、失眠与疲劳管理及治疗后生活质量。"
  },
  {
   "clause_id": "WEB-MLP-BC-015",
@@ -207,7 +235,9 @@
   "domain": "MED-DISEASE",
   "level": 2,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "相关问题",
+  "summary_zh": "涉及腋窝淋巴结、骨流失、妊娠期治疗、致密乳腺、DES暴露、生育问题、激素治疗及口服避孕药与癌症风险。"
  },
  {
   "clause_id": "WEB-MLP-BC-016",
@@ -221,7 +251,9 @@
   "domain": "MED-DISEASE",
   "level": 2,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "特定类型",
+  "summary_zh": "涵盖导管原位癌、HER2阳性乳腺癌、炎性乳腺癌、小叶原位癌、Paget病、复发及三阴性乳腺癌。"
  },
  {
   "clause_id": "WEB-MLP-BC-017",
@@ -235,7 +267,9 @@
   "domain": "MED-DISEASE",
   "level": 2,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "遗传学",
+  "summary_zh": "涵盖遗传性乳腺癌卵巢癌、BRCA基因突变与检测、遗传咨询、Li-Fraumeni综合征及BRCA突变高危人群。"
  },
  {
   "clause_id": "WEB-MLP-BC-018",
@@ -249,7 +283,9 @@
   "domain": "MED-DISEASE",
   "level": 2,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "寻找专家",
+  "summary_zh": "提供美国癌症协会、支持小组、选择肿瘤医生、筛查项目、妇产科医生及国家癌症研究所等资源。"
  },
  {
   "clause_id": "WEB-MLP-BC-019",
@@ -263,6 +299,8 @@
   "domain": "MED-DISEASE",
   "level": 2,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "患者手册",
+  "summary_zh": "提供化疗后出院、BRCA基因检测、乳腺活检、乳腺癌、分期、乳房肿块、自检及激素治疗等科普手册。"
  }
 ]
