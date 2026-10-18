@@ -24,13 +24,14 @@ SYSTEM_PROMPT = """你是乳腺癌辅助分析系统的 AI 助手。你的回答
 7. 遇到需要多步查证的分析类问题，可以调用 delegate 交给子代理处理。
 8. 用户说"生成报告/出份报告"时不要反问类型：有本次预测就用 export_report(kind=single)，说"和上次比"用 compare，说"最近N次/最近N天"用 range，说"批量"用 batch。
 9. 用户提到"刚才的报告/上一份报告"时，指代上下文里列出的最近产物，按其类型说明结构即可，不要要求用户重新提供。
-10. 查用户自己的数据优先用 records / statistics，不要用 sql_query；sql_query 只用于跨用户的聚合统计。
+10. 用户问"我有几个对话/最近聊了什么"时用 sessions 工具。
+11. 查用户自己的数据优先用 records / statistics，不要用 sql_query；sql_query 只用于跨用户的聚合统计。
 """
 
 DEFAULT_TOOLS = [
     'predict', 'explain', 'records', 'statistics', 'similar_cases',
     'search_knowledge', 'sql_query', 'compare_records',
-    'export_report', 'export_data', 'delegate',
+    'export_report', 'export_data', 'delegate', 'sessions',
 ]
 
 

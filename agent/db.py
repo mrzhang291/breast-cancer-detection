@@ -400,3 +400,36 @@ def update_session_title(session_id: str, title: str) -> None:
         conn.commit()
     finally:
         conn.close()
+
+def session_stats(user_id: str, days: int = 30):
+    """当前用户的会话与消息统计。"""
+    conn = connect()
+    try:
+        since = conn.execute(
+            "SELECT datetime('now', 'localtime', ?)", ('-%d days' % int(days),)).fetchone()[0]
+        sessions_total = conn.execute(
+            'SELECT COUNT(*) FROM agent_sessions WHERE user_id = ?', (str(user_id),)).fetchone()[0]
+        messages_total = conn.execute(
+            'SELECT COUNT(*) FROM agent_messages m JOIN agent_sessions s'
+            ' ON s.id = m.session_id WHERE s.user_id = ?', (str(user_id),)).fetchone()[0]
+        active_days = conn.execute(
+            'SELECT COUNT(DISTINCT date(m.created_at)) FROM agent_messages m'
+            ' JOIN agent_sessions s ON s.id = m.session_id WHERE s.user_id = ?',
+            (str(user_id),)).fetchone()[0]
+        recent = conn.execute(
+            'SELECT s.id, s.title, s.updated_at,'
+            ' (SELECT COUNT(*) FROM agent_messages m WHERE m.session_id = s.id) AS messages'
+            ' FROM agent_sessions s WHERE s.user_id = ?'
+            ' ORDER BY s.updated_at DESC LIMIT 5', (str(user_id),)).fetchall()
+        last_at = conn.execute(
+            'SELECT MAX(m.created_at) FROM agent_messages m JOIN agent_sessions s'
+            ' ON s.id = m.session_id WHERE s.user_id = ?', (str(user_id),)).fetchone()[0]
+        return {
+            'sessions_total': sessions_total,
+            'messages_total': messages_total,
+            'active_days': active_days,
+            'last_message_at': last_at or '-',
+            'recent_sessions': [dict(r) for r in recent],
+        }
+    finally:
+        conn.close()
