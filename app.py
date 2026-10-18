@@ -2227,7 +2227,11 @@ def api_agent_llm():
 
     ctx = _agent_ctx(question, data)
     if values:
-        _agent_orch.add_input_fact(ctx, values)
+        # 先把预测与归因算出来，LLM 才能基于真实事实回答（否则它会反问要特征）
+        try:
+            _agent_orch._act_interpret(ctx, values)
+        except Exception:  # noqa: BLE001
+            _agent_orch.add_input_fact(ctx, values)
 
     from agent.llm_agent import run_llm_agent
 
