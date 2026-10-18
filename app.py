@@ -2776,6 +2776,25 @@ def api_explain_features():
     return jsonify({'ok': True, 'prediction': prediction, 'top': top})
 
 
+@app.route('/api/clause/<clause_id>')
+def api_clause(clause_id):
+    """按条款 ID 取原文，供溯源面板点开核对。"""
+    if 'username' not in session:
+        return jsonify({'ok': False, 'error': '请先登录'}), 403
+    from agent import db as _db
+    conn = _db.connect()
+    try:
+        row = conn.execute('SELECT clause_id, section, text, source, doc_id'
+                           ' FROM rag_chunks WHERE clause_id = ?', (clause_id,)).fetchone()
+    finally:
+        conn.close()
+    if not row:
+        return jsonify({'ok': False, 'error': '条款不存在'}), 404
+    return jsonify({'ok': True, 'clause': {'id': row['clause_id'], 'section': row['section'],
+                                           'text': row['text'], 'source': row['source'],
+                                           'doc_id': row['doc_id']}})
+
+
 @app.route('/api/cases/similar', methods=['POST'])
 def api_cases_similar():
     if 'username' not in session:

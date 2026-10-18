@@ -104,7 +104,9 @@ def ground(answer_md: str, facts: List[Dict],
         if kinds:
             for kind in kinds:
                 if kind == 'clause' and citations:
-                    sources.append({'kind': 'clause', 'label': '条款 ' + '、'.join(citations[:2])})
+                    sources.append({'kind': 'clause',
+                                    'label': '条款 ' + '、'.join(citations[:2]),
+                                    'ids': citations[:2]})
                 elif kind == 'confidence' and 'prediction' in payloads:
                     sources.append({'kind': 'prediction',
                                     'label': _source_label('prediction', payloads['prediction'], citations)})

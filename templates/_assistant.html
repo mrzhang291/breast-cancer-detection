@@ -186,6 +186,19 @@
     }
     .as-src.infer { color: #b45309; background: #fffbeb; border-color: #fef3c7; }
 
+
+    .as-src.clickable { cursor: pointer; font-family: inherit; }
+    .as-src.clickable:hover { background: #d1fae5; }
+    .as-clause-box {
+        flex-basis: 100%; margin-top: 6px; background: #fff; border: 1px solid #e6ebf3;
+        border-radius: 10px; padding: 9px 11px; font-size: 11px; color: #475569; line-height: 1.7;
+    }
+    .as-clause-box b { display: block; color: #0f172a; margin-bottom: 3px; }
+    .as-clause-box p { margin: 0 0 4px; }
+    .as-clause-box i { color: #94a3b8; font-style: normal; font-size: 10px; }
+    .as-dropped { padding: 0 12px 10px; font-size: 11px; color: #b45309; }
+    .as-dropped p { margin: 4px 0 0; color: #94a3b8; text-decoration: line-through; }
+
     .as-artifacts { display: flex; flex-direction: column; gap: 7px; margin-top: 10px; }
     .as-artifact {
         display: flex; align-items: center; gap: 9px; padding: 9px 11px;
@@ -478,6 +491,10 @@
             var row = document.createElement('div');
             row.className = 'as-ground-item ' + (c.supported ? 'ok' : 'infer');
             var srcs = (c.sources || []).map(function (s) {
+                if (s.kind === 'clause' && s.ids && s.ids.length) {
+                    return '<button type="button" class="as-src clickable" data-clause="' +
+                        escapeHtml(s.ids[0]) + '">' + escapeHtml(s.label) + ' ↗</button>';
+                }
                 return '<span class="as-src">' + escapeHtml(s.label) + '</span>';
             }).join('');
             if (!srcs) {
@@ -488,6 +505,13 @@
             list.appendChild(row);
         });
         det.appendChild(list);
+        if ((g.dropped || []).length) {
+            var drop = document.createElement('div');
+            drop.className = 'as-dropped';
+            drop.innerHTML = '<b>已丢弃（数字无法与数据核对）：</b>' +
+                g.dropped.map(function (x) { return '<p>' + escapeHtml(x.slice(0, 90)) + '</p>'; }).join('');
+            det.appendChild(drop);
+        }
         bubble.appendChild(det);
     }
 
@@ -846,6 +870,30 @@
     window.refreshAgentContext = refreshAgentContext;
     document.addEventListener('DOMContentLoaded', refreshAgentContext);
     document.addEventListener('input', function () { refreshAgentContext(); });
+
+
+    document.addEventListener('click', function (ev) {
+        var btn = ev.target.closest ? ev.target.closest('.as-src.clickable') : null;
+        if (!btn) { return; }
+        var id = btn.getAttribute('data-clause');
+        var box = btn.parentNode.querySelector('.as-clause-box');
+        if (box) { box.remove(); return; }
+        fetch('/api/clause/' + encodeURIComponent(id))
+            .then(function (r) { return r.json(); })
+            .then(function (data) {
+                var div = document.createElement('div');
+                div.className = 'as-clause-box';
+                if (!data.ok) {
+                    div.textContent = data.error || '取条款失败';
+                } else {
+                    var c = data.clause;
+                    div.innerHTML = '<b>' + escapeHtml(c.id) + ' · ' + escapeHtml(c.section || '') + '</b>' +
+                        '<p>' + escapeHtml((c.text || '').slice(0, 220)) + '</p>' +
+                        '<i>' + escapeHtml(c.source || '') + '</i>';
+                }
+                btn.parentNode.appendChild(div);
+            });
+    });
 
     window.ASAssistant = { open: openPanel, close: closePanel, ask: ask,
                            setContext: function (ctx) { context = ctx || {}; renderContext(); } };
