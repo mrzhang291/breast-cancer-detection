@@ -2079,6 +2079,13 @@ def _agent_bind_runtime():
         import reporting
         return reporting.render(kind, payload)
 
+    def _cleanup_reports():
+        try:
+            import reporting
+            reporting.cleanup(7)
+        except Exception:  # noqa: BLE001
+            pass
+
     _agent_runtime.get().bind(
         rag=_rag_index,
         predict=_predict,
@@ -2089,6 +2096,7 @@ def _agent_bind_runtime():
         fetch_stats=lambda uid: get_statistics_from_admin(uid),
     )
     _agent_db.init_schema()
+    threading.Thread(target=_cleanup_reports, daemon=True).start()
     _AGENT_STATE['bound'] = True
     print('Agent 运行时已绑定')
     return True

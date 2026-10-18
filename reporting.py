@@ -536,3 +536,21 @@ def render(kind: str, payload: dict) -> dict:
     if kind == 'batch':
         return render_batch(payload)
     raise ValueError('暂不支持的报告类型: %s' % kind)
+
+
+def cleanup(keep_days: int = 7) -> int:
+    """清理超过保留期的产物，返回删除数量。"""
+    if not os.path.isdir(REPORTS_DIR):
+        return 0
+    cutoff = time.time() - keep_days * 86400
+    removed = 0
+    for folder, _, files in os.walk(REPORTS_DIR):
+        for name in files:
+            path = os.path.join(folder, name)
+            try:
+                if os.path.getmtime(path) < cutoff:
+                    os.remove(path)
+                    removed += 1
+            except OSError:
+                continue
+    return removed
