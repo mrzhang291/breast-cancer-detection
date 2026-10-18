@@ -2155,14 +2155,40 @@
     askBtn.disabled = true;
 
     try {
-      var resp = await fetch('/api/agent/run', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ question: question, values: values })
-      });
+      var resp = null;
+      for (var attempt = 0; attempt <= 2; attempt++) {
+        try {
+          resp = await fetch('/api/agent/run', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ question: question, values: values })
+          });
+        } catch (netErr) {
+          resp = null;
+        }
+        var retriable = !resp || resp.status === 502 || resp.status === 503 || resp.status === 504;
+        if (!retriable) { break; }
+        if (attempt < 2) {
+          answerEl.innerHTML = '<span style="color:#b45309;">服务正在重启，自动重试（'
+            + (attempt + 1) + '/2）…</span>';
+          await new Promise(function (res) { setTimeout(res, 1500); });
+        }
+      }
+
+      if (!resp) {
+        answerEl.innerHTML = '<span style="color:#c53030;">网络中断，服务可能正在重启。</span>'
+          + '<button class="btn btn-default btn-sm" id="agentRetryBtn" style="margin-left:10px;">再试一次</button>';
+        var rb = document.getElementById('agentRetryBtn');
+        if (rb) { rb.onclick = function () { runAgent(question); }; }
+        return;
+      }
 
       if (!resp.ok) {
-        answerEl.innerHTML = '<span style="color:#c53030;">请求失败：' + resp.status + '</span>';
+        answerEl.innerHTML = '<span style="color:#c53030;">请求失败：' + resp.status
+          + '（服务可能正在重启，稍后重试）</span>'
+          + '<button class="btn btn-default btn-sm" id="agentRetryBtn" style="margin-left:10px;">再试一次</button>';
+        var rb2 = document.getElementById('agentRetryBtn');
+        if (rb2) { rb2.onclick = function () { runAgent(question); }; }
         return;
       }
 

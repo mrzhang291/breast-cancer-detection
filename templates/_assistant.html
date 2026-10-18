@@ -611,6 +611,20 @@
         if (history.length > 8) { history = history.slice(-8); }
     }
 
+
+    function showRetryNotice(text) {
+        var old = document.getElementById('asRetryNotice');
+        if (old) { old.remove(); }
+        var row = document.createElement('div');
+        row.id = 'asRetryNotice';
+        row.style.cssText = 'margin:6px 0;padding:6px 10px;border-radius:8px;' +
+            'background:#fffbeb;color:#b45309;font-size:11.5px;border:1px solid #fef3c7;';
+        row.textContent = text;
+        body.appendChild(row);
+        body.scrollTop = body.scrollHeight;
+        setTimeout(function () { if (row.parentNode) { row.remove(); } }, 4000);
+    }
+
     function syncFallback(payload, done) {
         removeLoading();
         fetch('/api/agent/run-sync', {
@@ -631,13 +645,50 @@
     }
 
     function streamAsk(payload, done) {
-        fetch('/api/agent/llm/stream', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload)
-        }).then(function (resp) {
+        var attempt = 0;
+        function post() {
+            return fetch('/api/agent/llm/stream', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+        }
+        function withRetry() {
+            return post().catch(function (err) {
+                if (attempt >= 2) { throw err; }
+                attempt += 1;
+                showRetryNotice('连接中断，正在重试（' + attempt + '/2）…');
+                return new Promise(function (resolve) { setTimeout(resolve, 1200); })
+                    .then(withRetry);
+            }).then(function (resp) {
+                if (resp && resp.status >= 500 && resp.status !== 503 && attempt < 2) {
+                    attempt += 1;
+                    showRetryNotice('服务正在重启，自动重试（' + attempt + '/2）…');
+                    return new Promise(function (resolve) { setTimeout(resolve, 1500); })
+                        .then(withRetry);
+                }
+                return resp;
+            });
+        }
+        withRetry().then(function (resp) {
+            if (!resp) { return null; }
             if (resp.status === 503) { syncFallback(payload, done); return null; }
-            if (!resp.ok || !resp.body) { throw new Error('流式接口不可用'); }
+            if (resp.status >= 500) {
+                removeLoading();
+                var bubble = newBubble();
+                bubble.innerHTML = '服务正在重启（HTTP ' + resp.status +
+                    '），已自动重试仍未成功。<button type="button" class="as-retry-now">再试一次</button>';
+                var btn = bubble.querySelector('.as-retry-now');
+                if (btn) {
+                    btn.addEventListener('click', function () {
+                        bubble.parentNode.remove();
+                        busy = false; send.disabled = false; ask(payload.question);
+                    });
+                }
+                done();
+                return null;
+            }
+            if (!resp || !resp.ok || !resp.body) { throw new Error('流式接口不可用'); }
 
             removeLoading();
             var bubble = newBubble();
