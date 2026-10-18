@@ -44,6 +44,22 @@ def build_session(ctx, question_meta: Optional[Dict] = None) -> AgentSession:
     return session
 
 
+def _context_brief(ctx) -> str:
+    """把本次预测的事实压缩成一段上下文，供模型直接使用。"""
+    lines = []
+    for fact in (getattr(ctx, 'facts', None) or []):
+        kind = fact.get('kind')
+        payload = fact.get('payload') or {}
+        if kind == 'prediction':
+            lines.append('本次预测：%s，置信度 %.4f' % (
+                payload.get('output'), float(payload.get('confidence') or 0)))
+        elif kind == 'shap':
+            tops = (payload.get('top_features') or [])[:3]
+            names = [str(t.get('name_zh') or t.get('name') or '') for t in tops]
+            if names:
+                lines.append('主要贡献特征：%s' % '、'.join(names))
+    return '\n'.join(lines)
+
 def run_llm_agent(question: str, ctx, emit: Optional[Callable] = None,
                   max_steps: int = 5) -> Optional[Dict]:
     """返回与确定性编排器相近的结构；不可用时返回 None。"""
@@ -52,6 +68,11 @@ def run_llm_agent(question: str, ctx, emit: Optional[Callable] = None,
         return None
 
     session = build_session(ctx)
+    brief = _context_brief(ctx)
+    if brief:
+        session.user('（系统注：以下是当前会话已有的上下文）\n' + brief)
+        session.assistant('收到，我会基于这个上下文回答。')
+
     loop = AgentLoop(provider, registry.TOOLS, ctx,
                      allowed_tools=DEFAULT_TOOLS, max_steps=max_steps, emit=emit)
     started = time.time()
