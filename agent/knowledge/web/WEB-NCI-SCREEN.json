@@ -849,7 +849,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "间期癌（续2）",
+  "summary_zh": "间期癌检出率被用作新筛查技术试验的主要终点，但尚未验证为乳腺癌死亡率的替代指标，其应用仍存争议。"
  },
  {
   "section": "Interval cancers（续3）",
@@ -861,7 +863,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "间期癌（续3）",
+  "summary_zh": "间期癌约在40至49岁女性中每千人1例，50至59岁每千人3例；年轻女性间期癌更常见，与乳腺密度高或肿瘤生长快相关。"
  },
  {
   "section": "Patient characteristics",
@@ -873,7 +877,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "患者特征",
+  "summary_zh": "乳腺X线准确性随年龄、乳腺密度、首次或后续检查及距上次检查时间变化；年轻女性敏感性低、假阳性率高。"
  },
  {
   "section": "Patient characteristics（续2）",
@@ -885,7 +891,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "患者特征（续2）",
+  "summary_zh": "月经后或激素治疗间歇期检查可提高敏感性；肥胖女性假阳性风险增加逾20%，但敏感性不变。"
  },
  {
   "section": "Breast density",
@@ -897,7 +905,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "乳腺密度",
+  "summary_zh": "高乳腺密度可遮蔽小肿块，使敏感性降低10%至29%，并轻度增加乳腺癌风险，但不增加乳腺癌死亡风险。"
  },
  {
   "section": "Breast density（续2）",
@@ -909,7 +919,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "乳腺密度（续2）",
+  "summary_zh": "致密乳腺组织影响约43%的40至74岁女性；数字乳腺断层合成较传统钼靶提高敏感性并轻度降低假阳性率。"
  },
  {
   "section": "Breast density（续3）",
@@ -921,7 +933,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "乳腺密度（续3）",
+  "summary_zh": "荷兰随机试验显示，极密乳腺女性补充MRI较单纯钼靶降低2年间期癌发生率，提示可能带来癌症保护。"
  },
  {
   "section": "Breast density（续4）",
@@ -933,7 +947,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "乳腺密度（续4）",
+  "summary_zh": "DBTUST研究显示，技师操作超声筛查在数字乳腺断层合成后轻度提高致密乳腺女性的癌症检出。"
  },
  {
   "section": "Breast density（续5）",
@@ -945,7 +961,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "乳腺密度（续5）",
+  "summary_zh": "建议致密乳腺女性与初级保健医生讨论补充筛查，但证据有限、指南不一及报告措辞造成困惑与焦虑。"
  },
  {
   "section": "Tumor characteristics",
@@ -957,7 +975,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "肿瘤特征",
+  "summary_zh": "黏液癌和小叶癌较易被钼靶发现；快速生长肿瘤及部分BRCA1/2相关肿瘤可能被漏诊。"
  },
  {
   "section": "Physician characteristics",
@@ -969,7 +989,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "医师特征",
+  "summary_zh": "放射科医师经验与阅片量影响表现；学术机构活检阳性预测值较高，乳腺影像专科培训可提高检出。"
  },
  {
   "section": "Artificial intelligence algorithms",
@@ -981,7 +1003,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "人工智能算法",
+  "summary_zh": "AI算法正被开发用于解读筛查钼靶和乳腺活检标本，或提高速度与可重复性，但是否加剧过度诊断尚不明确。"
  },
  {
   "section": "International comparisons",
@@ -993,7 +1017,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "国际比较",
+  "summary_zh": "集中化筛查体系和国家质量保证计划的国家特异性更高；美国召回率是英国两倍，而癌症检出率无差异。"
  },
  {
   "section": "Prevalent versus subsequent  examination and the interval between exams",
@@ -1005,7 +1031,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "首检与后续检查及检查间隔",
+  "summary_zh": "首次筛查癌症检出率最高，为每千次9至26例，后续检查降至1至3例；最佳筛查间隔尚不明确。"
  },
  {
   "section": "Prevalent versus subsequent  examination and the interval between exams（续2）",
@@ -1017,7 +1045,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "首检与后续检查及检查间隔（续2）",
+  "summary_zh": "英国试验将40至49岁女性随机分入每年或每三年筛查，两组乳腺癌死亡风险无显著差异。"
  },
  {
   "section": "Randomized controlled trials (RCTs)",
@@ -1029,7 +1059,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "随机对照试验",
+  "summary_zh": "1963至2015年间四国逾50万女性参与筛查钼靶随机试验，各试验在设计、干预和对照管理上存在差异。"
  },
  {
   "section": "Randomized controlled trials (RCTs)（续2）",
@@ -1041,7 +1073,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "随机对照试验（续2）",
+  "summary_zh": "乳腺癌死亡为主要终点，死因判定需严谨；盲法监测委员会和独立数据链接仍难确保 impartial 归因。"
  },
  {
   "section": "Randomized controlled trials (RCTs)（续3）",
@@ -1053,7 +1087,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "随机对照试验（续3）",
+  "summary_zh": "部分试验采用评价分析仅计末次钼靶前诊断死亡，另用随访分析计入所有乳腺癌死亡，后者用于瑞典试验荟萃分析。"
  },
  {
   "section": "Randomized controlled trials (RCTs)（续4）",
@@ -1065,7 +1101,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "随机对照试验（续4）",
+  "summary_zh": "筛查使乳腺癌死亡率相对改善约15%至20%，个体绝对获益较小；仅爱丁堡试验全因死亡率显示差异。"
  },
  {
   "section": "Randomized controlled trials (RCTs)（续5）",
@@ -1077,7 +1115,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "随机对照试验（续5）",
+  "summary_zh": "识别细微异常能力提高、公众意识增强、危险因素变化及治疗进步，使短期试验结果难以外推终生效应。"
  },
  {
   "section": "Effectiveness of population-based screening programs",
@@ -1089,7 +1129,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "基于人群筛查项目的有效性",
+  "summary_zh": "通过非随机对照、病例对照及建模研究评估筛查有效性，需排除治疗进步等混杂趋势影响。"
  },
  {
   "section": "Effectiveness of population-based screening programs（续2）",
@@ -1101,7 +1143,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "基于人群筛查项目的有效性（续2）",
+  "summary_zh": "瑞典三项观察性研究比较筛查地区与对照地区，结果倾向支持筛查，但未充分校正辅助治疗等因素。"
  },
  {
   "section": "Effectiveness of population-based screening programs（续3）",
@@ -1113,7 +1157,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "基于人群筛查项目的有效性（续3）",
+  "summary_zh": "荷兰奈梅亨病例队列研究显示既往筛查与死亡率降低相关，但筛查率普遍偏低。"
  },
  {
   "section": "Effectiveness of population-based screening programs（续4）",
@@ -1125,7 +1171,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "基于人群筛查项目的有效性（续4）",
+  "summary_zh": "生态学研究比较欧洲邻国，各国死亡率均下降但配对间无差异，提示治疗改善更可能为主因。"
  },
  {
   "section": "Effectiveness of population-based screening programs（续5）",
@@ -1137,7 +1185,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "基于人群筛查项目的有效性（续5）",
+  "summary_zh": "综述结果差异大，筛查所致死亡率相对下降可能不超过10%，部分归因于过度诊断与治疗进步。"
  },
  {
   "section": "Effectiveness of population-based screening programs（续6）",
@@ -1149,7 +1199,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "基于人群筛查项目的有效性（续6）",
+  "summary_zh": "早期癌增122例/10万而晚期癌仅减8例，作者认为筛查获益小，22%–31%为过度诊断。"
  },
  {
   "section": "Effectiveness of population-based screening programs（续7）",
@@ -1161,7 +1213,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "基于人群筛查项目的有效性（续7）",
+  "summary_zh": "美国社区筛查前瞻队列显示，年度与两年一次钼靶在致密乳腺外未减少不利癌比例。"
  },
  {
   "section": "Statistical modeling of breast cancer incidence and mortality in the United Stat",
@@ -1173,7 +1227,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "美国乳腺癌发病与死亡统计建模",
+  "summary_zh": "建模可探讨最佳筛查间隔，其可信度取决于结果与随机试验的一致性。"
  },
  {
   "section": "Statistical modeling of breast cancer incidence and mortality in the United Stat（续2）",
@@ -1185,7 +1241,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "美国乳腺癌发病与死亡统计建模（续2）",
+  "summary_zh": "CISNET六模型显示50–74岁女性两年一次筛查可保留年度筛查72%–95%的死亡获益。"
  },
  {
   "section": "Harms of Mammographic Screening",
@@ -1197,7 +1255,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "钼靶筛查的危害",
+  "summary_zh": "筛查危害包括过度诊断、假阳性、假阴性、不适、辐射风险、心理伤害及经济负担。"
  },
  {
   "section": "Overdiagnosis",
@@ -1209,7 +1269,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "过度诊断",
+  "summary_zh": "过度诊断指检出终生不会出现临床症状的癌症，导致不必要治疗及相关副作用伤害。"
  },
  {
   "section": "Overdiagnosis（续2）",
@@ -1221,7 +1283,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "过度诊断（续2）",
+  "summary_zh": "29项研究过度诊断率0%–54%，随机研究为11%–22%，丹麦侵袭癌过度诊断率14%–39%。"
  },
  {
   "section": "Overdiagnosis（续3）",
@@ -1233,7 +1297,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "过度诊断（续3）",
+  "summary_zh": "荷兰研究显示约半数筛查检出癌（含DCIS）属过度诊断，与其它研究一致。"
  },
  {
   "section": "Overdiagnosis（续4）",
@@ -1245,7 +1311,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "过度诊断（续4）",
+  "summary_zh": "挪威队列显示符合筛查条件女性发病率增60%，10年乳腺癌死亡率下降。"
  },
  {
   "section": "Overdiagnosis（续5）",
@@ -1257,7 +1325,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "过度诊断（续5）",
+  "summary_zh": "加拿大NBSS试验筛查5轮后钼靶组多诊断142例侵袭癌，提示过度诊断。"
  },
  {
   "section": "Overdiagnosis（续6）",
@@ -1269,7 +1339,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "过度诊断（续6）",
+  "summary_zh": "50–59岁女性过度诊断约30%，采用超额发病率法计算，需满足停止筛查及足够随访等条件。"
  },
  {
   "section": "Overdiagnosis（续7）",
@@ -1281,7 +1353,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "过度诊断（续7）",
+  "summary_zh": "CNBSS满足过度诊断估算条件：筛查停止及时、污染少、随机分组均衡。"
  },
  {
   "section": "Overdiagnosis（续8）",
@@ -1293,7 +1367,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "过度诊断（续8）",
+  "summary_zh": "旧技术时代过度诊断不明显，新技术钼靶使其更突出，但未进一步降低死亡率。"
  },
  {
   "section": "False-positives leading to additional interventions",
@@ -1305,7 +1381,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "假阳性导致额外干预",
+  "summary_zh": "乳腺癌基础率低（<5/1000），多数异常钼靶为假阳性，受基础率谬误影响易被低估。"
  },
  {
   "section": "False-positives leading to additional interventions（续2）",
@@ -1317,7 +1395,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "假阳性导致额外干预（续2）",
+  "summary_zh": "异常钼靶引发额外影像与活检，2400名女性十年中三分之一需额外检查，须权衡利弊。"
  },
  {
   "section": "False-positives leading to additional interventions（续3）",
@@ -1329,7 +1409,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "假阳性导致额外干预（续3）",
+  "summary_zh": "多次乳腺X线筛查累积假阳性风险随次数升高，受年龄、活检史、家族史、雌激素使用及放射学因素影响。"
  },
  {
   "section": "False-positives leading to additional interventions（续4）",
@@ -1341,7 +1423,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "假阳性导致额外干预（续4）",
+  "summary_zh": "年度与 biennial 筛查假阳性率差异明显；40-50岁女性十年年度筛查约6130人至少一次假阳性。"
  },
  {
   "section": "Relationship between prior screening results and subsequent breast cancer diagno",
@@ -1353,7 +1437,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "既往筛查结果与后续乳腺癌诊断的关系",
+  "summary_zh": "挪威研究显示，既往筛查异常者后续乳腺癌风险升高，但肿瘤特征更有利，或提示缓慢生长病变。"
  },
  {
   "section": "False-negatives leading to a false sense of security",
@@ -1365,7 +1451,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "假阴性导致虚假安全感",
+  "summary_zh": "乳腺X线敏感性约70%-90%，平均漏诊约20%的现患癌；阴性结果不应阻止对乳房症状的进一步评估。"
  },
  {
   "section": "Discomfort",
@@ -1377,7 +1465,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "不适感",
+  "summary_zh": "90%女性报告乳腺X线检查疼痛或不适，12%为强烈或难以忍受；与月经周期、焦虑和预期疼痛相关。"
  },
  {
   "section": "Radiation exposure",
@@ -1389,7 +1479,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "辐射暴露",
+  "summary_zh": "标准双视图筛查平均乳腺剂量4 mSv；40-80岁年度筛查每千人可能诱发至多1例乳腺癌，大乳房者风险加倍。"
  },
  {
   "section": "Psychological harms of false-positives",
@@ -1401,7 +1493,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "假阳性的心理伤害",
+  "summary_zh": "约四分之一被召回进一步检查的女性三个月后仍有影响情绪或功能的担忧；长期心理影响研究结果不一。"
  },
  {
   "section": "Financial strain and opportunity costs",
@@ -1413,7 +1507,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "经济负担与机会成本",
+  "summary_zh": "筛查的经济负担与机会成本等潜在危害研究不足，但确实存在。"
  },
  {
   "section": "Financial strain and opportunity costs（续2）",
@@ -1425,7 +1521,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "经济负担与机会成本（续2）",
+  "summary_zh": "该段为参考文献列表，涉及筛查乳腺X线性能基准、过度诊断及数字乳腺断层合成检测准确性。"
  },
  {
   "section": "Financial strain and opportunity costs（续3）",
@@ -1437,7 +1535,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "经济负担与机会成本（续3）",
+  "summary_zh": "该段为参考文献列表，比较数字与胶片乳腺X线在社区实践中的效果及筛查性能。"
  },
  {
   "section": "Financial strain and opportunity costs（续4）",
@@ -1449,7 +1549,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "经济负担与机会成本（续4）",
+  "summary_zh": "该段为参考文献列表，涉及计算机辅助检测对筛查乳腺X线性能的影响。"
  },
  {
   "section": "Financial strain and opportunity costs（续5）",
@@ -1461,7 +1563,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "经济负担与机会成本（续5）",
+  "summary_zh": "该段为参考文献列表，涉及乳腺X线质量标准法案统计及数字乳腺断层合成的临床采用。"
  },
  {
   "section": "Financial strain and opportunity costs（续6）",
@@ -1473,7 +1577,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "经济负担与机会成本（续6）",
+  "summary_zh": "该段为参考文献列表，涉及数字乳腺断层合成与数字乳腺X线的随机对照试验及成本效果。"
  },
  {
   "section": "Financial strain and opportunity costs（续7）",
@@ -1485,7 +1591,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "经济负担与机会成本（续7）",
+  "summary_zh": "该段为参考文献列表，涉及检测方法对乳腺癌生存的预测及筛查检出与症状性癌的比较。"
  },
  {
   "section": "Financial strain and opportunity costs（续8）",
@@ -1497,7 +1605,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "经济负担与机会成本（续8）",
+  "summary_zh": "该段为参考文献列表，涉及年龄、乳腺密度、族裔和雌激素替代治疗对筛查敏感性的影响。"
  },
  {
   "section": "Financial strain and opportunity costs（续9）",
@@ -1509,7 +1619,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "经济负担与机会成本（续9）",
+  "summary_zh": "该段为参考文献列表，涉及筛查间隔及间隔期乳腺癌的发生率、特征与结局。"
  },
  {
   "section": "Financial strain and opportunity costs（续10）",
@@ -1521,7 +1633,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "经济负担与机会成本（续10）",
+  "summary_zh": "该段为参考文献列表，涉及40岁起筛查对死亡率的影响、乳腺密度报告及肥胖与筛查准确性。"
  },
  {
   "section": "Financial strain and opportunity costs（续11）",
@@ -1533,6 +1647,8 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "经济负担与机会成本（续11）",
+  "summary_zh": "该段为参考文献列表，涉及乳腺密度遗传性、月经周期变化及激素替代治疗对筛查特异性的影响。"
  }
 ]
