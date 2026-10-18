@@ -105,6 +105,9 @@ def ground(answer_md: str, facts: List[Dict],
             for kind in kinds:
                 if kind == 'clause' and citations:
                     sources.append({'kind': 'clause', 'label': '条款 ' + '、'.join(citations[:2])})
+                elif kind == 'confidence' and 'prediction' in payloads:
+                    sources.append({'kind': 'prediction',
+                                    'label': _source_label('prediction', payloads['prediction'], citations)})
                 elif kind in payloads:
                     sources.append({'kind': kind,
                                     'label': _source_label(kind, payloads[kind], citations)})
@@ -136,10 +139,10 @@ def ground(answer_md: str, facts: List[Dict],
     }
 
 
-def _matches_any(value: float, pool: List[float], tol: float = 0.02) -> bool:
+def _matches_any(value: float, pool: List[float]) -> bool:
     for candidate in pool:
         for form in (candidate, candidate * 100.0, candidate / 100.0, 1.0 - candidate):
-            scale = max(abs(form), 1.0)
-            if abs(value - form) <= max(tol, 0.01 * scale):
+            tolerance = max(0.02, abs(form) * 0.002)
+            if abs(value - form) <= tolerance:
                 return True
     return False
