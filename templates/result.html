@@ -988,6 +988,41 @@
     border: 0 !important; box-shadow: 0 8px 20px -12px rgba(79,70,229,.9) !important;
 }
 </style>
+
+<style>
+/* 结果页卡片重做 */
+.result-card.clean {
+  background: #fff; border: 1px solid #e6ebf3; border-radius: 18px;
+  padding: 26px 28px; margin: 0 0 20px; text-align: left;
+  box-shadow: 0 12px 34px -26px rgba(15,23,42,.5);
+}
+.result-hero { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+.rh-eyebrow { font-size: 11.5px; letter-spacing: .12em; text-transform: uppercase; color: #94a3b8; }
+.rh-verdict { font-size: 34px; font-weight: 700; letter-spacing: -.02em; margin: 6px 0 4px; font-family: inherit !important; }
+.rh-verdict.good { color: #059669; }
+.rh-verdict.bad { color: #dc2626; }
+.rh-meta { font-size: 12.5px; color: #94a3b8; }
+.rh-right { text-align: right; }
+.rh-conf { font-size: 40px; font-weight: 700; color: #4f46e5; line-height: 1; letter-spacing: -.03em; }
+.rh-conf span { font-size: 18px; margin-left: 2px; }
+.rh-conf-label { font-size: 12px; color: #64748b; margin-top: 6px; }
+.rh-calib { font-size: 11.5px; color: #94a3b8; margin-top: 3px; }
+.result-actions { display: flex; flex-wrap: wrap; gap: 10px; margin: 22px 0 14px; }
+.result-actions .btn {
+  border-radius: 10px !important; font-size: 13px !important; padding: 10px 16px !important;
+  font-family: inherit !important; background: #fff !important; color: #475569 !important;
+  border: 1px solid #e6ebf3 !important; box-shadow: none !important;
+}
+.result-actions .btn:hover { border-color: #c7d2fe !important; color: #4f46e5 !important; }
+.result-actions .btn-primary {
+  background: linear-gradient(135deg, #4f46e5, #7c3aed) !important; color: #fff !important;
+  border: 0 !important; box-shadow: 0 10px 22px -12px rgba(79,70,229,.9) !important;
+}
+.result-disclaimer { font-size: 12.5px; color: #b45309; background: #fffbeb; border: 1px solid #fde68a;
+  border-radius: 10px; padding: 9px 12px; margin: 0; }
+.btn-return-floating { display: none !important; }
+.container-fluid { background: transparent !important; }
+</style>
 </head>
 <body>
 {% set active_nav = 'home' %}
@@ -999,35 +1034,42 @@
   {% include "footer.html" %}
 
 
-    <div class="result-card">
+    <div class="result-card clean">
       {% if input_error or model_error or model_not_ready %}
-      <div class="alert alert-danger" style="background:#fff5f5;border:1px solid #feb2b2;color:#c53030;border-radius:12px;padding:14px 18px;margin-bottom:18px;text-align:left;line-height:1.7;">
+      <div class="alert alert-danger" style="margin-bottom:16px;">
         <i class="fa fa-exclamation-triangle"></i>
         {% if input_error %}{{ input_error }}
         {% elif model_error %}{{ model_error }}
         {% else %}模型正在加载，请稍等几秒后重新提交。{% endif %}
       </div>
       {% endif %}
-      <h1 style="font-family: 'Balsamiq Sans', cursive;">{{ _('prediction_result') }}</h1>      
-      <h2 style="font-family: 'Balsamiq Sans', cursive; color: {% if output == 'Malignant' or output == '恶性' %}#e74c3c{% else %}#27ae60{% endif %};">
-        {{ output }}
-      </h2>
-      <div class="confidence-badge {% if confidence >= 0.9 %}confidence-high{% elif confidence >= 0.75 %}confidence-medium{% else %}confidence-low{% endif %}">
-        {{ _('confidence') }}：{{ "%.2f"|format(confidence * 100) }}%
-        <span style="font-size:0.62em;color:#a0aec0;display:block;margin-top:4px;">
-          校准后 · 模型原始输出 {{ "%.2f"|format((raw_confidence or confidence) * 100) }}%
-        </span>
+
+      <div class="result-hero">
+        <div class="rh-left">
+          <div class="rh-eyebrow">{{ _('prediction_result') }}</div>
+          <div class="rh-verdict {% if output == 'Malignant' or output == '恶性' %}bad{% else %}good{% endif %}">
+            {{ output }}
+          </div>
+          <div class="rh-meta">{{ _('prediction_time') }}：{{ "%.3f"|format(time) }} {{ _('seconds') }}</div>
+        </div>
+        <div class="rh-right">
+          <div class="rh-conf">{{ "%.2f"|format(confidence * 100) }}<span>%</span></div>
+          <div class="rh-conf-label">{{ _('confidence') }}（校准后）</div>
+          <div class="rh-calib">模型原始输出 {{ "%.2f"|format((raw_confidence or confidence) * 100) }}%</div>
+        </div>
       </div>
-      <p style="font-family: 'Balsamiq Sans', cursive; margin-top: 15px;">{{ _('prediction_time') }}：{{ time }} {{ _('seconds') }}</p>
-      <p style="font-family: 'Balsamiq Sans', cursive; color: #c0392b; font-weight: bold;">⚠️ {{ _('disclaimer') }}</p>
-      <div style="margin-top: 20px; display: flex; gap: 12px; flex-wrap: wrap;">
-        <a href="/" class="btn btn-primary btn-lg"><i class="fa fa-arrow-left"></i> {{ _('back_to_home') }}</a>
-        <a href="/" onclick="sessionStorage.setItem('resetForm', 'true');" class="btn btn-info btn-lg"><i class="fa fa-plus"></i> {{ _('new_prediction') }}</a>
-        <a href="/shap-analysis" class="btn btn-warning btn-lg" title="{{ _('shap_analysis_title') }}"><i class="fa fa-brain"></i> SHAP {{ _('analysis') }}</a>
-        <a href="/logout" class="btn btn-danger btn-lg"><i class="fa fa-sign-out"></i> {{ _('logout') }}</a>
-        <button id="summaryBtn" class="btn btn-success btn-lg" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);"><i class="fa fa-file-text-o"></i> 生成总结</button>
+
+      <div class="result-actions">
+        <a href="/" onclick="sessionStorage.setItem('resetForm', 'true');" class="btn btn-primary btn-lg">
+          <i class="fa fa-plus"></i> {{ _('new_prediction') }}
+        </a>
+        <a href="/" class="btn btn-default btn-lg"><i class="fa fa-arrow-left"></i> {{ _('back_to_home') }}</a>
+        <a href="/shap-analysis" class="btn btn-default btn-lg"><i class="fa fa-bar-chart"></i> {{ _('shap_analysis') }}</a>
+        <button id="summaryBtn" class="btn btn-default btn-lg"><i class="fa fa-file-text-o"></i> {{ _('generate_summary') }}</button>
+        <a href="/logout" class="btn btn-default btn-lg"><i class="fa fa-sign-out"></i> {{ _('logout') }}</a>
       </div>
-      <!-- 隐藏字段存储特征数据 -->
+
+      <p class="result-disclaimer"><i class="fa fa-exclamation-triangle"></i> {{ _('disclaimer') }}</p>
       <input type="hidden" id="featureData" value='{{ session.get("last_prediction", {}).get("data", [])|tojson|safe }}'>
     </div>
 
