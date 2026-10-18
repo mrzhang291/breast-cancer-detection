@@ -1022,6 +1022,15 @@
   border-radius: 10px; padding: 9px 12px; margin: 0; }
 .btn-return-floating { display: none !important; }
 .container-fluid { background: transparent !important; }
+
+#agentCard { background: #fff !important; border: 1px solid #e6ebf3 !important; border-radius: 18px !important; }
+#agentCard .btn { border-radius: 10px !important; font-size: 13px !important; padding: 9px 15px !important;
+  background: #fff !important; color: #475569 !important; border: 1px solid #e6ebf3 !important; box-shadow: none !important; }
+#agentCard .btn:hover { border-color: #c7d2fe !important; color: #4f46e5 !important; }
+#agentCard #agentRunBtn { background: linear-gradient(135deg, #4f46e5, #7c3aed) !important; color: #fff !important; border: 0 !important; }
+#agentCard h2 { font-size: 17px !important; color: #0f172a !important; }
+.result-card.clean { margin-top: 0 !important; }
+.container { padding-top: 8px !important; }
 </style>
 </head>
 <body>
@@ -1065,7 +1074,7 @@
         </a>
         <a href="/" class="btn btn-default btn-lg"><i class="fa fa-arrow-left"></i> {{ _('back_to_home') }}</a>
         <a href="/shap-analysis" class="btn btn-default btn-lg"><i class="fa fa-bar-chart"></i> {{ _('shap_analysis') }}</a>
-        <button id="summaryBtn" class="btn btn-default btn-lg"><i class="fa fa-file-text-o"></i> {{ _('generate_summary') }}</button>
+        <button id="summaryBtn" class="btn btn-default btn-lg"><i class="fa fa-file-text-o"></i> 生成总结</button>
         <a href="/logout" class="btn btn-default btn-lg"><i class="fa fa-sign-out"></i> {{ _('logout') }}</a>
       </div>
 
