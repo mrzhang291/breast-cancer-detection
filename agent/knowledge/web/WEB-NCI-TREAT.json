@@ -6411,7 +6411,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "戈沙妥珠单抗",
+  "summary_zh": "FDA加速批准用于经治转移性三阴性乳腺癌，缓解率33.3%，主要毒性为中性粒细胞减少。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-402",
@@ -6425,7 +6427,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "戈沙妥珠单抗",
+  "summary_zh": "III期ASCENT试验随机468例无脑转移患者，比较戈沙妥珠单抗与单药化疗，主要终点为PFS。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-403",
@@ -6439,7 +6443,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "戈沙妥珠单抗",
+  "summary_zh": "中位OS 12.1个月对6.7个月，ORR 35%对5%，3级以上不良事件以中性粒细胞减少为主。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-404",
@@ -6453,7 +6459,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "戈沙妥珠单抗",
+  "summary_zh": "中位PFS 5.6个月对1.7个月，OS 12.1个月对6.7个月，3级以上不良事件更常见。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-405",
@@ -6467,7 +6475,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "免疫单药治疗",
+  "summary_zh": "免疫单药尚未显示转移性三阴性乳腺癌OS获益；KEYNOTE-119比较帕博利珠单抗与化疗。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-406",
@@ -6481,7 +6491,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "免疫单药治疗",
+  "summary_zh": "PD-L1 CPS≥10者中位OS 12.7个月对11.6个月，CPS≥1及总体人群均无显著OS获益。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-407",
@@ -6495,7 +6507,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "免疫单药治疗",
+  "summary_zh": "CPS≥10者OS 12.7个月对11.6个月，CPS≥1者10.7个月对10.2个月，总体无显著差异。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-408",
@@ -6509,7 +6523,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "转移性HER2阳性乳腺癌",
+  "summary_zh": "自1990年代起HER2靶向抗体治疗革新了HER2阳性转移性乳腺癌治疗，多种药物已获批。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-409",
@@ -6523,7 +6539,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "单克隆抗体治疗",
+  "summary_zh": "约20%–25%乳腺癌HER2过表达；曲妥珠单抗单药经治患者缓解率21%，联合化疗改善疗效。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-410",
@@ -6537,7 +6555,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "单克隆抗体治疗",
+  "summary_zh": "曲妥珠单抗联合多柔比星有心脏毒性；联合多药化疗与单药化疗比较结果不一致。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-411",
@@ -6551,7 +6571,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "单克隆抗体治疗",
+  "summary_zh": "帕妥珠单抗结合HER2不同表位阻断二聚化；CLEOPATRA试验评估其一线联合方案。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-412",
@@ -6565,7 +6587,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "单克隆抗体治疗",
+  "summary_zh": "帕妥珠单抗组中位OS 56.5个月对40.8个月，8年OS率37%对23%，心脏毒性未增加。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-413",
@@ -6579,7 +6603,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "单克隆抗体治疗",
+  "summary_zh": "帕妥珠单抗联合方案OS显著延长且心脏毒性未增加；T-DM1为HER2靶向抗体药物偶联物。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-414",
@@ -6593,7 +6619,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "单克隆抗体治疗",
+  "summary_zh": "EMILIA试验比较T-DM1与拉帕替尼加卡培他滨，中位PFS 9.6个月对6.4个月。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-415",
@@ -6607,7 +6635,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "单克隆抗体治疗",
+  "summary_zh": "T-DM1较拉帕替尼加卡培他滨延长PFS和OS，但血小板减少及肝酶升高更常见。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-416",
@@ -6621,7 +6651,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "单克隆抗体治疗",
+  "summary_zh": "II期研究显示T-DM1一线治疗PFS 14.2个月对9.2个月，安全性优于曲妥珠单抗加多西他赛。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-417",
@@ -6635,7 +6667,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "单克隆抗体治疗",
+  "summary_zh": "T-DM1安全性优于曲妥珠单抗加多西他赛；TH3RESA试验评估其用于重度经治患者。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-418",
@@ -6649,7 +6683,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "单克隆抗体治疗",
+  "summary_zh": "TH3RESA显示T-DM1中位PFS 6.2个月对3.3个月，OS 22.7个月对15.8个月。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-419",
@@ -6663,7 +6699,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "单克隆抗体治疗",
+  "summary_zh": "MARIANNE试验评估T-DM1一线治疗，各组PFS无显著差异，未优于曲妥珠单抗加紫杉类。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-420",
@@ -6677,7 +6715,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "单克隆抗体治疗",
+  "summary_zh": "MARIANNE试验中T-DM1单药或联合帕妥珠单抗的PFS均未优于曲妥珠单抗加紫杉类。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-421",
@@ -6691,7 +6731,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "德曲妥珠单抗",
+  "summary_zh": "德曲妥珠单抗为抗体偶联药物，在HER2阳性晚期乳腺癌中显示抗肿瘤活性，DESTINY-Breast03试验对比其与T-DM1的疗效与安全性。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-422",
@@ -6705,7 +6747,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "德曲妥珠单抗",
+  "summary_zh": "德曲妥珠单抗12个月生存率94.1%，客观缓解率79.7%，优于T-DM1；间质性肺病发生率10.5%，无4-5级事件。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-423",
@@ -6719,7 +6763,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "德曲妥珠单抗",
+  "summary_zh": "该试验改变HER2阳性转移性乳腺癌二线治疗标准，既往紫杉类/曲妥珠单抗治疗者优选德曲妥珠单抗而非T-DM1。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-424",
@@ -6733,7 +6779,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "德曲妥珠单抗",
+  "summary_zh": "德曲妥珠单抗3-4级药物相关不良事件45.1%，间质性肺病10.5%；该试验确立其作为二线治疗新标准。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-425",
@@ -6747,7 +6795,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "马吉妥昔单抗",
+  "summary_zh": "马吉妥昔单抗为Fc工程化抗HER2单抗，SOPHIA研究支持其联合化疗用于多线抗HER2治疗后的HER2阳性转移性乳腺癌。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-426",
@@ -6761,7 +6811,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "马吉妥昔单抗",
+  "summary_zh": "SOPHIA研究中马吉妥昔单抗较曲妥珠单抗改善PFS，相对风险降低24%，中位PFS 5.8个月对4.9个月。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-427",
@@ -6775,7 +6827,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "马吉妥昔单抗",
+  "summary_zh": "马吉妥昔单抗组与曲妥珠单抗组中位OS无统计学差异（21.6对21.9个月），PFS显著改善。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-428",
@@ -6789,7 +6843,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "酪氨酸激酶抑制剂治疗",
+  "summary_zh": "FDA批准多种TKI用于HER2阳性转移性乳腺癌；图卡替尼为高选择性口服HER2 TKI，HER2CLIMB试验评估其联合方案。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-429",
@@ -6803,7 +6859,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "酪氨酸激酶抑制剂治疗",
+  "summary_zh": "HER2CLIMB试验中图卡替尼联合组中位PFS 7.8个月对5.6个月，中位OS 21.9对17.4个月，脑转移患者亦获益。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-430",
@@ -6817,7 +6875,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "酪氨酸激酶抑制剂治疗",
+  "summary_zh": "图卡替尼联合组3级不良事件包括腹泻、手足综合征和转氨酶升高，发生率低于15%；来那替尼为不可逆泛HER TKI。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-431",
@@ -6831,7 +6891,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "酪氨酸激酶抑制剂治疗",
+  "summary_zh": "NALA试验中来那替尼联合卡培他滨较拉帕替尼联合方案显著改善PFS（HR 0.76），OS无差异。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-432",
@@ -6845,7 +6907,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "酪氨酸激酶抑制剂治疗",
+  "summary_zh": "来那替尼组缓解持续时间8.5个月对5.6个月，3级腹泻24.4%；两组生活质量评分相似。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-433",
@@ -6859,7 +6923,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "酪氨酸激酶抑制剂治疗",
+  "summary_zh": "GSK-EGF100151试验中拉帕替尼联合卡培他滨较单药延长至疾病进展时间（8.4对4.4个月），OS无差异。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-434",
@@ -6873,7 +6939,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "酪氨酸激酶抑制剂治疗",
+  "summary_zh": "拉帕替尼联合卡培他滨组更易发生腹泻、皮疹和消化不良；无生活质量及疾病进展后治疗数据。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-435",
@@ -6887,7 +6955,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "mTOR抑制",
+  "summary_zh": "BOLERO-3试验评估依维莫司联合曲妥珠单抗及长春瑞滨用于曲妥珠单抗耐药HER2阳性乳腺癌。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-436",
@@ -6901,7 +6971,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "mTOR抑制",
+  "summary_zh": "BOLERO-3中依维莫司组中位PFS 7.0个月对5.78个月（HR 0.78），严重不良事件42%对20%，最终OS未报告。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-437",
@@ -6915,7 +6987,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "胚系BRCA突变转移性乳腺癌",
+  "summary_zh": "携带胚系BRCA1/2致病突变的转移性乳腺癌患者，口服PARP抑制剂显示活性；BRCA为DNA修复相关抑癌基因。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-438",
@@ -6929,7 +7003,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "奥拉帕利",
+  "summary_zh": "OlympiAD试验中奥拉帕利较标准化疗显著延长中位PFS（7.0个月对4.2个月，HR 0.58），OS无差异。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-439",
@@ -6943,7 +7019,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "奥拉帕利",
+  "summary_zh": "奥拉帕利毒性低于标准化疗，3级以上不良事件36.6%对50.5%；三阴性亚组PFS获益更明显。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-440",
@@ -6957,7 +7035,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "奥拉帕利",
+  "summary_zh": "奥拉帕利组与标准化疗组OS无差异（HR 0.90）；贫血、恶心、呕吐、乏力等更常见于奥拉帕利组。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-441",
