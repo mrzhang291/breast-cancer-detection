@@ -7051,7 +7051,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "他拉唑帕利",
+  "summary_zh": "EMBRACA III期试验：gBRCA突变晚期乳腺癌患者随机接受他拉唑帕利或标准化疗，评估疗效与安全性。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-442",
@@ -7065,7 +7067,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "他拉唑帕利",
+  "summary_zh": "他拉唑帕利组中位PFS显著延长（8.6 vs 5.6个月），OS无差异，主要毒性为骨髓抑制尤其贫血。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-443",
@@ -7079,7 +7083,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "他拉唑帕利",
+  "summary_zh": "他拉唑帕利各亚组均获益，OS未成熟无差异，骨髓抑制为主要毒性，生活质量优于标准化疗。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-444",
@@ -7093,7 +7099,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "高肿瘤突变负荷乳腺癌",
+  "summary_zh": "高TMB（≥10突变/Mb）见于约5%乳腺癌，三阴性最高，ER阳性/HER2阴性最低。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-445",
@@ -7107,7 +7115,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "帕博利珠单抗",
+  "summary_zh": "KEYNOTE-158支持FDA批准帕博利珠单抗用于TMB≥10突变/Mb的转移性实体瘤，客观缓解率29%。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-446",
@@ -7121,7 +7131,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "帕博利珠单抗",
+  "summary_zh": "KEYNOTE-158多队列II期研究：TMB高患者客观缓解率29%，TMB低者6%，一例治疗相关肺炎死亡。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-447",
@@ -7135,7 +7147,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "帕博利珠单抗",
+  "summary_zh": "TAPUR篮子试验：高TMB转移性乳腺癌疾病控制率37%，客观缓解率21%，中位PFS 10.6周。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-448",
@@ -7149,7 +7163,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "转移性乳腺癌化疗",
+  "summary_zh": "激素治疗进展、HR阴性或内脏转移者适用细胞毒化疗；联合方案未见OS优于单药。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-449",
@@ -7163,7 +7179,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "转移性乳腺癌化疗",
+  "summary_zh": "列举转移性乳腺癌常用单药（蒽环类、紫杉类、艾立布林等）及联合方案，联合未改善OS。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-450",
@@ -7177,7 +7195,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "转移性乳腺癌化疗",
+  "summary_zh": "治疗选择受疾病进展速度、合并症及偏好影响；快速进展或内脏危象常选联合化疗。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-451",
@@ -7191,7 +7211,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "转移性乳腺癌化疗",
+  "summary_zh": "化疗联合激素治疗无OS优势；强化化疗改善缓解率但不改善OS；疗程需综合多因素决定。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-452",
@@ -7205,7 +7227,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "转移性乳腺癌化疗",
+  "summary_zh": "完全缓解后立即换方案化疗可延长DFS但未改善OS，一项研究中立即治疗组生存反而更差。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-453",
@@ -7219,7 +7243,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "转移性乳腺癌化疗",
+  "summary_zh": "维持化疗（紫杉醇联合吉西他滨）改善6个月PFS和OS，但不良事件增加。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-454",
@@ -7233,7 +7259,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "卡培他滨与氟尿嘧啶剂量",
+  "summary_zh": "依据DPYD基因型及功能等位基因数可建议避免氟尿嘧啶或减量50%，该争议问题需进一步评估。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-455",
@@ -7247,7 +7275,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "蒽环类心脏毒性",
+  "summary_zh": "选择化疗方案需考虑蒽环类心脏毒性风险，危险因素包括胸部放疗史、既往蒽环暴露及心脏病。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-456",
@@ -7261,7 +7291,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "蒽环类心脏毒性",
+  "summary_zh": "右雷佐生可降低多柔比星心脏毒性，允许更高累积剂量；ASCO建议累积剂量≥300 mg/m²时使用。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-457",
@@ -7275,7 +7307,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "转移性乳腺癌手术治疗",
+  "summary_zh": "ECOG 2108试验：转移性乳腺癌原发灶局部区域治疗未改善3年OS（68.4% vs 67.9%）。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-458",
@@ -7289,7 +7323,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "转移性乳腺癌手术治疗",
+  "summary_zh": "局部区域治疗未改善OS但减少局部进展；溃疡疼痛、脑或椎体转移、骨折等特定情况可手术。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-459",
@@ -7303,7 +7339,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "转移性乳腺癌放疗",
+  "summary_zh": "放疗用于骨痛、中枢神经系统转移、支气管阻塞及溃疡性病变等姑息治疗；锶-89可缓解弥漫骨转移。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-460",
@@ -7317,7 +7355,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "转移性乳腺癌骨改良治疗",
+  "summary_zh": "骨转移患者应考虑骨改良治疗；唑来膦酸每4周与每12周给药骨骼相关事件相似。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-461",
@@ -7331,7 +7371,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "转移性乳腺癌的骨改良治疗",
+  "summary_zh": "研究提示唑来膦酸每12周给药可行；地诺单抗与唑来膦酸在减少首次骨相关事件风险上相似。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-462",
@@ -7345,7 +7387,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "引言",
+  "summary_zh": "导管原位癌（DCIS）为非浸润性病变，可进展为浸润癌；2025年美国预计占新诊断乳腺肿瘤约16%。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-463",
@@ -7359,7 +7403,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "引言",
+  "summary_zh": "DCIS极少表现为可触及肿块，90%以上经钼靶诊断；粉刺型细胞学恶性、坏死多，侵袭性更高。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-464",
@@ -7373,7 +7419,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "DCIS的治疗选择",
+  "summary_zh": "DCIS治疗包括保乳手术或全乳切除加放疗，可联合他莫昔芬；全乳切除后局部和远处复发率1%～2%。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-465",
@@ -7387,7 +7435,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "DCIS的治疗选择",
+  "summary_zh": "借鉴浸润癌经验，NSABP和EORTC开展前瞻随机试验，评估保乳手术加放疗治疗DCIS的合理性。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-466",
@@ -7401,7 +7451,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "DCIS的治疗选择",
+  "summary_zh": "NSABP-B-17试验12年随访显示，放疗使乳腺内复发率由31.7%降至15.7%，浸润癌和DCIS复发均减少。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-467",
@@ -7415,7 +7467,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "DCIS的治疗选择",
+  "summary_zh": "EORTC-10853试验中位随访10.5年，放疗使乳腺内复发率由26%降至15%，浸润和非浸润复发均下降。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-468",
@@ -7429,7 +7483,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "DCIS的治疗选择",
+  "summary_zh": "年龄≤40岁、可触及病变、中低分化、筛状或实性生长及切缘不确定与复发风险升高相关；切缘<1 mm不可接受。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-469",
@@ -7443,7 +7499,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "DCIS的治疗选择",
+  "summary_zh": "RTOG-9804因入组差关闭；低危DCIS放疗15年同侧乳腺复发累积发生率7.1%，观察组15.1%。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-470",
@@ -7457,7 +7515,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "DCIS的治疗选择",
+  "summary_zh": "多变量分析显示仅放疗和他莫昔芬与乳腺内复发减少相关；荟萃分析示同侧乳腺事件风险显著降低。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-471",
@@ -7471,7 +7531,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "DCIS的治疗选择",
+  "summary_zh": "随访10年后放疗对乳腺癌死亡率及全因死亡率无显著影响；多种病理分期系统尚未达成共识。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-472",
@@ -7485,7 +7547,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "DCIS的治疗选择",
+  "summary_zh": "切缘≥10 mm者单纯手术后局部复发率极低（4%）；但NSABP前瞻试验未发现放疗无获益亚组。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-473",
@@ -7499,7 +7563,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "DCIS的治疗选择",
+  "summary_zh": "NSABP-B-24中，保乳手术加放疗后他莫昔芬组5年乳腺癌事件少于安慰剂组（8.2% vs.，P=.009）。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-474",
@@ -7513,7 +7579,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "DCIS的治疗选择",
+  "summary_zh": "他莫昔芬使对侧乳腺肿瘤年发生率由0.8%降至0.4%，同侧浸润癌5年由4.2%降至2.1%，但无生存获益。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-475",
@@ -7527,7 +7595,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "DCIS的治疗选择",
+  "summary_zh": "NSABP-B35显示绝经后DCIS患者阿那曲唑较他莫昔芬显著减少乳腺癌事件（HR 0.73），但未改善生存。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-476",
@@ -7541,7 +7611,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "DCIS的治疗选择",
+  "summary_zh": "IBIS-II DCIS试验未发现阿那曲唑在复发率（HR 0.89）或生存上优于他莫昔芬；内分泌治疗需权衡获益与副作用。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-477",
@@ -7555,7 +7627,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "本摘要最新更新（2025年4月25日）",
+  "summary_zh": "更新手术治疗内容：SOUND等随机试验确定部分浸润性乳腺癌患者可省略前哨淋巴结活检。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-478",
@@ -7569,7 +7643,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "本摘要最新更新（2025年4月25日）",
+  "summary_zh": "INSEMA试验支持部分临床淋巴结阴性患者省略腋窝手术；新增日本阿那曲唑与他莫昔芬序贯治疗数据。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-479",
@@ -7583,7 +7659,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "本摘要最新更新（2025年4月25日）",
+  "summary_zh": "修订阿贝西利联合内分泌治疗高危HR阳性HER2阴性乳腺癌内容；新增三阴性乳腺癌免疫治疗小节。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-480",
@@ -7597,7 +7675,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "本摘要最新更新（2025年4月25日）",
+  "summary_zh": "修订转移性乳腺癌一线阿贝西利联合芳香化酶抑制剂III期试验结果；摘要由PDQ编委会独立维护。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-481",
@@ -7611,7 +7691,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "本摘要目的",
+  "summary_zh": "面向医疗专业人员的PDQ成人乳腺癌治疗摘要，提供循证信息以辅助临床诊疗，但不构成正式指南。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-482",
@@ -7625,7 +7707,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "审稿人与更新",
+  "summary_zh": "摘要由PDQ成人治疗编辑委员会定期审阅更新，基于文献独立评审，不代表NCI或NIH政策。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-483",
@@ -7639,7 +7723,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "审稿人与更新",
+  "summary_zh": "列出乳腺癌治疗摘要的主要审稿人，并说明意见应通过官网提交，勿直接联系编委。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-484",
@@ -7653,7 +7739,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "证据等级",
+  "summary_zh": "部分参考文献附证据等级标注，帮助读者评估特定干预措施证据强度，采用正式评级系统。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-485",
@@ -7667,7 +7755,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "本摘要使用许可",
+  "summary_zh": "PDQ为注册商标，内容可自由引用但不得冒称NCI摘要，须完整呈现并定期更新，附推荐引用格式。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-486",
@@ -7681,7 +7771,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "本摘要使用许可",
+  "summary_zh": "PDQ摘要外使用图片须获版权所有者许可，NCI无权授予，相关图片可在Visuals Online获取。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-487",
@@ -7695,6 +7787,8 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "免责声明",
+  "summary_zh": "治疗方案分为“标准”或“临床评估中”，该分类不得作为保险报销依据，更多信息见官网。"
  }
 ]

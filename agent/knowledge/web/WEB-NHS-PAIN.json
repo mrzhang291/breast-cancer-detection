@@ -11,7 +11,9 @@
   "domain": "MED-DISEASE",
   "level": 2,
   "license": "Open Government Licence v3.0",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "乳房疼痛的其他原因",
+  "summary_zh": "乳房疼痛还可源于颈肩背损伤、避孕药或抗抑郁药、乳腺炎或脓肿、更年期激素变化；单纯乳房疼痛 unlikely 是癌症症状。"
  },
  {
   "clause_id": "WEB-NHS-PAIN-002",
@@ -25,6 +27,8 @@
   "domain": "MED-DISEASE",
   "level": 2,
   "license": "Open Government Licence v3.0",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "紧急就医指征",
+  "summary_zh": "乳房疼痛伴高热寒战、局部红热肿胀、固定硬块、血性乳头溢液、乳房变形、橘皮样皮肤或乳头内陷皮疹，需紧急就诊。"
  }
 ]
