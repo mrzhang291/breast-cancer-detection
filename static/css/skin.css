@@ -217,7 +217,9 @@ body { padding-top: 0 !important; }
 .navbar, .top-nav { display: none !important; }
 
 /* ---------- 排版细修 ---------- */
-.container, .container-fluid { padding-top: 18px; padding-bottom: 56px; }
+.container, .container-fluid { padding-top: 18px; padding-bottom: 24px; }
+.container:last-of-type, .container-fluid:last-of-type { padding-bottom: 64px; }
+body > .container-fluid + .container, body > .container + .container-fluid { padding-top: 0; }
 
 .page-header {
     margin: 0 0 16px; padding: 0 0 12px; border-bottom: 1px solid var(--line);
