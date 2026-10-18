@@ -70,6 +70,15 @@ def bind_runtime():
     if not chunks:
         rag_index.rebuild()
 
+    # 清掉历史缓存：索引缺失时跑出来的无引用答案会被缓存，污染后续测试
+    try:
+        conn = db.connect()
+        conn.execute('DELETE FROM answer_cache')
+        conn.commit()
+        conn.close()
+    except Exception:  # noqa: BLE001
+        pass
+
     yield
 
 
