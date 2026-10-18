@@ -928,6 +928,74 @@ def clear_records_remote(user_id):
                        payload={'user_id': user_id})
 
 
+@app.route('/features')
+def features_page():
+    """30 项特征说明页。"""
+    if 'username' not in session:
+        return redirect(url_for('login'))
+
+    import json as _json
+    data_path = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                             'agent', 'knowledge', 'features.json')
+    with open(data_path, 'r', encoding='utf-8') as fh:
+        raw = _json.load(fh)
+
+    group_meta = {
+        'mean': ('平均值', '平均每个细胞核的水平'),
+        'se': ('标准误', '细胞之间的差异大小'),
+        'worst': ('最差值', '最异常那个细胞核的值'),
+    }
+    features = []
+    for item in raw.get('items', []):
+        index = int(item.get('index') or 0)
+        group = 'mean' if index <= 10 else 'se' if index <= 20 else 'worst'
+        stats = item.get('stats') or {}
+        benign = float(stats.get('benign_mean') or 0)
+        malignant = float(stats.get('malignant_mean') or 0)
+        scale = max(benign, malignant, 1e-9)
+        features.append({
+            'index': index,
+            'name_zh': item.get('name_zh') or item.get('feature'),
+            'name_en': item.get('name_en') or item.get('feature'),
+            'meaning': item.get('meaning') or '',
+            'group': group,
+            'group_label': group_meta[group][0],
+            'benign': benign,
+            'malignant': malignant,
+            'benign_pct': round(benign / scale * 100, 1),
+            'malignant_pct': round(malignant / scale * 100, 1),
+            'ratio': (malignant / benign) if benign else 0,
+            'higher': bool(item.get('higher_means_more_suspicious', True)),
+        })
+
+    groups = []
+    for key in ('mean', 'se', 'worst'):
+        items = [f for f in features if f['group'] == key]
+        groups.append({'label': group_meta[key][0], 'hint': group_meta[key][1],
+                       'items': items})
+
+    shapes = [
+        {'name': '半径', 'desc': '细胞核的平均半径，反映核的大小'},
+        {'name': '纹理', 'desc': '灰度值的标准差，反映内部质地是否均匀'},
+        {'name': '周长', 'desc': '细胞核边界长度'},
+        {'name': '面积', 'desc': '细胞核投影面积'},
+        {'name': '平滑度', 'desc': '边界半径的局部变化，越大越不平滑'},
+        {'name': '紧凑度', 'desc': '周长² / 面积 − 1，越大形状越不圆'},
+        {'name': '凹度', 'desc': '轮廓上凹陷部分的深度'},
+        {'name': '凹点', 'desc': '轮廓上凹陷点的数量'},
+        {'name': '对称性', 'desc': '细胞核左右形状的一致程度'},
+        {'name': '分形维数', 'desc': '边界粗糙度 / 复杂度，越大越不规则'},
+    ]
+
+    first = features[0] if features else {'benign': 1, 'malignant': 2}
+    scale = max(first['benign'], first['malignant'], 1e-9)
+    return render_template('features.html', features=features, groups=groups, shapes=shapes,
+                           sample_benign=first['benign'], sample_malignant=first['malignant'],
+                           benign_pct=round(first['benign'] / scale * 100, 1),
+                           malignant_pct=round(first['malignant'] / scale * 100, 1),
+                           active_nav='features')
+
+
 @app.route('/records')
 def records():
     if 'username' not in session:
