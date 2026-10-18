@@ -375,6 +375,11 @@
         }
 
         var steps = result.graph || [];
+        if (!steps.length && (result.steps || []).length) {
+            steps = result.steps.map(function (st) {
+                return { node: st.label || st.tool || 'step', verdict: st.verdict || 'ok' };
+            });
+        }
         if (steps.length) {
             var det = document.createElement('details');
             det.className = 'as-steps';
@@ -420,23 +425,43 @@
         addUser(question);
         addLoading();
 
-        fetch('/api/agent/run-sync', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                question: question,
-                values: (window.getAgentValues && window.getAgentValues()) || context.values || null,
-                history: history.slice(-6),
-                context: { record_id: context.recordId || null }
-            })
-        }).then(function (resp) {
-            return resp.json().then(function (data) { return { ok: resp.ok, data: data }; });
+        var payload = {
+            question: question,
+            values: (window.getAgentValues && window.getAgentValues()) || context.values || null,
+            history: history.slice(-6),
+            context: { record_id: context.recordId || null }
+        };
+
+        // 优先走 LLM 引擎；不可用（503）时自动回退确定性引擎，用户无感
+        function tryLLMFirst() {
+            return fetch('/api/agent/llm', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            }).then(function (resp) {
+                if (resp.status === 503) { return null; }
+                return resp.json().then(function (data) {
+                    return (data && data.ok) ? data : null;
+                });
+            }).catch(function () { return null; });
+        }
+
+        tryLLMFirst().then(function (llmData) {
+            if (llmData) { return llmData; }
+            return fetch('/api/agent/run-sync', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            }).then(function (resp) {
+                return resp.json().then(function (data) { return { ok: resp.ok, data: data }; });
+            }).then(function (res) {
+                if (!res.ok || !res.data.ok) {
+                    throw new Error((res.data && res.data.error) || '请求失败');
+                }
+                return res.data;
+            });
         }).then(function (res) {
-            if (!res.ok || !res.data.ok) {
-                throw new Error((res.data && res.data.error) || '请求失败');
-            }
-            addAssistant(res.data.result || {});
-        }).catch(function (err) {
+            addAssistant((res && res.result) || {});.catch(function (err) {
             removeLoading();
             var row = document.createElement('div');
             row.className = 'as-msg';
