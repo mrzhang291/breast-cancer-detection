@@ -1,10 +1,5 @@
-﻿import io, re, sys
+﻿import io, sys
 sys.stdout.reconfigure(encoding="utf-8")
-s = io.open(r"templates\register.html", encoding="utf-8").read()
-body = s[s.index("<body"):]
-print("=== body 长度:", len(body))
-print(body[:2600])
-print("...")
-print("=== 表单相关 ===")
-for m in re.finditer(r'<(form|input|button|select)[^>]*>', body):
-    print("  ", m.group(0)[:150])
+lines = io.open(r"agent\registry.py", encoding="utf-8").read().splitlines()
+for i, l in enumerate(lines[:60], 1):
+    print("%3d| %s" % (i, l))

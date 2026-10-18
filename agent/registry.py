@@ -33,12 +33,14 @@ class ToolResult:
     error: str = ''
     error_type: str = ''          # validation / permission / timeout / runtime
     latency_ms: int = 0
+    artifacts: List[Dict] = field(default_factory=list)
 
     def to_dict(self) -> Dict:
         return {
             'ok': self.ok, 'data': self.data, 'facts': self.facts,
             'error': self.error, 'error_type': self.error_type,
             'latency_ms': self.latency_ms,
+            'artifacts': self.artifacts,
         }
 
 

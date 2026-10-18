@@ -16,6 +16,7 @@ class Runtime:
         self.fetch_records: Optional[Callable] = None  # (user_id, page, size, filter) -> dict
         self.fetch_stats: Optional[Callable] = None    # (user_id) -> dict
         self.rag: Any = None
+        self.render_report: Optional[Callable] = None  # (kind, payload) -> dict
 
     def bind(self, **kwargs) -> 'Runtime':
         for key, value in kwargs.items():
@@ -31,7 +32,8 @@ class Runtime:
 
     def status(self) -> Dict[str, bool]:
         return {k: getattr(self, k) is not None
-                for k in ('predict', 'explain', 'fetch_records', 'fetch_stats', 'rag')}
+                for k in ('predict', 'explain', 'fetch_records', 'fetch_stats',
+                          'rag', 'render_report')}
 
 
 _RUNTIME = Runtime()

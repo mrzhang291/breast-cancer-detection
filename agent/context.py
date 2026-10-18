@@ -20,6 +20,7 @@ class AgentContext:
     facts: List[Dict] = field(default_factory=list)
     citations: List[str] = field(default_factory=list)
     steps: List[Dict] = field(default_factory=list)
+    artifacts: List[Dict] = field(default_factory=list)
     history: List[Dict] = field(default_factory=list)
     context: Dict = field(default_factory=dict)
 
@@ -30,6 +31,11 @@ class AgentContext:
     def add_citation(self, clause_id: str) -> None:
         if clause_id and clause_id not in self.citations:
             self.citations.append(clause_id)
+
+    def add_artifact(self, artifact: Dict) -> Dict:
+        if artifact:
+            self.artifacts.append(artifact)
+        return artifact
 
     def add_step(self, **kwargs) -> Dict:
         kwargs.setdefault('seq', len(self.steps) + 1)
