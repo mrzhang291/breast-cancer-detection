@@ -1126,6 +1126,8 @@
         .rp-btn.primary:hover { color: #fff; opacity: .95; }
         .rp-btn.ghost { background: transparent; color: #64748b; border-style: dashed; }
 
+
+        .rp-followup p { margin: 0; font-size: 12.5px; line-height: 1.8; color: #475569; }
         .rp-disclaimer {
             font-size: 12px; color: #b45309; background: #fffbeb; border: 1px solid #fef3c7;
             border-radius: 12px; padding: 10px 14px; margin: 0 0 18px;
@@ -1169,6 +1171,7 @@
     <div class="rp-head-right">
       <span class="rp-pill ok"><i class="fa fa-check"></i> 已保存</span>
       <a class="rp-link" href="/records">查看记录 →</a>
+      <a class="rp-link" href="/trends">趋势 →</a>
       <span class="rp-dim">耗时 {{ "%.3f"|format(time) }} 秒 · 模型 {{ model_type }}</span>
     </div>
   </section>
@@ -1234,6 +1237,14 @@
     <a class="rp-btn" href="/shap-analysis"><i class="fa fa-bar-chart"></i> SHAP 分析</a>
     <button class="rp-btn" id="rpCopy" type="button"><i class="fa fa-copy"></i> 复制结论</button>
     <a class="rp-btn ghost" href="/" onclick="sessionStorage.setItem('resetForm', 'true');"><i class="fa fa-plus"></i> 新建预测</a>
+  </section>
+
+  <section class="rp-card rp-followup">
+    <div class="rp-sec-head" style="margin-bottom:8px;">
+      <h3><i class="fa fa-calendar-check-o" style="color:#0ea5e9;"></i> 随访建议</h3>
+      <span class="rp-dim">通用建议，具体以医生意见为准</span>
+    </div>
+    <p>结果提示良性可能性较高时，建议 3–6 个月复查一次；若出现新发肿块、皮肤凹陷或橘皮样改变、乳头溢液，请及时就诊，不必等到复查时间。</p>
   </section>
 
   <p class="rp-disclaimer"><i class="fa fa-exclamation-triangle"></i> {{ _('disclaimer') }}</p>
