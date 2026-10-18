@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="{{ current_lang }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>30 项特征说明 · {{ _('breast_cancer_detection') }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/skin.css') }}">
+    <style>
+        body { background: var(--bg); }
+
+        .feat-wrap { max-width: 1180px; margin: 0 auto; padding: 26px 22px 64px; }
+
+        /* ---------- hero ---------- */
+        .feat-hero {
+            position: relative; overflow: hidden;
+            display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(260px, .9fr);
+            gap: 28px; align-items: center;
+            background: radial-gradient(680px 320px at 92% -30%, #a78bfa 0%, transparent 60%),
+                        linear-gradient(120deg, #312e81, #4c1d95 58%, #6d28d9);
+            border-radius: 24px; padding: 38px 40px; color: #fff;
+            box-shadow: 0 30px 60px -40px rgba(49, 46, 129, .8);
+        }
+        .feat-eyebrow {
+            font-size: 11.5px; letter-spacing: .16em; text-transform: uppercase;
+            color: rgba(255, 255, 255, .62);
+        }
+        .feat-hero h1 {
+            font-size: 30px; line-height: 1.25; margin: 10px 0 12px; color: #fff;
+            letter-spacing: -.02em; font-weight: 700;
+        }
+        .feat-hero p {
+            margin: 0; font-size: 14px; line-height: 1.9; color: rgba(255, 255, 255, .78);
+            max-width: 620px;
+        }
+        .feat-hero-stats {
+            display: flex; gap: 26px; margin-top: 26px; flex-wrap: wrap;
+        }
+        .feat-hero-stats div { display: flex; flex-direction: column; gap: 3px; }
+        .feat-hero-stats b { font-size: 26px; font-weight: 700; letter-spacing: -.02em; }
+        .feat-hero-stats span { font-size: 11.5px; color: rgba(255, 255, 255, .6); }
+
+        .feat-hero-card {
+            background: rgba(255, 255, 255, .1); border: 1px solid rgba(255, 255, 255, .18);
+            border-radius: 18px; padding: 20px 22px; backdrop-filter: blur(4px);
+        }
+        .feat-hero-card h4 {
+            margin: 0 0 14px; font-size: 12px; letter-spacing: .08em;
+            color: rgba(255, 255, 255, .7); font-weight: 600;
+        }
+        .hero-bar { margin-bottom: 12px; }
+        .hero-bar-label {
+            display: flex; justify-content: space-between; font-size: 11.5px;
+            color: rgba(255, 255, 255, .72); margin-bottom: 5px;
+        }
+        .hero-track { height: 7px; border-radius: 999px; background: rgba(255, 255, 255, .16); overflow: hidden; }
+        .hero-fill { height: 100%; border-radius: 999px; }
+        .hero-fill.good { background: linear-gradient(90deg, #34d399, #10b981); }
+        .hero-fill.bad { background: linear-gradient(90deg, #fb7185, #ef4444); }
+        .feat-hero-card small {
+            display: block; margin-top: 12px; font-size: 11px; line-height: 1.7;
+            color: rgba(255, 255, 255, .55);
+        }
+
+        /* ---------- section ---------- */
+        .feat-section { margin-top: 34px; }
+        .feat-section-head {
+            display: flex; align-items: baseline; justify-content: space-between;
+            gap: 14px; margin-bottom: 16px; flex-wrap: wrap;
+        }
+        .feat-section-head h2 {
+            font-size: 19px; margin: 0; letter-spacing: -.01em; color: var(--ink);
+        }
+        .feat-section-head p { margin: 0; font-size: 12.5px; color: var(--ink-3); }
+
+        .feat-axis {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 18px;
+        }
+        .feat-panel {
+            background: var(--surface); border: 1px solid var(--line); border-radius: 20px;
+            padding: 22px 24px; box-shadow: var(--shadow);
+        }
+        .feat-panel h3 {
+            margin: 0 0 4px; font-size: 14px; color: var(--ink);
+        }
+        .feat-panel .panel-sub { margin: 0 0 16px; font-size: 12px; color: var(--ink-3); }
+
+        .shape-list { display: flex; flex-direction: column; gap: 2px; }
+        .shape-item {
+            display: grid; grid-template-columns: 84px 1fr; gap: 10px; align-items: baseline;
+            padding: 8px 0; border-bottom: 1px dashed #eef2f8; font-size: 12.5px;
+        }
+        .shape-item:last-child { border-bottom: 0; }
+        .shape-item b { color: var(--ink); font-weight: 600; }
+        .shape-item span { color: var(--ink-2); }
+
+        .stat-list { display: flex; flex-direction: column; gap: 10px; }
+        .stat-item {
+            border: 1px solid var(--line); border-radius: 14px; padding: 13px 15px;
+            background: linear-gradient(180deg, #fbfcff, #fff);
+        }
+        .stat-item b { font-size: 12.5px; color: var(--ink); }
+        .stat-item em {
+            font-style: normal; font-size: 10.5px; color: var(--brand); background: var(--soft);
+            border-radius: 999px; padding: 2px 8px; margin-left: 8px;
+        }
+        .stat-item p { margin: 6px 0 0; font-size: 12px; line-height: 1.7; color: var(--ink-2); }
+
+        /* ---------- table ---------- */
+        .feat-table-wrap {
+            background: var(--surface); border: 1px solid var(--line); border-radius: 20px;
+            overflow: hidden; box-shadow: var(--shadow);
+        }
+        table.feat-table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+        .feat-table thead th {
+            position: sticky; top: 0; background: #f8fafc; color: var(--ink-2);
+            font-weight: 600; text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--line);
+            font-size: 11.5px; letter-spacing: .03em;
+        }
+        .feat-table td { padding: 10px 14px; border-bottom: 1px solid #f1f5f9; color: var(--ink-2); }
+        .feat-table tr:last-child td { border-bottom: 0; }
+        .feat-table tr:hover td { background: #fafbff; }
+        .feat-table .num { color: var(--ink-3); font-variant-numeric: tabular-nums; width: 44px; }
+        .feat-table .name { color: var(--ink); font-weight: 600; }
+        .feat-table .en { color: var(--ink-3); font-size: 11.5px; }
+        .feat-table .val { font-variant-numeric: tabular-nums; text-align: right; width: 96px; }
+        .feat-table .good { color: #059669; }
+        .feat-table .bad { color: var(--danger); }
+        .group-row td {
+            background: #f6f8ff; color: var(--brand); font-weight: 600; font-size: 11.5px;
+            letter-spacing: .05em;
+        }
+
+        /* ---------- cards ---------- */
+        .feat-filter { display: flex; gap: 8px; flex-wrap: wrap; }
+        .feat-chip {
+            border: 1px solid var(--line); background: #fff; color: var(--ink-2);
+            border-radius: 999px; padding: 6px 14px; font-size: 12px; cursor: pointer;
+            font-family: inherit; transition: all .15s;
+        }
+        .feat-chip:hover { border-color: #c7d2fe; color: var(--brand); }
+        .feat-chip.active {
+            background: var(--brand); border-color: var(--brand); color: #fff;
+            box-shadow: 0 8px 18px -12px rgba(79, 70, 229, .9);
+        }
+
+        .feat-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 16px; margin-top: 16px;
+        }
+        .feat-card {
+            background: var(--surface); border: 1px solid var(--line); border-radius: 18px;
+            padding: 18px 20px 16px; box-shadow: var(--shadow); transition: transform .16s, box-shadow .16s;
+        }
+        .feat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 22px 44px -32px rgba(15, 23, 42, .6);
+        }
+        .feat-card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
+        .feat-idx {
+            flex: 0 0 30px; height: 30px; border-radius: 9px; display: grid; place-items: center;
+            background: var(--soft); color: var(--brand); font-size: 12px; font-weight: 700;
+        }
+        .feat-card h3 { margin: 0; font-size: 14.5px; color: var(--ink); letter-spacing: -.01em; }
+        .feat-card .feat-en {
+            display: block; margin: 2px 0 0; font-size: 11px; color: var(--ink-3);
+            font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        }
+        .feat-badge {
+            font-size: 10.5px; border-radius: 999px; padding: 3px 9px; white-space: nowrap;
+            background: #fef2f2; color: #b91c1c; border: 1px solid #fee2e2;
+        }
+        .feat-badge.low { background: #eff6ff; color: #1d4ed8; border-color: #dbeafe; }
+        .feat-card p.meaning {
+            margin: 12px 0 14px; font-size: 12.5px; line-height: 1.75; color: var(--ink-2);
+            min-height: 44px;
+        }
+        .bar-row { display: flex; align-items: center; gap: 9px; margin-top: 7px; }
+        .bar-tag { width: 34px; font-size: 10.5px; color: var(--ink-3); flex: 0 0 34px; }
+        .bar-track { flex: 1; height: 8px; border-radius: 999px; background: #f1f5f9; overflow: hidden; }
+        .bar-fill { height: 100%; border-radius: 999px; }
+        .bar-fill.good { background: linear-gradient(90deg, #6ee7b7, #10b981); }
+        .bar-fill.bad { background: linear-gradient(90deg, #fda4af, #ef4444); }
+        .bar-val {
+            width: 66px; text-align: right; font-size: 11px; color: var(--ink-2);
+            font-variant-numeric: tabular-nums; flex: 0 0 66px;
+        }
+        .feat-card .card-foot {
+            margin-top: 12px; padding-top: 10px; border-top: 1px dashed #eef2f8;
+            display: flex; justify-content: space-between; font-size: 10.5px; color: var(--ink-3);
+        }
+
+        /* ---------- how to read ---------- */
+        .feat-read {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+        }
+        .read-item {
+            background: var(--surface); border: 1px solid var(--line); border-radius: 18px;
+            padding: 20px 22px; box-shadow: var(--shadow);
+        }
+        .read-num {
+            width: 26px; height: 26px; border-radius: 8px; display: grid; place-items: center;
+            background: var(--soft); color: var(--brand); font-weight: 700; font-size: 12px;
+        }
+        .read-item h3 { margin: 12px 0 6px; font-size: 13.5px; color: var(--ink); }
+        .read-item p { margin: 0; font-size: 12.5px; line-height: 1.8; color: var(--ink-2); }
+
+        .feat-cta {
+            margin-top: 30px; display: flex; align-items: center; justify-content: space-between;
+            gap: 18px; flex-wrap: wrap;
+            background: linear-gradient(120deg, #eef2ff, #f5f3ff);
+            border: 1px solid #e0e7ff; border-radius: 20px; padding: 22px 26px;
+        }
+        .feat-cta h3 { margin: 0 0 4px; font-size: 15px; color: #312e81; }
+        .feat-cta p { margin: 0; font-size: 12.5px; color: #4c1d95; opacity: .8; }
+        .btn-predict {
+            display: inline-flex; align-items: center; gap: 8px; text-decoration: none;
+            background: var(--brand); color: #fff; border-radius: 12px; padding: 11px 20px;
+            font-size: 13px; font-weight: 600; box-shadow: 0 14px 26px -18px rgba(79, 70, 229, .95);
+        }
+        .btn-predict:hover { color: #fff; opacity: .94; }
+
+        .feat-foot {
+            margin-top: 26px; font-size: 11.5px; color: var(--ink-3); line-height: 1.8;
+        }
+
+        @media (max-width: 900px) {
+            .feat-hero { grid-template-columns: 1fr; padding: 28px 24px; }
+            .feat-axis, .feat-read { grid-template-columns: 1fr; }
+            .feat-hero h1 { font-size: 24px; }
+        }
+        @media (max-width: 560px) {
+            .feat-wrap { padding: 16px 14px 48px; }
+            .feat-hero { border-radius: 18px; }
+            .feat-hero-stats { gap: 18px; }
+        }
+    </style>
+</head>
+<body>
+{% set active_nav = 'features' %}
+{% include '_topbar.html' %}
+
+<main class="feat-wrap">
+    <section class="feat-hero">
+        <div>
+            <div class="feat-eyebrow">数据说明 · Feature guide</div>
+            <h1>30 项细胞核特征，<br>每一项到底在量什么</h1>
+            <p>
+                细针穿刺（FNA）图像里，每个细胞核会被量出 10 类形态指标；每一类再分别计算
+                「平均值 / 标准误 / 最差值」，组成模型的 30 维输入。数值本身没有绝对好坏，
+                关键是看它更接近良性人群还是恶性人群的分布。
+            </p>
+            <div class="feat-hero-stats">
+                <div><b>10</b><span>类形态指标</span></div>
+                <div><b>×3</b><span>种统计口径</span></div>
+                <div><b>30</b><span>维模型输入</span></div>
+                <div><b>3</b><span>档证据强度</span></div>
+            </div>
+        </div>
+        <div class="feat-hero-card">
+            <h4>一个例子：半径平均值</h4>
+            <div class="hero-bar">
+                <div class="hero-bar-label"><span>良性组均值</span><span>{{ '%.2f'|format(sample_benign) }}</span></div>
+                <div class="hero-track">
+                    <div class="hero-fill good" style="width: {{ benign_pct }}%"></div>
+                </div>
+            </div>
+            <div class="hero-bar">
+                <div class="hero-bar-label"><span>恶性组均值</span><span>{{ '%.2f'|format(sample_malignant) }}</span></div>
+                <div class="hero-track">
+                    <div class="hero-fill bad" style="width: {{ malignant_pct }}%"></div>
+                </div>
+            </div>
+            <small>恶性组的细胞核通常更大、更不规则。单看一项不能下结论，模型看的是 30 项组合。</small>
+        </div>
+    </section>
+
+    <section class="feat-section">
+        <div class="feat-section-head">
+            <h2>先理解两个维度</h2>
+            <p>形态 × 统计口径 = 30 项</p>
+        </div>
+        <div class="feat-axis">
+            <div class="feat-panel">
+                <h3>10 类形态指标</h3>
+                <p class="panel-sub">都是在描述细胞核「大不大、规不规则、边界粗不粗糙」</p>
+                <div class="shape-list">
+                    {% for shape in shapes %}
+                    <div class="shape-item"><b>{{ shape.name }}</b><span>{{ shape.desc }}</span></div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="feat-panel">
+                <h3>3 种统计口径</h3>
+                <p class="panel-sub">同一项指标，取三种统计量，回答三个不同的问题</p>
+                <div class="stat-list">
+                    <div class="stat-item">
+                        <b>平均值</b><em>mean</em>
+                        <p>视野内所有细胞核的平均水平，看整体。</p>
+                    </div>
+                    <div class="stat-item">
+                        <b>标准误</b><em>se</em>
+                        <p>细胞之间的差异有多大，看整齐度；数值越大说明细胞越不均一。</p>
+                    </div>
+                    <div class="stat-item">
+                        <b>最差值</b><em>worst</em>
+                        <p>最异常那个细胞核的数值，看极端情况。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="feat-section">
+        <div class="feat-section-head">
+            <h2>30 项对照表</h2>
+            <p>同一行里，两列均值差得越明显，这一项越有区分度</p>
+        </div>
+        <div class="feat-table-wrap">
+            <table class="feat-table">
+                <thead>
+                    <tr>
+                        <th class="num">#</th>
+                        <th>特征</th>
+                        <th>英文名</th>
+                        <th class="val">良性均值</th>
+                        <th class="val">恶性均值</th>
+                        <th style="width:110px">差异</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for group in groups %}
+                    <tr class="group-row">
+                        <td colspan="6">{{ group.label }} · {{ group.hint }}</td>
+                    </tr>
+                    {% for f in group['items'] %}
+                    <tr>
+                        <td class="num">{{ f.index }}</td>
+                        <td class="name">{{ f.name_zh }}</td>
+                        <td class="en">{{ f.name_en }}</td>
+                        <td class="val good">{{ '%.4g'|format(f.benign) }}</td>
+                        <td class="val bad">{{ '%.4g'|format(f.malignant) }}</td>
+                        <td class="val">×{{ '%.2f'|format(f.ratio) }}</td>
+                    </tr>
+                    {% endfor %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="feat-section">
+        <div class="feat-section-head">
+            <h2>逐项说明</h2>
+            <div class="feat-filter" id="featFilter">
+                <button class="feat-chip active" data-group="all" type="button">全部 30 项</button>
+                <button class="feat-chip" data-group="mean" type="button">平均值</button>
+                <button class="feat-chip" data-group="se" type="button">标准误</button>
+                <button class="feat-chip" data-group="worst" type="button">最差值</button>
+            </div>
+        </div>
+        <div class="feat-grid" id="featGrid">
+            {% for f in features %}
+            <article class="feat-card" data-group="{{ f.group }}">
+                <div class="feat-card-top">
+                    <div style="display:flex;gap:10px;align-items:flex-start;">
+                        <span class="feat-idx">{{ f.index }}</span>
+                        <div>
+                            <h3>{{ f.name_zh }}</h3>
+                            <span class="feat-en">{{ f.name_en }}</span>
+                        </div>
+                    </div>
+                    <span class="feat-badge {{ '' if f.higher else 'low' }}">
+                        {{ '越高越可疑' if f.higher else '越低越可疑' }}
+                    </span>
+                </div>
+                <p class="meaning">{{ f.meaning }}</p>
+                <div class="bar-row">
+                    <span class="bar-tag">良性</span>
+                    <span class="bar-track"><span class="bar-fill good" style="width: {{ f.benign_pct }}%"></span></span>
+                    <span class="bar-val">{{ '%.4g'|format(f.benign) }}</span>
+                </div>
+                <div class="bar-row">
+                    <span class="bar-tag">恶性</span>
+                    <span class="bar-track"><span class="bar-fill bad" style="width: {{ f.malignant_pct }}%"></span></span>
+                    <span class="bar-val">{{ '%.4g'|format(f.malignant) }}</span>
+                </div>
+                <div class="card-foot">
+                    <span>{{ f.group_label }}</span>
+                    <span>恶性 / 良性 = ×{{ '%.2f'|format(f.ratio) }}</span>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section class="feat-section">
+        <div class="feat-section-head">
+            <h2>怎么用这些数字</h2>
+            <p>不需要背数值，看相对位置就够了</p>
+        </div>
+        <div class="feat-read">
+            <div class="read-item">
+                <div class="read-num">1</div>
+                <h3>不用背正常范围</h3>
+                <p>页面上的条形对比就是参考：同一项里，你的值更靠近绿色还是红色那一侧。</p>
+            </div>
+            <div class="read-item">
+                <div class="read-num">2</div>
+                <h3>看整体，不看单项</h3>
+                <p>模型是 30 项一起判断的。单项偏高不代表一定有问题，要结合其他指标。</p>
+            </div>
+            <div class="read-item">
+                <div class="read-num">3</div>
+                <h3>结合证据档位</h3>
+                <p>结论页会给出「证据充分 / 需谨慎 / 证据不足」三档；档位低时，任何单项都不宜过度解读。</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="feat-cta">
+        <div>
+            <h3>看完了？回到预测页试一次</h3>
+            <p>填入 30 项特征，或直接用真实样本，看模型给出的结论与归因。</p>
+        </div>
+        <a class="btn-predict" href="/">开始预测 →</a>
+    </div>
+
+    <p class="feat-foot">
+        数据来源：威斯康星乳腺癌诊断数据集（WDBC）的良恶性组统计量，颗粒度为均值 / 标准误 / 最差值。
+        本页仅用于教学演示，不构成诊断依据。
+    </p>
+</main>
+
+<script>
+    (function () {
+        var chips = document.querySelectorAll('.feat-chip');
+        var cards = document.querySelectorAll('.feat-card');
+        Array.prototype.forEach.call(chips, function (chip) {
+            chip.addEventListener('click', function () {
+                Array.prototype.forEach.call(chips, function (c) { c.classList.remove('active'); });
+                chip.classList.add('active');
+                var group = chip.getAttribute('data-group');
+                Array.prototype.forEach.call(cards, function (card) {
+                    card.style.display = (group === 'all' || card.getAttribute('data-group') === group)
+                        ? '' : 'none';
+                });
+            });
+        });
+    })();
+</script>
+</body>
+</html>
