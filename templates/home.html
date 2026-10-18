@@ -440,12 +440,28 @@
 
 {% include '_assistant.html' %}
 
-<script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
+    var SAMPLE = {1:'11.84',2:'18.94',3:'75.51',4:'428',5:'0.0887',6:'0.069',7:'0.0267',8:'0.0139',
+        9:'0.1533',10:'0.0606',11:'0.2222',12:'0.8652',13:'1.444',14:'17.12',15:'0.0055',16:'0.0173',
+        17:'0.0204',18:'0.0067',19:'0.0162',20:'0.0029',21:'13.3',22:'24.99',23:'85.22',24:'546.3',
+        25:'0.128',26:'0.188',27:'0.1471',28:'0.0691',29:'0.2535',30:'0.0799'};
+
+    function input(i) {
+        return document.querySelector('input[name="value' + i + '"]');
+    }
+
+    function fill(values) {
+        for (var i = 0; i < 30; i++) {
+            var el = input(i + 1);
+            if (el && values[i] !== undefined) { el.value = values[i]; }
+        }
+    }
+
     window.getAgentValues = function () {
         var values = [];
         for (var i = 1; i <= 30; i++) {
-            var raw = $('input[name="value' + i + '"]').val();
+            var el = input(i);
+            var raw = el ? String(el.value).trim() : '';
             var num = parseFloat(raw);
             if (raw === '' || isNaN(num)) { return null; }
             values.push(num);
@@ -453,63 +469,89 @@
         return values;
     };
 
-    $(function () {
-        $('.tab-btn').on('click', function () {
-            var tab = $(this).data('tab');
-            $('.tab-btn').removeClass('active');
-            $(this).addClass('active');
-            $('.tab-panel').removeClass('active');
-            $('#tab-' + tab).addClass('active');
-        });
-
-        $('#userMenu').on('click', function (e) {
-            e.stopPropagation();
-            $('#userDropdown').toggleClass('open');
-        });
-        $(document).on('click', function () { $('#userDropdown').removeClass('open'); });
-
-        var SAMPLE = {1:'11.84',2:'18.94',3:'75.51',4:'428',5:'0.0887',6:'0.069',7:'0.0267',8:'0.0139',
-            9:'0.1533',10:'0.0606',11:'0.2222',12:'0.8652',13:'1.444',14:'17.12',15:'0.0055',16:'0.0173',
-            17:'0.0204',18:'0.0067',19:'0.0162',20:'0.0029',21:'13.3',22:'24.99',23:'85.22',24:'546.3',
-            25:'0.128',26:'0.188',27:'0.1471',28:'0.0691',29:'0.2535',30:'0.0799'};
-
-        $('#load-sample').on('click', function () {
-            for (var i = 1; i <= 30; i++) { $('input[name="value' + i + '"]').val(SAMPLE[i]); }
-        });
-
-        $('#random-sample').on('click', function () {
-            var btn = $(this);
-            var old = btn.html();
-            btn.prop('disabled', true).html('<i class="fa fa-spinner fa-spin"></i> 取样本中');
-            fetch('/api/samples/random').then(function (r) { return r.json(); }).then(function (d) {
-                if (!d.ok) { throw new Error(d.error || '取样本失败'); }
-                for (var i = 0; i < d.features.length; i++) {
-                    $('input[name="value' + (i + 1) + '"]').val(d.features[i]);
-                }
-            }).catch(function (err) {
-                alert(err.message || '取样本失败');
-            }).then(function () {
-                btn.prop('disabled', false).html(old);
+    document.addEventListener('DOMContentLoaded', function () {
+        // 标签页
+        var tabs = document.querySelectorAll('.tab-btn');
+        Array.prototype.forEach.call(tabs, function (btn) {
+            btn.addEventListener('click', function () {
+                Array.prototype.forEach.call(tabs, function (b) { b.classList.remove('active'); });
+                btn.classList.add('active');
+                var panels = document.querySelectorAll('.tab-panel');
+                Array.prototype.forEach.call(panels, function (p) { p.classList.remove('active'); });
+                var target = document.getElementById('tab-' + btn.getAttribute('data-tab'));
+                if (target) { target.classList.add('active'); }
             });
         });
 
-        $('#clear-form').on('click', function () {
-            $('.feature-input').val('');
-        });
+        // 用户菜单
+        var userBtn = document.getElementById('userMenu');
+        var dropdown = document.getElementById('userDropdown');
+        if (userBtn && dropdown) {
+            userBtn.addEventListener('click', function (e) {
+                e.stopPropagation();
+                dropdown.classList.toggle('open');
+            });
+            document.addEventListener('click', function () { dropdown.classList.remove('open'); });
+        }
 
-        $('#prediction-form').on('submit', function () {
-            // 用 setTimeout 再禁用按钮：在 submit 事件里同步 disabled 会让部分浏览器取消提交，
-            // 表现为按钮一直停在「分析中…」而页面不跳转。
-            var btn = $(this).find('.primary-btn');
-            var label = btn.html();
-            setTimeout(function () {
-                btn.prop('disabled', true).html('<i class="fa fa-spinner fa-spin"></i> 分析中…');
-            }, 0);
-            // 兜底：15 秒还没跳转就恢复按钮，避免卡死
-            setTimeout(function () {
-                btn.prop('disabled', false).html(label);
-            }, 15000);
-        });
+        // 示例数据
+        var loadBtn = document.getElementById('load-sample');
+        if (loadBtn) {
+            loadBtn.addEventListener('click', function () {
+                var seq = [];
+                for (var i = 1; i <= 30; i++) { seq.push(SAMPLE[i]); }
+                fill(seq);
+            });
+        }
+
+        // 随机真实样本
+        var randBtn = document.getElementById('random-sample');
+        if (randBtn) {
+            randBtn.addEventListener('click', function () {
+                var btn = randBtn;
+                var old = btn.innerHTML;
+                btn.disabled = true;
+                btn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> 取样本中';
+                fetch('/api/samples/random')
+                    .then(function (r) { return r.json(); })
+                    .then(function (d) {
+                        if (!d.ok) { throw new Error(d.error || '取样本失败'); }
+                        fill(d.features);
+                    })
+                    .catch(function (err) { alert(err.message || '取样本失败'); })
+                    .then(function () {
+                        btn.disabled = false;
+                        btn.innerHTML = old;
+                    });
+            });
+        }
+
+        // 清空
+        var clearBtn = document.getElementById('clear-form');
+        if (clearBtn) {
+            clearBtn.addEventListener('click', function () {
+                var els = document.querySelectorAll('.feature-input');
+                Array.prototype.forEach.call(els, function (el) { el.value = ''; });
+            });
+        }
+
+        // 提交：先让提交跑完再禁用按钮，避免浏览器取消提交导致卡在「分析中」
+        var form = document.getElementById('prediction-form');
+        if (form) {
+            form.addEventListener('submit', function () {
+                var btn = form.querySelector('.primary-btn');
+                if (!btn) { return; }
+                var label = btn.innerHTML;
+                setTimeout(function () {
+                    btn.disabled = true;
+                    btn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> 分析中…';
+                }, 0);
+                setTimeout(function () {
+                    btn.disabled = false;
+                    btn.innerHTML = label;
+                }, 15000);
+            });
+        }
     });
 </script>
 </body>
