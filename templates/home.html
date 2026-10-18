@@ -225,7 +225,40 @@
             .hero { padding: 22px; }
             .row { grid-template-columns: 1fr; }
         }
-    </style>
+    
+        .feature-teaser {
+            position: relative; overflow: hidden;
+            background: radial-gradient(420px 200px at 100% -20%, #ede9fe 0%, transparent 60%),
+                        #fff;
+            border: 1px solid #e6ebf3;
+            padding: 24px 24px 22px;
+        }
+        .ft-eyebrow {
+            font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase;
+            color: #7c3aed; margin-bottom: 8px;
+        }
+        .feature-teaser h3 {
+            margin: 0 0 10px; font-size: 17px; line-height: 1.35; color: #0f172a;
+            letter-spacing: -.01em;
+        }
+        .feature-teaser p {
+            margin: 0 0 18px; font-size: 12.5px; line-height: 1.85; color: #64748b;
+        }
+        .ft-mini {
+            display: flex; align-items: center; gap: 10px; margin-bottom: 20px;
+            font-size: 11.5px; color: #64748b;
+        }
+        .ft-mini b { color: #4f46e5; font-weight: 700; margin-right: 2px; }
+        .ft-mini i { width: 3px; height: 3px; border-radius: 50%; background: #cbd5e1; }
+        .ft-btn {
+            display: inline-flex; align-items: center; gap: 7px;
+            background: #4f46e5; color: #fff; text-decoration: none;
+            padding: 10px 16px; border-radius: 11px; font-size: 12.5px; font-weight: 600;
+            box-shadow: 0 14px 26px -18px rgba(79, 70, 229, .95);
+            transition: transform .15s, opacity .15s;
+        }
+        .ft-btn:hover { color: #fff; opacity: .94; transform: translateY(-1px); }
+</style>
 </head>
 <body>
 <header class="topbar">
@@ -391,45 +424,28 @@
         </section>
 
         <aside class="side">
-            <section class="card tabs-card">
-                <div class="tabs">
-                    <button class="tab-btn active" data-tab="what">{{ _('what_is_breast_cancer') }}</button>
-                    <button class="tab-btn" data-tab="who">{{ _('who_gets_breast_cancer') }}</button>
-                    <button class="tab-btn" data-tab="symptoms">{{ _('symptoms') }}</button>
+            <section class="card feature-teaser">
+                <div class="ft-eyebrow">数据说明</div>
+                <h3>30 项特征，分别代表什么？</h3>
+                <p>
+                    半径、纹理、周长、凹度、分形维数…… 10 类细胞核形态，
+                    每类再取「平均值 / 标准误 / 最差值」，组成 30 维输入。
+                    每一项的含义和良恶性参考值都整理好了。
+                </p>
+                <div class="ft-mini">
+                    <span><b>10</b> 类形态</span>
+                    <i></i>
+                    <span><b>3</b> 种口径</span>
+                    <i></i>
+                    <span><b>30</b> 项对照</span>
                 </div>
-                <div class="tab-panel active" id="tab-what">
-                    <h3>{{ _('what_is_breast_cancer') }}</h3>
-                    <p>{{ _('what_is_breast_cancer_description') }}</p>
-                </div>
-                <div class="tab-panel" id="tab-who">
-                    <h3>{{ _('who_gets_breast_cancer') }}</h3>
-                    <p>{{ _('who_gets_breast_cancer_description') }}</p>
-                </div>
-                <div class="tab-panel" id="tab-symptoms">
-                    <h3>{{ _('breast_cancer_symptoms') }}</h3>
-                    <ul>
-                        <li>{{ _('symptom_lump') }}</li>
-                        <li>{{ _('symptom_size_change') }}</li>
-                        <li>{{ _('symptom_discharge') }}</li>
-                        <li>{{ _('symptom_skin_indentation') }}</li>
-                    </ul>
-                </div>
-            </section>
-
-            <section class="card guide-card">
-                <h3>三步得到结论</h3>
-                <ol>
-                    <li><b>填特征</b><span>30 项指标，或点「随机数据」直接取真实样本</span></li>
-                    <li><b>看结论</b><span>良恶性 + 校准后置信度</span></li>
-                    <li><b>查依据</b><span>右下角找 AI 助手，问「为什么」</span></li>
-                </ol>
-            </section>
-
-            <section class="card stat-card">
-                <div class="stat-row"><span>模型输入维度</span><b>30</b></div>
-                <div class="stat-row"><span>证据分档</span><b>3 档</b></div>
-                <div class="stat-row"><span>可追溯条款</span><b>152 条</b></div>
-                <div class="stat-row"><span>结果保存</span><b>自动</b></div>
+                <a class="ft-btn" href="/features">
+                    查看特征说明
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                         stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14M13 6l6 6-6 6"/>
+                    </svg>
+                </a>
             </section>
         </aside>
     </div>
