@@ -614,8 +614,7 @@ def _compose_usage(ctx: AgentContext) -> Tuple[str, List[str]]:
         return ('没有在系统文档里找到对应说明。您可以换个问法，'
                 '或者直接说明要操作的功能（例如"批量预测怎么上传文件"）。'), []
 
-    top = hits[0]
-    parts = ['**%s**：%s' % (top['section'], _first_sentence(top['text'])), '']
+    parts = []
     for hit in hits:
         parts.append('### %s' % hit['section'])
         parts.append('')
