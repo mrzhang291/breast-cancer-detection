@@ -279,6 +279,27 @@ def render_single(payload: dict) -> dict:
             pdf.set_text_color(*BAD)
             pdf.cell(0, 5.2, '%.4g' % float(st.get('malignant_mean') or 0), ln=1, align='R')
 
+    similar = payload.get('similar') or []
+    rows = similar.get('items') or similar.get('cases') or []
+    if rows:
+        pdf.section('相似历史病例对照')
+        pdf.use(9)
+        pdf.set_text_color(*MUTED)
+        pdf.cell(46, 6, '记录', ln=0)
+        pdf.cell(38, 6, '结果', ln=0)
+        pdf.cell(40, 6, '置信度', ln=0, align='R')
+        pdf.cell(0, 6, '距离', ln=1, align='R')
+        for row in rows[:5]:
+            pdf.set_text_color(*INK)
+            pdf.cell(46, 5.6, str(row.get('id') or row.get('record_id') or '-'), ln=0)
+            result = row.get('prediction_result') or row.get('result') or ''
+            pdf.set_text_color(*(BAD if result in ('恶性', 'Malignant') else GOOD))
+            pdf.cell(38, 5.6, str(result)[:6], ln=0)
+            pdf.set_text_color(*INK)
+            pdf.cell(40, 5.6, '%.2f%%' % (float(row.get('confidence') or 0) * 100),
+                     ln=0, align='R')
+            pdf.cell(0, 5.6, '%.3f' % float(row.get('distance') or 0), ln=1, align='R')
+
     pdf.section('方法说明')
     pdf.para('本报告由轻量随机森林模型（RobustScaler + SelectKBest(20) + RF，'
              '外层 CalibratedClassifierCV 校准）对 30 项细胞核特征给出判别；'

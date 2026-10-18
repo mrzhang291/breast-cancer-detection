@@ -130,6 +130,7 @@ def export_report(ctx, kind='single', days=None, limit=None):
         'narrative': context.get('narrative') or '',
         'citations': list(ctx.citations),
         'input_features': (_payload_of(ctx, 'input').get('features') or []),
+        'similar': _payload_of(ctx, 'case'),
         'compare': _payload_of(ctx, 'compare'),
         'series': series,
         'stats': stats,
