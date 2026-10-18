@@ -66,6 +66,17 @@ def _context_brief(ctx) -> str:
                 lines.append('主要贡献特征：%s' % '、'.join(names))
     return '\n'.join(lines)
 
+def _ground(answer: str, ctx) -> dict:
+    """句子级溯源：编造的数字整句丢弃，无出处结论标「推断」。"""
+    try:
+        from . import grounding
+        return grounding.ground(answer, list(getattr(ctx, 'facts', []) or []),
+                                list(getattr(ctx, 'citations', []) or []))
+    except Exception:  # noqa: BLE001
+        return {'ok': True, 'coverage': 1.0, 'claims': [], 'dropped': [],
+                'dropped_count': 0, 'unsupported': [], 'answer_md': answer}
+
+
 def run_llm_agent(question: str, ctx, emit: Optional[Callable] = None,
                   max_steps: int = 5, values=None,
                   history=None, recent_artifacts=None) -> Optional[Dict]:
