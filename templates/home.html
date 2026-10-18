@@ -258,6 +258,12 @@
             transition: transform .15s, opacity .15s;
         }
         .ft-btn:hover { color: #fff; opacity: .94; transform: translateY(-1px); }
+
+        .ft-shapes { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 20px; }
+        .ft-shapes span {
+            font-size: 11px; color: #64748b; background: #f6f8fc;
+            border: 1px solid #eef2f8; border-radius: 999px; padding: 3px 9px;
+        }
 </style>
 </head>
 <body>
@@ -438,6 +444,10 @@
                     <span><b>3</b> 种口径</span>
                     <i></i>
                     <span><b>30</b> 项对照</span>
+                </div>
+                <div class="ft-shapes">
+                    <span>半径</span><span>纹理</span><span>周长</span><span>面积</span><span>平滑度</span>
+                    <span>紧凑度</span><span>凹度</span><span>凹点</span><span>对称性</span><span>分形维数</span>
                 </div>
                 <a class="ft-btn" href="/features">
                     查看特征说明
