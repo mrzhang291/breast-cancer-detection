@@ -3211,7 +3211,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂",
+  "summary_zh": "FATA-GIM3试验比较三种芳香化酶抑制剂5年或他莫昔芬2年后使用，5年DFS无显著差异。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-202",
@@ -3225,7 +3227,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂",
+  "summary_zh": "MA17试验显示他莫昔芬5年后来曲唑较安慰剂显著改善DFS，中位随访2.4年时揭盲。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-203",
@@ -3239,7 +3243,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂",
+  "summary_zh": "来曲唑组DFS显著优于安慰剂，淋巴结阳性患者OS亦显著改善，但未校正多重比较。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-204",
@@ -3253,7 +3259,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂",
+  "summary_zh": "更新分析确认来曲唑改善DFS及远处DFS，淋巴结阳性患者OS获益，但长期比较数据不可得。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-205",
@@ -3267,7 +3275,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂",
+  "summary_zh": "NSABP B-33试验因MA17结果提前终止，依西美坦较安慰剂DFS获益未达统计学显著。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-206",
@@ -3281,7 +3291,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂",
+  "summary_zh": "5年AI治疗后追加5年来曲唑，中位随访6.3年DFS显著改善，但骨折发生率增加。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-207",
@@ -3295,7 +3307,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂",
+  "summary_zh": "来曲唑组骨折更多，生活质量多数维度无差异，仅角色情绪和躯体疼痛略差。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-208",
@@ -3309,7 +3323,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂",
+  "summary_zh": "延长来曲唑使5年DFS从91%升至95%，OS无差异，骨折发生率显著增加。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-209",
@@ -3323,7 +3339,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂",
+  "summary_zh": "比较来曲唑延长2.5年与5年，DFS事件相似，亚组分析未发现延长治疗获益人群。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-210",
@@ -3337,7 +3355,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂",
+  "summary_zh": "NSABP-B42试验比较5年初始治疗后追加来曲唑或安慰剂，DFS差异未达统计学显著。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-211",
@@ -3351,7 +3371,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂",
+  "summary_zh": "7年DFS安慰剂组81.3%、来曲唑组84.7%，校正 interim 分析后差异不显著，不良事件无差异。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-212",
@@ -3365,7 +3387,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂",
+  "summary_zh": "SOLE试验比较来曲唑连续与间歇方案，DFS及不良事件频率均无差异。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-213",
@@ -3379,7 +3403,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂",
+  "summary_zh": "DATA试验比较阿那曲唑3年与6年，延长组DFS改善但未达统计学显著，肌痛和骨质疏松更多。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-214",
@@ -3393,7 +3419,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂",
+  "summary_zh": "意大利试验显示他莫昔芬后延长来曲唑至5年，12年DFS显著改善。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-215",
@@ -3407,7 +3435,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂",
+  "summary_zh": "延长来曲唑组12年OS显著改善，3级以上关节痛和肌痛略多。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-216",
@@ -3421,7 +3451,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂",
+  "summary_zh": "ABCSG-16试验比较阿那曲唑延长2年与5年，10年DFS无差异，5年组骨折趋势更多。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-217",
@@ -3435,7 +3467,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂",
+  "summary_zh": "阿那曲唑延长2年与5年相比DFS、OS及第二原发癌均无差异，5年组骨折趋势增加。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-218",
@@ -3449,7 +3483,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂",
+  "summary_zh": "继续阿那曲唑5年较停药显著改善DFS，但远处DFS和OS无差异。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-219",
@@ -3463,7 +3499,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "内分泌治疗与CDK抑制剂治疗",
+  "summary_zh": "CDK4/6抑制剂联合内分泌治疗已获批用于晚期HR阳性HER2阴性乳腺癌，阿贝西利为唯一获批辅助用药。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-220",
@@ -3477,7 +3515,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "内分泌治疗与CDK抑制剂治疗",
+  "summary_zh": "monarchE试验显示高危患者加用阿贝西利显著改善5年IDFS和DRFS。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-221",
@@ -3491,7 +3531,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "内分泌治疗与CDK抑制剂治疗",
+  "summary_zh": "阿贝西利联合内分泌治疗可显著改善无侵袭性疾病生存期，但不良事件导致多数患者需调整剂量。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-222",
@@ -3505,7 +3547,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "内分泌治疗与CDK抑制剂治疗",
+  "summary_zh": "阿贝西利组与单用内分泌治疗组死亡数差异无统计学意义，68.1%患者因不良事件调整剂量。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-223",
@@ -3519,7 +3563,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "内分泌治疗与CDK抑制剂治疗",
+  "summary_zh": "阿贝西利组16.6%因不良事件停药；NATALEE试验评估瑞波西利联合辅助治疗II-III期乳腺癌。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-224",
@@ -3533,7 +3579,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "内分泌治疗与CDK抑制剂治疗",
+  "summary_zh": "瑞波西利联合非甾体芳香化酶抑制剂显著改善3年无侵袭性疾病生存期，中性粒细胞减少更常见。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-225",
@@ -3547,7 +3595,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "内分泌治疗与CDK抑制剂治疗",
+  "summary_zh": "PALLAS试验显示帕博西利联合内分泌治疗未显著改善II-III期乳腺癌患者无侵袭性疾病生存期。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-226",
@@ -3561,7 +3611,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "内分泌治疗与CDK抑制剂治疗",
+  "summary_zh": "帕博西利组中性粒细胞减少更常见，无治疗相关死亡；因无效性数据安全委员会建议停药。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-227",
@@ -3575,7 +3627,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "I、II、III期乳腺癌的骨改良治疗",
+  "summary_zh": "双膦酸盐和地舒单抗作为早期乳腺癌辅助治疗作用尚不明确，双膦酸盐证据更多且可降低死亡率。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-228",
@@ -3589,7 +3643,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "I、II、III期乳腺癌的骨改良治疗",
+  "summary_zh": "荟萃分析显示双膦酸盐在绝经后女性中显著降低复发、远处复发、骨复发及乳腺癌死亡率。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-229",
@@ -3603,7 +3659,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "I、II、III期乳腺癌的骨改良治疗",
+  "summary_zh": "ABCSG-18试验显示地舒单抗改善绝经后接受芳香化酶抑制剂患者的无病生存期，不良事件相似。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-230",
@@ -3617,7 +3675,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "I、II、III期乳腺癌的骨改良治疗",
+  "summary_zh": "地舒单抗组5年无病生存率改善；D-CARE试验显示地舒单抗未显著改善无骨转移生存期。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-231",
@@ -3631,7 +3691,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "I、II、III期乳腺癌的骨改良治疗",
+  "summary_zh": "D-CARE试验无骨转移生存期无显著差异；SUCCESS试验评估唑来膦酸2年与5年疗程。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-232",
@@ -3645,7 +3707,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "I、II、III期乳腺癌的骨改良治疗",
+  "summary_zh": "唑来膦酸2年与5年疗程的无病生存期和总生存期相似，未能确定最佳双膦酸盐疗程。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-233",
@@ -3659,7 +3723,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "胚系BRCA1/2变异患者的辅助PARP抑制剂治疗",
+  "summary_zh": "OlympiA试验评估1年辅助奥拉帕利对比安慰剂用于HER2阴性胚系BRCA1/2变异乳腺癌患者。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-234",
@@ -3673,7 +3739,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "胚系BRCA1/2变异患者的辅助PARP抑制剂治疗",
+  "summary_zh": "高危复发患者入选标准基于肿瘤大小、淋巴结受累或新辅助治疗后残留病灶。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-235",
@@ -3687,7 +3755,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "胚系BRCA1/2变异患者的辅助PARP抑制剂治疗",
+  "summary_zh": "奥拉帕利组3年无侵袭性疾病生存率85.9%显著优于安慰剂77.1%，风险比0.58。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-236",
@@ -3701,7 +3771,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "胚系BRCA1/2变异患者的辅助PARP抑制剂治疗",
+  "summary_zh": "奥拉帕利组3级及以上不良事件包括贫血8.7%、中性粒细胞减少4.8%、疲乏1.8%等。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-237",
@@ -3715,7 +3787,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "胚系BRCA1/2变异患者的辅助PARP抑制剂治疗",
+  "summary_zh": "奥拉帕利治疗期间恶心、呕吐和食欲减退评分有小幅但具临床意义的升高。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-238",
@@ -3729,7 +3803,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "胚系BRCA1/2变异患者的辅助PARP抑制剂治疗",
+  "summary_zh": "奥拉帕利组疲乏显著高于安慰剂但未达临床意义标准，停药后疲乏随时间缓解。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-239",
@@ -3743,7 +3819,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "三阴性乳腺癌的术前治疗",
+  "summary_zh": "GeparSixto试验显示在蒽环/紫杉类方案中加入卡铂可提高三阴性乳腺癌病理完全缓解率。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-240",
@@ -3757,7 +3835,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "三阴性乳腺癌的术前治疗",
+  "summary_zh": "卡铂组3年无病生存率更高但总生存期无差异，且毒性增加、治疗中断率更高。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-241",
