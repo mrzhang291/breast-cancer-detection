@@ -67,7 +67,8 @@ def _context_brief(ctx) -> str:
     return '\n'.join(lines)
 
 def run_llm_agent(question: str, ctx, emit: Optional[Callable] = None,
-                  max_steps: int = 5, values=None) -> Optional[Dict]:
+                  max_steps: int = 5, values=None,
+                  history=None, recent_artifacts=None) -> Optional[Dict]:
     """返回与确定性编排器相近的结构；不可用时返回 None。"""
     provider = DeepSeekProvider()
     if not provider.available():
@@ -104,6 +105,9 @@ def run_llm_agent(question: str, ctx, emit: Optional[Callable] = None,
     started = time.time()
     result = loop.run(session, question)
 
+    grounded = _ground(result.answer, ctx)
+    result.answer = grounded.get('answer_md') or result.answer
+
     steps = []
     for index, step in enumerate(result.steps, start=1):
         info = describe(step.get('tool', ''))
@@ -120,6 +124,9 @@ def run_llm_agent(question: str, ctx, emit: Optional[Callable] = None,
     return {
         'engine': 'llm',
         'answer_md': result.answer,
+        'grounding': grounded,
+        'verify': {'ok': grounded.get('ok'),
+                   'dropped': grounded.get('dropped_count', 0)},
         'steps': steps,
         'artifacts': list(getattr(ctx, 'artifacts', []) or []),
         'citations': list(getattr(ctx, 'citations', []) or []),
@@ -169,9 +176,17 @@ def stream_llm_agent(question: str, ctx, values=None, max_steps: int = 5,
 
     loop = StreamingAgentLoop(provider, registry.TOOLS, ctx,
                               allowed_tools=DEFAULT_TOOLS, max_steps=max_steps)
+    answer_parts = []
     for item in loop.stream(session, question):
+        if item['event'] == 'token':
+            answer_parts.append((item.get('data') or {}).get('delta') or '')
         if item['event'] == 'done':
             data = dict(item['data'])
+            grounded = _ground(''.join(answer_parts), ctx)
+            data['grounding'] = grounded
+            data['answer_md'] = grounded.get('answer_md') or ''.join(answer_parts)
+            data['verify'] = {'ok': grounded.get('ok'),
+                              'dropped': grounded.get('dropped_count', 0)}
             data['artifacts'] = list(getattr(ctx, 'artifacts', []) or [])
             data['citations'] = list(getattr(ctx, 'citations', []) or [])
             data['run_id'] = getattr(ctx, 'run_id', '')
