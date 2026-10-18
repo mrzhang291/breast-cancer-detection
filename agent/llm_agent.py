@@ -141,7 +141,25 @@ def stream_llm_agent(question: str, ctx, values=None, max_steps: int = 5,
         return
 
     session = build_session(ctx)
+
+    # 短期记忆：最近几轮问答 + 最近产物，模型才知道"刚才那份报告"指什么
+    for item in (history or [])[-3:]:
+        q = (item.get('question') or '').strip()
+        a = (item.get('answer') or '').strip()[:160]
+        if q:
+            session.user(q)
+            session.assistant(a or '（已处理）')
+
     brief = _context_brief(ctx)
+    if recent_artifacts:
+        names = ['%s（%s, %d KB）' % (it.get('filename'), str(it.get('kind', 'pdf')).upper(),
+                                     int((it.get('size') or 0) / 1024))
+                 for it in (recent_artifacts or [])[:3]]
+        brief += '\n最近生成的产物：' + '；'.join(names)
+        brief += ('\n如果用户提到"刚才的报告/那份 PDF"，指的就是上面这些文件。'
+                  '单次报告的固定结构是：结论与校准置信度、置信度刻度图、Top8 特征贡献图、'
+                  '30 项特征与良恶性组均值对照表、方法说明、引用条款。'
+                  '用户问"能补充什么"时，直接基于这个结构说清已有内容，不要声称看不到文件。')
     if values:
         brief += '\n本次输入的 30 项特征值：%s' % ', '.join('%.6g' % float(v) for v in values)
     if brief:
