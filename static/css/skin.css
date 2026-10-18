@@ -213,3 +213,5 @@ textarea.form-control { height: auto; }
 /* 旧导航隐藏：统一使用 _topbar.html */
 .navbar, .navbar-fixed-top, .navbar-static-top { display: none !important; }
 body { padding-top: 0 !important; }
+
+.navbar, .top-nav { display: none !important; }
