@@ -504,13 +504,25 @@ def get_user_from_db(username, password):
 
 
 # ==================== 登录图形验证码 ====================
+# 答案只存在服务端内存里：Flask 默认 session 是客户端签名 cookie，
+# 把答案放进 session 等于把答案交给浏览器，验证码就失去意义。
 try:
 	from PIL import Image, ImageDraw, ImageFont, ImageFilter
 	_PIL_AVAILABLE = True
 except Exception:  # noqa: BLE001
 	_PIL_AVAILABLE = False
 
+import secrets
+
 _CAPTCHA_CHARS = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'
+_CAPTCHA_TTL = 300
+_CAPTCHA_STORE = {}
+
+
+def _captcha_gc():
+	now = time.time()
+	for key in [k for k, v in _CAPTCHA_STORE.items() if v[1] < now]:
+		_CAPTCHA_STORE.pop(key, None)
 
 
 def _captcha_font(size):
@@ -555,14 +567,30 @@ def _captcha_image(code):
 	return img.filter(ImageFilter.SMOOTH)
 
 
+def _captcha_check(entered):
+	"""校验并立即作废；返回 True/False。"""
+	cid = request.cookies.get('captcha_id')
+	if not cid:
+		return False
+	entry = _CAPTCHA_STORE.pop(cid, None)
+	if not entry:
+		return False
+	code, expire_at = entry
+	if time.time() > expire_at:
+		return False
+	return (entered or '').strip().upper() == code.upper()
+
+
 @app.route('/captcha.png')
 def captcha_png():
-	"""生成验证码图片，正确值存在 session 里，登录时一次性校验。"""
+	"""生成验证码图片。答案存服务端，客户端只拿到一个随机 id。"""
 	if not _PIL_AVAILABLE:
 		return '', 503
+	_captcha_gc()
+
 	code = ''.join(random.choice(_CAPTCHA_CHARS) for _ in range(4))
-	session['captcha'] = code
-	session['captcha_at'] = time.time()
+	cid = secrets.token_hex(16)
+	_CAPTCHA_STORE[cid] = (code, time.time() + _CAPTCHA_TTL)
 
 	buffer = io.BytesIO()
 	_captcha_image(code).save(buffer, 'PNG')
@@ -571,6 +599,8 @@ def captcha_png():
 	response = send_file(buffer, mimetype='image/png')
 	response.headers['Cache-Control'] = 'no-store, no-cache, must-revalidate, max-age=0'
 	response.headers['Pragma'] = 'no-cache'
+	response.set_cookie('captcha_id', cid, max_age=_CAPTCHA_TTL,
+	                    httponly=True, samesite='Lax')
 	return response
 
 
@@ -589,9 +619,7 @@ def login():
 		# 自动化测试/运维可通过内部令牌跳过（令牌不出现在任何前端页面）
 		internal_ok = bool(INTERNAL_TOKEN) and request.headers.get('X-Internal-Token') == INTERNAL_TOKEN
 		if not internal_ok:
-			expected = session.pop('captcha', None)
-			entered = (request.form.get('captcha') or '').strip().upper()
-			if not expected or entered != expected.upper():
+			if not _captcha_check(request.form.get('captcha')):
 				print(f'验证码校验失败 for user: {username}')
 				return render_template('login.html', error='验证码不正确，请重新输入')
 
