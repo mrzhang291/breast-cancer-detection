@@ -3,7 +3,7 @@ from flask import request, jsonify
 import jwt as pyjwt
 import time
 from datetime import timedelta
-from models import User, Role, Permission, role_permissions
+from models import User, Role, Permission, role_permissions, db
 from sqlalchemy import or_
 
 # 自定义token获取函数，支持从多个来源获取token
@@ -107,9 +107,9 @@ def requires_permission(permission_code):
             if not permission:
                 return jsonify({'code': 403, 'message': '权限不存在', 'data': {}}), 403
             
-            has_permission = role_permissions.join(Role).filter(
+            has_permission = db.session.query(role_permissions).filter(
                 role_permissions.c.permission_id == permission.id,
-                Role.id == user.role_id
+                role_permissions.c.role_id == user.role_id
             ).first()
             
             if not has_permission:

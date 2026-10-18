@@ -1,5 +1,6 @@
 from datetime import datetime
 from flask_sqlalchemy import SQLAlchemy
+from werkzeug.security import generate_password_hash
 
 db = SQLAlchemy()
 
@@ -24,8 +25,8 @@ class User(db.Model):
     role = db.relationship('Role', backref=db.backref('users', lazy=True))
     
     def set_password(self, password):
-        # 直接存储明文密码，不进行加密
-        self.password_hash = password
+        # 新密码一律 PBKDF2 哈希；历史明文仍由 check_password 兼容
+        self.password_hash = generate_password_hash(password)
     
     def check_password(self, password):
         # 先尝试 Werkzeug 的密码验证（PBKDF2-SHA256）
@@ -52,7 +53,6 @@ class User(db.Model):
             'id': self.id,
             'username': self.username,
             'email': self.email,
-            'password': self.password_hash,
             'role_id': self.role_id,
             'role_name': self.role.name if self.role else None,
             'is_active': self.is_active,

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -8,13 +8,20 @@
     <link rel="stylesheet" href="/console/static/css/style.css">
 </head>
 <body>
-    <div class="sidebar">
+    <div class="sidebar" id="sidebar">
         <div class="logo">
-            <i class="fa-solid fa-hospital"></i> 乳腺癌检测系统
+            <i class="fa-solid fa-hospital"></i>
+            <span>乳腺癌检测系统<small style="display:block;font-size:10px;font-weight:500;color:#7c8aa5;letter-spacing:.08em;margin-top:2px;">ADMIN CONSOLE</small></span>
         </div>
+        <div class="nav-section">工作台</div>
         <div class="nav-item active" data-page="dashboard">
             <i class="fa-solid fa-chart-pie"></i> 数据仪表盘
         </div>
+        <div class="nav-item" onclick="openCoze()">
+            <i class="fa-solid fa-robot"></i> 智能体
+            <span class="nav-badge">Coze</span>
+        </div>
+        <div class="nav-section">数据管理</div>
         <div class="nav-item" data-page="users">
             <i class="fa-solid fa-users"></i> 用户管理
         </div>
@@ -24,21 +31,36 @@
         <div class="nav-item" data-page="models">
             <i class="fa-solid fa-brain"></i> 模型管理
         </div>
+        <div class="nav-section">系统</div>
         <div class="nav-item" data-page="logs">
             <i class="fa-solid fa-file-text"></i> 日志管理
         </div>
         <div class="nav-item" data-page="system">
             <i class="fa-solid fa-cog"></i> 系统配置
         </div>
+        <div class="sidebar-foot">
+            <div><span class="dot"></span><strong>服务运行中</strong></div>
+            <div>Coze 智能体 · 后台数据已接入</div>
+        </div>
     </div>
+    <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
 
     <div class="main-content">
         <div class="header">
-            <h1 id="pageTitle">数据仪表盘</h1>
+            <button class="menu-toggle" id="sidebarToggle" aria-label="打开菜单">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <div class="title-wrap">
+                <h1 id="pageTitle">数据仪表盘</h1>
+                <div class="page-subtitle" id="pageSubtitle">关键指标、趋势与模型表现总览</div>
+            </div>
             <div class="user-info">
-                <span id="currentUser">管理员</span>
+                <div class="user-chip">
+                    <span class="avatar" id="userAvatar">A</span>
+                    <span class="name" id="currentUser">管理员</span>
+                </div>
                 <button class="btn btn-secondary btn-logout" id="logoutBtn">
-                    <i class="fa-solid fa-sign-out-alt"></i> 退出登录
+                    <i class="fa-solid fa-sign-out-alt"></i> 退出
                 </button>
             </div>
         </div>
@@ -53,20 +75,36 @@
         <div id="dashboardPage" class="page-content">
             <div class="stat-cards">
                 <div class="stat-card primary">
+                    <div class="stat-head">
+                        <span class="stat-icon"><i class="fa-solid fa-chart-line"></i></span>
+                        <span class="stat-meta">累计</span>
+                    </div>
                     <div class="stat-value" id="totalPredictions">0</div>
                     <div class="stat-label">总预测次数</div>
                 </div>
                 <div class="stat-card success">
+                    <div class="stat-head">
+                        <span class="stat-icon"><i class="fa-solid fa-heart"></i></span>
+                        <span class="stat-meta">良性</span>
+                    </div>
                     <div class="stat-value" id="benignCount">0</div>
                     <div class="stat-label">良性预测</div>
                 </div>
                 <div class="stat-card danger">
+                    <div class="stat-head">
+                        <span class="stat-icon"><i class="fa-solid fa-triangle-exclamation"></i></span>
+                        <span class="stat-meta">需关注</span>
+                    </div>
                     <div class="stat-value" id="malignantCount">0</div>
                     <div class="stat-label">恶性预测</div>
                 </div>
                 <div class="stat-card warning">
+                    <div class="stat-head">
+                        <span class="stat-icon"><i class="fa-solid fa-users"></i></span>
+                        <span class="stat-meta">启用</span>
+                    </div>
                     <div class="stat-value" id="activeUsers">0</div>
-                    <div class="stat-label">活跃用户</div>
+                    <div class="stat-label">启用用户</div>
                 </div>
             </div>
 
@@ -88,24 +126,24 @@
                     <h3><i class="fa-solid fa-chart-bar"></i> 模型性能</h3>
                 </div>
                 <div class="model-performance">
-                    <div style="display: flex; gap: 30px; margin-bottom: 20px;">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-bottom: 4px;">
                         <div>
-                            <div class="progress-bar" style="width: 300px;">
+                            <div class="progress-bar">
                                 <div class="progress-bar-fill" id="accuracyBar" style="width: 0%"></div>
                             </div>
-                            <div style="margin-top: 5px;">准确率: <span id="accuracyValue">0%</span></div>
+                            <div style="margin-top: 8px; font-size: 12.5px; color: var(--muted);">准确率 <strong id="accuracyValue" style="color: var(--ink); float: right;">0%</strong></div>
                         </div>
                         <div>
-                            <div class="progress-bar" style="width: 300px;">
+                            <div class="progress-bar">
                                 <div class="progress-bar-fill" id="recallBar" style="width: 0%"></div>
                             </div>
-                            <div style="margin-top: 5px;">召回率: <span id="recallValue">0%</span></div>
+                            <div style="margin-top: 8px; font-size: 12.5px; color: var(--muted);">召回率 <strong id="recallValue" style="color: var(--ink); float: right;">0%</strong></div>
                         </div>
                         <div>
-                            <div class="progress-bar" style="width: 300px;">
+                            <div class="progress-bar">
                                 <div class="progress-bar-fill" id="f1Bar" style="width: 0%"></div>
                             </div>
-                            <div style="margin-top: 5px;">F1分数: <span id="f1Value">0%</span></div>
+                            <div style="margin-top: 8px; font-size: 12.5px; color: var(--muted);">F1 分数 <strong id="f1Value" style="color: var(--ink); float: right;">0%</strong></div>
                         </div>
                     </div>
                 </div>
@@ -280,11 +318,15 @@
                 <form id="systemInfoForm">
                     <div class="form-group">
                         <label>系统名称</label>
-                        <input type="text" id="systemName" class="form-control">
+                        <input type="text" id="systemName" class="form-control" placeholder="例如：乳腺癌检测系统">
                     </div>
                     <div class="form-group">
-                        <label>联系方式</label>
-                        <input type="text" id="contactInfo" class="form-control">
+                        <label>联系邮箱</label>
+                        <input type="email" id="contactEmail" class="form-control" placeholder="admin@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label>联系电话</label>
+                        <input type="text" id="contactPhone" class="form-control" placeholder="选填">
                     </div>
                     <button type="submit" class="btn btn-primary">保存配置</button>
                 </form>
@@ -334,7 +376,7 @@
                     </div>
                     <div class="form-group">
                         <label>密码</label>
-                        <input type="text" id="userFormPassword" class="form-control">
+                        <input type="password" id="userFormPassword" class="form-control" placeholder="新建必填；编辑时留空表示不修改" autocomplete="new-password">
                     </div>
                     <div class="form-group">
                         <label>角色</label>
@@ -484,7 +526,7 @@
         }
 
         // 初始化token
-        const DEBUG_MODE = true;
+        const DEBUG_MODE = false;
         
         function logDebug(msg) {
             if (DEBUG_MODE) {
@@ -588,6 +630,7 @@
                 return;
             }
             bindEvents();
+            loadMe();
             loadDashboard();
             // 启动自动刷新
             startAutoRefresh();
@@ -600,11 +643,23 @@
             document.querySelectorAll('.nav-item').forEach(item => {
                 item.addEventListener('click', () => {
                     const page = item.getAttribute('data-page');
-                    showPage(page);
+                    if (page) showPage(page);
                 });
             });
 
+            function openCoze() {
+                const prefix = location.pathname.indexOf('/console') === 0 ? '/console' : '';
+                window.open(prefix + '/coze', '_blank');
+            }
+            window.openCoze = openCoze;
+
             document.getElementById('logoutBtn').addEventListener('click', logout);
+            document.getElementById('sidebarToggle').addEventListener('click', () => {
+                document.body.classList.toggle('sidebar-open');
+            });
+            document.getElementById('sidebarBackdrop').addEventListener('click', () => {
+                document.body.classList.remove('sidebar-open');
+            });
             document.getElementById('trendPeriod').addEventListener('change', loadTrend);
             document.getElementById('adminUserSearch').addEventListener('keyup', searchAdminUsers);
             document.getElementById('adminStatusFilter').addEventListener('change', loadAdminUsers);
@@ -656,7 +711,17 @@
                 logs: '日志管理',
                 system: '系统配置'
             };
-            document.getElementById('pageTitle').textContent = titles[page];
+            const subtitles = {
+                dashboard: '关键指标、趋势与模型表现总览',
+                users: '管理员与医生账号、角色与启用状态',
+                predictions: '按用户、结果与日期检索预测记录',
+                models: '模型版本、指标与启用状态（元数据）',
+                logs: '操作、登录与错误审计',
+                system: '系统信息、阈值与维护模式'
+            };
+            document.getElementById('pageTitle').textContent = titles[page] || '管理后台';
+            document.getElementById('pageSubtitle').textContent = subtitles[page] || '';
+            document.body.classList.remove('sidebar-open');
             
             if (page === 'users') { adminUsersPage = 1; normalUsersPage = 1; loadAdminUsers(); loadNormalUsers(); }
             if (page === 'predictions') loadPredictions();
@@ -703,50 +768,108 @@
         function drawTrendChart(data) {
             const canvas = document.getElementById('trendChart');
             const ctx = canvas.getContext('2d');
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
+            const cssWidth = canvas.clientWidth || 800;
+            const cssHeight = 260;
+            const dpr = window.devicePixelRatio || 1;
+            canvas.width = Math.max(320, Math.floor(cssWidth * dpr));
+            canvas.height = Math.floor(cssHeight * dpr);
+            canvas.style.height = cssHeight + 'px';
+            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+            ctx.clearRect(0, 0, cssWidth, cssHeight);
+
             if (!data || data.length === 0) {
-                ctx.fillStyle = '#666';
-                ctx.font = '14px Arial';
-                ctx.fillText('暂无数据', canvas.width / 2 - 30, canvas.height / 2);
+                ctx.fillStyle = '#94a3b8';
+                ctx.font = '13px Inter, Microsoft YaHei, sans-serif';
+                ctx.textAlign = 'center';
+                ctx.fillText('暂无数据', cssWidth / 2, cssHeight / 2);
                 return;
             }
-            
-            const padding = 40;
-            const chartWidth = canvas.width - padding * 2;
-            const chartHeight = canvas.height - padding * 2;
-            
-            const maxValue = Math.max(...data.map(d => d.total));
-            const stepX = chartWidth / (data.length - 1);
-            
-            ctx.beginPath();
-            ctx.strokeStyle = '#3498db';
-            ctx.lineWidth = 2;
-            data.forEach((d, i) => {
-                const x = padding + i * stepX;
-                const y = padding + chartHeight - (d.total / maxValue) * chartHeight;
-                if (i === 0) ctx.moveTo(x, y);
-                else ctx.lineTo(x, y);
+
+            const pad = { left: 36, right: 14, top: 30, bottom: 28 };
+            const chartW = cssWidth - pad.left - pad.right;
+            const chartH = cssHeight - pad.top - pad.bottom;
+            const maxValue = Math.max(1, ...data.map(d => Math.max(d.total || 0, d.benign || 0, d.malignant || 0)));
+            const stepX = data.length > 1 ? chartW / (data.length - 1) : 0;
+            const xOf = (i) => pad.left + (data.length > 1 ? i * stepX : chartW / 2);
+            const yOf = (v) => pad.top + chartH - (v / maxValue) * chartH;
+
+            ctx.strokeStyle = '#eef2f7';
+            ctx.lineWidth = 1;
+            ctx.fillStyle = '#94a3b8';
+            ctx.font = '10.5px Inter, Microsoft YaHei, sans-serif';
+            ctx.textAlign = 'right';
+            for (let g = 0; g <= 4; g++) {
+                const v = maxValue * g / 4;
+                const y = yOf(v);
+                ctx.beginPath();
+                ctx.moveTo(pad.left, y);
+                ctx.lineTo(cssWidth - pad.right, y);
+                ctx.stroke();
+                ctx.fillText(String(Math.round(v)), pad.left - 8, y + 3);
+            }
+
+            const drawLine = (key, color, fill, dash = []) => {
+                const pts = data.map((d, i) => [xOf(i), yOf(d[key] || 0)]);
+                if (fill) {
+                    const grad = ctx.createLinearGradient(0, pad.top, 0, pad.top + chartH);
+                    grad.addColorStop(0, 'rgba(79, 70, 229, .18)');
+                    grad.addColorStop(1, 'rgba(79, 70, 229, 0)');
+                    ctx.beginPath();
+                    ctx.moveTo(pts[0][0], pad.top + chartH);
+                    pts.forEach(p => ctx.lineTo(p[0], p[1]));
+                    ctx.lineTo(pts[pts.length - 1][0], pad.top + chartH);
+                    ctx.closePath();
+                    ctx.fillStyle = grad;
+                    ctx.fill();
+                }
+                ctx.beginPath();
+                ctx.setLineDash(dash);
+                ctx.strokeStyle = color;
+                ctx.lineWidth = 2;
+                ctx.lineJoin = 'round';
+                pts.forEach((p, i) => i === 0 ? ctx.moveTo(p[0], p[1]) : ctx.lineTo(p[0], p[1]));
+                ctx.stroke();
+                ctx.setLineDash([]);
+                if (data.length <= 12) {
+                    pts.forEach(p => {
+                        ctx.beginPath();
+                        ctx.fillStyle = '#fff';
+                        ctx.strokeStyle = color;
+                        ctx.lineWidth = 1.6;
+                        ctx.arc(p[0], p[1], 2.6, 0, Math.PI * 2);
+                        ctx.fill();
+                        ctx.stroke();
+                    });
+                }
+            };
+
+            drawLine('total', '#4f46e5', true);
+            drawLine('benign', '#10b981', false);
+            drawLine('malignant', '#f43f5e', false, [5, 4]);
+
+            const legend = [
+                ['总数', '#4f46e5'], ['良性', '#10b981'], ['恶性', '#f43f5e']
+            ];
+            let lx = pad.left;
+            ctx.textAlign = 'left';
+            ctx.font = '11px Inter, Microsoft YaHei, sans-serif';
+            legend.forEach(([label, color]) => {
+                ctx.fillStyle = color;
+                ctx.beginPath();
+                ctx.arc(lx + 3, 12, 3.2, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.fillStyle = '#64748b';
+                ctx.fillText(label, lx + 11, 16);
+                lx += ctx.measureText(label).width + 28;
             });
-            ctx.stroke();
-            
-            ctx.fillStyle = 'rgba(52, 152, 219, 0.1)';
-            ctx.beginPath();
-            ctx.moveTo(padding, canvas.height - padding);
+
+            const labelStep = Math.max(1, Math.ceil(data.length / 7));
+            ctx.fillStyle = '#94a3b8';
+            ctx.font = '10.5px Inter, Microsoft YaHei, sans-serif';
+            ctx.textAlign = 'center';
             data.forEach((d, i) => {
-                const x = padding + i * stepX;
-                const y = padding + chartHeight - (d.total / maxValue) * chartHeight;
-                ctx.lineTo(x, y);
-            });
-            ctx.lineTo(padding + (data.length - 1) * stepX, canvas.height - padding);
-            ctx.closePath();
-            ctx.fill();
-            
-            ctx.fillStyle = '#666';
-            ctx.font = '12px Arial';
-            data.forEach((d, i) => {
-                const x = padding + i * stepX;
-                ctx.fillText(d.time, x - 15, canvas.height - 10);
+                if (i % labelStep !== 0 && i !== data.length - 1) return;
+                ctx.fillText(d.time, xOf(i), cssHeight - 8);
             });
         }
 
@@ -879,7 +1002,8 @@
             document.getElementById('userId').value = user?.id || '';
             document.getElementById('userFormUsername').value = user?.username || '';
             document.getElementById('userFormEmail').value = user?.email || '';
-            document.getElementById('userFormPassword').value = user?.password || '';
+            document.getElementById('userFormPassword').value = '';
+            document.getElementById('userFormPassword').placeholder = user ? '留空表示不修改密码' : '新建用户必填';
             document.getElementById('userFormRole').value = user?.role_id || 2;
             document.getElementById('userModal').style.display = 'flex';
         }
@@ -1281,7 +1405,8 @@
                 const result = await fetchApi('/system/info');
                 if (result.code === 200) {
                     document.getElementById('systemName').value = result.data.system_name || '乳腺癌检测系统';
-                    document.getElementById('contactInfo').value = result.data.contact_info || '';
+                    document.getElementById('contactEmail').value = result.data.contact_email || '';
+                    document.getElementById('contactPhone').value = result.data.contact_phone || '';
                 }
                 
                 const thresholdResult = await fetchApi('/system/threshold');
@@ -1308,7 +1433,8 @@
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         system_name: document.getElementById('systemName').value,
-                        contact_info: document.getElementById('contactInfo').value
+                        contact_email: document.getElementById('contactEmail').value,
+                        contact_phone: document.getElementById('contactPhone').value
                     })
                 });
                 if (result.code === 200) {
@@ -1348,9 +1474,10 @@
 
         function renderPagination(containerId, total, currentPage, pageSize, callback) {
             const container = document.getElementById(containerId);
-            const totalPages = Math.ceil(total / pageSize);
+            const totalPages = Math.max(1, Math.ceil(total / pageSize));
             
             container.innerHTML = '';
+            if (totalPages <= 1) return;
             
             if (currentPage > 1) {
                 const prevBtn = document.createElement('button');
@@ -1359,13 +1486,30 @@
                 container.appendChild(prevBtn);
             }
             
-            for (let i = 1; i <= totalPages; i++) {
-                const pageBtn = document.createElement('button');
-                pageBtn.textContent = i;
-                if (i === currentPage) pageBtn.classList.add('active');
-                pageBtn.addEventListener('click', () => callback(i));
-                container.appendChild(pageBtn);
+            const pages = [];
+            if (totalPages <= 7) {
+                for (let i = 1; i <= totalPages; i++) pages.push(i);
+            } else {
+                pages.push(1);
+                if (currentPage > 3) pages.push('...');
+                for (let i = Math.max(2, currentPage - 1); i <= Math.min(totalPages - 1, currentPage + 1); i++) pages.push(i);
+                if (currentPage < totalPages - 2) pages.push('...');
+                pages.push(totalPages);
             }
+            pages.forEach((p) => {
+                if (p === '...') {
+                    const span = document.createElement('span');
+                    span.className = 'ellipsis';
+                    span.textContent = '…';
+                    container.appendChild(span);
+                    return;
+                }
+                const pageBtn = document.createElement('button');
+                pageBtn.textContent = p;
+                if (p === currentPage) pageBtn.classList.add('active');
+                pageBtn.addEventListener('click', () => callback(p));
+                container.appendChild(pageBtn);
+            });
             
             if (currentPage < totalPages) {
                 const nextBtn = document.createElement('button');
@@ -1381,7 +1525,22 @@
             return date.toLocaleString('zh-CN');
         }
 
+        async function loadMe() {
+            try {
+                const result = await fetchApi('/me');
+                if (result.code === 200 && result.data) {
+                    const name = result.data.username || '管理员';
+                    document.getElementById('currentUser').textContent = name;
+                    document.getElementById('userAvatar').textContent = name.slice(0, 1).toUpperCase();
+                }
+            } catch (e) { /* 保留默认显示 */ }
+        }
+
         init();
     </script>
 </body>
 </html>
+
+
+
+

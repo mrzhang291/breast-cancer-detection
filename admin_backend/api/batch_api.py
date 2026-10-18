@@ -1,6 +1,6 @@
-from flask import Blueprint, request, jsonify, send_file, current_app
+﻿from flask import Blueprint, request, jsonify, send_file, current_app
 from models import db, BatchTask, OperationLog
-from auth import requires_permission
+from auth import requires_permission, get_jwt_identity
 import os
 from datetime import datetime
 
