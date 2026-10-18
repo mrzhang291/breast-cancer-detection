@@ -11,7 +11,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "概述",
+  "summary_zh": "乳腺X线摄影是乳腺癌最常用筛查手段，可降低50至69岁女性死亡率，但存在过度诊断等危害。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-002",
@@ -25,7 +27,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "概述",
+  "summary_zh": "乳腺自检无死亡率获益；超声、磁共振等仅作辅助；筛查决策应共享，多种决策辅助工具已被研究。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-003",
@@ -39,7 +43,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "获益",
+  "summary_zh": "随机对照试验显示乳腺X线筛查降低60至69岁女性乳腺癌死亡率证据充分，50至59岁证据尚可。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-004",
@@ -53,7 +59,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "获益",
+  "summary_zh": "随机对照试验荟萃分析内部真实性较好，但外部真实性不确定；加拿大研究25年随访未见死亡率获益。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-005",
@@ -67,7 +75,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "危害",
+  "summary_zh": "筛查可致过度诊断及对无威胁癌症的过度治疗；20%至50%的筛查检出癌属过度诊断。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-006",
@@ -81,7 +91,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "危害",
+  "summary_zh": "过度诊断估计基于随机对照试验长期随访及大型筛查项目超额发病率两种不完善方法，比例约20%至50%。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-007",
@@ -95,7 +107,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "危害",
+  "summary_zh": "美国约10%女性筛查后被召回，仅0.5%确诊癌症；连续10年年度筛查约半数出现假阳性。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-008",
@@ -109,7 +123,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "危害",
+  "summary_zh": "假阴性可致虚假安心并延误诊断，占6%至46%，黏液型、小叶癌、间期肿瘤及致密乳腺更易漏诊。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-009",
@@ -123,7 +139,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "危害",
+  "summary_zh": "单次乳腺X线检查辐射剂量极低，理论上致癌风险很小；假阴性在致密乳腺和年轻女性中更常见。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-010",
@@ -137,7 +155,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "危害",
+  "summary_zh": "理论上40至80岁女性每年筛查每千人可能致一例乳腺癌；筛查危害相关结论内部真实性与一致性良好。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-011",
@@ -151,7 +171,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "获益",
+  "summary_zh": "临床乳腺检查筛查疗效证据不足；唯一高质量随机试验显示与乳腺X线相当，但社区准确性可能较低。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-012",
@@ -165,7 +187,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "危害",
+  "summary_zh": "临床乳腺检查可致假阳性及焦虑，50至59岁女性假阳性率1%至12%；也可出现假阴性致延误诊断。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-013",
@@ -179,7 +203,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "危害",
+  "summary_zh": "临床乳腺检查中17%至43%癌症患者检查阴性；检查时间更长、由受训人员操作可提高敏感性。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-014",
@@ -193,7 +219,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "危害",
+  "summary_zh": "有确凿证据表明指导并鼓励乳腺自检会增加活检和良性病变诊断，活检率1.8%对1.0%。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-015",
@@ -207,7 +235,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "危害",
+  "summary_zh": "本条为参考文献列表，涉及自检、临床检查及筛查获益与危害的相关研究文献。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-016",
@@ -221,7 +251,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "危害",
+  "summary_zh": "本条为参考文献列表，涉及印度临床乳腺检查随机试验及美国预防服务工作组筛查更新等文献。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-017",
@@ -235,7 +267,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "危害",
+  "summary_zh": "本条为参考文献列表，涉及过度诊断、乳腺X线筛查对发病率影响及原位癌过度诊断等研究。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-018",
@@ -249,7 +283,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "危害",
+  "summary_zh": "本条为参考文献列表，涉及假阳性筛查风险、召回与活检累积概率及乳腺密度对敏感性影响等研究。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-019",
@@ -263,7 +299,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "危害",
+  "summary_zh": "本条为参考文献列表，涉及肿瘤特征与X线检出、辐射致癌及临床乳腺检查特异性等研究。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-020",
@@ -277,7 +315,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "危害",
+  "summary_zh": "本条为参考文献列表，涉及俄罗斯与世界卫生组织关于自检对乳腺癌早期发现意义的前瞻性随机研究。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-021",
@@ -291,7 +331,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "乳腺症状评估",
+  "summary_zh": "有乳腺症状女性应行诊断性钼靶而非筛查性钼靶；乳腺肿块确诊癌症率10.7%，疼痛仅1.8%。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-022",
@@ -305,7 +347,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "浸润性乳腺癌",
+  "summary_zh": "通过活检组织显微镜检查诊断乳腺癌，可采用细针、粗针或切除活检，影像引导可提高准确性。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-023",
@@ -319,7 +363,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "导管原位癌（DCIS）",
+  "summary_zh": "DCIS为非浸润性病变，可演变为浸润癌；多经钼靶诊断，有学者建议改称导管上皮内瘤变。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-024",
@@ -333,7 +379,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "导管原位癌（DCIS）",
+  "summary_zh": "美国DCIS诊断从1983年4900例增至2025年预计59080例；钼靶筛查使DCIS检出增加但未降低死亡率。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-025",
@@ -347,7 +395,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "导管原位癌（DCIS）",
+  "summary_zh": "DCIS切除后90个月内同侧浸润癌发生率13.4%，加放疗降至3.9%；DCIS患者乳腺癌死亡率低于同龄人群。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-026",
@@ -361,7 +411,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "病理学家对乳腺活检标本诊断的变异性",
+  "summary_zh": "乳腺病变病理诊断包括良性、非典型、DCIS和浸润癌；钼靶筛查使非典型和DCIS发病率上升，误分类可致过度或不足治疗。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-027",
@@ -375,7 +427,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "病理学家对乳腺活检标本诊断的变异性",
+  "summary_zh": "B-Path研究显示病理学家对浸润癌诊断一致性最高，对DCIS和非典型病变一致性明显较低。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-028",
@@ -389,7 +443,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "病理学家对乳腺活检标本诊断的变异性",
+  "summary_zh": "估计92.3%乳腺活检诊断经专家共识核实，4.6%过度解读、3.2%解读不足；要求二次意见的实验室政策渐增。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-029",
@@ -403,7 +459,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "病理学家对乳腺活检标本诊断的变异性",
+  "summary_zh": "65%病理学家报告实验室有二次意见政策，96%认为可提高准确性；除仅限浸润癌策略外，各二次意见策略均改善准确性。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-030",
@@ -417,7 +475,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "可能更多受益于筛查的高风险女性",
+  "summary_zh": "BRCA1/2突变者及接受斗篷放疗的淋巴瘤幸存者乳腺癌风险增高，可能更多受益于加强筛查。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-031",
@@ -431,7 +491,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "可能更多受益于筛查的高风险女性",
+  "summary_zh": "美国黑人女性乳腺癌死亡率比白人高40%，归因于随访延迟、分期晚、治疗较差及肿瘤更具侵袭性。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-032",
@@ -445,7 +507,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "可能更多受益于筛查的高风险女性",
+  "summary_zh": "CISNET模型显示黑人女性从钼靶筛查获得的绝对获益略大于一般人群，可预防更多乳腺癌死亡。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-033",
@@ -459,7 +523,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "可能更多受益于筛查的高风险女性",
+  "summary_zh": "USPSTF建议一般风险女性40岁起每2年筛查至74岁；提前筛查增加获益但也增加假阳性、活检和过度诊断。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-034",
@@ -473,7 +539,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "可能更多受益于筛查的高风险女性",
+  "summary_zh": "黑人女性40岁起每2年筛查较50岁起每千人增加439例假阳性、75例活检和2例过度诊断；数学模型存在局限。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-035",
@@ -487,7 +555,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "可能更多受益于筛查的高风险女性",
+  "summary_zh": "USPSTF指出需系统解决黑人女性筛查质量、诊断流程和治疗质量的不平等，仅提前筛查未必改善结局。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-036",
@@ -501,7 +571,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "较少受益于筛查的个体",
+  "summary_zh": "预期寿命有限且合并症者可能承受筛查即时伤害而无远期获益，但仍有不少此类女性接受钼靶筛查。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-037",
@@ -515,7 +587,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "较少受益于筛查的个体",
+  "summary_zh": "男性乳腺癌约占1%，多在可触及病变评估中诊断，治疗包括手术、放疗及系统辅助治疗，筛查不太可能获益。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-038",
@@ -529,7 +603,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "较少受益于筛查的个体",
+  "summary_zh": "该段为参考文献列表，涉及美国乳腺癌死亡率种族差异、SEER统计及激素治疗使用变化等文献。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-039",
@@ -543,7 +619,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "较少受益于筛查的个体",
+  "summary_zh": "该段为参考文献列表，涉及DCIS诊断管理会议声明、DCIS系统综述及加拿大乳腺筛查研究等文献。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-040",
@@ -557,7 +635,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "较少受益于筛查的个体",
+  "summary_zh": "该段为参考文献列表，涉及DCIS死亡率、乳腺癌肿瘤大小与过度诊断及筛查后活检病理结果等文献。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-041",
@@ -571,7 +651,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "筛查获益较少的人群",
+  "summary_zh": "讨论乳腺活检病理判读一致性及过度诊断问题，提示部分人群从筛查中获益较少。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-042",
@@ -585,7 +667,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "筛查获益较少的人群",
+  "summary_zh": "关注乳腺病理诊断观察者间可重复性及远程病理会诊，涉及筛查判读差异。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-043",
@@ -599,7 +683,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "筛查获益较少的人群",
+  "summary_zh": "探讨乳腺病理二次意见策略及胸部放疗后女性筛查建议，涉及特殊人群。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-044",
@@ -613,7 +699,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "筛查获益较少的人群",
+  "summary_zh": "分析老年及晚期癌症患者筛查使用情况，并提及男性乳腺癌，讨论获益有限人群。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-045",
@@ -627,7 +715,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "描述与背景",
+  "summary_zh": "介绍乳腺X线摄影原理、体位及辐射剂量，说明双体位检查可降低召回率。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-046",
@@ -641,7 +731,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "描述与背景",
+  "summary_zh": "介绍美国FDA认证要求及BI-RADS报告分类系统，规范乳腺X线结果报告。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-047",
@@ -655,7 +747,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "描述与背景",
+  "summary_zh": "说明BI-RADS各分类的恶性风险及召回比例，指出召回率受机构与医师影响。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-048",
@@ -669,7 +763,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "描述与背景",
+  "summary_zh": "回顾九项随机试验确立筛查依据，指出现代技术研究缺乏死亡率终点验证。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-049",
@@ -683,7 +779,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "描述与背景",
+  "summary_zh": "比较DBT与DM敏感性，提示合成二维联合DBT可提高检出并降低召回与成本。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-050",
@@ -697,7 +795,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "数字乳腺摄影与计算机辅助检测",
+  "summary_zh": "比较数字与胶片乳腺摄影性能，DMIST显示总体检出无差异，年轻女性或更优。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-051",
@@ -711,7 +811,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "数字乳腺摄影与计算机辅助检测",
+  "summary_zh": "多项研究比较数字与胶片摄影，检出率总体相近，数字筛查召回率较高。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-052",
@@ -725,7 +827,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "数字乳腺摄影与计算机辅助检测",
+  "summary_zh": "CAD提高敏感性但降低特异性，增加DCIS检出，对浸润癌检出改善不明显。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-053",
@@ -739,7 +843,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "数字乳腺摄影与计算机辅助检测",
+  "summary_zh": "CAD使用率与支出大幅上升，但早期或晚期肿瘤检出率均无差异。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-054",
@@ -753,7 +859,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "数字乳腺断层摄影",
+  "summary_zh": "介绍DBT原理与FDA批准，三维成像对部分癌症显示优于常规数字摄影。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-055",
@@ -767,7 +875,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "数字乳腺断层摄影",
+  "summary_zh": "DBT筛查使用率快速上升，观察数据显示其召回率低于数字摄影。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-056",
@@ -781,7 +891,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "数字乳腺断层摄影",
+  "summary_zh": "奥斯陆试验显示DBT联合DM较单用DM检出更多癌症，假阳性略减少。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-057",
@@ -795,7 +907,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "数字乳腺断层摄影",
+  "summary_zh": "To-Be试验比较DBT联合合成摄影与常规DM，召回率降低但判读时间延长。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-058",
@@ -809,7 +923,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "数字乳腺断层摄影",
+  "summary_zh": "指出合成图像质量及阅片者经验差异，模型显示DBT可减少假阳性与死亡。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-059",
@@ -823,7 +939,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "数字乳腺断层摄影",
+  "summary_zh": "DBT获益有限且成本效益比高，额外检出癌症的临床意义及过度诊断尚不明确。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-060",
@@ -837,7 +955,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "数字乳腺断层摄影",
+  "summary_zh": "多项大型随机试验正在进行，TOSYMA评估DBT联合合成摄影的癌症检出。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-061",
@@ -851,7 +971,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "数字乳腺断层摄影",
+  "summary_zh": "比较DBT与数字乳腺摄影，发现两者间期浸润癌风险无显著差异，但DBT在极高密度乳腺女性中降低晚期乳腺癌风险。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-062",
@@ -865,7 +987,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "乳腺影像检出癌症的特征",
+  "summary_zh": "筛查检出癌症预后优于非筛查诊断者，提示其生物学侵袭性较低，符合长度偏倚效应。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-063",
@@ -879,7 +1003,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "乳腺影像检出癌症的特征",
+  "summary_zh": "非筛查检出癌症死亡风险更高，筛查检出癌症预后更佳，间期癌与对照组的死亡相对风险均升高。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-064",
@@ -893,7 +1019,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "乳腺影像检出癌症的特征",
+  "summary_zh": "控制肿瘤大小、淋巴结状态等因素后，筛查检出癌症女性生存更优，部分筛查癌属低风险过度诊断。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-065",
@@ -907,7 +1035,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "筛查偏倚的概念",
+  "summary_zh": "筛查检出癌症生存率更高可能源于领先时间偏倚等统计偏倚，而非真正延长生命。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-066",
@@ -921,7 +1051,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "筛查偏倚的概念",
+  "summary_zh": "长度偏倚、过度诊断偏倚和健康志愿者偏倚均可提高生存率而不改变实际生命长度。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-067",
@@ -935,7 +1067,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "筛查偏倚的概念",
+  "summary_zh": "接受筛查女性更健康、医疗可及性更好且非乳腺癌死亡率更低；偏倚影响程度尚不明确。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-068",
@@ -949,7 +1083,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "敏感性",
+  "summary_zh": "乳腺摄影敏感性约79%，受肿瘤大小、乳腺密度、年龄等因素影响，年轻及致密乳腺女性敏感性更低。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-069",
@@ -963,7 +1099,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "特异性和假阳性率",
+  "summary_zh": "乳腺摄影特异性指无癌女性检查阴性比例，假阳性导致不必要随访，筛查试验需极高特异性。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-070",
@@ -977,7 +1115,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "间期癌",
+  "summary_zh": "间期癌指两次筛查间诊断的癌症，多见于年轻女性，生长快、分期晚、预后差。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-071",
@@ -991,7 +1131,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "间期癌",
+  "summary_zh": "侵袭性强的癌症生长快，常在筛查间期临床检出；间期癌检出率尚未被验证为死亡率的替代指标。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-072",
@@ -1005,7 +1147,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "间期癌",
+  "summary_zh": "间期乳腺癌较筛查检出癌更易为高级别、ER阴性，乳腺癌死亡风险增加三倍以上。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-073",
@@ -1019,7 +1163,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "间期癌",
+  "summary_zh": "40至49岁女性间期癌约1/1000，50至59岁约3/1000；年轻女性间期癌更常见，与乳腺密度和肿瘤快速生长相关。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-074",
@@ -1033,7 +1179,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "患者特征",
+  "summary_zh": "乳腺摄影准确性随年龄、乳腺密度、检查次数及距上次检查时间变化，年轻女性敏感性和特异性较低。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-075",
@@ -1047,7 +1195,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "患者特征",
+  "summary_zh": "英国年龄试验中位随访22.8年，39至41岁开始筛查与50岁后开始者乳腺癌死亡率无差异。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-076",
@@ -1061,7 +1211,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "乳腺密度",
+  "summary_zh": "高乳腺密度降低乳腺摄影敏感性10%至29%，并轻度增加乳腺癌风险，但不增加乳腺癌死亡风险。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-077",
@@ -1075,7 +1227,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "乳腺密度",
+  "summary_zh": "乳腺密度描述致密与脂肪组织比例，BI-RADS分类中后两类为致密乳腺，影响约43%的40至74岁女性。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-078",
@@ -1089,7 +1243,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "乳腺密度",
+  "summary_zh": "致密乳腺中DBT敏感性优于传统数字乳腺摄影；补充超声或MRI尚无降低死亡率证据，且增加假阳性。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-079",
@@ -1103,7 +1259,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "乳腺密度",
+  "summary_zh": "荷兰RCT显示极高密度乳腺女性补充MRI可降低2年间期癌发生率，但是否改善临床结局尚未证实。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-080",
@@ -1117,7 +1275,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "乳腺密度",
+  "summary_zh": "MRI检出癌症肿瘤特征更有利，但每1000次筛查假阳性达79.8例；DBTUST研究评估超声补充筛查价值。"
  },
  {
   "clause_id": "WEB-NCI-SCREEN-081",

@@ -50,6 +50,18 @@
         .kb-doc span { font-size: 11px; color: var(--ink-3); }
         .kb-doc i { font-style: normal; font-size: 18px; font-weight: 700; color: #047857; display: block; margin-bottom: 6px; }
 
+
+        .kb-domains { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+        .kb-domain {
+            border: 1px solid var(--line); background: #fff; color: var(--ink-2);
+            border-radius: 999px; padding: 7px 14px; font-size: 12px; cursor: pointer;
+            font-family: inherit;
+        }
+        .kb-domain i { font-style: normal; color: var(--ink-3); margin-left: 4px; }
+        .kb-domain.active { background: #047857; border-color: #047857; color: #fff; }
+        .kb-domain.active i { color: rgba(255,255,255,.75); }
+        .kb-src { margin-top: 8px; font-size: 11px; color: var(--ink-3); }
+        .kb-src a { color: #047857; }
         .kb-list { display: grid; gap: 10px; }
         .kb-clause {
             background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 15px 18px;
@@ -108,6 +120,19 @@
         <span class="kb-count" id="kbCount">{{ total }} 条</span>
     </div>
 
+    <div class="kb-domains" id="kbDomains">
+        <button class="kb-domain active" data-domain="all" type="button">
+            全部 <i>{{ total }}</i></button>
+        <button class="kb-domain" data-domain="MED-DISEASE" type="button">
+            疾病与治疗 <i>{{ domain_counts.get('MED-DISEASE', 0) }}</i></button>
+        <button class="kb-domain" data-domain="MED-DRUG" type="button">
+            药物 <i>{{ domain_counts.get('MED-DRUG', 0) }}</i></button>
+        <button class="kb-domain" data-domain="FEAT" type="button">
+            特征词典 <i>{{ domain_counts.get('FEAT', 0) }}</i></button>
+        <button class="kb-domain" data-domain="SYS" type="button">
+            系统使用 <i>{{ domain_counts.get('SYS', 0) }}</i></button>
+    </div>
+
     <div class="kb-docs" id="kbDocs">
         <div class="kb-doc active" data-doc="all">
             <i>{{ total }}</i>
@@ -125,16 +150,23 @@
 
     <div class="kb-list" id="kbList">
         {% for c in clauses %}
-        <article class="kb-clause" data-doc="{{ c.doc_id }}" data-text="{{ c.section }} {{ c.text }}">
+        <article class="kb-clause" data-doc="{{ c.doc_id }}" data-domain="{{ c.domain }}"
+                 data-text="{{ c.section }} {{ c.text }}">
             <div class="kb-clause-head">
                 <span class="kb-id">{{ c.clause_id }}</span>
                 <b>{{ c.section }}</b>
                 <span class="kb-more">展开/收起</span>
             </div>
             <p>{{ c.text }}</p>
+            <div class="kb-src" style="display:none;">
+                来源：{{ c.source }} · {% if c.level >= 4 %}指南{% elif c.level == 3 %}NCI PDQ{% elif c.level == 2 %}WHO / NHS / MedlinePlus{% else %}维基百科（科普级）{% endif %}
+                {% if c.url %} · <a href="{{ c.url }}" target="_blank" rel="noopener">原文 ↗</a>{% endif %}
+            </div>
         </article>
         {% endfor %}
         <div class="kb-empty" id="kbEmpty" style="display:none;">没有匹配的条款，换个关键词试试。</div>
+        <button class="kb-btn" id="kbMore" type="button" style="margin-top:14px;display:none;">
+            加载更多</button>
     </div>
 
     <p class="kb-note">
@@ -147,29 +179,60 @@
     (function () {
         var list = document.getElementById('kbList');
         var items = Array.prototype.slice.call(list.querySelectorAll('.kb-clause'));
+        var PAGE = 60;
+        var shown = PAGE;
+        var activeDomain = 'all';
         var empty = document.getElementById('kbEmpty');
         var countEl = document.getElementById('kbCount');
         var input = document.getElementById('kbInput');
         var activeDoc = 'all';
 
-        function apply() {
+        function apply(reset) {
             var kw = (input.value || '').trim().toLowerCase();
-            var shown = 0;
+            if (reset) { shown = PAGE; }
+            var matched = [];
             items.forEach(function (el) {
                 var okDoc = activeDoc === 'all' || el.getAttribute('data-doc') === activeDoc;
+                var okDomain = activeDomain === 'all' || el.getAttribute('data-domain') === activeDomain;
                 var text = (el.getAttribute('data-text') || '').toLowerCase();
                 var okKw = !kw || text.indexOf(kw) >= 0;
-                var show = okDoc && okKw;
-                el.style.display = show ? '' : 'none';
-                if (show) { shown += 1; }
+                if (okDoc && okDomain && okKw) { matched.push(el); }
+                el.style.display = 'none';
             });
-            empty.style.display = shown ? 'none' : '';
-            countEl.textContent = shown + ' 条';
+            matched.slice(0, shown).forEach(function (el) { el.style.display = ''; });
+            empty.style.display = matched.length ? 'none' : '';
+            countEl.textContent = matched.length + ' 条' + (matched.length > shown ? '（已显示 ' + shown + '）' : '');
+            var more = document.getElementById('kbMore');
+            if (more) { more.style.display = matched.length > shown ? '' : 'none'; }
+            window.__kbMatched = matched;
         }
 
         items.forEach(function (el) {
-            el.addEventListener('click', function () { el.classList.toggle('open'); });
+            el.addEventListener('click', function () {
+                el.classList.toggle('open');
+                var src = el.querySelector('.kb-src');
+                if (src) { src.style.display = el.classList.contains('open') ? 'block' : 'none'; }
+            });
         });
+
+        Array.prototype.forEach.call(document.querySelectorAll('.kb-domain'), function (btn) {
+            btn.addEventListener('click', function () {
+                Array.prototype.forEach.call(document.querySelectorAll('.kb-domain'), function (b) {
+                    b.classList.remove('active');
+                });
+                btn.classList.add('active');
+                activeDomain = btn.getAttribute('data-domain');
+                apply(true);
+            });
+        });
+
+        var moreBtn = document.getElementById('kbMore');
+        if (moreBtn) {
+            moreBtn.addEventListener('click', function () {
+                shown += PAGE;
+                apply(false);
+            });
+        }
 
         Array.prototype.forEach.call(document.querySelectorAll('.kb-doc'), function (card) {
             card.addEventListener('click', function () {
@@ -178,7 +241,7 @@
                 });
                 card.classList.add('active');
                 activeDoc = card.getAttribute('data-doc');
-                apply();
+                apply(true);
             });
         });
 

@@ -1039,7 +1039,7 @@ def knowledge_page():
             'SELECT doc_id, source, COUNT(*) AS clauses FROM rag_chunks'
             ' GROUP BY doc_id, source ORDER BY doc_id')]
         clauses = [dict(r) for r in conn.execute(
-            'SELECT clause_id, doc_id, section, text FROM rag_chunks'
+            'SELECT clause_id, doc_id, section, text, source, meta_json FROM rag_chunks'
             ' ORDER BY doc_id, clause_id')]
     finally:
         conn.close()
@@ -1050,8 +1050,20 @@ def knowledge_page():
     except Exception:  # noqa: BLE001
         rag_stats = {'chunks': len(clauses), 'vectors': 0, 'rerank': False}
 
+    domain_counts = {}
+    for clause in clauses:
+        try:
+            meta = json.loads(clause.pop('meta_json', '') or '{}')
+        except ValueError:
+            meta = {}
+        clause['domain'] = meta.get('domain') or 'SYS'
+        clause['level'] = meta.get('level') or 0
+        clause['url'] = meta.get('url') or ''
+        domain_counts[clause['domain']] = domain_counts.get(clause['domain'], 0) + 1
+
     return render_template('knowledge.html', docs=docs, clauses=clauses,
-                           total=len(clauses), rag_stats=rag_stats)
+                           total=len(clauses), rag_stats=rag_stats,
+                           domain_counts=domain_counts)
 
 
 @app.route('/records')
