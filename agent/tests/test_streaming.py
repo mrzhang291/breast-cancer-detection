@@ -87,3 +87,13 @@ def test_stream_falls_back_to_sync_when_provider_has_no_stream():
     from agent.core.session import AgentSession
     events = [item['event'] for item in loop.stream(AgentSession(), '你好')]
     assert 'answer' in events and events[-1] == 'done'
+
+
+def test_extract_sub_steps():
+    from agent.core.streaming import _extract_sub_steps
+
+    output = '{"answer": "ok", "steps": [{"tool": "statistics", "ok": true, "latency_ms": 12}]}'
+    steps = _extract_sub_steps(output)
+    assert steps and steps[0]["tool"] == "statistics"
+    assert steps[0]["label"] == "statistics"
+    assert _extract_sub_steps("not json") == []

@@ -154,6 +154,7 @@
     .as-tl-item.done .as-tl-dot { background: #10b981; }
     .as-tl-item.fail .as-tl-dot { background: #ef4444; }
     .as-tl-label { color: #334155; font-weight: 600; }
+    .as-tl-sub { padding-left: 16px; font-size: 11px; opacity: .85; }
     .as-tl-meta { color: #94a3b8; }
     .as-cursor::after {
         content: '▍'; color: #6366f1; animation: as-blink 1s steps(1) infinite;
@@ -491,6 +492,15 @@
                     var label = (data.tool || '').replace(/_/g, ' ');
                     pending.tool = timelineItem(tl, '调用 ' + label, JSON.stringify(data.args || {}).slice(0, 40));
                     if (pending.think) { markItem(pending.think, true, ''); pending.think = null; }
+                } else if (event === 'sub_steps') {
+                    (data.steps || []).forEach(function (sub) {
+                        var row = document.createElement('div');
+                        row.className = 'as-tl-item as-tl-sub ' + (sub.ok ? 'done' : 'fail');
+                        row.innerHTML = '<span class="as-tl-dot"></span>' +
+                            '<span class="as-tl-label">子代理 · ' + escapeHtml(sub.label || sub.tool) + '</span>' +
+                            '<span class="as-tl-meta">' + (sub.latency_ms || 0) + ' ms</span>';
+                        tl.appendChild(row);
+                    });
                 } else if (event === 'tool_result') {
                     if (pending.tool) {
                         markItem(pending.tool, !!data.ok,
