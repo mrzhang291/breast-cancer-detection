@@ -266,6 +266,8 @@
                     <div><span>累计预测</span><strong id="liveTotal">—</strong></div>
                     <div><span>恶性占比</span><strong id="liveRatio">—</strong></div>
                     <div><span>用户</span><strong id="liveUsers">—</strong></div>
+                        <div><span>今日活跃</span><strong id="liveActive">—</strong></div>
+                        <div><span>AI 会话</span><strong id="liveSessions">—</strong></div>
                 </div>
                 <button type="button" class="coze-live-refresh" id="refreshContext">
                     <i class="fa-solid fa-rotate"></i> 刷新数据
@@ -432,6 +434,11 @@
                     document.getElementById('liveTotal').textContent = d.predictions_total ?? '—';
                     document.getElementById('liveRatio').textContent = (d.malignant_ratio ?? 0) + '%';
                     document.getElementById('liveUsers').textContent = d.users_total ?? '—';
+            document.getElementById('liveActive').textContent =
+                (d.active_users_today ?? '—') + ' / ' + (d.active_users_7d ?? '—');
+            const asst = d.assistant || {};
+            document.getElementById('liveSessions').textContent =
+                (asst.sessions_total ?? '—') + ' / ' + (asst.messages_total ?? '—');
                     document.getElementById('liveStamp').textContent = (d.generated_at || '').slice(11, 16) + ' 更新';
                 }
             } catch (e) {
