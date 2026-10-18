@@ -20,6 +20,8 @@ class AgentContext:
     facts: List[Dict] = field(default_factory=list)
     citations: List[str] = field(default_factory=list)
     steps: List[Dict] = field(default_factory=list)
+    history: List[Dict] = field(default_factory=list)
+    context: Dict = field(default_factory=dict)
 
     def add_fact(self, fact: Dict) -> Dict:
         self.facts.append(fact)

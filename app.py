@@ -853,7 +853,7 @@ def ai_query():
         return jsonify({'error': '模型尚未就绪，请稍后重试。'}), 503
 
     last = session.get('last_prediction') or {}
-    ctx = _agent_ctx(prompt)
+    ctx = _agent_ctx(prompt, data)
     try:
         result = _agent_orch.run(ctx, prompt, last.get('data'))
     except Exception as exc:  # noqa: BLE001
@@ -2089,15 +2089,25 @@ def _agent_bind_runtime():
     return True
 
 
-def _agent_ctx(question):
+def _agent_ctx(question, data=None):
+    data = data or {}
     role_id = session.get('role_id')
     if role_id is None:
         role_id = 1 if session.get('username') == 'admin' else 3
+    history = data.get('history') or []
+    if not isinstance(history, list):
+        history = []
+    history = [h for h in history if isinstance(h, dict)][-8:]
+    context = data.get('context') or {}
+    if not isinstance(context, dict):
+        context = {}
     return _AgentContext(
         user_id=session.get('user_id', session.get('username', 'anonymous')),
         role_id=int(role_id),
         lang=session.get('lang', 'zh'),
         question=question,
+        history=history,
+        context=context,
     )
 
 
@@ -2132,7 +2142,7 @@ def api_agent_run():
     except (TypeError, ValueError) as exc:
         return jsonify({'ok': False, 'error': str(exc)}), 400
 
-    ctx = _agent_ctx(question)
+    ctx = _agent_ctx(question, data)
     require_confirm = bool(data.get('require_confirm'))
 
     def generate():
@@ -2171,11 +2181,13 @@ def api_agent_run_sync():
     except (TypeError, ValueError) as exc:
         return jsonify({'ok': False, 'error': str(exc)}), 400
 
-    ctx = _agent_ctx(question)
+    ctx = _agent_ctx(question, data)
     result = _agent_orch.run(ctx, question, values,
                              require_confirm=bool(data.get('require_confirm')))
     result.pop('facts', None)
     result['steps'] = result.get('steps', [])
+    if result.get('clarify'):
+        result['clarify'] = result['clarify']
     return jsonify({'ok': True, 'result': result})
 
 
