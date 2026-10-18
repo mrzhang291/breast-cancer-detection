@@ -2204,6 +2204,49 @@ def api_agent_run_sync():
     return jsonify({'ok': True, 'result': result})
 
 
+@app.route('/api/agent/llm', methods=['POST'])
+def api_agent_llm():
+    """LLM 驱动的 agent（DeepSeek function calling）。
+
+    与确定性编排器并存：没有 API Key 时返回 503，前端继续用 /run-sync。
+    """
+    if 'username' not in session:
+        return jsonify({'ok': False, 'error': '请先登录'}), 403
+    if not _agent_bind_runtime():
+        return jsonify({'ok': False, 'error': '模型尚未就绪'}), 503
+
+    data = request.get_json(silent=True) or {}
+    question = (data.get('question') or '').strip()
+    if not question:
+        return jsonify({'ok': False, 'error': '缺少 question'}), 400
+
+    try:
+        values = _agent_values(data.get('values'))
+    except (TypeError, ValueError) as exc:
+        return jsonify({'ok': False, 'error': str(exc)}), 400
+
+    ctx = _agent_ctx(question, data)
+    if values:
+        _agent_orch.add_input_fact(ctx, values)
+
+    from agent.llm_agent import run_llm_agent
+
+    try:
+        result = run_llm_agent(question, ctx)
+    except Exception as exc:  # noqa: BLE001
+        app.logger.exception('llm agent 失败')
+        return jsonify({'ok': False, 'error': 'LLM agent 执行失败: %s' % str(exc)[:120]}), 500
+
+    if result is None:
+        return jsonify({
+            'ok': False,
+            'error': 'LLM 模式未启用',
+            'hint': '在服务器 .env 里设置 DEEPSEEK_API_KEY 并重启服务',
+        }), 503
+
+    return jsonify({'ok': True, 'result': result})
+
+
 @app.route('/api/agent/artifact/<run_id>/<path:filename>', methods=['GET'])
 def api_agent_artifact(run_id, filename):
     """下载 agent 生成的产物。权限：本人或管理员；管理员下载留痕。"""
