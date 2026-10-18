@@ -80,7 +80,8 @@ _EXPORT_HINTS = ['生成报告', '出份报告', '出一份报告', '导出报�
 
 _EXPORT_VERBS = ('生成', '出份', '出一份', '出个', '导出', '整理', '做成', '打成',
                  '汇总', '导出成', '整理成')
-_EXPORT_NOUNS = ('报告', 'pdf', '小结', 'csv', 'excel', '汇总表')
+_EXPORT_NOUNS = ('报告', 'pdf', '小结', 'csv', 'excel', '汇总表',
+                   '数据', '记录', '原始', '明细')
 
 
 def _is_export_request(text: str) -> bool:
