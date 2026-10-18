@@ -1146,6 +1146,7 @@
             font-size: 14px;
         }
     </style>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/skin.css') }}">
 </head>
 <body>
     <!-- 加载指示器 -->
@@ -1995,5 +1996,7 @@
             $('.shap-container').prepend(errorHtml);
         }
     </script>
+
+{% include '_assistant.html' %}
 </body>
 </html>

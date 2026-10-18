@@ -178,3 +178,34 @@ textarea.form-control { height: auto; }
     .app-nav { display: none; }
     .container, .container-fluid { padding: 16px 16px 70px; }
 }
+
+/* ---------- Bootstrap 导航栏（统一成新顶栏） ---------- */
+.navbar, .navbar-default {
+    background: rgba(255,255,255,.92) !important;
+    border: 0; border-bottom: 1px solid var(--line); border-radius: 0;
+    margin-bottom: 0; min-height: 62px; backdrop-filter: blur(10px);
+    position: sticky; top: 0; z-index: 40; box-shadow: none;
+}
+.navbar-default .navbar-brand {
+    color: var(--ink); font-weight: 700; font-size: 14.5px;
+    height: 62px; padding: 20px 20px; line-height: 22px;
+}
+.navbar-default .navbar-brand:hover { color: var(--brand); }
+.navbar-default .navbar-nav > li > a {
+    color: var(--ink-2); font-size: 13.5px; padding: 20px 12px; transition: .16s;
+}
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus { color: var(--brand); background: transparent; }
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover {
+    background: transparent; color: var(--brand); font-weight: 600;
+}
+.navbar-default .navbar-toggle { border-color: var(--line); margin-top: 14px; }
+.navbar-default .navbar-toggle .icon-bar { background: var(--ink-3); }
+.navbar-default .navbar-collapse { border-color: var(--line); }
+.dropdown-menu {
+    border: 1px solid var(--line); border-radius: 12px; box-shadow: var(--shadow);
+    padding: 6px; font-size: 13px;
+}
+.dropdown-menu > li > a { border-radius: 8px; padding: 8px 12px; color: var(--ink-2); }
+.dropdown-menu > li > a:hover { background: #f8fafc; color: var(--brand); }

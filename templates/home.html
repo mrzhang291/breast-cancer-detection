@@ -93,6 +93,28 @@
             mask-image: radial-gradient(circle at 70% 20%, #000, transparent 72%);
         }
         .hero > * { position: relative; z-index: 1; }
+        .hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) 260px; gap: 24px; align-items: center; }
+        .hero-visual { position: relative; height: 190px; }
+        .ring {
+            position: absolute; border-radius: 50%; border: 1px solid rgba(255,255,255,.22);
+            left: 50%; top: 50%; transform: translate(-50%, -50%);
+        }
+        .ring-1 { width: 180px; height: 180px; }
+        .ring-2 { width: 132px; height: 132px; border-color: rgba(255,255,255,.3); }
+        .ring-3 { width: 86px; height: 86px; border-color: rgba(255,255,255,.45); }
+        .hero-visual-core {
+            position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+            text-align: center;
+        }
+        .hvc-value { font-size: 30px; font-weight: 700; letter-spacing: -.02em; }
+        .hvc-label { font-size: 10.5px; color: rgba(255,255,255,.6); margin-top: 2px; }
+        .hero-pill {
+            position: absolute; font-size: 11px; padding: 5px 10px; border-radius: 999px;
+            background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.2);
+            color: rgba(255,255,255,.9); white-space: nowrap;
+        }
+        .pill-a { left: 0; top: 18px; }
+        .pill-b { right: 0; bottom: 22px; }
         .hero h1 { font-size: clamp(22px, 2.4vw, 30px); letter-spacing: -.02em; line-height: 1.3; margin-bottom: 10px; }
         .hero p { font-size: 14px; color: rgba(255,255,255,.72); max-width: 620px; line-height: 1.7; }
         .hero-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
@@ -169,13 +191,32 @@
         .tab-panel p, .tab-panel li { font-size: 13px; line-height: 1.8; color: var(--ink2); }
         .tab-panel ul { padding-left: 18px; margin-top: 6px; }
 
+        .guide-card { padding: 20px; }
+        .guide-card h3 { font-size: 14px; margin-bottom: 12px; }
+        .guide-card ol { list-style: none; counter-reset: step; display: grid; gap: 12px; }
+        .guide-card li { position: relative; padding-left: 32px; }
+        .guide-card li::before {
+            counter-increment: step; content: counter(step);
+            position: absolute; left: 0; top: 1px; width: 22px; height: 22px;
+            border-radius: 7px; background: var(--soft); color: var(--brand);
+            font-size: 11.5px; font-weight: 700; display: grid; place-items: center;
+        }
+        .guide-card li b { display: block; font-size: 13px; color: var(--ink); }
+        .guide-card li span { font-size: 12px; color: var(--ink3); line-height: 1.6; }
         .stat-card { padding: 18px 20px; display: grid; gap: 12px; }
         .stat-row { display: flex; align-items: baseline; justify-content: space-between; font-size: 13px; color: var(--ink2); }
         .stat-row b { font-size: 16px; color: var(--ink); }
 
         @media (max-width: 1080px) {
+            .hero-grid { grid-template-columns: 1fr; }
+            .hero-visual { display: none; }
             .workspace { grid-template-columns: 1fr; }
             .row { grid-template-columns: 1fr 1fr; }
+        }
+        .site-foot {
+            margin-top: 26px; padding-top: 16px; border-top: 1px solid var(--line);
+            display: flex; justify-content: space-between; gap: 12px;
+            font-size: 12px; color: var(--ink3);
         }
         @media (max-width: 720px) {
             .topbar-inner { padding: 0 16px; gap: 12px; }
@@ -239,6 +280,8 @@
 
 <main class="page">
     <section class="hero">
+        <div class="hero-grid">
+        <div>
         <h1>把 30 项细胞核特征，变成一份说得清依据的判断</h1>
         <p>输入特征后得到良恶性判断、校准后的置信度，以及一份能追溯到条款的解读；证据不够时，系统会明确告诉你。</p>
         <div class="hero-tags">
@@ -246,6 +289,19 @@
             <span class="hero-tag">三档证据强度</span>
             <span class="hero-tag">每次运行可回放</span>
             <span class="hero-tag">仅供教学演示</span>
+        </div>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+            <div class="ring ring-1"></div>
+            <div class="ring ring-2"></div>
+            <div class="ring ring-3"></div>
+            <div class="hero-visual-core">
+                <div class="hvc-value">0.93</div>
+                <div class="hvc-label">校准后置信度</div>
+            </div>
+            <div class="hero-pill pill-a">特征 24 / 30 已填</div>
+            <div class="hero-pill pill-b">证据强度 · 充分</div>
+        </div>
         </div>
     </section>
 
@@ -359,6 +415,15 @@
                 </div>
             </section>
 
+            <section class="card guide-card">
+                <h3>三步得到结论</h3>
+                <ol>
+                    <li><b>填特征</b><span>30 项指标，或点「随机数据」直接取真实样本</span></li>
+                    <li><b>看结论</b><span>良恶性 + 校准后置信度</span></li>
+                    <li><b>查依据</b><span>右下角找 AI 助手，问「为什么」</span></li>
+                </ol>
+            </section>
+
             <section class="card stat-card">
                 <div class="stat-row"><span>模型输入维度</span><b>30</b></div>
                 <div class="stat-row"><span>证据分档</span><b>3 档</b></div>
@@ -367,6 +432,10 @@
             </section>
         </aside>
     </div>
+    <footer class="site-foot">
+        <span>乳腺癌预测系统 · 仅供教学演示，不用于临床诊断</span>
+        <span>模型：轻量 RF + 校准 · 证据库 152 条</span>
+    </footer>
 </main>
 
 {% include '_assistant.html' %}

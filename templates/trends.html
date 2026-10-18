@@ -785,6 +785,7 @@
         }
     </style>
     <script src="https://cdn.bootcdn.net/ajax/libs/Chart.js/4.4.1/chart.umd.min.js?v=2"></script>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/skin.css') }}">
 </head>
 <body>
     <nav class="top-nav">
@@ -1403,5 +1404,7 @@
             }
         }
     </script>
+
+{% include '_assistant.html' %}
 </body>
 </html>

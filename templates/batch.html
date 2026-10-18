@@ -448,6 +448,7 @@
             }
         }
     </style>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/skin.css') }}">
 </head>
 <body>
     <!-- 导航栏 -->
@@ -713,5 +714,7 @@
             });
         });
     </script>
+
+{% include '_assistant.html' %}
 </body>
 </html>
