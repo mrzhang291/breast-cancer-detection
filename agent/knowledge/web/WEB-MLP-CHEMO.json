@@ -11,7 +11,9 @@
   "domain": "MED-DISEASE",
   "level": 2,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "什么是癌症化疗？",
+  "summary_zh": "化疗用药物杀灭癌细胞、阻止扩散或减缓生长，可用于治愈癌症、降低复发风险或缓解症状。"
  },
  {
   "clause_id": "WEB-MLP-CHEMO-002",
@@ -25,7 +27,9 @@
   "domain": "MED-DISEASE",
   "level": 2,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "化疗有哪些副作用？",
+  "summary_zh": "化疗可能损伤健康细胞引起副作用，程度因人而异；多数副作用在治疗结束后随健康细胞恢复而消退。"
  },
  {
   "clause_id": "WEB-MLP-CHEMO-003",
@@ -39,7 +43,9 @@
   "domain": "MED-DISEASE",
   "level": 2,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "接受化疗时应注意什么？",
+  "summary_zh": "化疗可在医院、家中或诊所进行，给药方式多样，方案取决于癌症类型、药物、目标及身体反应。"
  },
  {
   "clause_id": "WEB-MLP-CHEMO-004",
@@ -53,7 +59,9 @@
   "domain": "MED-DISEASE",
   "level": 2,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "开始了解",
+  "summary_zh": "提供癌症药物列表、化疗科普及患者支持资料，含西班牙语版本和PDF资源。"
  },
  {
   "clause_id": "WEB-MLP-CHEMO-005",
@@ -67,7 +75,9 @@
   "domain": "MED-DISEASE",
   "level": 2,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "相关问题",
+  "summary_zh": "介绍化疗相关贫血、出血、疲乏、饮食补充剂相互作用、口腔健康、化疗脑及脱发等问题。"
  },
  {
   "clause_id": "WEB-MLP-CHEMO-006",
@@ -81,7 +91,9 @@
   "domain": "MED-DISEASE",
   "level": 2,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "相关问题",
+  "summary_zh": "涵盖便秘、腹泻、水肿、脱发、感染与中性粒细胞减少、血细胞降低及副作用管理等化疗相关问题。"
  },
  {
   "clause_id": "WEB-MLP-CHEMO-007",
@@ -95,7 +107,9 @@
   "domain": "MED-DISEASE",
   "level": 2,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "儿童",
+  "summary_zh": "面向儿童及家长介绍化疗、中心静脉导管、输液港、PICC置管及化疗放疗副作用。"
  },
  {
   "clause_id": "WEB-MLP-CHEMO-008",
@@ -109,6 +123,8 @@
   "domain": "MED-DISEASE",
   "level": 2,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "患者手册",
+  "summary_zh": "提供化疗后出院、中心静脉导管护理、白细胞降低、口腔黏膜炎及化疗类型等患者教育资料。"
  }
 ]

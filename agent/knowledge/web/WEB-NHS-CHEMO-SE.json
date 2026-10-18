@@ -11,7 +11,9 @@
   "domain": "MED-DISEASE",
   "level": 2,
   "license": "Open Government Licence v3.0",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "化疗的用途",
+  "summary_zh": "化疗用于治疗多种癌症，可治愈癌症、降低复发风险、缩小或阻止扩散、缓解症状，可单独或联合放化疗、手术使用。"
  },
  {
   "clause_id": "WEB-NHS-CHEMO-SE-002",
@@ -25,7 +27,9 @@
   "domain": "MED-DISEASE",
   "level": 2,
   "license": "Open Government Licence v3.0",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "化疗的给药方式",
+  "summary_zh": "化疗药物种类多、给药方式多样，通常在医院或诊所进行，部分可居家；一般按周期进行，中间留休息期让身体恢复。"
  },
  {
   "clause_id": "WEB-NHS-CHEMO-SE-003",
@@ -39,7 +43,9 @@
   "domain": "MED-DISEASE",
   "level": 2,
   "license": "Open Government Licence v3.0",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "化疗前的准备",
+  "summary_zh": "化疗前医护会讲解方案、副作用及应对准备，提醒生育力问题；每次治疗前会评估副作用、测身高体重、验血及影像检查。"
  },
  {
   "clause_id": "WEB-NHS-CHEMO-SE-004",
@@ -53,7 +59,9 @@
   "domain": "MED-DISEASE",
   "level": 2,
   "license": "Open Government Licence v3.0",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "重要提示：性生活与避孕",
+  "summary_zh": "化疗药物对胎儿危害大，疑似怀孕须立即告知医护并可能先验孕；有生育可能者治疗期间须采取避孕措施。"
  },
  {
   "clause_id": "WEB-NHS-CHEMO-SE-005",
@@ -67,7 +75,9 @@
   "domain": "MED-DISEASE",
   "level": 2,
   "license": "Open Government Licence v3.0",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "化疗的副作用",
+  "summary_zh": "化疗副作用多在治疗后数天至数周出现，停药后缓解，部分可持续较久；常见恶心呕吐、口腔咽喉痛、免疫力下降、贫血、易出血等。"
  },
  {
   "clause_id": "WEB-NHS-CHEMO-SE-006",
@@ -81,7 +91,9 @@
   "domain": "MED-DISEASE",
   "level": 2,
   "license": "Open Government Licence v3.0",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "紧急建议：出现以下情况立即联系医护",
+  "summary_zh": "高热或感染征象、肢体肿痛发热、突发气短胸痛咯血等，可能提示感染或血栓，需尽快处理；不确定可拨NHS 111。"
  },
  {
   "clause_id": "WEB-NHS-CHEMO-SE-007",
@@ -95,7 +107,9 @@
   "domain": "MED-DISEASE",
   "level": 2,
   "license": "Open Government Licence v3.0",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "化疗期间的支持",
+  "summary_zh": "化疗期间医护团队会提供支持及本地服务信息，Macmillan癌症支持与英国癌症研究等全国慈善机构也提供支持与资讯。"
  },
  {
   "clause_id": "WEB-NHS-CHEMO-SE-008",
@@ -109,6 +123,8 @@
   "domain": "MED-DISEASE",
   "level": 2,
   "license": "Open Government Licence v3.0",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "来自其他癌症患者的支持",
+  "summary_zh": "与其他癌症患者线上或线下交流可能有帮助，可参加Macmillan化疗论坛、查找本地支持服务并阅读患者抗癌经历。"
  }
 ]

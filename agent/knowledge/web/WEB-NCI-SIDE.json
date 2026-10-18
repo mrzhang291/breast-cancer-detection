@@ -11,7 +11,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "癌症治疗的副作用",
+  "summary_zh": "癌症及其治疗可损伤健康组织器官而引发副作用，应及时向医疗团队反映，以便获得处理或缓解建议。"
  },
  {
   "clause_id": "WEB-NCI-SIDE-002",
@@ -25,6 +27,8 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "癌症治疗副作用的管理",
+  "summary_zh": "介绍出血、脱发、感染、神经及性健康等多种副作用的预防与管理方法，且副作用因人而异。"
  }
 ]
