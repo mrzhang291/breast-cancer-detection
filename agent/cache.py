@@ -10,7 +10,7 @@ from typing import Optional
 
 from . import db
 
-CACHE_VERSION = 'v6'
+CACHE_VERSION = 'v7'
 
 _PUNCT_RE = re.compile(r'[\s，。、；：？！,.;:?!""\'\'（）()【】\[\]<>《》~`]')
 _SYNONYM = [
