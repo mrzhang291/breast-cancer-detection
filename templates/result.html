@@ -1076,12 +1076,16 @@
         .rp-tier.confident { background: #ecfdf5; color: #047857; border: 1px solid #d1fae5; }
         .rp-tier.cautious { background: #fffbeb; color: #b45309; border: 1px solid #fef3c7; }
         .rp-tier.abstain { background: #fef2f2; color: #b91c1c; border: 1px solid #fee2e2; }
-        .rp-tier-track { display: flex; gap: 6px; margin: 6px 0 12px; }
-        .rp-tier-track .seg { flex: 1; height: 7px; border-radius: 999px; background: #eef2f8; }
-        .rp-tier-track .seg.on { background: #10b981; }
-        .rp-tier-track .seg.warn.on { background: #f59e0b; }
-        .rp-tier-track .seg.bad.on { background: #ef4444; }
-        .rp-evidence.abstain .rp-tier-track .seg.bad.on { background: #ef4444; }
+
+        .rp-tier-track { display: block; height: 8px; border-radius: 999px; background: #eef2f8; overflow: hidden; margin: 8px 0 12px; }
+        .rp-tier-track span { display: block; height: 100%; border-radius: 999px; background: #10b981; }
+        .rp-tier-track.cautious span { background: #f59e0b; }
+        .rp-tier-track.abstain span { background: #ef4444; }
+        #agentSteps, #agentTrace, #agentEvidence { display: none !important; }
+        .rp-agent-tools { display: none !important; }
+        .rp-agent h2, .rp-agent > p { text-align: left !important; justify-content: flex-start !important; }
+        .rp-feat { grid-template-columns: 132px 1fr 64px; }
+        .rp-feat { grid-template-columns: 132px 1fr 64px !important; }
         .rp-ev-reason { margin: 0; font-size: 12.5px; line-height: 1.7; color: #475569; }
         .rp-ev-list { margin: 10px 0 0; padding-left: 18px; font-size: 12px; color: #64748b; line-height: 1.7; }
 
@@ -1181,10 +1185,8 @@
         <h3>证据强度</h3>
         <span class="rp-tier {{ tier }}">{{ tier_label }}</span>
       </div>
-      <div class="rp-tier-track">
-        <i class="seg {{ 'on' if tier == 'confident' else '' }}"></i>
-        <i class="seg warn {{ 'on' if tier in ('confident', 'cautious') else '' }}"></i>
-        <i class="seg bad {{ 'on' if tier in ('confident', 'cautious', 'abstain') else '' }}"></i>
+      <div class="rp-tier-track {{ tier }}">
+        <span style="width: {{ '100%' if tier == 'confident' else ('66%' if tier == 'cautious' else '33%') }}"></span>
       </div>
       <p class="rp-ev-reason">{{ evidence.reason or '基于校准置信度与输入分布距离综合判断。' }}</p>
       {% if evidence.reasons %}
@@ -1233,7 +1235,7 @@
       <p style="text-align:center;color:#718096;font-size:.85em;margin-top:6px;">
         模型预测 + 特征归因 + 知识库检索，每个数字都能溯源
       </p>
-      <div style="display:flex;gap:10px;flex-wrap:wrap;margin:16px 0;justify-content:center;">
+      <div class="rp-agent-tools" style="display:flex;gap:10px;flex-wrap:wrap;margin:16px 0;justify-content:center;">
         <button id="agentRunBtn" class="btn btn-primary"><i class="fa fa-play"></i> 解读这次结果</button>
         <button id="agentCaseBtn" class="btn btn-info"><i class="fa fa-users"></i> 找相似病例</button>
         <button id="agentInspectBtn" class="btn btn-warning"><i class="fa fa-stethoscope"></i> 系统巡检</button>
@@ -2307,19 +2309,23 @@
             body: JSON.stringify({values: features, limit: 3})
         }).then(function (r) { return r.json(); }).then(function (data) {
             var box = document.getElementById('rpSimilar');
-            var items = (data.cases || data.items || data.similar || (data.data && (data.data.items || data.data.cases)) || []);
+            var payload = (data && data.data) || {};
+            var items = payload.cases || payload.items || data.cases || data.items || [];
             if (!data.ok || !items.length) {
                 box.innerHTML = '<div class="rp-empty">历史记录还不够，暂时没有可对照的相似病例。</div>';
                 return;
             }
-            box.innerHTML = items.slice(0, 3).map(function (c) {
-                var result = c.prediction_result || c.result || '';
+            box.innerHTML = items.slice(0, 3).map(function (c, idx) {
+                var result = c.label || c.prediction_result || c.result || '';
                 var bad = ('恶性 Malignant malignant').indexOf(result) >= 0;
-                var conf = c.confidence != null ? (parseFloat(c.confidence) * 100).toFixed(1) + '%' : '—';
-                var dist = c.distance != null ? parseFloat(c.distance).toFixed(2) : '—';
-                return '<div class="rp-case"><b>记录 #' + esc(c.id || c.record_id || '-') + '</b>' +
+                var sim = c.similarity != null ? (parseFloat(c.similarity) * 100).toFixed(1) + '%' : '—';
+                var idxLabel = c.sample_index != null ? ('样本 #' + c.sample_index) : ('邻居 ' + (idx + 1));
+                var area = c.area_mean != null ? parseFloat(c.area_mean).toFixed(0) : '—';
+                var radius = c.radius_mean != null ? parseFloat(c.radius_mean).toFixed(1) : '—';
+                return '<div class="rp-case"><b>' + esc(idxLabel) + '</b>' +
                     '<span class="tag ' + (bad ? 'bad' : 'good') + '">' + esc(result || '未知') + '</span>' +
-                    '<span>置信度 ' + conf + '</span><span>特征距离 ' + dist + '</span></div>';
+                    '<span>相似度 ' + sim + '</span>' +
+                    '<span>面积 ' + area + ' · 半径 ' + radius + '</span></div>';
             }).join('');
         }).catch(function () {
             document.getElementById('rpSimilar').innerHTML = '<div class="rp-empty">相似病例加载失败。</div>';
