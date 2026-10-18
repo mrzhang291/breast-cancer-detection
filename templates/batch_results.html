@@ -428,58 +428,7 @@
 {% include '_topbar.html' %}
 
     <!-- 导航栏 -->
-    <nav class="top-nav">
-        <div class="nav-container">
-            <!-- Logo -->
-            <a href="/" class="nav-logo">
-                <div style="width: 40px; height: 40px; border-radius: 10px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center;">
-                    <i class="fa fa-heart" style="color: #fff; font-size: 20px;"></i>
-                </div>
-                <span class="logo-text">{{ _('breast_cancer_detection') }}</span>
-            </a>
-
-            <!-- 导航链接 -->
-            <div class="nav-links">
-                <a href="/"><i class="fa fa-home"></i> {{ _('home') }}</a>
-                <a href="/records"><i class="fa fa-history"></i> {{ _('records') }}</a>
-                <a href="/trends"><i class="fa fa-line-chart"></i> {{ _('trends') }}</a>
-                <a href="/batch"><i class="fa fa-upload"></i> {{ _('batch') }}</a>
-            </div>
-
-            <!-- 右侧操作区 -->
-            <div class="nav-actions">
-                {% if session.get('username') %}
-                <div class="user-menu">
-                    <button id="userMenu" class="btn btn-default" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #fff; border: none; padding: 8px 16px; border-radius: 25px; font-weight: 600; display: flex; align-items: center; gap: 8px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 2px 10px rgba(102, 126, 234, 0.3);">
-                        <i class="fa fa-user-circle"></i> {{ session.get('username') }}
-                    </button>
-                    <div id="userDropdown" class="user-dropdown">
-                        <div><i class="fa fa-handshake-o"></i> {{ _('welcome') }}</div>
-                        <a href="/records"><i class="fa fa-history"></i> {{ _('records') }}</a>
-                        <a href="/trends"><i class="fa fa-line-chart"></i> {{ _('trends') }}</a>
-                        <a href="/batch"><i class="fa fa-upload"></i> {{ _('batch') }}</a>
-                        <div style="border-top: 1px solid #eee; margin: 4px 0;"></div>
-                        <a href="/logout"><i class="fa fa-sign-out"></i> {{ _('logout') }}</a>
-                    </div>
-                </div>
-                {% else %}
-                <a href="/login" class="btn-primary-gradient">{{ _('login') }}</a>
-                <a href="/register" class="btn-secondary">{{ _('register') }}</a>
-                {% endif %}
-                
-                <!-- 语言切换 -->
-                <div class="lang-switch-group">
-                    {% if is_chinese %}
-                    <span class="lang-btn active">{{ _('chinese') }}</span>
-                    <a href="/set-lang/en" class="lang-btn">{{ _('english') }}</a>
-                    {% else %}
-                    <a href="/set-lang/zh" class="lang-btn">{{ _('chinese') }}</a>
-                    <span class="lang-btn active">{{ _('english') }}</span>
-                    {% endif %}
-                </div>
-            </div>
-        </div>
-    </nav>
+    
     
     <!-- 主内容 -->
     <div class="container">

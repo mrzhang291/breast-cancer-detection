@@ -325,41 +325,7 @@
 {% set active_nav = 'records' %}
 {% include '_topbar.html' %}
 
-    <nav class="top-nav">
-        <div class="nav-container">
-            <a href="/" class="nav-logo">
-                <div class="logo-text">{{ _('breast_cancer_detection') }}</div>
-            </a>
-            <div class="nav-links">
-                <a href="/" {% if request.path == '/' %}class="active"{% endif %}>
-                    <i class="fa fa-home"></i> {{ _('home') }}
-                </a>
-                <a href="/records" {% if request.path == '/records' %}class="active"{% endif %}>
-                    <i class="fa fa-history"></i> {{ _('history_records') }}
-                </a>
-                <a href="/trends" {% if request.path == '/trends' %}class="active"{% endif %}>
-                    <i class="fa fa-line-chart"></i> {{ _('trend_analysis') }}
-                </a>
-                <a href="/batch" {% if request.path == '/batch' %}class="active"{% endif %}>
-                    <i class="fa fa-files-o"></i> {{ _('batch_prediction') }}
-                </a>
-            </div>
-            <div class="nav-actions">
-                <div style="display: flex; gap: 5px;">
-                    {% if is_chinese %}
-                    <button class="lang-switch-btn" disabled>{{ _('chinese') }}</button>
-                    <a href="/set-lang/en"><button class="lang-switch-btn">{{ _('english') }}</button></a>
-                    {% else %}
-                    <a href="/set-lang/zh"><button class="lang-switch-btn">{{ _('chinese') }}</button></a>
-                    <button class="lang-switch-btn" disabled>{{ _('english') }}</button>
-                    {% endif %}
-                </div>
-                <a href="/logout" class="btn btn-default" style="margin-left: 8px;">
-                    <i class="fa fa-sign-out"></i> {{ _('logout') }}
-                </a>
-            </div>
-        </div>
-    </nav>
+    
 
     <div class="container" style="max-width: 1400px; margin: 0 auto; padding: 30px 24px;">
         <div class="card">
