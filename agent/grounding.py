@@ -114,6 +114,13 @@ def ground(answer_md: str, facts: List[Dict],
                     sources.append({'kind': kind,
                                     'label': _source_label(kind, payloads[kind], citations)})
 
+        # 知识类句子若没有数据事实，用答案级引用作为出处
+        if not sources and citations and any(
+                k in ('feature', 'clause', 'confidence') for k in kinds):
+            sources.append({'kind': 'clause',
+                            'label': '条款 ' + '、'.join(citations[:2]),
+                            'ids': citations[:2]})
+
         seen = set()
         deduped = []
         for src in sources:
