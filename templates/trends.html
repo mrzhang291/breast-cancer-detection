@@ -7,7 +7,6 @@
     <meta http-equiv="Expires" content="0">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ _('trend_analysis') }} - {{ _('breast_cancer_detection') }}</title>
-    <link rel="preconnect" href="https://cdn.bootcdn.net">
     <link rel="stylesheet" href="{{ url_for('static', filename='vendor/bootstrap.min.css') }}" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="{{ url_for('static', filename='vendor/font-awesome.min.css') }}" media="print" onload="this.media='all'">
     <noscript>
@@ -784,7 +783,7 @@
             }
         }
     </style>
-    <script src="https://cdn.bootcdn.net/ajax/libs/Chart.js/4.4.1/chart.umd.min.js?v=2"></script>
+    <script src="{{ url_for('static', filename='vendor/chart.umd.min.js') }}"></script>
 <link rel="stylesheet" href="{{ url_for('static', filename='css/skin.css') }}">
 </head>
 <body>
