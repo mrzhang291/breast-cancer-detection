@@ -953,6 +953,10 @@
         }
     </style>
 
+<script>
+    // 把本次批量结果交给侧栏助手，用于"汇总成报告"
+    window.AGENT_CONTEXT = { batch: {{ (results[:50] if results else []) | tojson }} };
+</script>
 {% include '_assistant.html' %}
 </body>
 </html>

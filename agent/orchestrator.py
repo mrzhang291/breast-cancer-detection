@@ -377,6 +377,11 @@ def _act_compare(ctx: AgentContext, values: Optional[List[float]] = None, emit=N
 def _act_export(ctx: AgentContext, values, state, emit=None) -> None:
     """生成报告：先补齐事实，再交给 export_report。"""
     question = ((state or {}).get('question') or '').lower()
+    wants_batch = any(w in question for w in ('批量', '这批'))
+    if wants_batch and (ctx.context or {}).get('batch'):
+        _call(ctx, 'export_report', {'kind': 'batch'}, emit)
+        return
+
     wants_csv = any(w in question for w in ('csv', 'excel', '原始数据', '导出数据'))
     if wants_csv:
         from . import policy as _policy

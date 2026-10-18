@@ -105,6 +105,15 @@ def export_report(ctx, kind='single', days=None, limit=None):
                                    error_type='empty')
 
     series = stats = None
+    if kind == 'batch':
+        rows = context.get('batch') or []
+        if not rows:
+            return registry.ToolResult(
+                ok=False, error='没有拿到批量结果，请在「批量结果」页面里让我汇总',
+                error_type='empty')
+        payload_extra = {'batch': rows}
+    else:
+        payload_extra = {}
     if kind == 'range':
         series, stats = _collect_range(ctx, days, limit)
         if not series:
@@ -125,6 +134,7 @@ def export_report(ctx, kind='single', days=None, limit=None):
         'stats': stats,
         'window': {'mode': 'days' if days else ('limit' if limit else 'all'),
                    'n': int(days or limit or 0)},
+        **payload_extra,
     }
 
     try:

@@ -463,6 +463,66 @@ def render_csv(payload: dict) -> dict:
         'created_at': int(time.time()),
     }
 
+def chart_bars(labels, values, title='') -> bytes:
+    _ensure_font()
+    fig, ax = plt.subplots(figsize=(5.6, 2.4))
+    ax.bar(labels, values, color='#6366f1', width=0.5)
+    for idx, value in enumerate(values):
+        ax.text(idx, value, str(value), ha='center', va='bottom', fontsize=9, color='#475569')
+    ax.set_title(title, fontsize=9, color='#64748b', pad=6)
+    for side in ('top', 'right', 'left'):
+        ax.spines[side].set_visible(False)
+    ax.spines['bottom'].set_color('#e2e8f0')
+    ax.tick_params(length=0, labelsize=8.5, colors='#94a3b8')
+    ax.set_yticks([])
+    return _png(fig)
+
+
+def render_batch(payload: dict) -> dict:
+    """④ 批量结果汇总。"""
+    rows = payload.get('batch') or []
+    total = len(rows)
+    malignant = sum(1 for r in rows if str(r.get('result')) in ('恶性', 'Malignant'))
+    benign = total - malignant
+    avg = (sum(float(r.get('confidence') or 0) for r in rows) / total) if total else 0
+    low = [r for r in rows if float(r.get('confidence') or 0) < 0.75]
+
+    pdf = Report()
+    pdf.header_block('批量预测汇总报告',
+                     '生成时间 %s · 本次批量共 %d 条' % (_stamp(), total))
+
+    pdf.section('概览')
+    pdf.kv_table([
+        ('样本数', total),
+        ('良性 / 恶性', '%d / %d' % (benign, malignant)),
+        ('平均置信度', '%.2f%%' % (avg * 100)),
+        ('低置信度（<75%）', '%d 条' % len(low)),
+    ])
+
+    if total:
+        pdf.section('结果分布')
+        try:
+            pdf.image(io.BytesIO(chart_bars(['良性', '恶性'], [benign, malignant],
+                                            '批量结果分布')), w=120)
+        except Exception:  # noqa: BLE001
+            pass
+
+    if low:
+        pdf.section('需要人工复核')
+        pdf.use(9)
+        for row in low[:10]:
+            pdf.set_text_color(*BAD)
+            pdf.cell(0, 6, '%s · %s · %.2f%%' % (str(row.get('name') or row.get('id') or '样本'),
+                                                 row.get('result') or '', float(row.get('confidence') or 0) * 100),
+                     ln=1)
+        if len(low) > 10:
+            pdf.set_text_color(*MUTED)
+            pdf.cell(0, 6, '仅列出前 10 条，共 %d 条低置信度。' % len(low), ln=1)
+
+    pdf.footer_note('本报告由系统自动生成，仅供教学演示，不用于临床诊断。')
+    return _save(pdf, payload.get('user_id'), payload.get('run_id'), 'batch',
+                 '%s-%s' % (total, malignant))
+
 def render(kind: str, payload: dict) -> dict:
     """统一入口，按动作分派。"""
     if kind == 'single':
@@ -473,4 +533,6 @@ def render(kind: str, payload: dict) -> dict:
         return render_range(payload)
     if kind == 'csv':
         return render_csv(payload)
+    if kind == 'batch':
+        return render_batch(payload)
     raise ValueError('暂不支持的报告类型: %s' % kind)
