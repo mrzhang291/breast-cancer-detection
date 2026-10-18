@@ -1908,10 +1908,9 @@ def shap_analyze(index):
     if 'username' not in session:
         return jsonify({'error': '请先登录'}), 403
     
-    if 'batch_results' not in session:
+    results = _batch_results()
+    if not results:
         return jsonify({'error': '没有可用的批量预测数据'}), 400
-    
-    results = session['batch_results']
     
     if index < 0 or index >= len(results):
         return jsonify({'error': '无效的记录索引'}), 400
