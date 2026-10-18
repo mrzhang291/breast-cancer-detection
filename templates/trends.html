@@ -1,0 +1,1407 @@
+<!DOCTYPE html>
+<html lang="{{ current_lang }}">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ _('trend_analysis') }} - {{ _('breast_cancer_detection') }}</title>
+    <link rel="preconnect" href="https://cdn.bootcdn.net">
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </noscript>
+    <style>
+        :root {
+            --primary-color: #667eea;
+            --primary-light: #eef2ff;
+            --primary-dark: #5a67d8;
+            --secondary-color: #764ba2;
+            --secondary-light: #f5f3ff;
+            --danger-color: #ef4444;
+            --danger-light: #fef2f2;
+            --warning-color: #f59e0b;
+            --warning-light: #fffbeb;
+            --success-color: #10b981;
+            --success-light: #ecfdf5;
+            --bg-light: #f8fafc;
+            --bg-card: #ffffff;
+            --bg-hover: #f1f5f9;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --border-color: #e2e8f0;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --radius-sm: 6px;
+            --radius-md: 10px;
+            --radius-lg: 16px;
+            --transition-fast: 0.15s ease;
+            --transition-normal: 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
+            min-height: 100vh;
+            color: var(--text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Top Navigation */
+        .top-nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.04);
+        }
+        .top-nav .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+            padding: 0 24px;
+        }
+        .top-nav .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: #1e293b;
+        }
+        .top-nav .nav-logo .logo-text {
+            font-size: 1.25em;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .top-nav .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .top-nav .nav-links a {
+            padding: 12px 20px;
+            color: #64748b;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95em;
+            border-radius: 10px;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .top-nav .nav-links a:hover {
+            color: #1e293b;
+            background: #f1f5f9;
+        }
+        .top-nav .nav-links a.active {
+            color: #667eea;
+            background: rgba(102, 126, 234, 0.1);
+        }
+        .top-nav .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .lang-switch-btn {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            border: none;
+            cursor: pointer;
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+            transition: background 0.3s ease;
+        }
+        .lang-switch-btn:hover {
+            background: rgba(102, 126, 234, 0.2);
+        }
+        .lang-switch-btn:disabled {
+            background: rgba(102, 126, 234, 0.3);
+            cursor: not-allowed;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 24px;
+        }
+
+        /* Header */
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .page-title {
+            font-size: 28px;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .page-title::before {
+            content: '';
+            width: 4px;
+            height: 36px;
+            background: linear-gradient(180deg, var(--primary-color), var(--secondary-color));
+            border-radius: 2px;
+        }
+
+        .page-subtitle {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-top: 4px;
+            margin-left: 16px;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: var(--radius-md);
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-normal);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            box-shadow: 0 4px 14px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-hover);
+            border-color: var(--primary-color);
+        }
+
+        /* Language Switch */
+        .language-switch {
+            display: flex;
+            background: var(--bg-light);
+            border-radius: var(--radius-md);
+            padding: 2px;
+            border: 1px solid var(--border-color);
+        }
+
+        .lang-btn {
+            padding: 8px 16px;
+            border: none;
+            background: transparent;
+            border-radius: calc(var(--radius-md) - 2px);
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            color: var(--text-secondary);
+        }
+
+        .lang-btn:hover {
+            color: var(--text-primary);
+        }
+
+        .lang-btn.active {
+            background: white;
+            color: var(--primary-color);
+            box-shadow: var(--shadow-sm);
+        }
+
+        /* AI Analysis Result Styles */
+        .ai-analysis-content {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.8;
+            color: var(--text-primary);
+            padding: 20px;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+        }
+
+        .ai-analysis-content h1 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .ai-analysis-content h2 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-top: 24px;
+            margin-bottom: 12px;
+            padding-left: 12px;
+            border-left: 4px solid var(--secondary-color);
+        }
+
+        .ai-analysis-content h3 {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-top: 18px;
+            margin-bottom: 10px;
+        }
+
+        .ai-analysis-content p {
+            margin-bottom: 12px;
+            text-align: justify;
+        }
+
+        .ai-analysis-content ul, .ai-analysis-content ol {
+            margin-left: 24px;
+            margin-bottom: 12px;
+        }
+
+        .ai-analysis-content li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 8px;
+        }
+
+        .ai-analysis-content li::marker {
+            color: var(--primary-color);
+        }
+
+        .ai-analysis-content strong {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .ai-analysis-content .highlight {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(59, 130, 246, 0.1));
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: 500;
+            color: var(--primary-color);
+        }
+
+        .ai-analysis-content .warning {
+            background: linear-gradient(135deg, rgba(251, 191, 36, 0.1), rgba(245, 158, 11, 0.1));
+            border-left: 4px solid #f59e0b;
+            padding: 12px 16px;
+            margin: 16px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .ai-analysis-content .success {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(34, 197, 94, 0.1));
+            border-left: 4px solid #10b981;
+            padding: 12px 16px;
+            margin: 16px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .ai-analysis-content .disclaimer {
+            background: linear-gradient(135deg, rgba(100, 116, 139, 0.1), rgba(71, 85, 105, 0.1));
+            border: 1px dashed var(--border-color);
+            padding: 16px;
+            margin-top: 20px;
+            border-radius: var(--radius-md);
+            font-size: 13px;
+            color: var(--text-secondary);
+            text-align: center;
+        }
+
+        .ai-analysis-content .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 16px;
+            margin: 16px 0;
+        }
+
+        .ai-analysis-content .stat-item {
+            background: white;
+            padding: 16px;
+            border-radius: var(--radius-md);
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .ai-analysis-content .stat-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .ai-analysis-content .stat-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+
+        /* Card */
+        .card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 28px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 24px;
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition-normal);
+        }
+
+        .card:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-title-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: var(--radius-md);
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 18px;
+        }
+
+        .card-subtitle {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-top: 4px;
+            margin-left: 46px;
+        }
+
+        /* Record Selection */
+        .select-all-container {
+            padding: 16px;
+            background: var(--bg-light);
+            border-radius: var(--radius-md);
+            margin-bottom: 20px;
+            border: 1px solid var(--border-color);
+        }
+
+        .select-all-label {
+            font-weight: 600;
+            color: var(--text-primary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 14px;
+        }
+
+        .select-all-label input {
+            width: 20px;
+            height: 20px;
+            accent-color: var(--primary-color);
+        }
+
+        .select-all-label span:last-child {
+            margin-left: auto;
+            padding: 4px 12px;
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--success-color);
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .record-list {
+            max-height: 350px;
+            overflow-y: auto;
+            padding-right: 8px;
+        }
+
+        .record-list::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .record-list::-webkit-scrollbar-track {
+            background: var(--bg-light);
+            border-radius: 3px;
+        }
+
+        .record-list::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+            border-radius: 3px;
+        }
+
+        .record-list::-webkit-scrollbar-thumb:hover {
+            background: var(--text-secondary);
+        }
+
+        .record-item {
+            display: flex;
+            align-items: center;
+            padding: 16px;
+            margin-bottom: 12px;
+            background: var(--bg-light);
+            border-radius: var(--radius-md);
+            border: 2px solid transparent;
+            transition: all var(--transition-fast);
+            cursor: pointer;
+        }
+
+        .record-item:hover {
+            background: white;
+            border-color: rgba(102, 126, 234, 0.3);
+        }
+
+        .record-item.selected {
+            border-color: var(--primary-color);
+            background: rgba(102, 126, 234, 0.05);
+        }
+
+        .record-checkbox {
+            width: 18px;
+            height: 18px;
+            margin-right: 14px;
+            cursor: pointer;
+            accent-color: var(--primary-color);
+        }
+
+        .record-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .record-date {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .record-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 13px;
+        }
+
+        .record-result {
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 12px;
+        }
+
+        .record-result.benign {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--success-color);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        .record-result.malignant {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--danger-color);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+        }
+
+        .record-confidence {
+            color: var(--text-secondary);
+        }
+
+        .record-number {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        /* Chart Container */
+        #trend-chart {
+            width: 100% !important;
+            height: 450px !important;
+        }
+
+        .chart-toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .feature-filter {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .feature-tag {
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            background: white;
+        }
+
+        .feature-tag:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .feature-tag.active {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            border-color: var(--primary-color);
+            color: white;
+        }
+
+        
+
+        /* Alerts */
+        .alerts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 16px;
+        }
+
+        .alert-card {
+            padding: 20px;
+            border-radius: var(--radius-md);
+            border-left: 4px solid;
+            background: var(--bg-light);
+        }
+
+        .alert-warning {
+            border-color: var(--warning-color);
+        }
+
+        .alert-danger {
+            border-color: var(--danger-color);
+        }
+
+        .alert-title {
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .alert-warning .alert-title {
+            color: var(--warning-color);
+        }
+
+        .alert-danger .alert-title {
+            color: var(--danger-color);
+        }
+
+        .alert-content {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .alert-content strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        /* Stats Summary */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: var(--radius-md);
+            padding: 20px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        /* Loading */
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+        }
+
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(102, 126, 234, 0.2);
+            border-top-color: var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .empty-state-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 16px;
+            border-radius: 50%;
+            background: rgba(102, 126, 234, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+        }
+
+        .empty-state-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        .empty-state-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 16px;
+            }
+
+            .page-title {
+                font-size: 22px;
+            }
+
+            .card {
+                padding: 20px;
+            }
+
+            #trend-chart {
+                height: 350px !important;
+            }
+
+            .alerts-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <script src="https://cdn.bootcdn.net/ajax/libs/Chart.js/4.4.1/chart.umd.min.js?v=2"></script>
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="nav-container">
+            <a href="/" class="nav-logo">
+                <div class="logo-text">{{ _('breast_cancer_detection') }}</div>
+            </a>
+            <div class="nav-links">
+                <a href="/" {% if request.path == '/' %}class="active"{% endif %}>
+                    <i class="fa fa-home"></i> {{ _('home') }}
+                </a>
+                <a href="/records" {% if request.path == '/records' %}class="active"{% endif %}>
+                    <i class="fa fa-history"></i> {{ _('history_records') }}
+                </a>
+                <a href="/trends" {% if request.path == '/trends' %}class="active"{% endif %}>
+                    <i class="fa fa-line-chart"></i> {{ _('trend_analysis') }}
+                </a>
+                <a href="/batch" {% if request.path == '/batch' %}class="active"{% endif %}>
+                    <i class="fa fa-files-o"></i> {{ _('batch_prediction') }}
+                </a>
+            </div>
+            <div class="nav-actions">
+                <div style="display: flex; gap: 5px;">
+                    {% if is_chinese %}
+                    <button id="lang-zh" class="lang-switch-btn" disabled>{{ _('chinese') }}</button>
+                    <a href="/set-lang/en"><button id="lang-en" class="lang-switch-btn">{{ _('english') }}</button></a>
+                    {% else %}
+                    <a href="/set-lang/zh"><button id="lang-zh" class="lang-switch-btn">{{ _('chinese') }}</button></a>
+                    <button id="lang-en" class="lang-switch-btn" disabled>{{ _('english') }}</button>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="page-header">
+            <div>
+                <h1 class="page-title">{{ _('trend_analysis') }}</h1>
+                <p class="page-subtitle">{{ _('analyze_feature_trends_over_time') }}</p>
+            </div>
+        </div>
+
+        <!-- Stats Summary -->
+        <div class="stats-grid" id="stats-container" style="display: none;">
+            <div class="stat-card">
+                <div class="stat-value" id="stat-count">0</div>
+                <div class="stat-label">{{ _('selected_records') }}</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="stat-benign">0</div>
+                <div class="stat-label">{{ _('benign_count') }}</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="stat-malignant">0</div>
+                <div class="stat-label">{{ _('malignant_count') }}</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <h2 class="card-title">
+                        <span class="card-title-icon">📋</span>
+                        {{ _('select_records') }}
+                    </h2>
+                    <p class="card-subtitle">{{ _('select_at_least_2') }}</p>
+                </div>
+                <button type="button" class="btn btn-primary" id="analyze-trends-btn">
+                    <span class="fa fa-search"></span>
+                    {{ _('analyze_trends') }}
+                </button>
+            </div>
+
+            <div class="select-all-container">
+                <label class="select-all-label">
+                    <input type="checkbox" id="select-all">
+                    {{ _('select_all') }}
+                    <span>{{ records|length }} {{ _('total') }}</span>
+                </label>
+            </div>
+
+            <div class="record-list" id="record-list">
+                {% for record in records %}
+                <div class="record-item" data-id="{{ record.id }}">
+                    <input type="checkbox" name="record_ids" value="{{ record.id }}" id="record-{{ record.id }}" class="record-checkbox">
+                    <label for="record-{{ record.id }}" class="record-info" style="cursor: pointer;">
+                        <div class="record-date">
+                            <span class="record-number">{{ _('prediction') }} {{ loop.index }}</span>
+                            <span style="color: var(--text-secondary); margin-left: 8px;">{{ record.predict_time }}</span>
+                        </div>
+                        <div class="record-meta">
+                            <span class="record-result {{ 'benign' if record.result != 'Malignant' and record.result != '恶性' else 'malignant' }}">
+                                {{ _('malignant') if record.result == 'Malignant' or record.result == '恶性' else _('benign') }}
+                            </span>
+                            <span class="record-confidence">{{ "%.1f"|format(record.confidence * 100) }}%</span>
+                        </div>
+                    </label>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="card" id="chart-container" style="display: none;">
+            <div class="card-header">
+                <div>
+                    <h2 class="card-title">
+                        <span class="card-title-icon">📈</span>
+                        {{ _('feature_trends') }}
+                    </h2>
+                    <p class="card-subtitle">{{ _('view_feature_changes_over_time') }}</p>
+                </div>
+                <div class="chart-toolbar">
+                    <div class="feature-filter" id="feature-filter"></div>
+                </div>
+            </div>
+            <div class="loading" id="chart-loading">
+                <div class="loading-spinner"></div>
+            </div>
+            <canvas id="trend-chart" style="display: none;"></canvas>
+        </div>
+
+        <div class="card" id="alerts-container" style="display: none;">
+            <div class="card-header">
+                <h2 class="card-title">
+                    <span class="card-title-icon">⚠️</span>
+                    {{ _('alerts') }}
+                </h2>
+                <span style="font-size: 13px; color: var(--text-secondary);">{{ _('detected_issues') }}: <strong id="alert-count">0</strong></span>
+            </div>
+            <div class="alerts-grid" id="alerts-content"></div>
+        </div>
+
+        {% if records|length == 0 %}
+        <div class="empty-state">
+            <div class="empty-state-icon">📊</div>
+            <div class="empty-state-title">{{ _('no_records_found') }}</div>
+            <div class="empty-state-desc">{{ _('no_records_desc') }}</div>
+            <div style="margin-top: 16px;">
+                <a href="/" class="btn btn-primary">{{ _('go_to_home') }}</a>
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- AI Batch Analysis -->
+        <div class="card" id="ai-batch-card">
+            <div class="card-header">
+                <div>
+                    <h2 class="card-title">
+                        <span class="card-title-icon">🤖</span>
+                        {{ _('ai_batch_analysis') }}
+                    </h2>
+                    <p class="card-subtitle">
+                        {{ _('batch_data_explanation') }}
+                    </p>
+                </div>
+                <button type="button" class="btn btn-primary" id="ai-analysis-btn">
+                    <span class="fa fa-rocket"></span>
+                    {{ _('submit_to_ai') }}
+                </button>
+            </div>
+
+            <div id="ai-analysis-result" style="display: none; margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--border-color);">
+                <div class="loading" id="ai-loading">
+                    <div class="loading-spinner"></div>
+                </div>
+                <div id="ai-result-content" style="display: none;">
+                    <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 16px; color: var(--text-primary);">{{ _('ai_analysis_result') }}</h3>
+                    <div id="ai-result-text" class="alert-card" style="border-left-color: var(--primary-color); background: var(--primary-light);"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Translation strings
+        const translations = {
+            prediction: '{{ _('prediction') }}',
+            select_at_least_2: '{{ _('select_at_least_2') }}',
+            select_at_least_1_for_ai: '{{ _('select_at_least_1_for_ai') }}',
+            ai_analysis_error: '{{ _('ai_analysis_error') }}',
+            ai_analysis_failed: '{{ _('ai_analysis_failed') }}',
+            value: '{{ _('value') }}',
+            change_rate: '{{ _('change_rate') }}'
+        };
+
+        const featureColors = {
+            radius_mean: '#667eea',
+            texture_mean: '#f59e0b',
+            perimeter_mean: '#10b981',
+            area_mean: '#ef4444',
+            smoothness_mean: '#8b5cf6',
+            compactness_mean: '#ec4899',
+            concavity_mean: '#06b6d4',
+            concave_points_mean: '#f97316'
+        };
+
+        const featureNames = {
+            radius_mean: '{{ _('radius_mean') }}',
+            texture_mean: '{{ _('texture_mean') }}',
+            perimeter_mean: '{{ _('perimeter_mean') }}',
+            area_mean: '{{ _('area_mean') }}',
+            smoothness_mean: '{{ _('smoothness_mean') }}',
+            compactness_mean: '{{ _('compactness_mean') }}',
+            concavity_mean: '{{ _('concavity_mean') }}',
+            concave_points_mean: '{{ _('concave_points_mean') }}'
+        };
+
+        let chartInstance = null;
+        let selectedFeatures = Object.keys(featureNames);
+        let allRecordsData = [];
+
+        function switchLanguage(lang) {
+            window.location.href = '/set-lang/' + lang;
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, initializing records...');
+            allRecordsData = [
+                {% for record in records %}
+                {
+                    id: {{ record.id }},
+                    date: '{{ record.predict_time }}',
+                    radius_mean: {{ record.radius_mean or 0 }},
+                    texture_mean: {{ record.texture_mean or 0 }},
+                    perimeter_mean: {{ record.perimeter_mean or 0 }},
+                    area_mean: {{ record.area_mean or 0 }},
+                    smoothness_mean: {{ record.smoothness_mean or 0 }},
+                    compactness_mean: {{ record.compactness_mean or 0 }},
+                    concavity_mean: {{ record.concavity_mean or 0 }},
+                    concave_points_mean: {{ record.concave_points_mean or 0 }},
+                    result: '{{ record.result }}',
+                    confidence: {{ record.confidence }}
+                }{% if not loop.last %},{% endif %}
+                {% endfor %}
+            ];
+            console.log('Records loaded:', allRecordsData.length, 'records');
+            buildFeatureFilter();
+            
+            // Add event listeners
+            document.getElementById('lang-zh').addEventListener('click', function() { switchLanguage('zh'); });
+            document.getElementById('lang-en').addEventListener('click', function() { switchLanguage('en'); });
+            document.getElementById('select-all').addEventListener('change', toggleSelectAll);
+            document.getElementById('analyze-trends-btn').addEventListener('click', analyzeTrends);
+            document.getElementById('ai-analysis-btn').addEventListener('click', submitBatchAnalysis);
+            
+            // Add event listeners to record checkboxes
+            document.querySelectorAll('.record-checkbox').forEach(checkbox => {
+                checkbox.addEventListener('change', function() { handleRecordSelect(this); });
+            });
+            
+            console.log('Event listeners added successfully');
+        });
+
+        function toggleSelectAll() {
+            console.log('toggleSelectAll called');
+            const selectAllCheckbox = document.getElementById('select-all');
+            const isChecked = selectAllCheckbox.checked;
+            console.log('Select All checked:', isChecked);
+            const recordCheckboxes = document.querySelectorAll('.record-checkbox');
+            console.log('Record checkboxes found:', recordCheckboxes.length);
+            
+            recordCheckboxes.forEach(checkbox => {
+                checkbox.checked = isChecked;
+                const item = checkbox.closest('.record-item');
+                if (item) {
+                    item.classList.toggle('selected', isChecked);
+                }
+            });
+            updateStats();
+        }
+
+        function handleRecordSelect(checkbox) {
+            const item = checkbox.closest('.record-item');
+            item.classList.toggle('selected', checkbox.checked);
+            
+            const selectAllCheckbox = document.getElementById('select-all');
+            const allCheckboxes = document.querySelectorAll('.record-checkbox');
+            const allChecked = Array.from(allCheckboxes).every(cb => cb.checked);
+            const noneChecked = Array.from(allCheckboxes).every(cb => !cb.checked);
+            
+            if (allChecked) {
+                selectAllCheckbox.checked = true;
+            } else if (noneChecked) {
+                selectAllCheckbox.checked = false;
+            } else {
+                selectAllCheckbox.indeterminate = true;
+            }
+            updateStats();
+        }
+
+        function buildFeatureFilter() {
+            const container = document.getElementById('feature-filter');
+            Object.keys(featureNames).forEach(feature => {
+                const tag = document.createElement('button');
+                tag.className = 'feature-tag active';
+                tag.textContent = featureNames[feature];
+                tag.dataset.feature = feature;
+                tag.style.borderColor = featureColors[feature] + '40';
+                tag.addEventListener('click', () => {
+                    tag.classList.toggle('active');
+                    updateSelectedFeatures();
+                    if (chartInstance) {
+                        updateChartVisibility();
+                    }
+                });
+                container.appendChild(tag);
+            });
+        }
+
+        function updateSelectedFeatures() {
+            selectedFeatures = Array.from(document.querySelectorAll('.feature-tag.active'))
+                .map(tag => tag.dataset.feature);
+        }
+
+        function updateChartVisibility() {
+            if (!chartInstance) return;
+            chartInstance.data.datasets.forEach(dataset => {
+                dataset.hidden = !selectedFeatures.includes(dataset.featureKey);
+            });
+            chartInstance.update('none');
+        }
+
+        function updateStats() {
+            const checkboxes = document.querySelectorAll('input[name="record_ids"]:checked');
+            const selectedIds = Array.from(checkboxes).map(cb => cb.value);
+            const statsContainer = document.getElementById('stats-container');
+
+            if (selectedIds.length >= 2) {
+                statsContainer.style.display = 'grid';
+                const selectedRecords = allRecordsData.filter(r => selectedIds.includes(r.id.toString()));
+                selectedRecords.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+                document.getElementById('stat-count').textContent = selectedRecords.length;
+                document.getElementById('stat-benign').textContent = selectedRecords.filter(r => r.result !== 'Malignant' && r.result !== '恶性').length;
+                document.getElementById('stat-malignant').textContent = selectedRecords.filter(r => r.result === 'Malignant' || r.result === '恶性').length;
+            } else {
+                statsContainer.style.display = 'none';
+            }
+        }
+
+        function analyzeTrends() {
+            console.log('analyzeTrends called');
+            const checkboxes = document.querySelectorAll('input[name="record_ids"]:checked');
+            const selectedIds = Array.from(checkboxes).map(cb => cb.value);
+            console.log('Selected IDs:', selectedIds);
+
+            if (selectedIds.length < 2) {
+                alert(translations.select_at_least_2);
+                return;
+            }
+
+            const selectedRecords = allRecordsData.filter(r => selectedIds.includes(r.id.toString()));
+            selectedRecords.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+            renderChart(selectedRecords);
+            generateAlerts(selectedRecords);
+        }
+
+        function renderChart(records) {
+            const labels = records.map((r, index) => translations.prediction + ' ' + (index + 1));
+            const datasets = [];
+
+            selectedFeatures.forEach(feature => {
+                datasets.push({
+                    label: featureNames[feature],
+                    data: records.map(r => r[feature]),
+                    borderColor: featureColors[feature],
+                    backgroundColor: featureColors[feature] + '20',
+                    borderWidth: 2,
+                    pointRadius: 5,
+                    pointHoverRadius: 8,
+                    tension: 0.4,
+                    fill: false,
+                    featureKey: feature
+                });
+            });
+
+            document.getElementById('chart-container').style.display = 'block';
+            document.getElementById('chart-loading').style.display = 'flex';
+            document.getElementById('trend-chart').style.display = 'none';
+
+            setTimeout(() => {
+                if (chartInstance) {
+                    chartInstance.destroy();
+                }
+
+                const ctx = document.getElementById('trend-chart').getContext('2d');
+                chartInstance = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: labels,
+                        datasets: datasets
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        interaction: {
+                            mode: 'index',
+                            intersect: false
+                        },
+                        plugins: {
+                            legend: {
+                                display: true,
+                                position: 'top',
+                                align: 'end',
+                                labels: {
+                                    color: '#64748b',
+                                    font: { size: 12, weight: 500 },
+                                    padding: 16,
+                                    usePointStyle: true
+                                }
+                            },
+                            tooltip: {
+                                backgroundColor: 'rgba(30, 41, 59, 0.95)',
+                                titleColor: '#f1f5f9',
+                                bodyColor: '#94a3b8',
+                                borderColor: '#475569',
+                                borderWidth: 1,
+                                padding: 14,
+                                cornerRadius: 8,
+                                callbacks: {
+                                    label: (item) => {
+                                        return `${item.dataset.label}: ${item.raw.toFixed(4)}`;
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            x: {
+                                grid: {
+                                    color: 'rgba(0, 0, 0, 0.05)',
+                                    drawBorder: false
+                                },
+                                ticks: {
+                                    color: '#64748b',
+                                    font: { size: 12 }
+                                }
+                            },
+                            y: {
+                                grid: {
+                                    color: 'rgba(0, 0, 0, 0.05)',
+                                    drawBorder: false
+                                },
+                                ticks: {
+                                    color: '#64748b',
+                                    font: { size: 12 }
+                                },
+                                title: {
+                                    display: true,
+                                    text: translations.value,
+                                    color: '#64748b',
+                                    font: { size: 12 }
+                                }
+                            }
+                        },
+                        animation: {
+                            duration: 1000,
+                            easing: 'easeOutQuart',
+                            onComplete: () => {
+                                document.getElementById('chart-loading').style.display = 'none';
+                                document.getElementById('trend-chart').style.display = 'block';
+                            }
+                        }
+                    }
+                });
+
+                setTimeout(() => {
+                    document.getElementById('chart-loading').style.display = 'none';
+                    document.getElementById('trend-chart').style.display = 'block';
+                }, 100);
+            }, 200);
+        }
+
+        function generateAlerts(records) {
+            const alertsContainer = document.getElementById('alerts-container');
+            const alertsContent = document.getElementById('alerts-content');
+            alertsContent.innerHTML = '';
+
+            Object.keys(featureNames).forEach(feature => {
+                const values = records.map(r => r[feature]);
+                const changes = [];
+
+                for (let i = 1; i < values.length; i++) {
+                    if (values[i-1] !== 0) {
+                        const change = ((values[i] - values[i-1]) / values[i-1]) * 100;
+                        changes.push(change);
+                    }
+                }
+
+                const maxChange = changes.length > 0 ? Math.max(...changes.map(Math.abs)) : 0;
+                if (maxChange > 15) {
+                    const isIncrease = changes[changes.length - 1] > 0;
+                    const alertDiv = document.createElement('div');
+                    alertDiv.className = 'alert-card alert-warning';
+                    alertDiv.innerHTML = `
+                        <div class="alert-title">
+                            <span>${isIncrease ? '📈' : '📉'}</span>
+                            ${featureNames[feature]}
+                        </div>
+                        <div class="alert-content">
+                            <strong>${translations.change_rate}:</strong> ${isIncrease ? '+' : ''}${maxChange.toFixed(2)}%
+                        </div>
+                    `;
+                    alertsContent.appendChild(alertDiv);
+                }
+            });
+
+            document.getElementById('alert-count').textContent = alertsContent.children.length;
+            alertsContainer.style.display = alertsContent.children.length > 0 ? 'block' : 'none';
+        }
+
+        // Format AI Analysis Result
+        function formatAnalysisResult(text) {
+            // 处理Markdown标题
+            text = text.replace(/^###\s+(.+)$/gm, '<h1>📊 $1</h1>');
+            text = text.replace(/^####\s+(.+)$/gm, '<h2>$1</h2>');
+            
+            // 处理粗体文本
+            text = text.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+            
+            // 处理列表
+            text = text.replace(/^\s*[-•*]\s+(.+)$/gm, '<li>$1</li>');
+            
+            // 识别并包裹列表块
+            text = text.replace(/(<li>.+<\/li>[\s\S]*?)(?=\n\n|\Z)/g, '<ul>$1</ul>');
+            
+            // 添加警告样式
+            text = text.replace(/警告：(.+?)(?=\n|$)/g, '<div class="warning">⚠️ 警告：$1</div>');
+            text = text.replace(/注意：(.+?)(?=\n|$)/g, '<div class="warning">⚠️ 注意：$1</div>');
+            
+            // 添加成功样式
+            text = text.replace(/✅\s*(.+?)(?=\n|$)/g, '<div class="success">✅ $1</div>');
+            text = text.replace(/建议：(.+?)(?=\n|$)/g, '<div class="success">💡 建议：$1</div>');
+            
+            // 添加免责声明样式
+            text = text.replace(/免责声明：(.+)/g, '<div class="disclaimer">📋 $1</div>');
+            
+            // 处理段落
+            text = text.replace(/\n\n/g, '</p><p>');
+            
+            // 包裹内容
+            return `<div class="ai-analysis-content"><p>${text}</p></div>`;
+        }
+
+        // AI Batch Analysis Functions
+        async function submitBatchAnalysis() {
+            const checkboxes = document.querySelectorAll('input[name="record_ids"]:checked');
+            const selectedIds = Array.from(checkboxes).map(cb => cb.value);
+
+            if (selectedIds.length === 0) {
+                alert(translations.select_at_least_1_for_ai);
+                return;
+            }
+
+            const selectedRecords = allRecordsData.filter(r => selectedIds.includes(r.id.toString()));
+            selectedRecords.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+            const analysisData = selectedRecords.map((record, index) => ({
+                prediction_number: index + 1,
+                date: record.date,
+                result: record.result,
+                confidence: record.confidence,
+                features: {
+                    radius_mean: record.radius_mean || 0,
+                    texture_mean: record.texture_mean || 0,
+                    perimeter_mean: record.perimeter_mean || 0,
+                    area_mean: record.area_mean || 0,
+                    smoothness_mean: record.smoothness_mean || 0,
+                    compactness_mean: record.compactness_mean || 0,
+                    concavity_mean: record.concavity_mean || 0,
+                    concave_points_mean: record.concave_points_mean || 0
+                }
+            }));
+
+            const resultContainer = document.getElementById('ai-analysis-result');
+            const loading = document.getElementById('ai-loading');
+            const content = document.getElementById('ai-result-content');
+            const resultText = document.getElementById('ai-result-text');
+
+            resultContainer.style.display = 'block';
+            loading.style.display = 'flex';
+            content.style.display = 'none';
+
+            try {
+                const response = await fetch('/api/ai-batch-analysis', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        records: analysisData
+                    })
+                });
+
+                const responseText = await response.text();
+                let data;
+                try {
+                    data = JSON.parse(responseText);
+                } catch {
+                    data = { success: false, error: responseText };
+                }
+                
+                loading.style.display = 'none';
+                content.style.display = 'block';
+                
+                if (data.success) {
+                    resultText.innerHTML = formatAnalysisResult(data.analysis);
+                } else {
+                    resultText.innerHTML = `<div class="ai-analysis-content"><div class="warning">${data.error || translations.ai_analysis_failed}</div></div>`;
+                }
+            } catch (error) {
+                loading.style.display = 'none';
+                content.style.display = 'block';
+                resultText.innerHTML = `<div style="padding: 16px; color: var(--danger-color)">${translations.ai_analysis_error}: ${error.message}</div>`;
+            }
+        }
+    </script>
+</body>
+</html>

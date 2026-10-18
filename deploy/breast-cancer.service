@@ -1,0 +1,25 @@
+[Unit]
+Description=Breast Cancer Detection - user app (gunicorn)
+After=network.target admin-backend.service
+
+[Service]
+Type=simple
+User=www-data
+Group=www-data
+WorkingDirectory=/opt/breast-cancer-detection
+EnvironmentFile=/opt/breast-cancer-detection/.env
+ExecStart=/opt/breast-cancer-detection/.venv/bin/gunicorn \
+    -c deploy/gunicorn.conf.py deploy.wsgi:application
+Restart=always
+RestartSec=3
+StandardOutput=journal
+StandardError=journal
+
+# 只允许写工作目录与 /dev/shm（gunicorn worker）
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ReadWritePaths=/opt/breast-cancer-detection
+
+[Install]
+WantedBy=multi-user.target

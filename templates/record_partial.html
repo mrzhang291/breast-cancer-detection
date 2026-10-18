@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="{{ current_lang }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ _('record_details') }} - {{ _('breast_cancer_detection') }}</title>
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #f8fafc;
+            color: #1e293b;
+            padding: 20px;
+        }
+        .record-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+        .record-header h2 {
+            margin: 0 0 10px 0;
+            font-size: 1.5em;
+        }
+        .record-meta {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+        .result-badge {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 999px;
+            font-size: 0.85em;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .result-badge.malignant {
+            background: rgba(239, 68, 68, 0.1);
+            color: #dc2626;
+        }
+        .result-badge.benign {
+            background: rgba(16, 185, 129, 0.1);
+            color: #059669;
+        }
+        .confidence-section {
+            background: #fff;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+        }
+        .confidence-value {
+            font-size: 2em;
+            font-weight: 700;
+            color: #667eea;
+        }
+        .confidence-bar {
+            height: 10px;
+            background: #e2e8f0;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+        .confidence-fill {
+            height: 100%;
+            border-radius: 5px;
+            transition: width 0.3s ease;
+        }
+        .confidence-fill.malignant {
+            background: linear-gradient(90deg, #ef4444, #dc2626);
+        }
+        .confidence-fill.benign {
+            background: linear-gradient(90deg, #10b981, #059669);
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        .feature-group {
+            background: #fff;
+            border-radius: 12px;
+            padding: 16px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+        }
+        .feature-group h4 {
+            margin: 0 0 12px 0;
+            color: #475569;
+            font-size: 0.95em;
+            font-weight: 600;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 8px;
+        }
+        .feature-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 0;
+            font-size: 0.85em;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        .feature-item:last-child {
+            border-bottom: none;
+        }
+        .feature-name {
+            color: #64748b;
+        }
+        .feature-value {
+            font-weight: 600;
+            color: #1e293b;
+        }
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+            font-size: 0.9em;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+        .btn-default {
+            background: #f1f5f9;
+            color: #64748b;
+            border: 1px solid #e2e8f0;
+        }
+        .btn-default:hover {
+            background: #e2e8f0;
+        }
+        .btn-danger {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            color: white;
+        }
+        .btn-danger:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);
+        }
+        .lang-switch {
+            display: flex;
+            gap: 5px;
+            justify-content: flex-end;
+            margin-bottom: 15px;
+        }
+        .lang-switch-btn {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            border: none;
+            cursor: pointer;
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+            transition: background 0.3s ease;
+        }
+        .lang-switch-btn:hover {
+            background: rgba(102, 126, 234, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="lang-switch">
+        {% if is_chinese %}
+        <button class="lang-switch-btn" disabled>{{ _('chinese') }}</button>
+        <a href="/set-lang/en"><button class="lang-switch-btn">{{ _('english') }}</button></a>
+        {% else %}
+        <a href="/set-lang/zh"><button class="lang-switch-btn">{{ _('chinese') }}</button></a>
+        <button class="lang-switch-btn" disabled>{{ _('english') }}</button>
+        {% endif %}
+    </div>
+
+    <div class="record-header">
+        <h2><i class="fa fa-file-medical"></i> {{ _('prediction_record') }} #{{ record[0] }}</h2>
+        <div class="record-meta">
+            <span><i class="fa fa-clock-o"></i> {{ _('prediction_time') }}: {{ record[4] }}</span>
+            <span class="result-badge {{ 'malignant' if record[2] == 'Malignant' else 'benign' }}">
+                {{ _('malignant') if record[2] == 'Malignant' else _('benign') }}
+            </span>
+        </div>
+    </div>
+
+    <div class="confidence-section">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <div style="color: #64748b; font-size: 0.9em; margin-bottom: 5px;">{{ _('confidence') }}</div>
+                <div class="confidence-value">{{ "%.2f%%"|format(record[3] * 100) }}</div>
+            </div>
+            <div style="text-align: right;">
+                <div style="color: #64748b; font-size: 0.85em;">
+                    {% if record[2] == 'Malignant' %}{{ _('malignant') }}{% else %}{{ _('benign') }}{% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="confidence-bar">
+            <div class="confidence-fill {{ 'malignant' if record[2] == 'Malignant' else 'benign' }}"
+                 style="width: {{ record[3] * 100 }}%"></div>
+        </div>
+    </div>
+
+    <div class="features-grid">
+        <div class="feature-group">
+            <h4><i class="fa fa-chart-line"></i> {{ _('mean_features') }}</h4>
+            <div class="feature-item">
+                <span class="feature-name">{{ _('radius_mean') }}</span>
+                <span class="feature-value">{{ "%.4f"|format(record[5]) }}</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-name">{{ _('texture_mean') }}</span>
+                <span class="feature-value">{{ "%.4f"|format(record[6]) }}</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-name">{{ _('perimeter_mean') }}</span>
+                <span class="feature-value">{{ "%.4f"|format(record[7]) }}</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-name">{{ _('area_mean') }}</span>
+                <span class="feature-value">{{ "%.4f"|format(record[8]) }}</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-name">{{ _('smoothness_mean') }}</span>
+                <span class="feature-value">{{ "%.4f"|format(record[9]) }}</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-name">{{ _('compactness_mean') }}</span>
+                <span class="feature-value">{{ "%.4f"|format(record[10]) }}</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-name">{{ _('concavity_mean') }}</span>
+                <span class="feature-value">{{ "%.4f"|format(record[11]) }}</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-name">{{ _('concave_points_mean') }}</span>
+                <span class="feature-value">{{ "%.4f"|format(record[12]) }}</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-name">{{ _('symmetry_mean') }}</span>
+                <span class="feature-value">{{ "%.4f"|format(record[13]) }}</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-name">{{ _('fractal_dimension_mean') }}</span>
+                <span class="feature-value">{{ "%.4f"|format(record[14]) }}</span>
+            </div>
+        </div>
+
+        <div class="feature-group">
+            <h4><i class="fa fa-sliders"></i> {{ _('se_features') }}</h4>
+            <div class="feature-item">
+                <span class="feature-name">{{ _('radius_se') }}</span>
+                <span class="feature-value">{{ "%.4f"|format(record[15]) }}</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-name">{{ _('texture_se') }}</span>
+                <span class="feature-value">{{ "%.4f"|format(record[16]) }}</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-name">{{ _('perimeter_se') }}</span>
+                <span class="feature-value">{{ "%.4f"|format(record[17]) }}</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-name">{{ _('area_se') }}</span>
+                <span class="feature-value">{{ "%.4f"|format(record[18]) }}</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-name">{{ _('smoothness_se') }}</span>
+                <span class="feature-value">{{ "%.4f"|format(record[19]) }}</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-name">{{ _('compactness_se') }}</span>
+                <span class="feature-value">{{ "%.4f"|format(record[20]) }}</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-name">{{ _('concavity_se') }}</span>
+                <span class="feature-value">{{ "%.4f"|format(record[21]) }}</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-name">{{ _('concave_points_se') }}</span>
+                <span class="feature-value">{{ "%.4f"|format(record[22]) }}</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-name">{{ _('symmetry_se') }}</span>
+                <span class="feature-value">{{ "%.4f"|format(record[23]) }}</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-name">{{ _('fractal_dimension_se') }}</span>
+                <span class="feature-value">{{ "%.4f"|format(record[24]) }}</span>
+            </div>
+        </div>
+
+        <div class="feature-group">
+            <h4><i class="fa fa-exclamation-triangle"></i> {{ _('worst_features') }}</h4>
+            <div class="feature-item">
+                <span class="feature-name">{{ _('radius_worst') }}</span>
+                <span class="feature-value">{{ "%.4f"|format(record[25]) }}</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-name">{{ _('texture_worst') }}</span>
+                <span class="feature-value">{{ "%.4f"|format(record[26]) }}</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-name">{{ _('perimeter_worst') }}</span>
+                <span class="feature-value">{{ "%.4f"|format(record[27]) }}</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-name">{{ _('area_worst') }}</span>
+                <span class="feature-value">{{ "%.4f"|format(record[28]) }}</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-name">{{ _('smoothness_worst') }}</span>
+                <span class="feature-value">{{ "%.4f"|format(record[29]) }}</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-name">{{ _('compactness_worst') }}</span>
+                <span class="feature-value">{{ "%.4f"|format(record[30]) }}</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-name">{{ _('concavity_worst') }}</span>
+                <span class="feature-value">{{ "%.4f"|format(record[31]) }}</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-name">{{ _('concave_points_worst') }}</span>
+                <span class="feature-value">{{ "%.4f"|format(record[32]) }}</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-name">{{ _('symmetry_worst') }}</span>
+                <span class="feature-value">{{ "%.4f"|format(record[33]) }}</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-name">{{ _('fractal_dimension_worst') }}</span>
+                <span class="feature-value">{{ "%.4f"|format(record[34]) }}</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="action-buttons">
+        <a href="/export-pdf/{{ record[0] }}" class="btn btn-primary">
+            <i class="fa fa-file-pdf-o"></i> {{ _('export_pdf') }}
+        </a>
+        <button class="btn btn-danger" onclick="deleteRecord({{ record[0] }})">
+            <i class="fa fa-trash"></i> {{ _('delete_record') }}
+        </button>
+    </div>
+
+    <script>
+        function deleteRecord(id) {
+            if (confirm('{{ _('confirm_delete') }}')) {
+                $.post('/delete-record/' + id, function() {
+                    window.location.reload();
+                });
+            }
+        }
+    </script>
+</body>
+</html>

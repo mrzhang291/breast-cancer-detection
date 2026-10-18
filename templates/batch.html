@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="{{ current_lang }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ _('batch_prediction') }} - {{ _('breast_cancer_detection') }}</title>
+    <link rel="preconnect" href="https://cdn.bootcdn.net">
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </noscript>
+    <style>
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
+            color: #1e293b;
+            line-height: 1.7;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* 导航栏样式 */
+        .top-nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+            padding: 0 24px;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.04);
+            transition: all 0.3s ease;
+        }
+        .top-nav:hover {
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+        }
+        .top-nav .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+        }
+        .top-nav .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: #1e293b;
+            transition: all 0.3s ease;
+        }
+        .top-nav .nav-logo:hover {
+            transform: scale(1.02);
+        }
+        .top-nav .nav-logo .logo-text {
+            font-size: 1.25em;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .top-nav .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .top-nav .nav-links a {
+            position: relative;
+            padding: 12px 20px;
+            color: #64748b;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95em;
+            border-radius: 10px;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .top-nav .nav-links a:hover {
+            color: #1e293b;
+            background: #f1f5f9;
+        }
+        .top-nav .nav-links a.active {
+            color: #667eea;
+            background: rgba(102, 126, 234, 0.1);
+        }
+        .top-nav .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+        .top-nav .nav-links a:hover::after,
+        .top-nav .nav-links a.active::after {
+            width: 24px;
+        }
+        .top-nav .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .top-nav .user-menu { position: relative; display: inline-block; }
+        .user-dropdown { display: none; position: absolute; right: 0; top: 100%; margin-top: 8px; background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.15); min-width: 180px; z-index: 1001; transform-origin: top right; }
+        .user-dropdown a { display: block; padding: 10px 15px; color: #333; text-decoration: none; }
+        .user-dropdown a:hover { background: #f5f5f5; }
+        .user-dropdown div { padding: 10px; border-bottom: 1px solid #eee; }
+        .lang-switch-group {
+            display: flex;
+            gap: 4px;
+            background: #f1f5f9;
+            padding: 4px;
+            border-radius: 10px;
+        }
+        .lang-btn {
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 0.85em;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            color: #64748b;
+        }
+        .lang-btn:hover { color: #1e293b; }
+        .lang-btn.active { background: #fff; color: #1e293b; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        .btn-primary-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+            text-decoration: none;
+        }
+        .btn-primary-gradient:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4); color: #fff; }
+        .btn-secondary {
+            background: #fff;
+            color: #1e293b;
+            border: 1px solid #e2e8f0;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        .btn-secondary:hover { background: #f8fafc; border-color: #cbd5e1; }
+        
+        /* 语言切换 */
+        .lang-switch {
+            display: flex;
+            gap: 8px;
+        }
+        .lang-switch-btn {
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 0.9em;
+            font-weight: 500;
+            border: 1px solid #e2e8f0;
+            cursor: pointer;
+            background: #fff;
+            color: #64748b;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+        }
+        .lang-switch-btn:hover {
+            background: #f1f5f9;
+            color: #1e293b;
+            border-color: #cbd5e1;
+        }
+        .lang-switch-btn.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            border-color: transparent;
+        }
+        
+        /* 主内容区域 */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        /* 页面标题 */
+        .page-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .page-title {
+            font-size: 2.2em;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 12px;
+        }
+        .page-subtitle {
+            color: #64748b;
+            font-size: 1.1em;
+        }
+        
+        /* 卡片样式 */
+        .card {
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.05);
+            padding: 32px;
+            margin-bottom: 24px;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+        }
+        .card-title {
+            font-size: 1.3em;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card-subtitle {
+            color: #64748b;
+            font-size: 0.95em;
+            margin-bottom: 24px;
+        }
+        
+        /* 按钮样式 */
+        .btn {
+            padding: 14px 28px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+        .btn-secondary {
+            background: #f1f5f9;
+            color: #64748b;
+        }
+        .btn-secondary:hover {
+            background: #e2e8f0;
+            color: #1e293b;
+        }
+        .btn-icon {
+            padding: 12px 20px;
+        }
+        
+        /* 步骤列表 */
+        .steps-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .steps-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 16px 0;
+            border-bottom: 1px solid #f1f5f9;
+            position: relative;
+        }
+        .steps-list li:last-child {
+            border-bottom: none;
+        }
+        .step-number {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+        .step-content {
+            flex: 1;
+            padding-top: 4px;
+        }
+        
+        /* 文件上传区域 */
+        .upload-area {
+            border: 2px dashed #e2e8f0;
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            margin-bottom: 24px;
+        }
+        .upload-area:hover {
+            border-color: #667eea;
+            background: rgba(102, 126, 234, 0.05);
+        }
+        .upload-area.dragover {
+            border-color: #667eea;
+            background: rgba(102, 126, 234, 0.1);
+            transform: scale(1.02);
+        }
+        .upload-icon {
+            font-size: 48px;
+            color: #94a3b8;
+            margin-bottom: 16px;
+        }
+        .upload-text {
+            font-size: 1.1em;
+            color: #1e293b;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+        .upload-hint {
+            color: #94a3b8;
+            font-size: 0.9em;
+        }
+        .upload-hint strong {
+            color: #667eea;
+        }
+        
+        /* 隐藏的文件输入 */
+        #file-input {
+            display: none;
+        }
+        
+        /* 已选择文件显示 */
+        .selected-file {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px;
+            background: #f8fafc;
+            border-radius: 12px;
+            margin-bottom: 24px;
+        }
+        .selected-file i {
+            font-size: 24px;
+            color: #667eea;
+        }
+        .selected-file-info {
+            flex: 1;
+        }
+        .selected-file-name {
+            font-weight: 600;
+            color: #1e293b;
+        }
+        .selected-file-size {
+            font-size: 0.85em;
+            color: #94a3b8;
+        }
+        .selected-file-remove {
+            background: none;
+            border: none;
+            color: #ef4444;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+        .selected-file-remove:hover {
+            background: rgba(239, 68, 68, 0.1);
+        }
+        
+        /* 错误提示 */
+        .error-message {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            border-radius: 12px;
+            padding: 16px 20px;
+            color: #dc2626;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .error-message i {
+            font-size: 18px;
+        }
+        
+        /* 进度条 */
+        .progress-container {
+            display: none;
+            margin-bottom: 24px;
+        }
+        .progress-bar {
+            height: 8px;
+            background: #e2e8f0;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+        .progress-text {
+            text-align: center;
+            color: #64748b;
+            font-size: 0.9em;
+            margin-top: 8px;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .top-nav {
+                padding: 0 16px;
+            }
+            .container {
+                padding: 24px 16px;
+            }
+            .page-title {
+                font-size: 1.8em;
+            }
+            .card {
+                padding: 24px;
+            }
+            .upload-area {
+                padding: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="top-nav">
+        <div class="nav-container">
+            <!-- Logo -->
+            <a href="/" class="nav-logo">
+                <div style="width: 40px; height: 40px; border-radius: 10px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center;">
+                    <i class="fa fa-heart" style="color: #fff; font-size: 20px;"></i>
+                </div>
+                <span class="logo-text">{{ _('breast_cancer_detection') }}</span>
+            </a>
+
+            <!-- 导航链接 -->
+            <div class="nav-links">
+                <a href="/"><i class="fa fa-home"></i> {{ _('home') }}</a>
+                <a href="/records"><i class="fa fa-history"></i> {{ _('records') }}</a>
+                <a href="/trends"><i class="fa fa-line-chart"></i> {{ _('trends') }}</a>
+                <a href="/batch" class="active"><i class="fa fa-upload"></i> {{ _('batch') }}</a>
+            </div>
+
+            <!-- 右侧操作区 -->
+            <div class="nav-actions">
+                {% if session.get('username') %}
+                <div class="user-menu">
+                    <button id="userMenu" class="btn btn-default" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #fff; border: none; padding: 8px 16px; border-radius: 25px; font-weight: 600; display: flex; align-items: center; gap: 8px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 2px 10px rgba(102, 126, 234, 0.3);">
+                        <i class="fa fa-user-circle"></i> {{ session.get('username') }}
+                    </button>
+                    <div id="userDropdown" class="user-dropdown">
+                        <div><i class="fa fa-handshake-o"></i> {{ _('welcome') }}</div>
+                        <a href="/records"><i class="fa fa-history"></i> {{ _('records') }}</a>
+                        <a href="/trends"><i class="fa fa-line-chart"></i> {{ _('trends') }}</a>
+                        <a href="/batch"><i class="fa fa-upload"></i> {{ _('batch') }}</a>
+                        <div style="border-top: 1px solid #eee; margin: 4px 0;"></div>
+                        <a href="/logout"><i class="fa fa-sign-out"></i> {{ _('logout') }}</a>
+                    </div>
+                </div>
+                {% else %}
+                <a href="/login" class="btn-primary-gradient">{{ _('login') }}</a>
+                <a href="/register" class="btn-secondary">{{ _('register') }}</a>
+                {% endif %}
+                
+                <!-- 语言切换 -->
+                <div class="lang-switch-group">
+                    {% if is_chinese %}
+                    <span class="lang-btn active">{{ _('chinese') }}</span>
+                    <a href="/set-lang/en" class="lang-btn">{{ _('english') }}</a>
+                    {% else %}
+                    <a href="/set-lang/zh" class="lang-btn">{{ _('chinese') }}</a>
+                    <span class="lang-btn active">{{ _('english') }}</span>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- 主内容 -->
+    <div class="container">
+        <div class="page-header">
+            <h1 class="page-title">{{ _('batch_prediction') }}</h1>
+            <p class="page-subtitle">{{ _('batch_data_explanation') }}</p>
+        </div>
+        
+        <!-- 步骤说明卡片 -->
+        <div class="card">
+            <h2 class="card-title">
+                <i class="fa fa-list-ol"></i>
+                {{ _('steps') }}
+            </h2>
+            <ul class="steps-list">
+                <li>
+                    <span class="step-number">1</span>
+                    <div class="step-content">{{ _('step1_download') }}</div>
+                </li>
+                <li>
+                    <span class="step-number">2</span>
+                    <div class="step-content">{{ _('step2_fill') }}</div>
+                </li>
+                <li>
+                    <span class="step-number">3</span>
+                    <div class="step-content">{{ _('step3_upload') }}</div>
+                </li>
+                <li>
+                    <span class="step-number">4</span>
+                    <div class="step-content">{{ _('step4_view') }}</div>
+                </li>
+            </ul>
+            <div style="margin-top: 24px;">
+                <a href="/download-template" class="btn btn-secondary btn-icon">
+                    <i class="fa fa-download"></i>
+                    {{ _('download_template') }}
+                </a>
+            </div>
+        </div>
+        
+        <!-- 文件上传卡片 -->
+        <div class="card">
+            <h2 class="card-title">
+                <i class="fa fa-upload"></i>
+                {{ _('upload_file') }}
+            </h2>
+            <p class="card-subtitle">{{ _('select_file') }} (CSV {{ _('or') }} Excel)</p>
+            
+            {% if error %}
+            <div class="error-message">
+                <i class="fa fa-exclamation-circle"></i>
+                {{ error }}
+            </div>
+            {% endif %}
+            
+            <form action="/batch-predict" method="POST" enctype="multipart/form-data" id="upload-form">
+                <!-- 上传区域 -->
+                <div class="upload-area" id="upload-area">
+                    <i class="fa fa-cloud-upload upload-icon"></i>
+                    <div class="upload-text">{{ _('click_or_drag') }}</div>
+                    <div class="upload-hint">{{ _('supported_formats') }}: <strong>CSV</strong>, <strong>XLSX</strong></div>
+                </div>
+                <input type="file" id="file-input" name="file" accept=".csv,.xlsx" required>
+                
+                <!-- 已选择文件显示 -->
+                <div id="selected-file-container" style="display: none;">
+                    <div class="selected-file" id="selected-file">
+                        <i class="fa fa-file-excel-o"></i>
+                        <div class="selected-file-info">
+                            <div class="selected-file-name" id="file-name"></div>
+                            <div class="selected-file-size" id="file-size"></div>
+                        </div>
+                        <button type="button" class="selected-file-remove" id="remove-file">
+                            <i class="fa fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- 进度条 -->
+                <div class="progress-container" id="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-fill"></div>
+                    </div>
+                    <div class="progress-text" id="progress-text">{{ _('processing') }}...</div>
+                </div>
+                
+                <!-- 提交按钮 -->
+                <button type="submit" class="btn btn-primary" id="submit-btn">
+                    <i class="fa fa-play-circle"></i>
+                    {{ _('start_batch') }}
+                </button>
+            </form>
+        </div>
+        
+        <!-- 返回按钮 -->
+        <div style="text-align: center; margin-top: 16px;">
+            <a href="/" class="btn btn-secondary btn-icon">
+                <i class="fa fa-arrow-left"></i>
+                {{ _('back_to_home') }}
+            </a>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 文件上传区域交互
+            const uploadArea = document.getElementById('upload-area');
+            const fileInput = document.getElementById('file-input');
+            const selectedFileContainer = document.getElementById('selected-file-container');
+            const fileName = document.getElementById('file-name');
+            const fileSize = document.getElementById('file-size');
+            const removeFile = document.getElementById('remove-file');
+            const form = document.getElementById('upload-form');
+            const progressContainer = document.getElementById('progress-container');
+            const progressFill = document.getElementById('progress-fill');
+            
+            // 检查元素是否存在
+            if (!uploadArea || !fileInput || !selectedFileContainer || !fileName || !fileSize || !removeFile || !form) {
+                console.error('缺少必要的DOM元素');
+                return;
+            }
+            
+            // 点击上传区域
+            uploadArea.addEventListener('click', () => {
+                fileInput.click();
+            });
+            
+            // 拖拽上传
+            uploadArea.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                uploadArea.classList.add('dragover');
+            });
+            
+            uploadArea.addEventListener('dragleave', () => {
+                uploadArea.classList.remove('dragover');
+            });
+            
+            uploadArea.addEventListener('drop', (e) => {
+                e.preventDefault();
+                uploadArea.classList.remove('dragover');
+                const files = e.dataTransfer.files;
+                if (files.length > 0) {
+                    fileInput.files = files;
+                    handleFileSelect(files[0]);
+                }
+            });
+            
+            // 文件选择处理
+            fileInput.addEventListener('change', (e) => {
+                const file = e.target.files[0];
+                if (file) {
+                    handleFileSelect(file);
+                }
+            });
+            
+            function handleFileSelect(file) {
+                fileName.textContent = file.name;
+                fileSize.textContent = formatFileSize(file.size);
+                selectedFileContainer.style.display = 'block';
+                uploadArea.style.display = 'none';
+            }
+            
+            function formatFileSize(bytes) {
+                if (bytes < 1024) return bytes + ' B';
+                if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+                return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+            }
+            
+            // 移除文件
+            removeFile.addEventListener('click', () => {
+                fileInput.value = '';
+                selectedFileContainer.style.display = 'none';
+                uploadArea.style.display = 'block';
+            });
+            
+            // 表单提交
+            form.addEventListener('submit', (e) => {
+                const submitBtn = document.getElementById('submit-btn');
+                if (submitBtn) {
+                    submitBtn.disabled = true;
+                    submitBtn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> ' + "{{ _('processing') }}...";
+                }
+                
+                if (progressContainer) {
+                    progressContainer.style.display = 'block';
+                }
+                if (progressFill) {
+                    progressFill.style.width = '0%';
+                }
+                
+                // 模拟进度
+                let progress = 0;
+                const interval = setInterval(() => {
+                    progress += Math.random() * 20;
+                    if (progress >= 90) progress = 90;
+                    if (progressFill) {
+                        progressFill.style.width = progress + '%';
+                    }
+                }, 200);
+                
+                // 保持表单提交
+                setTimeout(() => {
+                    clearInterval(interval);
+                    if (progressFill) {
+                        progressFill.style.width = '100%';
+                    }
+                }, 500);
+            });
+        });
+    </script>
+</body>
+</html>

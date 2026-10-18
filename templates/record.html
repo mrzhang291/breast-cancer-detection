@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="{{ current_lang }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ _('record_details') }} - {{ _('breast_cancer_detection') }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .record-card {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .record-header {
+            border-bottom: 1px solid #dee2e6;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+        .record-header h2 {
+            margin: 0;
+            color: #4CAF50;
+        }
+        .record-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .info-group {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        .info-group h3 {
+            margin-top: 0;
+            color: #495057;
+            border-bottom: 1px solid #dee2e6;
+            padding-bottom: 10px;
+        }
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+        .info-item:last-child {
+            border-bottom: none;
+        }
+        .btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            color: white;
+        }
+        .btn-primary:hover {
+            background-color: #0069d9;
+        }
+        .btn-secondary {
+            background-color: #6c757d;
+            color: white;
+        }
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+        .btn-danger {
+            background-color: #dc3545;
+            color: white;
+        }
+        .btn-danger:hover {
+            background-color: #c82333;
+        }
+        .action-buttons {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .result {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .malignant {
+            color: #dc3545;
+        }
+        .benign {
+            color: #28a745;
+        }
+        .lang-switch {
+            margin-bottom: 20px;
+            display: flex;
+            gap: 5px;
+            justify-content: flex-end;
+        }
+        .lang-switch-btn {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            border: none;
+            cursor: pointer;
+            background: rgba(0, 123, 255, 0.1);
+            color: #007bff;
+            transition: background 0.3s ease;
+        }
+        .lang-switch-btn:hover {
+            background: rgba(0, 123, 255, 0.2);
+        }
+        .lang-switch-btn:disabled {
+            background: rgba(0, 123, 255, 0.3);
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="lang-switch">
+            {% if is_chinese %}
+            <button class="lang-switch-btn" disabled>{{ _('chinese') }}</button>
+            <a href="/set-lang/en"><button class="lang-switch-btn">{{ _('english') }}</button></a>
+            {% else %}
+            <a href="/set-lang/zh"><button class="lang-switch-btn">{{ _('chinese') }}</button></a>
+            <button class="lang-switch-btn" disabled>{{ _('english') }}</button>
+            {% endif %}
+        </div>
+
+        <h1>{{ _('record_details') }}</h1>
+        
+        {% if record %}
+        <div class="record-card">
+            <div class="record-header">
+                <h2>{{ _('prediction_record') }} #{{ record[0] }}</h2>
+                <p>{{ _('prediction_time') }}: {{ record[4] }}</p>
+                <p class="result {{ 'malignant' if record[2] == 'Malignant' else 'benign' }}">
+                    {{ _('prediction_result') }}: {{ _('malignant') if record[2] == 'Malignant' else _('benign') }}
+                </p>
+                <p>{{ _('confidence') }}: {{ "%.2f%%"|format(record[3] * 100) }}</p>
+            </div>
+            
+            <div class="record-info">
+                <div class="info-group">
+                    <h3>{{ _('mean_features') }}</h3>
+                    <div class="info-item"><span>{{ _('radius_mean') }}:</span><span>{{ "%.4f"|format(record[5]) }}</span></div>
+                    <div class="info-item"><span>{{ _('texture_mean') }}:</span><span>{{ "%.4f"|format(record[6]) }}</span></div>
+                    <div class="info-item"><span>{{ _('perimeter_mean') }}:</span><span>{{ "%.4f"|format(record[7]) }}</span></div>
+                    <div class="info-item"><span>{{ _('area_mean') }}:</span><span>{{ "%.4f"|format(record[8]) }}</span></div>
+                    <div class="info-item"><span>{{ _('smoothness_mean') }}:</span><span>{{ "%.4f"|format(record[9]) }}</span></div>
+                    <div class="info-item"><span>{{ _('compactness_mean') }}:</span><span>{{ "%.4f"|format(record[10]) }}</span></div>
+                    <div class="info-item"><span>{{ _('concavity_mean') }}:</span><span>{{ "%.4f"|format(record[11]) }}</span></div>
+                    <div class="info-item"><span>{{ _('concave_points_mean') }}:</span><span>{{ "%.4f"|format(record[12]) }}</span></div>
+                    <div class="info-item"><span>{{ _('symmetry_mean') }}:</span><span>{{ "%.4f"|format(record[13]) }}</span></div>
+                    <div class="info-item"><span>{{ _('fractal_dimension_mean') }}:</span><span>{{ "%.4f"|format(record[14]) }}</span></div>
+                </div>
+                
+                <div class="info-group">
+                    <h3>{{ _('se_features') }}</h3>
+                    <div class="info-item"><span>{{ _('radius_se') }}:</span><span>{{ "%.4f"|format(record[15]) }}</span></div>
+                    <div class="info-item"><span>{{ _('texture_se') }}:</span><span>{{ "%.4f"|format(record[16]) }}</span></div>
+                    <div class="info-item"><span>{{ _('perimeter_se') }}:</span><span>{{ "%.4f"|format(record[17]) }}</span></div>
+                    <div class="info-item"><span>{{ _('area_se') }}:</span><span>{{ "%.4f"|format(record[18]) }}</span></div>
+                    <div class="info-item"><span>{{ _('smoothness_se') }}:</span><span>{{ "%.4f"|format(record[19]) }}</span></div>
+                    <div class="info-item"><span>{{ _('compactness_se') }}:</span><span>{{ "%.4f"|format(record[20]) }}</span></div>
+                    <div class="info-item"><span>{{ _('concavity_se') }}:</span><span>{{ "%.4f"|format(record[21]) }}</span></div>
+                    <div class="info-item"><span>{{ _('concave_points_se') }}:</span><span>{{ "%.4f"|format(record[22]) }}</span></div>
+                    <div class="info-item"><span>{{ _('symmetry_se') }}:</span><span>{{ "%.4f"|format(record[23]) }}</span></div>
+                    <div class="info-item"><span>{{ _('fractal_dimension_se') }}:</span><span>{{ "%.4f"|format(record[24]) }}</span></div>
+                </div>
+                
+                <div class="info-group">
+                    <h3>{{ _('worst_features') }}</h3>
+                    <div class="info-item"><span>{{ _('radius_worst') }}:</span><span>{{ "%.4f"|format(record[25]) }}</span></div>
+                    <div class="info-item"><span>{{ _('texture_worst') }}:</span><span>{{ "%.4f"|format(record[26]) }}</span></div>
+                    <div class="info-item"><span>{{ _('perimeter_worst') }}:</span><span>{{ "%.4f"|format(record[27]) }}</span></div>
+                    <div class="info-item"><span>{{ _('area_worst') }}:</span><span>{{ "%.4f"|format(record[28]) }}</span></div>
+                    <div class="info-item"><span>{{ _('smoothness_worst') }}:</span><span>{{ "%.4f"|format(record[29]) }}</span></div>
+                    <div class="info-item"><span>{{ _('compactness_worst') }}:</span><span>{{ "%.4f"|format(record[30]) }}</span></div>
+                    <div class="info-item"><span>{{ _('concavity_worst') }}:</span><span>{{ "%.4f"|format(record[31]) }}</span></div>
+                    <div class="info-item"><span>{{ _('concave_points_worst') }}:</span><span>{{ "%.4f"|format(record[32]) }}</span></div>
+                    <div class="info-item"><span>{{ _('symmetry_worst') }}:</span><span>{{ "%.4f"|format(record[33]) }}</span></div>
+                    <div class="info-item"><span>{{ _('fractal_dimension_worst') }}:</span><span>{{ "%.4f"|format(record[34]) }}</span></div>
+                </div>
+            </div>
+            
+            <div class="action-buttons">
+                <a href="/records" class="btn btn-secondary">{{ _('back_to_list') }}</a>
+                <a href="/export-pdf/{{ record[0] }}" class="btn btn-primary">{{ _('export_pdf') }}</a>
+                <form action="/delete-record/{{ record[0] }}" method="POST" style="display: inline;">
+                    <button type="submit" class="btn btn-danger" onclick="return confirm('{{ _('confirm_delete') }}');">{{ _('delete_record') }}</button>
+                </form>
+            </div>
+        </div>
+        {% else %}
+        <div class="record-card">
+            <p>{{ _('record_not_exist') }}</p>
+            <a href="/records" class="btn btn-secondary">{{ _('back_to_list') }}</a>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>

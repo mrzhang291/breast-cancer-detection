@@ -1,0 +1,2181 @@
+<!DOCTYPE html>
+<html lang="{{ current_lang }}">
+<head>
+  <title>{{ _('prediction_result') }} - {{ _('breast_cancer_detection') }}</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    .result-card {
+      padding: 28px;
+      background: linear-gradient(180deg, #f7fbfc 0%, #eef8fa 100%);
+      border: 1px solid #d1e7ed;
+      border-radius: 18px;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.05);
+      margin-top: 20px;
+    }
+
+    .ai-card {
+      padding: 28px;
+      background: linear-gradient(180deg, #f7fbfc 0%, #eef8fa 100%);
+      border: 1px solid #d1e7ed;
+      border-radius: 18px;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.05);
+      transition: transform .2s ease, box-shadow .2s ease;
+      margin-top: 20px;
+    }
+
+    .ai-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.08);
+    }
+
+    .ai-card h3 {
+      margin-top: 0;
+      margin-bottom: 8px;
+      font-size: 1.6em;
+      letter-spacing: 0.02em;
+    }
+
+    .ai-response {
+      margin-top: 18px;
+      padding: 28px;
+      background: linear-gradient(135deg, #ffffff 0%, #f8fbfd 100%);
+      border-radius: 14px;
+      border: 2px solid #d8e6ec;
+      min-height: 220px;
+      color: #2a3b48;
+      line-height: 1.9;
+      font-family: 'Segoe UI', 'Balsamiq Sans', cursive;
+      font-size: 0.98em;
+    }
+
+    .ai-response p {
+      margin: 14px 0;
+    }
+
+    .ai-response strong {
+      color: #0d2a42;
+      font-weight: 700;
+    }
+
+    .ai-response em {
+      color: #e74c3c;
+      font-style: italic;
+    }
+
+    .ai-section-title {
+      color: #1f3f5b;
+      font-size: 1.15em;
+      font-weight: 700;
+      margin-top: 18px;
+      margin-bottom: 10px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #01CBC6;
+    }
+
+    .ai-highlight {
+      background-color: #fff3cd;
+      padding: 14px;
+      border-left: 4px solid #f39c12;
+      border-radius: 6px;
+      margin: 12px 0;
+    }
+
+    .ai-warning {
+      background-color: #fadbd8;
+      padding: 14px;
+      border-left: 4px solid #e74c3c;
+      border-radius: 6px;
+      margin: 12px 0;
+      color: #c0392b;
+      font-weight: 500;
+    }
+
+    .ai-status {
+      margin-top: 14px;
+      color: #4b4b4b;
+      min-height: 22px;
+      font-family: 'Balsamiq Sans', cursive;
+    }
+
+    .ai-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      margin-top: 12px;
+    }
+
+    .confidence-badge {
+      display: inline-block;
+      padding: 10px 20px;
+      border-radius: 50px;
+      font-weight: bold;
+      font-size: 1.1em;
+      margin: 10px 0;
+    }
+
+    .confidence-high {
+      background-color: #27ae60;
+      color: white;
+    }
+
+    .confidence-medium {
+      background-color: #f39c12;
+      color: white;
+    }
+
+    .confidence-low {
+      background-color: #e74c3c;
+      color: white;
+    }
+
+    /* ============ 现代化导航栏样式 ============ */
+    .navbar {
+      background: linear-gradient(135deg, #01CBC6 0%, #00a89a 100%);
+      padding: 0;
+      margin-bottom: 24px;
+      border-bottom: 4px solid #008577;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      position: relative;
+      width: 100%;
+    }
+
+    .navbar-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 72px;
+    }
+
+    /* Logo 和标题 */
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      color: white;
+      transition: transform 0.3s ease;
+      min-width: 280px;
+    }
+
+    .navbar-brand:hover {
+      transform: scale(1.02);
+    }
+
+    .logo-icon {
+      width: 46px;
+      height: 46px;
+      background: rgba(255, 255, 255, 0.18);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .navbar-brand:hover .logo-icon {
+      background: rgba(255, 255, 255, 0.28);
+      transform: rotate(15deg);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-name {
+      font-family: 'Balsamiq Sans', cursive;
+      font-size: 1.25em;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      line-height: 1.2;
+    }
+
+    .brand-subtitle {
+      font-size: 0.78em;
+      opacity: 0.88;
+      font-weight: 400;
+      letter-spacing: 0.3px;
+    }
+
+    /* 搜索框 */
+    .navbar-search {
+      flex: 1;
+      max-width: 380px;
+      margin: 0 40px;
+      min-width: 200px;
+    }
+
+    .search-box {
+      display: flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: 28px;
+      padding: 10px 18px;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    .search-box:focus-within {
+      background: rgba(255, 255, 255, 0.22);
+      border-color: rgba(255, 255, 255, 0.35);
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.12);
+    }
+
+    .search-icon {
+      color: rgba(255, 255, 255, 0.75);
+      margin-right: 12px;
+      font-size: 15px;
+    }
+
+    .search-input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: white;
+      font-size: 14px;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .search-input::placeholder {
+      color: rgba(255, 255, 255, 0.55);
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .search-btn {
+      background: rgba(255, 255, 255, 0.18);
+      border: none;
+      border-radius: 50%;
+      width: 34px;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-left: 8px;
+    }
+
+    .search-btn:hover {
+      background: rgba(255, 255, 255, 0.28);
+      transform: scale(1.15);
+    }
+
+    /* 导航链接 */
+    .navbar-nav {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 10px 20px;
+      color: white;
+      text-decoration: none;
+      border-radius: 22px;
+      transition: all 0.3s ease;
+      font-weight: 500;
+      position: relative;
+      font-size: 0.92em;
+      min-width: 80px;
+      justify-content: center;
+    }
+
+    .nav-link:hover {
+      background: rgba(255, 255, 255, 0.18);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 3px;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 2px;
+      transition: width 0.35s ease;
+    }
+
+    .nav-link:hover::after {
+      width: 55%;
+    }
+
+    .nav-text {
+      font-size: 0.9em;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    /* 右侧操作区 */
+    .navbar-actions {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-left: 20px;
+    }
+
+    /* 语言切换 */
+    .lang-switch-wrapper {
+      display: flex;
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: 22px;
+      padding: 4px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .lang-btn {
+      padding: 8px 16px;
+      border: none;
+      border-radius: 18px;
+      background: transparent;
+      color: white;
+      font-size: 0.82em;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: 'Segoe UI', sans-serif;
+      min-width: 60px;
+      text-align: center;
+    }
+
+    .lang-btn:hover:not(.active) {
+      background: rgba(255, 255, 255, 0.18);
+    }
+
+    .lang-btn.active {
+      background: white;
+      color: #01CBC6;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.18);
+    }
+
+    /* 用户菜单 */
+    .user-menu {
+      position: relative;
+    }
+
+    .user-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      background: rgba(255, 255, 255, 0.15);
+      border: none;
+      border-radius: 25px;
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .user-btn:hover {
+      background: rgba(255, 255, 255, 0.25);
+    }
+
+    .user-avatar {
+      width: 32px;
+      height: 32px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+    }
+
+    .user-name {
+      font-weight: 600;
+      font-size: 0.9em;
+    }
+
+    .dropdown-icon {
+      font-size: 12px;
+      transition: transform 0.3s ease;
+    }
+
+    .user-menu:hover .dropdown-icon {
+      transform: rotate(180deg);
+    }
+
+    /* 用户下拉菜单 */
+    .user-dropdown {
+      position: absolute;
+      top: calc(100% + 8px);
+      right: 0;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      min-width: 180px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all 0.3s ease;
+      z-index: 1000;
+      overflow: hidden;
+    }
+
+    .user-menu:hover .user-dropdown {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .dropdown-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 16px;
+      color: #333;
+      text-decoration: none;
+      transition: background 0.2s ease;
+      font-size: 0.9em;
+    }
+
+    .dropdown-item:hover {
+      background: #f5f7fa;
+    }
+
+    .dropdown-divider {
+      margin: 8px 0;
+      border: none;
+      border-top: 1px solid #eee;
+    }
+
+    .logout-item {
+      color: #e74c3c;
+    }
+
+    .logout-item:hover {
+      background: #fff5f5;
+    }
+
+    /* 返回按钮 */
+    .btn-return-floating {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: linear-gradient(135deg, #01CBC6 0%, #00a89a 100%);
+      color: white;
+      padding: 14px 20px;
+      border-radius: 50px;
+      box-shadow: 0 6px 20px rgba(1, 203, 198, 0.4);
+      z-index: 100;
+      transition: all .3s ease;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      border: none;
+    }
+
+    .btn-return-floating:hover {
+      background: #00a89a;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px rgba(1, 203, 198, 0.5);
+    }
+
+    /* ============ 响应式设计 ============ */
+    @media (max-width: 1100px) {
+      .navbar-search {
+        display: none;
+      }
+      
+      .navbar-brand {
+        min-width: 220px;
+      }
+    }
+
+    @media (max-width: 850px) {
+      .navbar-container {
+        height: auto;
+        padding: 12px 16px;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .navbar-brand {
+        order: 1;
+        width: 100%;
+        justify-content: center;
+        min-width: auto;
+      }
+
+      .navbar-nav {
+        order: 2;
+        width: 100%;
+        justify-content: center;
+        gap: 8px;
+        padding: 8px 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .nav-link {
+        padding: 9px 16px;
+        font-size: 0.88em;
+        min-width: 70px;
+      }
+
+      .nav-text {
+        display: inline;
+      }
+
+      .navbar-actions {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        margin-left: 0;
+        gap: 15px;
+      }
+
+      .user-name {
+        display: none;
+      }
+
+      .btn-return-floating {
+        bottom: 20px;
+        right: 20px;
+        padding: 12px 16px;
+        font-size: 0.9em;
+      }
+    }
+
+    @media (max-width: 550px) {
+      .brand-name {
+        font-size: 1.15em;
+      }
+
+      .brand-subtitle {
+        font-size: 0.78em;
+      }
+
+      .logo-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+      }
+
+      .nav-link {
+        padding: 7px 12px;
+        font-size: 0.82em;
+        min-width: 60px;
+      }
+
+      .nav-text {
+        display: none;
+      }
+
+      .lang-btn {
+        padding: 6px 12px;
+        font-size: 0.78em;
+        min-width: 50px;
+      }
+    }
+
+    /* AI悬浮按钮样式 */
+    #ai-float-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ff6b9d 0%, #c084fc 100%);
+      box-shadow: 0 8px 25px rgba(255, 107, 157, 0.4);
+      display: none !important;
+      align-items: center;
+      justify-content: center;
+      cursor: grab;
+      transition: all 0.2s ease;
+      border: 3px solid #fff;
+      z-index: 9999 !important;
+      user-select: none;
+      touch-action: none;
+    }
+
+    #ai-float-btn.show {
+      display: flex !important;
+      opacity: 1;
+      visibility: visible;
+    }
+
+    #ai-float-btn.hidden {
+      display: none !important;
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    #ai-float-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 12px 35px rgba(255, 107, 157, 0.5);
+    }
+
+    #ai-float-btn.dragging {
+      cursor: grabbing;
+      transform: scale(1.15);
+      box-shadow: 0 15px 40px rgba(255, 107, 157, 0.6);
+      opacity: 0.9;
+    }
+
+    .ai-float-btn i {
+      color: #fff;
+      font-size: 24px;
+    }
+
+    /* 删除记录按钮 */
+    .ai-delete-history {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #ef4444;
+      color: #fff;
+      border: 2px solid #fff;
+      font-size: 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+      z-index: 1001;
+    }
+
+    .ai-float-btn:hover .ai-delete-history {
+      opacity: 1;
+    }
+
+    .ai-delete-history:hover {
+      background: #dc2626;
+      transform: scale(1.1);
+    }
+
+    /* 浮窗AI助手样式 */
+    .ai-card-dark { 
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 420px;
+      height: 550px;
+      min-width: 350px;
+      max-width: 600px;
+      min-height: 400px;
+      max-height: 700px;
+      background: linear-gradient(145deg, #1e293b 0%, #0f172a 100%); 
+      border-radius: 20px; 
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4); 
+      overflow: hidden;
+      border: 1px solid #334155;
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .ai-card-dark.dragging {
+      cursor: grabbing;
+      opacity: 0.9;
+    }
+
+    /* 调整大小手柄 */
+    .ai-resize-handle {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 20px;
+      height: 20px;
+      background: rgba(255,255,255,0.1);
+      cursor: se-resize;
+      border-radius: 0 0 20px 0;
+    }
+
+    .ai-resize-handle::after {
+      content: '';
+      position: absolute;
+      bottom: 3px;
+      right: 3px;
+      width: 10px;
+      height: 10px;
+      border-right: 2px solid rgba(255,255,255,0.4);
+      border-bottom: 2px solid rgba(255,255,255,0.4);
+    }
+
+    .ai-resize-handle:hover {
+      background: rgba(255,255,255,0.2);
+    }
+
+    .ai-card-dark.resizing {
+      cursor: se-resize;
+    }
+
+    .ai-header { 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+      padding: 16px 20px; 
+      background: linear-gradient(90deg, #0ea5e9 0%, #0284c7 100%); 
+      cursor: grab;
+    }
+
+    .ai-header:active {
+      cursor: grabbing;
+    }
+
+    .ai-title { 
+      font-size: 1.1em; 
+      font-weight: 600; 
+      color: #fff; 
+      display: flex; 
+      align-items: center;
+    }
+
+    .ai-close-btn { 
+      background: rgba(255,255,255,0.2); 
+      border: none; 
+      color: #fff; 
+      width: 28px; 
+      height: 28px; 
+      border-radius: 50%; 
+      font-size: 14px; 
+      cursor: pointer; 
+      transition: all 0.3s ease;
+    }
+
+    .ai-close-btn:hover { 
+      background: rgba(255,255,255,0.3); 
+    }
+
+    .ai-history { 
+      max-height: 150px; 
+      overflow-y: auto; 
+      padding: 10px 20px; 
+      border-bottom: 1px solid #334155;
+      flex-shrink: 0;
+    }
+
+    .ai-history-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #334155;
+    }
+
+    .ai-history-title {
+      color: #94a3b8;
+      font-size: 0.85em;
+      font-weight: 500;
+    }
+
+    .ai-select-all {
+      display: flex;
+      align-items: center;
+      color: #94a3b8;
+      font-size: 0.85em;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .ai-select-all input[type="checkbox"] {
+      margin-right: 6px;
+      cursor: pointer;
+    }
+
+    .ai-delete-selected-btn {
+      background: rgba(239, 68, 68, 0.2);
+      color: #ef4444;
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      padding: 4px 12px;
+      border-radius: 8px;
+      font-size: 0.8em;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: none;
+    }
+
+    .ai-delete-selected-btn:hover {
+      background: rgba(239, 68, 68, 0.3);
+      border-color: rgba(239, 68, 68, 0.5);
+    }
+
+    .ai-history-item { 
+      display: flex; 
+      gap: 12px; 
+      padding: 12px 15px; 
+      margin: 8px 0; 
+      background: rgba(255,255,255,0.05); 
+      border-radius: 12px; 
+      cursor: pointer;
+      transition: all 0.2s ease;
+      align-items: center;
+    }
+
+    .ai-history-item:hover { 
+      background: rgba(255,255,255,0.08); 
+    }
+
+    .ai-history-item.selected {
+      background: rgba(14, 165, 233, 0.15);
+      border: 1px solid rgba(14, 165, 233, 0.3);
+    }
+
+    .ai-history-checkbox {
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+      accent-color: #0ea5e9;
+      flex-shrink: 0;
+    }
+
+    .ai-history-avatar { 
+      width: 36px; 
+      height: 36px; 
+      border-radius: 50%; 
+      background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%); 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      color: #fff; 
+      font-size: 12px; 
+      flex-shrink: 0;
+    }
+
+    .ai-history-content { 
+      flex: 1; 
+      min-width: 0;
+    }
+
+    .ai-history-question { 
+      color: #cbd5e1; 
+      font-size: 0.9em; 
+      white-space: nowrap; 
+      overflow: hidden; 
+      text-overflow: ellipsis;
+    }
+
+    .ai-history-time { 
+      color: #64748b; 
+      font-size: 0.75em; 
+      margin-top: 2px;
+    }
+
+    .ai-input-area { 
+      padding: 20px; 
+    }
+
+    .ai-textarea-dark { 
+      width: 100%; 
+      min-height: 80px; 
+      padding: 15px; 
+      background: rgba(255,255,255,0.08); 
+      border: 1px solid #334155; 
+      border-radius: 12px; 
+      color: #e2e8f0; 
+      font-size: 14px; 
+      resize: vertical; 
+      transition: all 0.3s ease;
+    }
+
+    .ai-textarea-dark:focus { 
+      outline: none; 
+      border-color: #0ea5e9; 
+      box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.2); 
+    }
+
+    .ai-textarea-dark::placeholder { color: #64748b; }
+
+    .ai-response-dark { 
+      padding: 15px 20px; 
+      background: rgba(255,255,255,0.05); 
+      color: #e2e8f0; 
+      line-height: 1.8; 
+      border-top: 1px solid #334155;
+      flex: 1;
+      min-height: 100px;
+      overflow-y: auto;
+      font-size: 0.95em;
+      box-sizing: border-box;
+    }
+
+    .ai-response-dark::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .ai-response-dark::-webkit-scrollbar-track {
+      background: rgba(255,255,255,0.05);
+    }
+
+    .ai-response-dark::-webkit-scrollbar-thumb {
+      background: rgba(255,255,255,0.2);
+      border-radius: 3px;
+    }
+
+    .ai-send-btn { 
+      flex: 1; 
+      padding: 14px 20px; 
+      background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%); 
+      color: #fff; 
+      border: none; 
+      border-radius: 12px; 
+      font-weight: 600; 
+      cursor: pointer; 
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .ai-send-btn:hover { 
+      transform: translateY(-2px); 
+      box-shadow: 0 8px 25px rgba(14, 165, 233, 0.4); 
+    }
+
+    .ai-send-btn:disabled { 
+      opacity: 0.6; 
+      transform: none; 
+      cursor: not-allowed;
+    }
+
+    .ai-clear-btn { 
+      padding: 14px 20px; 
+      background: rgba(255,255,255,0.1); 
+      color: #94a3b8; 
+      border: 1px solid #334155; 
+      border-radius: 12px; 
+      cursor: pointer; 
+      transition: all 0.3s ease;
+    }
+
+    .ai-clear-btn:hover { 
+      background: rgba(255,255,255,0.15); 
+      color: #cbd5e1; 
+    }
+  </style>
+</head>
+<body>
+
+<div class="container-fluid" style="background-color: #fff">
+
+  {% include "footer.html" %}
+
+  <!-- AI悬浮按钮 -->
+  <div class="ai-float-btn show" id="ai-float-btn">
+    <div class="ai-delete-history" id="ai-delete-history" title="删除所有记录">&times;</div>
+    <i class="fa fa-heart"></i>
+  </div>
+
+  <!-- AI助手浮窗 -->
+  <div class="ai-card-dark" id="ai-card">
+    <div class="ai-header" id="ai-header">
+      <div class="ai-title">
+        <i class="fa fa-heart" style="margin-right: 10px; color: #ff6b9d;"></i>
+        <span>{{ _('pink_angel') }}</span>
+      </div>
+      <div style="display: flex;">
+        <button id="ai-close" class="ai-close-btn">&times;</button>
+      </div>
+    </div>
+    <p style="color: #8b9cb5; font-size: 0.9em; margin: 15px 20px;">{{ _('breast_cancer_knowledge') }}</p>
+
+    <!-- 响应区域 -->
+    <div id="ai-response-dark" class="ai-response-dark">{{ _('ai_response_placeholder') }}</div>
+
+    <!-- 历史记录区域 -->
+    <div id="ai-history" class="ai-history">
+      <!-- 历史记录将动态加载 -->
+    </div>
+
+    <!-- 输入区域 -->
+    <div class="ai-input-area">
+      <textarea id="ai-prompt" class="ai-textarea-dark" placeholder="{{ _('ai_placeholder') }}"></textarea>
+      <div class="ai-actions">
+        <button id="ai-clear" class="ai-clear-btn"><i class="fa fa-trash"></i></button>
+        <button id="ai-send" class="ai-send-btn"><i class="fa fa-paper-plane"></i> {{ _('send') }}</button>
+      </div>
+    </div>
+
+    <!-- 调整大小手柄 -->
+    <div class="ai-resize-handle" id="ai-resize-handle"></div>
+  </div>
+
+  <div class="container">
+    
+    <!-- 顶部导航栏 - 现代化设计 -->
+    <nav class="navbar">
+      <div class="navbar-container">
+        <!-- Logo 和标题 -->
+        <div class="navbar-brand">
+          <div class="logo-icon">
+            <i class="fa fa-heartbeat"></i>
+          </div>
+          <div class="brand-text">
+            <span class="brand-name">{{ _('breast_cancer_detection') }}</span>
+            <span class="brand-subtitle">{{ _('prediction_result') }}</span>
+          </div>
+        </div>
+        
+        <!-- 搜索框 -->
+        <div class="navbar-search">
+          <div class="search-box">
+            <i class="fa fa-search search-icon"></i>
+            <input type="text" placeholder="{{ _('search') }}..." class="search-input">
+            <button class="search-btn"><i class="fa fa-search"></i></button>
+          </div>
+        </div>
+        
+        <!-- 导航链接 -->
+        <div class="navbar-nav">
+          <a href="/" class="nav-link" title="{{ _('home') }}">
+            <i class="fa fa-home"></i>
+            <span class="nav-text">{{ _('home') }}</span>
+          </a>
+          <a href="/records" class="nav-link" title="{{ _('history_records') }}">
+            <i class="fa fa-history"></i>
+            <span class="nav-text">{{ _('history') }}</span>
+          </a>
+          <a href="/shap-analysis" class="nav-link" title="{{ _('shap_analysis_title') }}">
+            <i class="fa fa-brain"></i>
+            <span class="nav-text">SHAP</span>
+          </a>
+        </div>
+        
+        <!-- 右侧操作区 -->
+        <div class="navbar-actions">
+          <!-- 语言切换 -->
+          <div class="lang-switch-wrapper">
+            {% if is_chinese %}
+              <button class="lang-btn active">中文</button>
+              <a href="/set-lang/en"><button class="lang-btn">English</button></a>
+            {% else %}
+              <a href="/set-lang/zh"><button class="lang-btn">中文</button></a>
+              <button class="lang-btn active">English</button>
+            {% endif %}
+          </div>
+          
+          <!-- 用户菜单 -->
+          {% if session.get('username') %}
+          <div class="user-menu">
+            <button class="user-btn">
+              <div class="user-avatar">
+                <i class="fa fa-user"></i>
+              </div>
+              <span class="user-name">{{ session.get('username') }}</span>
+              <i class="fa fa-chevron-down dropdown-icon"></i>
+            </button>
+            <div class="user-dropdown">
+              <a href="/records" class="dropdown-item"><i class="fa fa-history"></i> {{ _('history_records') }}</a>
+              <a href="#" class="dropdown-item"><i class="fa fa-cog"></i> {{ _('settings') }}</a>
+              <a href="#" class="dropdown-item"><i class="fa fa-question-circle"></i> {{ _('help') }}</a>
+              <hr class="dropdown-divider">
+              <a href="/logout" class="dropdown-item logout-item"><i class="fa fa-sign-out"></i> {{ _('logout') }}</a>
+            </div>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </nav>
+
+    <div class="result-card">
+      {% if input_error or model_error or model_not_ready %}
+      <div class="alert alert-danger" style="background:#fff5f5;border:1px solid #feb2b2;color:#c53030;border-radius:12px;padding:14px 18px;margin-bottom:18px;text-align:left;line-height:1.7;">
+        <i class="fa fa-exclamation-triangle"></i>
+        {% if input_error %}{{ input_error }}
+        {% elif model_error %}{{ model_error }}
+        {% else %}模型正在加载，请稍等几秒后重新提交。{% endif %}
+      </div>
+      {% endif %}
+      <h1 style="font-family: 'Balsamiq Sans', cursive;">{{ _('prediction_result') }}</h1>      
+      <h2 style="font-family: 'Balsamiq Sans', cursive; color: {% if output == 'Malignant' or output == '恶性' %}#e74c3c{% else %}#27ae60{% endif %};">
+        {{ output }}
+      </h2>
+      <div class="confidence-badge {% if confidence >= 0.9 %}confidence-high{% elif confidence >= 0.75 %}confidence-medium{% else %}confidence-low{% endif %}">
+        {{ _('confidence') }}：{{ "%.2f"|format(confidence * 100) }}%
+        <span style="font-size:0.62em;color:#a0aec0;display:block;margin-top:4px;">
+          校准后 · 模型原始输出 {{ "%.2f"|format((raw_confidence or confidence) * 100) }}%
+        </span>
+      </div>
+      <p style="font-family: 'Balsamiq Sans', cursive; margin-top: 15px;">{{ _('prediction_time') }}：{{ time }} {{ _('seconds') }}</p>
+      <p style="font-family: 'Balsamiq Sans', cursive; color: #c0392b; font-weight: bold;">⚠️ {{ _('disclaimer') }}</p>
+      <div style="margin-top: 20px; display: flex; gap: 12px; flex-wrap: wrap;">
+        <a href="/" class="btn btn-primary btn-lg"><i class="fa fa-arrow-left"></i> {{ _('back_to_home') }}</a>
+        <a href="/" onclick="sessionStorage.setItem('resetForm', 'true');" class="btn btn-info btn-lg"><i class="fa fa-plus"></i> {{ _('new_prediction') }}</a>
+        <a href="/shap-analysis" class="btn btn-warning btn-lg" title="{{ _('shap_analysis_title') }}"><i class="fa fa-brain"></i> SHAP {{ _('analysis') }}</a>
+        <a href="/logout" class="btn btn-danger btn-lg"><i class="fa fa-sign-out"></i> {{ _('logout') }}</a>
+        <button id="summaryBtn" class="btn btn-success btn-lg" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);"><i class="fa fa-file-text-o"></i> 生成总结</button>
+      </div>
+      <!-- 隐藏字段存储特征数据 -->
+      <input type="hidden" id="featureData" value='{{ session.get("last_prediction", {}).get("data", [])|tojson|safe }}'>
+    </div>
+
+
+    <!-- ===== Agent 智能解读（工具调用 + RAG，可溯源） ===== -->
+    <div class="result-card" id="agentCard" style="margin-top:24px;text-align:left;">
+      <h2 style="font-size:1.35em;display:flex;align-items:center;gap:10px;justify-content:center;">
+        <i class="fa fa-robot" style="color:#6366f1;"></i> AI 智能解读
+      </h2>
+      <p style="text-align:center;color:#718096;font-size:.85em;margin-top:6px;">
+        模型预测 + 特征归因 + 知识库检索，每个数字都能溯源
+      </p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin:16px 0;justify-content:center;">
+        <button id="agentRunBtn" class="btn btn-primary"><i class="fa fa-play"></i> 解读这次结果</button>
+        <button id="agentCaseBtn" class="btn btn-info"><i class="fa fa-users"></i> 找相似病例</button>
+        <button id="agentInspectBtn" class="btn btn-warning"><i class="fa fa-stethoscope"></i> 系统巡检</button>
+      </div>
+      <div style="display:flex;gap:8px;margin-bottom:14px;">
+        <input id="agentInput" type="text" placeholder="继续追问，例如：面积平均值是什么意思？"
+               style="flex:1;padding:10px 14px;border:1px solid #cbd5e0;border-radius:10px;font-size:.92em;">
+        <button id="agentAskBtn" class="btn btn-success"><i class="fa fa-paper-plane"></i> 提问</button>
+      </div>
+      <div id="agentSteps" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;"></div>
+      <div id="agentTrace" style="margin:6px 0 10px;"></div>
+      <div id="agentEvidence"></div>
+      <div id="agentAnswer" style="line-height:1.95;color:#2d3748;font-size:.95em;"></div>
+      <div id="agentCitations" style="margin-top:16px;"></div>
+    </div>
+
+    <!-- 总结弹窗 -->
+    <div id="summaryModal" class="modal-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; justify-content: center; align-items: center;">
+      <div class="modal-content" style="background: white; border-radius: 16px; width: 90%; max-width: 800px; max-height: 80vh; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.3);">
+        <div class="modal-header" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; padding: 20px; display: flex; justify-content: space-between; align-items: center;">
+          <h3 style="margin: 0; font-size: 1.3em;"><i class="fa fa-file-text-o"></i> AI分析总结报告</h3>
+          <button id="closeSummaryModal" style="background: rgba(255,255,255,0.2); border: none; color: white; width: 32px; height: 32px; border-radius: 50%; font-size: 16px; cursor: pointer; transition: background 0.3s;">×</button>
+        </div>
+        <div id="summaryLoading" style="padding: 40px; text-align: center;">
+          <div style="border: 4px solid #f3f3f3; border-top: 4px solid #10b981; border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite; margin: 0 auto 15px;"></div>
+          <p style="color: #666;">AI正在生成总结报告...</p>
+          <style>@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }</style>
+        </div>
+        <div id="summaryContent" style="padding: 25px; max-height: 60vh; overflow-y: auto; display: none; font-family: 'Segoe UI', sans-serif; line-height: 1.8;">
+        </div>
+        <div class="modal-footer" style="padding: 15px 25px; border-top: 1px solid #eee; display: flex; justify-content: flex-end; gap: 10px;">
+          <button id="copySummaryBtn" class="btn btn-default" style="padding: 10px 20px; border: 1px solid #ddd; border-radius: 8px; cursor: pointer; transition: background 0.3s;">
+            <i class="fa fa-copy"></i> 复制内容
+          </button>
+          <button id="downloadSummaryBtn" class="btn btn-success" style="padding: 10px 25px; background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; border: none; border-radius: 8px; cursor: pointer; transition: transform 0.3s;">
+            <i class="fa fa-download"></i> 下载报告
+          </button>
+        </div>
+      </div>
+    </div>
+
+    {% include "tumor.html" %}
+
+    {% include "copyrights.html" %}
+
+  </div>  
+
+</div>
+
+<script>
+  $('.btn-return').on('mouseenter', function() {
+    $(this).css('transform', 'translateY(-2px)');
+  }).on('mouseleave', function() {
+    $(this).css('transform', 'translateY(0)');
+  });
+
+  // AI助手功能
+  $(document).ready(function() {
+    var aiPlaceholder = '{{ _("ai_response_placeholder") }}';
+    var aiHistory = [];
+    
+    // 初始状态为浮窗模式：显示悬浮按钮，隐藏AI卡片
+    var floatBtn = $('#ai-float-btn');
+    var aiCard = $('#ai-card');
+    floatBtn.removeClass('hidden').addClass('show');
+    aiCard.hide();
+    
+    // 清空按钮
+    $('#ai-clear').click(function() { 
+      $('#ai-prompt').val(''); 
+      $('#ai-response-dark').html(aiPlaceholder); 
+    });
+    
+    // 最小化按钮（点击❌缩小化浮窗，显示悬浮按钮）
+    $(document).on('click', '#ai-close', function() {
+      var aiCard = $('#ai-card');
+      var floatBtn = $('#ai-float-btn');
+      
+      // 隐藏AI卡片
+      aiCard.hide();
+      
+      // 获取AI卡片关闭前的位置，用于设置悬浮按钮位置
+      var cardLeft = parseFloat(aiCard.css('left')) || 0;
+      var cardTop = parseFloat(aiCard.css('top')) || 0;
+      var cardWidth = aiCard.width() || 400;
+      var cardHeight = aiCard.height() || 500;
+      var btnWidth = floatBtn.width() || 60;
+      var btnHeight = floatBtn.height() || 60;
+      
+      // 将悬浮按钮定位到AI卡片左下角
+      var btnX = cardLeft;
+      var btnY = cardTop + cardHeight - btnHeight;
+      
+      // 确保悬浮按钮在可视区域内
+      var windowWidth = $(window).width();
+      var windowHeight = $(window).height();
+      
+      btnX = Math.max(0, Math.min(btnX, windowWidth - btnWidth));
+      btnY = Math.max(0, Math.min(btnY, windowHeight - btnHeight));
+      
+      // 显示悬浮按钮
+      floatBtn.removeClass('hidden').addClass('show');
+      floatBtn.css({
+        'display': 'flex',
+        'opacity': '1',
+        'visibility': 'visible',
+        'position': 'fixed',
+        'left': btnX + 'px',
+        'top': btnY + 'px',
+        'right': 'auto',
+        'bottom': 'auto',
+        'z-index': '9999'
+      });
+      
+      // 保存位置到localStorage
+      localStorage.setItem('aiFloatBtnPosition', JSON.stringify({ x: btnX, y: btnY }));
+    });
+    
+    // 悬浮按钮拖拽状态标记
+    var floatBtnJustDragged = false;
+    var mouseMovedDistance = 0;
+    
+    // 悬浮按钮点击显示浮窗
+    $(document).on('click', '#ai-float-btn', function(e) {
+      if ($(e.target).hasClass('ai-delete-history')) {
+        return;
+      }
+      
+      if (mouseMovedDistance > 5) {
+        mouseMovedDistance = 0;
+        floatBtnJustDragged = false;
+        return;
+      }
+      
+      var floatBtn = $('#ai-float-btn');
+      var aiCard = $('#ai-card');
+      
+      // 获取悬浮按钮的位置
+      var btnLeft = parseFloat(floatBtn.css('left')) || 0;
+      var btnTop = parseFloat(floatBtn.css('top')) || 0;
+      
+      // 设置AI卡片位置，在悬浮按钮左侧显示
+      var cardWidth = aiCard.width() || 400;
+      var cardHeight = aiCard.height() || 500;
+      var btnWidth = floatBtn.width() || 60;
+      
+      var cardX = btnLeft - cardWidth - 10;
+      var cardY = btnTop;
+      
+      // 确保AI卡片在可视区域内
+      var windowWidth = $(window).width();
+      var windowHeight = $(window).height();
+      
+      if (cardX < 0) {
+        cardX = btnLeft + btnWidth + 10;
+      }
+      
+      if (cardY + cardHeight > windowHeight) {
+        cardY = windowHeight - cardHeight - 20;
+      }
+      
+      // 设置AI卡片位置
+      aiCard.css({
+        left: cardX + 'px',
+        top: cardY + 'px',
+        right: 'auto',
+        bottom: 'auto'
+      });
+      
+      // 隐藏悬浮按钮
+      floatBtn.removeClass('show').addClass('hidden');
+      floatBtn.css('display', 'none');
+      
+      // 显示AI卡片
+      aiCard.show();
+    });
+    
+    // 悬浮按钮拖拽功能
+    var isFloatDragging = false;
+    var floatStartPos = { x: 0, y: 0 };
+    var floatStartMouse = { x: 0, y: 0 };
+    var floatBtn = $('#ai-float-btn');
+    
+    // 加载保存的位置
+    var savedPos = localStorage.getItem('aiFloatBtnPosition');
+    if (savedPos) {
+      var pos = JSON.parse(savedPos);
+      floatBtn.css({
+        left: pos.x + 'px',
+        bottom: 'auto',
+        right: 'auto',
+        top: pos.y + 'px'
+      });
+    }
+    
+    // 拖拽开始
+    floatBtn.mousedown(function(e) {
+      if ($(e.target).hasClass('ai-delete-history')) {
+        return;
+      }
+      isFloatDragging = true;
+      mouseMovedDistance = 0;
+      floatStartPos = {
+        x: parseFloat(floatBtn.css('left')) || 0,
+        y: parseFloat(floatBtn.css('top')) || 0
+      };
+      if (floatStartPos.x === 0 && floatStartPos.y === 0) {
+        floatStartPos = {
+          x: floatBtn.offset().left,
+          y: floatBtn.offset().top - $(window).scrollTop()
+        };
+      }
+      floatStartMouse = {
+        x: e.clientX,
+        y: e.clientY
+      };
+      floatBtn.addClass('dragging');
+      
+      setTimeout(function() {
+        floatBtn.removeClass('drag-start');
+      }, 300);
+      
+      e.preventDefault();
+      e.stopPropagation();
+    });
+    
+    // 拖拽中
+    $(document).mousemove(function(e) {
+      if (isFloatDragging) {
+        var dx = e.clientX - floatStartMouse.x;
+        var dy = e.clientY - floatStartMouse.y;
+        
+        mouseMovedDistance += Math.abs(dx) + Math.abs(dy);
+        
+        var newX = floatStartPos.x + dx;
+        var newY = floatStartPos.y + dy;
+        
+        var windowWidth = $(window).width();
+        var windowHeight = $(window).height();
+        var btnWidth = floatBtn.width();
+        var btnHeight = floatBtn.height();
+        
+        newX = Math.max(0, Math.min(newX, windowWidth - btnWidth));
+        newY = Math.max(0, Math.min(newY, windowHeight - btnHeight));
+        
+        floatBtn.css({
+          left: newX + 'px',
+          top: newY + 'px',
+          bottom: 'auto',
+          right: 'auto'
+        });
+      }
+    });
+    
+    // 拖拽结束
+    $(document).mouseup(function() {
+      if (isFloatDragging) {
+        isFloatDragging = false;
+        floatBtnJustDragged = true;
+        floatBtn.removeClass('dragging');
+        
+        var pos = {
+          x: parseFloat(floatBtn.css('left')) || 0,
+          y: parseFloat(floatBtn.css('top')) || 0
+        };
+        localStorage.setItem('aiFloatBtnPosition', JSON.stringify(pos));
+      }
+    });
+    
+    // 删除AI询问记录功能
+    $('#ai-delete-history').click(function(e) {
+      e.stopPropagation();
+      if (confirm('确定要删除所有AI询问记录吗？')) {
+        $.ajax({
+          url: '/clear-ai-history',
+          type: 'POST',
+          success: function(response) {
+            aiHistory = [];
+            $('#ai-history').html('');
+            alert('记录已删除');
+          },
+          error: function() {
+            alert('删除失败');
+          }
+        });
+      }
+    });
+    
+    // 拖动功能
+    var isDragging = false;
+    var startPos = { x: 0, y: 0 };
+    var startMouse = { x: 0, y: 0 };
+    
+    $('#ai-header').mousedown(function(e) {
+      isDragging = true;
+      startPos = {
+        x: $('#ai-card').offset().left,
+        y: $('#ai-card').offset().top
+      };
+      startMouse = {
+        x: e.clientX,
+        y: e.clientY
+      };
+      $('#ai-card').addClass('dragging');
+    });
+    
+    $(document).mousemove(function(e) {
+      if (isDragging) {
+        var dx = e.clientX - startMouse.x;
+        var dy = e.clientY - startMouse.y;
+        var newX = startPos.x + dx;
+        var newY = startPos.y + dy;
+        
+        var maxX = $(window).width() - $('#ai-card').width();
+        var maxY = $(window).height() - $('#ai-card').height();
+        newX = Math.max(0, Math.min(newX, maxX));
+        newY = Math.max(0, Math.min(newY, maxY));
+        
+        $('#ai-card').css({
+          left: newX + 'px',
+          top: newY + 'px',
+          right: 'auto',
+          bottom: 'auto'
+        });
+      }
+    });
+    
+    $(document).mouseup(function() {
+      isDragging = false;
+      $('#ai-card').removeClass('dragging');
+    });
+    
+    // 调整大小功能
+    var isResizing = false;
+    var startSize = { width: 0, height: 0 };
+    var resizeStartMouse = { x: 0, y: 0 };
+    
+    $('#ai-resize-handle').mousedown(function(e) {
+      isResizing = true;
+      startSize = {
+        width: $('#ai-card').width(),
+        height: $('#ai-card').height()
+      };
+      resizeStartMouse = {
+        x: e.clientX,
+        y: e.clientY
+      };
+      $('#ai-card').addClass('resizing');
+      e.stopPropagation();
+    });
+    
+    $(document).mousemove(function(e) {
+      if (isResizing) {
+        var dx = e.clientX - resizeStartMouse.x;
+        var dy = e.clientY - resizeStartMouse.y;
+        var newWidth = startSize.width + dx;
+        var newHeight = startSize.height + dy;
+        
+        var minWidth = 350;
+        var maxWidth = 600;
+        var minHeight = 400;
+        var maxHeight = 700;
+        
+        newWidth = Math.max(minWidth, Math.min(newWidth, maxWidth));
+        newHeight = Math.max(minHeight, Math.min(newHeight, maxHeight));
+        
+        $('#ai-card').css({
+          width: newWidth + 'px',
+          height: newHeight + 'px'
+        });
+      }
+    });
+    
+    $(document).mouseup(function() {
+      isResizing = false;
+      $('#ai-card').removeClass('resizing');
+    });
+
+    // 加载历史记录
+    function loadHistory() {
+      var historyData = localStorage.getItem('ai_history');
+      if (historyData) {
+        aiHistory = JSON.parse(historyData);
+        renderHistory();
+      }
+    }
+    
+    // 保存历史记录
+    function saveHistory() {
+      localStorage.setItem('ai_history', JSON.stringify(aiHistory));
+    }
+    
+    // 渲染历史记录
+    function renderHistory() {
+      var historyHtml = '';
+      if (aiHistory.length > 0) {
+        historyHtml += '<div class="ai-history-header">' +
+          '<label class="ai-select-all">' +
+          '<input type="checkbox" id="ai-select-all-checkbox">' +
+          '<span>' + '{{ _("select_all") }}' + '</span>' +
+          '</label>' +
+          '<span class="ai-history-title">' + '{{ _("history") }}' + '</span>' +
+          '<button class="ai-delete-selected-btn" id="ai-delete-selected" style="display:none;">' + '{{ _("delete_selected") }}' + '</button>' +
+          '</div>';
+          
+        $.each(aiHistory.slice(-15), function(index, item) {
+          var time = new Date(item.time);
+          var timeStr = time.toLocaleTimeString();
+          var itemIndex = aiHistory.length - 1 - (aiHistory.slice(-15).length - 1 - index);
+          historyHtml += '<div class="ai-history-item" data-index="' + itemIndex + '" data-question="' + encodeURIComponent(item.question) + '">' +
+            '<input type="checkbox" class="ai-history-checkbox" data-index="' + itemIndex + '">' +
+            '<div class="ai-history-avatar"><i class="fa fa-history"></i></div>' +
+            '<div class="ai-history-content">' +
+            '<div class="ai-history-question">' + item.question + '</div>' +
+            '<div class="ai-history-time">' + timeStr + '</div>' +
+            '</div></div>';
+        });
+      }
+      $('#ai-history').html(historyHtml);
+      
+      // 全选功能
+      $('#ai-select-all-checkbox').click(function(e) {
+        e.stopPropagation();
+        var isChecked = $(this).prop('checked');
+        $('.ai-history-checkbox').prop('checked', isChecked);
+        $('.ai-history-item').toggleClass('selected', isChecked);
+        updateDeleteButton();
+      });
+      
+      // 点击选择框切换选中状态
+      $('.ai-history-checkbox').click(function(e) {
+        e.stopPropagation();
+        var $item = $(this).closest('.ai-history-item');
+        $item.toggleClass('selected');
+        updateDeleteButton();
+        var allChecked = $('.ai-history-checkbox:checked').length === $('.ai-history-checkbox').length;
+        $('#ai-select-all-checkbox').prop('checked', allChecked);
+      });
+      
+      // 点击历史记录重新提问
+      $('.ai-history-item').click(function(e) {
+        if (!$(e.target).hasClass('ai-history-checkbox')) {
+          var question = decodeURIComponent($(this).data('question'));
+          $('#ai-prompt').val(question);
+          $('#ai-send').click();
+        }
+      });
+      
+      // 删除所选按钮事件
+      $('#ai-delete-selected').click(function() {
+        var selectedIndices = [];
+        $('.ai-history-checkbox:checked').each(function() {
+          selectedIndices.push(parseInt($(this).data('index')));
+        });
+        
+        if (selectedIndices.length === 0) {
+          alert('{{ _("please_select_items") }}');
+          return;
+        }
+        
+        if (confirm('{{ _("confirm_delete_selected") }}')) {
+          selectedIndices.sort(function(a, b) { return b - a; });
+          for (var i = 0; i < selectedIndices.length; i++) {
+            aiHistory.splice(selectedIndices[i], 1);
+          }
+          saveHistory();
+          renderHistory();
+          updateDeleteButton();
+        }
+      });
+    }
+    
+    // 更新删除按钮显示状态
+    function updateDeleteButton() {
+      var selectedCount = $('.ai-history-checkbox:checked').length;
+      if (selectedCount > 0) {
+        $('#ai-delete-selected').show();
+        $('#ai-delete-selected').text('{{ _("delete_selected") }} (' + selectedCount + ')');
+      } else {
+        $('#ai-delete-selected').hide();
+      }
+    }
+
+    var sendText = '{{ _("send") }}';
+    var sendingText = '{{ _("sending") }}';
+    var thinkingText = '{{ _("ai_thinking") }}';
+    var errorText = '{{ _("ai_error") }}';
+
+    $('#ai-send').click(function() {
+      var prompt = $('#ai-prompt').val().trim();
+      if (!prompt) { alert('{{ _("please_enter_question") }}'); return; }
+      $('#ai-send').prop('disabled', true).html('<i class="fa fa-spinner fa-spin"></i> ' + sendingText);
+      $('#ai-response-dark').html('<p style="color: #64748b; text-align: center;">' + thinkingText + '...</p>');
+      
+      // 添加到历史记录
+      aiHistory.push({
+        question: prompt,
+        time: Date.now()
+      });
+      saveHistory();
+      renderHistory();
+      
+      $.ajax({
+        url: '/ai-query', 
+        method: 'POST', 
+        contentType: 'application/json',
+        data: JSON.stringify({ prompt: prompt, skip_cache: true, lang: '{{ current_lang }}' }),
+        success: function(res) {
+          if (res.answer) { 
+            $('#ai-response-dark').html(res.answer.replace(/\n/g, '<br>')); 
+          }
+          else if (res.error) { 
+            $('#ai-response-dark').html('<span style="color: #ef4444;">' + res.error + '</span>'); 
+          }
+        },
+        error: function() { 
+          $('#ai-response-dark').html('<span style="color: #ef4444;">' + errorText + '</span>'); 
+        },
+        complete: function() { 
+          $('#ai-send').prop('disabled', false).html('<i class="fa fa-paper-plane"></i> ' + sendText); 
+        }
+      });
+    });
+
+    // 页面加载时加载历史记录
+    loadHistory();
+  });
+
+  // 总结报告功能
+  $(document).ready(function() {
+    // 报告生成：走后端 /generate-summary（本地 agent）
+
+    // 生成总结按钮点击事件
+    $('#summaryBtn').click(function() {
+      $('#summaryModal').show();
+      $('#summaryLoading').show();
+      $('#summaryContent').hide();
+      
+      // 防抖处理，防止重复点击
+      var $btn = $(this);
+      if ($btn.data('loading')) {
+        return;
+      }
+      $btn.data('loading', true);
+      $btn.text('生成中...');
+      
+      generateSummary(function() {
+        // 恢复按钮状态
+        $btn.data('loading', false);
+        $btn.html('<i class="fa fa-file-text-o"></i> 生成总结');
+      });
+    });
+
+    // 关闭弹窗
+    $('#closeSummaryModal').click(function() {
+      $('#summaryModal').hide();
+    });
+
+    // 点击遮罩关闭弹窗
+    $('#summaryModal').click(function(e) {
+      if (e.target === this) {
+        $('#summaryModal').hide();
+      }
+    });
+
+    // 复制内容
+    $('#copySummaryBtn').click(function() {
+      var content = $('#summaryContent').text();
+      navigator.clipboard.writeText(content).then(function() {
+        alert('内容已复制到剪贴板');
+      }).catch(function(err) {
+        alert('复制失败，请手动复制');
+      });
+    });
+
+    // 下载报告
+    $('#downloadSummaryBtn').click(function() {
+      var content = $('#summaryContent').html();
+      var html = '<!DOCTYPE html><html><head><meta charset="utf-8"><title>AI分析总结报告</title><style>body{font-family: "Microsoft YaHei", sans-serif; line-height: 1.8; padding: 30px;}</style></head><body>' + content + '</body></html>';
+      
+      var blob = new Blob([html], { type: 'text/html' });
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url;
+      a.download = 'summary_report.html';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    });
+
+    // HTML转义函数，防止XSS攻击
+    function escapeHtml(text) {
+      var map = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#039;'
+      };
+      return text.replace(/[&<>"']/g, function(m) { return map[m]; });
+    }
+
+    // 生成总结报告
+    function generateSummary(callback) {
+      // 获取当前预测数据
+      var predictionResult = '{{ output }}';
+      var confidence = parseFloat('{{ confidence }}');
+      
+      // 从隐藏字段获取30项病理特征数据
+      var features = {};
+      try {
+        var featureData = $('#featureData').val();
+        if (featureData && featureData !== 'null') {
+          var rawFeatures = JSON.parse(featureData);
+          // 将特征数组转换为对象格式
+          if (Array.isArray(rawFeatures)) {
+            var featureNames = [
+              'radius_mean', 'texture_mean', 'perimeter_mean', 'area_mean', 'smoothness_mean', 'compactness_mean',
+              'concavity_mean', 'concave_points_mean', 'symmetry_mean', 'fractal_dimension_mean',
+              'radius_se', 'texture_se', 'perimeter_se', 'area_se', 'smoothness_se', 'compactness_se',
+              'concavity_se', 'concave_points_se', 'symmetry_se', 'fractal_dimension_se',
+              'radius_worst', 'texture_worst', 'perimeter_worst', 'area_worst', 'smoothness_worst',
+              'compactness_worst', 'concavity_worst', 'concave_points_worst', 'symmetry_worst', 'fractal_dimension_worst'
+            ];
+            rawFeatures.forEach(function(value, index) {
+              if (featureNames[index]) {
+                features[featureNames[index]] = value;
+              }
+            });
+          }
+        }
+      } catch (e) {
+        console.error('解析特征数据失败:', e);
+      }
+      
+      console.log('提取的特征数据:', features);
+      
+      // 获取当前本地时间
+      var now = new Date();
+      var currentTime = now.toLocaleString('zh-CN', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: false
+      }).replace(/\//g, '-');
+      
+      // 构建请求参数，添加用户名信息
+      // 将 user_id 设置为用户名，确保工作流能正确显示用户名称
+      var payload = {
+        user_id: '{{ session.get("username", "") }}',
+        user_token: '{{ session.get("token", "") }}',
+        username: '{{ session.get("username", "") }}',
+        prediction_result: predictionResult,
+        confidence: confidence,
+        features: features,
+        report_format: '',
+        include_charts: false,
+        include_risk_factors: false,
+        current_time: currentTime
+      };
+
+      console.log('===== 生成分析报告 =====');
+      console.log('用户信息 - user_id:', '{{ session.get("user_id", "") }}');
+      console.log('用户信息 - username:', '{{ session.get("username", "") }}');
+      console.log('用户信息 - token:', '{{ session.get("token", "") }}');
+      console.log('预测结果:', predictionResult);
+      console.log('置信度:', confidence);
+      console.log('完整Payload:', JSON.stringify(payload, null, 2));
+      
+      // 通过后端生成报告
+      $.ajax({
+        url: '/generate-summary',
+        method: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(payload),
+        timeout: 120000,
+        success: function(res) {
+          console.log('报告响应:', res);
+          $('#summaryLoading').hide();
+          $('#summaryContent').show();
+          
+          // 检查响应格式，处理工作流返回的 report 和 pdf_url 字段
+          if (res.success && res.data) {
+            var content = res.data;
+            
+            // 如果是对象格式，提取 report 和 pdf_url
+            if (typeof content === 'object') {
+              var report = content.report || '';
+              var pdfUrl = content.pdf_url || content.pdf_url || '';
+              
+              // report 是纯文本，用 <pre> 标签渲染，保持文本格式
+              var html = '<pre style="white-space: pre-wrap; font-family: SimHei, Microsoft YaHei, sans-serif; line-height: 1.6; background: #f8f9fa; padding: 15px; border-radius: 8px;">' + 
+                         escapeHtml(report) + '</pre>';
+              
+              // 如果有 pdf_url，添加下载按钮
+              if (pdfUrl) {
+                html += '<div style="margin-top: 15px; text-align: center;">' +
+                        '<a href="' + pdfUrl + '" target="_blank" class="btn btn-primary" download>' +
+                        '<i class="fa fa-download"></i> 下载PDF报告</a>' +
+                        '</div>';
+              }
+              
+              $('#summaryContent').html(html);
+            } else {
+              // 纯文本格式，用 <pre> 标签渲染
+              $('#summaryContent').html('<pre style="white-space: pre-wrap; font-family: SimHei, Microsoft YaHei, sans-serif; line-height: 1.6; background: #f8f9fa; padding: 15px; border-radius: 8px;">' + 
+                                       escapeHtml(content) + '</pre>');
+            }
+          } else {
+            $('#summaryContent').html('<p style="color: #dc2626;">生成总结失败：' + (res.message || '未知错误') + '</p>');
+          }
+          // 调用回调函数，恢复按钮状态
+          if (typeof callback === 'function') {
+            callback();
+          }
+        },
+        error: function(xhr, status, error) {
+          console.error('报告生成失败:', status, error);
+          console.error('响应内容:', xhr.responseText);
+          $('#summaryLoading').hide();
+          $('#summaryContent').show();
+          var message = '请求失败';
+          if (status === 'timeout') {
+            message = '请求超时，请稍后重试';
+          } else if (error) {
+            message = '错误：' + error;
+          } else if (xhr.responseText) {
+            message += '：' + xhr.responseText.substring(0, 200);
+          }
+          $('#summaryContent').html('<p style="color: #dc2626;">' + message + '</p>');
+          // 调用回调函数，恢复按钮状态
+          if (typeof callback === 'function') {
+            callback();
+          }
+        }
+      });
+    }
+  });
+</script>
+
+<script>
+(function () {
+  var runBtn = document.getElementById('agentRunBtn');
+  var askBtn = document.getElementById('agentAskBtn');
+  var caseBtn = document.getElementById('agentCaseBtn');
+  var inspectBtn = document.getElementById('agentInspectBtn');
+  var inputEl = document.getElementById('agentInput');
+  var stepsEl = document.getElementById('agentSteps');
+  var answerEl = document.getElementById('agentAnswer');
+  var citesEl = document.getElementById('agentCitations');
+  var traceEl = document.getElementById('agentTrace');
+  var evidenceEl = document.getElementById('agentEvidence');
+  if (!runBtn) { return; }
+
+  function featureValues() {
+    try {
+      var raw = document.getElementById('featureData').value || '[]';
+      var arr = JSON.parse(raw);
+      return Array.isArray(arr) && arr.length === 30 ? arr : null;
+    } catch (e) { return null; }
+  }
+
+  function esc(text) {
+    return String(text).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
+  function miniMarkdown(md) {
+    var html = esc(md);
+    html = html.replace(/^### (.*)$/gm, '<h4 style="margin:14px 0 6px;color:#2d3748;">$1</h4>');
+    html = html.replace(/^\> (.*)$/gm, '<div style="border-left:3px solid #cbd5e0;padding-left:10px;color:#718096;margin:6px 0;">$1</div>');
+    html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+    html = html.replace(/`([^`]+)`/g, '<code style="background:#edf2f7;padding:1px 5px;border-radius:4px;">$1</code>');
+    html = html.replace(/\n/g, '<br>');
+    return html;
+  }
+
+  function reset() {
+    stepsEl.innerHTML = '';
+    answerEl.innerHTML = '<span style="color:#a0aec0;">分析中…</span>';
+    citesEl.innerHTML = '';
+  }
+
+  function addStep(payload) {
+    var chip = document.createElement('span');
+    var ok = payload.ok === undefined ? true : payload.ok;
+    chip.style.cssText = 'display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;'
+      + 'font-size:.78em;background:' + (ok ? '#eef2ff' : '#fff5f5') + ';color:' + (ok ? '#4c51bf' : '#c53030') + ';'
+      + 'border:1px solid ' + (ok ? '#c3dafe' : '#fed7d7') + ';';
+    var label = payload.label || payload.tool || payload.node;
+    chip.innerHTML = '<i class="fa ' + (ok ? 'fa-check' : 'fa-times') + '"></i>' + esc(label)
+      + (payload.ms ? ' <span style="opacity:.65;">' + payload.ms + 'ms</span>' : '');
+    stepsEl.appendChild(chip);
+  }
+
+  function renderCitations(citations) {
+    if (!citations || !citations.length) { return; }
+    var html = '<div style="font-size:.8em;color:#718096;margin-bottom:6px;">依据（可点击核对）：</div>';
+    citations.forEach(function (id) {
+      html += '<a target="_blank" href="/api/rag/search?q=' + encodeURIComponent(id) + '&k=1" '
+        + 'style="display:inline-block;margin:3px 6px 3px 0;padding:3px 10px;border-radius:999px;'
+        + 'background:#f0fff4;color:#276749;border:1px solid #c6f6d5;font-size:.78em;text-decoration:none;">'
+        + esc(id) + '</a>';
+    });
+    citesEl.innerHTML = html;
+  }
+
+  var NODE_LABELS = {
+    guard: '输入检查', cache: '缓存', route: '意图识别', act: '工具执行',
+    assess: '不确定性', compose: '生成', verify: '对账', guard_out: '输出护栏',
+    persist: '落库', finish: '完成', refuse: '拒答'
+  };
+  var TIER_LABELS = { confident: '证据充分', cautious: '证据有限', abstain: '证据不足' };
+
+  function tierLabel(tier) {
+    return TIER_LABELS[tier] || tier || '';
+  }
+
+  function renderEvidence(u, tier) {
+    if (!u || !u.bars) { return; }
+    var labels = { model: '模型置信', distribution: '输入分布', evidence: '知识依据' };
+    var colors = { model: '#4c51bf', distribution: '#0891b2', evidence: '#059669' };
+    var tierColor = tier === 'confident' ? '#276749' : (tier === 'cautious' ? '#b7791f' : '#c53030');
+    var out = '<div style="border:1px solid #e2e8f0;border-radius:12px;padding:12px 14px;margin:10px 0;background:#fafbff;">'
+      + '<div style="font-size:.82em;color:#4a5568;margin-bottom:8px;display:flex;justify-content:space-between;">'
+      + '<span>证据强度</span><span style="color:' + tierColor + ';font-weight:600;">' + esc(tierLabel(tier)) + '</span></div>';
+    ['model', 'distribution', 'evidence'].forEach(function (key) {
+      var val = Number(u.bars[key] || 0);
+      out += '<div style="display:flex;align-items:center;gap:8px;margin:6px 0;font-size:.8em;">'
+        + '<span style="width:68px;color:#718096;">' + labels[key] + '</span>'
+        + '<span style="flex:1;background:#edf2f7;border-radius:999px;height:8px;overflow:hidden;">'
+        + '<span style="display:block;height:100%;width:' + Math.max(2, val * 100).toFixed(1)
+        + '%;background:' + colors[key] + ';"></span></span>'
+        + '<span style="width:44px;text-align:right;color:#a0aec0;">' + val.toFixed(2) + '</span></div>';
+    });
+    if (u.reasons && u.reasons.length) {
+      out += '<div style="font-size:.76em;color:#a0aec0;margin-top:8px;line-height:1.6;">'
+        + u.reasons.map(esc).join('；') + '</div>';
+    }
+    evidenceEl.innerHTML = out;
+  }
+
+  function renderTrace(steps) {
+    if (!steps || !steps.length) { traceEl.innerHTML = ''; return; }
+    var boxW = 92, gap = 18, pad = 6;
+    var width = steps.length * (boxW + gap) + pad * 2;
+    var parts = ['<svg viewBox="0 0 ' + width + ' 58" style="width:100%;height:58px;" '
+      + 'preserveAspectRatio="xMinYMid meet">',
+      '<defs><marker id="arrowHead" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">'
+      + '<path d="M0,0 L6,3 L0,6 z" fill="#a5b4fc"/></marker></defs>'];
+    steps.forEach(function (s, i) {
+      var x = pad + i * (boxW + gap);
+      var interrupted = s.verdict === 'interrupted';
+      var error = s.verdict === 'error';
+      var stroke = interrupted ? '#d97706' : (error ? '#dc2626' : '#6366f1');
+      var fill = interrupted ? '#fffbeb' : (error ? '#fef2f2' : '#eef2ff');
+      var label = NODE_LABELS[s.node] || s.node;
+      parts.push('<rect x="' + x + '" y="12" width="' + boxW + '" height="32" rx="9" fill="'
+        + fill + '" stroke="' + stroke + '" stroke-width="1.2"/>');
+      parts.push('<text x="' + (x + boxW / 2) + '" y="32" font-size="11" fill="' + stroke
+        + '" text-anchor="middle">' + esc(label) + '</text>');
+      if (i < steps.length - 1) {
+        parts.push('<line x1="' + (x + boxW) + '" y1="28" x2="' + (x + boxW + gap - 2)
+          + '" y2="28" stroke="#a5b4fc" stroke-width="1.5" marker-end="url(#arrowHead)"/>');
+      }
+    });
+    parts.push('</svg>');
+    traceEl.innerHTML = parts.join('');
+  }
+
+  function showInterrupt(payload) {
+    var rid = payload.run_id || '';
+    var question = (payload.pending && payload.pending.question) || payload.question
+      || '当前证据不足，是否继续生成提示性说明？';
+    var reason = (payload.pending && payload.pending.reason) || payload.reason || '';
+    evidenceEl.innerHTML = '<div style="border:1px solid #f6ad55;background:#fffaf0;border-radius:12px;'
+      + 'padding:14px;margin:10px 0;">'
+      + '<div style="color:#b7791f;font-weight:600;margin-bottom:6px;"><i class="fa fa-pause-circle"></i> 已暂停，等待确认</div>'
+      + '<div style="font-size:.86em;color:#744210;line-height:1.7;">' + esc(question) + '</div>'
+      + (reason ? '<div style="font-size:.78em;color:#a0aec0;margin-top:6px;">' + esc(reason) + '</div>' : '')
+      + '<div style="margin-top:12px;display:flex;gap:10px;">'
+      + '<button id="agentConfirmBtn" class="btn btn-warning" data-run="' + esc(rid) + '">'
+      + '<i class="fa fa-check"></i> 继续生成</button>'
+      + '<button id="agentCancelBtn" class="btn btn-default">放弃</button></div></div>';
+    var confirmBtn = document.getElementById('agentConfirmBtn');
+    var cancelBtn = document.getElementById('agentCancelBtn');
+    if (cancelBtn) {
+      cancelBtn.onclick = function () { evidenceEl.innerHTML = ''; };
+    }
+    if (confirmBtn) {
+      confirmBtn.onclick = function () {
+        confirmBtn.disabled = true;
+        confirmBtn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> 恢复执行…';
+        fetch('/api/agent/resume', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ run_id: rid, confirmed: true })
+        }).then(function (resp) { return resp.json(); }).then(function (body) {
+          var result = (body && body.result) || {};
+          evidenceEl.innerHTML = '';
+          answerEl.innerHTML = miniMarkdown(result.answer_md || '');
+          renderCitations(result.citations || []);
+          renderEvidence(result.uncertainty || {}, result.tier);
+          renderTrace(result.graph || []);
+        }).catch(function (err) {
+          answerEl.innerHTML = '<span style="color:#c53030;">恢复失败：' + esc(err.message) + '</span>';
+        });
+      };
+    }
+  }
+
+  async function runAgent(question) {
+    var values = featureValues();
+    reset();
+    runBtn.disabled = true;
+    askBtn.disabled = true;
+
+    try {
+      var resp = await fetch('/api/agent/run', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ question: question, values: values })
+      });
+
+      if (!resp.ok) {
+        answerEl.innerHTML = '<span style="color:#c53030;">请求失败：' + resp.status + '</span>';
+        return;
+      }
+
+      var reader = resp.body.getReader();
+      var decoder = new TextDecoder('utf-8');
+      var buffer = '';
+      var markdown = '';
+
+      while (true) {
+        var chunk = await reader.read();
+        if (chunk.done) { break; }
+        buffer += decoder.decode(chunk.value, { stream: true });
+
+        var blocks = buffer.split('\n\n');
+        buffer = blocks.pop();
+
+        for (var i = 0; i < blocks.length; i++) {
+          var block = blocks[i];
+          var evt = null, data = null;
+          block.split('\n').forEach(function (line) {
+            if (line.indexOf('event:') === 0) { evt = line.slice(6).trim(); }
+            else if (line.indexOf('data:') === 0) { data = line.slice(5).trim(); }
+          });
+          if (!evt || !data) { continue; }
+          var payload = {};
+          try { payload = JSON.parse(data); } catch (e) { continue; }
+
+          if (evt === 'step') {
+            addStep(payload);
+          } else if (evt === 'token') {
+            markdown += payload.text || '';
+            answerEl.innerHTML = miniMarkdown(markdown);
+          } else if (evt === 'done') {
+            renderCitations(payload.citations);
+            renderEvidence(payload.uncertainty || {}, payload.tier);
+            renderTrace(payload.graph || []);
+            if (payload.status === 'escalated') {
+              answerEl.insertAdjacentHTML('afterbegin',
+                '<div style="background:#fff5f5;border:1px solid #feb2b2;color:#c53030;'
+                + 'border-radius:10px;padding:10px 14px;margin-bottom:12px;">'
+                + '<i class="fa fa-exclamation-triangle"></i> 系统建议优先就医，请以医生判断为准。</div>');
+            }
+          } else if (evt === 'interrupt') {
+            showInterrupt(payload);
+          } else if (evt === 'error') {
+            answerEl.innerHTML = '<span style="color:#c53030;">出错了：' + esc(payload.error || '') + '</span>';
+          }
+        }
+      }
+    } catch (err) {
+      answerEl.innerHTML = '<span style="color:#c53030;">网络错误：' + esc(err.message) + '</span>';
+    } finally {
+      runBtn.disabled = false;
+      askBtn.disabled = false;
+    }
+  }
+
+  runBtn.addEventListener('click', function () {
+    runAgent('请解读这次预测结果，说明主要依据和下一步建议');
+  });
+
+  askBtn.addEventListener('click', function () {
+    var q = (inputEl.value || '').trim();
+    if (!q) { inputEl.focus(); return; }
+    runAgent(q);
+  });
+
+  inputEl.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') { askBtn.click(); }
+  });
+
+  caseBtn.addEventListener('click', function () {
+    runAgent('帮我找几个相似的历史病例做对照');
+  });
+
+  if (inspectBtn) {
+    inspectBtn.addEventListener('click', function () {
+      reset();
+      inspectBtn.disabled = true;
+      fetch('/api/agent/inspect').then(function (r) { return r.json(); }).then(function (data) {
+        inspectBtn.disabled = false;
+        if (!data.ok) {
+          answerEl.innerHTML = '<span style="color:#c53030;">巡检失败：' + esc(data.error || '') + '</span>';
+          return;
+        }
+        var html = '<div style="margin-bottom:10px;color:#718096;font-size:.85em;">'
+          + '已扫描最近 ' + data.scanned + ' 条记录</div><ul style="padding-left:20px;line-height:2;">';
+        (data.findings || []).forEach(function (f) {
+          html += '<li>' + esc(f) + '</li>';
+        });
+        html += '</ul>';
+        answerEl.innerHTML = html;
+        if (data.details && data.details.outliers && data.details.outliers.length) {
+          answerEl.innerHTML += '<div style="font-size:.8em;color:#a0aec0;margin-top:8px;">'
+            + '偏离样本：' + data.details.outliers.map(function (o) {
+              return '#' + o.id + '（' + o.distance + '）';
+            }).join('、') + '</div>';
+        }
+      }).catch(function (err) {
+        inspectBtn.disabled = false;
+        answerEl.innerHTML = '<span style="color:#c53030;">巡检请求失败：' + esc(err.message) + '</span>';
+      });
+    });
+  }
+})();
+</script>
+
+<a href="/" class="btn-return-floating" title="{{ _('return_home') }}"><i class="fa fa-home"></i> {{ _('home') }}</a>
+
+</body>
+</html>

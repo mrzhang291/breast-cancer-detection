@@ -1,0 +1,1387 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理员控制台</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo">
+            <i class="fa-solid fa-hospital"></i> 乳腺癌检测系统
+        </div>
+        <div class="nav-item active" data-page="dashboard">
+            <i class="fa-solid fa-chart-pie"></i> 数据仪表盘
+        </div>
+        <div class="nav-item" data-page="users">
+            <i class="fa-solid fa-users"></i> 用户管理
+        </div>
+        <div class="nav-item" data-page="predictions">
+            <i class="fa-solid fa-file-medical"></i> 预测记录
+        </div>
+        <div class="nav-item" data-page="models">
+            <i class="fa-solid fa-brain"></i> 模型管理
+        </div>
+        <div class="nav-item" data-page="logs">
+            <i class="fa-solid fa-file-text"></i> 日志管理
+        </div>
+        <div class="nav-item" data-page="system">
+            <i class="fa-solid fa-cog"></i> 系统配置
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="header">
+            <h1 id="pageTitle">数据仪表盘</h1>
+            <div class="user-info">
+                <span id="currentUser">管理员</span>
+                <button class="btn btn-secondary btn-logout" id="logoutBtn">
+                    <i class="fa-solid fa-sign-out-alt"></i> 退出登录
+                </button>
+            </div>
+        </div>
+        
+        <!-- 全局错误提示 -->
+        <div id="globalError" class="error-toast" style="display: none;">
+            <i class="fa-solid fa-exclamation-circle"></i>
+            <span id="errorMessage"></span>
+            <button class="close-error-btn" onclick="hideError()">×</button>
+        </div>
+
+        <div id="dashboardPage" class="page-content">
+            <div class="stat-cards">
+                <div class="stat-card primary">
+                    <div class="stat-value" id="totalPredictions">0</div>
+                    <div class="stat-label">总预测次数</div>
+                </div>
+                <div class="stat-card success">
+                    <div class="stat-value" id="benignCount">0</div>
+                    <div class="stat-label">良性预测</div>
+                </div>
+                <div class="stat-card danger">
+                    <div class="stat-value" id="malignantCount">0</div>
+                    <div class="stat-label">恶性预测</div>
+                </div>
+                <div class="stat-card warning">
+                    <div class="stat-value" id="activeUsers">0</div>
+                    <div class="stat-label">活跃用户</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fa-solid fa-trending-up"></i> 预测趋势</h3>
+                    <select id="trendPeriod">
+                        <option value="day">今日</option>
+                        <option value="week" selected>本周</option>
+                        <option value="month">本月</option>
+                        <option value="year">本年</option>
+                    </select>
+                </div>
+                <canvas id="trendChart" width="800" height="250"></canvas>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fa-solid fa-chart-bar"></i> 模型性能</h3>
+                </div>
+                <div class="model-performance">
+                    <div style="display: flex; gap: 30px; margin-bottom: 20px;">
+                        <div>
+                            <div class="progress-bar" style="width: 300px;">
+                                <div class="progress-bar-fill" id="accuracyBar" style="width: 0%"></div>
+                            </div>
+                            <div style="margin-top: 5px;">准确率: <span id="accuracyValue">0%</span></div>
+                        </div>
+                        <div>
+                            <div class="progress-bar" style="width: 300px;">
+                                <div class="progress-bar-fill" id="recallBar" style="width: 0%"></div>
+                            </div>
+                            <div style="margin-top: 5px;">召回率: <span id="recallValue">0%</span></div>
+                        </div>
+                        <div>
+                            <div class="progress-bar" style="width: 300px;">
+                                <div class="progress-bar-fill" id="f1Bar" style="width: 0%"></div>
+                            </div>
+                            <div style="margin-top: 5px;">F1分数: <span id="f1Value">0%</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="usersPage" class="page-content" style="display: none;">
+            <button class="btn btn-primary" id="addUserBtn" style="margin-bottom: 20px;">
+                <i class="fa-solid fa-plus"></i> 新建用户
+            </button>
+            
+            <!-- 管理员用户表格 -->
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fa-solid fa-user-shield"></i> 管理员用户</h3>
+                    <div class="search-box" style="margin-top: 10px;">
+                        <input type="text" id="adminUserSearch" placeholder="搜索管理员用户名...">
+                        <select id="adminStatusFilter">
+                            <option value="">全部状态</option>
+                            <option value="1">启用</option>
+                            <option value="0">禁用</option>
+                        </select>
+                    </div>
+                </div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>用户名</th>
+                            <th>邮箱</th>
+                            <th>角色</th>
+                            <th>状态</th>
+                            <th>创建时间</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody id="adminUsersTableBody"></tbody>
+                </table>
+                <div class="pagination" id="adminUsersPagination"></div>
+            </div>
+            
+            <!-- 普通用户表格 -->
+            <div class="card" style="margin-top: 20px;">
+                <div class="card-header">
+                    <h3><i class="fa-solid fa-user"></i> 普通用户</h3>
+                    <div class="search-box" style="margin-top: 10px;">
+                        <input type="text" id="normalUserSearch" placeholder="搜索普通用户用户名...">
+                        <select id="normalStatusFilter">
+                            <option value="">全部状态</option>
+                            <option value="1">启用</option>
+                            <option value="0">禁用</option>
+                        </select>
+                    </div>
+                </div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>用户名</th>
+                            <th>邮箱</th>
+                            <th>角色</th>
+                            <th>状态</th>
+                            <th>创建时间</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody id="normalUsersTableBody"></tbody>
+                </table>
+                <div class="pagination" id="normalUsersPagination"></div>
+            </div>
+        </div>
+
+        <div id="predictionsPage" class="page-content" style="display: none;">
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fa-solid fa-file-medical"></i> 预测记录</h3>
+                    <div style="display: flex; gap: 10px;">
+                        <button class="btn btn-success" id="exportPredictionsBtn">
+                            <i class="fa-solid fa-download"></i> 导出CSV
+                        </button>
+                        <button class="btn btn-danger" id="batchDeletePredictionsBtn">
+                            <i class="fa-solid fa-trash"></i> 批量删除
+                        </button>
+                    </div>
+                </div>
+                <div class="filter-row">
+                    <input type="text" id="predictionSearch" placeholder="搜索用户名...">
+                    <select id="resultFilter">
+                        <option value="">全部结果</option>
+                        <option value="良性">良性</option>
+                        <option value="恶性">恶性</option>
+                    </select>
+                    <input type="date" id="dateFilter">
+                </div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox" id="selectAllPredictions"></th>
+                            <th>ID</th>
+                            <th>用户名</th>
+                            <th>预测结果</th>
+                            <th>置信度</th>
+                            <th>预测时间</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody id="predictionsTableBody"></tbody>
+                </table>
+                <div class="pagination" id="predictionsPagination"></div>
+            </div>
+        </div>
+
+        <div id="modelsPage" class="page-content" style="display: none;">
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fa-solid fa-brain"></i> 模型管理</h3>
+                    <button class="btn btn-primary" id="uploadModelBtn">
+                        <i class="fa-solid fa-upload"></i> 上传模型
+                    </button>
+                </div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>模型名称</th>
+                            <th>版本</th>
+                            <th>准确率</th>
+                            <th>召回率</th>
+                            <th>状态</th>
+                            <th>上传时间</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody id="modelsTableBody"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="logsPage" class="page-content" style="display: none;">
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fa-solid fa-file-text"></i> 操作日志</h3>
+                    <button class="btn btn-danger" id="clearLogsBtn">
+                        <i class="fa-solid fa-trash"></i> 清理日志
+                    </button>
+                </div>
+                <div class="filter-row">
+                    <input type="text" id="logSearch" placeholder="搜索操作...">
+                    <input type="date" id="logDateFilter">
+                </div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>用户</th>
+                            <th>操作</th>
+                            <th>IP地址</th>
+                            <th>时间</th>
+                        </tr>
+                    </thead>
+                    <tbody id="logsTableBody"></tbody>
+                </table>
+                <div class="pagination" id="logsPagination"></div>
+            </div>
+        </div>
+
+        <div id="systemPage" class="page-content" style="display: none;">
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fa-solid fa-info-circle"></i> 系统信息</h3>
+                </div>
+                <form id="systemInfoForm">
+                    <div class="form-group">
+                        <label>系统名称</label>
+                        <input type="text" id="systemName" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>联系方式</label>
+                        <input type="text" id="contactInfo" class="form-control">
+                    </div>
+                    <button type="submit" class="btn btn-primary">保存配置</button>
+                </form>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fa-solid fa-gauge-high"></i> 预测阈值</h3>
+                </div>
+                <div class="form-group">
+                    <label>当前阈值: <span id="currentThreshold">0.5</span></label>
+                    <input type="range" id="thresholdSlider" min="0.1" max="0.9" step="0.05" value="0.5">
+                </div>
+                <button class="btn btn-primary" id="saveThresholdBtn">保存阈值</button>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fa-solid fa-wrench"></i> 系统维护模式</h3>
+                </div>
+                <div>
+                    <label>
+                        <input type="checkbox" id="maintenanceMode"> 启用维护模式
+                    </label>
+                </div>
+                <button class="btn btn-warning" id="toggleMaintenanceBtn">应用设置</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="userModal" class="modal-overlay" style="display: none;">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 id="modalTitle">新建用户</h3>
+                <button class="close-btn" id="closeUserModalBtn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="userForm">
+                    <input type="hidden" id="userId">
+                    <div class="form-group">
+                        <label>用户名</label>
+                        <input type="text" id="userFormUsername" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>邮箱</label>
+                        <input type="email" id="userFormEmail" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>密码</label>
+                        <input type="text" id="userFormPassword" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>角色</label>
+                        <select id="userFormRole" class="form-control">
+                            <option value="1">超级管理员</option>
+                            <option value="2">普通管理员</option>
+                            <option value="3">医生用户</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancelUserBtn">取消</button>
+                <button class="btn btn-primary" id="saveUserBtn">保存</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modelUploadModal" class="modal-overlay" style="display: none;">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>上传模型</h3>
+                <button class="close-btn" id="closeModelModalBtn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="modelUploadForm" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label>模型名称</label>
+                        <input type="text" id="modelName" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>版本</label>
+                        <input type="text" id="modelVersion" class="form-control" placeholder="1.0.0">
+                    </div>
+                    <div class="form-group">
+                        <label>模型文件 (.pkl)</label>
+                        <input type="file" id="modelFile" class="form-control" accept=".pkl" required>
+                    </div>
+                    <div class="form-group">
+                        <label>描述</label>
+                        <textarea id="modelDescription" class="form-control" rows="3"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancelModelBtn">取消</button>
+                <button class="btn btn-primary" id="submitModelBtn">上传</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="predictionDetailModal" class="modal-overlay" style="display: none;">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>预测记录详情</h3>
+                <button class="close-btn" id="closePredictionModalBtn">&times;</button>
+            </div>
+            <div class="modal-body" id="predictionDetailContent"></div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="closePredictionBtn">关闭</button>
+            </div>
+        </div>
+    </div>
+
+    
+    <script>
+        const API_BASE_URL = 'http://127.0.0.1:5001/api';
+        
+        let token = null;
+        let currentPage = 'dashboard';
+        let adminUsersPage = 1;
+        let normalUsersPage = 1;
+        let predictionsPage = 1;
+        let logsPage = 1;
+        let selectedPredictions = [];
+        
+        // 自动刷新定时器
+        let refreshInterval = null;
+        const REFRESH_INTERVAL_MS = 60000; // 60秒自动刷新
+        
+        // 加载状态标志
+        let isLoading = {
+            dashboard: false,
+            users: false,
+            predictions: false,
+            logs: false
+        };
+
+        function getToken() {
+            try {
+                return localStorage.getItem('token');
+            } catch (e) {
+                console.warn('localStorage不可用，使用sessionStorage');
+                try {
+                    return sessionStorage.getItem('token');
+                } catch (e2) {
+                    console.warn('sessionStorage也不可用');
+                    return null;
+                }
+            }
+        }
+
+        function setToken(newToken) {
+            token = newToken;
+            try {
+                localStorage.setItem('token', newToken);
+            } catch (e) {
+                console.warn('localStorage不可用，使用sessionStorage');
+                try {
+                    sessionStorage.setItem('token', newToken);
+                } catch (e2) {
+                    console.warn('sessionStorage也不可用');
+                }
+            }
+        }
+
+        function clearToken() {
+            token = null;
+            try {
+                localStorage.removeItem('token');
+            } catch (e) {
+                try {
+                    sessionStorage.removeItem('token');
+                } catch (e2) {
+                    console.warn('无法清除token');
+                }
+            }
+        }
+
+        // 显示错误提示
+        function showError(message) {
+            const errorToast = document.getElementById('globalError');
+            const errorMsg = document.getElementById('errorMessage');
+            errorMsg.textContent = message;
+            errorToast.style.display = 'flex';
+            
+            // 3秒后自动隐藏
+            setTimeout(() => {
+                hideError();
+            }, 3000);
+        }
+
+        // 隐藏错误提示
+        function hideError() {
+            const errorToast = document.getElementById('globalError');
+            errorToast.style.display = 'none';
+        }
+
+        // 初始化token
+        const DEBUG_MODE = true;
+        
+        function logDebug(msg) {
+            if (DEBUG_MODE) {
+                console.log('[管理后台调试]', msg);
+            }
+        }
+        
+        logDebug(`=== 页面加载开始 ===`);
+        logDebug(`localStorage可用: ${typeof localStorage !== 'undefined'}`);
+        
+        try {
+            const beforeToken = localStorage.getItem('token');
+            logDebug(`localStorage中的token: ${beforeToken ? '存在，长度: ' + beforeToken.length : '不存在'}`);
+        } catch (e) {
+            logDebug(`读取localStorage失败: ${e}`);
+        }
+        
+        token = getToken();
+        logDebug(`初始化后的token: ${token ? '存在，长度: ' + token.length : '不存在'}`);
+
+        async function fetchApi(url, options = {}) {
+            const currentToken = getToken();
+            logDebug(`fetchApi调用: ${url}, token存在: ${!!currentToken}`);
+            
+            const defaultHeaders = {};
+            if (currentToken) {
+                defaultHeaders['Authorization'] = `Bearer ${currentToken}`;
+            }
+            
+            const mergedHeaders = { ...defaultHeaders, ...options.headers };
+            const mergedOptions = { 
+                ...options, 
+                headers: mergedHeaders,
+                credentials: 'include'  // 重要：确保Cookie被发送
+            };
+            
+            logDebug(`发送请求到: ${API_BASE_URL}${url}`);
+            
+            try {
+                const response = await fetch(`${API_BASE_URL}${url}`, mergedOptions);
+                
+                logDebug(`响应状态码: ${response.status}`);
+                
+                if (response.status === 401) {
+                    logDebug('401未授权，重定向到登录页');
+                    clearToken();
+                    window.location.href = '/admin/login';
+                    throw new Error('Unauthorized');
+                }
+                
+                if (response.status === 422) {
+                    const errorData = await response.json();
+                    logDebug(`422错误: ${JSON.stringify(errorData)}`);
+                    throw new Error(errorData.message || '请求参数验证失败');
+                }
+                
+                if (!response.ok) {
+                    const errorData = await response.json().catch(() => null);
+                    const errorMsg = errorData?.message || `请求失败 (${response.status})`;
+                    throw new Error(errorMsg);
+                }
+                
+                return await response.json();
+            } catch (e) {
+                if (e.message !== 'Unauthorized') {
+                    logDebug(`API请求失败: ${e.message}`);
+                    showError('数据加载失败: ' + e.message);
+                }
+                throw e;
+            }
+        }
+        
+        // 自动刷新数据
+        function startAutoRefresh() {
+            if (refreshInterval) {
+                clearInterval(refreshInterval);
+            }
+            refreshInterval = setInterval(() => {
+                logDebug('自动刷新数据...');
+                if (currentPage === 'dashboard' && !isLoading.dashboard) {
+                    loadDashboard();
+                } else if (currentPage === 'predictions' && !isLoading.predictions) {
+                    loadPredictions();
+                } else if (currentPage === 'logs' && !isLoading.logs) {
+                    loadLogs();
+                }
+            }, REFRESH_INTERVAL_MS);
+        }
+        
+        // 停止自动刷新
+        function stopAutoRefresh() {
+            if (refreshInterval) {
+                clearInterval(refreshInterval);
+                refreshInterval = null;
+            }
+        }
+
+        async function init() {
+            if (!token) {
+                window.location.href = '/admin/login';
+                return;
+            }
+            bindEvents();
+            loadDashboard();
+            // 启动自动刷新
+            startAutoRefresh();
+            
+            // 页面卸载时停止刷新
+            window.addEventListener('beforeunload', stopAutoRefresh);
+        }
+
+        function bindEvents() {
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    const page = item.getAttribute('data-page');
+                    showPage(page);
+                });
+            });
+
+            document.getElementById('logoutBtn').addEventListener('click', logout);
+            document.getElementById('trendPeriod').addEventListener('change', loadTrend);
+            document.getElementById('adminUserSearch').addEventListener('keyup', searchAdminUsers);
+            document.getElementById('adminStatusFilter').addEventListener('change', loadAdminUsers);
+            document.getElementById('normalUserSearch').addEventListener('keyup', searchNormalUsers);
+            document.getElementById('normalStatusFilter').addEventListener('change', loadNormalUsers);
+            document.getElementById('addUserBtn').addEventListener('click', showUserModal);
+            document.getElementById('closeUserModalBtn').addEventListener('click', closeUserModal);
+            document.getElementById('cancelUserBtn').addEventListener('click', closeUserModal);
+            document.getElementById('saveUserBtn').addEventListener('click', saveUser);
+            document.getElementById('predictionSearch').addEventListener('keyup', searchPredictions);
+            document.getElementById('resultFilter').addEventListener('change', loadPredictions);
+            document.getElementById('dateFilter').addEventListener('change', loadPredictions);
+            document.getElementById('selectAllPredictions').addEventListener('change', toggleSelectAll);
+            document.getElementById('exportPredictionsBtn').addEventListener('click', exportPredictionsData);
+            document.getElementById('batchDeletePredictionsBtn').addEventListener('click', batchDeletePredictionsData);
+            document.getElementById('uploadModelBtn').addEventListener('click', showModelUploadModal);
+            document.getElementById('closeModelModalBtn').addEventListener('click', closeModelUploadModal);
+            document.getElementById('cancelModelBtn').addEventListener('click', closeModelUploadModal);
+            document.getElementById('submitModelBtn').addEventListener('click', uploadModelFile);
+            document.getElementById('logSearch').addEventListener('keyup', searchLogs);
+            document.getElementById('logDateFilter').addEventListener('change', loadLogs);
+            document.getElementById('clearLogsBtn').addEventListener('click', clearLogs);
+            document.getElementById('systemInfoForm').addEventListener('submit', saveSystemInfo);
+            document.getElementById('saveThresholdBtn').addEventListener('click', saveThreshold);
+            document.getElementById('toggleMaintenanceBtn').addEventListener('click', toggleMaintenance);
+            document.getElementById('closePredictionModalBtn').addEventListener('click', closePredictionDetailModal);
+            document.getElementById('closePredictionBtn').addEventListener('click', closePredictionDetailModal);
+        }
+
+        function logout() {
+            clearToken();
+            window.location.href = '/admin/login';
+        }
+
+        function showPage(page) {
+            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+            document.querySelector(`[data-page="${page}"]`).classList.add('active');
+            
+            document.querySelectorAll('.page-content').forEach(content => content.style.display = 'none');
+            
+            document.getElementById(`${page}Page`).style.display = 'block';
+            currentPage = page;
+            
+            const titles = {
+                dashboard: '数据仪表盘',
+                users: '用户管理',
+                predictions: '预测记录',
+                models: '模型管理',
+                logs: '日志管理',
+                system: '系统配置'
+            };
+            document.getElementById('pageTitle').textContent = titles[page];
+            
+            if (page === 'users') { adminUsersPage = 1; normalUsersPage = 1; loadAdminUsers(); loadNormalUsers(); }
+            if (page === 'predictions') loadPredictions();
+            if (page === 'models') loadModels();
+            if (page === 'logs') loadLogs();
+            if (page === 'system') loadSystemConfig();
+        }
+
+        async function loadDashboard() {
+            if (isLoading.dashboard) return;
+            isLoading.dashboard = true;
+            
+            try {
+                const result = await fetchApi('/statistics/dashboard');
+                if (result.code === 200) {
+                    const data = result.data;
+                    document.getElementById('totalPredictions').textContent = data.total_predictions || 0;
+                    document.getElementById('benignCount').textContent = data.benign_count || 0;
+                    document.getElementById('malignantCount').textContent = data.malignant_count || 0;
+                    document.getElementById('activeUsers').textContent = data.active_users || 0;
+                }
+            } catch (e) {
+                console.error('加载仪表盘失败:', e);
+            } finally {
+                isLoading.dashboard = false;
+            }
+            
+            loadTrend();
+            loadModelPerformance();
+        }
+
+        async function loadTrend() {
+            try {
+                const period = document.getElementById('trendPeriod').value;
+                const result = await fetchApi(`/statistics/trend?period=${period}`);
+                if (result.code === 200) {
+                    drawTrendChart(result.data);
+                }
+            } catch (e) {
+                console.error('加载趋势失败:', e);
+            }
+        }
+
+        function drawTrendChart(data) {
+            const canvas = document.getElementById('trendChart');
+            const ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            if (!data || data.length === 0) {
+                ctx.fillStyle = '#666';
+                ctx.font = '14px Arial';
+                ctx.fillText('暂无数据', canvas.width / 2 - 30, canvas.height / 2);
+                return;
+            }
+            
+            const padding = 40;
+            const chartWidth = canvas.width - padding * 2;
+            const chartHeight = canvas.height - padding * 2;
+            
+            const maxValue = Math.max(...data.map(d => d.total));
+            const stepX = chartWidth / (data.length - 1);
+            
+            ctx.beginPath();
+            ctx.strokeStyle = '#3498db';
+            ctx.lineWidth = 2;
+            data.forEach((d, i) => {
+                const x = padding + i * stepX;
+                const y = padding + chartHeight - (d.total / maxValue) * chartHeight;
+                if (i === 0) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
+            });
+            ctx.stroke();
+            
+            ctx.fillStyle = 'rgba(52, 152, 219, 0.1)';
+            ctx.beginPath();
+            ctx.moveTo(padding, canvas.height - padding);
+            data.forEach((d, i) => {
+                const x = padding + i * stepX;
+                const y = padding + chartHeight - (d.total / maxValue) * chartHeight;
+                ctx.lineTo(x, y);
+            });
+            ctx.lineTo(padding + (data.length - 1) * stepX, canvas.height - padding);
+            ctx.closePath();
+            ctx.fill();
+            
+            ctx.fillStyle = '#666';
+            ctx.font = '12px Arial';
+            data.forEach((d, i) => {
+                const x = padding + i * stepX;
+                ctx.fillText(d.time, x - 15, canvas.height - 10);
+            });
+        }
+
+        async function loadModelPerformance() {
+            try {
+                const result = await fetchApi('/statistics/model_performance');
+                if (result.code === 200) {
+                    const models = result.data;
+                    const activeModel = models.find(m => m.is_active) || models[0];
+                    if (activeModel) {
+                        document.getElementById('accuracyBar').style.width = `${(activeModel.accuracy || 0) * 100}%`;
+                        document.getElementById('accuracyValue').textContent = `${((activeModel.accuracy || 0) * 100).toFixed(1)}%`;
+                        document.getElementById('recallBar').style.width = `${(activeModel.recall || 0) * 100}%`;
+                        document.getElementById('recallValue').textContent = `${((activeModel.recall || 0) * 100).toFixed(1)}%`;
+                        document.getElementById('f1Bar').style.width = `${(activeModel.f1_score || 0) * 100}%`;
+                        document.getElementById('f1Value').textContent = `${((activeModel.f1_score || 0) * 100).toFixed(1)}%`;
+                    }
+                }
+            } catch (e) {
+                console.error('加载模型性能失败:', e);
+            }
+        }
+
+        async function loadAdminUsers() {
+            try {
+                const search = document.getElementById('adminUserSearch').value;
+                const status = document.getElementById('adminStatusFilter').value;
+                
+                const result = await fetchApi(`/users?page=${adminUsersPage}&page_size=10&username=${search}&role_id=1,2&is_active=${status}`);
+                
+                if (result.code === 200) {
+                    renderAdminUsersTable(result.data.items);
+                    renderPagination('adminUsersPagination', result.data.total, adminUsersPage, 10, (p) => { adminUsersPage = p; loadAdminUsers(); });
+                }
+            } catch (e) {
+                console.error('加载管理员用户失败:', e);
+            }
+        }
+
+        function searchAdminUsers() {
+            adminUsersPage = 1;
+            loadAdminUsers();
+        }
+
+        function renderAdminUsersTable(users) {
+            const tbody = document.getElementById('adminUsersTableBody');
+            tbody.innerHTML = '';
+            
+            const roleNames = { 1: '超级管理员', 2: '普通管理员', 3: '医生用户' };
+            
+            users.forEach(user => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${user.id}</td>
+                    <td>${user.username}</td>
+                    <td>${user.email || '-'}</td>
+                    <td>${roleNames[user.role_id] || '未知'}</td>
+                    <td><span class="status-badge ${user.is_active ? 'status-active' : 'status-inactive'}">${user.is_active ? '启用' : '禁用'}</span></td>
+                    <td>${formatDate(user.created_at)}</td>
+                    <td>
+                        <div class="action-buttons">
+                            <button class="btn btn-primary" onclick="editUser(${user.id})">编辑</button>
+                            <button class="btn btn-warning" onclick="toggleUser(${user.id})">${user.is_active ? '禁用' : '启用'}</button>
+                            <button class="btn btn-danger" onclick="delUser(${user.id})">删除</button>
+                        </div>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+            
+            if (users.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="7" style="text-align: center;">暂无管理员用户</td></tr>';
+            }
+        }
+
+        async function loadNormalUsers() {
+            try {
+                const search = document.getElementById('normalUserSearch').value;
+                const status = document.getElementById('normalStatusFilter').value;
+                
+                const result = await fetchApi(`/users?page=${normalUsersPage}&page_size=10&username=${search}&role_id=3&is_active=${status}`);
+                
+                if (result.code === 200) {
+                    renderNormalUsersTable(result.data.items);
+                    renderPagination('normalUsersPagination', result.data.total, normalUsersPage, 10, (p) => { normalUsersPage = p; loadNormalUsers(); });
+                }
+            } catch (e) {
+                console.error('加载普通用户失败:', e);
+            }
+        }
+
+        function searchNormalUsers() {
+            normalUsersPage = 1;
+            loadNormalUsers();
+        }
+
+        function renderNormalUsersTable(users) {
+            const tbody = document.getElementById('normalUsersTableBody');
+            tbody.innerHTML = '';
+            
+            const roleNames = { 1: '超级管理员', 2: '普通管理员', 3: '医生用户' };
+            
+            users.forEach(user => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${user.id}</td>
+                    <td>${user.username}</td>
+                    <td>${user.email || '-'}</td>
+                    <td>${roleNames[user.role_id] || '未知'}</td>
+                    <td><span class="status-badge ${user.is_active ? 'status-active' : 'status-inactive'}">${user.is_active ? '启用' : '禁用'}</span></td>
+                    <td>${formatDate(user.created_at)}</td>
+                    <td>
+                        <div class="action-buttons">
+                            <button class="btn btn-primary" onclick="editUser(${user.id})">编辑</button>
+                            <button class="btn btn-warning" onclick="toggleUser(${user.id})">${user.is_active ? '禁用' : '启用'}</button>
+                            <button class="btn btn-danger" onclick="delUser(${user.id})">删除</button>
+                        </div>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+            
+            if (users.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="7" style="text-align: center;">暂无普通用户</td></tr>';
+            }
+        }
+
+        function showUserModal(user = null) {
+            document.getElementById('modalTitle').textContent = user ? '编辑用户' : '新建用户';
+            document.getElementById('userId').value = user?.id || '';
+            document.getElementById('userFormUsername').value = user?.username || '';
+            document.getElementById('userFormEmail').value = user?.email || '';
+            document.getElementById('userFormPassword').value = user?.password || '';
+            document.getElementById('userFormRole').value = user?.role_id || 2;
+            document.getElementById('userModal').style.display = 'flex';
+        }
+
+        function closeUserModal() {
+            document.getElementById('userModal').style.display = 'none';
+        }
+
+        async function saveUser() {
+            try {
+                const id = document.getElementById('userId').value;
+                const userData = {
+                    username: document.getElementById('userFormUsername').value,
+                    email: document.getElementById('userFormEmail').value,
+                    role_id: parseInt(document.getElementById('userFormRole').value)
+                };
+                
+                const passwordValue = document.getElementById('userFormPassword').value;
+                if (passwordValue) {
+                    userData.password = passwordValue;
+                }
+                
+                const result = id ? 
+                    await fetchApi(`/users/${id}`, { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(userData) }) :
+                    await fetchApi('/users', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(userData) });
+                
+                if (result.code === 200) {
+                    closeUserModal();
+                    loadUsers();
+                    // 如果密码被修改，强制用户重新登录
+                    if (result.password_changed) {
+                        alert('密码已修改，请重新登录');
+                        window.location.href = '/admin/login';
+                    }
+                } else {
+                    alert(result.message || '保存失败');
+                }
+            } catch (e) {
+                alert('保存失败');
+            }
+        }
+
+        async function editUser(id) {
+            try {
+                const result = await fetchApi(`/users/${id}`);
+                if (result.code === 200) {
+                    showUserModal(result.data);
+                }
+            } catch (e) {
+                console.error('编辑用户失败:', e);
+            }
+        }
+
+        function loadUsers() {
+            loadAdminUsers();
+            loadNormalUsers();
+        }
+
+        async function toggleUser(id) {
+            try {
+                const result = await fetchApi(`/users/${id}/status`, { method: 'PUT' });
+                if (result.code === 200) {
+                    loadUsers();
+                }
+            } catch (e) {
+                console.error('切换用户状态失败:', e);
+            }
+        }
+
+        async function delUser(id) {
+            if (confirm('确定要删除该用户吗？')) {
+                try {
+                    const result = await fetchApi(`/users/${id}`, { method: 'DELETE' });
+                    if (result.code === 200) {
+                        loadUsers();
+                    }
+                } catch (e) {
+                    console.error('删除用户失败:', e);
+                }
+            }
+        }
+
+        async function loadPredictions() {
+            if (isLoading.predictions) return;
+            isLoading.predictions = true;
+            
+            try {
+                const search = document.getElementById('predictionSearch').value;
+                const resultFilter = document.getElementById('resultFilter').value;
+                const dateFilter = document.getElementById('dateFilter').value;
+                
+                const result = await fetchApi(`/predictions?page=${predictionsPage}&page_size=10&search=${search}&result=${resultFilter}&date=${dateFilter}`);
+                
+                if (result.code === 200) {
+                    renderPredictionsTable(result.data.items);
+                    renderPagination('predictionsPagination', result.data.total, predictionsPage, 10, (p) => { predictionsPage = p; loadPredictions(); });
+                    selectedPredictions = [];
+                }
+            } catch (e) {
+                console.error('加载预测记录失败:', e);
+            } finally {
+                isLoading.predictions = false;
+            }
+        }
+
+        function searchPredictions() {
+            predictionsPage = 1;
+            loadPredictions();
+        }
+
+        function toggleSelectAll() {
+            const checkbox = document.getElementById('selectAllPredictions');
+            const checkboxes = document.querySelectorAll('input[name="predictionCheckbox"]');
+            checkboxes.forEach(cb => {
+                cb.checked = checkbox.checked;
+                const id = parseInt(cb.value);
+                if (cb.checked && !selectedPredictions.includes(id)) {
+                    selectedPredictions.push(id);
+                } else if (!cb.checked) {
+                    selectedPredictions = selectedPredictions.filter(p => p !== id);
+                }
+            });
+        }
+
+        function togglePredictionSelect(id) {
+            const index = selectedPredictions.indexOf(id);
+            if (index > -1) {
+                selectedPredictions.splice(index, 1);
+            } else {
+                selectedPredictions.push(id);
+            }
+        }
+
+        function renderPredictionsTable(predictions) {
+            const tbody = document.getElementById('predictionsTableBody');
+            tbody.innerHTML = '';
+            
+            predictions.forEach(pred => {
+                const result = pred.prediction_result === 'Malignant' ? '恶性' : pred.prediction_result === 'Benign' ? '良性' : pred.prediction_result;
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td><input type="checkbox" name="predictionCheckbox" value="${pred.id}" onchange="togglePredictionSelect(${pred.id})"></td>
+                    <td>${pred.id}</td>
+                    <td>${pred.username || pred.user_id}</td>
+                    <td><span class="status-badge ${result === '恶性' ? 'status-danger' : 'status-success'}">${result}</span></td>
+                    <td>${(pred.confidence * 100).toFixed(1)}%</td>
+                    <td>${formatDate(pred.created_at)}</td>
+                    <td>
+                        <div class="action-buttons">
+                            <button class="btn btn-primary" onclick="viewPredictionDetail(${pred.id})">详情</button>
+                            <button class="btn btn-danger" onclick="delPrediction(${pred.id})">删除</button>
+                        </div>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        async function viewPredictionDetail(id) {
+            try {
+                const result = await fetchApi(`/predictions/${id}`);
+                if (result.code === 200) {
+                    const data = result.data;
+                    let featuresHtml = '<h4>特征值详情</h4><div style="max-height: 300px; overflow-y: auto;">';
+                    const features = typeof data.all_30_features_json === 'string' ? JSON.parse(data.all_30_features_json) : data.all_30_features_json || {};
+                    for (const [key, value] of Object.entries(features)) {
+                        featuresHtml += `<div>${key}: ${value}</div>`;
+                    }
+                    featuresHtml += '</div>';
+                    
+                    document.getElementById('predictionDetailContent').innerHTML = `
+                        <div><strong>预测结果:</strong> ${data.prediction_result}</div>
+                        <div><strong>置信度:</strong> ${(data.confidence * 100).toFixed(2)}%</div>
+                        <div><strong>预测时间:</strong> ${formatDate(data.created_at)}</div>
+                        <hr>
+                        ${featuresHtml}
+                    `;
+                    document.getElementById('predictionDetailModal').style.display = 'flex';
+                }
+            } catch (e) {
+                console.error('查看预测详情失败:', e);
+            }
+        }
+
+        function closePredictionDetailModal() {
+            document.getElementById('predictionDetailModal').style.display = 'none';
+        }
+
+        async function delPrediction(id) {
+            if (confirm('确定要删除该预测记录吗？')) {
+                try {
+                    const result = await fetchApi(`/predictions/${id}`, { method: 'DELETE' });
+                    if (result.code === 200) {
+                        loadPredictions();
+                    }
+                } catch (e) {
+                    console.error('删除预测记录失败:', e);
+                }
+            }
+        }
+
+        async function batchDeletePredictionsData() {
+            if (selectedPredictions.length === 0) {
+                alert('请先选择要删除的记录');
+                return;
+            }
+            if (confirm(`确定要删除选中的 ${selectedPredictions.length} 条记录吗？`)) {
+                try {
+                    const result = await fetchApi('/predictions/batch_delete', { 
+                        method: 'POST', 
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ ids: selectedPredictions }) 
+                    });
+                    if (result.code === 200) {
+                        loadPredictions();
+                    }
+                } catch (e) {
+                    console.error('批量删除失败:', e);
+                }
+            }
+        }
+
+        async function exportPredictionsData() {
+            try {
+                const response = await fetch(`${API_BASE_URL}/predictions/export`, {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                if (response.ok) {
+                    const blob = await response.blob();
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'predictions.csv';
+                    a.click();
+                    window.URL.revokeObjectURL(url);
+                }
+            } catch (e) {
+                console.error('导出失败:', e);
+            }
+        }
+
+        async function loadModels() {
+            try {
+                const result = await fetchApi('/models?page=1&page_size=10');
+                if (result.code === 200) {
+                    renderModelsTable(result.data.items);
+                }
+            } catch (e) {
+                console.error('加载模型失败:', e);
+            }
+        }
+
+        function renderModelsTable(models) {
+            const tbody = document.getElementById('modelsTableBody');
+            tbody.innerHTML = '';
+            
+            models.forEach(model => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${model.id}</td>
+                    <td>${model.name}</td>
+                    <td>${model.version || '1.0.0'}</td>
+                    <td>${(model.accuracy * 100).toFixed(1)}%</td>
+                    <td>${(model.recall * 100).toFixed(1)}%</td>
+                    <td><span class="status-badge ${model.is_active ? 'status-active' : 'status-inactive'}">${model.is_active ? '使用中' : '备用'}</span></td>
+                    <td>${formatDate(model.uploaded_at)}</td>
+                    <td>
+                        <div class="action-buttons">
+                            ${!model.is_active ? `<button class="btn btn-success" onclick="activateModel(${model.id})">启用</button>` : ''}
+                            <button class="btn btn-danger" onclick="delModel(${model.id})">删除</button>
+                        </div>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        function showModelUploadModal() {
+            document.getElementById('modelUploadModal').style.display = 'flex';
+        }
+
+        function closeModelUploadModal() {
+            document.getElementById('modelUploadModal').style.display = 'none';
+            document.getElementById('modelUploadForm').reset();
+        }
+
+        async function uploadModelFile() {
+            try {
+                const formData = new FormData();
+                formData.append('name', document.getElementById('modelName').value);
+                formData.append('version', document.getElementById('modelVersion').value);
+                formData.append('file', document.getElementById('modelFile').files[0]);
+                formData.append('description', document.getElementById('modelDescription').value);
+                
+                const response = await fetch(`${API_BASE_URL}/models`, {
+                    method: 'POST',
+                    headers: { 'Authorization': `Bearer ${token}` },
+                    body: formData
+                });
+                const result = await response.json();
+                
+                if (result.code === 200) {
+                    closeModelUploadModal();
+                    loadModels();
+                } else {
+                    alert(result.message || '上传失败');
+                }
+            } catch (e) {
+                alert('上传失败');
+            }
+        }
+
+        async function activateModel(id) {
+            try {
+                const result = await fetchApi(`/models/${id}/activate`, { method: 'PUT' });
+                if (result.code === 200) {
+                    loadModels();
+                }
+            } catch (e) {
+                console.error('激活模型失败:', e);
+            }
+        }
+
+        async function delModel(id) {
+            if (confirm('确定要删除该模型吗？')) {
+                try {
+                    const result = await fetchApi(`/models/${id}`, { method: 'DELETE' });
+                    if (result.code === 200) {
+                        loadModels();
+                    }
+                } catch (e) {
+                    console.error('删除模型失败:', e);
+                }
+            }
+        }
+
+        async function loadLogs() {
+            if (isLoading.logs) return;
+            isLoading.logs = true;
+            
+            try {
+                const search = document.getElementById('logSearch').value;
+                const dateFilter = document.getElementById('logDateFilter').value;
+                
+                const result = await fetchApi(`/logs/operations?page=${logsPage}&page_size=10&search=${search}&date=${dateFilter}`);
+                
+                if (result.code === 200) {
+                    renderLogsTable(result.data.items);
+                    renderPagination('logsPagination', result.data.total, logsPage, 10, (p) => { logsPage = p; loadLogs(); });
+                }
+            } catch (e) {
+                console.error('加载日志失败:', e);
+            } finally {
+                isLoading.logs = false;
+            }
+        }
+
+        function searchLogs() {
+            logsPage = 1;
+            loadLogs();
+        }
+
+        function renderLogsTable(logs) {
+            const tbody = document.getElementById('logsTableBody');
+            tbody.innerHTML = '';
+            
+            logs.forEach(log => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${log.id}</td>
+                    <td>${log.username || '-'}</td>
+                    <td>${log.operation}</td>
+                    <td>${log.ip_address}</td>
+                    <td>${formatDate(log.created_at)}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        async function clearLogs() {
+            if (confirm('确定要清理30天前的日志吗？')) {
+                try {
+                    const result = await fetchApi('/logs/cleanup', { 
+                        method: 'POST', 
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ days: 30 }) 
+                    });
+                    if (result.code === 200) {
+                        loadLogs();
+                    }
+                } catch (e) {
+                    console.error('清理日志失败:', e);
+                }
+            }
+        }
+
+        async function loadSystemConfig() {
+            try {
+                const result = await fetchApi('/system/info');
+                if (result.code === 200) {
+                    document.getElementById('systemName').value = result.data.system_name || '乳腺癌检测系统';
+                    document.getElementById('contactInfo').value = result.data.contact_info || '';
+                }
+                
+                const thresholdResult = await fetchApi('/system/threshold');
+                if (thresholdResult.code === 200) {
+                    const threshold = thresholdResult.data.threshold;
+                    document.getElementById('currentThreshold').textContent = threshold;
+                    document.getElementById('thresholdSlider').value = threshold;
+                }
+                
+                const maintenanceResult = await fetchApi('/system/maintenance');
+                if (maintenanceResult.code === 200) {
+                    document.getElementById('maintenanceMode').checked = maintenanceResult.data.maintenance_mode;
+                }
+            } catch (e) {
+                console.error('加载系统配置失败:', e);
+            }
+        }
+
+        async function saveSystemInfo(e) {
+            e.preventDefault();
+            try {
+                const result = await fetchApi('/system/info', { 
+                    method: 'PUT', 
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        system_name: document.getElementById('systemName').value,
+                        contact_info: document.getElementById('contactInfo').value
+                    })
+                });
+                if (result.code === 200) {
+                    alert('保存成功');
+                }
+            } catch (e) {
+                alert('保存失败');
+            }
+        }
+
+        function saveThreshold() {
+            const threshold = parseFloat(document.getElementById('thresholdSlider').value);
+            fetchApi('/system/threshold', { 
+                method: 'PUT', 
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ threshold }) 
+            }).then(result => {
+                if (result.code === 200) {
+                    document.getElementById('currentThreshold').textContent = threshold;
+                    alert('阈值保存成功');
+                }
+            }).catch(() => alert('保存失败'));
+        }
+
+        function toggleMaintenance() {
+            const mode = document.getElementById('maintenanceMode').checked;
+            fetchApi('/system/maintenance', { 
+                method: 'PUT', 
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ maintenance_mode: mode }) 
+            }).then(result => {
+                if (result.code === 200) {
+                    alert(mode ? '已启用维护模式' : '已关闭维护模式');
+                }
+            }).catch(() => alert('操作失败'));
+        }
+
+        function renderPagination(containerId, total, currentPage, pageSize, callback) {
+            const container = document.getElementById(containerId);
+            const totalPages = Math.ceil(total / pageSize);
+            
+            container.innerHTML = '';
+            
+            if (currentPage > 1) {
+                const prevBtn = document.createElement('button');
+                prevBtn.textContent = '上一页';
+                prevBtn.addEventListener('click', () => callback(currentPage - 1));
+                container.appendChild(prevBtn);
+            }
+            
+            for (let i = 1; i <= totalPages; i++) {
+                const pageBtn = document.createElement('button');
+                pageBtn.textContent = i;
+                if (i === currentPage) pageBtn.classList.add('active');
+                pageBtn.addEventListener('click', () => callback(i));
+                container.appendChild(pageBtn);
+            }
+            
+            if (currentPage < totalPages) {
+                const nextBtn = document.createElement('button');
+                nextBtn.textContent = '下一页';
+                nextBtn.addEventListener('click', () => callback(currentPage + 1));
+                container.appendChild(nextBtn);
+            }
+        }
+
+        function formatDate(dateStr) {
+            if (!dateStr) return '-';
+            const date = new Date(dateStr);
+            return date.toLocaleString('zh-CN');
+        }
+
+        init();
+    </script>
+</body>
+</html>
