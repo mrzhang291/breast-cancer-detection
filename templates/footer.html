@@ -1,5 +1,33 @@
-<div class="container-fluid" style="background-color: #fff">
-    <div class="jumbotron" style="background-color: #01CBC6">
-      <h1 align="center" style="margin-top:1px; font-family: 'Balsamiq Sans', cursive;">{{ _('breast_cancer_detection') }}</h1>      
-      <p align="center" style="font-family: 'Balsamiq Sans', cursive;">{{ _('system_description') }}</p>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/skin.css') }}">
+<div class="container">
+  <div class="result-banner">
+    <div>
+      <div class="rb-eyebrow">{{ _('prediction_result') }}</div>
+      <h1>{{ _('breast_cancer_detection') }}</h1>
+      <p>{{ _('system_description') }}</p>
+    </div>
+    <div class="rb-badge">仅供教学演示</div>
+  </div>
 </div>
+<style>
+  .result-banner {
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    background: radial-gradient(700px 300px at 88% -20%, #a78bfa 0%, transparent 62%),
+                linear-gradient(120deg, #312e81, #4c1d95 62%, #6d28d9);
+    border-radius: 20px; padding: 26px 30px; color: #fff; margin: 20px 0 22px;
+  }
+  .result-banner h1 {
+    font-size: 24px; margin: 4px 0 6px; color: #fff; font-family: inherit;
+    letter-spacing: -.02em; text-align: left;
+  }
+  .result-banner p {
+    margin: 0; font-size: 13px; color: rgba(255,255,255,.72); font-family: inherit;
+    text-align: left; max-width: 560px; line-height: 1.7;
+  }
+  .rb-eyebrow { font-size: 11.5px; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.6); }
+  .rb-badge {
+    font-size: 11.5px; padding: 6px 12px; border-radius: 999px; white-space: nowrap;
+    background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.2);
+  }
+  @media (max-width: 720px) { .result-banner { flex-direction: column; align-items: flex-start; } }
+</style>

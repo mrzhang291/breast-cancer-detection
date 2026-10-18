@@ -974,6 +974,20 @@
     }
   </style>
 <link rel="stylesheet" href="{{ url_for('static', filename='css/skin.css') }}">
+<style>
+/* 结果页统一收口 */
+#ai-card, #ai-float-btn, .ai-float-btn, .ai-card-dark, .jumbotron { display: none !important; }
+.container-fluid { background: transparent !important; padding-left: 0 !important; padding-right: 0 !important; }
+.btn[style] {
+    background: #fff !important; color: #475569 !important;
+    border: 1px solid #e6ebf3 !important; box-shadow: none !important;
+    font-family: inherit !important; border-radius: 10px !important;
+}
+.btn[style]:first-child {
+    background: linear-gradient(135deg, #4f46e5, #7c3aed) !important; color: #fff !important;
+    border: 0 !important; box-shadow: 0 8px 20px -12px rgba(79,70,229,.9) !important;
+}
+</style>
 </head>
 <body>
 {% set active_nav = 'home' %}
