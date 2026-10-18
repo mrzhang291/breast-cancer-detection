@@ -1145,6 +1145,37 @@
             .rp-wrap { padding: 16px 14px 48px; }
         }
 
+
+        .rp-cite-label { font-size: 11.5px; color: #94a3b8; margin: 10px 0 6px; }
+        .rp-cite {
+            display: inline-flex; align-items: center; gap: 3px;
+            margin: 0 6px 6px 0; padding: 4px 11px; border-radius: 999px;
+            background: #ecfdf5; color: #047857; border: 1px solid #d1fae5;
+            font-size: 11.5px; cursor: pointer; font-family: inherit;
+            transition: background .15s, border-color .15s;
+        }
+        .rp-cite:hover { background: #d1fae5; border-color: #a7f3d0; }
+        .rp-modal {
+            position: fixed; inset: 0; background: rgba(15, 23, 42, .45);
+            display: none; align-items: center; justify-content: center; z-index: 1200;
+            padding: 24px;
+        }
+        .rp-modal.open { display: flex; }
+        .rp-modal-card {
+            position: relative; width: min(640px, 100%); max-height: 78vh; overflow: auto;
+            background: #fff; border-radius: 18px; padding: 26px 28px 22px;
+            box-shadow: 0 40px 80px -40px rgba(15, 23, 42, .65);
+        }
+        .rp-modal-close {
+            position: absolute; top: 12px; right: 14px; border: 0; background: #f1f5f9;
+            width: 28px; height: 28px; border-radius: 50%; font-size: 17px; line-height: 1;
+            color: #64748b; cursor: pointer;
+        }
+        .rp-modal-close:hover { background: #e2e8f0; color: #0f172a; }
+        .rp-modal-head { font-size: 15px; font-weight: 700; color: #0f172a; margin-bottom: 12px; padding-right: 30px; }
+        .rp-modal-body { font-size: 13px; line-height: 1.9; color: #334155; white-space: pre-wrap; }
+        .rp-modal-foot { margin-top: 14px; padding-top: 10px; border-top: 1px dashed #eef2f8; font-size: 11px; color: #94a3b8; }
+
 </style>
 </head>
 <body>
@@ -2034,15 +2065,50 @@
 
   function renderCitations(citations) {
     if (!citations || !citations.length) { return; }
-    var html = '<div style="font-size:.8em;color:#718096;margin-bottom:6px;">依据（可点击核对）：</div>';
+    var html = '<div class="rp-cite-label">依据（点击查看原文）：</div>';
     citations.forEach(function (id) {
-      html += '<a target="_blank" href="/api/rag/search?q=' + encodeURIComponent(id) + '&k=1" '
-        + 'style="display:inline-block;margin:3px 6px 3px 0;padding:3px 10px;border-radius:999px;'
-        + 'background:#f0fff4;color:#276749;border:1px solid #c6f6d5;font-size:.78em;text-decoration:none;">'
-        + esc(id) + '</a>';
+      html += '<button type="button" class="rp-cite" data-clause="' + esc(id) + '">' + esc(id) + ' ↗</button>';
     });
     citesEl.innerHTML = html;
   }
+
+  function openClause(id) {
+    var modal = document.getElementById('rpClauseModal');
+    var head = document.getElementById('rpClauseHead');
+    var body = document.getElementById('rpClauseBody');
+    var foot = document.getElementById('rpClauseFoot');
+    if (!modal) { return; }
+    modal.classList.add('open');
+    head.textContent = id;
+    body.textContent = '加载中…';
+    foot.textContent = '';
+    fetch('/api/clause/' + encodeURIComponent(id))
+      .then(function (r) { return r.json(); })
+      .then(function (data) {
+        if (!data.ok) { body.textContent = data.error || '条款不存在'; return; }
+        var c = data.clause;
+        head.textContent = c.id + ' · ' + (c.section || '');
+        body.textContent = c.text || '';
+        foot.textContent = c.source || '';
+      })
+      .catch(function () { body.textContent = '加载失败，请稍后重试'; });
+  }
+
+  document.addEventListener('click', function (ev) {
+    var chip = ev.target.closest ? ev.target.closest('.rp-cite') : null;
+    if (chip) { openClause(chip.getAttribute('data-clause')); return; }
+    var modal = document.getElementById('rpClauseModal');
+    if (!modal || !modal.classList.contains('open')) { return; }
+    if (ev.target === modal || (ev.target.closest && ev.target.closest('#rpClauseClose'))) {
+      modal.classList.remove('open');
+    }
+  });
+  document.addEventListener('keydown', function (ev) {
+    if (ev.key === 'Escape') {
+      var modal = document.getElementById('rpClauseModal');
+      if (modal) { modal.classList.remove('open'); }
+    }
+  });
 
   var NODE_LABELS = {
     guard: '输入检查', cache: '缓存', route: '意图识别', act: '工具执行',
@@ -2307,6 +2373,16 @@ window.getAgentValues = function () {
     } catch (e) { return null; }
 };
 </script>
+
+
+<div class="rp-modal" id="rpClauseModal" aria-hidden="true">
+  <div class="rp-modal-card">
+    <button type="button" class="rp-modal-close" id="rpClauseClose" aria-label="关闭">×</button>
+    <div class="rp-modal-head" id="rpClauseHead">条款</div>
+    <div class="rp-modal-body" id="rpClauseBody">加载中…</div>
+    <div class="rp-modal-foot" id="rpClauseFoot"></div>
+  </div>
+</div>
 
 {% include '_assistant.html' %}
 <script>
