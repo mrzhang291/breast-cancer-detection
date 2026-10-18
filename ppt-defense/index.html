@@ -2120,6 +2120,11 @@ return [c for c in ranked if c.score &gt; 8]</div>
       <tr><td>p95 延迟</td><td class="mono">221ms</td><td class="mono">≤ 8000ms</td><td>离线确定性路径</td></tr>
     </tbody>
   </table>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.4vw;margin-top:1.6vh">
+    <div class="d-card"><div class="n">COVERED</div><h4>确定性路径</h4><p>意图、引用、拒答、升级、对账、离线 p95；都可复现。</p></div>
+    <div class="d-card"><div class="n">NOT COVERED</div><h4>自由生成上限</h4><p>LLM 措辞质量、临床有效性、真实医生采纳率，都没有量化。</p></div>
+    <div class="d-card"><div class="n">NEXT</div><h4>检索评测集</h4><p>30 道医学题测 recall@5 与 citation precision，再接临床前瞻。</p></div>
+  </div>
   <p class="body-sm" style="border-top:1px solid var(--border-subtle);padding-top:1.2vh">
     评测不覆盖 LLM 自由生成的质量上限，只覆盖确定性路径与安全边界；这也是下一阶段要补的部分。
   </p>
