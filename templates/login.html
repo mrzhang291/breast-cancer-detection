@@ -3,354 +3,559 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ _('login') }} - {{ _('breast_cancer_detection') }}</title>
-    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <title>{{ _('login') }} · {{ _('breast_cancer_detection') }}</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --ink: #0f172a;
+            --ink-2: #475569;
+            --ink-3: #94a3b8;
+            --line: #e2e8f0;
+            --surface: #ffffff;
+            --bg: #f6f8fc;
+            --brand: #4f46e5;
+            --brand-2: #7c3aed;
+            --brand-soft: #eef2ff;
+            --danger: #dc2626;
+            --radius: 14px;
         }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html, body { height: 100%; }
 
         body {
-            font-family: 'Noto Sans SC', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC",
+                         "PingFang SC", "Microsoft YaHei", sans-serif;
+            color: var(--ink);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .shell {
             min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: grid;
+            grid-template-columns: 1.05fr 1fr;
+        }
+
+        /* ---------------- 左侧品牌区 ---------------- */
+        .brand {
             position: relative;
             overflow: hidden;
+            padding: 56px 56px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            color: #fff;
+            background:
+                radial-gradient(1200px 600px at 10% 0%, #6366f1 0%, transparent 55%),
+                radial-gradient(900px 500px at 90% 100%, #a855f7 0%, transparent 60%),
+                linear-gradient(150deg, #1e1b4b 0%, #312e81 45%, #4c1d95 100%);
         }
 
-        body::before {
-            content: '';
+        .brand::before {
+            content: "";
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
-            animation: pulse 15s ease-in-out infinite;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
+            background-size: 44px 44px;
+            mask-image: radial-gradient(circle at 30% 20%, #000 0%, transparent 72%);
         }
 
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 0.5; }
-            50% { transform: scale(1.1); opacity: 0.3; }
-        }
-
-        .login-container {
-            position: relative;
-            z-index: 1;
-            width: 100%;
-            max-width: 420px;
-            padding: 20px;
-        }
-
-        .login-card {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 24px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-            padding: 48px 40px;
-            backdrop-filter: blur(10px);
-            animation: slideUp 0.6s ease-out;
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .login-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .login-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        .brand::after {
+            content: "";
+            position: absolute;
+            width: 420px;
+            height: 420px;
+            right: -140px;
+            bottom: -160px;
             border-radius: 50%;
+            background: radial-gradient(circle, rgba(168,85,247,.55) 0%, transparent 68%);
+            filter: blur(8px);
+        }
+
+        .brand > * { position: relative; z-index: 1; }
+
+        .logo-row { display: flex; align-items: center; gap: 12px; }
+
+        .logo-mark {
+            width: 40px; height: 40px;
+            border-radius: 12px;
+            display: grid; place-items: center;
+            background: rgba(255,255,255,.14);
+            border: 1px solid rgba(255,255,255,.22);
+            backdrop-filter: blur(6px);
+        }
+
+        .logo-text { font-size: 15px; font-weight: 600; letter-spacing: .2px; }
+        .logo-text span { opacity: .55; font-weight: 400; }
+
+        .brand-main h1 {
+            font-size: clamp(30px, 3.4vw, 42px);
+            line-height: 1.18;
+            letter-spacing: -.02em;
+            font-weight: 700;
+            margin-bottom: 18px;
+        }
+
+        .brand-main h1 em {
+            font-style: normal;
+            background: linear-gradient(90deg, #c4b5fd, #f0abfc);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .brand-main p {
+            font-size: 15px;
+            line-height: 1.75;
+            color: rgba(255,255,255,.72);
+            max-width: 380px;
+        }
+
+        .features { list-style: none; display: grid; gap: 14px; margin-top: 34px; }
+
+        .features li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 14px;
+            color: rgba(255,255,255,.82);
+        }
+
+        .feature-dot {
+            width: 30px; height: 30px;
+            flex: 0 0 30px;
+            border-radius: 9px;
+            display: grid; place-items: center;
+            background: rgba(255,255,255,.12);
+            border: 1px solid rgba(255,255,255,.16);
+        }
+
+        .brand-foot {
+            font-size: 12px;
+            color: rgba(255,255,255,.45);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-foot a { color: rgba(255,255,255,.7); text-decoration: none; }
+        .brand-foot a:hover { color: #fff; }
+
+        /* ---------------- 右侧表单区 ---------------- */
+        .panel {
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 20px;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
-        }
-
-        .login-icon svg {
-            width: 40px;
-            height: 40px;
-            fill: white;
-        }
-
-        .login-header h1 {
-            font-size: 28px;
-            font-weight: 700;
-            color: #1a1a2e;
-            margin-bottom: 8px;
-        }
-
-        .login-header p {
-            font-size: 14px;
-            color: #6b7280;
-        }
-
-        .form-group {
-            margin-bottom: 24px;
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 14px;
-            font-weight: 500;
-            color: #374151;
-            margin-bottom: 8px;
-        }
-
-        .input-wrapper {
+            padding: 48px 24px;
             position: relative;
-        }
-
-        .input-wrapper svg {
-            position: absolute;
-            left: 16px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 20px;
-            height: 20px;
-            fill: #9ca3af;
-            transition: fill 0.3s ease;
-        }
-
-        .input-wrapper input {
-            width: 100%;
-            padding: 14px 16px 14px 48px;
-            border: 2px solid #e5e7eb;
-            border-radius: 12px;
-            font-size: 15px;
-            font-family: 'Noto Sans SC', sans-serif;
-            transition: all 0.3s ease;
-            background: #f9fafb;
-        }
-
-        .input-wrapper input:focus {
-            outline: none;
-            border-color: #667eea;
-            background: white;
-            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
-        }
-
-        .btn-login {
-            width: 100%;
-            padding: 16px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border: none;
-            border-radius: 12px;
-            color: white;
-            font-size: 16px;
-            font-weight: 600;
-            font-family: 'Noto Sans SC', sans-serif;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-        }
-
-        .btn-login:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
-        }
-
-        .divider {
-            display: flex;
-            align-items: center;
-            margin: 28px 0;
-        }
-
-        .divider::before,
-        .divider::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: #e5e7eb;
-        }
-
-        .divider span {
-            padding: 0 16px;
-            font-size: 13px;
-            color: #9ca3af;
-        }
-
-        .register-link {
-            text-align: center;
-            color: #6b7280;
-            font-size: 14px;
-        }
-
-        .register-link a {
-            color: #667eea;
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
-
-        .register-link a:hover {
-            color: #764ba2;
-            text-decoration: underline;
-        }
-
-        .alert {
-            padding: 16px 20px;
-            border-radius: 16px;
-            margin-bottom: 24px;
-            font-size: 14px;
-            display: flex;
-            align-items: flex-start;
-            gap: 14px;
-            animation: fadeIn 0.3s ease-out;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .alert-error {
-            background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
-            border: 1px solid #fecaca;
-            color: #dc2626;
-            box-shadow: 0 4px 15px rgba(239, 68, 68, 0.15);
-        }
-
-        .alert-error svg {
-            width: 24px;
-            height: 24px;
-            fill: #ef4444;
-            flex-shrink: 0;
-            animation: shake 0.5s ease-in-out;
-        }
-
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-3px); }
-            75% { transform: translateX(3px); }
-        }
-
-        .alert-message {
-            flex: 1;
-            line-height: 1.5;
-        }
-
-        .footer-hint {
-            text-align: center;
-            margin-top: 24px;
-            font-size: 12px;
-            color: #9ca3af;
-        }
-
-        .footer-hint a {
-            color: #667eea;
-            text-decoration: none;
         }
 
         .lang-switch {
             position: absolute;
-            top: 20px;
-            right: 20px;
+            top: 24px;
+            right: 28px;
             display: flex;
-            gap: 5px;
+            gap: 4px;
+            padding: 4px;
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 999px;
         }
 
-        .lang-switch-btn {
-            padding: 6px 12px;
-            border-radius: 20px;
+        .lang-switch a { text-decoration: none; }
+
+        .lang-switch button {
+            border: 0;
+            background: transparent;
+            padding: 6px 14px;
+            border-radius: 999px;
             font-size: 12px;
-            border: none;
+            font-weight: 600;
+            color: var(--ink-3);
             cursor: pointer;
+            transition: .18s;
+            font-family: inherit;
+        }
+
+        .lang-switch button[disabled] { background: var(--brand-soft); color: var(--brand); cursor: default; }
+        .lang-switch a button:hover { color: var(--brand); }
+
+        .form-card {
+            width: 100%;
+            max-width: 412px;
+            animation: rise .55s cubic-bezier(.22,.8,.3,1) both;
+        }
+
+        @keyframes rise {
+            from { opacity: 0; transform: translateY(18px); }
+            to { opacity: 1; transform: none; }
+        }
+
+        .mobile-brand { display: none; }
+
+        .form-head { margin-bottom: 30px; }
+
+        .form-head .eyebrow {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: var(--brand);
+            margin-bottom: 10px;
+        }
+
+        .form-head h2 {
+            font-size: 27px;
+            letter-spacing: -.02em;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .form-head p { font-size: 14px; color: var(--ink-2); }
+
+        .alert {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+            padding: 13px 15px;
+            border-radius: 12px;
+            font-size: 13.5px;
+            line-height: 1.55;
+            margin-bottom: 22px;
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            color: #b91c1c;
+            animation: shake .4s ease;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20% { transform: translateX(-4px); }
+            60% { transform: translateX(4px); }
+        }
+
+        .field { margin-bottom: 18px; }
+
+        .field label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: #334155;
+            margin-bottom: 8px;
+        }
+
+        .control { position: relative; display: flex; align-items: center; }
+
+        .control .lead {
+            position: absolute;
+            left: 14px;
+            display: grid;
+            place-items: center;
+            color: var(--ink-3);
+            pointer-events: none;
+            transition: color .18s;
+        }
+
+        .control input {
+            width: 100%;
+            height: 50px;
+            padding: 0 46px 0 44px;
+            font-size: 14.5px;
+            font-family: inherit;
+            color: var(--ink);
+            background: var(--surface);
+            border: 1.5px solid var(--line);
+            border-radius: var(--radius);
+            transition: border-color .18s, box-shadow .18s, background .18s;
+        }
+
+        .control input::placeholder { color: #b6c2d2; }
+
+        .control input:hover { border-color: #cbd5e1; }
+
+        .control input:focus {
+            outline: none;
+            border-color: var(--brand);
+            box-shadow: 0 0 0 4px rgba(79, 70, 229, .12);
+        }
+
+        .control:focus-within .lead { color: var(--brand); }
+
+        .reveal {
+            position: absolute;
+            right: 8px;
+            width: 34px; height: 34px;
+            display: grid; place-items: center;
+            border: 0;
+            background: transparent;
+            color: var(--ink-3);
+            border-radius: 9px;
+            cursor: pointer;
+            transition: .18s;
+        }
+
+        .reveal:hover { background: var(--brand-soft); color: var(--brand); }
+
+        .row-between {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 2px 0 24px;
+            font-size: 13px;
+        }
+
+        .check { display: flex; align-items: center; gap: 8px; color: var(--ink-2); cursor: pointer; }
+
+        .check input {
+            width: 16px; height: 16px;
+            accent-color: var(--brand);
+            cursor: pointer;
+        }
+
+        .link { color: var(--brand); text-decoration: none; font-weight: 600; }
+        .link:hover { text-decoration: underline; }
+
+        .btn-primary {
+            width: 100%;
+            height: 50px;
+            border: 0;
+            border-radius: var(--radius);
+            font-size: 15px;
+            font-weight: 600;
+            font-family: inherit;
+            color: #fff;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--brand) 0%, var(--brand-2) 100%);
+            box-shadow: 0 10px 24px -8px rgba(79, 70, 229, .65);
+            transition: transform .18s, box-shadow .18s, filter .18s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+        }
+
+        .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 14px 30px -8px rgba(79,70,229,.75); }
+        .btn-primary:active { transform: translateY(0); filter: brightness(.97); }
+        .btn-primary:disabled { opacity: .7; cursor: not-allowed; transform: none; }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin: 26px 0 20px;
+            font-size: 12px;
+            color: var(--ink-3);
+        }
+
+        .divider::before, .divider::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: var(--line);
+        }
+
+        .foot-link { text-align: center; font-size: 13.5px; color: var(--ink-2); }
+        .foot-link a { color: var(--brand); font-weight: 600; text-decoration: none; }
+        .foot-link a:hover { text-decoration: underline; }
+
+        .hint {
+            margin-top: 26px;
+            text-align: center;
+            font-size: 12px;
+            color: var(--ink-3);
+            line-height: 1.7;
+        }
+
+        .hint a { color: var(--ink-2); }
+
+        @media (max-width: 920px) {
+            .shell { grid-template-columns: 1fr; }
+            .brand { display: none; }
+            .panel { padding: 84px 20px 44px; align-items: flex-start; }
+            .mobile-brand {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                margin-bottom: 26px;
+                font-size: 14px;
+                font-weight: 600;
+                color: var(--ink);
+            }
+            .mobile-brand .logo-mark {
+                background: linear-gradient(135deg, var(--brand), var(--brand-2));
+                border: 0;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="lang-switch">
-        {% if is_chinese %}
-        <button class="lang-switch-btn" disabled>{{ _('chinese') }}</button>
-        <a href="/set-lang/en"><button class="lang-switch-btn">{{ _('english') }}</button></a>
-        {% else %}
-        <a href="/set-lang/zh"><button class="lang-switch-btn">{{ _('chinese') }}</button></a>
-        <button class="lang-switch-btn" disabled>{{ _('english') }}</button>
-        {% endif %}
-    </div>
+<div class="shell">
+    <aside class="brand">
+        <div class="logo-row">
+            <div class="logo-mark">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"
+                     stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 21s7-4.5 7-10a4 4 0 0 0-7-2.6A4 4 0 0 0 5 11c0 5.5 7 10 7 10z"/>
+                </svg>
+            </div>
+            <div class="logo-text">{{ _('breast_cancer_detection') }}</div>
+        </div>
 
-    <div class="login-container">
-        <div class="login-card">
-            <div class="login-header">
-                <div class="login-icon">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+        <div class="brand-main">
+            <h1>早期筛查，<br><em>让判断更有依据</em></h1>
+            <p>输入 30 项细胞核特征，得到良恶性预测、可追溯的特征归因，以及一份说明“证据够不够”的解读。</p>
+
+            <ul class="features">
+                <li>
+                    <span class="feature-dot">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"
+                             stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg>
+                    </span>
+                    预测结果附带置信度与证据强度
+                </li>
+                <li>
+                    <span class="feature-dot">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"
+                             stroke-linecap="round"><path d="M4 19V5m6 14V9m6 10V3"/></svg>
+                    </span>
+                    每个数字都能溯源到条款
+                </li>
+                <li>
+                    <span class="feature-dot">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"
+                             stroke-linecap="round"><circle cx="12" cy="12" r="8"/><path d="M12 8v5l3 2"/></svg>
+                    </span>
+                    证据不足时明确说“不下结论”
+                </li>
+            </ul>
+        </div>
+
+        <div class="brand-foot">
+            <span>仅供教学演示，不用于临床诊断</span>
+            <a href="/">{{ _('back_to_home') }} →</a>
+        </div>
+    </aside>
+
+    <main class="panel">
+        <div class="lang-switch">
+            {% if is_chinese %}
+            <button disabled>{{ _('chinese') }}</button>
+            <a href="/set-lang/en"><button>{{ _('english') }}</button></a>
+            {% else %}
+            <a href="/set-lang/zh"><button>{{ _('chinese') }}</button></a>
+            <button disabled>{{ _('english') }}</button>
+            {% endif %}
+        </div>
+
+        <div class="form-card">
+            <div class="mobile-brand">
+                <div class="logo-mark">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"
+                         stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 21s7-4.5 7-10a4 4 0 0 0-7-2.6A4 4 0 0 0 5 11c0 5.5 7 10 7 10z"/>
                     </svg>
                 </div>
-                <h1>{{ _('welcome') }}</h1>
+                {{ _('breast_cancer_detection') }}
+            </div>
+
+            <div class="form-head">
+                <div class="eyebrow">{{ _('login') }}</div>
+                <h2>{{ _('welcome') }}</h2>
                 <p>{{ _('login') }} {{ _('breast_cancer_detection') }}</p>
             </div>
 
             {% if error %}
-            <div class="alert alert-error">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+            <div class="alert" role="alert">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2"
+                     stroke-linecap="round" style="flex:0 0 18px;margin-top:1px;">
+                    <circle cx="12" cy="12" r="9"/><path d="M12 8v5m0 3h.01"/>
                 </svg>
-                <div class="alert-message">{{ error }}</div>
+                <div>{{ error }}</div>
             </div>
             {% endif %}
 
-            <form method="post" action="/login">
-                <div class="form-group">
-                    <label>{{ _('username') }}</label>
-                    <div class="input-wrapper">
-                        <input type="text" name="username" placeholder="{{ _('username_placeholder') }}" required autocomplete="username">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-                        </svg>
+            <form method="post" action="/login" novalidate>
+                <div class="field">
+                    <label for="username">{{ _('username') }}</label>
+                    <div class="control">
+                        <span class="lead">
+                            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                 stroke-width="2" stroke-linecap="round">
+                                <circle cx="12" cy="8" r="3.5"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0"/>
+                            </svg>
+                        </span>
+                        <input id="username" type="text" name="username"
+                               placeholder="{{ _('username_placeholder') }}"
+                               required autocomplete="username" autofocus>
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label>{{ _('password') }}</label>
-                    <div class="input-wrapper">
-                        <input type="password" name="password" placeholder="{{ _('password_placeholder') }}" required autocomplete="current-password">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>
-                        </svg>
+                <div class="field">
+                    <label for="password">{{ _('password') }}</label>
+                    <div class="control">
+                        <span class="lead">
+                            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                 stroke-width="2" stroke-linecap="round">
+                                <rect x="4" y="10" width="16" height="10" rx="2.5"/>
+                                <path d="M8 10V7a4 4 0 0 1 8 0v3"/>
+                            </svg>
+                        </span>
+                        <input id="password" type="password" name="password"
+                               placeholder="{{ _('password_placeholder') }}"
+                               required autocomplete="current-password">
+                        <button type="button" class="reveal" id="togglePwd" aria-label="显示密码">
+                            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                 stroke-width="2" stroke-linecap="round">
+                                <path d="M2 12s3.6-6.5 10-6.5S22 12 22 12s-3.6 6.5-10 6.5S2 12 2 12z"/>
+                                <circle cx="12" cy="12" r="2.6"/>
+                            </svg>
+                        </button>
                     </div>
                 </div>
 
-                <button type="submit" class="btn-login">{{ _('login') }}</button>
+                <div class="row-between">
+                    <label class="check">
+                        <input type="checkbox" name="remember"> {{ _('remember_me') }}
+                    </label>
+                    <a class="link" href="#">{{ _('forgot_password') }}</a>
+                </div>
+
+                <button type="submit" class="btn-primary">
+                    {{ _('login') }}
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"
+                         stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13m-5-6 6 6-6 6"/></svg>
+                </button>
             </form>
 
-            <div class="divider">
-                <span>{{ _('or') }}</span>
-            </div>
+            <div class="divider">{{ _('or') }}</div>
 
-            <p class="register-link">
+            <p class="foot-link">
                 {{ _('no_account') }} <a href="/register">{{ _('create_account') }}</a>
             </p>
 
-            <p class="footer-hint">
+            <p class="hint">
                 <a href="/">{{ _('back_to_home') }}</a>
             </p>
         </div>
-    </div>
+    </main>
+</div>
+
+<script>
+    (function () {
+        var toggle = document.getElementById('togglePwd');
+        var pwd = document.getElementById('password');
+        if (!toggle || !pwd) { return; }
+        toggle.addEventListener('click', function () {
+            var show = pwd.type === 'password';
+            pwd.type = show ? 'text' : 'password';
+            toggle.setAttribute('aria-label', show ? '隐藏密码' : '显示密码');
+            toggle.style.color = show ? '#4f46e5' : '';
+        });
+    })();
+</script>
 </body>
 </html>
