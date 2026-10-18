@@ -1,949 +1,262 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="{{ current_lang }}">
 <head>
-<!-- deploy-check-20261018-175343 -->
-  <title>{{ _('breast_cancer_detection') }}</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="preconnect" href="https://cdn.bootcdn.net">
-  <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" media="print" onload="this.media='all'">
-  <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" media="print" onload="this.media='all'">
-  <noscript>
-    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  </noscript>
-  <style>
-    .page-loading { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; justify-content: center; align-items: center; z-index: 9999; transition: opacity 0.5s ease; }
-    .page-loading.hidden { opacity: 0; pointer-events: none; }
-    .spinner { width: 50px; height: 50px; border: 4px solid rgba(255,255,255,0.3); border-top-color: #fff; border-radius: 50%; animation: spin 1s linear infinite; }
-    @keyframes spin { to { transform: rotate(360deg); } }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-      background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
-      color: #1e293b;
-      line-height: 1.7;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-    #button { display: inline-block; background-color: #01CBC6; width: 52px; height: 52px; text-align: center; border-radius: 25px; position: fixed; bottom: 10px; right: 10px; transition: all .3s ease; opacity: 0; visibility: hidden; z-index: 1000; }
-    #button::after { content: "\f077"; font-family: FontAwesome; font-size: 2em; line-height: 50px; color: #fff; }
-    #button:hover { background-color: #00b5b0; }
-    #button.show { opacity: 1; visibility: visible; }
-    /* 导航栏样式 */
-    .top-nav {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-      padding: 0 24px;
-      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.04);
-      transition: all 0.3s ease;
-    }
-    .top-nav:hover {
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
-    }
-    .top-nav .nav-container {
-      max-width: 1400px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      height: 64px;
-    }
-    .top-nav .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-      color: #1e293b;
-      transition: all 0.3s ease;
-    }
-    .top-nav .nav-logo:hover {
-      transform: scale(1.02);
-    }
-    .top-nav .nav-logo img {
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
-      object-fit: cover;
-    }
-    .top-nav .nav-logo .logo-text {
-      font-size: 1.25em;
-      font-weight: 700;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .top-nav .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-    .top-nav .nav-links a {
-      position: relative;
-      padding: 12px 20px;
-      color: #64748b;
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 0.95em;
-      border-radius: 10px;
-      transition: all 0.2s ease;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .top-nav .nav-links a:hover {
-      color: #1e293b;
-      background: #f1f5f9;
-    }
-    .top-nav .nav-links a.active {
-      color: #667eea;
-      background: rgba(102, 126, 234, 0.1);
-    }
-    .top-nav .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: 8px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 0;
-      height: 2px;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      border-radius: 2px;
-      transition: width 0.3s ease;
-    }
-    .top-nav .nav-links a:hover::after,
-    .top-nav .nav-links a.active::after {
-      width: 24px;
-    }
-    .top-nav .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .top-nav .user-menu { position: relative; display: inline-block; }
-    .user-dropdown { display: none; position: absolute; right: 0; top: 100%; margin-top: 8px; background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.15); min-width: 180px; z-index: 1001; transform-origin: top right; }
-    .user-dropdown a { display: block; padding: 10px 15px; color: #333; text-decoration: none; }
-    .user-dropdown a:hover { background: #f5f5f5; }
-    .user-dropdown div { padding: 10px; border-bottom: 1px solid #eee; }
-    .ai-card { padding: 28px; background: linear-gradient(180deg, #f7fbfc 0%, #eef8fa 100%); border: 1px solid #d1e7ed; border-radius: 18px; box-shadow: 0 12px 35px rgba(0, 0, 0, 0.05); margin-top: 20px; }
-    .ai-card h3 { margin-top: 0; font-size: 1.6em; }
-    .ai-textarea { min-height: 120px; resize: vertical; }
-    .ai-hint-chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
-    .ai-hint-chip { background-color: #1f3f5b; color: #fff; padding: 8px 16px; border-radius: 999px; cursor: pointer; font-size: 0.9em; transition: all .2s ease; }
-    .ai-hint-chip:hover { background-color: #0d2a42; transform: translateY(-1px); }
-    .ai-response { margin-top: 18px; padding: 28px; background: linear-gradient(135deg, #ffffff 0%, #f8fbfd 100%); border-radius: 14px; border: 2px solid #d8e6ec; min-height: 150px; color: #2a3b48; line-height: 1.9; }
-    
-    /* 悬浮按钮样式 */
-    #ai-float-btn {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #ff6b9d 0%, #c084fc 100%);
-      box-shadow: 0 8px 25px rgba(255, 107, 157, 0.4);
-      display: none !important;
-      align-items: center;
-      justify-content: center;
-      cursor: grab;
-      transition: all 0.2s ease;
-      border: 3px solid #fff;
-      z-index: 9999 !important;
-      user-select: none;
-      touch-action: none;
-    }
-    
-    #ai-float-btn.show {
-      display: flex !important;
-      opacity: 1;
-      visibility: visible;
-    }
-    
-    #ai-float-btn.hidden {
-      display: none !important;
-      opacity: 0;
-      visibility: hidden;
-    }
-    
-    #ai-float-btn:hover {
-      transform: scale(1.1);
-      box-shadow: 0 12px 35px rgba(255, 107, 157, 0.5);
-    }
-    
-    #ai-float-btn.dragging {
-      cursor: grabbing;
-      transform: scale(1.15);
-      box-shadow: 0 15px 40px rgba(255, 107, 157, 0.6);
-      opacity: 0.9;
-    }
-    
-    #ai-float-btn.drag-start {
-      animation: pulse 0.3s ease;
-    }
-    
-    #ai-float-btn.drag-end {
-      animation: bounce 0.4s ease;
-    }
-    
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.2); }
-      100% { transform: scale(1.15); }
-    }
-    
-    @keyframes bounce {
-      0% { transform: scale(1.15); }
-      50% { transform: scale(0.95); }
-      100% { transform: scale(1); }
-    }
-    
-    .ai-float-btn i {
-      color: #fff;
-      font-size: 24px;
-    }
-    
-    /* 删除记录按钮 */
-    .ai-delete-history {
-      position: absolute;
-      top: -8px;
-      right: -8px;
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      background: #ef4444;
-      color: #fff;
-      border: 2px solid #fff;
-      font-size: 14px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      transition: opacity 0.2s ease;
-      z-index: 1001;
-    }
-    
-    .ai-float-btn:hover .ai-delete-history {
-      opacity: 1;
-    }
-    
-    .ai-delete-history:hover {
-      background: #dc2626;
-      transform: scale(1.1);
-    }
-    
-    /* 浮窗AI助手样式 */
-    .ai-card-dark { 
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      width: 420px;
-      height: 550px;
-      min-width: 350px;
-      max-width: 600px;
-      min-height: 400px;
-      max-height: 700px;
-      background: linear-gradient(145deg, #1e293b 0%, #0f172a 100%); 
-      border-radius: 20px; 
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4); 
-      overflow: hidden;
-      border: 1px solid #334155;
-      z-index: 999;
-      display: flex;
-      flex-direction: column;
-    }
-    
-    .ai-card-dark.dragging {
-      cursor: grabbing;
-      opacity: 0.9;
-    }
-    
-    /* 调整大小手柄 */
-    .ai-resize-handle {
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      width: 20px;
-      height: 20px;
-      background: rgba(255,255,255,0.1);
-      cursor: se-resize;
-      border-radius: 0 0 20px 0;
-    }
-    
-    .ai-resize-handle::after {
-      content: '';
-      position: absolute;
-      bottom: 3px;
-      right: 3px;
-      width: 10px;
-      height: 10px;
-      border-right: 2px solid rgba(255,255,255,0.4);
-      border-bottom: 2px solid rgba(255,255,255,0.4);
-    }
-    
-    .ai-resize-handle:hover {
-      background: rgba(255,255,255,0.2);
-    }
-    
-    /* 边框悬停效果 */
-    .ai-card-dark.resizing {
-      cursor: se-resize;
-    }
-    
-    .ai-header { 
-      display: flex; 
-      justify-content: space-between; 
-      align-items: center; 
-      padding: 16px 20px; 
-      background: linear-gradient(90deg, #0ea5e9 0%, #0284c7 100%); 
-      cursor: grab;
-    }
-    
-    .ai-header:active {
-      cursor: grabbing;
-    }
-    
-    .ai-title { 
-      font-size: 1.1em; 
-      font-weight: 600; 
-      color: #fff; 
-      display: flex; 
-      align-items: center;
-    }
-    
-    .ai-close-btn { 
-      background: rgba(255,255,255,0.2); 
-      border: none; 
-      color: #fff; 
-      width: 28px; 
-      height: 28px; 
-      border-radius: 50%; 
-      font-size: 14px; 
-      cursor: pointer; 
-      transition: all 0.3s ease;
-    }
-    
-    .ai-close-btn:hover { 
-      background: rgba(255,255,255,0.3); 
-    }
-    .ai-history { 
-      max-height: 150px; 
-      overflow-y: auto; 
-      padding: 10px 20px; 
-      border-bottom: 1px solid #334155;
-      flex-shrink: 0;
-    }
-    
-    .ai-history-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 10px;
-      padding-bottom: 10px;
-      border-bottom: 1px solid #334155;
-    }
-    
-    .ai-history-title {
-      color: #94a3b8;
-      font-size: 0.85em;
-      font-weight: 500;
-    }
-    
-    .ai-select-all {
-      display: flex;
-      align-items: center;
-      color: #94a3b8;
-      font-size: 0.85em;
-      cursor: pointer;
-      user-select: none;
-    }
-    
-    .ai-select-all input[type="checkbox"] {
-      margin-right: 6px;
-      cursor: pointer;
-    }
-    
-    .ai-delete-selected-btn {
-      background: rgba(239, 68, 68, 0.2);
-      color: #ef4444;
-      border: 1px solid rgba(239, 68, 68, 0.3);
-      padding: 4px 12px;
-      border-radius: 8px;
-      font-size: 0.8em;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      display: none;
-    }
-    
-    .ai-delete-selected-btn:hover {
-      background: rgba(239, 68, 68, 0.3);
-      border-color: rgba(239, 68, 68, 0.5);
-    }
-    
-    .ai-delete-selected-btn.show {
-      display: inline-block;
-    }
-    
-    .ai-history-item { 
-      display: flex; 
-      gap: 12px; 
-      padding: 12px 15px; 
-      margin: 8px 0; 
-      background: rgba(255,255,255,0.05); 
-      border-radius: 12px; 
-      cursor: pointer;
-      transition: all 0.2s ease;
-      align-items: center;
-    }
-    
-    .ai-history-item:hover { 
-      background: rgba(255,255,255,0.08); 
-    }
-    
-    .ai-history-item.selected {
-      background: rgba(14, 165, 233, 0.15);
-      border: 1px solid rgba(14, 165, 233, 0.3);
-    }
-    
-    .ai-history-checkbox {
-      width: 16px;
-      height: 16px;
-      cursor: pointer;
-      accent-color: #0ea5e9;
-      flex-shrink: 0;
-    }
-    .ai-history-avatar { 
-      width: 36px; 
-      height: 36px; 
-      border-radius: 50%; 
-      background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%); 
-      display: flex; 
-      align-items: center; 
-      justify-content: center; 
-      color: #fff; 
-      font-size: 12px; 
-      flex-shrink: 0;
-    }
-    .ai-history-content { 
-      flex: 1; 
-      min-width: 0;
-    }
-    .ai-history-question { 
-      color: #cbd5e1; 
-      font-size: 0.9em; 
-      white-space: nowrap; 
-      overflow: hidden; 
-      text-overflow: ellipsis;
-    }
-    .ai-history-time { 
-      color: #64748b; 
-      font-size: 0.75em; 
-      margin-top: 2px;
-    }
-    .ai-input-area { 
-      padding: 20px; 
-    }
-    .ai-textarea-dark { 
-      width: 100%; 
-      min-height: 80px; 
-      padding: 15px; 
-      background: rgba(255,255,255,0.08); 
-      border: 1px solid #334155; 
-      border-radius: 12px; 
-      color: #e2e8f0; 
-      font-size: 14px; 
-      resize: vertical; 
-      transition: all 0.3s ease;
-    }
-    .ai-textarea-dark:focus { 
-      outline: none; 
-      border-color: #0ea5e9; 
-      box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.2); 
-    }
-    .ai-textarea-dark::placeholder { color: #64748b; }
-    .ai-actions { 
-      display: flex; 
-      gap: 12px; 
-      margin-top: 15px; 
-    }
-    .ai-send-btn { 
-      flex: 1; 
-      padding: 14px 20px; 
-      background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%); 
-      color: #fff; 
-      border: none; 
-      border-radius: 12px; 
-      font-weight: 600; 
-      cursor: pointer; 
-      transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
-    .ai-send-btn:hover { 
-      transform: translateY(-2px); 
-      box-shadow: 0 8px 25px rgba(14, 165, 233, 0.4); 
-    }
-    .ai-send-btn:disabled { 
-      opacity: 0.6; 
-      transform: none; 
-      cursor: not-allowed;
-    }
-    .ai-clear-btn { 
-      padding: 14px 20px; 
-      background: rgba(255,255,255,0.1); 
-      color: #94a3b8; 
-      border: 1px solid #334155; 
-      border-radius: 12px; 
-      cursor: pointer; 
-      transition: all 0.3s ease;
-    }
-    .ai-clear-btn:hover { 
-      background: rgba(255,255,255,0.15); 
-      color: #cbd5e1; 
-    }
-    .ai-response-dark { 
-      padding: 15px 20px; 
-      background: rgba(255,255,255,0.05); 
-      color: #e2e8f0; 
-      line-height: 1.8; 
-      border-top: 1px solid #334155;
-      flex: 1;
-      min-height: 100px;
-      overflow-y: auto;
-      font-size: 0.95em;
-      box-sizing: border-box;
-    }
-    
-    .ai-response-dark::-webkit-scrollbar {
-      width: 6px;
-    }
-    
-    .ai-response-dark::-webkit-scrollbar-track {
-      background: rgba(255,255,255,0.05);
-    }
-    
-    .ai-response-dark::-webkit-scrollbar-thumb {
-      background: rgba(255,255,255,0.2);
-      border-radius: 3px;
-    }
-    
-    .ai-response-dark::-webkit-scrollbar-thumb:hover {
-      background: rgba(255,255,255,0.3);
-    }
-    .ai-status { 
-      color: #94a3b8; 
-      font-size: 0.9em; 
-      margin-top: 10px; 
-      text-align: center;
-    }
-    .info-card {
-      background: #fff;
-      border-radius: 16px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.08);
-      margin-bottom: 32px;
-      overflow: hidden;
-      border: 1px solid #e2e8f0;
-    }
-    .info-card .nav-tabs {
-      background: #f8fafc;
-      border-bottom: 1px solid #e2e8f0;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      gap: 4px;
-    }
-    .info-card .nav-tabs li { margin: 0; }
-    .info-card .nav-tabs li a {
-      color: #64748b;
-      border: none;
-      border-radius: 0;
-      padding: 16px 24px;
-      font-weight: 500;
-      transition: all 0.2s ease;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .info-card .nav-tabs li a:hover {
-      color: #1e293b;
-      background: rgba(255,255,255,0.5);
-    }
-    .info-card .nav-tabs li.active a {
-      background: #fff;
-      color: #667eea;
-      border-bottom: 3px solid #667eea;
-    }
-    .tab-content { padding: 28px; background: #fff; }
-    .tab-content h3 { font-weight: 700; color: #1e293b; margin-bottom: 12px; }
-    .tab-content p { color: #64748b; line-height: 1.8; }
-    .tab-content ul { color: #64748b; padding-left: 20px; }
-    .tab-content li { margin-bottom: 8px; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ _('breast_cancer_detection') }}</title>
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #0f172a; --ink2: #475569; --ink3: #94a3b8;
+            --line: #e6ebf3; --bg: #f6f8fc; --card: #fff;
+            --brand: #4f46e5; --brand2: #7c3aed; --soft: #eef2ff;
+            --radius: 16px;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC",
+                         "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: var(--bg); color: var(--ink); -webkit-font-smoothing: antialiased;
+        }
+        a { color: inherit; text-decoration: none; }
 
-    .tumor-section {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-      margin-bottom: 32px;
-    }
+        /* ---------- 顶栏 ---------- */
+        .topbar {
+            position: sticky; top: 0; z-index: 40; background: rgba(255,255,255,.88);
+            backdrop-filter: blur(10px); border-bottom: 1px solid var(--line);
+        }
+        .topbar-inner {
+            max-width: 1280px; margin: 0 auto; padding: 0 28px; height: 62px;
+            display: flex; align-items: center; gap: 26px;
+        }
+        .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 14.5px; }
+        .logo-mark {
+            width: 32px; height: 32px; border-radius: 10px; display: grid; place-items: center;
+            color: #fff; background: linear-gradient(135deg, var(--brand), var(--brand2));
+        }
+        .navlinks { display: flex; gap: 4px; margin-left: 8px; }
+        .navlinks a {
+            padding: 7px 12px; border-radius: 9px; font-size: 13.5px; color: var(--ink2);
+            transition: .16s;
+        }
+        .navlinks a:hover { background: #f1f5f9; color: var(--ink); }
+        .navlinks a.active { background: var(--soft); color: var(--brand); font-weight: 600; }
 
-    .tumor-card {
-      padding: 28px;
-      border-radius: 16px;
-      position: relative;
-      overflow: hidden;
-      transition: all 0.3s ease;
-    }
-    .tumor-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
-    .tumor-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-    }
-    .tumor-benign {
-      background: linear-gradient(145deg, #ecfdf5 0%, #d1fae5 100%);
-      border: 1px solid #a7f3d0;
-    }
-    .tumor-benign::before { background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%); }
-    .tumor-malignant {
-      background: linear-gradient(145deg, #fef2f2 0%, #fecaca 100%);
-      border: 1px solid #fecaca;
-    }
-    .tumor-malignant::before { background: linear-gradient(135deg, #f472b6 0%, #ec4899 100%); }
-    .tumor-card h2 {
-      font-size: 1.5em;
-      font-weight: 700;
-      margin-bottom: 12px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .tumor-card p { color: #64748b; line-height: 1.8; margin: 0; }
+        .top-actions { margin-left: auto; display: flex; align-items: center; gap: 10px; }
 
+        .btn {
+            border: 0; border-radius: 10px; font-family: inherit; font-size: 13px;
+            font-weight: 600; cursor: pointer; padding: 9px 15px; transition: .16s;
+        }
+        .btn-primary { color: #fff; background: linear-gradient(135deg, var(--brand), var(--brand2));
+            box-shadow: 0 8px 20px -10px rgba(79,70,229,.9); }
+        .btn-primary:hover { transform: translateY(-1px); }
+        .btn-ghost { background: #fff; border: 1px solid var(--line); color: var(--ink2); }
+        .btn-ghost:hover { border-color: #c7d2fe; color: var(--brand); }
 
-    .btn-primary-gradient {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: #fff;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 10px;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-      text-decoration: none;
-    }
-    .btn-primary-gradient:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4); color: #fff; }
+        .user-menu { position: relative; }
+        .user-btn { display: flex; align-items: center; gap: 8px; }
+        .user-dropdown {
+            display: none; position: absolute; right: 0; top: 44px; width: 190px;
+            background: #fff; border: 1px solid var(--line); border-radius: 13px;
+            box-shadow: 0 18px 40px -22px rgba(15,23,42,.5); padding: 7px; z-index: 50;
+        }
+        .user-dropdown.open { display: block; }
+        .user-dropdown a, .user-dropdown div {
+            display: flex; align-items: center; gap: 9px; padding: 9px 11px;
+            border-radius: 9px; font-size: 13px; color: var(--ink2);
+        }
+        .user-dropdown a:hover { background: #f8fafc; color: var(--ink); }
 
-    .btn-secondary {
-      background: #fff;
-      color: #1e293b;
-      border: 1px solid #e2e8f0;
-      padding: 10px 20px;
-      border-radius: 10px;
-      font-weight: 500;
-      transition: all 0.3s ease;
-      text-decoration: none;
-    }
-    .btn-secondary:hover { background: #f8fafc; border-color: #cbd5e1; }
+        .lang-group { display: flex; gap: 2px; padding: 3px; background: #fff;
+            border: 1px solid var(--line); border-radius: 999px; }
+        .lang-group a, .lang-group span {
+            font-size: 11.5px; padding: 5px 11px; border-radius: 999px; color: var(--ink3);
+        }
+        .lang-group .active { background: var(--soft); color: var(--brand); font-weight: 600; }
 
-    .lang-switch-group {
-      display: flex;
-      gap: 4px;
-      background: #f1f5f9;
-      padding: 4px;
-      border-radius: 10px;
-    }
-    .lang-btn {
-      padding: 6px 14px;
-      border-radius: 6px;
-      font-size: 0.85em;
-      font-weight: 500;
-      text-decoration: none;
-      transition: all 0.2s ease;
-      color: #64748b;
-    }
-    .lang-btn:hover { color: #1e293b; }
-    .lang-btn.active { background: #fff; color: #1e293b; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        /* ---------- 主体 ---------- */
+        .page { max-width: 1280px; margin: 0 auto; padding: 26px 28px 80px; }
 
-    .main-container { max-width: 1400px; margin: 0 auto; padding: 32px 24px; }
+        .hero {
+            position: relative; overflow: hidden; border-radius: 20px; padding: 30px 34px;
+            margin-bottom: 22px; color: #fff;
+            background:
+                radial-gradient(700px 320px at 88% -10%, #a78bfa 0%, transparent 60%),
+                linear-gradient(120deg, #312e81 0%, #4c1d95 62%, #6d28d9 100%);
+        }
+        .hero::after {
+            content: ""; position: absolute; inset: 0;
+            background-image: linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+            mask-image: radial-gradient(circle at 70% 20%, #000, transparent 72%);
+        }
+        .hero > * { position: relative; z-index: 1; }
+        .hero h1 { font-size: clamp(22px, 2.4vw, 30px); letter-spacing: -.02em; line-height: 1.3; margin-bottom: 10px; }
+        .hero p { font-size: 14px; color: rgba(255,255,255,.72); max-width: 620px; line-height: 1.7; }
+        .hero-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+        .hero-tag {
+            font-size: 12px; padding: 5px 11px; border-radius: 999px;
+            background: rgba(255,255,255,.13); border: 1px solid rgba(255,255,255,.18);
+            color: rgba(255,255,255,.9);
+        }
 
-    .section-header { text-align: center; margin-bottom: 40px; }
-    .section-header h2 {
-      font-size: 2.2em;
-      font-weight: 800;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 12px;
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .section-header h2 i {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .section-header p { color: #64748b; font-size: 1.1em; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .workspace { display: grid; grid-template-columns: minmax(0, 1.62fr) minmax(0, 1fr); gap: 20px; }
 
-    .feature-card {
-      background: #fff;
-      border-radius: 16px;
-      padding: 24px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-      border: 1px solid #e2e8f0;
-      transition: all 0.3s ease;
-      height: 100%;
-    }
-    .feature-card:hover { transform: translateY(-4px); box-shadow: 0 12px 35px rgba(0,0,0,0.1); }
+        .card {
+            background: var(--card); border: 1px solid var(--line); border-radius: 18px;
+            box-shadow: 0 12px 34px -26px rgba(15,23,42,.5);
+        }
+        .form-card { padding: 24px; }
+        .card-head { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 18px; }
+        .card-head h2 { font-size: 17px; letter-spacing: -.01em; }
+        .card-head p { font-size: 12.5px; color: var(--ink3); margin-top: 4px; }
 
-    .feature-card-header {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      margin-bottom: 20px;
-      padding-bottom: 16px;
-      border-bottom: 2px solid #e2e8f0;
-    }
-    .feature-card-header.icon-mean { border-color: #667eea; }
-    .feature-card-header.icon-se { border-color: #f97316; }
-    .feature-card-header.icon-worst { border-color: #ec4899; }
+        .row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+        .col-md-4 { min-width: 0; }
+        .feature-card { background: #f9fbff; border: 1px solid #edf2fa; border-radius: 14px; padding: 14px; }
+        .feature-card-header { display: flex; align-items: center; gap: 9px; margin-bottom: 12px; }
+        .feature-card-header h4 { font-size: 13px; color: #334155; }
+        .icon-circle {
+            width: 30px; height: 30px; border-radius: 9px; display: grid; place-items: center;
+            font-size: 13px;
+        }
+        .icon-mean .icon-circle { background: linear-gradient(135deg, #6366f1, #4f46e5); }
+        .icon-se .icon-circle { background: linear-gradient(135deg, #0ea5e9, #0284c7); }
+        .icon-worst .icon-circle { background: linear-gradient(135deg, #a855f7, #7c3aed); }
 
-    .icon-circle {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      transition: transform 0.3s ease;
-    }
-    .feature-card:hover .icon-circle { transform: scale(1.1); }
-    .icon-mean { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
-    .icon-se { background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%); }
-    .icon-worst { background: linear-gradient(135deg, #f472b6 0%, #ec4899 100%); }
+        .feature-input {
+            width: 100%; height: 38px; padding: 0 11px; font-size: 13px; font-family: inherit;
+            color: var(--ink); background: #fff; border: 1px solid #e2e8f0; border-radius: 9px;
+            transition: border-color .16s, box-shadow .16s; margin-bottom: 8px;
+        }
+        .feature-input::placeholder { color: #b6c2d2; font-size: 12px; }
+        .feature-input:focus {
+            outline: none; border-color: var(--brand); box-shadow: 0 0 0 3px rgba(79,70,229,.1);
+        }
 
-    .feature-card h4 { font-weight: 700; color: #1e293b; margin: 0; font-size: 1.05em; }
+        .action-buttons { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
+        .action-btn {
+            height: 38px; border-radius: 10px; border: 1px solid var(--line); background: #fff;
+            color: var(--ink2); font-size: 12.5px; font-weight: 600; font-family: inherit;
+            cursor: pointer; transition: .16s; display: flex; align-items: center;
+            justify-content: center; gap: 6px;
+        }
+        .action-btn:hover { border-color: #c7d2fe; color: var(--brand); }
+        .primary-btn {
+            grid-column: 1 / -1; color: #fff; border: 0;
+            background: linear-gradient(135deg, var(--brand), var(--brand2));
+            box-shadow: 0 10px 22px -12px rgba(79,70,229,.9);
+        }
+        .primary-btn:hover { color: #fff; transform: translateY(-1px); }
 
-    .feature-input {
-      width: 100%;
-      padding: 12px 14px;
-      border: 2px solid #e2e8f0;
-      border-radius: 10px;
-      font-size: 0.9em;
-      transition: all 0.2s ease;
-      background: #fff;
-      margin-bottom: 10px;
-    }
-    .feature-input:focus { outline: none; border-color: #667eea; box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1); }
-    .feature-input::placeholder { color: #94a3b8; }
+        /* ---------- 右侧信息卡 ---------- */
+        .side { display: flex; flex-direction: column; gap: 18px; }
+        .tabs-card { padding: 20px; }
+        .tabs { display: flex; gap: 4px; background: #f4f7fc; padding: 4px; border-radius: 11px; margin-bottom: 16px; }
+        .tab-btn {
+            flex: 1; border: 0; background: transparent; padding: 8px 6px; border-radius: 8px;
+            font-size: 12.5px; color: var(--ink2); cursor: pointer; font-family: inherit; transition: .16s;
+        }
+        .tab-btn.active { background: #fff; color: var(--brand); font-weight: 600;
+            box-shadow: 0 2px 8px -4px rgba(15,23,42,.25); }
+        .tab-panel { display: none; }
+        .tab-panel.active { display: block; }
+        .tab-panel h3 { font-size: 14px; margin-bottom: 8px; }
+        .tab-panel p, .tab-panel li { font-size: 13px; line-height: 1.8; color: var(--ink2); }
+        .tab-panel ul { padding-left: 18px; margin-top: 6px; }
 
-    .action-buttons { display: grid; gap: 10px; margin-top: 20px; }
-    .action-btn {
-      width: 100%;
-      padding: 14px 20px;
-      border: none;
-      border-radius: 10px;
-      font-size: 0.9em;
-      font-weight: 600;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      transition: all 0.3s ease;
-    }
-    .primary-btn { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #fff; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3); }
-    .primary-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4); }
-    .secondary-btn { background: #f8fafc; color: #475569; border: 1px solid #e2e8f0; }
-    .secondary-btn:hover { background: #f1f5f9; transform: translateY(-1px); }
+        .stat-card { padding: 18px 20px; display: grid; gap: 12px; }
+        .stat-row { display: flex; align-items: baseline; justify-content: space-between; font-size: 13px; color: var(--ink2); }
+        .stat-row b { font-size: 16px; color: var(--ink); }
 
-    .prediction-section { animation: fadeInUp 0.6s ease; }
-    @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
-    /* 响应式设计 */
-    @media (max-width: 992px) {
-      .tumor-section { grid-template-columns: 1fr; }
-      .section-header h2 { font-size: 1.8em; }
-      
-      /* 导航栏响应式 */
-      .top-nav { padding: 0 16px; }
-      .top-nav .nav-links { display: none; }
-      .top-nav .nav-actions { gap: 8px; }
-      .top-nav .nav-logo .logo-text { display: none; }
-      .top-nav .user-menu .btn { padding: 8px 12px; font-size: 0.9em; }
-    }
-    @media (max-width: 768px) {
-      .main-container { padding: 20px 16px; }
-      .section-header h2 { font-size: 1.5em; }
-      .section-header p { font-size: 0.95em; }
-      .info-card .nav-tabs li a { padding: 12px 16px; font-size: 0.9em; }
-      .info-card .tab-content { padding: 20px; }
-      .feature-card { margin-bottom: 16px; }
-    }
-  </style>
+        @media (max-width: 1080px) {
+            .workspace { grid-template-columns: 1fr; }
+            .row { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 720px) {
+            .topbar-inner { padding: 0 16px; gap: 12px; }
+            .navlinks { display: none; }
+            .page { padding: 18px 16px 70px; }
+            .hero { padding: 22px; }
+            .row { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 <body>
-  <div class="page-loading" id="pageLoading"><div class="spinner"></div></div>
-  <a id="button"></a>
+<header class="topbar">
+    <div class="topbar-inner">
+        <a class="logo" href="/">
+            <span class="logo-mark">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9"
+                     stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 21s7-4.5 7-10a4 4 0 0 0-7-2.6A4 4 0 0 0 5 11c0 5.5 7 10 7 10z"/>
+                </svg>
+            </span>
+            {{ _('breast_cancer_detection') }}
+        </a>
 
-  <div class="top-nav">
-    <div class="nav-container">
-      <!-- Logo -->
-      <a href="/" class="nav-logo">
-        <div style="width: 40px; height: 40px; border-radius: 10px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center;">
-          <i class="fa fa-heart" style="color: #fff; font-size: 20px;"></i>
-        </div>
-        <span class="logo-text">{{ _('breast_cancer_detection') }}</span>
-      </a>
+        <nav class="navlinks">
+            <a class="active" href="/">{{ _('home') }}</a>
+            <a href="/records">{{ _('records') }}</a>
+            <a href="/batch">{{ _('batch') }}</a>
+            <a href="/trends">{{ _('trends') }}</a>
+        </nav>
 
-      <!-- 导航链接 -->
-      <div class="nav-links">
-        <a href="/" class="active"><i class="fa fa-home"></i> {{ _('home') }}</a>
-        <a href="/records"><i class="fa fa-history"></i> {{ _('records') }}</a>
-        <a href="/trends"><i class="fa fa-line-chart"></i> {{ _('trends') }}</a>
-        <a href="/batch"><i class="fa fa-upload"></i> {{ _('batch') }}</a>
-      </div>
+        <div class="top-actions">
+            {% if session.get('username') %}
+            <div class="user-menu">
+                <button class="btn btn-ghost user-btn" id="userMenu">
+                    <i class="fa fa-user-circle"></i> {{ session.get('username') }}
+                </button>
+                <div class="user-dropdown" id="userDropdown">
+                    <a href="/records"><i class="fa fa-history"></i> {{ _('records') }}</a>
+                    <a href="/trends"><i class="fa fa-line-chart"></i> {{ _('trends') }}</a>
+                    <a href="/batch"><i class="fa fa-upload"></i> {{ _('batch') }}</a>
+                    <a href="/logout"><i class="fa fa-sign-out"></i> {{ _('logout') }}</a>
+                </div>
+            </div>
+            {% else %}
+            <a href="/login" class="btn btn-primary">{{ _('login') }}</a>
+            <a href="/register" class="btn btn-ghost">{{ _('register') }}</a>
+            {% endif %}
 
-      <!-- 右侧操作区 -->
-      <div class="nav-actions">
-        {% if session.get('username') %}
-        <div class="user-menu">
-          <button id="userMenu" class="btn btn-default" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #fff; border: none; padding: 8px 16px; border-radius: 25px; font-weight: 600; display: flex; align-items: center; gap: 8px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 2px 10px rgba(102, 126, 234, 0.3);">
-            <i class="fa fa-user-circle"></i> {{ session.get('username') }}
-          </button>
-          <div id="userDropdown" class="user-dropdown">
-            <div><i class="fa fa-handshake-o"></i> {{ _('welcome') }}</div>
-            <a href="/records"><i class="fa fa-history"></i> {{ _('records') }}</a>
-            <a href="/trends"><i class="fa fa-line-chart"></i> {{ _('trends') }}</a>
-            <a href="/batch"><i class="fa fa-upload"></i> {{ _('batch') }}</a>
-            <div style="border-top: 1px solid #eee; margin: 4px 0;"></div>
-            <a href="/logout"><i class="fa fa-sign-out"></i> {{ _('logout') }}</a>
-          </div>
+            <div class="lang-group">
+                {% if is_chinese %}
+                <span class="active">{{ _('chinese') }}</span>
+                <a href="/set-lang/en">{{ _('english') }}</a>
+                {% else %}
+                <a href="/set-lang/zh">{{ _('chinese') }}</a>
+                <span class="active">{{ _('english') }}</span>
+                {% endif %}
+            </div>
         </div>
-        {% else %}
-        <a href="/login" class="btn-primary-gradient">{{ _('login') }}</a>
-        <a href="/register" class="btn-secondary">{{ _('register') }}</a>
-        {% endif %}
-        
-        <!-- 语言切换 -->
-        <div class="lang-switch-group">
-          {% if is_chinese %}
-          <span class="lang-btn active">{{ _('chinese') }}</span>
-          <a href="/set-lang/en" class="lang-btn">{{ _('english') }}</a>
-          {% else %}
-          <a href="/set-lang/zh" class="lang-btn">{{ _('chinese') }}</a>
-          <span class="lang-btn active">{{ _('english') }}</span>
-          {% endif %}
-        </div>
-      </div>
     </div>
-  </div>
+</header>
 
-  <div class="main-container">
-    <!-- 良恶性介绍 -->
-    <div class="tumor-section">
-      <div class="tumor-card tumor-benign">
-        <h2><i class="fa fa-check-circle" style="color: #22c55e;"></i> {{ _('benign') }}</h2>
-        <p>{{ _('benign') }}{{ _('tumor_description_benign') if is_chinese else ' tumors are harmless. Doctors usually choose observation rather than immediate removal. If you feel unwell or have a sense of pressure, please inform your doctor.' }}</p>
-      </div>
-      <div class="tumor-card tumor-malignant">
-        <h2><i class="fa fa-exclamation-triangle" style="color: #ef4444;"></i> {{ _('malignant') }}</h2>
-        <p>{{ _('malignant') }}{{ _('tumor_description_malignant') if is_chinese else ' tumors are invasive and can invade and destroy surrounding tissue. When a tumor is suspected to be malignant, the doctor will perform a biopsy to determine the severity.' }}</p>
-      </div>
-    </div>
-
-
-    <!-- AI悬浮按钮 -->
-    <div class="ai-float-btn hidden" id="ai-float-btn">
-      <div class="ai-delete-history" id="ai-delete-history" title="删除所有记录">&times;</div>
-      <i class="fa fa-heart"></i>
-    </div>
-
-    <!-- AI助手浮窗 -->
-    <div class="ai-card-dark" id="ai-card">
-      <div class="ai-header" id="ai-header">
-        <div class="ai-title">
-          <i class="fa fa-heart" style="margin-right: 10px; color: #ff6b9d;"></i>
-          <span>{{ _('pink_angel') }}</span>
+<main class="page">
+    <section class="hero">
+        <h1>把 30 项细胞核特征，变成一份说得清依据的判断</h1>
+        <p>输入特征后得到良恶性判断、校准后的置信度，以及一份能追溯到条款的解读；证据不够时，系统会明确告诉你。</p>
+        <div class="hero-tags">
+            <span class="hero-tag">30 项特征</span>
+            <span class="hero-tag">三档证据强度</span>
+            <span class="hero-tag">每次运行可回放</span>
+            <span class="hero-tag">仅供教学演示</span>
         </div>
-        <div style="display: flex;">
-          <button id="ai-close" class="ai-close-btn">&times;</button>
-        </div>
-      </div>
-      <p style="color: #8b9cb5; font-size: 0.9em; margin: 15px 20px;">{{ _('breast_cancer_knowledge') }}</p>
+    </section>
 
-      <!-- 响应区域 -->
-      <div id="ai-response" class="ai-response-dark">{{ _('ai_response_placeholder') }}</div>
+    <div class="workspace">
+        <section class="card form-card">
+            <div class="card-head">
+                <div>
+                    <h2>{{ _('breast_cancer_detection') }}</h2>
+                    <p>{{ _('enter_feature_values') }}</p>
+                </div>
+            </div>
 
-      <!-- 历史记录区域 -->
-      <div id="ai-history" class="ai-history">
-        <!-- 历史记录将动态加载 -->
-      </div>
-
-      <!-- 输入区域 -->
-      <div class="ai-input-area">
-        <textarea id="ai-prompt" class="ai-textarea-dark" placeholder="{{ _('ai_placeholder') }}"></textarea>
-        <div class="ai-actions">
-          <button id="ai-send" class="ai-send-btn"><i class="fa fa-paper-plane"></i> {{ _('send') }}</button>
-          <button id="ai-clear" class="ai-clear-btn"><i class="fa fa-trash"></i></button>
-        </div>
-      </div>
-
-      <!-- 调整大小手柄 -->
-      <div class="ai-resize-handle" id="ai-resize-handle"></div>
-    </div>
-
-    <!-- 信息卡片 -->
-    <div class="info-card">
-      <ul class="nav nav-tabs">
-        <li class="active"><a data-toggle="tab" href="#what"><i class="fa fa-question-circle"></i> {{ _('what_is_breast_cancer') }}</a></li>
-        <li><a data-toggle="tab" href="#who"><i class="fa fa-users"></i> {{ _('who_gets_breast_cancer') }}</a></li>
-        <li><a data-toggle="tab" href="#symptoms"><i class="fa fa-stethoscope"></i> {{ _('symptoms') }}</a></li>
-      </ul>
-      <div class="tab-content">
-        <div id="what" class="tab-pane fade in active">
-          <h3>{{ _('what_is_breast_cancer') }}</h3>
-          <p>{{ _('what_is_breast_cancer_description') }}</p>
-        </div>
-        <div id="who" class="tab-pane fade">
-          <h3>{{ _('who_gets_breast_cancer') }}</h3>
-          <p>{{ _('who_gets_breast_cancer_description') }}</p>
-        </div>
-        <div id="symptoms" class="tab-pane fade">
-          <h3>{{ _('breast_cancer_symptoms') }}:</h3>
-          <ul>
-            <li>{{ _('symptom_lump') }}</li>
-            <li>{{ _('symptom_size_change') }}</li>
-            <li>{{ _('symptom_discharge') }}</li>
-            <li>{{ _('symptom_skin_indentation') }}</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="prediction-section">
-      <div class="section-header">
-        <h2>
-          <i class="fa fa-heartbeat"></i>
-          {{ _('breast_cancer_detection') }}
-        </h2>
-        <p><i class="fa fa-info-circle"></i> {{ _('enter_feature_values') }}</p>
-      </div>
-      
-      <form action="/predict" method="POST" id="prediction-form">
+            <form action="/predict" method="POST" id="prediction-form">
         <div class="row">
           <div class="col-md-4">
             <div class="feature-card">
@@ -1016,708 +329,108 @@
           </div>
         </div>
       </form>
+        </section>
+
+        <aside class="side">
+            <section class="card tabs-card">
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="what">{{ _('what_is_breast_cancer') }}</button>
+                    <button class="tab-btn" data-tab="who">{{ _('who_gets_breast_cancer') }}</button>
+                    <button class="tab-btn" data-tab="symptoms">{{ _('symptoms') }}</button>
+                </div>
+                <div class="tab-panel active" id="tab-what">
+                    <h3>{{ _('what_is_breast_cancer') }}</h3>
+                    <p>{{ _('what_is_breast_cancer_description') }}</p>
+                </div>
+                <div class="tab-panel" id="tab-who">
+                    <h3>{{ _('who_gets_breast_cancer') }}</h3>
+                    <p>{{ _('who_gets_breast_cancer_description') }}</p>
+                </div>
+                <div class="tab-panel" id="tab-symptoms">
+                    <h3>{{ _('breast_cancer_symptoms') }}</h3>
+                    <ul>
+                        <li>{{ _('symptom_lump') }}</li>
+                        <li>{{ _('symptom_size_change') }}</li>
+                        <li>{{ _('symptom_discharge') }}</li>
+                        <li>{{ _('symptom_skin_indentation') }}</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="card stat-card">
+                <div class="stat-row"><span>模型输入维度</span><b>30</b></div>
+                <div class="stat-row"><span>证据分档</span><b>3 档</b></div>
+                <div class="stat-row"><span>可追溯条款</span><b>152 条</b></div>
+                <div class="stat-row"><span>结果保存</span><b>自动</b></div>
+            </section>
+        </aside>
     </div>
-  </div>
+</main>
 
-  <script>
-    // 使用requestAnimationFrame确保加载动画及时隐藏
-    function hideLoading() {
-      var loadingEl = document.getElementById('pageLoading');
-      if (loadingEl) {
-        loadingEl.style.opacity = '0';
-        setTimeout(function() {
-          loadingEl.style.display = 'none';
-        }, 500);
-      }
-    }
-    
-    // 多种方式确保加载动画能被隐藏
-    document.addEventListener('DOMContentLoaded', function() {
-      requestAnimationFrame(hideLoading);
+{% include '_assistant.html' %}
+
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+    window.getAgentValues = function () {
+        var values = [];
+        for (var i = 1; i <= 30; i++) {
+            var raw = $('input[name="value' + i + '"]').val();
+            var num = parseFloat(raw);
+            if (raw === '' || isNaN(num)) { return null; }
+            values.push(num);
+        }
+        return values;
+    };
+
+    $(function () {
+        $('.tab-btn').on('click', function () {
+            var tab = $(this).data('tab');
+            $('.tab-btn').removeClass('active');
+            $(this).addClass('active');
+            $('.tab-panel').removeClass('active');
+            $('#tab-' + tab).addClass('active');
+        });
+
+        $('#userMenu').on('click', function (e) {
+            e.stopPropagation();
+            $('#userDropdown').toggleClass('open');
+        });
+        $(document).on('click', function () { $('#userDropdown').removeClass('open'); });
+
+        var SAMPLE = {1:'11.84',2:'18.94',3:'75.51',4:'428',5:'0.0887',6:'0.069',7:'0.0267',8:'0.0139',
+            9:'0.1533',10:'0.0606',11:'0.2222',12:'0.8652',13:'1.444',14:'17.12',15:'0.0055',16:'0.0173',
+            17:'0.0204',18:'0.0067',19:'0.0162',20:'0.0029',21:'13.3',22:'24.99',23:'85.22',24:'546.3',
+            25:'0.128',26:'0.188',27:'0.1471',28:'0.0691',29:'0.2535',30:'0.0799'};
+
+        $('#load-sample').on('click', function () {
+            for (var i = 1; i <= 30; i++) { $('input[name="value' + i + '"]').val(SAMPLE[i]); }
+        });
+
+        $('#random-sample').on('click', function () {
+            var btn = $(this);
+            var old = btn.html();
+            btn.prop('disabled', true).html('<i class="fa fa-spinner fa-spin"></i> 取样本中');
+            fetch('/api/samples/random').then(function (r) { return r.json(); }).then(function (d) {
+                if (!d.ok) { throw new Error(d.error || '取样本失败'); }
+                for (var i = 0; i < d.features.length; i++) {
+                    $('input[name="value' + (i + 1) + '"]').val(d.features[i]);
+                }
+            }).catch(function (err) {
+                alert(err.message || '取样本失败');
+            }).then(function () {
+                btn.prop('disabled', false).html(old);
+            });
+        });
+
+        $('#clear-form').on('click', function () {
+            $('.feature-input').val('');
+        });
+
+        $('#prediction-form').on('submit', function () {
+            var btn = $(this).find('.primary-btn');
+            btn.prop('disabled', true).html('<i class="fa fa-spinner fa-spin"></i> 分析中…');
+        });
     });
-    
-    window.addEventListener('load', hideLoading);
-    
-    // 最大超时时间，确保即使其他事件都没触发也能隐藏
-    setTimeout(hideLoading, 3000);
-  </script>
-  
-  <!-- 必须在jQuery代码之前加载jQuery库 -->
-  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  
-  <script>
-    $(document).ready(function() {
-      // 初始状态显示悬浮按钮，隐藏AI卡片（浮窗模式）
-      var floatBtn = $('#ai-float-btn');
-      var aiCard = $('#ai-card');
-      
-      // 确保初始状态为浮窗模式：显示悬浮按钮，隐藏AI卡片
-      floatBtn.removeClass('hidden').addClass('show');
-      aiCard.hide();
-
-      $(window).scroll(function() { if ($(this).scrollTop() > 300) { $('#button').addClass('show'); } else { $('#button').removeClass('show'); } });
-      $('#button').click(function() { $('html, body').animate({ scrollTop: 0 }, 'smooth'); return false; });
-
-      $('#userMenu').click(function(e) {
-        e.stopPropagation();
-        var dropdown = $('#userDropdown');
-        dropdown.toggle();
-        
-        if (dropdown.is(':visible')) {
-          var dropdownWidth = dropdown.outerWidth();
-          var menuOffset = $('.user-menu').offset();
-          var menuWidth = $('.user-menu').outerWidth();
-          var windowWidth = $(window).width();
-          
-          var rightOffset = windowWidth - (menuOffset.left + menuWidth);
-          if (dropdownWidth > rightOffset) {
-            dropdown.css('right', 'auto');
-            dropdown.css('left', '0');
-          } else {
-            dropdown.css('right', '0');
-            dropdown.css('left', 'auto');
-          }
-        }
-      });
-      $(document).click(function(e) { if (!$(e.target).closest('.user-menu').length) { $('#userDropdown').hide(); } });
-
-
-      $(document).on('click', '#load-sample', function() {
-        var s = {1:'11.84',2:'18.94',3:'75.51',4:'428',5:'0.0887',6:'0.069',7:'0.0267',8:'0.0139',9:'0.1533',10:'0.0606',11:'0.2222',12:'0.8652',13:'1.444',14:'17.12',15:'0.0055',16:'0.0173',17:'0.0204',18:'0.0067',19:'0.0162',20:'0.0029',21:'13.3',22:'24.99',23:'85.22',24:'546.3',25:'0.128',26:'0.188',27:'0.1471',28:'0.0691',29:'0.2535',30:'0.0799'};
-        for (var i = 1; i <= 30; i++) { $('input[name="value' + i + '"]').val(s[i]); }
-      });
-
-      // 延迟初始化随机样本生成函数（页面加载后1秒执行）
-      var initRandomSample = function() {
-        // 从后端随机取一条真实样本：保证 30 维特征之间的相关性不被破坏，
-        // 否则拼出来的向量不是"病人"，会被判定为偏离分布。
-        $(document).on('click', '#random-sample', function() {
-          var btn = $(this);
-          var label = btn.data('label') || '';
-          btn.prop('disabled', true);
-
-          fetch('/api/samples/random' + (label ? ('?label=' + encodeURIComponent(label)) : ''))
-            .then(function(resp) { return resp.json(); })
-            .then(function(data) {
-              if (!data.ok) { throw new Error(data.error || '取样本失败'); }
-              data.features.forEach(function(value, i) {
-                $('input[name="value' + (i + 1) + '"]').val(value);
-              });
-            })
-            .catch(function(err) {
-              alert('获取随机样本失败：' + err.message);
-            })
-            .then(function() { btn.prop('disabled', false); });
-        });
-      };
-
-      // 页面加载后延迟1秒初始化随机样本生成功能
-      setTimeout(initRandomSample, 1000);
-
-      $(document).on('click', '#clear-form', function() { $('input[type="text"]').val(''); });
-
-      var aiPlaceholder = '{{ _("ai_response_placeholder") }}';
-      var aiHistory = [];
-      
-      $('#ai-clear').click(function() { 
-        $('#ai-prompt').val(''); 
-        $('#ai-response').html(aiPlaceholder); 
-      });
-      
-      // 最小化按钮（点击❌缩小化浮窗，显示悬浮按钮）
-      $(document).on('click', '#ai-close', function() {
-        var aiCard = $('#ai-card');
-        var floatBtn = $('#ai-float-btn');
-        
-        // 隐藏AI卡片
-        aiCard.hide();
-        
-        // 获取AI卡片关闭前的位置，用于设置悬浮按钮位置
-        var cardLeft = parseFloat(aiCard.css('left')) || 0;
-        var cardTop = parseFloat(aiCard.css('top')) || 0;
-        var cardWidth = aiCard.width() || 400;
-        var cardHeight = aiCard.height() || 500;
-        var btnWidth = floatBtn.width() || 60;
-        var btnHeight = floatBtn.height() || 60;
-        
-        // 将悬浮按钮定位到AI卡片左下角
-        var btnX = cardLeft;
-        var btnY = cardTop + cardHeight - btnHeight;
-        
-        // 确保悬浮按钮在可视区域内
-        var windowWidth = $(window).width();
-        var windowHeight = $(window).height();
-        
-        // 限制在可视区域内
-        btnX = Math.max(0, Math.min(btnX, windowWidth - btnWidth));
-        btnY = Math.max(0, Math.min(btnY, windowHeight - btnHeight));
-        
-        // 显示悬浮按钮，保持在关闭前的位置附近
-        floatBtn.removeClass('hidden').addClass('show');
-        floatBtn.css({
-          'display': 'flex',
-          'opacity': '1',
-          'visibility': 'visible',
-          'position': 'fixed',
-          'left': btnX + 'px',
-          'top': btnY + 'px',
-          'right': 'auto',
-          'bottom': 'auto',
-          'z-index': '9999'
-        });
-        
-        // 保存位置到localStorage
-        localStorage.setItem('aiFloatBtnPosition', JSON.stringify({ x: btnX, y: btnY }));
-      });
-      
-      // 悬浮按钮拖拽状态标记
-      var floatBtnJustDragged = false;
-      var mouseMovedDistance = 0; // 记录鼠标移动距离
-      
-      // 悬浮按钮点击显示浮窗
-      $(document).on('click', '#ai-float-btn', function(e) {
-        // 点击删除按钮不触发
-        if ($(e.target).hasClass('ai-delete-history')) {
-          return;
-        }
-        
-        // 如果移动距离超过5px，认为是拖拽，不触发点击
-        if (mouseMovedDistance > 5) {
-          mouseMovedDistance = 0; // 重置距离
-          floatBtnJustDragged = false;
-          return;
-        }
-        
-        var floatBtn = $('#ai-float-btn');
-        var aiCard = $('#ai-card');
-        
-        // 获取悬浮按钮的位置
-        var btnLeft = parseFloat(floatBtn.css('left')) || 0;
-        var btnTop = parseFloat(floatBtn.css('top')) || 0;
-        
-        // 设置AI卡片位置，在悬浮按钮左侧显示
-        var cardWidth = aiCard.width() || 400;
-        var cardHeight = aiCard.height() || 500;
-        var btnWidth = floatBtn.width() || 60;
-        
-        // 计算AI卡片位置（在悬浮按钮左侧）
-        var cardX = btnLeft - cardWidth - 10;
-        var cardY = btnTop;
-        
-        // 确保AI卡片在可视区域内
-        var windowWidth = $(window).width();
-        var windowHeight = $(window).height();
-        
-        // 如果左侧空间不够，显示在右侧
-        if (cardX < 0) {
-          cardX = btnLeft + btnWidth + 10;
-        }
-        
-        // 如果顶部空间不够，调整Y位置
-        if (cardY + cardHeight > windowHeight) {
-          cardY = windowHeight - cardHeight - 20;
-        }
-        
-        // 设置AI卡片位置
-        aiCard.css({
-          left: cardX + 'px',
-          top: cardY + 'px',
-          right: 'auto',
-          bottom: 'auto'
-        });
-        
-        // 直接设置CSS隐藏悬浮按钮
-        floatBtn.removeClass('show').addClass('hidden');
-        floatBtn.css('display', 'none');
-        
-        // 显示AI卡片
-        aiCard.show();
-      });
-      
-      // 悬浮按钮拖拽功能
-      var isFloatDragging = false;
-      var floatStartPos = { x: 0, y: 0 };
-      var floatStartMouse = { x: 0, y: 0 };
-      var floatBtn = $('#ai-float-btn');
-      
-      // 加载保存的位置
-      var savedPos = localStorage.getItem('aiFloatBtnPosition');
-      if (savedPos) {
-        var pos = JSON.parse(savedPos);
-        
-        // 确保位置在可视区域内
-        var windowWidth = $(window).width();
-        var windowHeight = $(window).height();
-        var btnWidth = floatBtn.width() || 60;
-        var btnHeight = floatBtn.height() || 60;
-        
-        // 限制位置在可视区域内
-        var safeX = Math.max(0, Math.min(pos.x, windowWidth - btnWidth));
-        var safeY = Math.max(0, Math.min(pos.y, windowHeight - btnHeight));
-        
-        floatBtn.css({
-          left: safeX + 'px',
-          bottom: 'auto',
-          right: 'auto',
-          top: safeY + 'px'
-        });
-      }
-      
-      // 拖拽开始
-      floatBtn.mousedown(function(e) {
-        if ($(e.target).hasClass('ai-delete-history')) {
-          return; // 点击删除按钮不触发拖拽
-        }
-        isFloatDragging = true;
-        mouseMovedDistance = 0; // 重置移动距离
-        // 使用 position() 而不是 offset()，因为按钮是 fixed 定位
-        floatStartPos = {
-          x: parseFloat(floatBtn.css('left')) || 0,
-          y: parseFloat(floatBtn.css('top')) || 0
-        };
-        // 如果没有设置过 left/top（使用默认的 bottom/right），则计算当前位置
-        if (floatStartPos.x === 0 && floatStartPos.y === 0) {
-          floatStartPos = {
-            x: floatBtn.offset().left,
-            y: floatBtn.offset().top - $(window).scrollTop()
-          };
-        }
-        floatStartMouse = {
-          x: e.clientX,
-          y: e.clientY
-        };
-        floatBtn.addClass('dragging').addClass('drag-start');
-        
-        // 移除动画类
-        setTimeout(function() {
-          floatBtn.removeClass('drag-start');
-        }, 300);
-        
-        e.preventDefault();
-        e.stopPropagation();
-      });
-      
-      // 拖拽中
-      $(document).mousemove(function(e) {
-        if (isFloatDragging) {
-          var dx = e.clientX - floatStartMouse.x;
-          var dy = e.clientY - floatStartMouse.y;
-          
-          // 累加移动距离
-          mouseMovedDistance += Math.abs(dx) + Math.abs(dy);
-          
-          var newX = floatStartPos.x + dx;
-          var newY = floatStartPos.y + dy;
-          
-          // 限制在可视区域内
-          var windowWidth = $(window).width();
-          var windowHeight = $(window).height();
-          var btnWidth = floatBtn.width();
-          var btnHeight = floatBtn.height();
-          
-          newX = Math.max(0, Math.min(newX, windowWidth - btnWidth));
-          newY = Math.max(0, Math.min(newY, windowHeight - btnHeight));
-          
-          floatBtn.css({
-            left: newX + 'px',
-            top: newY + 'px',
-            bottom: 'auto',
-            right: 'auto'
-          });
-        }
-      });
-      
-      // 拖拽结束
-      $(document).mouseup(function() {
-        if (isFloatDragging) {
-          isFloatDragging = false;
-          floatBtnJustDragged = true; // 标记刚刚完成拖拽
-          floatBtn.removeClass('dragging').addClass('drag-end');
-          
-          // 保存位置到localStorage（使用相对于视口的位置，因为是fixed定位）
-          var pos = {
-            x: parseFloat(floatBtn.css('left')) || 0,
-            y: parseFloat(floatBtn.css('top')) || 0
-          };
-          localStorage.setItem('aiFloatBtnPosition', JSON.stringify(pos));
-          
-          // 移除动画类
-          setTimeout(function() {
-            floatBtn.removeClass('drag-end');
-          }, 400);
-        }
-      });
-      
-      // 触摸设备支持
-      floatBtn.on('touchstart', function(e) {
-        if ($(e.target).hasClass('ai-delete-history')) {
-          return;
-        }
-        var touch = e.touches[0];
-        isFloatDragging = true;
-        floatStartPos = {
-          x: floatBtn.offset().left,
-          y: floatBtn.offset().top
-        };
-        floatStartMouse = {
-          x: touch.clientX,
-          y: touch.clientY
-        };
-        floatBtn.addClass('dragging').addClass('drag-start');
-        
-        setTimeout(function() {
-          floatBtn.removeClass('drag-start');
-        }, 300);
-        
-        e.preventDefault();
-      });
-      
-      $(document).on('touchmove', function(e) {
-        if (isFloatDragging) {
-          var touch = e.touches[0];
-          var dx = touch.clientX - floatStartMouse.x;
-          var dy = touch.clientY - floatStartMouse.y;
-          var newX = floatStartPos.x + dx;
-          var newY = floatStartPos.y + dy;
-          
-          var windowWidth = $(window).width();
-          var windowHeight = $(window).height();
-          var btnWidth = floatBtn.width();
-          var btnHeight = floatBtn.height();
-          
-          newX = Math.max(0, Math.min(newX, windowWidth - btnWidth));
-          newY = Math.max(0, Math.min(newY, windowHeight - btnHeight));
-          
-          floatBtn.css({
-            left: newX + 'px',
-            top: newY + 'px',
-            bottom: 'auto',
-            right: 'auto'
-          });
-        }
-      });
-      
-      $(document).on('touchend', function() {
-        if (isFloatDragging) {
-          isFloatDragging = false;
-          floatBtn.removeClass('dragging').addClass('drag-end');
-          
-          var finalPos = floatBtn.offset();
-          localStorage.setItem('aiFloatBtnPosition', JSON.stringify({
-            x: finalPos.left,
-            y: finalPos.top
-          }));
-          
-          setTimeout(function() {
-            floatBtn.removeClass('drag-end');
-          }, 400);
-        }
-      });
-      
-      // 删除AI询问记录功能
-      $('#ai-delete-history').click(function(e) {
-        e.stopPropagation();
-        if (confirm('确定要删除所有AI询问记录吗？')) {
-          $.ajax({
-            url: '/clear-ai-history',
-            type: 'POST',
-            success: function(response) {
-              aiHistory = [];
-              $('#ai-history').html('');
-              alert('记录已删除');
-            },
-            error: function() {
-              alert('删除失败');
-            }
-          });
-        }
-      });
-      
-      // 拖动功能
-      var isDragging = false;
-      var startPos = { x: 0, y: 0 };
-      var startMouse = { x: 0, y: 0 };
-      
-      $('#ai-header').mousedown(function(e) {
-        isDragging = true;
-        startPos = {
-          x: $('#ai-card').offset().left,
-          y: $('#ai-card').offset().top
-        };
-        startMouse = {
-          x: e.clientX,
-          y: e.clientY
-        };
-        $('#ai-card').addClass('dragging');
-      });
-      
-      $(document).mousemove(function(e) {
-        if (isDragging) {
-          var dx = e.clientX - startMouse.x;
-          var dy = e.clientY - startMouse.y;
-          var newX = startPos.x + dx;
-          var newY = startPos.y + dy;
-          
-          // 限制在窗口范围内
-          var maxX = $(window).width() - $('#ai-card').width();
-          var maxY = $(window).height() - $('#ai-card').height();
-          newX = Math.max(0, Math.min(newX, maxX));
-          newY = Math.max(0, Math.min(newY, maxY));
-          
-          $('#ai-card').css({
-            left: newX + 'px',
-            top: newY + 'px',
-            right: 'auto',
-            bottom: 'auto'
-          });
-        }
-      });
-      
-      $(document).mouseup(function() {
-        isDragging = false;
-        $('#ai-card').removeClass('dragging');
-      });
-      
-      // 调整大小功能
-      var isResizing = false;
-      var startSize = { width: 0, height: 0 };
-      var resizeStartMouse = { x: 0, y: 0 };
-      
-      $('#ai-resize-handle').mousedown(function(e) {
-        isResizing = true;
-        startSize = {
-          width: $('#ai-card').width(),
-          height: $('#ai-card').height()
-        };
-        resizeStartMouse = {
-          x: e.clientX,
-          y: e.clientY
-        };
-        $('#ai-card').addClass('resizing');
-        e.stopPropagation();
-      });
-      
-      $(document).mousemove(function(e) {
-        if (isResizing) {
-          var dx = e.clientX - resizeStartMouse.x;
-          var dy = e.clientY - resizeStartMouse.y;
-          var newWidth = startSize.width + dx;
-          var newHeight = startSize.height + dy;
-          
-          // 限制大小范围
-          var minWidth = 350;
-          var maxWidth = 600;
-          var minHeight = 400;
-          var maxHeight = 700;
-          
-          newWidth = Math.max(minWidth, Math.min(newWidth, maxWidth));
-          newHeight = Math.max(minHeight, Math.min(newHeight, maxHeight));
-          
-          $('#ai-card').css({
-            width: newWidth + 'px',
-            height: newHeight + 'px'
-          });
-        }
-      });
-      
-      $(document).mouseup(function() {
-        isResizing = false;
-        $('#ai-card').removeClass('resizing');
-      });
-
-      // 加载历史记录
-      function loadHistory() {
-        var historyData = localStorage.getItem('ai_history');
-        if (historyData) {
-          aiHistory = JSON.parse(historyData);
-          renderHistory();
-        }
-      }
-      
-      // 保存历史记录
-      function saveHistory() {
-        localStorage.setItem('ai_history', JSON.stringify(aiHistory));
-      }
-      
-      // 渲染历史记录
-      function renderHistory() {
-        var historyHtml = '';
-        if (aiHistory.length > 0) {
-          // 添加头部
-          historyHtml += '<div class="ai-history-header">' +
-            '<label class="ai-select-all">' +
-            '<input type="checkbox" id="ai-select-all-checkbox">' +
-            '<span>' + '{{ _("select_all") }}' + '</span>' +
-            '</label>' +
-            '<span class="ai-history-title">' + '{{ _("history") }}' + '</span>' +
-            '<button class="ai-delete-selected-btn" id="ai-delete-selected" style="display:none;">' + '{{ _("delete_selected") }}' + '</button>' +
-            '</div>';
-            
-          $.each(aiHistory.slice(-15), function(index, item) {
-            var time = new Date(item.time);
-            var timeStr = time.toLocaleTimeString();
-            var itemIndex = aiHistory.length - 1 - (aiHistory.slice(-15).length - 1 - index);
-            historyHtml += '<div class="ai-history-item" data-index="' + itemIndex + '" data-question="' + encodeURIComponent(item.question) + '">' +
-              '<input type="checkbox" class="ai-history-checkbox" data-index="' + itemIndex + '">' +
-              '<div class="ai-history-avatar"><i class="fa fa-history"></i></div>' +
-              '<div class="ai-history-content">' +
-              '<div class="ai-history-question">' + item.question + '</div>' +
-              '<div class="ai-history-time">' + timeStr + '</div>' +
-              '</div></div>';
-          });
-        }
-        $('#ai-history').html(historyHtml);
-        
-        // 全选功能
-        $('#ai-select-all-checkbox').click(function(e) {
-          e.stopPropagation();
-          var isChecked = $(this).prop('checked');
-          $('.ai-history-checkbox').prop('checked', isChecked);
-          $('.ai-history-item').toggleClass('selected', isChecked);
-          updateDeleteButton();
-        });
-        
-        // 点击选择框切换选中状态
-        $('.ai-history-checkbox').click(function(e) {
-          e.stopPropagation();
-          var $item = $(this).closest('.ai-history-item');
-          $item.toggleClass('selected');
-          updateDeleteButton();
-          // 更新全选框状态
-          var allChecked = $('.ai-history-checkbox:checked').length === $('.ai-history-checkbox').length;
-          $('#ai-select-all-checkbox').prop('checked', allChecked);
-        });
-        
-        // 点击历史记录重新提问（点击选择框除外）
-        $('.ai-history-item').click(function(e) {
-          if (!$(e.target).hasClass('ai-history-checkbox')) {
-            var question = decodeURIComponent($(this).data('question'));
-            var index = parseInt($(this).data('index'));
-            
-            $('#ai-prompt').val(question);
-            
-            // 如果历史记录中有保存的回答，直接显示
-            if (aiHistory[index] && aiHistory[index].answer) {
-              $('#ai-response').html(aiHistory[index].answer.replace(/\n/g, '<br>'));
-            } else {
-              // 否则重新调用AI获取回答
-              $('#ai-send').click();
-            }
-          }
-        });
-        
-        // 删除所选按钮事件
-        $('#ai-delete-selected').click(function() {
-          var selectedIndices = [];
-          $('.ai-history-checkbox:checked').each(function() {
-            selectedIndices.push(parseInt($(this).data('index')));
-          });
-          
-          if (selectedIndices.length === 0) {
-            alert('{{ _("please_select_items") }}');
-            return;
-          }
-          
-          if (confirm('{{ _("confirm_delete_selected") }}')) {
-            // 按索引从大到小删除
-            selectedIndices.sort(function(a, b) { return b - a; });
-            for (var i = 0; i < selectedIndices.length; i++) {
-              aiHistory.splice(selectedIndices[i], 1);
-            }
-            saveHistory();
-            renderHistory();
-            updateDeleteButton();
-          }
-        });
-      }
-      
-      // 更新删除按钮显示状态
-      function updateDeleteButton() {
-        var selectedCount = $('.ai-history-checkbox:checked').length;
-        if (selectedCount > 0) {
-          $('#ai-delete-selected').show();
-          $('#ai-delete-selected').text('{{ _("delete_selected") }} (' + selectedCount + ')');
-        } else {
-          $('#ai-delete-selected').hide();
-        }
-      }
-
-      var sendText = '{{ _("send") }}';
-      var sendingText = '{{ _("sending") }}';
-      var thinkingText = '{{ _("ai_thinking") }}';
-      var errorText = '{{ _("ai_error") }}';
-
-      $('#ai-send').click(function() {
-        var prompt = $('#ai-prompt').val().trim();
-        if (!prompt) { alert('{{ _("please_enter_question") }}'); return; }
-        $('#ai-send').prop('disabled', true).html('<i class="fa fa-spinner fa-spin"></i> ' + sendingText);
-        $('#ai-response').html('<p style="color: #64748b; text-align: center;">' + thinkingText + '...</p>');
-        
-        // 添加到历史记录
-        aiHistory.push({
-          question: prompt,
-          time: Date.now()
-        });
-        saveHistory();
-        renderHistory();
-        
-        $.ajax({
-          url: '/ai-query', 
-          method: 'POST', 
-          contentType: 'application/json',
-          data: JSON.stringify({ prompt: prompt, skip_cache: true, lang: '{{ current_lang }}' }),
-          success: function(res) {
-            if (res.answer) { 
-              $('#ai-response').html(res.answer.replace(/\n/g, '<br>')); 
-              // 更新历史记录，添加回答内容
-              if (aiHistory.length > 0) {
-                aiHistory[aiHistory.length - 1].answer = res.answer;
-                saveHistory();
-              }
-            }
-            else if (res.error) { 
-              $('#ai-response').html('<span style="color: #ef4444;">' + res.error + '</span>'); 
-            }
-          },
-          error: function() { 
-            $('#ai-response').html('<span style="color: #ef4444;">' + errorText + '</span>'); 
-          },
-          complete: function() { 
-            $('#ai-send').prop('disabled', false).html('<i class="fa fa-paper-plane"></i> ' + sendText); 
-          }
-        });
-      });
-
-      // 页面加载时加载历史记录
-      loadHistory();
-
-      // 定期检查用户状态（每30秒）
-      var userStatusCheckInterval = setInterval(function() {
-        $.ajax({
-          url: '/check-user-status',
-          type: 'GET',
-          success: function(response) {
-            if (response.status === 'disabled') {
-              // 用户已被禁用，清除session并重定向到登录页
-              clearInterval(userStatusCheckInterval);
-              alert('您的账号已被禁用');
-              window.location.href = '/login';
-            }
-          },
-          error: function() {
-            // 网络错误或其他问题，不做处理
-          }
-        });
-      }, 30000); // 每30秒检查一次
-
-      // 页面卸载时清除定时器
-      $(window).on('beforeunload', function() {
-        clearInterval(userStatusCheckInterval);
-      });
-
-      $('.nav-tabs a').click(function(e) { e.preventDefault(); var tabId = $(this).attr('href'); $('.nav-tabs li').removeClass('active'); $('.tab-pane').removeClass('active in'); $(this).parent('li').addClass('active'); $(tabId).addClass('active in'); });
-    });
-  </script>
+</script>
 </body>
 </html>
