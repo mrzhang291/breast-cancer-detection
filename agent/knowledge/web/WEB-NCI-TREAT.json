@@ -3211,7 +3211,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "内分泌治疗与CDK抑制剂治疗",
+  "summary_zh": "瑞博西利联合内分泌治疗可改善生存，但中性粒细胞减少、肝胆毒性及QTcF延长等不良反应发生率较高。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-202",
@@ -3225,7 +3227,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "内分泌治疗与CDK抑制剂治疗",
+  "summary_zh": "瑞博西利疗效优于对照并跨越预设优效界值，3-4级中性粒细胞减少及QTcF延长发生率高于安慰剂组。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-203",
@@ -3239,7 +3243,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "内分泌治疗与CDK抑制剂治疗",
+  "summary_zh": "瑞博西利疗效跨越预设优效界值，各亚组结果一致，主要不良事件为中性粒细胞减少和QTcF延长。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-204",
@@ -3253,7 +3259,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "内分泌治疗与CDK抑制剂治疗",
+  "summary_zh": "瑞博西利联合方案显示生存获益，但3-4级中性粒细胞减少及QTcF延长发生率明显高于安慰剂组。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-205",
@@ -3267,7 +3275,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "内分泌治疗与CDK抑制剂治疗",
+  "summary_zh": "阿贝西利总生存差异无统计学意义，其不良反应谱与其他CDK4/6抑制剂不同，腹泻最常见但多为1级。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-206",
@@ -3281,7 +3291,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "内分泌治疗与CDK抑制剂治疗",
+  "summary_zh": "阿贝西利总生存差异无统计学意义，不良反应谱独特，腹泻最常见且多为1级，中性粒细胞减少较常见。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-207",
@@ -3295,7 +3307,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "内分泌治疗与CDK抑制剂治疗",
+  "summary_zh": "PALOMA-3研究显示哌柏西利联合氟维司群可显著延长既往内分泌治疗进展患者的无进展生存期。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-208",
@@ -3309,7 +3323,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "内分泌治疗与CDK抑制剂治疗",
+  "summary_zh": "哌柏西利组血细胞减少更常见但发热性中性粒细胞减少罕见，总生存差异未达统计学意义。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-209",
@@ -3323,7 +3339,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "内分泌治疗与CDK抑制剂治疗",
+  "summary_zh": "哌柏西利联合氟维司群显著延长无进展生存期，血细胞减少更常见，总生存差异未达统计学意义。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-210",
@@ -3337,7 +3355,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "内分泌治疗与CDK抑制剂治疗",
+  "summary_zh": "MONARCH 2研究显示阿贝西利联合氟维司群达到主要终点，显著改善既往内分泌治疗进展患者的无进展生存。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-211",
@@ -3351,7 +3371,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "内分泌治疗与CDK抑制剂治疗",
+  "summary_zh": "阿贝西利联合氟维司群显著改善总生存，中位总生存46.7个月，优于安慰剂组的37.3个月。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-212",
@@ -3365,7 +3387,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "内分泌治疗与CDK抑制剂治疗",
+  "summary_zh": "阿贝西利组腹泻、中性粒细胞减少、恶心及乏力等不良事件多见，但多为1-2级，3级腹泻少见。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-213",
@@ -3379,7 +3403,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "内分泌治疗与CDK抑制剂治疗",
+  "summary_zh": "阿贝西利联合氟维司群总生存数据成熟，中位总生存46.7个月，显著优于安慰剂组的37.3个月。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-214",
@@ -3393,7 +3419,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "内分泌治疗与CDK抑制剂治疗",
+  "summary_zh": "阿贝西利组腹泻、中性粒细胞减少、恶心及乏力多见，多为1-2级，止泻药可有效控制腹泻症状。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-215",
@@ -3407,7 +3435,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "内分泌治疗与CDK抑制剂治疗",
+  "summary_zh": "阿贝西利是唯一获批单药使用的CDK4/6抑制剂，MONARCH 1研究支持其用于内分泌及化疗后进展患者。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-216",
@@ -3421,7 +3451,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "mTOR抑制剂联合内分泌治疗",
+  "summary_zh": "BOLERO-2研究显示依维莫司联合依西美坦可显著延长非甾体芳香化酶抑制剂耐药患者无进展生存期。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-217",
@@ -3435,7 +3467,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "mTOR抑制剂联合内分泌治疗",
+  "summary_zh": "依维莫司联合依西美坦显著延长无进展生存期，但毒性增加，常见口腔炎、贫血、呼吸困难及肺炎。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-218",
@@ -3449,7 +3483,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "mTOR抑制剂联合内分泌治疗",
+  "summary_zh": "依维莫司联合依西美坦毒性高于对照，常见3-4级口腔炎、贫血、呼吸困难、高血糖及肺炎，总生存无差异。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-219",
@@ -3463,7 +3499,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "mTOR抑制剂联合内分泌治疗",
+  "summary_zh": "TAMRAD研究显示他莫昔芬联合依维莫司延长至进展时间并改善总生存，但毒性反应增加。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-220",
@@ -3477,7 +3515,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "mTOR抑制剂联合内分泌治疗",
+  "summary_zh": "PrE0102研究显示氟维司群联合依维莫司显著延长无进展生存期，毒性与此前研究相似，总生存无差异。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-221",
