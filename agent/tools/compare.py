@@ -49,7 +49,7 @@ def compare_records(ctx, current, previous):
             'current': round(cur, 4),
             'previous': round(prev, 4),
             'change_pct': round(rel * 100, 1),
-            'abs_change_pct': abs(rel),
+            'abs_change_pct': abs(rel) * 100,
         })
 
     diffs.sort(key=lambda d: d['abs_change_pct'], reverse=True)
