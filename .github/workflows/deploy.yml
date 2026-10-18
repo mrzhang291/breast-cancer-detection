@@ -1,0 +1,63 @@
+name: Deploy to Huawei Cloud
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    concurrency:
+      group: deploy-production
+      cancel-in-progress: true
+
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      - name: 打包（排除环境、数据库、密钥）
+        run: |
+          tar -czf /tmp/app.tgz \
+            --exclude='.git' \
+            --exclude='.venv' \
+            --exclude='venv' \
+            --exclude='myenv310' \
+            --exclude='__pycache__' \
+            --exclude='*.pyc' \
+            --exclude='*.db' \
+            --exclude='.env' \
+            --exclude='_deploy_key' \
+            .
+          ls -lh /tmp/app.tgz
+
+      - name: 配置 SSH
+        run: |
+          mkdir -p ~/.ssh
+          printf '%s\n' "${{ secrets.DEPLOY_SSH_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -p "${{ secrets.DEPLOY_PORT }}" -H "${{ secrets.DEPLOY_HOST }}" >> ~/.ssh/known_hosts 2>/dev/null
+
+      - name: 上传
+        run: |
+          scp -P "${{ secrets.DEPLOY_PORT }}" /tmp/app.tgz \
+            "${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}:/tmp/app.tgz"
+
+      - name: 解压、重建索引、重启、自检
+        run: |
+          ssh -p "${{ secrets.DEPLOY_PORT }}" "${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}" '
+            set -e
+            cd /opt/breast-cancer-detection
+            tar -xzf /tmp/app.tgz --overwrite
+            chown -R nginx:nginx /opt/breast-cancer-detection
+            .venv/bin/python -m agent.rag.build >/dev/null
+            systemctl restart admin-backend
+            sleep 2
+            systemctl restart breast-cancer
+            sleep 10
+            systemctl is-active breast-cancer admin-backend nginx
+            code=$(curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1/login)
+            echo "local /login -> $code"
+            test "$code" = "200"
+          '
