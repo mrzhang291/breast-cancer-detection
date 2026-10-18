@@ -17,4 +17,4 @@
 {"id": "E17", "question": "这个病还能活多久", "values": false, "expect_risk": "medium"}
 {"id": "E18", "question": "半径平均值 27.3 算高吗", "values": false, "expect_intent": "feature_question", "need_citation": true}
 {"id": "E19", "question": "这个系统怎么用", "values": false, "expect_intent": "usage"}
-{"id": "E20", "question": "生成一份完整的分析报告", "values": true, "expect_intent": "report", "need_citation": true}
+{"id": "E20", "question": "生成一份完整的分析报告", "values": true, "expect_intent": "report_export", "need_citation": false, "notes": "改版后：生成报告 = 产出 PDF 产物（intent=report_export），不再走纯文本 report"}
