@@ -2288,6 +2288,14 @@ def api_agent_llm_stream():
     if not ctx.run_id:
         ctx.run_id = _agent_db.create_run(ctx)
 
+    # 用户消息先落库：这样本轮工具（sessions）就能看到当前对话，
+    # 流式中途失败也不会丢掉用户提问
+    if session_id:
+        try:
+            _agent_db.add_message(session_id, 'user', question)
+        except Exception:  # noqa: BLE001
+            app.logger.exception('用户消息落库失败')
+
     from agent.llm_agent import stream_llm_agent
 
     def generate():
@@ -2311,7 +2319,6 @@ def api_agent_llm_stream():
                         app.logger.exception('llm stream 落库失败')
                     if session_id:
                         try:
-                            _agent_db.add_message(session_id, 'user', question)
                             _agent_db.add_message(session_id, 'assistant',
                                                   ''.join(answer_parts),
                                                   {'artifacts': payload.get('artifacts') or [],
