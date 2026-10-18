@@ -849,7 +849,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "运动与乳腺癌风险",
+  "summary_zh": "多项研究显示体育锻炼与乳腺癌风险降低相关，法国研究和护士健康研究均发现较高运动量与侵袭性乳腺癌风险下降有关。"
  },
  {
   "section": "Exercise（续2）",
@@ -861,7 +863,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "运动（续2）",
+  "summary_zh": "一项纳入236,955名女性的研究显示运动者乳腺癌风险显著降低，绝经前后女性效应相似。"
  },
  {
   "section": "Exercise（续3）",
@@ -873,7 +877,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "运动（续3）",
+  "summary_zh": "本节列出与乳腺癌风险相关的参考文献，涉及生育、哺乳及近期体力活动等因素。"
  },
  {
   "section": "Exercise（续4）",
@@ -885,7 +891,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "运动（续4）",
+  "summary_zh": "荟萃分析显示体力活动和减重可降低乳腺癌风险，涵盖139项前瞻性和回顾性研究。"
  },
  {
   "section": "Tamoxifen",
@@ -897,7 +905,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "他莫昔芬",
+  "summary_zh": "他莫昔芬用于治疗转移性乳腺癌及术后抑制复发，乳腺癌预防试验显示其使乳腺癌发病率降低49%。"
  },
  {
   "section": "Tamoxifen（续2）",
@@ -909,7 +919,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "他莫昔芬（续2）",
+  "summary_zh": "他莫昔芬预防试验显示持续减少骨折但增加子宫内膜癌、血栓和白内障手术风险，7年随访无总体死亡率获益。"
  },
  {
   "section": "Tamoxifen（续3）",
@@ -921,7 +933,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "他莫昔芬（续3）",
+  "summary_zh": "IBIS-I试验显示他莫昔芬减少侵袭性和原位乳腺癌，高危激素受体阳性女性及试验期间使用激素治疗者获益显著。"
  },
  {
   "section": "Tamoxifen（续4）",
@@ -933,7 +947,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "他莫昔芬（续4）",
+  "summary_zh": "荟萃分析显示他莫昔芬使乳腺癌发病率降低38%，ER阳性肿瘤减少48%，但增加子宫内膜癌和静脉血栓栓塞风险。"
  },
  {
   "section": "Tamoxifen（续5）",
@@ -945,7 +961,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "他莫昔芬（续5）",
+  "summary_zh": "NSABP B-24试验显示DCIS患者术后加用他莫昔芬可减少侵袭性和原位乳腺癌及对侧乳腺癌风险。"
  },
  {
   "section": "Tamoxifen（续6）",
@@ -957,7 +975,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "他莫昔芬（续6）",
+  "summary_zh": "TAM-01研究评估低剂量他莫昔芬（5mg）预防侵袭性乳腺癌，血管舒缩症状随剂量降低而减轻。"
  },
  {
   "section": "Tamoxifen（续7）",
@@ -969,7 +989,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "他莫昔芬（续7）",
+  "summary_zh": "低剂量他莫昔芬组侵袭性乳腺癌显著减少，严重不良事件与安慰剂相近，但研究样本量较小。"
  },
  {
   "section": "Raloxifene",
@@ -981,7 +1003,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "雷洛昔芬",
+  "summary_zh": "雷洛昔芬是对乳腺有抗雌激素作用、对子宫内膜无雌激素作用的SERM，MORE试验显示其降低侵袭性乳腺癌风险。"
  },
  {
   "section": "Raloxifene（续2）",
@@ -993,7 +1017,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "雷洛昔芬（续2）",
+  "summary_zh": "MORE和CORE 8年随访显示雷洛昔芬使侵袭性乳腺癌总体降低66%，ER阳性侵袭性乳腺癌降低76%。"
  },
  {
   "section": "Raloxifene（续3）",
@@ -1005,7 +1031,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "雷洛昔芬（续3）",
+  "summary_zh": "他莫昔芬组非浸润性癌更少，但子宫内膜癌、血栓和白内障更多；两药在缺血性心脏病、卒中和骨折方面无差异。"
  },
  {
   "section": "Aromatase Inhibitors or Inactivators (Als)",
@@ -1017,7 +1045,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂/灭活剂",
+  "summary_zh": "芳香化酶抑制剂可预防激素敏感性乳腺癌，副作用包括疲劳、关节痛、肌痛、骨密度下降和骨折风险增加。"
  },
  {
   "section": "Aromatase Inhibitors or Inactivators (Als)（续2）",
@@ -1029,7 +1059,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂/灭活剂（续2）",
+  "summary_zh": "来曲唑辅助治疗降低局部和远处复发及对侧新发乳腺癌，但因疗效终点提前达到而提前终止。"
  },
  {
   "section": "Aromatase Inhibitors or Inactivators (Als)（续3）",
@@ -1041,7 +1073,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂/灭活剂（续3）",
+  "summary_zh": "来曲唑增加骨痛、骨折和新发骨质疏松风险；依西美坦降低复发和对侧新发乳腺癌风险。"
  },
  {
   "section": "Aromatase Inhibitors or Inactivators (Als)（续4）",
@@ -1053,7 +1087,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂/灭活剂（续4）",
+  "summary_zh": "IBIS-II试验显示阿那曲唑使高危绝经后女性乳腺癌风险显著降低，主要减少激素受体阳性乳腺癌。"
  },
  {
   "section": "Aromatase Inhibitors or Inactivators (Als)（续5）",
@@ -1065,7 +1101,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "芳香化酶抑制剂/灭活剂（续5）",
+  "summary_zh": "芳香化酶抑制剂的不良事件包括高血压、血管舒缩症状和眼干等，发生率高于对照组。"
  },
  {
   "section": "Prophylactic Mastectomy",
@@ -1077,7 +1115,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预防性乳房切除术",
+  "summary_zh": "回顾性队列研究显示双侧预防性乳房切除术使中高危女性乳腺癌风险降低约89%至94%，高危女性死亡率降低81%。"
  },
  {
   "section": "Prophylactic Mastectomy（续2）",
@@ -1089,7 +1129,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预防性乳房切除术（续2）",
+  "summary_zh": "单侧乳腺癌患者对侧预防性乳房切除术比例上升，观察性研究显示可能降低死亡率但存在选择偏倚，尚无高质量证据改善总生存。"
  },
  {
   "section": "Prophylactic Oophorectomy",
@@ -1101,7 +1143,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预防性卵巢切除术",
+  "summary_zh": "卵巢切除可降低一般风险及胸部放疗高危女性的乳腺癌风险，BRCA突变者预防性卵巢切除与乳腺癌发病率下降50%相关。"
  },
  {
   "section": "Prophylactic Oophorectomy（续2）",
@@ -1113,7 +1157,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预防性卵巢切除术（续2）",
+  "summary_zh": "该片段为参考文献列表，涉及他莫昔芬对骨密度、冠心病死亡率及心脏血栓事件影响的研究引用。"
  },
  {
   "section": "Prophylactic Oophorectomy（续3）",
@@ -1125,7 +1171,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预防性卵巢切除术（续3）",
+  "summary_zh": "该片段为参考文献列表，涉及他莫昔芬相关子宫内膜癌风险及乳腺癌预防试验主要结局的文献引用。"
  },
  {
   "section": "Prophylactic Oophorectomy（续4）",
@@ -1137,7 +1185,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预防性卵巢切除术（续4）",
+  "summary_zh": "该片段为参考文献列表，涉及他莫昔芬化学预防试验 interim 分析及意大利随机试验初步结果的文献引用。"
  },
  {
   "section": "Prophylactic Oophorectomy（续5）",
@@ -1149,7 +1199,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预防性卵巢切除术（续5）",
+  "summary_zh": "该片段为参考文献列表，涉及选择性雌激素受体调节剂预防乳腺癌临床试验比较及IBIS-I长期随访的文献引用。"
  },
  {
   "section": "Prophylactic Oophorectomy（续6）",
@@ -1161,7 +1213,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预防性卵巢切除术（续6）",
+  "summary_zh": "该片段为参考文献列表，涉及低剂量他莫昔芬预防非浸润性肿瘤复发及雷洛昔芬临床效果的文献引用。"
  },
  {
   "section": "Prophylactic Oophorectomy（续7）",
@@ -1173,7 +1227,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预防性卵巢切除术（续7）",
+  "summary_zh": "该片段为参考文献列表，涉及雷洛昔芬降低浸润性乳腺癌发病率及STAR试验比较他莫昔芬与雷洛昔芬的文献引用。"
  },
  {
   "section": "Prophylactic Oophorectomy（续8）",
@@ -1185,7 +1241,9 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预防性卵巢切除术（续8）",
+  "summary_zh": "该片段为参考文献列表，涉及来曲唑、依西美坦等芳香化酶抑制剂辅助治疗早期乳腺癌随机试验的文献引用。"
  },
  {
   "section": "Prophylactic Oophorectomy（续9）",
@@ -1197,6 +1255,8 @@
   "title": "Breast Cancer Prevention (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预防性卵巢切除术（续9）",
+  "summary_zh": "该片段为参考文献列表，涉及阿那曲唑降低乳腺癌发病率、双侧预防性乳房切除术疗效及全国乳房切除趋势的文献引用。"
  }
 ]

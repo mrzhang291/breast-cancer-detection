@@ -9,7 +9,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "概述",
+  "summary_zh": "概述乳腺筛查证据，指出钼靶为最常用筛查手段，可降低50至69岁女性死亡率，但存在过度诊断等危害。"
  },
  {
   "section": "Overview（续2）",
@@ -21,7 +23,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "概述（续2）",
+  "summary_zh": "超声、磁共振及分子乳腺成像多作为钼靶辅助手段评估，非普通人群主要筛查工具，并提倡共同决策。"
  },
  {
   "section": "Benefits",
@@ -33,7 +37,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "获益",
+  "summary_zh": "随机对照试验显示钼靶筛查降低60至69岁女性乳腺癌死亡率证据充分，50至59岁证据一般。"
  },
  {
   "section": "Benefits（续2）",
@@ -45,7 +51,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "获益（续2）",
+  "summary_zh": "加拿大国家乳腺筛查研究25年随访显示，钼靶筛查未带来死亡率获益。"
  },
  {
   "section": "Harms",
@@ -57,7 +65,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "危害",
+  "summary_zh": "钼靶筛查可致过度诊断，20%至50%筛查发现的癌症属过度诊断，仍接受标准治疗。"
  },
  {
   "section": "Harms（续2）",
@@ -69,7 +79,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "危害（续2）",
+  "summary_zh": "过度诊断估计基于随机试验长期随访和大型筛查项目超额发病率计算，另涉及假阳性及焦虑。"
  },
  {
   "section": "Harms（续3）",
@@ -81,7 +93,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "危害（续3）",
+  "summary_zh": "美国约10%女性筛查后被召回进一步检查，仅0.5%确诊癌症，约9.5%为假阳性。"
  },
  {
   "section": "Harms（续4）",
@@ -93,7 +107,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "危害（续4）",
+  "summary_zh": "钼靶假阴性率6%至46%，黏液型、小叶型、快速生长间期肿瘤及致密乳腺更易漏诊。"
  },
  {
   "section": "Harms（续5）",
@@ -105,7 +121,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "危害（续5）",
+  "summary_zh": "关于钼靶筛查潜在危害的证据内部真实性、一致性和外部真实性均良好。"
  },
  {
   "section": "Benefits",
@@ -117,7 +135,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "获益",
+  "summary_zh": "临床乳腺检查筛查效力证据不足，单一随机试验显示与钼靶获益相当，社区准确性可能较低。"
  },
  {
   "section": "Harms",
@@ -129,7 +149,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "危害",
+  "summary_zh": "临床乳腺检查可致假阳性，50至59岁女性特异度88%至99%，假阳性率1%至12%。"
  },
  {
   "section": "Benefits",
@@ -141,7 +163,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "获益",
+  "summary_zh": "乳腺自检与不筛查相比，未显示降低乳腺癌死亡率，无获益。"
  },
  {
   "section": "Harms",
@@ -153,7 +177,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "危害",
+  "summary_zh": "指导并鼓励乳腺自检导致更多活检和良性病变诊断，活检率1.8%对对照组1.0%。"
  },
  {
   "section": "Harms（续2）",
@@ -165,7 +191,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "危害（续2）",
+  "summary_zh": "该片段为参考文献列表，涉及乳腺筛查获益与危害的系统综述等文献。"
  },
  {
   "section": "Harms（续3）",
@@ -177,7 +205,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "危害（续3）",
+  "summary_zh": "该片段为参考文献列表，涉及加拿大筛查试验随访及过度诊断相关研究。"
  },
  {
   "section": "Harms（续4）",
@@ -189,7 +219,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "危害（续4）",
+  "summary_zh": "该片段为参考文献列表，涉及假阳性风险及乳腺密度对钼靶敏感性影响的研究。"
  },
  {
   "section": "Harms（续5）",
@@ -201,7 +233,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "危害（续5）",
+  "summary_zh": "该片段为参考文献列表，涉及放射诱发乳腺癌及临床乳腺检查特异度等研究。"
  },
  {
   "section": "Breast Cancer Incidence and Mortality",
@@ -213,7 +247,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "乳腺癌发病率与死亡率",
+  "summary_zh": "乳腺癌为美国女性最常见非皮肤癌，2025年预计浸润癌316950例、原位癌59080例、死亡42170例。"
  },
  {
   "section": "Breast Cancer Incidence and Mortality（续2）",
@@ -225,7 +261,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "乳腺癌发病率与死亡率（续2）",
+  "summary_zh": "发病率受生育因素、筛查参与及绝经激素使用影响，钼靶普及后原位癌发病率显著上升。"
  },
  {
   "section": "Evaluation of Breast Symptoms",
@@ -237,7 +275,9 @@
   "title": "Breast Cancer Screening (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "乳腺症状评估",
+  "summary_zh": "有症状女性行诊断性钼靶而非筛查性；乳腺肿块10.7%确诊癌症，疼痛仅1.8%。"
  },
  {
   "section": "Invasive breast cancer",
