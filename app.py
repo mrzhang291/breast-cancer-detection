@@ -2204,6 +2204,67 @@ def api_agent_run_sync():
     return jsonify({'ok': True, 'result': result})
 
 
+@app.route('/api/agent/llm/stream', methods=['POST'])
+def api_agent_llm_stream():
+    """流式 agent：SSE 推送 思考/工具调用/工具结果/答案。"""
+    if 'username' not in session:
+        return jsonify({'ok': False, 'error': '请先登录'}), 403
+    if not _agent_bind_runtime():
+        return jsonify({'ok': False, 'error': '模型尚未就绪'}), 503
+
+    data = request.get_json(silent=True) or {}
+    question = (data.get('question') or '').strip()
+    if not question:
+        return jsonify({'ok': False, 'error': '缺少 question'}), 400
+    try:
+        values = _agent_values(data.get('values'))
+    except (TypeError, ValueError) as exc:
+        return jsonify({'ok': False, 'error': str(exc)}), 400
+
+    ctx = _agent_ctx(question, data)
+    if values:
+        try:
+            _agent_orch._act_interpret(ctx, values)
+        except Exception:  # noqa: BLE001
+            _agent_orch.add_input_fact(ctx, values)
+
+    _agent_db.init_schema()
+    if not ctx.run_id:
+        ctx.run_id = _agent_db.create_run(ctx)
+
+    from agent.llm_agent import stream_llm_agent
+
+    def generate():
+        answer_parts = []
+        try:
+            for item in stream_llm_agent(question, ctx, values=values):
+                event = item['event']
+                payload = item['data']
+                if event == 'token':
+                    answer_parts.append(payload.get('delta') or '')
+                if event == 'done':
+                    try:
+                        _agent_db.update_run(
+                            ctx.run_id, intent='llm_agent', status='ok',
+                            answer_md=''.join(answer_parts),
+                            artifacts_json=json.dumps(payload.get('artifacts') or [],
+                                                      ensure_ascii=False))
+                    except Exception:  # noqa: BLE001
+                        app.logger.exception('llm stream 落库失败')
+                yield 'event: %s\ndata: %s\n\n' % (
+                    event, json.dumps(payload, ensure_ascii=False, default=str))
+        except Exception as exc:  # noqa: BLE001
+            app.logger.exception('llm stream 失败')
+            yield 'event: error\ndata: %s\n\n' % json.dumps(
+                {'message': str(exc)[:160]}, ensure_ascii=False)
+
+    from flask import Response
+    resp = Response(generate(), mimetype='text/event-stream')
+    resp.headers['Cache-Control'] = 'no-cache'
+    resp.headers['X-Accel-Buffering'] = 'no'
+    return resp
+
+
 @app.route('/api/agent/llm', methods=['POST'])
 def api_agent_llm():
     """LLM 驱动的 agent（DeepSeek function calling）。

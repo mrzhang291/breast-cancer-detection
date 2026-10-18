@@ -108,3 +108,41 @@ def run_llm_agent(question: str, ctx, emit: Optional[Callable] = None,
         'latency_ms': int((time.time() - started) * 1000),
         'model_used': provider.model,
     }
+
+
+def stream_llm_agent(question: str, ctx, values=None, max_steps: int = 5):
+    """流式执行：产出 {event, data}，最后一个事件补上产物与 run_id。"""
+    from .core.streaming import StreamingAgentLoop
+    from .core.streaming_provider import StreamingDeepSeekProvider
+
+    provider = StreamingDeepSeekProvider()
+    if not provider.available():
+        yield {'event': 'fallback', 'data': {}}
+        return
+
+    session = build_session(ctx)
+    brief = _context_brief(ctx)
+    if values:
+        brief += '\n本次输入的 30 项特征值：%s' % ', '.join('%.6g' % float(v) for v in values)
+    if brief:
+        session.user('（系统注：以下是当前会话已有的上下文）\n' + brief)
+        session.assistant('收到，我会基于这个上下文回答。')
+
+    loop = StreamingAgentLoop(provider, registry.TOOLS, ctx,
+                              allowed_tools=DEFAULT_TOOLS, max_steps=max_steps)
+    for item in loop.stream(session, question):
+        if item['event'] == 'done':
+            data = dict(item['data'])
+            data['artifacts'] = list(getattr(ctx, 'artifacts', []) or [])
+            data['citations'] = list(getattr(ctx, 'citations', []) or [])
+            data['run_id'] = getattr(ctx, 'run_id', '')
+            data['engine'] = 'llm'
+            data['steps_detail'] = [
+                {'tool': st.get('tool'), 'ok': st.get('ok'),
+                 'label': describe(st.get('tool') or '')['label'],
+                 'latency_ms': st.get('latency_ms')}
+                for st in loop.steps
+            ]
+            yield {'event': 'done', 'data': data}
+        else:
+            yield item
