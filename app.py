@@ -2240,7 +2240,7 @@ def api_agent_llm():
     from agent.llm_agent import run_llm_agent
 
     try:
-        result = run_llm_agent(question, ctx)
+        result = run_llm_agent(question, ctx, values=values)
     except Exception as exc:  # noqa: BLE001
         app.logger.exception('llm agent 失败')
         return jsonify({'ok': False, 'error': 'LLM agent 执行失败: %s' % str(exc)[:120]}), 500

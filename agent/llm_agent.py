@@ -65,7 +65,7 @@ def _context_brief(ctx) -> str:
     return '\n'.join(lines)
 
 def run_llm_agent(question: str, ctx, emit: Optional[Callable] = None,
-                  max_steps: int = 5) -> Optional[Dict]:
+                  max_steps: int = 5, values=None) -> Optional[Dict]:
     """返回与确定性编排器相近的结构；不可用时返回 None。"""
     provider = DeepSeekProvider()
     if not provider.available():
@@ -73,6 +73,8 @@ def run_llm_agent(question: str, ctx, emit: Optional[Callable] = None,
 
     session = build_session(ctx)
     brief = _context_brief(ctx)
+    if values:
+        brief += '\n本次输入的 30 项特征值：%s' % ', '.join('%.6g' % float(v) for v in values)
     if brief:
         session.user('（系统注：以下是当前会话已有的上下文）\n' + brief)
         session.assistant('收到，我会基于这个上下文回答。')
