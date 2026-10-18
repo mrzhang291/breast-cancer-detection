@@ -264,6 +264,16 @@
             font-size: 11px; color: #64748b; background: #f6f8fc;
             border: 1px solid #eef2f8; border-radius: 999px; padding: 3px 9px;
         }
+
+        .ft-read { display: grid; gap: 8px; margin: 4px 0 20px; }
+        .ft-read div {
+            display: grid; grid-template-columns: 18px 1fr; gap: 8px; align-items: start;
+            font-size: 11.5px; color: #64748b; line-height: 1.6;
+        }
+        .ft-read b {
+            width: 18px; height: 18px; border-radius: 6px; display: grid; place-items: center;
+            background: #eef2ff; color: #4f46e5; font-size: 10.5px;
+        }
 </style>
 </head>
 <body>
@@ -448,6 +458,11 @@
                 <div class="ft-shapes">
                     <span>半径</span><span>纹理</span><span>周长</span><span>面积</span><span>平滑度</span>
                     <span>紧凑度</span><span>凹度</span><span>凹点</span><span>对称性</span><span>分形维数</span>
+                </div>
+                <div class="ft-read">
+                    <div><b>1</b><span>不用背正常范围，看条形对比的相对位置</span></div>
+                    <div><b>2</b><span>看整体 30 项，不看单项高一点就紧张</span></div>
+                    <div><b>3</b><span>结合证据档位，档位低时不宜过度解读</span></div>
                 </div>
                 <a class="ft-btn" href="/features">
                     查看特征说明
