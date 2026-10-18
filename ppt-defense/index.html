@@ -1320,12 +1320,12 @@
   </div>
   <div style="background:var(--grey-1);padding:3.4vh 2.6vw;display:flex;flex-direction:column;justify-content:center;gap:1.4vh">
     <div style="border-top:1px solid var(--grey-2);padding-top:1.3vh">
-      <div class="t-meta">医生 / 阈值 0.79</div>
-      <p class="body" style="margin-top:.4vh">随机森林给出的 99.61%，校准前后差多少？依据是 FEAT-024 还是 NCI 条款？</p>
+      <div class="t-meta">医生 / 这群病人</div>
+      <p class="body" style="margin-top:.4vh">569 例里良恶性怎么分布？同类患者随访中怎么变化？</p>
     </div>
     <div style="border-top:1px solid var(--grey-2);padding-top:1.3vh">
-      <div class="t-meta">患者 / 下一步</div>
-      <p class="body" style="margin-top:.4vh">复查还是活检？报告能不能带走、能不能核对？</p>
+      <div class="t-meta">患者 / 自己看懂</div>
+      <p class="body" style="margin-top:.4vh">我的指标和上次比变了多少？报告能不能带走、能不能核对？</p>
     </div>
     <div style="border-top:1px solid var(--grey-2);padding-top:1.3vh">
       <div class="t-meta">运营 / 310 次预测</div>
@@ -2194,8 +2194,8 @@ const SPEAKER_NOTES = [
     "minutes": 0.9,
     "purpose": "把\"准确率\"叙事换成三个角色各自的问题。",
     "talk": [
-      "医生关心依据，患者关心下一步，运营关心数据。三类问题不能用一个聊天框回答。",
-      "所以系统分成用户端 Agent、知识库、管理端三条线。",
+      "医生关心这群病人的分布和随访变化，患者关心自己的指标变化，运营关心数据。",
+      "所以系统要能回答群体分布、个体变化和数据运营三类问题。",
       "后面每一部分都对应其中一类问题。"
     ],
     "transition": "先看整体分层。"
