@@ -24,6 +24,7 @@ from api.permission_api import permission_api
 from api.ai_api import ai_api
 from api.batch_api import batch_api
 from api.coze_api import coze_api
+from api.knowledge_api import knowledge_api
 
 load_dotenv()
 
@@ -55,6 +56,7 @@ app.register_blueprint(permission_api)
 app.register_blueprint(ai_api)
 app.register_blueprint(batch_api)
 app.register_blueprint(coze_api)
+app.register_blueprint(knowledge_api)
 
 
 @app.route('/console/static/<path:filename>')

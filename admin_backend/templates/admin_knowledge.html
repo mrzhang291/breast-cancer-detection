@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RAG 知识库 · 管理端</title>
+<link rel="stylesheet" href="/console/static/vendor/fa6/all.min.css">
+<style>
+  :root{--brand:#047857;--ink:#0f172a;--muted:#64748b;--line:#e2e8f0;--bg:#f6f8fb;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Microsoft YaHei UI","Noto Sans SC",system-ui,sans-serif;background:var(--bg);color:var(--ink);padding:28px}
+  .wrap{max-width:1080px;margin:0 auto}
+  .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+  h1{font-size:22px;font-weight:600}
+  .sub{font-size:13px;color:var(--muted);margin-top:4px}
+  .btn{border:1px solid var(--line);background:#fff;border-radius:10px;padding:9px 14px;font-size:13px;cursor:pointer;color:var(--ink);text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+  .btn.primary{background:var(--brand);border-color:var(--brand);color:#fff}
+  .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:18px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px}
+  .drop{border:2px dashed #cbd5e1;border-radius:14px;padding:32px 18px;text-align:center;cursor:pointer;transition:.2s}
+  .drop.over{border-color:var(--brand);background:#f0fdf4}
+  .drop i{font-size:26px;color:var(--brand)}
+  .drop b{display:block;margin:8px 0 4px;font-size:14px}
+  .drop span{font-size:12px;color:var(--muted)}
+  .field{display:grid;gap:6px;margin-top:14px}
+  .field label{font-size:12px;color:var(--muted)}
+  .field input,.field select{border:1px solid var(--line);border-radius:9px;padding:10px 12px;font-size:13px;font-family:inherit;background:#fff}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .result{margin-top:14px;font-size:13px;line-height:1.7;color:var(--muted)}
+  .result.ok{color:#047857}
+  .result.err{color:#b91c1c}
+  table{width:100%;border-collapse:collapse;font-size:12.5px}
+  th,td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--line)}
+  th{font-size:11px;color:var(--muted);font-weight:500;letter-spacing:.08em;text-transform:uppercase}
+  .pill{display:inline-block;background:#ecfdf5;color:#047857;border-radius:999px;padding:2px 8px;font-size:11px}
+  .hint{font-size:12px;color:var(--muted);line-height:1.7;margin-top:10px}
+  @media(max-width:900px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <div>
+      <h1>RAG 知识库</h1>
+      <div class="sub">上传 PDF / TXT / Markdown → 切片 → 打域 → 重建索引；用户端检索立即生效。</div>
+    </div>
+    <div style="display:flex;gap:8px">
+      <a class="btn" href="/console/admin"><i class="fa-solid fa-arrow-left"></i> 返回后台</a>
+      <button class="btn" id="rebuildBtn"><i class="fa-solid fa-rotate"></i> 重建索引</button>
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <div class="drop" id="drop">
+        <i class="fa-solid fa-cloud-arrow-up"></i>
+        <b>拖拽文件到这里，或点击选择</b>
+        <span>支持 PDF / TXT / MD，单文件 ≤ 20MB</span>
+        <input type="file" id="file" accept=".pdf,.txt,.md" hidden>
+      </div>
+      <div class="field"><label>文档标题</label><input id="title" placeholder="例如：乳腺癌随访指南（测试）"></div>
+      <div class="row">
+        <div class="field"><label>所属域</label>
+          <select id="domain">
+            <option value="MED-DISEASE">疾病与治疗</option>
+            <option value="MED-DRUG">药物</option>
+            <option value="SYS">系统使用</option>
+            <option value="FEAT">特征词典</option>
+          </select>
+        </div>
+        <div class="field"><label>来源标注</label><input id="source" value="管理端上传"></div>
+      </div>
+      <div class="field"><button class="btn primary" id="uploadBtn" style="justify-content:center"><i class="fa-solid fa-scissors"></i> 上传并切片</button></div>
+      <div class="result" id="result">等待上传…</div>
+    </div>
+
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+        <b style="font-size:14px">已上传文档</b>
+        <span class="hint" id="count"></span>
+      </div>
+      <table>
+        <thead><tr><th>文档</th><th>域</th><th>切片</th><th>日期</th></tr></thead>
+        <tbody id="list"><tr><td colspan="4" style="color:#94a3b8">加载中…</td></tr></tbody>
+      </table>
+      <div class="hint">
+        切片规则：按句子边界 180–900 字；每条单独可检索。<br>
+        上传后只重建词法索引；向量索引在下次 <code>agent.rag.build</code> 时补齐。<br>
+        用户端：知识库页面与 AI 助手检索会立刻看到新条款。
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const TOKEN = localStorage.getItem('token');
+  if (!TOKEN) { location.href = '/console/admin/login'; }
+  const H = {'Authorization': 'Bearer ' + TOKEN};
+  const $ = id => document.getElementById(id);
+  let picked = null;
+
+  function setResult(text, cls) {
+    const el = $('result');
+    el.className = 'result ' + (cls || '');
+    el.innerHTML = text;
+  }
+
+  $('drop').addEventListener('click', () => $('file').click());
+  $('file').addEventListener('change', e => {
+    picked = e.target.files[0] || null;
+    if (picked) {
+      $('title').value = picked.name.replace(/\.[^.]+$/, '');
+      $('drop').querySelector('b').textContent = picked.name;
+      setResult('已选择：' + picked.name + '（' + (picked.size / 1024).toFixed(0) + ' KB），点击上传。');
+    }
+  });
+  ['dragenter', 'dragover'].forEach(ev => $('drop').addEventListener(ev, e => {
+    e.preventDefault(); $('drop').classList.add('over');
+  }));
+  ['dragleave', 'drop'].forEach(ev => $('drop').addEventListener(ev, e => {
+    e.preventDefault(); $('drop').classList.remove('over');
+  }));
+  $('drop').addEventListener('drop', e => {
+    picked = e.dataTransfer.files[0] || null;
+    if (picked) {
+      $('title').value = picked.name.replace(/\.[^.]+$/, '');
+      $('drop').querySelector('b').textContent = picked.name;
+      setResult('已选择：' + picked.name, '');
+    }
+  });
+
+  $('uploadBtn').addEventListener('click', async () => {
+    if (!picked) { setResult('先选择文件。', 'err'); return; }
+    const fd = new FormData();
+    fd.append('file', picked);
+    fd.append('title', $('title').value || picked.name);
+    fd.append('domain', $('domain').value);
+    fd.append('source', $('source').value || '管理端上传');
+    setResult('正在解析、切片、重建索引…');
+    $('uploadBtn').disabled = true;
+    try {
+      const r = await fetch('/console/api/knowledge/upload', {method: 'POST', headers: H, body: fd});
+      const d = await r.json();
+      if (!d.ok) throw new Error(d.error || '上传失败');
+      setResult('完成：' + d.doc_id + '，切片 ' + d.chunks + ' 条；索引共 ' + d.total + ' 条条款 / ' + d.terms + ' 词条。', 'ok');
+      picked = null;
+      $('file').value = '';
+      $('drop').querySelector('b').textContent = '拖拽文件到这里，或点击选择';
+      loadList();
+    } catch (err) {
+      setResult('失败：' + err.message, 'err');
+    } finally {
+      $('uploadBtn').disabled = false;
+    }
+  });
+
+  $('rebuildBtn').addEventListener('click', async () => {
+    setResult('正在重建索引…');
+    try {
+      const r = await fetch('/console/api/knowledge/rebuild', {method: 'POST', headers: H});
+      const d = await r.json();
+      if (!d.ok) throw new Error(d.error || '重建失败');
+      setResult('索引已重建：' + d.total + ' 条条款 / ' + d.terms + ' 词条。', 'ok');
+      loadList();
+    } catch (err) { setResult('失败：' + err.message, 'err'); }
+  });
+
+  async function loadList() {
+    try {
+      const r = await fetch('/console/api/knowledge/uploads', {headers: H});
+      const d = await r.json();
+      if (!d.ok) throw new Error(d.error || '加载失败');
+      const rows = (d.uploads || []).map(x =>
+        '<tr><td><b>' + x.title + '</b><div style="color:#94a3b8;font-size:11px">' + x.doc_id + '</div></td>' +
+        '<td><span class="pill">' + x.domain + '</span></td><td>' + x.chunks + '</td><td>' + x.retrieved_at + '</td></tr>');
+      $('list').innerHTML = rows.join('') || '<tr><td colspan="4" style="color:#94a3b8">还没有上传文档</td></tr>';
+      $('count').textContent = (d.uploads || []).length + ' 个文档';
+    } catch (err) {
+      $('list').innerHTML = '<tr><td colspan="4" style="color:#b91c1c">' + err.message + '</td></tr>';
+    }
+  }
+  loadList();
+</script>
+</body>
+</html>
