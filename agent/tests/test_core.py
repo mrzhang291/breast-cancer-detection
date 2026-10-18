@@ -39,7 +39,7 @@ def test_unknown_tool_is_reported():
                      max_steps=3)
     result = loop.run(AgentSession(), '随便问问')
     assert result.stopped == 'answer'
-    assert result.steps[0]['verdict'] == 'error'
+    assert result.steps[0]['verdict'] == 'unknown_tool'
 
 
 def test_permission_denied_does_not_crash():
