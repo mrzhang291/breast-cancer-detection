@@ -11,7 +11,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "风险因素",
+  "summary_zh": "年龄增长是最重要风险因素，其他包括家族史、BRCA基因突变、乳腺密度、雌激素暴露及激素治疗史等。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-002",
@@ -25,7 +27,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "风险因素",
+  "summary_zh": "肥胖、乳腺癌个人史、良性增生性乳腺病及胸部放疗增加风险；Gail和IBIS模型用于风险评估。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-003",
@@ -39,7 +43,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "风险因素",
+  "summary_zh": "BRCA1/2携带者对侧乳腺癌年风险可达5%，男性携带者风险亦升高，并增加卵巢癌等风险。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-004",
@@ -53,7 +59,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "保护因素",
+  "summary_zh": "子宫切除后雌激素使用、运动、早孕、哺乳、SERMs、芳香化酶抑制剂及预防性手术可降低风险。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-005",
@@ -67,7 +75,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "患者评估",
+  "summary_zh": "疑似乳腺癌时管理包括确诊、分期评估和治疗选择，必要时行乳腺磁共振等检查。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-006",
@@ -81,7 +91,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "对侧病变",
+  "summary_zh": "乳腺癌可多中心及双侧发生，10年对侧原发癌风险3%-5%，BRCA突变年轻患者风险近50%。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-007",
@@ -95,7 +107,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "对侧病变",
+  "summary_zh": "保乳术后需定期乳腺体检和钼靶监测同侧复发及对侧第二原发癌，MRI作用仍在演变。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-008",
@@ -109,7 +123,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预后与预测因素",
+  "summary_zh": "治疗常联合手术、放疗、化疗和内分泌治疗；预后受绝经状态、分期、分级、ER/PR、HER2及组织学类型影响。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-009",
@@ -123,7 +139,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预后与预测因素",
+  "summary_zh": "分子检测包括ER/PR、HER2及基因表达谱；据此分为激素受体阳性和三阴性等类型，指导预后与治疗。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-010",
@@ -137,7 +155,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预后与预测因素",
+  "summary_zh": "ASCO/CAP发布ER/PR和HER2检测指南；MammaPrint 70基因签名将肿瘤分为高、低风险预后类别。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-011",
@@ -151,7 +171,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预后与预测因素",
+  "summary_zh": "Oncotype DX 21基因检测适用于HER2阴性激素受体阳性乳腺癌，复发评分指导预后与化疗决策。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-012",
@@ -165,7 +187,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预后与预测因素",
+  "summary_zh": "复发评分风险分层因淋巴结状态而异：≤25低风险不需化疗，>25高风险需化疗。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-013",
@@ -179,7 +203,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预后与预测因素",
+  "summary_zh": "BCI结合H/I比值和分子分级指数，对激素受体阳性乳腺癌具预后和预测价值；多项试验评估多基因检测。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-014",
@@ -193,7 +219,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预后与预测因素",
+  "summary_zh": "NSABP B-14显示他莫昔芬治疗者10年远处复发风险随复发评分升高而增加（7%、14%、31%）。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-015",
@@ -207,7 +235,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预后与预测因素",
+  "summary_zh": "TAILORx提示50岁以上ER/PR阳性淋巴结阴性且评分11-25者化疗获益不大；该研究界值与其他研究不同。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-016",
@@ -221,7 +251,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预后与预测因素",
+  "summary_zh": "低评分患者5年远处无复发率99.3%、9年96.8%；中风险组6907例随机接受内分泌或联合化疗。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-017",
@@ -235,7 +267,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预后与预测因素",
+  "summary_zh": "中位随访90个月，内分泌治疗对比联合化疗达到非劣效，9年iDFS率83.3%对84.3%。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-018",
@@ -249,7 +283,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预后与预测因素",
+  "summary_zh": "其他终点两组相似；治疗与年龄存在显著交互，提示50岁以下评分11-25者化疗可能获益。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-019",
@@ -263,7 +299,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预后与预测因素",
+  "summary_zh": "50岁以下评分16-20且临床高风险及21-25者化疗远处复发率更低；多数接受他莫昔芬。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-020",
@@ -277,7 +315,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预后与预测因素",
+  "summary_zh": "低评分患者内分泌治疗5年复发率极低，iDFS 5年93.8%、9年84.0%，远处无复发率98.7%和95.0%。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-021",
@@ -291,7 +331,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预后与预测因素",
+  "summary_zh": "9年IDFS内分泌治疗83.3%，联合化疗84.3%，HR 1.08，无显著差异。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-022",
@@ -305,7 +347,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预后与预测因素",
+  "summary_zh": "治疗与年龄交互显著，≤50岁复发评分11-25者化疗可能获益。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-023",
@@ -319,7 +363,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预后与预测因素",
+  "summary_zh": "MINDACT试验评估MammaPrint基因组风险指导化疗选择。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-024",
@@ -333,7 +379,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预后与预测因素",
+  "summary_zh": "临床高风险基因组低风险者未化疗5年无远处转移生存非劣效达标。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-025",
@@ -347,7 +395,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预后与预测因素",
+  "summary_zh": "临床高风险基因组低风险者化疗组5年无远处转移生存高1.5%，未达显著。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-026",
@@ -361,7 +411,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预后与预测因素",
+  "summary_zh": "绝经后加化疗无获益，绝经前有获益，交互作用显著。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-027",
@@ -375,7 +427,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预后与预测因素",
+  "summary_zh": "绝经前联合化疗IDFS和OS显著改善，绝经后无获益。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-028",
@@ -389,7 +443,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预后与预测因素",
+  "summary_zh": "Plan B试验比较淋巴结阳性或高危阴性患者两种化疗方案。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-029",
@@ -403,7 +459,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预后与预测因素",
+  "summary_zh": "未化疗348例5年DFS高，淋巴结阴性与pN1无差异。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-030",
@@ -417,7 +475,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预后与预测因素",
+  "summary_zh": "BCI在ATAC试验中对早期和晚期远处复发均有预后价值。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-031",
@@ -431,7 +491,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预后与预测因素",
+  "summary_zh": "BCI H/I高表达预测他莫昔芬治疗者内分泌反应及延长治疗获益。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-032",
@@ -445,7 +507,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预后与预测因素",
+  "summary_zh": "IDEAL试验中BCI H/I高表达预测延长来曲唑治疗获益。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-033",
@@ -459,7 +523,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预后与预测因素",
+  "summary_zh": "BCI H/I低表达者延长内分泌治疗无显著获益。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-034",
@@ -473,7 +539,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "预后与预测因素",
+  "summary_zh": "PAM50、EndoPredict等基因检测可指导早期乳腺癌治疗决策。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-035",
@@ -487,7 +555,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "激素替代治疗",
+  "summary_zh": "严重症状患者可谨慎使用激素替代治疗，附参考文献。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-036",
@@ -501,7 +571,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "激素替代治疗",
+  "summary_zh": "家族史与乳腺癌风险相关，CHEK2突变者风险研究。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-037",
@@ -515,7 +587,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "激素替代治疗",
+  "summary_zh": "BRCA突变携带者病理特征及乳腺密度与乳腺癌风险研究。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-038",
@@ -529,7 +603,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "激素替代治疗",
+  "summary_zh": "初潮、绝经及血清性激素与乳腺癌风险的流行病学研究。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-039",
@@ -543,7 +619,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "激素替代治疗",
+  "summary_zh": "良性乳腺疾病与后续乳腺癌风险的多项队列研究。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-040",
@@ -557,7 +635,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "激素替代治疗",
+  "summary_zh": "乳腺癌预测模型及BRCA1/2分子遗传学相关文献。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-041",
@@ -571,7 +651,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "激素替代治疗",
+  "summary_zh": "汇总BRCA1突变携带者癌症风险及遗传咨询相关研究文献。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-042",
@@ -585,7 +667,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "激素替代治疗",
+  "summary_zh": "收录结合雌激素对绝经后子宫切除女性健康结局的随机对照试验文献。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-043",
@@ -599,7 +683,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "激素替代治疗",
+  "summary_zh": "汇总体育锻炼与乳腺癌风险关系的流行病学研究文献。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-044",
@@ -613,7 +699,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "激素替代治疗",
+  "summary_zh": "收录生育哺乳、选择性雌激素受体调节剂与乳腺癌预防相关研究。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-045",
@@ -627,7 +715,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "激素替代治疗",
+  "summary_zh": "汇总阿那曲唑预防高危绝经后女性乳腺癌及预防性手术研究。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-046",
@@ -641,7 +731,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "激素替代治疗",
+  "summary_zh": "收录BRCA突变携带者预防性输卵管卵巢切除及预后因素研究。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-047",
@@ -655,7 +747,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "激素替代治疗",
+  "summary_zh": "汇总对侧乳腺癌发病风险及BRCA突变携带者相关研究文献。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-048",
@@ -669,7 +763,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "激素替代治疗",
+  "summary_zh": "收录对侧乳腺MRI评估及保乳放疗后结局相关研究文献。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-049",
@@ -683,7 +779,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "激素替代治疗",
+  "summary_zh": "汇总管状癌、黏液癌预后及乳腺癌基因表达分型研究。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-050",
@@ -697,7 +795,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "激素替代治疗",
+  "summary_zh": "收录激素受体检测指南及70基因预后标志物验证研究。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-051",
@@ -711,7 +811,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "激素替代治疗",
+  "summary_zh": "汇总MammaPrint基因谱临床应用及辅助化疗预测价值研究。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-052",
@@ -725,7 +827,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "激素替代治疗",
+  "summary_zh": "收录21基因复发评分与淋巴结阴性乳腺癌预后及化疗获益研究。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-053",
@@ -739,7 +843,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "激素替代治疗",
+  "summary_zh": "汇总21基因复发评分在淋巴结阳性及辅助化疗决策中的研究。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-054",
@@ -753,7 +859,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "激素替代治疗",
+  "summary_zh": "收录70基因标志物指导早期乳腺癌治疗决策的临床试验文献。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-055",
@@ -767,7 +875,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "激素替代治疗",
+  "summary_zh": "汇总两基因表达比值及HOXB13/IL17BR预测他莫昔芬疗效研究。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-056",
@@ -781,7 +891,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "激素替代治疗",
+  "summary_zh": "收录乳腺癌指数预测延长内分泌治疗获益的相关研究。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-057",
@@ -795,7 +907,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "乳腺癌组织病理学分类",
+  "summary_zh": "介绍乳腺癌组织学分类，浸润性导管癌最常见，小叶癌次之且自然史不同。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-058",
@@ -809,7 +923,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "乳腺癌组织病理学分类",
+  "summary_zh": "阐述小叶癌影像敏感性低、转移模式特殊及雌激素受体表达较高的特点。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-059",
@@ -823,7 +939,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "乳腺癌组织病理学分类",
+  "summary_zh": "比较小叶癌与导管癌的18F-FDG PET摄取及远处转移检出敏感性差异。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-060",
@@ -837,7 +955,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "乳腺癌组织病理学分类",
+  "summary_zh": "汇总浸润性小叶癌生物学特征、临床病理及预后比较研究文献。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-061",
@@ -851,7 +971,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "乳腺癌组织病理学分类",
+  "summary_zh": "介绍乳腺癌组织病理学分类，并引用浸润性小叶癌与导管癌PET/CT分期比较及叶状肿瘤相关研究文献。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-062",
@@ -865,7 +987,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "乳腺癌分期信息",
+  "summary_zh": "AJCC分期系统用于预后分组，治疗决策还结合ER、PR、HER2状态及患者一般健康状况。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-063",
@@ -879,7 +1003,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "乳腺癌分期信息",
+  "summary_zh": "HER2检测主要采用IHC或ISH，ASCO/CAP指南对不确定结果给出判读标准与处理建议。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-064",
@@ -893,7 +1019,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "AJCC解剖学与预后分期组",
+  "summary_zh": "浸润癌设三套分期表：解剖学分期、临床预后分期和病理预后分期，适用场景各不相同。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-065",
@@ -907,7 +1035,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "AJCC解剖学与预后分期组",
+  "summary_zh": "美国要求登记和临床报告使用临床与病理预后分期，并常规检测分级及HER2、ER、PR状态。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-066",
@@ -921,7 +1051,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "AJCC病理预后分期组",
+  "summary_zh": "病理预后分期适用于初始手术治疗的浸润性乳腺癌，不适用于新辅助治疗患者。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-067",
@@ -935,7 +1067,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "AJCC病理预后分期组",
+  "summary_zh": "列出AJCC分期手册及ASCO/CAP关于HER2检测的指南更新作为病理预后分期的参考文献。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-068",
@@ -949,7 +1083,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "乳腺癌手术治疗",
+  "summary_zh": "可手术乳腺癌需多学科治疗，活检确诊后可选择保乳手术或改良根治术，并结合分期分子状态制定方案。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-069",
@@ -963,7 +1099,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "原发肿瘤的外科分期",
+  "summary_zh": "局部治疗选择取决于病灶位置大小、影像评估及保乳意愿；炎性乳腺癌为保乳禁忌。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-070",
@@ -977,7 +1115,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "原发肿瘤的外科分期",
+  "summary_zh": "全乳切除可伴或不伴重建，与保乳手术生存相当；部分患者再次放疗可能安全可行。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-071",
@@ -991,7 +1131,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "原发肿瘤的外科分期",
+  "summary_zh": "保乳术后局部复发率低，切缘是否需完全阴性存在争议，多学科共识以切缘宽度与复发关系为依据。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-072",
@@ -1005,7 +1147,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "原发肿瘤的外科分期",
+  "summary_zh": "荟萃分析显示切缘阳性使同侧复发风险翻倍，更宽切缘无额外获益，推荐“肿瘤无墨染”为 adequate 切缘标准。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-073",
@@ -1019,7 +1163,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "原发肿瘤的外科分期",
+  "summary_zh": "随机试验显示部分乳房切除加腔缘削切可显著降低切缘阳性率和二次手术率。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-074",
@@ -1033,7 +1179,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "腋窝淋巴结管理",
+  "summary_zh": "腋窝淋巴结状态是重要预后指标，前哨淋巴结活检为浸润性乳腺癌初始腋窝分期标准方法。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-075",
@@ -1047,7 +1195,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "腋窝淋巴结管理",
+  "summary_zh": "ALMANAC试验表明前哨淋巴结活检较腋窝淋巴结清扫并发症少，1年生活质量和手臂功能更优。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-076",
@@ -1061,7 +1211,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "腋窝淋巴结管理",
+  "summary_zh": "NSABP-B-32试验比较前哨淋巴结活检加或不加腋窝清扫，显示两组生存与区域控制无差异。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-077",
@@ -1075,7 +1227,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "腋窝淋巴结管理",
+  "summary_zh": "前哨淋巴结阳性但负荷有限者，在保乳或全乳切除加放疗及系统治疗后可免除腋窝淋巴结清扫。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-078",
@@ -1089,7 +1243,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "腋窝淋巴结管理",
+  "summary_zh": "ACOSOG Z0011试验显示临床T1-T2、1-2枚前哨淋巴结阳性者，腋窝清扫与单纯活检总生存无差异。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-079",
@@ -1103,7 +1259,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "腋窝淋巴结管理",
+  "summary_zh": "Z0011详细分析显示两组5年DFS和OS相近，部分患者接受区域淋巴结放疗。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-080",
@@ -1117,7 +1275,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "腋窝淋巴结管理",
+  "summary_zh": "IBCSG 23-01显示微转移患者免腋窝清扫无生存差异；AMAROS显示腋窝放疗与清扫效果相当。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-081",
@@ -1131,7 +1291,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "腋窝淋巴结管理",
+  "summary_zh": "腋窝放疗与ALND腋窝控制效果相当，且并发症显著更少；需ALND者行I-II级清扫即可。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-082",
@@ -1145,7 +1307,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "腋窝淋巴结管理",
+  "summary_zh": "SOUND试验显示，小肿瘤、超声阴性患者省略前哨淋巴结活检，5年远处DFS非劣效。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-083",
@@ -1159,7 +1323,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "腋窝淋巴结管理",
+  "summary_zh": "SOUND试验中活检组与免手术组局部复发、远处转移及死亡均低，5年远处DFS相近。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-084",
@@ -1173,7 +1339,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "腋窝淋巴结管理",
+  "summary_zh": "免腋窝手术组5年浸润DFS非劣于前哨淋巴结活检，且淋巴水肿更少、手臂功能更好。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-085",
@@ -1187,7 +1355,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "乳房重建",
+  "summary_zh": "全乳切除患者可行即刻或延迟重建，包括假体植入或组织扩张器分期重建。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-086",
@@ -1201,7 +1371,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "乳房重建",
+  "summary_zh": "重建后可行胸壁及区域淋巴结放疗，但可能影响美观对称并增加包膜纤维化等风险。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-087",
@@ -1215,7 +1387,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "乳腺癌放射治疗",
+  "summary_zh": "保乳术后放疗为标准治疗，高危全乳切除患者亦考虑放疗，以清除残留病灶、降低复发。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-088",
@@ -1229,7 +1403,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "保乳术后放疗",
+  "summary_zh": "保乳未放疗者复发风险超20%，荟萃分析证实全乳放疗可显著降低复发与乳腺癌死亡。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-089",
@@ -1243,7 +1419,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "保乳术后放疗",
+  "summary_zh": "EBCTCG荟萃分析显示，全乳放疗较单纯保乳显著降低10年复发风险。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-090",
@@ -1257,7 +1435,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "保乳术后放疗",
+  "summary_zh": "全乳放疗使10年复发率由35%降至19%，15年乳腺癌死亡率亦显著下降。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-091",
@@ -1271,7 +1451,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "保乳术后放疗",
+  "summary_zh": "瘤床加量10-16Gy可降低局部复发，但可能影响生活质量；可采用外照射或组织间植入。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-092",
@@ -1285,7 +1467,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "保乳术后放疗",
+  "summary_zh": "非劣效试验显示，短程分割放疗10年局部区域复发率不劣于常规全乳放疗。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-093",
@@ -1299,7 +1483,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "保乳术后放疗",
+  "summary_zh": "START等试验及荟萃分析证实，短程与常规分割放疗在局部复发和美观上无显著差异。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-094",
@@ -1313,7 +1499,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "保乳术后放疗",
+  "summary_zh": "START-A与START-B联合分析显示，短程与常规分割放疗10年局部区域复发率无差异。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-095",
@@ -1327,7 +1515,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": " favorable早期乳腺癌省略放疗",
+  "summary_zh": "老年早期激素受体阳性患者保乳术后可安全省略放疗，生存无差异但10年局部复发约增8%。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-096",
@@ -1341,7 +1531,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": " favorable早期乳腺癌省略放疗",
+  "summary_zh": "CALGB 9343显示，70岁以上ER阳性早期患者他莫昔芬加放疗10年局部控制优于单药。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-097",
@@ -1355,7 +1547,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": " favorable早期乳腺癌省略放疗",
+  "summary_zh": "CALGB 9343中两组至全乳切除、远处转移、乳腺癌特异及总生存均无显著差异。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-098",
@@ -1369,7 +1563,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": " favorable早期乳腺癌省略放疗",
+  "summary_zh": "PRIME-II显示，省略放疗组10年局部复发9.5%高于放疗组0.9%，但总生存几乎相同。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-099",
@@ -1383,7 +1579,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "部分乳腺照射",
+  "summary_zh": "RAPID试验将DCIS或淋巴结阴性保乳患者随机分入外照射加速部分乳腺照射或全乳放疗。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-100",
@@ -1397,7 +1595,9 @@
   "domain": "MED-DISEASE",
   "level": 3,
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "部分乳腺照射",
+  "summary_zh": "RAPID试验中APBI的5年及8年同侧复发率非劣于全乳放疗，但长期毒性更多。"
  },
  {
   "clause_id": "WEB-NCI-TREAT-101",

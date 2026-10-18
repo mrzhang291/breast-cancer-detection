@@ -131,7 +131,8 @@ def classify(question: str, has_features: bool) -> str:
         return INTENT['sql']
     # 「记录怎么删」「报告怎么导出」这类是操作问题，不是查历史
     if any(h in text for h in ('怎么', '如何')) and any(
-            w in text for w in ('删', '导出', '上传', '导入', '操作', '填写', '用')):
+            w in text for w in ('删', '导出', '上传', '导入', '操作', '填写',
+                                '怎么用', '如何使用', '怎么弄')):
         return INTENT['usage']
     if any(h in text for h in _CASE_HINTS):
         return INTENT['cases']
