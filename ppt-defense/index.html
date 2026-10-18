@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>让每个结论都有出处 · 乳腺癌辅助诊断系统答辩</title>
+<title>从概率到依据 · 乳腺癌辅助诊断系统答辩</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600&family=Noto+Sans+SC:wght@200;300;400;500;700;900&display=swap" rel="stylesheet">
@@ -1182,38 +1182,55 @@
     .grid-12{grid-template-columns:repeat(6,1fr)}
   }
 
-  .slide.dark .timeline-h .name{color:#fff}
-  .slide.dark .timeline-h .desc{color:rgba(255,255,255,.72)}
-  .slide.dark .timeline-h .yr{color:rgba(255,255,255,.55)}
-  /* ===== deck-local components (additive, Swiss tokens only) ===== */
-  .d-card{background:#f5f5f4;padding:2.2vh 1.4vw;display:flex;flex-direction:column;gap:1vh;min-height:0}
-  .d-card h4{font-family:var(--sans),var(--sans-zh);font-size:max(18px,1.3vw);font-weight:400;letter-spacing:-.01em}
-  .d-card p{font-size:max(15px,.88vw);line-height:1.5;color:var(--text-secondary)}
-  .d-mcell{background:#f5f5f4;padding:1.4vh 1vw;display:flex;flex-direction:column;gap:.4vh;min-height:0}
-  .d-mcell .n{font-family:var(--sans);font-weight:200;font-size:min(2.6vw,4.4vh);line-height:1}
-  .d-mcell .t{font-size:max(14px,.8vw);font-weight:500}
-  .d-mcell .m{font-family:var(--mono);font-size:10px;color:var(--text-helper);letter-spacing:.08em}
-  .d-step{padding:1.6vh 1vw 0;border-left:1px solid var(--border-subtle);display:flex;flex-direction:column;gap:.8vh;min-height:0}
+  /* ===== deck-local ===== */
+  .canvas-card::before{
+    content:"";position:absolute;inset:0;pointer-events:none;z-index:0;opacity:.55;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='48' height='48'><path d='M48 0H0V48' fill='none' stroke='%230a0a0a' stroke-opacity='.035'/><circle cx='0' cy='0' r='1.2' fill='%23002FA7' fill-opacity='.10'/></svg>");
+    background-size:48px 48px;
+  }
+  .slide.accent .canvas-card::before{opacity:.25;filter:invert(1)}
+  .sec-num{position:absolute;right:-2vw;bottom:-8vh;font-family:var(--sans);font-weight:200;
+    font-size:38vw;line-height:.8;color:rgba(255,255,255,.07);letter-spacing:-.05em;z-index:0}
+  .d-card{background:#f5f5f4;padding:2vh 1.3vw;display:flex;flex-direction:column;gap:.8vh;min-height:0}
+  .d-card .n{font-family:var(--mono);font-size:13px;color:var(--accent);letter-spacing:.14em}
+  .d-card h4{font-family:var(--sans),var(--sans-zh);font-size:max(17px,1.2vw);font-weight:400}
+  .d-card p{font-size:max(14px,.82vw);line-height:1.5;color:var(--text-secondary)}
+  .d-table{width:100%;border-collapse:collapse;font-family:var(--sans),var(--sans-zh);align-self:start;height:auto}
+  .d-table th{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;
+    text-align:left;color:var(--text-helper);font-weight:500;border-bottom:1px solid var(--ink);padding:.9vh .6vw}
+  .d-table td{border-bottom:1px solid var(--border-subtle);padding:.9vh .6vw;
+    font-size:max(13px,.78vw);line-height:1.4;vertical-align:top}
+  .d-table td.mono{font-family:var(--mono);font-size:12px}
+  .d-code{background:#0a0a0a;color:#e5e5e5;font-family:var(--mono);font-size:max(11px,.66vw);
+    line-height:1.7;padding:1.6vh 1.2vw;white-space:pre;overflow:hidden;tab-size:2}
+  .d-code .c{color:#8a8a8a}
+  .d-code .k{color:#7da2ff}
+  .d-code .s{color:#c5e803}
+  .d-step{padding:1.6vh 1vw 0;border-left:1px solid var(--border-subtle);display:flex;flex-direction:column;gap:.7vh}
   .d-step:first-child{border-left:0;padding-left:0}
-  .d-step b{font-size:max(16px,1vw);font-weight:500}
-  .d-step p{font-size:max(14px,.8vw);line-height:1.5;color:var(--text-secondary)}
+  .d-step b{font-size:max(15px,.95vw);font-weight:500}
+  .d-step p{font-size:max(13px,.78vw);line-height:1.45;color:var(--text-secondary)}
+  .chip{display:inline-block;border:1px solid var(--border-subtle);padding:.45vh .7vw;
+    font-family:var(--mono);font-size:12px;color:var(--text-secondary)}
   .d-ledger{display:grid;grid-template-columns:auto 1fr auto;gap:2vw;align-items:center;
-    border-bottom:1px solid var(--border-subtle);padding:1.4vh 0}
+    border-bottom:1px solid var(--border-subtle);padding:1.3vh 0}
   .d-ledger .num{font-family:var(--sans);font-weight:200;font-size:min(4vw,6.8vh);line-height:.9;min-width:5vw}
-  .d-ledger b{font-size:max(17px,1.1vw);font-weight:500}
-  .d-ledger p{margin-top:.3vh}
-  .q-row{display:grid;grid-template-columns:2.2em 7em 1fr;gap:1vw;border-bottom:1px solid var(--border-subtle);padding:.7vh 0}
-  .q-row span:first-child{color:var(--text-helper)}
-  .q-row b{font-weight:500}
-  .q-row span:last-child{color:var(--text-secondary)}
-  .d-bar{flex:1;background:var(--accent);min-height:2px}
-  .d-bar:nth-child(n+2){background:#9db0e8}
-  .stage{position:absolute;left:5vw;right:5vw;bottom:8vh;display:flex;align-items:center;gap:2vw;justify-content:center}
-  .stage .box{border:1px solid var(--border-subtle);padding:1.4vh 1.4vw;font-size:15px;font-weight:500;background:var(--paper)}
-  .stage .box.accent{border-color:var(--accent);color:var(--accent)}
-  .stage .arrow{width:2.4vw;height:1px;background:var(--accent);position:relative}
-  .stage .arrow::after{content:"";position:absolute;right:0;top:-3px;border:3px solid transparent;border-left-color:var(--accent)}
-  .d-kicker{font-family:var(--mono);font-size:14px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent)}
+  .d-ledger b{font-size:max(16px,1vw);font-weight:500}
+  .d-kpi{border-top:1px solid var(--ink);padding-top:1vh}
+  .d-kpi .v{font-family:var(--sans);font-weight:200;font-size:min(3.6vw,5.8vh);line-height:.95;letter-spacing:-.03em}
+  .d-kpi .l{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-helper)}
+  .d-kpi .n{font-size:max(13px,.78vw);color:var(--text-secondary);margin-top:.3vh}
+  .d-bar-row{display:grid;grid-template-columns:5em 1fr 3.4em;gap:.8vw;align-items:center;margin-bottom:1.1vh}
+  .d-bar-row .lbl{font-family:var(--mono);font-size:12px;color:var(--text-secondary)}
+  .d-bar-row .track{height:1.2vh;background:var(--grey-1)}
+  .d-bar-row .fill{height:1.2vh;background:var(--accent)}
+  .d-bar-row .num{font-family:var(--mono);font-size:12px;text-align:right}
+  .d-flow{display:grid;grid-template-columns:repeat(6,1fr);gap:0;border-top:1px solid var(--border-subtle);padding-top:2vh}
+  .d-check{display:grid;grid-template-columns:auto 1fr;gap:.9vw;align-items:start;
+    border-top:1px solid var(--border-subtle);padding-top:1.2vh}
+  .d-check .ix{font-family:var(--mono);font-size:12px;color:var(--accent)}
+  .d-check b{font-size:max(15px,.95vw);font-weight:500}
+  .d-check p{font-size:max(13px,.8vw);line-height:1.5;color:var(--text-secondary)}
 
 </style>
 </head>
@@ -1259,26 +1276,26 @@
 <div id="deck">
 <section class="slide accent" data-layout="S01" data-animate="hero" data-slide-id="s01">
 <div class="canvas-card">
-<div class="chrome-min"><div class="l">BREAST CANCER CDSS · GRADUATION DEFENSE</div><div class="r">AGENT · RAG · COZE · 01 / 25</div></div>
+
 
 <canvas class="ascii-bg" aria-hidden="true"></canvas>
-<div style="flex:1;padding:0;display:grid;grid-template-rows:auto 1fr auto;gap:2.4vh">
-  <div data-anim="kicker" class="t-meta" style="color:rgba(255,255,255,.78);letter-spacing:.24em">
-    AGENT FRAMEWORK · TRACEABLE RAG · COZE
+<div style="flex:1;padding:0;display:grid;grid-template-rows:auto auto 1fr auto;gap:2.4vh;position:relative;z-index:1">
+  <div class="t-meta" style="color:rgba(255,255,255,.78);letter-spacing:.24em">
+    GRADUATION DEFENSE · 2026.10.18
   </div>
-  <h1 data-anim="title" style="align-self:start;margin-top:2vh;font-family:var(--sans),var(--sans-zh);
-      font-weight:200;font-size:min(10.6vw,18vh);line-height:.94;letter-spacing:-.03em;color:#fff">
-    让每个结论<br>都有<span style="font-style:italic;font-weight:300">出处</span>
+  <h1 style="font-family:var(--sans),var(--sans-zh);font-weight:200;
+      font-size:min(9.6vw,16.4vh);line-height:.94;letter-spacing:-.035em;color:#fff">
+    从概率<br>到<span style="font-style:italic;font-weight:300">依据</span>
   </h1>
-  <div data-anim="bottom" style="display:grid;grid-template-rows:auto auto;gap:1.6vh;
-       border-top:1px solid rgba(255,255,255,.22);padding-top:2vh">
-    <div class="lead" style="max-width:56ch;color:rgba(255,255,255,.86);font-weight:300">
-      用户端 Agent 框架、可溯源的混合检索知识库，以及管理端 Coze 智能体的工程实践。
+  <div></div>
+  <div style="display:grid;grid-template-columns:1fr auto;gap:3vw;border-top:1px solid rgba(255,255,255,.24);padding-top:2vh">
+    <div>
+      <div class="lead" style="color:rgba(255,255,255,.88);max-width:52ch">
+        乳腺癌辅助诊断系统的 Agent 编排、混合检索知识库，以及管理端 Coze 智能体。
+      </div>
+      <div class="t-meta" style="color:rgba(255,255,255,.55);margin-top:1.2vh">答辩人 · 张城杰 · 计算机科学与技术</div>
     </div>
-    <div style="display:flex;justify-content:space-between;align-items:end">
-      <div class="t-meta" style="color:rgba(255,255,255,.6)">答辩人 · 张城杰 · 2026.10.18</div>
-      <div class="t-meta" style="color:rgba(255,255,255,.6)">→ 键盘 / 滚轮翻页</div>
-    </div>
+    <div class="t-meta" style="color:rgba(255,255,255,.55);text-align:right;align-self:end">36 PAGES<br>≈ 30 MIN</div>
   </div>
 </div>
 
@@ -1286,29 +1303,28 @@
 
 <section class="slide" data-layout="S03" data-animate="statement-rise" data-slide-id="s02">
 <div class="canvas-card">
-<div class="chrome-min"><div class="l">BREAST CANCER CDSS · GRADUATION DEFENSE</div><div class="r">AGENT · RAG · COZE · 02 / 25</div></div>
+<div class="chrome-min"><div class="l">BREAST CANCER CDSS · DEFENSE</div><div class="r">AGENT · RAG · COZE · 02 / 36</div></div>
 
 <div style="flex:1;padding:0;display:grid;grid-template-columns:7fr 5fr;gap:0;min-height:0">
   <div style="display:flex;flex-direction:column;justify-content:center;gap:2vh;padding-right:3vw">
     <div class="t-meta" style="color:var(--accent);letter-spacing:.22em">THE PROBLEM</div>
     <h2 style="font-family:var(--sans),var(--sans-zh);font-weight:200;
-        font-size:min(5.4vw,9.4vh);line-height:1.04;letter-spacing:-.03em">
-      模型给答案，<br>系统给<span style="color:var(--accent)">依据</span>。
+        font-size:min(5vw,8.8vh);line-height:1.06;letter-spacing:-.03em">
+      一个概率，<br>回答不了<br>三个人的问题。
     </h2>
-    <p class="lead" style="font-weight:300;max-width:40ch;color:var(--text-secondary)">
-      准确率只是入场券。医生敢不敢用，取决于能不能核对、能不能追责。
-    </p>
   </div>
-  <div style="background:var(--grey-1);padding:4vh 2.6vw;display:flex;flex-direction:column;justify-content:center;gap:1.6vh">
-    <div class="t-cat" style="font-weight:600;letter-spacing:.18em">三个必须回答的问题</div>
-    <div style="border-top:1px solid var(--grey-2);padding-top:1.4vh">
-      <div class="t-meta">01 / HOW</div><p class="body" style="margin-top:.4vh">这个恶性概率是怎么算出来的？</p>
+  <div style="background:var(--grey-1);padding:3.4vh 2.6vw;display:flex;flex-direction:column;justify-content:center;gap:1.4vh">
+    <div style="border-top:1px solid var(--grey-2);padding-top:1.3vh">
+      <div class="t-meta">医生 / 0.79 阈值</div>
+      <p class="body" style="margin-top:.4vh">99.61% 是怎么校准的？依据在 FEAT-024 还是 NCI 条款？</p>
     </div>
-    <div style="border-top:1px solid var(--grey-2);padding-top:1.4vh">
-      <div class="t-meta">02 / WHY</div><p class="body" style="margin-top:.4vh">凭什么相信它，依据在哪一条？</p>
+    <div style="border-top:1px solid var(--grey-2);padding-top:1.3vh">
+      <div class="t-meta">患者 / 下一步</div>
+      <p class="body" style="margin-top:.4vh">复查还是活检？报告能不能带走、能不能核对？</p>
     </div>
-    <div style="border-top:1px solid var(--grey-2);padding-top:1.4vh">
-      <div class="t-meta">03 / WHAT NEXT</div><p class="body" style="margin-top:.4vh">接下来该做什么，谁能替我做？</p>
+    <div style="border-top:1px solid var(--grey-2);padding-top:1.3vh">
+      <div class="t-meta">运营 / 310 次预测</div>
+      <p class="body" style="margin-top:.4vh">今天多少人用、恶性占比多少、AI 会话增长如何？</p>
     </div>
   </div>
 </div>
@@ -1317,70 +1333,60 @@
 
 <section class="slide" data-layout="S17" data-animate="grid-reveal" data-slide-id="s03">
 <div class="canvas-card">
-<div class="chrome-min"><div class="l">BREAST CANCER CDSS · GRADUATION DEFENSE</div><div class="r">AGENT · RAG · COZE · 03 / 25</div></div>
+<div class="chrome-min"><div class="l">BREAST CANCER CDSS · DEFENSE</div><div class="r">AGENT · RAG · COZE · 03 / 36</div></div>
 
 <div style="flex:1;padding:0;display:grid;grid-template-rows:auto 1fr;gap:3vh">
-  <div data-anim="head" style="display:flex;flex-direction:column;gap:1.4vh"><div class="t-meta" style="color:var(--accent);letter-spacing:.22em">SYSTEM OVERVIEW · 01</div><h2 style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(4.2vw,7.6vh);line-height:.98;letter-spacing:-.03em">三层结构，一条请求链路</h2><p class="lead" style="font-weight:300;max-width:64ch;color:var(--text-secondary)">用户端只关心答案；编排层决定怎么得到答案；证据层保证答案有据可查。</p></div>
+  <div style="display:flex;flex-direction:column;gap:1.2vh"><div class="t-meta" style="color:var(--accent);letter-spacing:.22em">SYSTEM OVERVIEW</div><h2 style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(4.2vw,7.6vh);line-height:.99;letter-spacing:-.03em">三层结构，两条独立进程</h2><p class="lead" style="font-weight:300;max-width:66ch;color:var(--text-secondary)">用户端管诊断与解释，管理端管运营；共享知识库，不共享会话。</p></div>
   <div style="display:grid;grid-template-columns:5fr 7fr;gap:4vw;align-items:start;min-height:0">
-  <div style="display:flex;flex-direction:column;gap:2.2vh">
-    <p class="body" style="max-width:34ch">系统分三层：用户看到的交互层、做决策的编排层、提供证据的证据层。管理端是旁路，不进入用户请求链路。</p>
-    <div style="display:grid;gap:1.4vh">
-      <div style="display:grid;grid-template-columns:auto 1fr;gap:1vw;border-top:1px solid var(--border-subtle);padding-top:1.2vh">
-        <span class="t-meta" style="color:var(--accent)">L1</span>
-        <div><b style="font-weight:500">交互层</b><p class="body-sm">Flask 页面 + JSON API + SSE 流式</p></div>
-      </div>
-      <div style="display:grid;grid-template-columns:auto 1fr;gap:1vw;border-top:1px solid var(--border-subtle);padding-top:1.2vh">
-        <span class="t-meta" style="color:var(--accent)">L2</span>
-        <div><b style="font-weight:500">编排层</b><p class="body-sm">Graph 状态机 + 13 个工具 + 权限/超时</p></div>
-      </div>
-      <div style="display:grid;grid-template-columns:auto 1fr;gap:1vw;border-top:1px solid var(--border-subtle);padding-top:1.2vh">
-        <span class="t-meta" style="color:var(--accent)">L3</span>
-        <div><b style="font-weight:500">证据层</b><p class="body-sm">集成模型 + 校准 + 混合检索 + SQLite</p></div>
-      </div>
+    <div style="display:flex;flex-direction:column;gap:1.8vh">
+      <p class="body" style="max-width:36ch">用户端是 Flask 应用，管理端是独立服务；两套进程共享同一份 SQLite 知识库，但权限和会话完全隔离。</p>
+      <div style="display:grid;grid-template-columns:auto 1fr;gap:1vw;border-top:1px solid var(--border-subtle);padding-top:1.1vh"><span class="t-meta" style="color:var(--accent)">L1</span><div><b style="font-weight:500">交互层</b><p class="body-sm">Flask + Jinja2 + 原生 JS；SSE 推流</p></div></div>
+      <div style="display:grid;grid-template-columns:auto 1fr;gap:1vw;border-top:1px solid var(--border-subtle);padding-top:1.1vh"><span class="t-meta" style="color:var(--accent)">L2</span><div><b style="font-weight:500">编排层</b><p class="body-sm">Graph 状态机；13 个工具；权限/超时</p></div></div>
+      <div style="display:grid;grid-template-columns:auto 1fr;gap:1vw;border-top:1px solid var(--border-subtle);padding-top:1.1vh"><span class="t-meta" style="color:var(--accent)">L3</span><div><b style="font-weight:500">证据层</b><p class="body-sm">集成模型 + 校准；RAG；SQLite</p></div></div>
     </div>
-  </div>
-  <div style="display:grid;gap:1.4vh">
-    <div style="border:1px solid var(--border-subtle);padding:1.4vh 1.2vw">
-      <div class="t-meta" style="color:var(--accent)">L1 · 交互层</div>
-      <div style="display:flex;gap:.7vw;flex-wrap:wrap;margin-top:.8vh"><span style="display:inline-block;border:1px solid var(--border-subtle);padding:.5vh .8vw;font-family:var(--mono);font-size:13px;color:var(--text-secondary)">Flask</span> <span style="display:inline-block;border:1px solid var(--border-subtle);padding:.5vh .8vw;font-family:var(--mono);font-size:13px;color:var(--text-secondary)">Jinja2</span> <span style="display:inline-block;border:1px solid var(--border-subtle);padding:.5vh .8vw;font-family:var(--mono);font-size:13px;color:var(--text-secondary)">SSE</span> <span style="display:inline-block;border:1px solid var(--border-subtle);padding:.5vh .8vw;font-family:var(--mono);font-size:13px;color:var(--text-secondary)">JSON API</span></div>
-      <p class="body-sm" style="margin-top:.8vh">/predict · /result · /knowledge · /api/agent/llm/stream</p>
-    </div>
-    <div style="border:1px solid var(--accent);padding:1.4vh 1.2vw">
-      <div class="t-meta" style="color:var(--accent)">L2 · 编排层</div>
-      <div style="display:flex;gap:.7vw;flex-wrap:wrap;margin-top:.8vh"><span style="display:inline-block;border:1px solid var(--border-subtle);padding:.5vh .8vw;font-family:var(--mono);font-size:13px;color:var(--text-secondary)">Graph</span> <span style="display:inline-block;border:1px solid var(--border-subtle);padding:.5vh .8vw;font-family:var(--mono);font-size:13px;color:var(--text-secondary)">13 tools</span> <span style="display:inline-block;border:1px solid var(--border-subtle);padding:.5vh .8vw;font-family:var(--mono);font-size:13px;color:var(--text-secondary)">permissions</span> <span style="display:inline-block;border:1px solid var(--border-subtle);padding:.5vh .8vw;font-family:var(--mono);font-size:13px;color:var(--text-secondary)">checkpoint</span></div>
-      <p class="body-sm" style="margin-top:.8vh">节点固定、边固定；checkpoint 支持回放与续跑。</p>
-    </div>
-    <div style="border:1px solid var(--border-subtle);padding:1.4vh 1.2vw">
-      <div class="t-meta" style="color:var(--accent)">L3 · 证据层</div>
-      <div style="display:flex;gap:.7vw;flex-wrap:wrap;margin-top:.8vh"><span style="display:inline-block;border:1px solid var(--border-subtle);padding:.5vh .8vw;font-family:var(--mono);font-size:13px;color:var(--text-secondary)">ensemble</span> <span style="display:inline-block;border:1px solid var(--border-subtle);padding:.5vh .8vw;font-family:var(--mono);font-size:13px;color:var(--text-secondary)">calibration</span> <span style="display:inline-block;border:1px solid var(--border-subtle);padding:.5vh .8vw;font-family:var(--mono);font-size:13px;color:var(--text-secondary)">hybrid RAG</span> <span style="display:inline-block;border:1px solid var(--border-subtle);padding:.5vh .8vw;font-family:var(--mono);font-size:13px;color:var(--text-secondary)">SQLite</span></div>
-      <p class="body-sm" style="margin-top:.8vh">30 维特征 → 集成模型 → 校准概率；1,035 条条款 → 混合检索。</p>
+    <div style="display:grid;gap:1.2vh">
+      <div style="border:1px solid var(--border-subtle);padding:1.4vh 1.2vw">
+        <div class="t-meta" style="color:var(--accent)">L1 · 交互层</div>
+        <div style="display:flex;gap:.6vw;flex-wrap:wrap;margin-top:.7vh">
+          <span class="chip">Flask 页面</span><span class="chip">JSON API</span><span class="chip">SSE</span><span class="chip">Jinja2</span>
+        </div>
+        <p class="body-sm" style="margin-top:.7vh">/predict · /result · /knowledge · /api/agent/llm/stream</p>
+      </div>
+      <div style="border:2px solid var(--accent);padding:1.4vh 1.2vw">
+        <div class="t-meta" style="color:var(--accent)">L2 · 编排层</div>
+        <div style="display:flex;gap:.6vw;flex-wrap:wrap;margin-top:.7vh">
+          <span class="chip">Graph 10 节点</span><span class="chip">13 工具</span><span class="chip">权限</span><span class="chip">checkpoint</span>
+        </div>
+        <p class="body-sm" style="margin-top:.7vh">节点固定、边固定；每一步写检查点，可从任意节点续跑。</p>
+      </div>
+      <div style="border:1px solid var(--border-subtle);padding:1.4vh 1.2vw">
+        <div class="t-meta" style="color:var(--accent)">L3 · 证据层</div>
+        <div style="display:flex;gap:.6vw;flex-wrap:wrap;margin-top:.7vh">
+          <span class="chip">Voting / Stacking</span><span class="chip">sigmoid 校准</span><span class="chip">混合检索</span><span class="chip">SQLite 18 表</span>
+        </div>
+        <p class="body-sm" style="margin-top:.7vh">30 维特征 → 校准概率；1,035 条条款 → 词法 + 向量。</p>
+      </div>
     </div>
   </div>
 </div>
 
-  </div>
-
 </div></section>
 
-<section class="slide" data-layout="S04" data-animate="six-cells" data-slide-id="s04">
+<section class="slide" data-layout="S15" data-animate="matrix-fill" data-slide-id="s04">
 <div class="canvas-card">
-<div class="chrome-min"><div class="l">BREAST CANCER CDSS · GRADUATION DEFENSE</div><div class="r">AGENT · RAG · COZE · 04 / 25</div></div>
+<div class="chrome-min"><div class="l">BREAST CANCER CDSS · DEFENSE</div><div class="r">AGENT · RAG · COZE · 04 / 36</div></div>
 
-<div style="flex:1;padding:0;display:grid;grid-template-rows:auto 1fr;gap:4vh">
-  <div data-anim="head" style="display:flex;flex-direction:column;gap:1.4vh"><div class="t-meta" style="color:var(--accent);letter-spacing:.22em">TECH STACK · 02</div><h2 style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(4.2vw,7.6vh);line-height:.98;letter-spacing:-.03em">没有黑盒框架，全部自建</h2><p class="lead" style="font-weight:300;max-width:64ch;color:var(--text-secondary)">答辩时能讲清每一层的实现，而不是"调了个库"。</p></div>
-  <div style="display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:minmax(0,27vh);gap:1.2vh 1.2vw;align-content:center;min-height:0">
-    <div class="d-card"><div class="t-meta" style="color:var(--accent)">01 / BACKEND</div>
-      <h4>Python 3.11 · Flask</h4><p>17,350 行 Python，173 个文件；gunicorn 1 worker × 4 threads。</p></div>
-    <div class="d-card"><div class="t-meta" style="color:var(--accent)">02 / TEMPLATE</div>
-      <h4>Jinja2 · HTML · CSS</h4><p>21 个模板、13,612 行；结果页与知识库均为服务端渲染 + 渐进增强。</p></div>
-    <div class="d-card"><div class="t-meta" style="color:var(--accent)">03 / FRONTEND</div>
-      <h4>原生 JavaScript · SSE</h4><p>不引入前端框架；事件流驱动 thinking / tool_call / token。</p></div>
-    <div class="d-card"><div class="t-meta" style="color:var(--accent)">04 / ML</div>
-      <h4>scikit-learn 集成</h4><p>Voting / Stacking + sigmoid 校准与温度缩放；30 维 WDBC 特征。</p></div>
-    <div class="d-card"><div class="t-meta" style="color:var(--accent)">05 / DATA</div>
-      <h4>SQLite</h4><p>预测记录、会话、检查点、RAG 倒排与向量，全部单文件可迁移。</p></div>
-    <div class="d-card"><div class="t-meta" style="color:var(--accent)">06 / OPS</div>
-      <h4>Shell · Nginx · Actions</h4><p>systemd 双服务、Nginx 反代、GitHub Actions 自动部署。</p></div>
+<div style="flex:1;padding:0;display:grid;grid-template-rows:auto 1fr auto;gap:2.4vh">
+  <div style="display:flex;flex-direction:column;gap:1.2vh"><div class="t-meta" style="color:var(--accent);letter-spacing:.22em">STACK · 01</div><h2 style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(4.2vw,7.6vh);line-height:.99;letter-spacing:-.03em">没有前端框架，也没有向量数据库</h2><p class="lead" style="font-weight:300;max-width:66ch;color:var(--text-secondary)">每一层都能在答辩现场打开代码指给人看。</p></div>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:.9vh .9vw;min-height:0">
+    <div style="background:#f5f5f4;padding:1.4vh 1vw;display:flex;flex-direction:column;gap:.4vh"><div class="t-meta" style="color:var(--accent)">01</div><div style="font-size:max(15px,.95vw);font-weight:500">Python 3.11</div><div style="font-size:max(12px,.72vw);color:var(--text-secondary);line-height:1.4">Flask + gunicorn，17,350 行</div></div><div style="background:#f5f5f4;padding:1.4vh 1vw;display:flex;flex-direction:column;gap:.4vh"><div class="t-meta" style="color:var(--accent)">02</div><div style="font-size:max(15px,.95vw);font-weight:500">Jinja2</div><div style="font-size:max(12px,.72vw);color:var(--text-secondary);line-height:1.4">21 个模板，服务端渲染</div></div><div style="background:#f5f5f4;padding:1.4vh 1vw;display:flex;flex-direction:column;gap:.4vh"><div class="t-meta" style="color:var(--accent)">03</div><div style="font-size:max(15px,.95vw);font-weight:500">原生 JS</div><div style="font-size:max(12px,.72vw);color:var(--text-secondary);line-height:1.4">SSE 逐字渲染，无构建链</div></div><div style="background:#f5f5f4;padding:1.4vh 1vw;display:flex;flex-direction:column;gap:.4vh"><div class="t-meta" style="color:var(--accent)">04</div><div style="font-size:max(15px,.95vw);font-weight:500">scikit-learn</div><div style="font-size:max(12px,.72vw);color:var(--text-secondary);line-height:1.4">Voting/Stacking + 概率校准</div></div><div style="background:#f5f5f4;padding:1.4vh 1vw;display:flex;flex-direction:column;gap:.4vh"><div class="t-meta" style="color:var(--accent)">05</div><div style="font-size:max(15px,.95vw);font-weight:500">SQLite</div><div style="font-size:max(12px,.72vw);color:var(--text-secondary);line-height:1.4">18 张表：记录/检查点/RAG</div></div><div style="background:#f5f5f4;padding:1.4vh 1vw;display:flex;flex-direction:column;gap:.4vh"><div class="t-meta" style="color:var(--accent)">06</div><div style="font-size:max(15px,.95vw);font-weight:500">TF-IDF</div><div style="font-size:max(12px,.72vw);color:var(--text-secondary);line-height:1.4">141,762 条倒排词条</div></div><div style="background:#f5f5f4;padding:1.4vh 1vw;display:flex;flex-direction:column;gap:.4vh"><div class="t-meta" style="color:var(--accent)">07</div><div style="font-size:max(15px,.95vw);font-weight:500">bge-small-zh</div><div style="font-size:max(12px,.72vw);color:var(--text-secondary);line-height:1.4">512 维 ONNX，CPU 推理</div></div><div style="background:#f5f5f4;padding:1.4vh 1vw;display:flex;flex-direction:column;gap:.4vh"><div class="t-meta" style="color:var(--accent)">08</div><div style="font-size:max(15px,.95vw);font-weight:500">Nginx + systemd</div><div style="font-size:max(12px,.72vw);color:var(--text-secondary);line-height:1.4">双服务 + GitHub Actions</div></div>
+  </div>
+  <div style="display:flex;justify-content:space-between;align-items:end;border-top:1px solid var(--border-subtle);padding-top:1.4vh">
+    <div style="display:flex;align-items:baseline;gap:1.4vw">
+      <div style="font-family:var(--sans);font-weight:200;font-size:min(8vw,13vh);line-height:.85">17,350</div>
+      <div><div class="t-meta">LINES OF PYTHON · 173 FILES</div><p class="body-sm">另有 13,612 行模板、1,096 行 CSS、388 行 JS</p></div>
+    </div>
+    <div class="t-meta" style="text-align:right">0 前端框架<br>2 个 Flask 进程</div>
   </div>
 </div>
 
@@ -1388,24 +1394,22 @@
 
 <section class="slide dark" data-layout="S11" data-animate="timeline-walk" data-slide-id="s05">
 <div class="canvas-card">
-<div class="chrome-min"><div class="l">BREAST CANCER CDSS · GRADUATION DEFENSE</div><div class="r">AGENT · RAG · COZE · 05 / 25</div></div>
+<div class="chrome-min"><div class="l">BREAST CANCER CDSS · DEFENSE</div><div class="r">AGENT · RAG · COZE · 05 / 36</div></div>
 
-<div style="flex:1;padding:0;display:grid;grid-template-rows:auto 1fr auto;gap:3vh">
-  <div data-anim="head" style="display:flex;flex-direction:column;gap:1.4vh"><div class="t-meta" style="color:var(--accent);letter-spacing:.22em">PREDICTION PIPELINE · 03</div><h2 style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(4.2vw,7.6vh);line-height:.98;letter-spacing:-.03em">一次预测，六步落地</h2></div>
+<div style="flex:1;padding:0;display:grid;grid-template-rows:auto 1fr auto;gap:2.4vh">
+  <div style="display:flex;flex-direction:column;gap:1.2vh"><div class="t-meta" style="color:var(--accent);letter-spacing:.22em">PREDICTION PIPELINE</div><h2 style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(4.2vw,7.6vh);line-height:.99;letter-spacing:-.03em">一次预测，六步落地</h2></div>
   <div class="timeline-h" style="flex:0 0 30vh;margin-top:2vh">
     <div class="tl-row" style="grid-template-columns:repeat(6,1fr)">
-      <div class="th-node up"><span class="dot"></span><div class="label"><span class="yr">01</span><span class="name">填写 30 项</span><span class="desc">细胞核形态特征</span></div></div>
-      <div class="th-node up"><span class="dot"></span><div class="label"><span class="yr">02</span><span class="name">/predict</span><span class="desc">校验 + 单位检查</span></div></div>
+      <div class="th-node up"><span class="dot"></span><div class="label"><span class="yr">01</span><span class="name">30 项输入</span><span class="desc">细胞核形态</span></div></div>
+      <div class="th-node up"><span class="dot"></span><div class="label"><span class="yr">02</span><span class="name">/predict</span><span class="desc">范围与单位校验</span></div></div>
       <div class="th-node up"><span class="dot"></span><div class="label"><span class="yr">03</span><span class="name">标准化</span><span class="desc">训练集均值方差</span></div></div>
       <div class="th-node up accent"><span class="dot"></span><div class="label"><span class="yr">04</span><span class="name">集成模型</span><span class="desc">Voting / Stacking</span></div></div>
       <div class="th-node up"><span class="dot"></span><div class="label"><span class="yr">05</span><span class="name">概率校准</span><span class="desc">sigmoid + 温度缩放</span></div></div>
-      <div class="th-node up"><span class="dot"></span><div class="label"><span class="yr">06</span><span class="name">结果页</span><span class="desc">入库 + 归因 + 证据强度</span></div></div>
+      <div class="th-node up"><span class="dot"></span><div class="label"><span class="yr">06</span><span class="name">结果页</span><span class="desc">入库 + 归因 + 证据</span></div></div>
     </div>
   </div>
-  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2vw;border-top:1px solid var(--border-subtle);padding-top:2.4vh">
-    <div><div class="kpi-thin-sm">569</div><p class="body-sm">WDBC 样本，良性 357 / 恶性 212</p></div>
-    <div><div class="kpi-thin-sm">30</div><p class="body-sm">细胞核特征：半径、纹理、面积、凹点…</p></div>
-    <div><div class="kpi-thin-sm">0.022<span class="unit">s</span></div><p class="body-sm">单次推理耗时（结果页实测）</p></div>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:2vw;border-top:1px solid rgba(255,255,255,.22);padding-top:2vh">
+    <div class="d-kpi"><div class="l">WDBC</div><div class="v">569</div><div class="n">良性 357 / 恶性 212</div></div><div class="d-kpi"><div class="l">FEATURES</div><div class="v">30</div><div class="n">半径/纹理/面积/凹点</div></div><div class="d-kpi"><div class="l">INFERENCE</div><div class="v">0.022<span style="font-size:.3em">s</span></div><div class="n">单次推理（结果页实测）</div></div><div class="d-kpi"><div class="l">CALIBRATED</div><div class="v";color:var(--accent)>99.61<span style="font-size:.3em">%%</span></div><div class="n">示例样本校准后置信度</div></div>
   </div>
 </div>
 
@@ -1417,277 +1421,386 @@
 
 <div style="flex:1;display:flex;flex-direction:column;height:100%">
   <div style="position:relative;flex:0 0 55%;overflow:hidden;background:var(--grey-1)">
-    <img data-image-slot="s22-hero-21x9" src="images/02-result.png" alt="结果页，先给证据"
+    <img data-image-slot="s22-hero-21x9" src="images/02-result.png" alt="结果页：先给证据，再给建议"
          style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 8%">
     <div class="chrome-min" style="position:absolute;top:0;left:0;right:0;color:#fff;background:var(--ink);padding:1.4vh 5vw;margin:0">
-      <div class="l">PRODUCT · RESULT PAGE</div><div class="r">06 / 25</div>
+      <div class="l">PRODUCT · RESULT PAGE</div><div class="r">06 / 36</div>
     </div>
   </div>
-  <div style="flex:1;padding:2.4vh 5vw 6.2vh;display:flex;flex-direction:column;justify-content:space-between;gap:1.4vh">
+  <div style="flex:1;padding:2.4vh 5vw 6.2vh;display:flex;flex-direction:column;justify-content:space-between;gap:1.2vh">
     <div>
-      <h3 style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(3.8vw,6.6vh);line-height:1.02;letter-spacing:-.03em">结果页，先给证据</h3>
-      <p class="body" style="max-width:66ch;margin-top:1vh">恶性概率、校准置信度、输入距离、Top 5 归因和相似病例同时出现；每个数字都能点开看来源。</p>
+      <h3 style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(3.7vw,6.4vh);line-height:1.02;letter-spacing:-.03em">结果页：先给证据，再给建议</h3>
+      <p class="body" style="max-width:68ch;margin-top:.8vh">恶性概率、校准置信度、输入距离、Top 5 归因、相似病例同屏；每个数字都能点开看来源。</p>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:4vw"><div style="border-top:1px solid var(--ink);padding-top:1vh"><div class="t-meta">CALIBRATED</div><div style="font-family:var(--sans);font-weight:200;font-size:min(3.4vw,5.4vh);line-height:.95;letter-spacing:-.03em">99.61<span style="font-size:.3em">%</span></div><p class="body-sm" style="margin-top:.4vh">校准后置信度</p></div><div style="border-top:1px solid var(--ink);padding-top:1vh"><div class="t-meta">DISTANCE</div><div style="font-family:var(--sans);font-weight:200;font-size:min(3.4vw,5.4vh);line-height:.95;letter-spacing:-.03em">1.948</div><p class="body-sm" style="margin-top:.4vh">输入分布距离（上限 15）</p></div><div style="border-top:1px solid var(--ink);padding-top:1vh"><div class="t-meta">LATENCY</div><div style="font-family:var(--sans);font-weight:200;font-size:min(3.4vw,5.4vh);line-height:.95;letter-spacing:-.03em;color:var(--accent)">0.022<span style="font-size:.3em">s</span></div><p class="body-sm" style="margin-top:.4vh">单次推理</p></div></div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:4vw"><div class="d-kpi"><div class="l">CALIBRATED</div><div class="v">99.61<span style="font-size:.3em">%</span></div><div class="n">校准后置信度</div></div><div class="d-kpi"><div class="l">DISTANCE</div><div class="v">1.948</div><div class="n">输入分布距离（上限 15）</div></div><div class="d-kpi"><div class="l">LATENCY</div><div class="v";color:var(--accent)>0.022<span style="font-size:.3em">s</span></div><div class="n">单次推理</div></div></div>
   </div>
 </div>
 
 </div></section>
 
-<section class="slide" data-layout="S09" data-animate="matrix-statement" data-slide-id="s07">
+<section class="slide accent" data-layout="S01" data-animate="hero" data-slide-id="s07">
 <div class="canvas-card">
-<div class="chrome-min"><div class="l">BREAST CANCER CDSS · GRADUATION DEFENSE</div><div class="r">AGENT · RAG · COZE · 07 / 25</div></div>
 
-<span class="dot-mat" style="position:absolute;right:-6vw;top:-8vh;width:38vw;height:38vw;color:var(--ink)"></span>
-<span class="ring-mat" style="position:absolute;left:4vw;bottom:6vh;width:16vw;height:16vw;color:var(--accent)"></span>
+
+<span class="sec-num">01</span>
+<div style="flex:1;padding:0;display:grid;grid-template-rows:auto auto 1fr auto;gap:2.4vh;position:relative;z-index:1">
+  <div class="t-meta" style="color:rgba(255,255,255,.7);letter-spacing:.24em">PART 01 · AGENT 编排</div>
+  <div style="display:grid;grid-template-columns:7fr 5fr;gap:4vw;align-items:start;align-self:start;margin-top:2vh">
+    <h2 style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(7.2vw,12.4vh);line-height:.94;color:#fff;letter-spacing:-.04em">AGENT 编排</h2>
+    <div style="display:flex;flex-direction:column;gap:0"><div style="display:grid;grid-template-columns:auto 1fr;gap:1.2vw;border-top:1px solid rgba(255,255,255,.24);padding:1.6vh 0"><span class="t-meta" style="color:rgba(255,255,255,.55)">01</span><span style="font-size:max(15px,1vw);color:rgba(255,255,255,.9)">Graph 状态机与检查点</span></div><div style="display:grid;grid-template-columns:auto 1fr;gap:1.2vw;border-top:1px solid rgba(255,255,255,.24);padding:1.6vh 0"><span class="t-meta" style="color:rgba(255,255,255,.55)">02</span><span style="font-size:max(15px,1vw);color:rgba(255,255,255,.9)">工具契约与权限边界</span></div><div style="display:grid;grid-template-columns:auto 1fr;gap:1.2vw;border-top:1px solid rgba(255,255,255,.24);padding:1.6vh 0"><span class="t-meta" style="color:rgba(255,255,255,.55)">03</span><span style="font-size:max(15px,1vw);color:rgba(255,255,255,.9)">同步 / 流式 / 子代理</span></div><div style="display:grid;grid-template-columns:auto 1fr;gap:1.2vw;border-top:1px solid rgba(255,255,255,.24);padding:1.6vh 0"><span class="t-meta" style="color:rgba(255,255,255,.55)">04</span><span style="font-size:max(15px,1vw);color:rgba(255,255,255,.9)">三档不确定性与 grounding</span></div></div>
+  </div>
+  <div style="display:flex;justify-content:space-between;border-top:1px solid rgba(255,255,255,.24);padding-top:2vh">
+    <div class="t-meta" style="color:rgba(255,255,255,.7)">10 个节点、13 个工具、13 类意图；流程固定，推理自由。</div>
+    <div class="t-meta" style="color:rgba(255,255,255,.5)">→ 继续</div>
+  </div>
+</div>
+
+</div></section>
+
+<section class="slide" data-layout="S09" data-animate="matrix-statement" data-slide-id="s08">
+<div class="canvas-card">
+<div class="chrome-min"><div class="l">BREAST CANCER CDSS · DEFENSE</div><div class="r">AGENT · RAG · COZE · 08 / 36</div></div>
+
+<span class="dot-mat" style="position:absolute;right:-4vw;top:-6vh;width:32vw;height:32vw;color:var(--ink)"></span>
 <div style="flex:1;padding:0;display:grid;grid-template-rows:auto 1fr auto;gap:2vh;position:relative;z-index:1">
   <div class="t-meta" style="color:var(--accent);letter-spacing:.22em">AGENT, NOT CHATBOT</div>
-  <h2 data-anim="title" style="align-self:center;font-family:var(--sans),var(--sans-zh);font-weight:200;
-      font-size:min(7.6vw,13.4vh);line-height:.96;letter-spacing:-.04em">
-    Agent 不是<br>聊天框。
+  <h2 style="align-self:center;font-family:var(--sans),var(--sans-zh);font-weight:200;
+      font-size:min(7.2vw,12.6vh);line-height:.96;letter-spacing:-.04em">
+    会调工具，<br>也会<span style="color:var(--accent)">拒答</span>。
   </h2>
-  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2vw;border-top:1px solid var(--border-subtle);padding-top:2vh;padding-bottom:2vh">
-    <div><div class="kpi-thin-sm">13</div><p class="body-sm">意图分类</p></div>
-    <div><div class="kpi-thin-sm">11</div><p class="body-sm">图节点</p></div>
-    <div><div class="kpi-thin-sm">13</div><p class="body-sm">注册工具</p></div>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:2vw;border-top:1px solid var(--border-subtle);padding-top:2vh">
+    <div class="d-kpi"><div class="l">INTENTS</div><div class="v">13</div><div class="n">含拒答与澄清</div></div><div class="d-kpi"><div class="l">NODES</div><div class="v">10</div><div class="n">固定拓扑</div></div><div class="d-kpi"><div class="l">TOOLS</div><div class="v">13</div><div class="n">统一权限/超时</div></div><div class="d-kpi"><div class="l">TIERS</div><div class="v";color:var(--accent)>3</div><div class="n">置信 / 谨慎 / 弃权</div></div>
   </div>
 </div>
 
 </div></section>
 
-<section class="slide" data-layout="S14" data-animate="loop-form" data-slide-id="s08">
+<section class="slide" data-layout="S14" data-animate="loop-form" data-slide-id="s09">
 <div class="canvas-card">
-<div class="chrome-min"><div class="l">BREAST CANCER CDSS · GRADUATION DEFENSE</div><div class="r">AGENT · RAG · COZE · 08 / 25</div></div>
+<div class="chrome-min"><div class="l">BREAST CANCER CDSS · DEFENSE</div><div class="r">AGENT · RAG · COZE · 09 / 36</div></div>
 
-<div style="flex:1;padding:0;display:grid;grid-template-columns:6fr 6fr;gap:4vw;min-height:0">
-  <div style="display:flex;flex-direction:column;gap:1.6vh;min-height:0">
-    <div class="t-meta" style="color:var(--accent)">GRAPH · 11 NODES</div>
-    <div style="display:grid;gap:.9vh;font-size:max(14px,.84vw);font-family:var(--mono)">
-      <div class="q-row"><span>01</span><b>guard</b><span>越界/敏感词拦截</span></div>
-      <div class="q-row"><span>02</span><b>cache</b><span>同问同答，跳过重复计算</span></div>
-      <div class="q-row"><span>03</span><b>route</b><span>13 类意图路由</span></div>
-      <div class="q-row"><span>04</span><b>act</b><span>调工具：模型/检索/记录/报告</span></div>
-      <div class="q-row"><span>05</span><b>assess</b><span>三档不确定性评估</span></div>
-      <div class="q-row"><span>06</span><b>compose</b><span>按意图合成答案</span></div>
-      <div class="q-row"><span>07</span><b>verify</b><span>数字对账 + 句子级 grounding</span></div>
-      <div class="q-row"><span>08</span><b>guard_out</b><span>免责声明与措辞兜底</span></div>
-      <div class="q-row"><span>09</span><b>persist</b><span>写会话、引用、检查点</span></div>
-      <div class="q-row"><span>10</span><b>finish</b><span>返回结果 / SSE done</span></div>
+<div style="flex:1;padding:0;display:grid;grid-template-rows:auto 1fr;gap:2.4vh">
+  <div style="display:flex;flex-direction:column;gap:1.2vh"><div class="t-meta" style="color:var(--accent);letter-spacing:.22em">GRAPH · 10 NODES</div><h2 style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(4vw,7.2vh);line-height:.99;letter-spacing:-.03em">节点固定，边固定，只有节点内部自由</h2><p class="lead" style="font-weight:300;max-width:66ch;color:var(--text-secondary)">guard 与 cache 都有条件边；其余是确定性流程。</p></div>
+  <div style="display:grid;grid-template-columns:1fr 1.15fr;gap:4vw;align-items:center;min-height:0">
+    <div style="display:flex;flex-direction:column;gap:.9vh">
+      <div class="d-check"><span class="ix">01</span><div><b>guard</b><p>越界、敏感词、提示注入；命中直接进 refuse。</p></div></div>
+      <div class="d-check"><span class="ix">02</span><div><b>cache</b><p>同问同答；命中跳过 route，直接 persist。</p></div></div>
+      <div class="d-check"><span class="ix">03</span><div><b>route</b><p>13 类意图；导出动作优先于"能力询问"。</p></div></div>
+      <div class="d-check"><span class="ix">04</span><div><b>act</b><p>按意图调 1–5 个工具，写 facts 与 citations。</p></div></div>
+      <div class="d-check"><span class="ix">05</span><div><b>assess</b><p>置信度 + 输入距离 → 三档；可挂起等确认。</p></div></div>
+      <div class="d-check"><span class="ix">06</span><div><b>compose</b><p>按意图合成；医学答案只取重排前 3。</p></div></div>
+      <div class="d-check"><span class="ix">07</span><div><b>verify</b><p>数字对账 + 句子级 grounding；丢弃编造句。</p></div></div>
+      <div class="d-check"><span class="ix">08</span><div><b>guard_out → persist</b><p>免责声明、会话、引用、检查点。</p></div></div>
     </div>
-  </div>
-  <div style="position:relative;display:flex;align-items:center;justify-content:center">
-    <svg viewBox="0 0 420 420" style="width:100%;max-height:62vh" aria-hidden="true">
-      <circle cx="210" cy="210" r="150" fill="none" stroke="#d4d4d2"/>
-      <circle cx="210" cy="210" r="108" fill="none" stroke="#e0e0e0"/>
-      <circle cx="210" cy="210" r="66" fill="none" stroke="#002FA7" stroke-width="2"/>
-      <g fill="#002FA7">
-        <rect x="204" y="54" width="12" height="12"/><rect x="320" y="120" width="12" height="12"/>
-        <rect x="352" y="204" width="12" height="12"/><rect x="320" y="300" width="12" height="12"/>
-        <rect x="204" y="354" width="12" height="12"/><rect x="88" y="300" width="12" height="12"/>
-        <rect x="56" y="204" width="12" height="12"/><rect x="88" y="120" width="12" height="12"/>
-      </g>
-      <line x1="210" y1="210" x2="210" y2="60" stroke="#002FA7" stroke-width="1"/>
-      <line x1="210" y1="210" x2="326" y2="126" stroke="#002FA7" stroke-width="1"/>
-      <line x1="210" y1="210" x2="358" y2="210" stroke="#002FA7" stroke-width="1"/>
-      <line x1="210" y1="210" x2="326" y2="306" stroke="#002FA7" stroke-width="1"/>
-      <line x1="210" y1="210" x2="210" y2="360" stroke="#002FA7" stroke-width="1"/>
-      <line x1="210" y1="210" x2="94" y2="306" stroke="#002FA7" stroke-width="1"/>
-      <line x1="210" y1="210" x2="62" y2="210" stroke="#002FA7" stroke-width="1"/>
-      <line x1="210" y1="210" x2="94" y2="126" stroke="#002FA7" stroke-width="1"/>
-    </svg>
-    <div style="position:absolute;text-align:center">
-      <div style="font-family:var(--sans);font-weight:200;font-size:min(5.4vw,9vh);line-height:.9">GRAPH</div>
-      <div class="t-meta">STATEFUL · REPLAYABLE</div>
-    </div>
-  </div>
-</div>
-
-</div></section>
-
-<section class="slide" data-layout="S05" data-animate="grid-reveal" data-slide-id="s09">
-<div class="canvas-card">
-<div class="chrome-min"><div class="l">BREAST CANCER CDSS · GRADUATION DEFENSE</div><div class="r">AGENT · RAG · COZE · 09 / 25</div></div>
-
-<div style="flex:1;padding:0;display:grid;grid-template-rows:auto 1fr;gap:4vh">
-  <div data-anim="head" style="display:flex;flex-direction:column;gap:1.4vh"><div class="t-meta" style="color:var(--accent);letter-spacing:.22em">DESIGN TRADEOFF · 04</div><h2 style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(4.2vw,7.6vh);line-height:.98;letter-spacing:-.03em">为什么自研，而不是套框架</h2></div>
-  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2vw;align-items:stretch">
-    <div style="display:flex;flex-direction:column;gap:1.6vh;border-top:2px solid var(--accent);padding-top:2vh">
-      <div class="t-meta">01 / ORCHESTRATION</div>
-      <h3 class="h-md" style="font-weight:300">编排层</h3>
-      <p class="body">Graph 负责顺序与分支，checkpoint 负责可恢复；节点固定、边固定，只有节点内部允许模型推理。</p>
-      <div class="t-meta" style="margin-top:auto">固定拓扑 · 可回放</div>
-    </div>
-    <div style="display:flex;flex-direction:column;gap:1.6vh;border-top:2px solid var(--ink);padding-top:2vh">
-      <div class="t-meta">02 / TOOLS</div>
-      <h3 class="h-md" style="font-weight:300">工具层</h3>
-      <p class="body">13 个注册工具，统一 schema、权限、超时与错误类型；模型只能通过工具碰数据。</p>
-      <div class="t-meta" style="margin-top:auto">最小权限 · 可审计</div>
-    </div>
-    <div style="display:flex;flex-direction:column;gap:1.6vh;border-top:2px solid var(--grey-2);padding-top:2vh">
-      <div class="t-meta">03 / GUARDRAILS</div>
-      <h3 class="h-md" style="font-weight:300">约束层</h3>
-      <p class="body">三档不确定性、引用门槛、免责声明；证据不足时明确说"不下结论"。</p>
-      <div class="t-meta" style="margin-top:auto">宁可少说 · 不可编造</div>
+    <div style="position:relative;min-height:56vh">
+      <svg viewBox="0 0 520 520" style="width:100%;height:100%" aria-hidden="true">
+        <line x1="70" y1="70" x2="250" y2="70" stroke="#d4d4d2"/>
+        <line x1="250" y1="70" x2="250" y2="150" stroke="#d4d4d2"/>
+        <line x1="250" y1="150" x2="70" y2="150" stroke="#002FA7" stroke-width="2"/>
+        <line x1="70" y1="150" x2="70" y2="230" stroke="#002FA7" stroke-width="2"/>
+        <line x1="70" y1="230" x2="250" y2="230" stroke="#002FA7" stroke-width="2"/>
+        <line x1="250" y1="230" x2="250" y2="310" stroke="#002FA7" stroke-width="2"/>
+        <line x1="250" y1="310" x2="70" y2="310" stroke="#002FA7" stroke-width="2"/>
+        <line x1="70" y1="310" x2="70" y2="390" stroke="#002FA7" stroke-width="2"/>
+        <line x1="70" y1="390" x2="250" y2="390" stroke="#002FA7" stroke-width="2"/>
+        <line x1="250" y1="390" x2="250" y2="450" stroke="#002FA7" stroke-width="2"/>
+        <line x1="400" y1="70" x2="470" y2="70" stroke="#d4d4d2" stroke-dasharray="4 4"/>
+        <line x1="400" y1="230" x2="470" y2="230" stroke="#d4d4d2" stroke-dasharray="4 4"/>
+        <line x1="400" y1="310" x2="470" y2="310" stroke="#d4d4d2" stroke-dasharray="4 4"/>
+        <rect x="40" y="52" width="64" height="28" fill="#002FA7"/>
+        <rect x="220" y="52" width="64" height="28" fill="#f0f0ee"/>
+        <rect x="40" y="132" width="64" height="28" fill="#f0f0ee"/>
+        <rect x="220" y="212" width="64" height="28" fill="#002FA7"/>
+        <rect x="40" y="292" width="64" height="28" fill="#f0f0ee"/>
+        <rect x="40" y="372" width="64" height="28" fill="#f0f0ee"/>
+        <rect x="220" y="372" width="64" height="28" fill="#002FA7"/>
+        <rect x="470" y="52" width="40" height="28" fill="#f0f0ee"/>
+        <rect x="470" y="212" width="40" height="28" fill="#f0f0ee"/>
+        <rect x="470" y="292" width="40" height="28" fill="#f0f0ee"/>
+      </svg>
+      <div style="position:absolute;left:6%;top:11%;font-size:14px;font-weight:500;color:#fff">guard</div>
+      <div style="position:absolute;left:47%;top:11%;font-size:14px">cache</div>
+      <div style="position:absolute;left:6%;top:27%;font-size:14px">route</div>
+      <div style="position:absolute;left:47%;top:43%;font-size:14px;color:#fff">act</div>
+      <div style="position:absolute;left:6%;top:59%;font-size:14px">assess</div>
+      <div style="position:absolute;left:6%;top:75%;font-size:14px">compose</div>
+      <div style="position:absolute;left:47%;top:75%;font-size:14px;color:#fff">verify</div>
+      <div style="position:absolute;left:88%;top:11%;font-size:12px">refuse</div>
+      <div style="position:absolute;left:88%;top:43%;font-size:12px">persist</div>
+      <div style="position:absolute;left:88%;top:59%;font-size:12px">finish</div>
     </div>
   </div>
 </div>
 
 </div></section>
 
-<section class="slide" data-layout="S04" data-animate="six-cells" data-slide-id="s10">
+<section class="slide" data-layout="S17" data-animate="grid-reveal" data-slide-id="s10">
 <div class="canvas-card">
-<div class="chrome-min"><div class="l">BREAST CANCER CDSS · GRADUATION DEFENSE</div><div class="r">AGENT · RAG · COZE · 10 / 25</div></div>
+<div class="chrome-min"><div class="l">BREAST CANCER CDSS · DEFENSE</div><div class="r">AGENT · RAG · COZE · 10 / 36</div></div>
 
-<div style="flex:1;padding:0;display:grid;grid-template-rows:auto 1fr auto;gap:3vh">
-  <div data-anim="head" style="display:flex;flex-direction:column;gap:1.4vh"><div class="t-meta" style="color:var(--accent);letter-spacing:.22em">TOOL REGISTRY · 05</div><h2 style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(4.2vw,7.6vh);line-height:.98;letter-spacing:-.03em">模型只能通过工具碰数据</h2></div>
-  <div style="display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:minmax(0,27vh);gap:1.2vh 1.2vw;align-content:center;min-height:0">
-    <div class="d-card"><div class="t-meta" style="color:var(--accent)">predict</div><h4>跑模型</h4><p>30 维输入 → 恶性概率 + 校准置信度。</p></div>
-    <div class="d-card"><div class="t-meta" style="color:var(--accent)">explain</div><h4>特征归因</h4><p>近似 SHAP，给出方向与贡献，不声称因果。</p></div>
-    <div class="d-card"><div class="t-meta" style="color:var(--accent)">search_knowledge</div><h4>检索条款</h4><p>混合召回 + 重排，返回 clause_id 作为引用。</p></div>
-    <div class="d-card"><div class="t-meta" style="color:var(--accent)">records / statistics</div><h4>查自己的数据</h4><p>历史记录、趋势、活跃度，只读当前用户。</p></div>
-    <div class="d-card"><div class="t-meta" style="color:var(--accent)">export_report</div><h4>交付产物</h4><p>PDF 报告：结论、Top 8 归因、证据与免责声明。</p></div>
-    <div class="d-card"><div class="t-meta" style="color:var(--accent)">delegate</div><h4>子代理</h4><p>只读分析员，禁止递归；把长任务拆出去。</p></div>
+<div style="flex:1;padding:0;display:grid;grid-template-rows:auto 1fr;gap:3vh">
+  <div style="display:flex;flex-direction:column;gap:1.2vh"><div class="t-meta" style="color:var(--accent);letter-spacing:.22em">STATE & CHECKPOINT</div><h2 style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(4vw,7.2vh);line-height:.99;letter-spacing:-.03em">每一步都能回放，不靠日志猜</h2><p class="lead" style="font-weight:300;max-width:66ch;color:var(--text-secondary)">状态只存纯字典；检查点是可恢复的事实来源。</p></div>
+  <div style="display:grid;grid-template-columns:6fr 6fr;gap:4vw;min-height:0">
+    <div style="display:flex;flex-direction:column;gap:1vh">
+      <div class="d-code">state = {
+  <span class="s">'run_id'</span>: <span class="s">'a1c9…'</span>,
+  <span class="s">'question'</span>: <span class="s">'乳腺癌早期症状有哪些'</span>,
+  <span class="s">'values'</span>: None,
+  <span class="s">'intent'</span>: <span class="s">'medical_qa'</span>,
+  <span class="s">'facts'</span>: [ clause, … ],
+  <span class="s">'citations'</span>: [ <span class="s">'WEB-WHO-002'</span>, … ],
+  <span class="s">'tier'</span>: <span class="s">'confident'</span>,
+  <span class="s">'verify'</span>: { ok: True, dropped: 0 },
+  <span class="s">'status'</span>: <span class="s">'ok'</span>
+}</div>
+      <p class="body-sm">状态是可序列化的纯字典；检查点写进 <code>graph_checkpoints</code>，按 run_id + seq 恢复。</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:1.4vh">
+      <div class="d-check"><span class="ix">A</span><div><b>每步保存</b><p>node、next、state、pending；出错也能定位到具体节点。</p></div></div>
+      <div class="d-check"><span class="ix">B</span><div><b>断点续跑</b><p>Interrupt 挂起后，从 resume_at 继续，不重复调模型。</p></div></div>
+      <div class="d-check"><span class="ix">C</span><div><b>可回放</b><p>同一 run_id 能重放节点顺序与耗时，用于排查和评测。</p></div></div>
+      <div class="d-check"><span class="ix">D</span><div><b>不存不可序列化对象</b><p>_emit、连接、模型句柄全部剔除，避免检查点写失败。</p></div></div>
+    </div>
   </div>
-  <p class="body-sm" style="border-top:1px solid var(--border-subtle);padding-top:1.4vh">
-    另含 get_clause / similar_cases / compare_records / sql_query / export_data / sessions 共 13 个工具；全部经 registry 注册并受权限约束。
+</div>
+
+</div></section>
+
+<section class="slide" data-layout="S15" data-animate="matrix-fill" data-slide-id="s11">
+<div class="canvas-card">
+<div class="chrome-min"><div class="l">BREAST CANCER CDSS · DEFENSE</div><div class="r">AGENT · RAG · COZE · 11 / 36</div></div>
+
+<div style="flex:1;padding:0;display:grid;grid-template-rows:auto 1fr auto;gap:2vh">
+  <div style="display:flex;flex-direction:column;gap:1.2vh"><div class="t-meta" style="color:var(--accent);letter-spacing:.22em">EXECUTION TRACE</div><h2 style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(4vw,7.2vh);line-height:.99;letter-spacing:-.03em">一次解读请求的真实耗时</h2><p class="lead" style="font-weight:300;max-width:66ch;color:var(--text-secondary)">慢在哪一步，表里能直接看到。</p></div>
+  <table class="d-table">
+    <thead><tr><th>#</th><th>节点</th><th>耗时</th><th>产物</th><th>说明</th></tr></thead>
+    <tbody>
+      <tr><td class="mono">1</td><td class="mono">guard</td><td class="mono">0ms</td><td>—</td><td style="color:var(--text-secondary)">无越界</td></tr><tr><td class="mono">2</td><td class="mono">cache</td><td class="mono">0ms</td><td>miss</td><td style="color:var(--text-secondary)">首次提问</td></tr><tr><td class="mono">3</td><td class="mono">route</td><td class="mono">0ms</td><td>result_interpretation</td><td style="color:var(--text-secondary)">含特征值</td></tr><tr><td class="mono">4</td><td class="mono">act</td><td class="mono">139ms</td><td>prediction + shap + FEAT 条款</td><td style="color:var(--text-secondary)">模型 + 检索</td></tr><tr><td class="mono">5</td><td class="mono">assess</td><td class="mono">2ms</td><td>confident</td><td style="color:var(--text-secondary)">置信 0.9961</td></tr><tr><td class="mono">6</td><td class="mono">compose</td><td class="mono">0ms</td><td>answer</td><td style="color:var(--text-secondary)">模板合成</td></tr><tr><td class="mono">7</td><td class="mono">verify</td><td class="mono">0ms</td><td>ok</td><td style="color:var(--text-secondary)">2 个数字对账</td></tr><tr><td class="mono">8</td><td class="mono">guard_out</td><td class="mono">0ms</td><td>—</td><td style="color:var(--text-secondary)">免责声明</td></tr><tr><td class="mono">9</td><td class="mono">persist</td><td class="mono">3ms</td><td>run + citations</td><td style="color:var(--text-secondary)">写库</td></tr><tr><td class="mono">10</td><td class="mono">finish</td><td class="mono">0ms</td><td>done</td><td style="color:var(--text-secondary)">返回</td></tr>
+    </tbody>
+  </table>
+  <div style="display:flex;justify-content:space-between;border-top:1px solid var(--border-subtle);padding-top:1.4vh">
+    <p class="body-sm" style="max-width:70ch">同一问题首次调用 30.7s：冷启动要加载 90MB ONNX 模型并做 LLM 重排；热查询 139ms。</p>
+    <div class="t-meta">RUN a1c9 · 2026-10-18</div>
+  </div>
+</div>
+
+</div></section>
+
+<section class="slide" data-layout="S04" data-animate="six-cells" data-slide-id="s12">
+<div class="canvas-card">
+<div class="chrome-min"><div class="l">BREAST CANCER CDSS · DEFENSE</div><div class="r">AGENT · RAG · COZE · 12 / 36</div></div>
+
+<div style="flex:1;padding:0;display:grid;grid-template-rows:auto 1fr auto;gap:2vh">
+  <div style="display:flex;flex-direction:column;gap:1.2vh"><div class="t-meta" style="color:var(--accent);letter-spacing:.22em">TOOL REGISTRY · 13 TOOLS</div><h2 style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(4vw,7.2vh);line-height:.99;letter-spacing:-.03em">模型只能通过工具碰数据</h2><p class="lead" style="font-weight:300;max-width:66ch;color:var(--text-secondary)">13 个工具、8 种权限、5 档超时；没有一个直接读文件。</p></div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:2.4vw;min-height:0">
+    <table class="d-table"><thead><tr><th>工具</th><th>权限</th><th>超时</th><th>幂等</th><th>作用</th></tr></thead><tbody><tr><td class="mono">predict</td><td class="mono">predict</td><td class="mono">10s</td><td>是</td><td style="color:var(--text-secondary)">30 维 → 概率</td></tr><tr><td class="mono">explain</td><td class="mono">explain</td><td class="mono">20s</td><td>是</td><td style="color:var(--text-secondary)">近似 SHAP</td></tr><tr><td class="mono">search_knowledge</td><td class="mono">knowledge:read</td><td class="mono">25s</td><td>是</td><td style="color:var(--text-secondary)">混合检索</td></tr><tr><td class="mono">get_clause</td><td class="mono">knowledge:read</td><td class="mono">5s</td><td>是</td><td style="color:var(--text-secondary)">按 ID 取条款</td></tr><tr><td class="mono">records</td><td class="mono">records:read</td><td class="mono">10s</td><td>是</td><td style="color:var(--text-secondary)">历史记录</td></tr><tr><td class="mono">statistics</td><td class="mono">stats:read</td><td class="mono">10s</td><td>是</td><td style="color:var(--text-secondary)">个人统计</td></tr><tr><td class="mono">similar_cases</td><td class="mono">cases:read</td><td class="mono">5s</td><td>是</td><td style="color:var(--text-secondary)">相似病例</td></tr></tbody></table>
+    <table class="d-table"><thead><tr><th>工具</th><th>权限</th><th>超时</th><th>幂等</th><th>作用</th></tr></thead><tbody><tr><td class="mono">compare_records</td><td class="mono">records:read</td><td class="mono">10s</td><td>是</td><td style="color:var(--text-secondary)">两次对比</td></tr><tr><td class="mono">sql_query</td><td class="mono">stats:read</td><td class="mono">10s</td><td>是</td><td style="color:var(--text-secondary)">只读聚合</td></tr><tr><td class="mono">export_report</td><td class="mono">report:generate</td><td class="mono">25s</td><td>否</td><td style="color:var(--text-secondary)">PDF 报告</td></tr><tr><td class="mono">export_data</td><td class="mono">export</td><td class="mono">20s</td><td>否</td><td style="color:var(--text-secondary)">CSV 导出</td></tr><tr><td class="mono">delegate</td><td class="mono">agent:delegate</td><td class="mono">90s</td><td>否</td><td style="color:var(--text-secondary)">子代理</td></tr><tr><td class="mono">sessions</td><td class="mono">records:read</td><td class="mono">10s</td><td>是</td><td style="color:var(--text-secondary)">会话列表</td></tr></tbody></table>
+  </div>
+  <p class="body-sm" style="border-top:1px solid var(--border-subtle);padding-top:1.2vh">
+    工具只能通过 <code>registry.call_tool()</code> 调用：参数先校验、权限先判定、超时与异常有确定语义。导出类标记非幂等，避免缓存误命中。
   </p>
 </div>
 
 </div></section>
 
-<section class="slide" data-layout="S08" data-animate="duo-mirror" data-slide-id="s11">
+<section class="slide" data-layout="S19" data-animate="four-cards" data-slide-id="s13">
 <div class="canvas-card">
-<div class="chrome-min"><div class="l">BREAST CANCER CDSS · GRADUATION DEFENSE</div><div class="r">AGENT · RAG · COZE · 11 / 25</div></div>
+<div class="chrome-min"><div class="l">BREAST CANCER CDSS · DEFENSE</div><div class="r">AGENT · RAG · COZE · 13 / 36</div></div>
+
+<div style="flex:1;padding:0;display:grid;grid-template-rows:auto 1fr;gap:2.4vh">
+  <div style="display:flex;flex-direction:column;gap:1.2vh"><div class="t-meta" style="color:var(--accent);letter-spacing:.22em">INTENT ROUTING</div><h2 style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(4vw,7.2vh);line-height:.99;letter-spacing:-.03em">13 类意图，规则有先后</h2><p class="lead" style="font-weight:300;max-width:66ch;color:var(--text-secondary)">分类不是模型拍脑袋，是可测试的规则表。</p></div>
+  <div style="display:grid;grid-template-columns:7fr 5fr;gap:3vw;min-height:0">
+    <table class="d-table"><thead><tr><th>意图</th><th>示例</th><th>判定依据</th></tr></thead><tbody><tr><td class="mono">result_interpretation</td><td>这个结果什么意思？</td><td style="color:var(--text-secondary)">有特征值 + 解读措辞</td></tr><tr><td class="mono">feature_question</td><td>面积平均值是什么意思</td><td style="color:var(--text-secondary)">命中 30 个特征名</td></tr><tr><td class="mono">medical_qa</td><td>乳腺癌早期症状有哪些</td><td style="color:var(--text-secondary)">医学关键词</td></tr><tr><td class="mono">usage</td><td>怎么导出报告</td><td style="color:var(--text-secondary)">操作词 + 系统词</td></tr><tr><td class="mono">history</td><td>我一共做过多少次预测</td><td style="color:var(--text-secondary)">统计/记录</td></tr><tr><td class="mono">similar_cases</td><td>找几个相似病例</td><td style="color:var(--text-secondary)">相似/对照</td></tr><tr><td class="mono">report_export</td><td>生成一份完整报告</td><td style="color:var(--text-secondary)">动作：生成</td></tr><tr><td class="mono">data_query</td><td>恶性占比多少</td><td style="color:var(--text-secondary)">聚合/占比</td></tr><tr><td class="mono">record_compare</td><td>和上次比怎么样</td><td style="color:var(--text-secondary)">两次记录</td></tr><tr><td class="mono">multi_step_task</td><td>逐条解释这些特征</td><td style="color:var(--text-secondary)">多步/逐条</td></tr><tr><td class="mono">clarify</td><td>这个呢？</td><td style="color:var(--text-secondary)">指代不清</td></tr><tr><td class="mono">refused</td><td>帮我确诊一下</td><td style="color:var(--text-secondary)">越界：诊断/处方</td></tr></tbody></table>
+    <div style="display:flex;flex-direction:column;gap:1.2vh">
+      <div class="d-card"><div class="n">ORDER MATTERS</div><h4>规则有先后</h4><p>导出动作先于"能力询问"；医学关键词先于通用解读；特征名先于医学词。</p></div>
+      <div class="d-card"><div class="n">BUG FIXED</div><h4>"用"不是操作词</h4><p>曾把"副作用"里的"用"当成操作意图，导致医学问题走成 usage；已改为"怎么用/如何使用"。</p></div>
+      <div class="d-card"><div class="n">FALLBACK</div><h4>拿不准就问</h4><p>指代不清进 clarify；越界进 refused；不硬猜。</p></div>
+    </div>
+  </div>
+</div>
+
+</div></section>
+
+<section class="slide" data-layout="S08" data-animate="duo-mirror" data-slide-id="s14">
+<div class="canvas-card">
+<div class="chrome-min"><div class="l">BREAST CANCER CDSS · DEFENSE</div><div class="r">AGENT · RAG · COZE · 14 / 36</div></div>
 
 <div style="flex:1;padding:0;display:grid;grid-template-rows:auto 1fr;gap:3vh">
-  <div data-anim="head" style="display:flex;flex-direction:column;gap:1.4vh"><div class="t-meta" style="color:var(--accent);letter-spacing:.22em">TWO ENGINES · 06</div><h2 style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(4.2vw,7.6vh);line-height:.98;letter-spacing:-.03em">同一套图，两种交付方式</h2></div>
+  <div style="display:flex;flex-direction:column;gap:1.2vh"><div class="t-meta" style="color:var(--accent);letter-spacing:.22em">TWO ENGINES</div><h2 style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(4vw,7.2vh);line-height:.99;letter-spacing:-.03em">同一张图，两种交付</h2><p class="lead" style="font-weight:300;max-width:66ch;color:var(--text-secondary)">同步给机器，流式给人。</p></div>
   <div class="duo-compare" style="flex:1">
-    <div class="col" style="display:flex;flex-direction:column;gap:2vh">
+    <div class="col" style="display:flex;flex-direction:column;gap:1.6vh">
       <span class="t-cat" style="color:var(--text-helper)">SYNC · /api/agent/run-sync</span>
-      <h3 style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(4.6vw,8vh);line-height:1.02">一次返回<br>适合评测</h3>
-      <p class="body">输入问题，等图跑完，拿完整 JSON：intent、answer、citations、verify、trace。评测脚本和自动化都用它。</p>
-      <div class="t-meta" style="margin-top:auto">稳定 · 可断言</div>
+      <h3 style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(4.2vw,7.2vh);line-height:1.02">一次返回<br>适合评测</h3>
+      <p class="body">完整 JSON：intent、answer、citations、verify、graph trace。评测脚本与自动化用它，字段可断言。</p>
+      <div style="display:grid;gap:.5vh;margin-top:.8vh">
+        <div class="d-check"><span class="ix">A</span><div><b>字段稳定</b><p>intent / citations / verify / graph 都可断言。</p></div></div>
+      </div>
+      <div class="d-code" style="margin-top:1vh">POST /api/agent/run-sync
+{ "question": "…" }
+→ { intent, answer_md,
+    citations, verify,
+    graph: [10 steps] }</div>
     </div>
     <span class="vrule"></span>
-    <div class="col" style="display:flex;flex-direction:column;gap:2vh">
+    <div class="col" style="display:flex;flex-direction:column;gap:1.6vh">
       <span class="t-cat" style="color:var(--accent)">STREAM · /api/agent/llm/stream</span>
-      <h3 style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(4.6vw,8vh);line-height:1.02">边想边给<br>过程可见</h3>
-      <p class="body">SSE 推送 start / thinking / tool_call / tool_result / sub_steps / token / done；前端逐步渲染，失败自动重试两次。</p>
-      <div class="t-meta" style="margin-top:auto;color:var(--accent)">可观察 · 可中断</div>
+      <h3 style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(4.2vw,7.2vh);line-height:1.02;color:var(--accent)">边想边给<br>过程可见</h3>
+      <p class="body">SSE 事件：start / thinking / token / tool_call / tool_result / sub_steps / done；失败发 fallback，前端重试两次。</p>
+      <div style="display:grid;gap:.5vh;margin-top:.8vh">
+        <div class="d-check"><span class="ix">A</span><div><b>7 类事件</b><p>start / thinking / token / tool_call / tool_result / sub_steps / done。</p></div></div>
+      </div>
+      <div class="d-code" style="margin-top:1vh">event: start
+data: {"question":"…"}
+event: thinking
+data: {"step":1}
+event: token
+data: {"delta":"乳腺癌"}</div>
     </div>
   </div>
 </div>
 
 </div></section>
 
-<section class="slide" data-layout="S18" data-animate="why-now" data-slide-id="s12">
+<section class="slide" data-layout="S05" data-animate="sub-stack" data-slide-id="s15">
 <div class="canvas-card">
-<div class="chrome-min"><div class="l">BREAST CANCER CDSS · GRADUATION DEFENSE</div><div class="r">AGENT · RAG · COZE · 12 / 25</div></div>
+<div class="chrome-min"><div class="l">BREAST CANCER CDSS · DEFENSE</div><div class="r">AGENT · RAG · COZE · 15 / 36</div></div>
 
-<div style="flex:1;padding:0;display:grid;grid-template-rows:auto 1fr auto;gap:3vh">
-  <div data-anim="head" style="display:flex;flex-direction:column;gap:1.4vh"><div class="t-meta" style="color:var(--accent);letter-spacing:.22em">UNCERTAINTY · 07</div><h2 style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(4.2vw,7.6vh);line-height:.98;letter-spacing:-.03em">不知道的时候，敢说不知道</h2></div>
+<div style="flex:1;padding:0;display:grid;grid-template-rows:auto 1fr;gap:3vh">
+  <div style="display:flex;flex-direction:column;gap:1.2vh"><div class="t-meta" style="color:var(--accent);letter-spacing:.22em">SUBAGENT</div><h2 style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(4vw,7.2vh);line-height:.99;letter-spacing:-.03em">长任务拆出去，权限收回来</h2><p class="lead" style="font-weight:300;max-width:66ch;color:var(--text-secondary)">子代理是执行体，不是第二个大脑。</p></div>
+  <div style="display:grid;grid-template-columns:5fr 7fr;gap:4vw;min-height:0">
+    <div style="display:flex;flex-direction:column;gap:1.6vh">
+      <p class="body">主代理负责一次问答；遇到"逐条解释 30 个特征"这类长任务，拆给子代理，避免主循环被单次工具调用拖死。</p>
+      <div class="d-check"><span class="ix">01</span><div><b>只读</b><p>子代理工具集不含 export / predict，避免副作用。</p></div></div>
+      <div class="d-check"><span class="ix">02</span><div><b>禁止递归</b><p>子代理不能再 delegate，深度固定为 1。</p></div></div>
+      <div class="d-check"><span class="ix">03</span><div><b>超时 90s</b><p>超时返回结构化错误，主代理降级为逐项处理。</p></div></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:1.2vh">
+      <div class="d-card"><div class="n">CONTRACT</div><h4>delegate(question, scope)</h4><p>返回 summary + facts + citations；主代理只信结构化结果，不解析自然语言。</p></div>
+      <div class="d-card"><div class="n">WHY NOT LOOP</div><h4>主循环有上限</h4><p>Graph 最多 40 步；子任务放子代理里跑，主图不会被撑爆。</p></div>
+      <div class="d-card"><div class="n">TRACE</div><h4>sub_steps 事件</h4><p>子代理的步骤以 sub_steps 推给前端，过程仍然可见。</p></div>
+    </div>
+  </div>
+</div>
+
+</div></section>
+
+<section class="slide" data-layout="S18" data-animate="why-now" data-slide-id="s16">
+<div class="canvas-card">
+<div class="chrome-min"><div class="l">BREAST CANCER CDSS · DEFENSE</div><div class="r">AGENT · RAG · COZE · 16 / 36</div></div>
+
+<div style="flex:1;padding:0;display:grid;grid-template-rows:auto 1fr auto;gap:2.4vh">
+  <div style="display:flex;flex-direction:column;gap:1.2vh"><div class="t-meta" style="color:var(--accent);letter-spacing:.22em">UNCERTAINTY · 3 TIERS</div><h2 style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(4vw,7.2vh);line-height:.99;letter-spacing:-.03em">不知道的时候，敢说不知道</h2><p class="lead" style="font-weight:300;max-width:66ch;color:var(--text-secondary)">三档不是文案，是流程分支。</p></div>
   <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2.4vw;align-items:end">
-    <div style="display:flex;flex-direction:column;gap:1.2vh">
-      <div class="t-cat">CONFIDENT</div>
-      <h3 class="h-md" style="font-weight:300">置信</h3>
-      <p class="body-sm">校准置信度 ≥ 0.79 且输入距离在范围内，正常给结论。</p>
-      <div style="font-family:var(--sans);font-weight:200;font-size:min(7vw,12vh);line-height:.9">0.79</div>
+    <div style="display:flex;flex-direction:column;gap:1vh">
+      <div class="t-cat">CONFIDENT</div><h3 class="h-md" style="font-weight:300">置信</h3>
+      <p class="body-sm">校准置信度 ≥ 0.79，输入距离 ≤ 15；正常给结论与建议。</p>
+      <div style="font-family:var(--sans);font-weight:200;font-size:min(6.4vw,11vh);line-height:.9">0.79</div>
     </div>
-    <div style="display:flex;flex-direction:column;gap:1.2vh">
-      <div class="t-cat">CLARIFY</div>
-      <h3 class="h-md" style="font-weight:300">谨慎</h3>
-      <p class="body-sm">0.41–0.79 之间：给倾向，但明确标注不确定，建议补充信息。</p>
-      <div style="font-family:var(--sans);font-weight:200;font-size:min(7vw,12vh);line-height:.9">0.41</div>
+    <div style="display:flex;flex-direction:column;gap:1vh">
+      <div class="t-cat">CLARIFY</div><h3 class="h-md" style="font-weight:300">谨慎</h3>
+      <p class="body-sm">0.41–0.79：给倾向，标注不确定，建议补充分期/分型。</p>
+      <div style="font-family:var(--sans);font-weight:200;font-size:min(6.4vw,11vh);line-height:.9">0.41</div>
     </div>
-    <div style="display:flex;flex-direction:column;gap:1.2vh">
-      <div class="t-cat" style="color:var(--accent)">ABSTAIN</div>
-      <h3 class="h-md" style="font-weight:300;color:var(--accent)">弃权</h3>
-      <p class="body-sm">低于 0.41 或距离 &gt; 15：直接说"这组数据超出可靠范围"。</p>
-      <div style="font-family:var(--sans);font-weight:200;font-size:min(7vw,12vh);line-height:.9;color:var(--accent)">15.0</div>
+    <div style="display:flex;flex-direction:column;gap:1vh">
+      <div class="t-cat" style="color:var(--accent)">ABSTAIN</div><h3 class="h-md" style="font-weight:300;color:var(--accent)">弃权</h3>
+      <p class="body-sm">低于 0.41 或距离 &gt; 15：直接说"超出可靠范围"，不给结论。</p>
+      <div style="font-family:var(--sans);font-weight:200;font-size:min(6.4vw,11vh);line-height:.9;color:var(--accent)">15.0</div>
     </div>
   </div>
-  <div style="border-top:1px solid var(--border-subtle);padding-top:2vh;display:flex;justify-content:space-between;align-items:end">
-    <p class="body" style="max-width:60ch">三档不是拍脑袋：阈值来自校准曲线与训练分布距离，评测里对应用例可复现。</p>
-    <div class="t-meta">3 TIERS · 2 THRESHOLDS · 1 DISTANCE</div>
+  <div style="border-top:1px solid var(--border-subtle);padding-top:1.6vh;display:grid;grid-template-columns:7fr 5fr;gap:3vw">
+    <p class="body">阈值不是拍脑袋：0.79 / 0.41 来自校准曲线与误判成本；15 是训练分布距离的经验上限。评测里三档都有对应用例。</p>
+    <div class="t-meta" style="text-align:right">误判成本：假阴性 &gt; 假阳性<br>所以弃权比硬答更安全</div>
   </div>
 </div>
 
 </div></section>
 
-<section class="slide" data-layout="S14" data-animate="grid-reveal" data-slide-id="s13">
+<section class="slide" data-layout="S14" data-animate="loop-form" data-slide-id="s17">
 <div class="canvas-card">
-<div class="chrome-min"><div class="l">BREAST CANCER CDSS · GRADUATION DEFENSE</div><div class="r">AGENT · RAG · COZE · 13 / 25</div></div>
+<div class="chrome-min"><div class="l">BREAST CANCER CDSS · DEFENSE</div><div class="r">AGENT · RAG · COZE · 17 / 36</div></div>
 
-<div style="flex:1;padding:0;display:grid;grid-template-rows:auto 1fr;gap:4vh">
-  <div data-anim="head" style="display:flex;flex-direction:column;gap:1.4vh"><div class="t-meta" style="color:var(--accent);letter-spacing:.22em">GROUNDING · 07</div><h2 style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(4.2vw,7.6vh);line-height:.98;letter-spacing:-.03em">每句话，都要能对上事实</h2><p class="lead" style="font-weight:300;max-width:64ch;color:var(--text-secondary)">引用不是脚注，是逐句核对后的结果。</p></div>
-  <div style="display:grid;grid-template-columns:7fr 5fr;gap:4vw;align-items:start;min-height:0">
-    <div style="display:flex;flex-direction:column;gap:1.8vh">
-      <div style="display:grid;grid-template-columns:auto 1fr;gap:1.4vw;border-top:1px solid var(--border-subtle);padding-top:1.2vh">
-        <span class="t-meta" style="color:var(--accent)">01</span>
-        <div><b style="font-weight:500">句子切分</b><p class="body-sm">把答案拆成可独立核对的句子，中文按标点，英文按句号。</p></div>
-      </div>
-      <div style="display:grid;grid-template-columns:auto 1fr;gap:1.4vw;border-top:1px solid var(--border-subtle);padding-top:1.2vh">
-        <span class="t-meta" style="color:var(--accent)">02</span>
-        <div><b style="font-weight:500">数字对账</b><p class="body-sm">答案里的每个数字都要在事实池里找到，容差 0.02 + 0.2%。</p></div>
-      </div>
-      <div style="display:grid;grid-template-columns:auto 1fr;gap:1.4vw;border-top:1px solid var(--border-subtle);padding-top:1.2vh">
-        <span class="t-meta" style="color:var(--accent)">03</span>
-        <div><b style="font-weight:500">断言绑定</b><p class="body-sm">每句话映射到 clause_id 或 prediction/shap 事实，无出处标"推断"。</p></div>
-      </div>
-      <div style="display:grid;grid-template-columns:auto 1fr;gap:1.4vw;border-top:1px solid var(--border-subtle);padding-top:1.2vh">
-        <span class="t-meta" style="color:var(--accent)">04</span>
-        <div><b style="font-weight:500">无据丢弃</b><p class="body-sm">编造的数字整句删掉，并在 verify 里记录 dropped。</p></div>
-      </div>
+<div style="flex:1;padding:0;display:grid;grid-template-rows:auto 1fr;gap:2.4vh">
+  <div style="display:flex;flex-direction:column;gap:1.2vh"><div class="t-meta" style="color:var(--accent);letter-spacing:.22em">GROUNDING</div><h2 style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(4vw,7.2vh);line-height:.99;letter-spacing:-.03em">每句话，都要对得上事实</h2><p class="lead" style="font-weight:300;max-width:66ch;color:var(--text-secondary)">引用不是脚注，是逐句核对后的结果。</p></div>
+  <div style="display:grid;grid-template-columns:7fr 5fr;gap:4vw;min-height:0">
+    <div style="display:flex;flex-direction:column;gap:1vh">
+      <div class="d-check"><span class="ix">01</span><div><b>句子切分</b><p>中文按 。！？；，英文按句号；每句独立核对。</p></div></div>
+      <div class="d-check"><span class="ix">02</span><div><b>数字对账</b><p>容差 <code>max(0.02, |数值| × 0.002)</code>；对不上就标记。</p></div></div>
+      <div class="d-check"><span class="ix">03</span><div><b>断言绑定</b><p>每句映射到 clause_id 或 prediction/shap 事实；无出处标"推断"。</p></div></div>
+      <div class="d-check"><span class="ix">04</span><div><b>无据丢弃</b><p>编造数字整句删除，verify 记录 dropped；答案里不再出现。</p></div></div>
     </div>
-    <div style="display:flex;flex-direction:column;gap:1vh;border-left:1px solid var(--border-subtle);padding-left:2vw;align-self:stretch">
-      <div class="t-meta">OUTPUT</div>
-      <div style="font-family:var(--mono);font-size:max(14px,.9vw);line-height:1.9;color:var(--text-secondary)">
-        { ok, coverage,<br>&nbsp;&nbsp;claims: [...],<br>&nbsp;&nbsp;dropped: n,<br>&nbsp;&nbsp;unsupported: [...] }
-      </div>
-      <p class="body-sm" style="margin-top:auto">覆盖率和丢弃数会随答案返回，前端可以展示"这句话没有依据"。</p>
+    <div style="display:flex;flex-direction:column;gap:1vh">
+      <div class="d-code">def ground(answer, facts, citations):
+    for sent in split_sentences(answer):
+        nums = extract_numbers(sent)
+        bad = [n for n in nums
+               if not in_fact_pool(n, facts)]
+        if bad:
+            drop(sent)  <span class="c"># 整句丢弃</span>
+    return { ok, coverage,
+             claims, dropped }</div>
+      <p class="body-sm">覆盖率与丢弃数随答案返回；前端可展示"这句话没有依据"。</p>
     </div>
   </div>
 </div>
 
-
 </div></section>
 
-<section class="slide" data-layout="S22" data-animate="image-hero" data-slide-id="s14">
+<section class="slide" data-layout="S22" data-animate="image-hero" data-slide-id="s18">
 <div class="canvas-card" style="padding:0">
 
 
 <div style="flex:1;display:flex;flex-direction:column;height:100%">
   <div style="position:relative;flex:0 0 55%;overflow:hidden;background:var(--grey-1)">
-    <img data-image-slot="s22-hero-21x9" src="images/03b-assistant-citations.png" alt="每句话，都有编号"
+    <img data-image-slot="s22-hero-21x9" src="images/03b-assistant-citations.png" alt="每句话，都能点开"
          style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 35%">
     <div class="chrome-min" style="position:absolute;top:0;left:0;right:0;color:#fff;background:var(--ink);padding:1.4vh 5vw;margin:0">
-      <div class="l">TRACEABLE ANSWER · CITATIONS</div><div class="r">14 / 25</div>
+      <div class="l">TRACEABLE ANSWER</div><div class="r">18 / 36</div>
     </div>
   </div>
-  <div style="flex:1;padding:2.4vh 5vw 6.2vh;display:flex;flex-direction:column;justify-content:space-between;gap:1.4vh">
+  <div style="flex:1;padding:2.4vh 5vw 6.2vh;display:flex;flex-direction:column;justify-content:space-between;gap:1.2vh">
     <div>
-      <h3 style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(3.8vw,6.6vh);line-height:1.02;letter-spacing:-.03em">每句话，都有编号</h3>
-      <p class="body" style="max-width:66ch;margin-top:1vh">答案正文用 [FEAT-008] 做行内标记；底部是可点击的依据芯片，点开即条款原文与来源级别。</p>
+      <h3 style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(3.7vw,6.4vh);line-height:1.02;letter-spacing:-.03em">每句话，都能点开</h3>
+      <p class="body" style="max-width:68ch;margin-top:.8vh">正文用 [FEAT-008] 做行内标记；底部是可点击的依据芯片，点开即条款原文与来源级别。</p>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:4vw"><div style="border-top:1px solid var(--ink);padding-top:1vh"><div class="t-meta">INLINE</div><div style="font-family:var(--sans);font-weight:200;font-size:min(3.4vw,5.4vh);line-height:.95;letter-spacing:-.03em">2</div><p class="body-sm" style="margin-top:.4vh">行内引用标记</p></div><div style="border-top:1px solid var(--ink);padding-top:1vh"><div class="t-meta">CHIPS</div><div style="font-family:var(--sans);font-weight:200;font-size:min(3.4vw,5.4vh);line-height:.95;letter-spacing:-.03em">5</div><p class="body-sm" style="margin-top:.4vh">可点击依据芯片</p></div><div style="border-top:1px solid var(--ink);padding-top:1vh"><div class="t-meta">DROPPED</div><div style="font-family:var(--sans);font-weight:200;font-size:min(3.4vw,5.4vh);line-height:.95;letter-spacing:-.03em;color:var(--accent)">0</div><p class="body-sm" style="margin-top:.4vh">被丢弃的编造句</p></div></div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:4vw"><div class="d-kpi"><div class="l">INLINE</div><div class="v">2</div><div class="n">行内引用标记</div></div><div class="d-kpi"><div class="l">CHIPS</div><div class="v">5</div><div class="n">可点击依据芯片</div></div><div class="d-kpi"><div class="l">DROPPED</div><div class="v";color:var(--accent)>0</div><div class="n">被丢弃的编造句</div></div></div>
   </div>
 </div>
 
 </div></section>
 
-<section class="slide" data-layout="S15" data-animate="matrix-fill" data-slide-id="s15">
+<section class="slide accent" data-layout="S03" data-animate="hero" data-slide-id="s19">
 <div class="canvas-card">
-<div class="chrome-min"><div class="l">BREAST CANCER CDSS · GRADUATION DEFENSE</div><div class="r">AGENT · RAG · COZE · 15 / 25</div></div>
 
-<div style="flex:1;padding:0;display:grid;grid-template-rows:auto 1fr auto;gap:2.4vh">
-  <div data-anim="head" style="display:flex;flex-direction:column;gap:1.4vh"><div class="t-meta" style="color:var(--accent);letter-spacing:.22em">KNOWLEDGE BASE · 08</div><h2 style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(4.2vw,7.6vh);line-height:.98;letter-spacing:-.03em">1,035 条条款，四个域</h2><p class="lead" style="font-weight:300;max-width:64ch;color:var(--text-secondary)">不是把网页一股脑塞进去：每条都有来源、级别、域标签。</p></div>
-  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1vh 1vw;min-height:0">
-    <div class="d-mcell"><div class="n">487</div><div class="t">NCI 治疗</div><div class="m">MED-DISEASE</div></div><div class="d-mcell"><div class="n">212</div><div class="t">NCI 筛查</div><div class="m">MED-DISEASE</div></div><div class="d-mcell"><div class="n">141</div><div class="t">NCI 预防</div><div class="m">MED-DISEASE</div></div><div class="d-mcell"><div class="n">61</div><div class="t">维基百科</div><div class="m">MED-DISEASE</div></div><div class="d-mcell"><div class="n">34</div><div class="t">MedlinePlus</div><div class="m">MED-DISEASE</div></div><div class="d-mcell"><div class="n">30</div><div class="t">特征词典</div><div class="m">FEAT</div></div><div class="d-mcell"><div class="n">28</div><div class="t">系统文档</div><div class="m">SYS</div></div><div class="d-mcell"><div class="n">18</div><div class="t">中国指南 2022</div><div class="m">MED-DISEASE</div></div><div class="d-mcell"><div class="n">10</div><div class="t">NHS</div><div class="m">MED-DISEASE</div></div><div class="d-mcell"><div class="n">7</div><div class="t">策展 FAQ</div><div class="m">SYS</div></div><div class="d-mcell"><div class="n">5</div><div class="t">WHO</div><div class="m">MED-DISEASE</div></div><div class="d-mcell"><div class="n">37</div><div class="t">他莫昔芬</div><div class="m">MED-DRUG</div></div>
+
+<span class="sec-num">02</span>
+<div style="flex:1;padding:0;display:grid;grid-template-rows:auto auto 1fr auto;gap:2.4vh;position:relative;z-index:1">
+  <div class="t-meta" style="color:rgba(255,255,255,.7);letter-spacing:.24em">PART 02 · 知识库</div>
+  <div style="display:grid;grid-template-columns:7fr 5fr;gap:4vw;align-items:start;align-self:start;margin-top:2vh">
+    <h2 style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(7.2vw,12.4vh);line-height:.94;color:#fff;letter-spacing:-.04em">知识库</h2>
+    <div style="display:flex;flex-direction:column;gap:0"><div style="display:grid;grid-template-columns:auto 1fr;gap:1.2vw;border-top:1px solid rgba(255,255,255,.24);padding:1.6vh 0"><span class="t-meta" style="color:rgba(255,255,255,.55)">01</span><span style="font-size:max(15px,1vw);color:rgba(255,255,255,.9)">语料构成与治理</span></div><div style="display:grid;grid-template-columns:auto 1fr;gap:1.2vw;border-top:1px solid rgba(255,255,255,.24);padding:1.6vh 0"><span class="t-meta" style="color:rgba(255,255,255,.55)">02</span><span style="font-size:max(15px,1vw);color:rgba(255,255,255,.9)">索引结构与混合检索</span></div><div style="display:grid;grid-template-columns:auto 1fr;gap:1.2vw;border-top:1px solid rgba(255,255,255,.24);padding:1.6vh 0"><span class="t-meta" style="color:rgba(255,255,255,.55)">03</span><span style="font-size:max(15px,1vw);color:rgba(255,255,255,.9)">域路由与引用门槛</span></div><div style="display:grid;grid-template-columns:auto 1fr;gap:1.2vw;border-top:1px solid rgba(255,255,255,.24);padding:1.6vh 0"><span class="t-meta" style="color:rgba(255,255,255,.55)">04</span><span style="font-size:max(15px,1vw);color:rgba(255,255,255,.9)">检索效果与失败案例</span></div></div>
   </div>
-  <div style="display:flex;justify-content:space-between;align-items:end;border-top:1px solid var(--border-subtle);padding-top:1.6vh">
+  <div style="display:flex;justify-content:space-between;border-top:1px solid rgba(255,255,255,.24);padding-top:2vh">
+    <div class="t-meta" style="color:rgba(255,255,255,.7)">1,035 条条款、22 个来源；先治理，再检索，再重排。</div>
+    <div class="t-meta" style="color:rgba(255,255,255,.5)">→ 继续</div>
+  </div>
+</div>
+
+</div></section>
+
+<section class="slide" data-layout="S15" data-animate="matrix-fill" data-slide-id="s20">
+<div class="canvas-card">
+<div class="chrome-min"><div class="l">BREAST CANCER CDSS · DEFENSE</div><div class="r">AGENT · RAG · COZE · 20 / 36</div></div>
+
+<div style="flex:1;padding:0;display:grid;grid-template-rows:auto 1fr auto;gap:2.2vh">
+  <div style="display:flex;flex-direction:column;gap:1.2vh"><div class="t-meta" style="color:var(--accent);letter-spacing:.22em">CORPUS</div><h2 style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(4vw,7.2vh);line-height:.99;letter-spacing:-.03em">语料不是越多越好，是要能对上问题</h2><p class="lead" style="font-weight:300;max-width:66ch;color:var(--text-secondary)">每个来源都有级别、域和原文链接。</p></div>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:.9vh .9vw;min-height:0">
+    <div style="background:#f5f5f4;padding:1.2vh .9vw;display:flex;flex-direction:column;gap:.3vh"><div style="font-family:var(--sans);font-weight:200;font-size:min(2.2vw,3.8vh);line-height:1">487</div><div style="font-size:max(13px,.78vw);font-weight:500">NCI 治疗</div></div><div style="background:#f5f5f4;padding:1.2vh .9vw;display:flex;flex-direction:column;gap:.3vh"><div style="font-family:var(--sans);font-weight:200;font-size:min(2.2vw,3.8vh);line-height:1">212</div><div style="font-size:max(13px,.78vw);font-weight:500">NCI 筛查</div></div><div style="background:#f5f5f4;padding:1.2vh .9vw;display:flex;flex-direction:column;gap:.3vh"><div style="font-family:var(--sans);font-weight:200;font-size:min(2.2vw,3.8vh);line-height:1">141</div><div style="font-size:max(13px,.78vw);font-weight:500">NCI 预防</div></div><div style="background:#f5f5f4;padding:1.2vh .9vw;display:flex;flex-direction:column;gap:.3vh"><div style="font-family:var(--sans);font-weight:200;font-size:min(2.2vw,3.8vh);line-height:1">61</div><div style="font-size:max(13px,.78vw);font-weight:500">维基百科</div></div><div style="background:#f5f5f4;padding:1.2vh .9vw;display:flex;flex-direction:column;gap:.3vh"><div style="font-family:var(--sans);font-weight:200;font-size:min(2.2vw,3.8vh);line-height:1">34</div><div style="font-size:max(13px,.78vw);font-weight:500">MedlinePlus</div></div><div style="background:#f5f5f4;padding:1.2vh .9vw;display:flex;flex-direction:column;gap:.3vh"><div style="font-family:var(--sans);font-weight:200;font-size:min(2.2vw,3.8vh);line-height:1">37</div><div style="font-size:max(13px,.78vw);font-weight:500">他莫昔芬</div></div><div style="background:#f5f5f4;padding:1.2vh .9vw;display:flex;flex-direction:column;gap:.3vh"><div style="font-family:var(--sans);font-weight:200;font-size:min(2.2vw,3.8vh);line-height:1">30</div><div style="font-size:max(13px,.78vw);font-weight:500">特征词典</div></div><div style="background:#f5f5f4;padding:1.2vh .9vw;display:flex;flex-direction:column;gap:.3vh"><div style="font-family:var(--sans);font-weight:200;font-size:min(2.2vw,3.8vh);line-height:1">28</div><div style="font-size:max(13px,.78vw);font-weight:500">系统文档</div></div><div style="background:#f5f5f4;padding:1.2vh .9vw;display:flex;flex-direction:column;gap:.3vh"><div style="font-family:var(--sans);font-weight:200;font-size:min(2.2vw,3.8vh);line-height:1">18</div><div style="font-size:max(13px,.78vw);font-weight:500">中国指南</div></div><div style="background:#f5f5f4;padding:1.2vh .9vw;display:flex;flex-direction:column;gap:.3vh"><div style="font-family:var(--sans);font-weight:200;font-size:min(2.2vw,3.8vh);line-height:1">10</div><div style="font-size:max(13px,.78vw);font-weight:500">NHS</div></div><div style="background:#f5f5f4;padding:1.2vh .9vw;display:flex;flex-direction:column;gap:.3vh"><div style="font-family:var(--sans);font-weight:200;font-size:min(2.2vw,3.8vh);line-height:1">7</div><div style="font-size:max(13px,.78vw);font-weight:500">FAQ</div></div><div style="background:#f5f5f4;padding:1.2vh .9vw;display:flex;flex-direction:column;gap:.3vh"><div style="font-family:var(--sans);font-weight:200;font-size:min(2.2vw,3.8vh);line-height:1">5</div><div style="font-size:max(13px,.78vw);font-weight:500">WHO</div></div>
+  </div>
+  <div style="display:flex;justify-content:space-between;align-items:end;border-top:1px solid var(--border-subtle);padding-top:1.4vh">
     <div style="display:flex;align-items:baseline;gap:1.4vw">
-      <div style="font-family:var(--sans);font-weight:200;font-size:min(9vw,15vh);line-height:.85">1,035</div>
-      <div><div class="t-meta">CLAUSES · 22 DOCS</div><p class="body-sm">四个域：疾病 933 / 药物 37 / 系统 35 / 特征 30</p></div>
+      <div style="font-family:var(--sans);font-weight:200;font-size:min(8.6vw,14vh);line-height:.85">1,035</div>
+      <div><div class="t-meta">CLAUSES · 22 DOCS · 4 DOMAINS</div>
+      <p class="body-sm">疾病 933 / 药物 37 / 系统 35 / 特征 30</p></div>
     </div>
     <div class="t-meta" style="text-align:right">NCI · WHO · NHS · 指南 · 维基<br>FEATURES · SYS · FAQ</div>
   </div>
@@ -1695,24 +1808,24 @@
 
 </div></section>
 
-<section class="slide" data-layout="S08" data-animate="duo-mirror" data-slide-id="s16">
+<section class="slide" data-layout="S08" data-animate="duo-mirror" data-slide-id="s21">
 <div class="canvas-card">
-<div class="chrome-min"><div class="l">BREAST CANCER CDSS · GRADUATION DEFENSE</div><div class="r">AGENT · RAG · COZE · 16 / 25</div></div>
+<div class="chrome-min"><div class="l">BREAST CANCER CDSS · DEFENSE</div><div class="r">AGENT · RAG · COZE · 21 / 36</div></div>
 
-<div style="flex:1;padding:0;display:grid;grid-template-rows:auto 1fr;gap:3vh">
-  <div data-anim="head" style="display:flex;flex-direction:column;gap:1.4vh"><div class="t-meta" style="color:var(--accent);letter-spacing:.22em">CORPUS GOVERNANCE · 09</div><h2 style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(4.2vw,7.6vh);line-height:.98;letter-spacing:-.03em">先治理，再检索</h2></div>
+<div style="flex:1;padding:0;display:grid;grid-template-rows:auto 1fr;gap:2.4vh">
+  <div style="display:flex;flex-direction:column;gap:1.2vh"><div class="t-meta" style="color:var(--accent);letter-spacing:.22em">CORPUS GOVERNANCE</div><h2 style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(4vw,7.2vh);line-height:.99;letter-spacing:-.03em">先治理，再检索</h2><p class="lead" style="font-weight:300;max-width:66ch;color:var(--text-secondary)">切块方式决定了引用能不能读。</p></div>
   <div class="duo-compare" style="flex:1">
-    <div class="col" style="display:flex;flex-direction:column;gap:1.8vh">
+    <div class="col" style="display:flex;flex-direction:column;gap:1.4vh">
       <span class="t-cat" style="color:var(--text-helper)">BEFORE · 668 条</span>
-      <h3 style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(4.4vw,7.6vh);line-height:1.02">硬切 1100 字<br>到处都是"续 8"</h3>
-      <p class="body">398 条是碎片；发病率、参考文献、历史章节混在里面；引用点开经常没有上下文。</p>
-      <div class="t-meta">碎片率 60% · 噪声 14 条</div>
+      <h3 style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(4vw,6.8vh);line-height:1.03">硬切 1100 字<br>到处都是"续 8"</h3>
+      <p class="body">398 条碎片；发病率、参考文献、历史章节混入；引用点开没有上下文。</p>
+      <div class="t-meta">碎片率 60% · 噪声 14 条 · → 引用不可读</div>
     </div>
     <span class="vrule"></span>
-    <div class="col accent" style="display:flex;flex-direction:column;gap:1.8vh">
+    <div class="col accent" style="display:flex;flex-direction:column;gap:1.4vh">
       <span class="t-cat" style="color:var(--accent)">AFTER · 1,035 条</span>
-      <h3 style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(4.4vw,7.6vh);line-height:1.02;color:var(--accent)">按句切 260–900 字<br>每条独立可读</h3>
-      <p class="body">去统计/参考文献/历史；补副作用三源；文本哈希去重 23 条；全部打域与来源级别。</p>
+      <h3 style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(4vw,6.8vh);line-height:1.03;color:var(--accent)">按句切 260–900 字<br>每条独立可读</h3>
+      <p class="body">去统计/参考文献/历史；补副作用三源 18 条；文本哈希去重 23 条；全部打域与来源级别。</p>
       <div class="t-meta" style="color:var(--accent)">碎片 0 · 域 4 · 级别 4</div>
     </div>
   </div>
@@ -1720,160 +1833,212 @@
 
 </div></section>
 
-<section class="slide" data-layout="S11" data-animate="timeline-walk" data-slide-id="s17">
+<section class="slide" data-layout="S17" data-animate="grid-reveal" data-slide-id="s22">
 <div class="canvas-card">
-<div class="chrome-min"><div class="l">BREAST CANCER CDSS · GRADUATION DEFENSE</div><div class="r">AGENT · RAG · COZE · 17 / 25</div></div>
+<div class="chrome-min"><div class="l">BREAST CANCER CDSS · DEFENSE</div><div class="r">AGENT · RAG · COZE · 22 / 36</div></div>
 
-<div style="flex:1;padding:0;display:grid;grid-template-rows:auto 1fr auto;gap:3vh">
-  <div data-anim="head" style="display:flex;flex-direction:column;gap:1.4vh"><div class="t-meta" style="color:var(--accent);letter-spacing:.22em">HYBRID RETRIEVAL · 10</div><h2 style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(4.2vw,7.6vh);line-height:.98;letter-spacing:-.03em">词法保准确，向量保召回</h2></div>
-  <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:0;border-top:1px solid var(--border-subtle);padding-top:2vh;align-items:start">
-    <div class="d-step"><div class="t-meta" style="color:var(--accent)">01</div><b>查询</b><p>原句 + 同义词扩展；解读类用特征名。</p></div>
-    <div class="d-step"><div class="t-meta" style="color:var(--accent)">02</div><b>词法 Top30</b><p>中文单字 + 二元词，TF-IDF 倒排。</p></div>
-    <div class="d-step"><div class="t-meta" style="color:var(--accent)">03</div><b>向量 Top30</b><p>bge-small-zh，512 维，余弦。</p></div>
-    <div class="d-step"><div class="t-meta" style="color:var(--accent)">04</div><b>RRF 融合</b><p>倒数排名融合，不依赖分数尺度。</p></div>
-    <div class="d-step"><div class="t-meta" style="color:var(--accent)">05</div><b>LLM 重排</b><p>Top20 交给模型按相关性排序。</p></div>
-    <div class="d-step"><div class="t-meta" style="color:var(--accent)">06</div><b>域过滤</b><p>医学/系统分流，分数门槛后取 Top3。</p></div>
-  </div>
-  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2vw;border-top:1px solid var(--border-subtle);padding-top:2vh;padding-bottom:2vh">
-    <div><div style="font-family:var(--sans);font-weight:200;font-size:min(3.4vw,5.2vh);line-height:1">141,762</div><p class="body-sm">倒排词条</p></div>
-    <div><div style="font-family:var(--sans);font-weight:200;font-size:min(3.4vw,5.2vh);line-height:1">1,035</div><p class="body-sm">向量条数</p></div>
-    <div><div style="font-family:var(--sans);font-weight:200;font-size:min(3.4vw,5.2vh);line-height:1">0.9<span style="font-size:.4em">s</span></div><p class="body-sm">热查询端到端（冷启动约 9s）</p></div>
-  </div>
-</div>
+<div style="flex:1;padding:0;display:grid;grid-template-rows:auto 1fr;gap:2.4vh">
+  <div style="display:flex;flex-direction:column;gap:1.2vh"><div class="t-meta" style="color:var(--accent);letter-spacing:.22em">INDEX</div><h2 style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(4vw,7.2vh);line-height:.99;letter-spacing:-.03em">四张表，一个文件</h2><p class="lead" style="font-weight:300;max-width:66ch;color:var(--text-secondary)">倒排、向量、正文、FTS 都在 SQLite 里。</p></div>
+  <div style="display:grid;grid-template-columns:6fr 6fr;gap:4vw;min-height:0">
+    <div style="display:flex;flex-direction:column;gap:1vh">
+      <table class="d-table"><thead><tr><th>表</th><th>内容</th><th>规模</th></tr></thead><tbody>
+        <tr><td class="mono">rag_chunks</td><td>条款正文 + 域/级别/URL</td><td>1,035</td></tr>
+        <tr><td class="mono">rag_terms</td><td>倒排：词 → clause_id</td><td>141,762</td></tr>
+        <tr><td class="mono">rag_vectors</td><td>512 维 float32 BLOB</td><td>1,035</td></tr>
+        <tr><td class="mono">rag_fts*</td><td>SQLite FTS5 辅助索引</td><td>—</td></tr>
+      </tbody></table>
+      <p class="body-sm">没有外部向量库：1,035 条向量在内存里做余弦，单次 &lt;5ms。</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:1vh">
+      <div class="d-code"><span class="c"># 重建索引（部署时执行）</span>
+python -m agent.rag.build
 
-</div></section>
+<span class="c"># 只重建向量</span>
+RAG_BUILD_VECTORS=1 \
+  python -m agent.rag.build
 
-<section class="slide" data-layout="S21" data-animate="tech-spec" data-slide-id="s18">
-<div class="canvas-card">
-<div class="chrome-min"><div class="l">BREAST CANCER CDSS · GRADUATION DEFENSE</div><div class="r">AGENT · RAG · COZE · 18 / 25</div></div>
-
-<div style="flex:1;padding:0;display:grid;grid-template-rows:auto 1fr auto;gap:3vh">
-  <div data-anim="head" style="display:flex;flex-direction:column;gap:1.4vh"><div class="t-meta" style="color:var(--accent);letter-spacing:.22em">RETRIEVAL SPEC · 11</div><h2 style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(4.2vw,7.6vh);line-height:.98;letter-spacing:-.03em">检索不是玄学，是一组参数</h2></div>
-  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2vw;border-top:1px solid var(--ink);padding-top:2vh">
-    <div><div class="t-meta">EMBEDDING</div><div style="font-weight:200;font-size:min(5.2vw,9vh);line-height:.95">512<span style="font-size:.3em"> dim</span></div><p class="body-sm">bge-small-zh-v1.5 · ONNX CPU</p></div>
-    <div><div class="t-meta">CANDIDATES</div><div style="font-weight:200;font-size:min(5.2vw,9vh);line-height:.95">30→20→3</div><p class="body-sm">召回 / 融合 / 重排后输出</p></div>
-    <div><div class="t-meta">COLD START</div><div style="font-weight:200;font-size:min(5.2vw,9vh);line-height:.95;color:var(--accent)">9<span style="font-size:.3em">s</span></div><p class="body-sm">首次加载模型；之后 0.9s</p></div>
-  </div>
-  <div style="display:grid;grid-template-columns:5fr 7fr;gap:4vw;align-items:end;min-height:0">
-    <p class="body">右侧竖条是各来源的条款量（NCI 治疗 487 最高）。语料集中度决定了检索的主要证据来自 NCI 与指南。</p>
-    <div style="display:flex;align-items:flex-end;gap:.6vw;height:26vh;border-bottom:1px solid var(--ink)">
-      <div class="d-bar" style="height:100%"></div><div class="d-bar" style="height:44%"></div><div class="d-bar" style="height:29%"></div><div class="d-bar" style="height:13%"></div><div class="d-bar" style="height:7%"></div><div class="d-bar" style="height:6%"></div><div class="d-bar" style="height:6%"></div><div class="d-bar" style="height:4%"></div><div class="d-bar" style="height:2%"></div>
+<span class="c"># 向量随包发布，避免服务器 OOM</span>
+agent/knowledge/rag_vectors.sqlite</div>
+      <p class="body-sm">部署机上向量构建曾因 90MB ONNX 模型 OOM（exit 137），改为本地预计算 + 4MB SQLite 随包发布。</p>
     </div>
   </div>
-  <div class="t-meta">SOURCE DISTRIBUTION · 487 / 212 / 141 / 61 / 34 / 30 / 28 / 18 / 10</div>
 </div>
 
 </div></section>
 
-<section class="slide" data-layout="S19" data-animate="four-cards" data-slide-id="s19">
+<section class="slide" data-layout="S11" data-animate="timeline-walk" data-slide-id="s23">
 <div class="canvas-card">
-<div class="chrome-min"><div class="l">BREAST CANCER CDSS · GRADUATION DEFENSE</div><div class="r">AGENT · RAG · COZE · 19 / 25</div></div>
+<div class="chrome-min"><div class="l">BREAST CANCER CDSS · DEFENSE</div><div class="r">AGENT · RAG · COZE · 23 / 36</div></div>
 
-<div style="flex:1;padding:0;display:grid;grid-template-rows:auto 1fr;gap:4vh">
-  <div data-anim="head" style="display:flex;flex-direction:column;gap:1.4vh"><div class="t-meta" style="color:var(--accent);letter-spacing:.22em">RETRIEVAL RULES · 12</div><h2 style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(4.2vw,7.6vh);line-height:.98;letter-spacing:-.03em">四条规则，把"乱引用"堵住</h2></div>
-  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:2px solid var(--accent);padding-top:2vh">
-    <div style="padding-right:1.6vw"><div class="t-meta">01 / ROUTING</div><h4 style="font-size:max(18px,1.4vw);font-weight:400;margin:.8vh 0">按域检索</h4>
-      <p class="body-sm">医学问题只搜 MED，系统问题只搜 SYS，解读搜 FEAT + MED；不让三类文档互相抢排名。</p></div>
-    <div style="padding:0 1.6vw;border-left:1px solid var(--border-subtle)"><div class="t-meta">02 / GATE</div><h4 style="font-size:max(18px,1.4vw);font-weight:400;margin:.8vh 0">引用门槛</h4>
-      <p class="body-sm">只引用重排后 Top3 且分数 ≥ 8 的条款；没有合格依据就说没有，不硬挂维基。</p></div>
-    <div style="padding:0 1.6vw;border-left:1px solid var(--border-subtle)"><div class="t-meta">03 / RERANK</div><h4 style="font-size:max(18px,1.4vw);font-weight:400;margin:.8vh 0">模型重排</h4>
-      <p class="body-sm">LLM 对 Top20 做 listwise 排序；失败自动退回 RRF 顺序，不阻断回答。</p></div>
-    <div style="padding-left:1.6vw;border-left:1px solid var(--border-subtle)"><div class="t-meta">04 / FALLBACK</div><h4 style="font-size:max(18px,1.4vw);font-weight:400;margin:.8vh 0">三级降级</h4>
-      <p class="body-sm">向量不可用→只走词法；重排失败→保留融合序；全挂→旧单路检索。</p></div>
+<div style="flex:1;padding:0;display:grid;grid-template-rows:auto 1fr auto;gap:2.2vh">
+  <div style="display:flex;flex-direction:column;gap:1.2vh"><div class="t-meta" style="color:var(--accent);letter-spacing:.22em">HYBRID RETRIEVAL</div><h2 style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(4vw,7.2vh);line-height:.99;letter-spacing:-.03em">词法保准确，向量保召回</h2><p class="lead" style="font-weight:300;max-width:66ch;color:var(--text-secondary)">两路召回、一次融合、一次重排。</p></div>
+  <div class="d-flow">
+    <div class="d-step"><div class="t-meta" style="color:var(--accent)">01</div><b>查询</b><p>原句 + 同义词；解读类用特征名，医学类保留原句。</p></div>
+    <div class="d-step"><div class="t-meta" style="color:var(--accent)">02</div><b>词法 Top30</b><p>中文单字 + 二元词，TF-IDF；专有名词与编号更稳。</p></div>
+    <div class="d-step"><div class="t-meta" style="color:var(--accent)">03</div><b>向量 Top30</b><p>bge-small-zh，512 维；换说法也能召回。</p></div>
+    <div class="d-step"><div class="t-meta" style="color:var(--accent)">04</div><b>RRF 融合</b><p>score = Σ 1/(60+rank)；不依赖两路分数尺度。</p></div>
+    <div class="d-step"><div class="t-meta" style="color:var(--accent)">05</div><b>LLM 重排</b><p>Top20 交给模型 listwise 排序；失败退回 RRF。</p></div>
+    <div class="d-step"><div class="t-meta" style="color:var(--accent)">06</div><b>域过滤</b><p>医学/系统分流，分数 ≥8 才进引用，取 Top3。</p></div>
+  </div>
+  <div style="display:grid;grid-template-columns:7fr 5fr;gap:3vw;border-top:1px solid var(--border-subtle);padding-top:1.6vh">
+    <div class="d-code">lex = index.search(q, k=30, D)
+vec = embed.search(q, k=30)
+fused = rrf(lex, vec)[:20]
+ranked = llm_rerank(q, fused, top=3)
+return [c for c in ranked if c.score &gt; 8]</div>
+    <div style="display:flex;flex-direction:column;gap:.8vh">
+      <div class="t-meta">FALLBACK</div>
+      <p class="body-sm">向量不可用 → 只走词法；重排超时 → 保留 RRF 顺序；都失败 → 旧单路检索。</p>
+      <div class="t-meta" style="margin-top:auto">NO SINGLE POINT OF FAILURE</div>
+    </div>
   </div>
 </div>
 
 </div></section>
 
-<section class="slide" data-layout="S22" data-animate="image-hero" data-slide-id="s20">
+<section class="slide" data-layout="S19" data-animate="four-cards" data-slide-id="s24">
+<div class="canvas-card">
+<div class="chrome-min"><div class="l">BREAST CANCER CDSS · DEFENSE</div><div class="r">AGENT · RAG · COZE · 24 / 36</div></div>
+
+<div style="flex:1;padding:0;display:grid;grid-template-rows:auto 1fr;gap:2.4vh">
+  <div style="display:flex;flex-direction:column;gap:1.2vh"><div class="t-meta" style="color:var(--accent);letter-spacing:.22em">CITATION RULES</div><h2 style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(4vw,7.2vh);line-height:.99;letter-spacing:-.03em">四条规则，把"乱引用"堵住</h2><p class="lead" style="font-weight:300;max-width:66ch;color:var(--text-secondary)">引用质量靠规则，不靠 prompt 祈祷。</p></div>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:2px solid var(--accent);padding-top:2vh">
+    <div style="padding-right:1.4vw"><div class="t-meta">01 / ROUTING</div><h4 style="font-size:max(17px,1.3vw);font-weight:400;margin:.7vh 0">按域检索</h4>
+      <p class="body-sm">医学问题只搜 MED-DISEASE / MED-DRUG；系统问题只搜 SYS；解读搜 FEAT + MED。三类文档不互相抢排名。</p></div>
+    <div style="padding:0 1.4vw;border-left:1px solid var(--border-subtle)"><div class="t-meta">02 / GATE</div><h4 style="font-size:max(17px,1.3vw);font-weight:400;margin:.7vh 0">引用门槛</h4>
+      <p class="body-sm">只引用重排后 Top3 且分数 ≥ 8 的条款；没有合格依据就说没有，不硬挂维基。</p></div>
+    <div style="padding:0 1.4vw;border-left:1px solid var(--border-subtle)"><div class="t-meta">03 / RERANK</div><h4 style="font-size:max(17px,1.3vw);font-weight:400;margin:.7vh 0">模型重排</h4>
+      <p class="body-sm">LLM 按"是否真的回答问题"排序；超时 25s，失败保留 RRF 顺序。</p></div>
+    <div style="padding-left:1.4vw;border-left:1px solid var(--border-subtle)"><div class="t-meta">04 / FALLBACK</div><h4 style="font-size:max(17px,1.3vw);font-weight:400;margin:.7vh 0">三级降级</h4>
+      <p class="body-sm">向量不可用 → 词法；重排失败 → RRF；全挂 → 旧单路。每一级都有测试覆盖。</p></div>
+  </div>
+</div>
+
+</div></section>
+
+<section class="slide" data-layout="S15" data-animate="matrix-fill" data-slide-id="s25">
+<div class="canvas-card">
+<div class="chrome-min"><div class="l">BREAST CANCER CDSS · DEFENSE</div><div class="r">AGENT · RAG · COZE · 25 / 36</div></div>
+
+<div style="flex:1;padding:0;display:grid;grid-template-rows:auto 1fr;gap:2.2vh">
+  <div style="display:flex;flex-direction:column;gap:1.2vh"><div class="t-meta" style="color:var(--accent);letter-spacing:.22em">RETRIEVAL QUALITY</div><h2 style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(4vw,7.2vh);line-height:.99;letter-spacing:-.03em">同一个问题，引用换了三条</h2><p class="lead" style="font-weight:300;max-width:66ch;color:var(--text-secondary)">不回避旧版本的错误，直接对比。</p></div>
+  <table class="d-table">
+    <thead><tr><th>问题</th><th>旧结果（668 条语料）</th><th>新结果（1,035 条 + 混合检索）</th></tr></thead>
+    <tbody>
+      <tr><td>化疗副作用怎么缓解</td><td style="color:var(--text-secondary)">WHO 处理 / 他莫昔芬 / 芳香化酶抑制剂</td><td>NCI 副作用管理 / NCI 副作用 / NHS 化疗副作用</td></tr>
+      <tr><td>乳腺癌早期症状</td><td style="color:var(--text-secondary)">WHO 处理 / WHO 症状 / 维基症状</td><td>MedlinePlus 症状 / WHO 症状 / WHO 处理</td></tr>
+      <tr><td>怎么导出报告</td><td style="color:var(--text-secondary)">DOC-AGENT-001「助手能做什么」</td><td>FAQ-RECORDS「记录在哪、怎么删、怎么导出」</td></tr>
+    </tbody>
+  </table>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.4vw;margin-top:1.2vh">
+    <div class="d-card"><div class="n">01 / CHUNKING</div><h4>切块方式</h4><p>1100 字硬切 → 句子边界 260–900 字；398 条"续 N"碎片清零。</p></div>
+    <div class="d-card"><div class="n">02 / DOMAIN</div><h4>域路由</h4><p>系统文档不再和医学条款抢排名；医学问题只搜 MED。</p></div>
+    <div class="d-card"><div class="n">03 / FAQ</div><h4>操作问题走策展</h4><p>"怎么导出"直接命中 FAQ-RECORDS，不落到"助手能做什么"。</p></div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2vw;border-top:1px solid var(--border-subtle);padding-top:1.4vh">
+    <div class="d-kpi"><div class="l">WARM</div><div class="v">0.9<span style="font-size:.3em">s</span></div><div class="n">热查询端到端</div></div><div class="d-kpi"><div class="l">COLD</div><div class="v";color:var(--accent)>9<span style="font-size:.3em">s</span></div><div class="n">首次加载模型</div></div><div class="d-kpi"><div class="l">VECTORS</div><div class="v">1,035</div><div class="n">全部在 SQLite</div></div>
+  </div>
+</div>
+
+</div></section>
+
+<section class="slide" data-layout="S22" data-animate="image-hero" data-slide-id="s26">
 <div class="canvas-card" style="padding:0">
 
 
 <div style="flex:1;display:flex;flex-direction:column;height:100%">
   <div style="position:relative;flex:0 0 55%;overflow:hidden;background:var(--grey-1)">
-    <img data-image-slot="s22-hero-21x9" src="images/04b-knowledge-list.png" alt="知识库，可以翻"
+    <img data-image-slot="s22-hero-21x9" src="images/04b-knowledge-list.png" alt="知识库：可以翻，也可以搜"
          style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%">
     <div class="chrome-min" style="position:absolute;top:0;left:0;right:0;color:#fff;background:var(--ink);padding:1.4vh 5vw;margin:0">
-      <div class="l">KNOWLEDGE EXPLORER · 1,035 CLAUSES</div><div class="r">20 / 25</div>
+      <div class="l">KNOWLEDGE EXPLORER</div><div class="r">26 / 36</div>
     </div>
   </div>
-  <div style="flex:1;padding:2.4vh 5vw 6.2vh;display:flex;flex-direction:column;justify-content:space-between;gap:1.4vh">
+  <div style="flex:1;padding:2.4vh 5vw 6.2vh;display:flex;flex-direction:column;justify-content:space-between;gap:1.2vh">
     <div>
-      <h3 style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(3.8vw,6.6vh);line-height:1.02;letter-spacing:-.03em">知识库，可以翻</h3>
-      <p class="body" style="max-width:66ch;margin-top:1vh">按域筛选、关键词过滤、混合检索；每条显示来源、级别与原文链接，点开即可核对。</p>
+      <h3 style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(3.7vw,6.4vh);line-height:1.02;letter-spacing:-.03em">知识库：可以翻，也可以搜</h3>
+      <p class="body" style="max-width:68ch;margin-top:.8vh">按域筛选、关键词过滤、混合检索；每条显示来源、级别与原文链接，点开即可核对。</p>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:4vw"><div style="border-top:1px solid var(--ink);padding-top:1vh"><div class="t-meta">DOMAINS</div><div style="font-family:var(--sans);font-weight:200;font-size:min(3.4vw,5.4vh);line-height:.95;letter-spacing:-.03em">4</div><p class="body-sm" style="margin-top:.4vh">疾病 / 药物 / 系统 / 特征</p></div><div style="border-top:1px solid var(--ink);padding-top:1vh"><div class="t-meta">PAGE SIZE</div><div style="font-family:var(--sans);font-weight:200;font-size:min(3.4vw,5.4vh);line-height:.95;letter-spacing:-.03em">18<span style="font-size:.3em">KB</span></div><p class="body-sm" style="margin-top:.4vh">服务端分页，每页 40 条</p></div><div style="border-top:1px solid var(--ink);padding-top:1vh"><div class="t-meta">SOURCES</div><div style="font-family:var(--sans);font-weight:200;font-size:min(3.4vw,5.4vh);line-height:.95;letter-spacing:-.03em;color:var(--accent)">22</div><p class="body-sm" style="margin-top:.4vh">来源文档，带许可与链接</p></div></div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:4vw"><div class="d-kpi"><div class="l">DOMAINS</div><div class="v">4</div><div class="n">疾病 / 药物 / 系统 / 特征</div></div><div class="d-kpi"><div class="l">PAGE</div><div class="v">18<span style="font-size:.3em">KB</span></div><div class="n">服务端分页，每页 40 条</div></div><div class="d-kpi"><div class="l">SOURCES</div><div class="v";color:var(--accent)>22</div><div class="n">带许可与原文链接</div></div></div>
   </div>
 </div>
 
 </div></section>
 
-<section class="slide" data-layout="S22" data-animate="image-hero" data-slide-id="s21">
+<section class="slide accent" data-layout="S01" data-animate="hero" data-slide-id="s27">
+<div class="canvas-card">
+
+
+<span class="sec-num">03</span>
+<div style="flex:1;padding:0;display:grid;grid-template-rows:auto auto 1fr auto;gap:2.4vh;position:relative;z-index:1">
+  <div class="t-meta" style="color:rgba(255,255,255,.7);letter-spacing:.24em">PART 03 · 运营与交付</div>
+  <div style="display:grid;grid-template-columns:7fr 5fr;gap:4vw;align-items:start;align-self:start;margin-top:2vh">
+    <h2 style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(7.2vw,12.4vh);line-height:.94;color:#fff;letter-spacing:-.04em">运营与交付</h2>
+    <div style="display:flex;flex-direction:column;gap:0"><div style="display:grid;grid-template-columns:auto 1fr;gap:1.2vw;border-top:1px solid rgba(255,255,255,.24);padding:1.6vh 0"><span class="t-meta" style="color:rgba(255,255,255,.55)">01</span><span style="font-size:max(15px,1vw);color:rgba(255,255,255,.9)">管理端独立服务</span></div><div style="display:grid;grid-template-columns:auto 1fr;gap:1.2vw;border-top:1px solid rgba(255,255,255,.24);padding:1.6vh 0"><span class="t-meta" style="color:rgba(255,255,255,.55)">02</span><span style="font-size:max(15px,1vw);color:rgba(255,255,255,.9)">Coze 服务端代理</span></div><div style="display:grid;grid-template-columns:auto 1fr;gap:1.2vw;border-top:1px solid rgba(255,255,255,.24);padding:1.6vh 0"><span class="t-meta" style="color:rgba(255,255,255,.55)">03</span><span style="font-size:max(15px,1vw);color:rgba(255,255,255,.9)">测试 / 评测 / 冒烟</span></div><div style="display:grid;grid-template-columns:auto 1fr;gap:1.2vw;border-top:1px solid rgba(255,255,255,.24);padding:1.6vh 0"><span class="t-meta" style="color:rgba(255,255,255,.55)">04</span><span style="font-size:max(15px,1vw);color:rgba(255,255,255,.9)">取舍与局限</span></div></div>
+  </div>
+  <div style="display:flex;justify-content:space-between;border-top:1px solid rgba(255,255,255,.24);padding-top:2vh">
+    <div class="t-meta" style="color:rgba(255,255,255,.7)">管理端 Coze 智能体、工程质量，以及这套系统的边界。</div>
+    <div class="t-meta" style="color:rgba(255,255,255,.5)">→ 继续</div>
+  </div>
+</div>
+
+</div></section>
+
+<section class="slide" data-layout="S22" data-animate="image-hero" data-slide-id="s28">
 <div class="canvas-card" style="padding:0">
 
 
 <div style="flex:1;display:flex;flex-direction:column;height:100%">
   <div style="position:relative;flex:0 0 55%;overflow:hidden;background:var(--grey-1)">
-    <img data-image-slot="s22-hero-21x9" src="images/06-admin.png" alt="运营侧，另一个系统"
+    <img data-image-slot="s22-hero-21x9" src="images/06-admin.png" alt="管理端：另一个进程，另一套权限"
          style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%">
     <div class="chrome-min" style="position:absolute;top:0;left:0;right:0;color:#fff;background:var(--ink);padding:1.4vh 5vw;margin:0">
-      <div class="l">ADMIN CONSOLE · 5001</div><div class="r">21 / 25</div>
+      <div class="l">ADMIN CONSOLE · 5001</div><div class="r">28 / 36</div>
     </div>
   </div>
-  <div style="flex:1;padding:2.4vh 5vw 6.2vh;display:flex;flex-direction:column;justify-content:space-between;gap:1.4vh">
+  <div style="flex:1;padding:2.4vh 5vw 6.2vh;display:flex;flex-direction:column;justify-content:space-between;gap:1.2vh">
     <div>
-      <h3 style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(3.8vw,6.6vh);line-height:1.02;letter-spacing:-.03em">运营侧，另一个系统</h3>
-      <p class="body" style="max-width:66ch;margin-top:1vh">管理端独立 Flask 服务，JWT + bcrypt + 权限表；看板、用户、记录、模型、日志、Coze 六个模块。</p>
+      <h3 style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(3.7vw,6.4vh);line-height:1.02;letter-spacing:-.03em">管理端：另一个进程，另一套权限</h3>
+      <p class="body" style="max-width:68ch;margin-top:.8vh">独立 Flask 服务，JWT + bcrypt + 权限表；看板、用户、记录、模型、日志、Coze 六个模块。</p>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:4vw"><div style="border-top:1px solid var(--ink);padding-top:1vh"><div class="t-meta">PREDICTIONS</div><div style="font-family:var(--sans);font-weight:200;font-size:min(3.4vw,5.4vh);line-height:.95;letter-spacing:-.03em">310</div><p class="body-sm" style="margin-top:.4vh">累计预测</p></div><div style="border-top:1px solid var(--ink);padding-top:1vh"><div class="t-meta">USERS</div><div style="font-family:var(--sans);font-weight:200;font-size:min(3.4vw,5.4vh);line-height:.95;letter-spacing:-.03em">18</div><p class="body-sm" style="margin-top:.4vh">启用用户</p></div><div style="border-top:1px solid var(--ink);padding-top:1vh"><div class="t-meta">F1</div><div style="font-family:var(--sans);font-weight:200;font-size:min(3.4vw,5.4vh);line-height:.95;letter-spacing:-.03em;color:var(--accent)">91.8<span style="font-size:.3em">%</span></div><p class="body-sm" style="margin-top:.4vh">模型性能面板</p></div></div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:4vw"><div class="d-kpi"><div class="l">PREDICTIONS</div><div class="v">310</div><div class="n">累计预测</div></div><div class="d-kpi"><div class="l">USERS</div><div class="v">18</div><div class="n">启用用户</div></div><div class="d-kpi"><div class="l">F1</div><div class="v";color:var(--accent)>91.8<span style="font-size:.3em">%</span></div><div class="n">模型性能面板</div></div></div>
   </div>
 </div>
 
 </div></section>
 
-<section class="slide" data-layout="S17" data-animate="system-diagram" data-slide-id="s22">
+<section class="slide" data-layout="S17" data-animate="system-diagram" data-slide-id="s29">
 <div class="canvas-card">
-<div class="chrome-min"><div class="l">BREAST CANCER CDSS · GRADUATION DEFENSE</div><div class="r">AGENT · RAG · COZE · 22 / 25</div></div>
+<div class="chrome-min"><div class="l">BREAST CANCER CDSS · DEFENSE</div><div class="r">AGENT · RAG · COZE · 29 / 36</div></div>
 
-<div style="flex:1;padding:0;display:grid;grid-template-columns:5fr 7fr;gap:4vw;align-items:center;min-height:0">
-  <div style="display:flex;flex-direction:column;gap:2vh">
-    <div class="t-meta" style="color:var(--accent)">COZE INTEGRATION</div>
-    <h3 style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(4.6vw,8vh);line-height:1.02">令牌不出服务端<br>上下文自己拼</h3>
-    <p class="body">浏览器只访问本机 Flask；Flask 代理 Coze API，把数据库快照拼进 prompt，再以 SSE 回传。</p>
-    <div class="t-meta">PAT 只存环境变量 · 前端零接触</div>
-  </div>
-  <div style="display:grid;grid-template-columns:1fr auto 1fr auto 1.1fr;gap:1.2vw;align-items:center">
-    <div style="border:1px solid var(--border-subtle);padding:1.6vh 1vw">
-      <div style="font-size:max(16px,1.1vw);font-weight:500">浏览器</div>
-      <div class="t-meta">/console/coze</div>
+<div style="flex:1;padding:0;display:grid;grid-template-rows:auto 1fr;gap:2.4vh">
+  <div style="display:flex;flex-direction:column;gap:1.2vh"><div class="t-meta" style="color:var(--accent);letter-spacing:.22em">COZE INTEGRATION</div><h2 style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(4vw,7.2vh);line-height:.99;letter-spacing:-.03em">令牌不出服务端，上下文自己拼</h2><p class="lead" style="font-weight:300;max-width:66ch;color:var(--text-secondary)">Coze 是运营助手，不是第二个诊断模型。</p></div>
+  <div style="display:grid;grid-template-columns:5fr 7fr;gap:4vw;align-items:center;min-height:0">
+    <div style="display:flex;flex-direction:column;gap:1.6vh">
+      <p class="body">浏览器只访问本机 Flask；Flask 代理 Coze API，把数据库快照拼进 prompt，再以 SSE 回传。PAT 只存在服务器环境变量。</p>
+      <div class="d-check"><span class="ix">01</span><div><b>代理而非直连</b><p>前端拿不到 PAT，也拿不到 Coze 原始响应头。</p></div></div>
+      <div class="d-check"><span class="ix">02</span><div><b>上下文自拼</b><p>用户、预测、模型、AI 会话四个维度；最近 6 条记录。</p></div></div>
+      <div class="d-check"><span class="ix">03</span><div><b>失败降级</b><p>Coze 超时返回明确错误，管理端其他模块不受影响。</p></div></div>
     </div>
-    <div style="color:var(--accent);font-size:24px">→</div>
-    <div style="border:2px solid var(--accent);padding:1.6vh 1vw">
-      <div style="font-size:max(16px,1.1vw);font-weight:500">Flask 代理</div>
-      <div class="t-meta">/api/coze/chat</div>
-      <div class="t-meta">SSE</div>
-    </div>
-    <div style="color:var(--accent);font-size:24px">→</div>
-    <div style="display:grid;gap:1.2vh">
-      <div style="border:1px solid var(--border-subtle);padding:1.2vh 1vw">
-        <div style="font-size:max(15px,1vw);font-weight:500">Coze Bot</div>
-        <div class="t-meta">api.coze.cn · PAT</div>
+    <div style="display:grid;grid-template-columns:1fr auto 1fr auto 1.1fr;gap:1vw;align-items:center">
+      <div style="border:1px solid var(--border-subtle);padding:1.4vh 1vw"><div style="font-size:max(15px,1vw);font-weight:500">浏览器</div><div class="t-meta">/console/coze</div></div>
+      <div style="color:var(--accent);font-size:22px">→</div>
+      <div style="border:2px solid var(--accent);padding:1.4vh 1vw"><div style="font-size:max(15px,1vw);font-weight:500">Flask 代理</div><div class="t-meta">/api/coze/chat</div><div class="t-meta">SSE</div></div>
+      <div style="color:var(--accent);font-size:22px">→</div>
+      <div style="display:grid;gap:1vh">
+        <div style="border:1px solid var(--border-subtle);padding:1vh .9vw"><div style="font-size:max(14px,.95vw);font-weight:500">Coze Bot</div><div class="t-meta">api.coze.cn · PAT</div></div>
+        <div style="border:1px solid var(--border-subtle);padding:1vh .9vw"><div style="font-size:max(14px,.95vw);font-weight:500">SQLite</div><div class="t-meta">admin.db + agent.db</div></div>
       </div>
-      <div style="border:1px solid var(--border-subtle);padding:1.2vh 1vw">
-        <div style="font-size:max(15px,1vw);font-weight:500">SQLite</div>
-        <div class="t-meta">admin.db + agent.db</div>
+      <div style="grid-column:1 / 6;border-top:1px dashed var(--border-subtle);margin-top:1.2vh;padding-top:.9vh" class="body-sm">
+        提问前：快照（用户 / 预测 / 模型 / AI 会话）→ 拼 prompt → Coze → SSE 回传。
       </div>
-    </div>
-    <div style="grid-column:1 / 6;border-top:1px dashed var(--border-subtle);margin-top:1.6vh;padding-top:1vh" class="body-sm">
-      每次提问前：Flask 从 SQLite 取运营快照（用户 / 预测 / AI 会话）→ 拼进 prompt → 调 Coze → SSE 回传。
     </div>
   </div>
 </div>
 
-
 </div></section>
 
-<section class="slide" data-layout="S22" data-animate="image-hero" data-slide-id="s23">
+<section class="slide" data-layout="S22" data-animate="image-hero" data-slide-id="s30">
 <div class="canvas-card" style="padding:0">
 
 
@@ -1882,74 +2047,165 @@
     <img data-image-slot="s22-hero-21x9" src="images/07-coze.png" alt="问运营，不用写 SQL"
          style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%">
     <div class="chrome-min" style="position:absolute;top:0;left:0;right:0;color:#fff;background:var(--ink);padding:1.4vh 5vw;margin:0">
-      <div class="l">COZE AGENT · OPERATIONS COPILOT</div><div class="r">23 / 25</div>
+      <div class="l">COZE AGENT · OPERATIONS</div><div class="r">30 / 36</div>
     </div>
   </div>
-  <div style="flex:1;padding:2.4vh 5vw 6.2vh;display:flex;flex-direction:column;justify-content:space-between;gap:1.4vh">
+  <div style="flex:1;padding:2.4vh 5vw 6.2vh;display:flex;flex-direction:column;justify-content:space-between;gap:1.2vh">
     <div>
-      <h3 style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(3.8vw,6.6vh);line-height:1.02;letter-spacing:-.03em">问运营，不用写 SQL</h3>
-      <p class="body" style="max-width:66ch;margin-top:1vh">左侧是后台实时数据快照，右侧是 SSE 流式对话；Coze 连接状态、Bot ID、会话 ID 全部可见。</p>
+      <h3 style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(3.7vw,6.4vh);line-height:1.02;letter-spacing:-.03em">问运营，不用写 SQL</h3>
+      <p class="body" style="max-width:68ch;margin-top:.8vh">左侧是后台实时数据快照，右侧是 SSE 流式对话；Coze 连接状态、Bot ID、会话 ID 全部可见。</p>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:4vw"><div style="border-top:1px solid var(--ink);padding-top:1vh"><div class="t-meta">TODAY</div><div style="font-family:var(--sans);font-weight:200;font-size:min(3.4vw,5.4vh);line-height:.95;letter-spacing:-.03em">185</div><p class="body-sm" style="margin-top:.4vh">今日预测</p></div><div style="border-top:1px solid var(--ink);padding-top:1vh"><div class="t-meta">ACTIVE</div><div style="font-family:var(--sans);font-weight:200;font-size:min(3.4vw,5.4vh);line-height:.95;letter-spacing:-.03em">6 / 6</div><p class="body-sm" style="margin-top:.4vh">今日活跃</p></div><div style="border-top:1px solid var(--ink);padding-top:1vh"><div class="t-meta">AI CHAT</div><div style="font-family:var(--sans);font-weight:200;font-size:min(3.4vw,5.4vh);line-height:.95;letter-spacing:-.03em;color:var(--accent)">26 / 86</div><p class="body-sm" style="margin-top:.4vh">今日 / 累计会话</p></div></div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:4vw"><div class="d-kpi"><div class="l">TODAY</div><div class="v">185</div><div class="n">今日预测</div></div><div class="d-kpi"><div class="l">ACTIVE</div><div class="v">6 / 6</div><div class="n">今日活跃</div></div><div class="d-kpi"><div class="l">AI CHAT</div><div class="v";color:var(--accent)>26 / 86</div><div class="n">今日 / 累计会话</div></div></div>
   </div>
 </div>
 
 </div></section>
 
-<section class="slide" data-layout="S20" data-animate="stacked-ledger" data-slide-id="s24">
+<section class="slide" data-layout="S08" data-animate="duo-mirror" data-slide-id="s31">
 <div class="canvas-card">
-<div class="chrome-min"><div class="l">BREAST CANCER CDSS · GRADUATION DEFENSE</div><div class="r">AGENT · RAG · COZE · 24 / 25</div></div>
+<div class="chrome-min"><div class="l">BREAST CANCER CDSS · DEFENSE</div><div class="r">AGENT · RAG · COZE · 31 / 36</div></div>
 
-<div style="flex:1;padding:0;display:grid;grid-template-rows:auto 1fr;gap:3vh">
-  <div data-anim="head" style="display:flex;flex-direction:column;gap:1.4vh"><div class="t-meta" style="color:var(--accent);letter-spacing:.22em">DELIVERY · 13</div><h2 style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(4.2vw,7.6vh);line-height:.98;letter-spacing:-.03em">能跑、能测、能回滚</h2></div>
-  <div style="display:grid;gap:0;border-top:1px solid var(--ink)">
-    <div class="d-ledger"><div class="num">2</div><div><b>双服务</b><p class="body-sm">用户端 5000 · 管理端 5001 · Nginx 统一入口</p></div><div class="t-meta">SYSTEMD</div></div>
-    <div class="d-ledger"><div class="num">1,035</div><div><b>向量索引</b><p class="body-sm">随包发布 4MB SQLite，部署不再现场建向量</p></div><div class="t-meta">SQLITE</div></div>
-    <div class="d-ledger"><div class="num">73</div><div><b>单元测试</b><p class="body-sm">图节点、工具、grounding、RAG、会话全链路</p></div><div class="t-meta">PYTEST</div></div>
-    <div class="d-ledger"><div class="num">20<span style="font-size:.4em">/20</span></div><div><b>评测用例</b><p class="body-sm">意图、引用、拒答、升级、对账、p95 延迟</p></div><div class="t-meta">EVAL</div></div>
-    <div class="d-ledger"><div class="num">63<span style="font-size:.4em">/63</span></div><div><b>线上冒烟</b><p class="body-sm">页面、API、Agent、知识库、导出逐项检查</p></div><div class="t-meta">SMOKE</div></div>
+<div style="flex:1;padding:0;display:grid;grid-template-rows:auto 1fr;gap:2.4vh">
+  <div style="display:flex;flex-direction:column;gap:1.2vh"><div class="t-meta" style="color:var(--accent);letter-spacing:.22em">COZE BOUNDARY</div><h2 style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(4vw,7.2vh);line-height:.99;letter-spacing:-.03em">能做什么，不能做什么</h2><p class="lead" style="font-weight:300;max-width:66ch;color:var(--text-secondary)">避免把运营助手误当成医疗模型。</p></div>
+  <div class="duo-compare" style="flex:1">
+    <div class="col" style="display:flex;flex-direction:column;gap:1.4vh">
+      <span class="t-cat" style="color:var(--text-helper)">WHAT IT DOES</span>
+      <h3 style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(4vw,6.8vh);line-height:1.03">查运营<br>做汇总</h3>
+      <p class="body">今日预测、恶性占比、活跃用户、AI 会话趋势；把自然语言问题转成运营回答，并给出数据快照。</p>
+      <div class="t-meta">只读 · 有数据出处</div>
+    </div>
+    <span class="vrule"></span>
+    <div class="col" style="display:flex;flex-direction:column;gap:1.4vh">
+      <span class="t-cat" style="color:var(--accent)">WHAT IT DOESN'T</span>
+      <h3 style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(4vw,6.8vh);line-height:1.03;color:var(--accent)">不做诊断<br>不开处方</h3>
+      <p class="body">Coze 不接患者数据、不读影像、不生成诊断结论；用户端的拒答规则不依赖 Coze。</p>
+      <div class="t-meta" style="color:var(--accent)">边界写进 prompt 与页面</div>
+    </div>
   </div>
 </div>
 
 </div></section>
 
-<section class="slide split" data-layout="S10" data-animate="split-statement" data-slide-id="s25">
+<section class="slide" data-layout="S20" data-animate="stacked-ledger" data-slide-id="s32">
+<div class="canvas-card">
+<div class="chrome-min"><div class="l">BREAST CANCER CDSS · DEFENSE</div><div class="r">AGENT · RAG · COZE · 32 / 36</div></div>
+
+<div style="flex:1;padding:0;display:grid;grid-template-rows:auto 1fr;gap:2.4vh">
+  <div style="display:flex;flex-direction:column;gap:1.2vh"><div class="t-meta" style="color:var(--accent);letter-spacing:.22em">ENGINEERING</div><h2 style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(4vw,7.2vh);line-height:.99;letter-spacing:-.03em">能跑、能测、能回滚</h2><p class="lead" style="font-weight:300;max-width:66ch;color:var(--text-secondary)">每个数字都能在仓库里找到对应脚本。</p></div>
+  <div style="display:grid;gap:0;border-top:1px solid var(--ink)">
+    <div class="d-ledger"><div class="num">73</div><div><b>单元测试</b><p class="body-sm">图节点 / 工具 / grounding / RAG / 会话 / 批量</p></div><div class="t-meta">PYTEST</div></div>
+    <div class="d-ledger"><div class="num">20<span style="font-size:.4em">/20</span></div><div><b>评测用例</b><p class="body-sm">意图、引用、拒答、升级、数字对账、p95 延迟</p></div><div class="t-meta">EVAL</div></div>
+    <div class="d-ledger"><div class="num">63<span style="font-size:.4em">/63</span></div><div><b>线上冒烟</b><p class="body-sm">页面、API、Agent、知识库、导出逐项检查</p></div><div class="t-meta">SMOKE</div></div>
+    <div class="d-ledger"><div class="num">60<span style="font-size:.3em">s</span></div><div><b>部署耗时</b><p class="body-sm">GitHub Actions → 华为云；索引重建 + 重启 + 自检</p></div><div class="t-meta">CI/CD</div></div>
+    <div class="d-ledger"><div class="num">4<span style="font-size:.3em">MB</span></div><div><b>向量随包</b><p class="body-sm">1,035 条向量 SQLite；不再现场构建，避免 OOM</p></div><div class="t-meta">ARTIFACT</div></div>
+  </div>
+</div>
+
+</div></section>
+
+<section class="slide" data-layout="S15" data-animate="matrix-fill" data-slide-id="s33">
+<div class="canvas-card">
+<div class="chrome-min"><div class="l">BREAST CANCER CDSS · DEFENSE</div><div class="r">AGENT · RAG · COZE · 33 / 36</div></div>
+
+<div style="flex:1;padding:0;display:grid;grid-template-rows:auto 1fr auto;gap:2vh">
+  <div style="display:flex;flex-direction:column;gap:1.2vh"><div class="t-meta" style="color:var(--accent);letter-spacing:.22em">EVALUATION</div><h2 style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(4vw,7.2vh);line-height:.99;letter-spacing:-.03em">指标不是装饰，是门禁</h2><p class="lead" style="font-weight:300;max-width:66ch;color:var(--text-secondary)">不达标 CI 直接失败。</p></div>
+  <table class="d-table">
+    <thead><tr><th>指标</th><th>结果</th><th>阈值</th><th>说明</th></tr></thead>
+    <tbody>
+      <tr><td>意图准确率</td><td class="mono">1.000</td><td class="mono">≥ 0.90</td><td>20 条用例全部命中</td></tr>
+      <tr><td>引用率</td><td class="mono">1.000</td><td class="mono">≥ 0.90</td><td>需要引用的答案都有 citation</td></tr>
+      <tr><td>拒答准确率</td><td class="mono">1.000</td><td class="mono">= 1.00</td><td>诊断/处方/提示注入全部拒绝</td></tr>
+      <tr><td>升级准确率</td><td class="mono">1.000</td><td class="mono">= 1.00</td><td>高风险问题正确升级</td></tr>
+      <tr><td>对账通过率</td><td class="mono">1.000</td><td class="mono">= 1.00</td><td>答案数字全部能在 facts 找到</td></tr>
+      <tr><td>p95 延迟</td><td class="mono">221ms</td><td class="mono">≤ 8000ms</td><td>离线确定性路径</td></tr>
+    </tbody>
+  </table>
+  <p class="body-sm" style="border-top:1px solid var(--border-subtle);padding-top:1.2vh">
+    评测不覆盖 LLM 自由生成的质量上限，只覆盖确定性路径与安全边界；这也是下一阶段要补的部分。
+  </p>
+</div>
+
+</div></section>
+
+<section class="slide" data-layout="S19" data-animate="four-cards" data-slide-id="s34">
+<div class="canvas-card">
+<div class="chrome-min"><div class="l">BREAST CANCER CDSS · DEFENSE</div><div class="r">AGENT · RAG · COZE · 34 / 36</div></div>
+
+<div style="flex:1;padding:0;display:grid;grid-template-rows:auto 1fr;gap:2.4vh">
+  <div style="display:flex;flex-direction:column;gap:1.2vh"><div class="t-meta" style="color:var(--accent);letter-spacing:.22em">TRADEOFFS</div><h2 style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(4vw,7.2vh);line-height:.99;letter-spacing:-.03em">四个选择，都有代价</h2><p class="lead" style="font-weight:300;max-width:66ch;color:var(--text-secondary)">答辩更愿意讲清楚放弃了什么。</p></div>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:2px solid var(--accent);padding-top:2vh">
+    <div style="padding-right:1.4vw"><div class="t-meta">01 / GRAPH</div><h4 style="font-size:max(17px,1.3vw);font-weight:400;margin:.7vh 0">自研 163 行</h4>
+      <p class="body-sm">不引 LangGraph：依赖少、节点可单测、状态可回放；代价是生态与现成能力要自己补。</p></div>
+    <div style="padding:0 1.4vw;border-left:1px solid var(--border-subtle)"><div class="t-meta">02 / RETRIEVAL</div><h4 style="font-size:max(17px,1.3vw);font-weight:400;margin:.7vh 0">词法 + 向量</h4>
+      <p class="body-sm">比纯词法多 90MB 模型和 9s 冷启动；换来的换说法召回，在医学术语上值得。</p></div>
+    <div style="padding:0 1.4vw;border-left:1px solid var(--border-subtle)"><div class="t-meta">03 / STORAGE</div><h4 style="font-size:max(17px,1.3vw);font-weight:400;margin:.7vh 0">SQLite</h4>
+      <p class="body-sm">没有向量库、没有 Redis；1,035 条规模下内存余弦足够，部署只需一个文件。</p></div>
+    <div style="padding-left:1.4vw;border-left:1px solid var(--border-subtle)"><div class="t-meta">04 / CONCURRENCY</div><h4 style="font-size:max(17px,1.3vw);font-weight:400;margin:.7vh 0">单 worker</h4>
+      <p class="body-sm">gunicorn 1 worker × 4 threads，避免多进程重复加载模型；代价是并发上限。</p></div>
+  </div>
+</div>
+
+</div></section>
+
+<section class="slide" data-layout="S17" data-animate="grid-reveal" data-slide-id="s35">
+<div class="canvas-card">
+<div class="chrome-min"><div class="l">BREAST CANCER CDSS · DEFENSE</div><div class="r">AGENT · RAG · COZE · 35 / 36</div></div>
+
+<div style="flex:1;padding:0;display:grid;grid-template-rows:auto 1fr;gap:2.4vh">
+  <div style="display:flex;flex-direction:column;gap:1.2vh"><div class="t-meta" style="color:var(--accent);letter-spacing:.22em">LIMITATIONS</div><h2 style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(4vw,7.2vh);line-height:.99;letter-spacing:-.03em">四个局限，和对应的下一步</h2><p class="lead" style="font-weight:300;max-width:66ch;color:var(--text-secondary)">不把"能跑"说成"能临床用"。</p></div>
+  <div style="display:grid;grid-template-columns:6fr 6fr;gap:4vw;min-height:0">
+    <div style="display:flex;flex-direction:column;gap:1.2vh">
+      <div class="d-check"><span class="ix">01</span><div><b>词法仍有盲区</b><p>"靠不靠谱"搜不到"置信度"；同义词表只有 10 组，覆盖有限。</p></div></div>
+      <div class="d-check"><span class="ix">02</span><div><b>重排延迟 0.8–1.2s</b><p>LLM listwise 比向量检索慢；离线评测不包含这部分。</p></div></div>
+      <div class="d-check"><span class="ix">03</span><div><b>冷启动 9s</b><p>首次加载 ONNX 模型；之后热查询 0.9s。生产可用预热解决。</p></div></div>
+      <div class="d-check"><span class="ix">04</span><div><b>没有临床前瞻验证</b><p>只有 WDBC 回溯数据；不能声称临床有效性。</p></div></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:1.2vh">
+      <div class="d-card"><div class="n">NEXT · 01</div><h4>查询改写</h4><p>把"靠不靠谱"改写成"置信度 / 校准"，补词法盲区。</p></div>
+      <div class="d-card"><div class="n">NEXT · 02</div><h4>重排缓存</h4><p>同 query 的重排结果缓存，降低重复延迟。</p></div>
+      <div class="d-card"><div class="n">NEXT · 03</div><h4>临床评估</h4><p>与医院合作做前瞻性评估，才有资格谈临床价值。</p></div>
+    </div>
+  </div>
+</div>
+
+</div></section>
+
+<section class="slide split" data-layout="S10" data-animate="split-statement" data-slide-id="s36">
 <div class="canvas-card" style="padding:0">
 
 
 <div class="split-half" style="height:100%">
   <div class="half b-accent" style="position:relative;overflow:hidden;padding:5.6vh 3.6vw 4.4vh;display:flex;flex-direction:column;justify-content:space-between">
     <canvas class="ascii-bg" aria-hidden="true"></canvas>
-    <div class="chrome-min" style="margin-bottom:0;position:relative;z-index:1"><div class="l">25 / 25</div><div class="r">CLOSING</div></div>
+    <div class="chrome-min" style="margin-bottom:0;position:relative;z-index:1"><div class="l">36 / 36</div><div class="r">CLOSING</div></div>
     <div style="position:relative;z-index:1;display:flex;flex-direction:column;gap:2vh">
       <div class="t-meta" style="color:rgba(255,255,255,.78)">TAKEAWAYS</div>
-      <h2 style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(7vw,12vh);line-height:.95;color:#fff">
+      <h2 style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(6.8vw,11.6vh);line-height:.95;color:#fff">
         薄编排，<br>厚证据。
       </h2>
-      <p class="body" style="color:rgba(255,255,255,.84);max-width:34ch">编排层保持确定性，把不确定性关进工具与引用里。</p>
+      <p class="body" style="color:rgba(255,255,255,.84);max-width:34ch">流程保持确定性，把不确定性关进工具、阈值和引用里。</p>
     </div>
     <div class="t-meta" style="color:rgba(255,255,255,.62);position:relative;z-index:1">张城杰 · 2026.10.18</div>
   </div>
   <div class="half" style="padding:5.6vh 3.6vw 4.4vh;display:flex;flex-direction:column;justify-content:space-between">
     <div class="chrome-min"><div class="l">WHAT TO REMEMBER</div><div class="r">03</div></div>
     <div style="display:flex;flex-direction:column">
-      <div style="display:grid;grid-template-columns:auto 1fr;gap:1.6vw;padding:2.2vh 0;border-top:1px solid var(--border-subtle)">
+      <div style="display:grid;grid-template-columns:auto 1fr;gap:1.4vw;padding:2.2vh 0;border-top:1px solid var(--border-subtle)">
         <div style="font-weight:200;font-size:min(4vw,7vh);line-height:.9">01</div>
-        <div><h3 style="font-size:max(18px,1.6vw);font-weight:400">过程可见</h3><p class="body-sm">11 个节点、13 个工具、SSE 流式，模型不能黑箱作业。</p></div>
+        <div><h3 style="font-size:max(17px,1.5vw);font-weight:400">流程可复现</h3><p class="body-sm">10 个节点、13 个工具、检查点；每一步都能回放。</p></div>
       </div>
-      <div style="display:grid;grid-template-columns:auto 1fr;gap:1.6vw;padding:2.2vh 0;border-top:1px solid var(--border-subtle)">
+      <div style="display:grid;grid-template-columns:auto 1fr;gap:1.4vw;padding:2.2vh 0;border-top:1px solid var(--border-subtle)">
         <div style="font-weight:200;font-size:min(4vw,7vh);line-height:.9">02</div>
-        <div><h3 style="font-size:max(18px,1.6vw);font-weight:400">结论可查</h3><p class="body-sm">句子级 grounding + 1,035 条带来源的条款。</p></div>
+        <div><h3 style="font-size:max(17px,1.5vw);font-weight:400">结论可核对</h3><p class="body-sm">1,035 条带来源的条款 + 句子级 grounding。</p></div>
       </div>
-      <div style="display:grid;grid-template-columns:auto 1fr;gap:1.6vw;padding:2.2vh 0;border-top:1px solid var(--border-subtle);border-bottom:2px solid var(--accent)">
+      <div style="display:grid;grid-template-columns:auto 1fr;gap:1.4vw;padding:2.2vh 0;border-top:1px solid var(--border-subtle);border-bottom:2px solid var(--accent)">
         <div style="font-weight:200;font-size:min(4vw,7vh);line-height:.9;color:var(--accent)">03</div>
-        <div><h3 style="font-size:max(18px,1.6vw);font-weight:400;color:var(--accent)">边界清晰</h3><p class="body-sm">该弃权就弃权；Coze 只做运营，不碰诊断。</p></div>
+        <div><h3 style="font-size:max(17px,1.5vw);font-weight:400;color:var(--accent)">边界先讲清</h3><p class="body-sm">三档不确定性、拒答规则、Coze 只做运营。</p></div>
       </div>
     </div>
     <div class="t-meta" style="text-align:right;color:var(--text-helper)">谢谢 · Q &amp; A</div>
   </div>
 </div>
-
 
 </div></section>
 
@@ -1964,324 +2220,467 @@ const SPEAKER_NOTES = [
     "title": "封面",
     "section": "开场",
     "minutes": 0.8,
-    "purpose": "用一句话定调：系统卖点不是\"又一个模型\"，而是每个结论都能溯源。",
+    "purpose": "先说明这场答辩回答什么问题：概率如何变成可核对的依据。",
     "talk": [
-      "开场先给结论：这是一个把模型判断、知识依据、操作动作串起来的系统。",
-      "指出三条主线：Agent 框架、RAG 知识库、管理端 Coze。",
-      "说明答辩结构：先讲用户端链路，再讲证据如何产生，最后讲运营与部署。"
+      "这个系统不是只输出一个良恶性，而是把概率、特征归因、知识依据和后续动作串起来。",
+      "三条主线：用户端 Agent 编排、可溯源 RAG、管理端运营智能体。",
+      "先讲问题，再讲实现，最后讲取舍和局限。"
     ],
-    "transition": "从\"为什么需要出处\"进入第一个问题。",
-    "cue": "停顿 2 秒，确认投影比例"
+    "transition": "进入问题定义。",
+    "cue": "停顿 2 秒"
   },
   {
     "id": "s02",
     "title": "问题定义",
     "section": "定调",
     "minutes": 0.9,
-    "purpose": "把\"模型准确率\"叙事切换成\"可解释、可追溯、可执行\"。",
+    "purpose": "把\"准确率\"叙事换成三个角色各自的问题。",
     "talk": [
-      "先承认模型本身不是壁垒：公开数据集、常见集成模型，谁都能训。",
-      "真正的难点是让医生和评委敢用：概率要有校准，结论要有依据，建议要能落地。",
-      "三个问题分别对应后面的校准、RAG 引用、Agent 工具调用。"
+      "医生关心依据，患者关心下一步，运营关心数据。三类问题不能用一个聊天框回答。",
+      "所以系统分成用户端 Agent、知识库、管理端三条线。",
+      "后面每一部分都对应其中一类问题。"
     ],
-    "transition": "进入系统总览，看这三件事分别落在哪一层。"
+    "transition": "先看整体分层。"
   },
   {
     "id": "s03",
-    "title": "系统总览",
+    "title": "系统分层",
     "section": "架构",
     "minutes": 1.0,
-    "purpose": "建立全局心智模型：三层 + 管理端旁路。",
+    "purpose": "建立全局模型：两层进程、三层职责。",
     "talk": [
-      "交互层是 Flask 渲染页面和 SSE 流；编排层是自研 Graph，不依赖 LangChain。",
-      "证据层包含模型、校准、RAG 和 SQLite；管理端单独 5001 端口，不阻塞用户请求。",
-      "强调管理端是旁路：即使 Coze 挂了，用户端预测和问答仍然可用。"
+      "用户端 5000 端口，管理端 5001；Nginx 统一入口，/console 反代到管理端。",
+      "编排层是自研 Graph，不依赖 LangChain；节点和边显式声明。",
+      "证据层包含模型、RAG 和 SQLite，共 18 张表。"
     ],
-    "transition": "先看用户端最基础的一条链路：一次预测。"
+    "transition": "先看模型这一层怎么跑。"
   },
   {
     "id": "s04",
     "title": "技术栈",
     "section": "实现",
     "minutes": 1.0,
-    "purpose": "证明技术选型可控、代码量真实、没有过度依赖。",
+    "purpose": "用代码量和组件表证明系统是自建、可讲清。",
     "talk": [
-      "后端 Flask + gunicorn，前端原生 JS，避免 React 构建链在答辩环境出问题。",
-      "模型是 sklearn 集成 + 校准，不是调 API；RAG 的倒排和向量都落在 SQLite。",
-      "运维只有 Shell + Nginx + Actions，部署可复现。"
+      "后端 Flask，模板 Jinja2，前端原生 JS，避免答辩环境依赖 Node 构建。",
+      "模型是 sklearn 集成 + 校准；检索是 TF-IDF + ONNX 嵌入，都没有外部服务。",
+      "SQLite 18 张表，部署只需要一个文件。"
     ],
-    "transition": "从技术栈切到真实链路：一次预测发生了什么。"
+    "transition": "看一次预测从表单到结果。"
   },
   {
     "id": "s05",
     "title": "预测链路",
     "section": "实现",
-    "minutes": 0.9,
-    "purpose": "把模型调用讲成可验证的工程链路。",
+    "minutes": 1.0,
+    "purpose": "把模型调用讲成六步可验证链路。",
     "talk": [
-      "表单提交 30 项特征，后端先做单位与范围校验。",
-      "标准化参数来自训练集，避免数据泄漏；集成模型输出原始概率。",
-      "校准后再展示，结果页同时给出证据强度与输入距离。"
+      "表单校验在前端和后端各做一次，避免单位错误进入模型。",
+      "标准化参数来自训练集，不是现场计算，避免数据泄漏。",
+      "校准后的概率才展示；原始概率偏乐观，会堆在 0.99 附近。"
     ],
-    "transition": "看结果页实际长什么样。"
+    "transition": "看结果页实际呈现。"
   },
   {
     "id": "s06",
     "title": "结果页",
     "section": "产品",
-    "minutes": 0.8,
-    "purpose": "用真实界面证明结果不是一行字，而是一组可核对的证据。",
+    "minutes": 0.9,
+    "purpose": "证明结果不是一行字，而是一组可核对的证据。",
     "talk": [
-      "注意右侧证据强度条：绿色代表证据充分，灰/黄会提示谨慎。",
-      "Top 5 归因是模型在看什么，不是因果；页面明确写了这一点。",
-      "相似病例只做对照，不构成临床证据，避免过度解读。"
+      "右侧证据强度条由置信度、输入距离和知识命中共同决定。",
+      "Top 5 是模型在看什么，不是因果；页面明确写了这一点。",
+      "相似病例只做对照，不构成临床证据。"
     ],
-    "transition": "接下来进入 Agent：这些解释是谁生成的？"
+    "transition": "进入 Agent：这些解释是谁生成的？"
   },
   {
     "id": "s07",
-    "title": "Agent 定位",
-    "section": "转折",
-    "minutes": 0.8,
-    "purpose": "把 Agent 从\"会聊天\"重新定义为\"会调工具、会被约束、会留痕\"。",
+    "title": "章节页：Agent",
+    "section": "过渡",
+    "minutes": 0.5,
+    "purpose": "把观众注意力切到用户端 Agent。",
     "talk": [
-      "聊天框只输出文本；Agent 要能查记录、跑模型、导报告、检索知识。",
-      "13 个意图决定走哪条路径，11 个节点保证流程可复现。",
-      "工具调用有权限和超时，模型不能无限自由发挥。"
+      "这一部分回答：为什么不是聊天框，以及流程怎么保证可复现。",
+      "会先给 Graph 结构，再给状态、工具、意图、流式和子代理。",
+      "最后用三档不确定性和 grounding 收口。"
     ],
-    "transition": "看这张图是怎么跑起来的。"
+    "transition": "先给 Agent 的定位。"
   },
   {
     "id": "s08",
-    "title": "Agent 图",
-    "section": "架构",
-    "minutes": 1.2,
-    "purpose": "讲清自研 Graph 的节点、条件边与检查点。",
+    "title": "Agent 定位",
+    "section": "定位",
+    "minutes": 0.8,
+    "purpose": "重新定义 Agent：能调工具、能拒答、能回放。",
     "talk": [
-      "guard 先拦越界问题；cache 命中就直接返回，省掉重复调用。",
-      "route 决定意图，act 才去调工具；assess 在合成前判断证据够不够。",
-      "verify 做数字对账，persist 把每一步写进检查点，支持回放和续跑。"
+      "聊天框只输出文本；这里要能查记录、跑模型、导报告、检索知识。",
+      "13 类意图决定走哪条路径，10 个节点保证流程可复现。",
+      "拒答是能力，不是失败；第 16 页会讲三档阈值。"
     ],
-    "transition": "为什么不用 LangChain？下一层解释取舍。"
+    "transition": "看这张图具体长什么样。"
   },
   {
     "id": "s09",
-    "title": "框架取舍",
+    "title": "Graph 结构",
     "section": "架构",
-    "minutes": 1.0,
-    "purpose": "解释自研 Graph 的动机：可控、可测、可回放。",
+    "minutes": 1.4,
+    "purpose": "逐节点讲职责与两条条件边。",
     "talk": [
-      "LangGraph 能力强，但依赖多、版本变化快，答辩环境不可控。",
-      "自研 Graph 只有 163 行，节点和边显式声明，测试可以逐节点打。",
-      "约束层是灵魂：模型可以自由推理，但不能自由下结论。"
+      "guard 命中直接进 refuse，再走 persist；cache 命中跳过 route。",
+      "route 之后是 act → assess → compose → verify → guard_out → persist → finish。",
+      "节点内部才是模型自由发挥的地方，流程本身不可被模型改写。"
     ],
-    "transition": "具体看工具与约束怎么落地。"
+    "transition": "流程要能回放，靠的是状态和检查点。"
   },
   {
     "id": "s10",
-    "title": "工具集",
-    "section": "实现",
-    "minutes": 1.0,
-    "purpose": "证明 Agent 的能力边界来自工具，而不是 prompt。",
+    "title": "状态与检查点",
+    "section": "架构",
+    "minutes": 1.2,
+    "purpose": "解释可回放不是口号：状态结构 + 检查点表。",
     "talk": [
-      "工具是唯一的数据入口，避免模型直接拼 SQL 或读文件。",
-      "每个工具都有 schema、权限和超时；失败返回结构化错误。",
-      "delegate 只能读、不能写，也不能再委派，防止递归失控。"
+      "state 里只有可序列化字段；emit 这类回调不会写进去。",
+      "每个节点执行完都保存 seq/node/next/state，Interrupt 也保存 pending。",
+      "这让我们能回答\"第 4 步为什么慢\"\"哪一步失败了\"。"
     ],
-    "transition": "工具之外，还有一条流式通道和子代理。"
+    "transition": "看一次真实执行的节点耗时。"
   },
   {
     "id": "s11",
-    "title": "同步与流式",
-    "section": "实现",
-    "minutes": 1.0,
-    "purpose": "解释为什么要两套入口，以及流式不是装饰。",
+    "title": "真实执行",
+    "section": "架构",
+    "minutes": 1.1,
+    "purpose": "用真实 trace 证明流程与耗时，不回避冷启动。",
     "talk": [
-      "同步接口给评测和脚本，输出稳定、字段可断言。",
-      "流式接口把 thinking、工具调用、子代理步骤推给前端，用户能看到\"它在干什么\"。",
-      "两条链路共用同一个 Graph，避免行为分叉。"
+      "这是\"这个结果什么意思\"的真实执行：10 个节点，act 占 139ms。",
+      "act 里同时跑了 predict、explain 和特征词典检索，所以是最大头。",
+      "医学问题首次会到 30s，主要是 90MB 模型加载和重排；热查询约 1s。"
     ],
-    "transition": "过程可见之后，还得保证结论可信。"
+    "transition": "工具是 act 的手脚，下面看 13 个工具。"
   },
   {
     "id": "s12",
-    "title": "三档不确定性",
-    "section": "可信度",
-    "minutes": 1.1,
-    "purpose": "这是系统最容易被质疑的点，主动讲清阈值与代价。",
+    "title": "工具表",
+    "section": "架构",
+    "minutes": 1.2,
+    "purpose": "用表格讲清工具契约，而不是罗列名称。",
     "talk": [
-      "置信档正常回答；谨慎档给倾向但降级措辞；弃权档直接拒绝下结论。",
-      "输入距离是欧氏距离，超过 15 认为分布外，防止\"自信地胡说\"。",
-      "弃权不是失败：它把错误成本从\"误导\"降成\"让用户补信息\"。"
+      "每个工具都有 schema、权限、超时、幂等标记；调用入口只有一个。",
+      "导出类非幂等，避免同问同答缓存返回旧文件；delegate 超时 90s。",
+      "模型不能直接读数据库或文件，权限在调用前判定。"
     ],
-    "transition": "判断可信之后，解释也要可信：看 grounding。"
+    "transition": "工具之外，先决定走哪条路径：意图路由。"
   },
   {
     "id": "s13",
-    "title": "句子级 grounding",
-    "section": "可信度",
+    "title": "意图路由",
+    "section": "架构",
     "minutes": 1.2,
-    "purpose": "解释\"引用\"不是装饰：每句话都要能对上事实。",
+    "purpose": "讲分类规则、顺序和一个真实 bug。",
     "talk": [
-      "切句是为了逐句核对，而不是整段糊过去。",
-      "数字对账优先：编造的数字最容易被识破，也最危险。",
-      "无出处的句子标\"推断\"或删除，verify 返回丢弃数量。"
+      "13 类意图覆盖解读、特征、医学、操作、历史、导出、对比、拒答等。",
+      "顺序很重要：导出动作要先判，否则\"怎么导出报告\"会被当成能力询问。",
+      "我们踩过\"副作用\"含\"用\"被判成操作问题的 bug，已修复并加回归用例。"
     ],
-    "transition": "看真实问答里这些引用长什么样。"
+    "transition": "路由之后，同一套图有两种交付方式。"
   },
   {
     "id": "s14",
-    "title": "可溯源回答",
-    "section": "可信度",
-    "minutes": 1.0,
-    "purpose": "用真实截图证明引用可点、来源可查。",
+    "title": "同步与流式",
+    "section": "架构",
+    "minutes": 1.1,
+    "purpose": "解释两套入口的必要性。",
     "talk": [
-      "注意正文里的 [FEAT-008] 和底部芯片是同一套 clause_id。",
-      "底部还标注了来源级别：特征词典、NCI PDQ、指南。",
-      "如果某句没有依据，会被标成\"推断\"或直接删掉。"
+      "同步接口输出稳定，评测和脚本直接断言字段。",
+      "流式接口把 thinking、token、工具调用推给前端，用户能看到进度。",
+      "两条链路共用同一个 Graph；流式失败会发 fallback 事件，前端自动重试。"
     ],
-    "transition": "可信度讲完，进入知识库本身：这些条款从哪来？"
+    "transition": "还有一种执行体：子代理。"
   },
   {
     "id": "s15",
-    "title": "语料构成",
-    "section": "RAG",
+    "title": "子代理",
+    "section": "架构",
     "minutes": 1.0,
-    "purpose": "给出语料规模与来源结构，证明覆盖面和权威性分层。",
+    "purpose": "讲清 delegate 的边界与动机。",
     "talk": [
-      "NCI PDQ 是主力：治疗 487、筛查 212、预防 141。",
-      "中文来源包括 WHO、中国指南、NHS、MedlinePlus、维基。",
-      "特征词典和系统文档单独成域，避免和医学内容互相污染。"
+      "主代理一次只处理一个问题；长任务拆给子代理。",
+      "子代理只读、不能递归、90 秒超时；失败主代理降级。",
+      "子步骤通过 sub_steps 事件回传，用户仍能看到过程。"
     ],
-    "transition": "但有语料不等于能检索：先看治理前后。"
+    "transition": "执行体之外，还要决定\"敢不敢下结论\"。"
   },
   {
     "id": "s16",
-    "title": "语料治理",
-    "section": "RAG",
-    "minutes": 1.1,
-    "purpose": "说明\"知识库乱\"是怎么被修的：切块、去噪、去重、打标。",
+    "title": "三档不确定性",
+    "section": "可信度",
+    "minutes": 1.2,
+    "purpose": "讲清阈值、代价和弃权话术。",
     "talk": [
-      "之前按 1100 字硬切，一个章节被切成 3–8 段，引用到\"续 8\"就丢了上下文。",
-      "现在按句子边界切 260–900 字，每条能独立读懂；噪声章节直接删。",
-      "补了副作用三源，因为之前问\"化疗副作用\"只能召回激素治疗。"
+      "置信档正常回答；谨慎档给倾向但降级措辞；弃权档直接拒绝下结论。",
+      "0.79 / 0.41 来自校准曲线与误判成本；15 是训练分布距离上限。",
+      "弃权不是失败，它把错误成本从\"误导\"降成\"让用户补信息\"。"
     ],
-    "transition": "治理完，讲检索怎么把对的条款捞出来。"
+    "transition": "判断可信之后，解释要逐句可核对。"
   },
   {
     "id": "s17",
-    "title": "混合检索",
-    "section": "RAG",
+    "title": "Grounding",
+    "section": "可信度",
     "minutes": 1.2,
-    "purpose": "讲清每条路径的作用与融合方式。",
+    "purpose": "讲句子级核对的四个步骤和容差。",
     "talk": [
-      "纯词法换个说法就搜不到；纯向量对专有名词和编号不敏感。",
-      "RRF 只看排名，不需要把两种分数归一化，工程上更稳。",
-      "重排用 LLM listwise，Top20 进、Top3 出；失败自动退回 RRF 顺序。"
+      "切句是为了逐句核对，而不是整段糊过去。",
+      "数字对账容差 0.02 或 0.2%，编造的数字最容易被识破。",
+      "无出处标\"推断\"或删除；verify 返回 dropped 数量。"
     ],
-    "transition": "看这五步在真实数据上的参数。"
+    "transition": "看真实回答里的引用长什么样。"
   },
   {
     "id": "s18",
-    "title": "检索参数",
-    "section": "RAG",
-    "minutes": 1.0,
-    "purpose": "用真实参数证明检索可解释、可调优。",
+    "title": "可溯源回答",
+    "section": "可信度",
+    "minutes": 0.9,
+    "purpose": "用截图证明引用可点、来源可查。",
     "talk": [
-      "512 维中文嵌入，CPU 上 1,035 条约 30 秒建完。",
-      "30 路召回、RRF 取 20、重排输出 3，是延迟与质量的折中。",
-      "冷启动 9 秒是模型加载，热查询 0.9 秒；知识库页面会显示向量条数。"
+      "正文里的 [FEAT-008] 和底部芯片是同一套 clause_id。",
+      "芯片标注来源级别：特征词典、NCI PDQ、指南。",
+      "没有依据的句子会被标\"推断\"或直接删掉。"
     ],
-    "transition": "参数之外，还有两条硬规则：域路由和引用门槛。"
+    "transition": "进入知识库：这些条款从哪来。"
   },
   {
     "id": "s19",
-    "title": "检索规则",
-    "section": "RAG",
-    "minutes": 1.0,
-    "purpose": "解释引用质量靠规则，不靠 prompt 祈祷。",
+    "title": "章节页：知识库",
+    "section": "过渡",
+    "minutes": 0.5,
+    "purpose": "切到 RAG 部分。",
     "talk": [
-      "域路由解决\"系统文档抢医学问题排名\"的问题。",
-      "引用门槛解决\"检索到就挂上\"的问题，分数不够就不引。",
-      "重排失败和向量失败都有降级路径，保证可用性。"
+      "上一部分解决\"谁在说\"，这一部分解决\"依据从哪来\"。",
+      "顺序是：语料构成 → 治理 → 索引 → 混合检索 → 引用规则。",
+      "还会给出三个问题的前后对比。"
     ],
-    "transition": "看知识库页面实际怎么呈现这些条款。"
+    "transition": "先看语料规模。"
   },
   {
     "id": "s20",
+    "title": "语料构成",
+    "section": "RAG",
+    "minutes": 1.0,
+    "purpose": "给出规模与来源结构，说明权威性分层。",
+    "talk": [
+      "NCI PDQ 是主力：治疗 487、筛查 212、预防 141。",
+      "中文来源包括 WHO、中国指南、NHS、MedlinePlus、维基。",
+      "特征词典、系统文档、FAQ 单独成域，避免和医学内容互相污染。"
+    ],
+    "transition": "但有语料不等于能检索：治理前后差别很大。"
+  },
+  {
+    "id": "s21",
+    "title": "语料治理",
+    "section": "RAG",
+    "minutes": 1.1,
+    "purpose": "说明\"知识库乱\"具体怎么修的。",
+    "talk": [
+      "之前按 1100 字硬切，一个章节切成 3–8 段，引用到\"续 8\"就丢上下文。",
+      "现在按句子边界切 260–900 字，噪声章节直接删，重复文本哈希去重。",
+      "补了副作用三源，因为之前问\"化疗副作用\"只能召回激素治疗。"
+    ],
+    "transition": "治理完，看索引里到底存了什么。"
+  },
+  {
+    "id": "s22",
+    "title": "索引结构",
+    "section": "RAG",
+    "minutes": 1.1,
+    "purpose": "讲清索引表、规模和一次真实的 OOM 事故。",
+    "talk": [
+      "rag_chunks 存正文与元数据；rag_terms 是倒排；rag_vectors 存 512 维向量。",
+      "1,035 条向量不需要向量库，内存余弦足够，单次 <5ms。",
+      "部署时现场构建曾 OOM，后来改成随包发布 4MB SQLite。"
+    ],
+    "transition": "看检索怎么把对的条款捞出来。"
+  },
+  {
+    "id": "s23",
+    "title": "混合检索",
+    "section": "RAG",
+    "minutes": 1.3,
+    "purpose": "讲清每一路的作用、RRF 公式和降级链。",
+    "talk": [
+      "纯词法换个说法就搜不到；纯向量对编号和专有名词不敏感。",
+      "RRF 只看排名，不需要分数归一化；k=60 是常用平滑值。",
+      "重排用 LLM Top20 进 Top3 出；失败自动退回 RRF，不阻断回答。"
+    ],
+    "transition": "有了召回，还要决定哪些条款能进引用。"
+  },
+  {
+    "id": "s24",
+    "title": "引用规则",
+    "section": "RAG",
+    "minutes": 1.1,
+    "purpose": "解释域路由、门槛、重排和降级。",
+    "talk": [
+      "域路由解决\"系统文档抢医学问题排名\"的问题。",
+      "门槛解决\"检索到就挂上\"的问题，分数不够就不引。",
+      "重排和向量失败都有降级路径，保证可用性。"
+    ],
+    "transition": "看三个真实问题的前后对比。"
+  },
+  {
+    "id": "s25",
+    "title": "检索对比",
+    "section": "RAG",
+    "minutes": 1.1,
+    "purpose": "用三个具体问题展示修复前后的引用差异。",
+    "talk": [
+      "副作用问题之前只能召回激素治疗，现在能命中副作用管理条款。",
+      "导出的问题之前召回\"助手能做什么\"，现在走策展 FAQ。",
+      "代价是冷启动 9 秒；热查询 0.9 秒，知识库页面有向量条数可核对。"
+    ],
+    "transition": "看知识库页面实际怎么呈现。"
+  },
+  {
+    "id": "s26",
     "title": "知识库页面",
     "section": "产品",
     "minutes": 0.9,
     "purpose": "展示知识库不是黑盒：用户能自己查、自己核对。",
     "talk": [
-      "页面首屏服务端渲染 40 条，接口挂了也不会空白。",
+      "首屏服务端渲染 40 条，接口挂了也不会空白。",
       "域标签和关键词过滤走服务端分页，页面只有 18KB。",
-      "混合检索按钮显示重排序号与相关度，方便解释\"为什么是这条\"。"
+      "混合检索按钮显示重排序号与相关度。"
     ],
     "transition": "用户端讲完，切到管理端与 Coze。"
   },
   {
-    "id": "s21",
+    "id": "s27",
+    "title": "章节页：运营",
+    "section": "过渡",
+    "minutes": 0.5,
+    "purpose": "切到管理端与工程交付。",
+    "talk": [
+      "最后一部分回答：系统怎么运营、质量怎么保证、边界在哪。",
+      "管理端与 Coze 是旁路，不进入诊断链路。",
+      "最后会主动讲局限，而不是只讲成绩。"
+    ],
+    "transition": "先看管理端。"
+  },
+  {
+    "id": "s28",
     "title": "管理端",
     "section": "运营",
-    "minutes": 0.9,
+    "minutes": 1.0,
     "purpose": "说明管理端与用户端隔离，运营数据实时可看。",
     "talk": [
-      "管理端跑在 5001，Nginx 反代到 /console，和用户端不共享 session。",
+      "管理端跑在 5001，Nginx 反代到 /console，不共享 session。",
       "JWT + bcrypt + 权限表，普通管理员看不到敏感操作。",
       "看板数据来自真实数据库：310 次预测、18 个启用用户。"
     ],
-    "transition": "管理端里最特别的是 Coze 智能体。"
+    "transition": "管理端里最特别的是 Coze。"
   },
   {
-    "id": "s22",
+    "id": "s29",
     "title": "Coze 架构",
     "section": "运营",
-    "minutes": 1.1,
-    "purpose": "讲清 Coze 不是前端直连，而是服务端代理 + 自拼上下文。",
+    "minutes": 1.2,
+    "purpose": "讲清代理、上下文和失败边界。",
     "talk": [
-      "PAT 只放在服务器环境变量，浏览器完全接触不到。",
-      "每次提问前把运营数据快照拼进 prompt：预测数、用户数、AI 会话数。",
+      "PAT 只在服务器环境变量，浏览器完全接触不到。",
+      "每次提问前从 SQLite 取快照：用户、预测、模型、AI 会话，拼进 prompt。",
       "Coze 失败时管理端仍可用，只影响智能体问答。"
     ],
-    "transition": "看真实 Coze 页面的运营数据。"
+    "transition": "看真实 Coze 页面。"
   },
   {
-    "id": "s23",
+    "id": "s30",
     "title": "Coze 页面",
     "section": "运营",
     "minutes": 0.9,
-    "purpose": "展示真实运营数据与流式对话，证明不是壳子。",
+    "purpose": "展示真实运营数据与流式对话。",
     "talk": [
-      "左侧数据是后台快照，每 60 秒刷新；Coze 回答基于这些数字。",
+      "左侧数据每 60 秒刷新；Coze 回答基于这些数字。",
       "对话走 SSE，前端逐字渲染；令牌仍只在服务端。",
-      "Coze 定位是运营助手，不做医疗诊断，页面底部有免责声明。"
+      "定位是运营助手，页面底部有\"不构成医疗诊断\"声明。"
     ],
-    "transition": "最后讲部署与质量底线。"
+    "transition": "Coze 的边界要说清楚。"
   },
   {
-    "id": "s24",
-    "title": "部署与质量",
+    "id": "s31",
+    "title": "Coze 边界",
+    "section": "运营",
+    "minutes": 0.9,
+    "purpose": "主动划清 Coze 的能力边界。",
+    "talk": [
+      "Coze 只读运营数据：预测数、用户数、模型指标、AI 会话。",
+      "不接患者级数据、不做诊断、不开处方；页面有免责声明。",
+      "用户端的拒答与三档不确定性不依赖 Coze，Coze 挂了也不影响诊断链路。"
+    ],
+    "transition": "最后讲工程质量与取舍。"
+  },
+  {
+    "id": "s32",
+    "title": "工程质量",
     "section": "交付",
     "minutes": 1.0,
-    "purpose": "用数字回答\"做完了吗、可靠吗\"。",
+    "purpose": "用数字回答\"可靠吗、能复现吗\"。",
     "talk": [
-      "华为云 EulerOS + Nginx + systemd，GitHub Actions 一键部署。",
-      "向量随包发布，避免服务器内存不足导致部署中断（踩过 exit 137）。",
-      "73 个单测、20 条评测、63 项线上冒烟，全部在交付前跑过。"
+      "73 个单测、20 条评测、63 项冒烟，交付前全部跑过。",
+      "部署约 60 秒；索引重建、重启、自检都在流水线里。",
+      "向量随包发布，避免服务器内存不足导致部署中断。"
     ],
-    "transition": "最后收束成三句话。"
+    "transition": "看评测指标本身。"
   },
   {
-    "id": "s25",
+    "id": "s33",
+    "title": "评测结果",
+    "section": "交付",
+    "minutes": 1.0,
+    "purpose": "给出评测指标，同时说明它覆盖不到什么。",
+    "talk": [
+      "意图、引用、拒答、升级、对账、延迟六项全部达标。",
+      "p95 221ms 是离线确定性路径；LLM 路径会慢很多。",
+      "评测不覆盖自由生成质量，这是局限，后面会讲。"
+    ],
+    "transition": "最后讲取舍与局限。"
+  },
+  {
+    "id": "s34",
+    "title": "关键取舍",
+    "section": "取舍",
+    "minutes": 1.2,
+    "purpose": "讲四个技术选择的收益与代价。",
+    "talk": [
+      "自研 Graph 换来可控和可测，代价是生态能力要自己补。",
+      "词法 + 向量换来召回，代价是模型体积和冷启动。",
+      "SQLite 换来部署简单，代价是并发和规模上限；单 worker 也是同样的取舍。"
+    ],
+    "transition": "这些代价带来什么局限。"
+  },
+  {
+    "id": "s35",
+    "title": "局限与下一步",
+    "section": "取舍",
+    "minutes": 1.1,
+    "purpose": "主动暴露局限，建立可信度。",
+    "talk": [
+      "词法仍有盲区，同义词表覆盖有限；下一步做查询改写。",
+      "重排有 1 秒左右延迟，冷启动 9 秒；前者可缓存，后者可预热。",
+      "最重要的是没有临床前瞻验证；只有 WDBC 回溯数据，不能声称临床有效。"
+    ],
+    "transition": "最后收束。"
+  },
+  {
+    "id": "s36",
     "title": "收束",
     "section": "收束",
     "minutes": 1.0,
-    "purpose": "把全场收束成三句话，留出提问空间。",
+    "purpose": "三句话收束，留出提问。",
     "talk": [
-      "第一，过程可见：Agent 不是黑箱，节点和工具都能复述。",
-      "第二，结论可查：1,035 条条款 + 句子级绑定，引用能点开。",
-      "第三，边界清晰：弃权机制和 Coze 的运营定位，避免过度承诺。"
+      "第一，流程可复现：10 个节点、13 个工具、检查点。",
+      "第二，结论可核对：1,035 条条款 + 句子级 grounding。",
+      "第三，边界先讲清：三档不确定性、拒答、Coze 只做运营。"
     ],
     "transition": "致谢，进入提问。",
     "cue": "停顿 2 秒"
