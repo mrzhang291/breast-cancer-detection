@@ -621,7 +621,10 @@
         };
 
         if (!currentSession) {
-            newSession().then(function () { streamAsk(payload, done2); });
+            newSession().then(function () {
+                payload.session_id = currentSession;   // 会话是刚建的，必须回填
+                streamAsk(payload, done2);
+            });
             return;
         }
         streamAsk(payload, function () {
