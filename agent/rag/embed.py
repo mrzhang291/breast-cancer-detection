@@ -36,7 +36,9 @@ def _instance():
     _STATE['checked'] = True
     try:
         from fastembed import TextEmbedding
-        _STATE['model'] = TextEmbedding(model_name=MODEL_NAME)
+        from .fetch_model import ensure_model
+        path = ensure_model()
+        _STATE['model'] = TextEmbedding(model_name=MODEL_NAME, specific_model_path=path)
     except Exception as exc:  # noqa: BLE001
         _STATE['error'] = str(exc)[:200]
         _STATE['model'] = None
