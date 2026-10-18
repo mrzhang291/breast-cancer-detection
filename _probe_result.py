@@ -1,0 +1,12 @@
+﻿import io, re, sys
+sys.stdout.reconfigure(encoding="utf-8")
+r = io.open(r"templates\result.html", encoding="utf-8").read()
+print("=== Jinja 变量 ===", sorted(set(re.findall(r"\{\{\s*([a-zA-Z_][a-zA-Z0-9_]*)", r)))[:20])
+print("=== 是否已有 assistant ===", "_assistant.html" in r)
+print("=== body 结尾 ===")
+print(r[-400:])
+a = io.open(r"app.py", encoding="utf-8").read()
+i = a.find("def result():")
+print("\n=== /result 渲染参数 ===")
+j = a.find("render_template('result.html'", i)
+print(a[j:j+400])
