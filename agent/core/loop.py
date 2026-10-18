@@ -50,6 +50,9 @@ class AgentLoop:
         started = time.time()
         spec = self.registry_tools.get(call.name)
         if spec is None:
+            self.steps.append({'tool': call.name, 'args': call.arguments or {},
+                               'ok': False, 'latency_ms': 0, 'verdict': 'unknown_tool'})
+            self._event('step', {'tool': call.name, 'ok': False, 'latency_ms': 0})
             return json.dumps({'error': '未知工具: %s' % call.name}, ensure_ascii=False)
 
         result = registry.call_tool(self.ctx, call.name, call.arguments or {})

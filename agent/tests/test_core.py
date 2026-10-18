@@ -1,5 +1,5 @@
 """Agent 核心循环测试：用假模型驱动，不联网。"""
-from agent import registry
+from agent import registry, tools  # noqa: F401
 from agent.core import AgentLoop, AgentSession, Completion, FakeProvider, ToolCall
 
 
