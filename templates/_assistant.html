@@ -757,23 +757,7 @@
                     .then(function () {
                         if (currentSession === item.id) { currentSession = null; clearChat(); }
                     
-    function refreshAgentContext() {
-        var has = false;
-        try {
-            has = !!(window.getAgentValues && window.getAgentValues());
-        } catch (e) { has = false; }
-        var text = document.getElementById('asCtxText');
-        if (text) {
-            text.textContent = has
-                ? '已读取本次预测的 30 项特征，可以直接问「解释这次判断」'
-                : '当前没有进行预测，可以问我系统怎么用';
-        }
-        var chip = document.querySelector('.as-chip[data-q="解释这次预测结果"]');
-        if (chip) { chip.style.display = has ? '' : 'none'; }
-    }
-    window.refreshAgentContext = refreshAgentContext;
-    document.addEventListener('DOMContentLoaded', refreshAgentContext);
-    document.addEventListener('input', function () { refreshAgentContext(); });
+
 
     loadSessions();
                     });
@@ -844,6 +828,24 @@
     }
     if (newSessionBtn) { newSessionBtn.addEventListener('click', function () { newSession(); }); }
     loadSessions();
+
+    function refreshAgentContext() {
+        var has = false;
+        try {
+            has = !!(window.getAgentValues && window.getAgentValues());
+        } catch (e) { has = false; }
+        var text = document.getElementById('asCtxText');
+        if (text) {
+            text.textContent = has
+                ? '已读取本次预测的 30 项特征，可以直接问「解释这次判断」'
+                : '当前没有进行预测，可以问我系统怎么用';
+        }
+        var chip = document.querySelector('.as-chip[data-q="解释这次预测结果"]');
+        if (chip) { chip.style.display = has ? '' : 'none'; }
+    }
+    window.refreshAgentContext = refreshAgentContext;
+    document.addEventListener('DOMContentLoaded', refreshAgentContext);
+    document.addEventListener('input', function () { refreshAgentContext(); });
 
     window.ASAssistant = { open: openPanel, close: closePanel, ask: ask,
                            setContext: function (ctx) { context = ctx || {}; renderContext(); } };
