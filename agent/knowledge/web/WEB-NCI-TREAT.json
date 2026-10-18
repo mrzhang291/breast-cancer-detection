@@ -3369,7 +3369,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HER2阳性乳腺癌术前治疗（续6）",
+  "summary_zh": "皮下与静脉曲妥珠单抗疗效非劣，6年EFS和OS无差异；双靶向提高pCR但未显示生存优势。"
  },
  {
   "section": "Preoperative therapy for HER2-positive breast cancer（续7）",
@@ -3381,7 +3383,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HER2阳性乳腺癌术前治疗（续7）",
+  "summary_zh": "NeoSPHERE试验显示多西他赛联合双靶向（曲妥珠单抗+帕妥珠单抗）pCR率最高，达46%。"
  },
  {
   "section": "Preoperative therapy for HER2-positive breast cancer（续8）",
@@ -3393,7 +3397,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HER2阳性乳腺癌术前治疗（续8）",
+  "summary_zh": "双靶向联合化疗pCR率最高，加用帕妥珠单抗未增加毒性及心脏不良事件风险。"
  },
  {
   "section": "Preoperative therapy for HER2-positive breast cancer（续9）",
@@ -3405,7 +3411,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HER2阳性乳腺癌术前治疗（续9）",
+  "summary_zh": "三种含双靶向术前方案pCR率相当，约57%–66%，心脏不良事件发生率低。"
  },
  {
   "section": "Preoperative therapy for HER2-positive breast cancer（续10）",
@@ -3417,7 +3425,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HER2阳性乳腺癌术前治疗（续10）",
+  "summary_zh": "三臂pCR率分别为62%、57%、66%，心脏不良事件均≤5%，促成帕妥珠单抗加速批准。"
  },
  {
   "section": "Preoperative therapy for HER2-positive breast cancer（续11）",
@@ -3429,7 +3439,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HER2阳性乳腺癌术前治疗（续11）",
+  "summary_zh": "帕妥珠单抗联合曲妥珠单抗及化疗改善IDFS，已获批用于高危HER2阳性早期乳腺癌新辅助及辅助治疗。"
  },
  {
   "section": "Preoperative therapy for HER2-positive breast cancer（续12）",
@@ -3441,7 +3453,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HER2阳性乳腺癌术前治疗（续12）",
+  "summary_zh": "TRAIN-2试验评估最佳化疗骨架，主要终点为pCR，次要终点包括EFS、OS及毒性。"
  },
  {
   "section": "Preoperative therapy for HER2-positive breast cancer（续13）",
@@ -3453,7 +3467,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HER2阳性乳腺癌术前治疗（续13）",
+  "summary_zh": "含蒽环类方案LVEF下降及血液学毒性更常见，非蒽环类方案心脏安全性更优。"
  },
  {
   "section": "Postoperative therapy for HER2-positive breast cancer",
@@ -3465,7 +3481,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HER2阳性乳腺癌术后治疗",
+  "summary_zh": "未接受术前系统治疗者，标准为1年辅助抗HER2治疗，多项III期试验证实曲妥珠单抗获益。"
  },
  {
   "section": "Postoperative therapy for HER2-positive breast cancer（续2）",
@@ -3477,7 +3495,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HER2阳性乳腺癌术后治疗（续2）",
+  "summary_zh": "HERA试验中1年曲妥珠单抗较观察显著改善DFS，10年DFS率72%对66%。"
  },
  {
   "section": "Postoperative therapy for HER2-positive breast cancer（续3）",
@@ -3489,7 +3509,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HER2阳性乳腺癌术后治疗（续3）",
+  "summary_zh": "1年曲妥珠单抗改善DFS，症状性心脏事件发生率1%，观察组为0.1%。"
  },
  {
   "section": "Postoperative therapy for HER2-positive breast cancer（续4）",
@@ -3501,7 +3523,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HER2阳性乳腺癌术后治疗（续4）",
+  "summary_zh": "NSABP-B-31与NCCTG-N9831联合分析证实曲妥珠单抗显著改善DFS，3年DFS率87%对75%。"
  },
  {
   "section": "Postoperative therapy for HER2-positive breast cancer（续5）",
@@ -3513,7 +3537,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HER2阳性乳腺癌术后治疗（续5）",
+  "summary_zh": "曲妥珠单抗降低远处复发风险53%、死亡风险33%，10年OS率由75.2%升至84%。"
  },
  {
   "section": "Postoperative therapy for HER2-positive breast cancer（续6）",
@@ -3525,7 +3551,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HER2阳性乳腺癌术后治疗（续6）",
+  "summary_zh": "联合分析显示3年DFS绝对差异11.8%，远处复发风险降低53%，死亡风险降低33%。"
  },
  {
   "section": "Postoperative therapy for HER2-positive breast cancer（续7）",
@@ -3537,7 +3565,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HER2阳性乳腺癌术后治疗（续7）",
+  "summary_zh": "BCIRG-006中AC-T+曲妥珠单抗与TCH方案DFS、OS无显著差异，但前者心脏毒性更高。"
  },
  {
   "section": "Postoperative therapy for HER2-positive breast cancer（续8）",
@@ -3549,7 +3579,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HER2阳性乳腺癌术后治疗（续8）",
+  "summary_zh": "两种含曲妥珠单抗方案均较对照组显著改善DFS和OS，TCH可作为心脏毒性顾虑者的替代方案。"
  },
  {
   "section": "Postoperative therapy for HER2-positive breast cancer（续9）",
@@ -3561,7 +3593,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HER2阳性乳腺癌术后治疗（续9）",
+  "summary_zh": "FINHER研究评估9周短程曲妥珠单抗，3年随访显示无复发生存获益。"
  },
  {
   "section": "Postoperative therapy for HER2-positive breast cancer（续10）",
@@ -3573,7 +3607,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HER2阳性乳腺癌术后治疗（续10）",
+  "summary_zh": "PHARE试验比较6个月与12个月曲妥珠单抗，未能证实6个月方案非劣效。"
  },
  {
   "section": "Postoperative therapy for HER2-positive breast cancer（续11）",
@@ -3585,7 +3621,9 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HER2阳性乳腺癌术后治疗（续11）",
+  "summary_zh": "PHARE最终分析调整HR为1.08，未排除预设非劣效界值1.15，短疗程未获支持。"
  },
  {
   "section": "Postoperative therapy for HER2-positive breast cancer（续12）",
@@ -3597,6 +3635,8 @@
   "title": "Breast Cancer Treatment (PDQ)",
   "lang": "en",
   "license": "美国联邦政府作品（公有领域）",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "HER2阳性乳腺癌术后治疗（续12）",
+  "summary_zh": "9周曲妥珠单抗未能证实DFS非劣效；荟萃分析示1年疗程OS优于更短疗程。"
  }
 ]

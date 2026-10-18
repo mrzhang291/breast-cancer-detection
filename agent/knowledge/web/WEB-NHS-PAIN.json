@@ -9,7 +9,9 @@
   "title": "Breast pain",
   "lang": "en",
   "license": "Open Government Licence v3.0",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "与月经相关的乳房疼痛",
+  "summary_zh": "经前两周内出现，经后缓解，呈钝痛或沉重感，累及双侧乳房，可放射至腋窝。"
  },
  {
   "section": "Other causes of breast pain",
@@ -21,7 +23,9 @@
   "title": "Breast pain",
   "lang": "en",
   "license": "Open Government Licence v3.0",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "乳房疼痛的其他原因",
+  "summary_zh": "包括颈肩背损伤、避孕药及抗抑郁药、乳腺炎或脓肿、更年期激素变化；单纯乳痛少为癌症。"
  },
  {
   "section": "Things you can do to ease breast pain",
@@ -33,7 +37,9 @@
   "title": "Breast pain",
   "lang": "en",
   "license": "Open Government Licence v3.0",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "缓解乳房疼痛的方法",
+  "summary_zh": "可服扑热息痛或布洛芬、外涂止痛凝胶，白天戴合适文胸、夜间戴柔软文胸；维生素E和月见草油证据不足。"
  },
  {
   "section": "Urgent advice: Ask for an urgent GP appointment or get help from NHS 111 if:",
@@ -45,6 +51,8 @@
   "title": "Breast pain",
   "lang": "en",
   "license": "Open Government Licence v3.0",
-  "retrieved_at": "2026-10-18"
+  "retrieved_at": "2026-10-18",
+  "section_zh": "紧急就医提示",
+  "summary_zh": "乳痛伴高热寒战、乳房红肿热、固定硬块、血性溢液、乳房变形、橘皮样皮肤或乳头内陷皮疹，需紧急就诊。"
  }
 ]
