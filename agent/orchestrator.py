@@ -625,6 +625,9 @@ def _compose_usage(ctx: AgentContext) -> Tuple[str, List[str]]:
     # 只保留足够相关的段落：低于最高分 60% 的一律不拼进去，避免答非所问
     top_score = float(hits[0].get('score') or 0)
     picked = [h for h in hits if float(h.get('score') or 0) >= top_score * 0.8][:2]
+    # 使用类问题只答最相关的一段，避免把不相关文档拼进答案
+    if picked:
+        picked = picked[:1]
 
     parts = []
     for hit in picked:
