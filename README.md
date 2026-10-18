@@ -247,3 +247,9 @@ Then add a title and description to your pull request that explains your preciou
 </a>
 
 Made with [contributors-img](https://contributors-img.web.app).
+
+## 在线访问
+
+- 地址：http://101.245.99.58
+- 账号：admin / admin123（仅课程演示）
+- 部署：EulerOS 3.0 + nginx + gunicorn，systemd 托管
