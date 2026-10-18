@@ -2201,6 +2201,16 @@ def api_agent_run_sync():
     result['steps'] = result.get('steps', [])
     if result.get('clarify'):
         result['clarify'] = result['clarify']
+    try:
+        _agent_db.update_run(ctx.run_id, intent='llm_agent', status='ok',
+                             answer_md=result.get('answer_md') or '',
+                             artifacts_json=json.dumps(result.get('artifacts') or [],
+                                                       ensure_ascii=False),
+                             latency_ms=int(result.get('latency_ms') or 0))
+    except Exception:  # noqa: BLE001
+        app.logger.exception('llm agent 落库失败')
+
+    result['run_id'] = ctx.run_id
     return jsonify({'ok': True, 'result': result})
 
 
@@ -2232,6 +2242,10 @@ def api_agent_llm():
             _agent_orch._act_interpret(ctx, values)
         except Exception:  # noqa: BLE001
             _agent_orch.add_input_fact(ctx, values)
+
+    _agent_db.init_schema()
+    if not ctx.run_id:
+        ctx.run_id = _agent_db.create_run(ctx)
 
     from agent.llm_agent import run_llm_agent
 

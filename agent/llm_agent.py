@@ -50,7 +50,11 @@ def _context_brief(ctx) -> str:
     for fact in (getattr(ctx, 'facts', None) or []):
         kind = fact.get('kind')
         payload = fact.get('payload') or {}
-        if kind == 'prediction':
+        if kind == 'input':
+            values = payload.get('values') or []
+            if values:
+                lines.append('本次输入的 30 项特征值：%s' % ', '.join('%.6g' % v for v in values))
+        elif kind == 'prediction':
             lines.append('本次预测：%s，置信度 %.4f' % (
                 payload.get('output'), float(payload.get('confidence') or 0)))
         elif kind == 'shap':
