@@ -12,6 +12,7 @@ from typing import Dict, List, Optional, Tuple
 from . import cache, db, llm, policy, registry, tracing, verify
 from .graph import Graph, Interrupt, JsonCheckpointer
 from . import dialog
+from . import params as range_params
 from .context import AgentContext
 
 # 确保工具被注册
@@ -356,6 +357,16 @@ def _act_compare(ctx: AgentContext, values: Optional[List[float]] = None, emit=N
 
 def _act_export(ctx: AgentContext, values, state, emit=None) -> None:
     """生成报告：先补齐事实，再交给 export_report。"""
+    window = (state or {}).get('export_window')
+    if window:
+        args = {'kind': 'range'}
+        if window.get('mode') == 'days':
+            args['days'] = window['n']
+        else:
+            args['limit'] = window['n']
+        _call(ctx, 'export_report', args, emit)
+        return
+
     kind = (state or {}).get('export_kind') or 'single'
     if kind == 'compare':
         _act_compare(ctx, values, emit)
@@ -1003,6 +1014,18 @@ def run(ctx: AgentContext, question: str, values: Optional[List[float]] = None,
 
     plan = dialog.plan(question, ctx.history, ctx.context, bool(values))
 
+    # 「把最近三次整理成报告」这类：先把区间参数解析并校验
+    export_window = None
+    if plan.get('mode') in ('normal', 'compare_export') \
+            and any(h in question for h in _EXPORT_HINTS) \
+            and range_params.wants_range(question):
+        window = range_params.parse_range(question)
+        if window.get('ok'):
+            export_window = window
+        elif plan.get('mode') == 'normal':
+            plan = {'mode': 'clarify', 'inherit': None,
+                    'text': '你想汇总哪个区间？', 'options': range_params.CLARIFY_OPTIONS}
+
     # 问题含糊时先反问，不硬猜
     if plan.get('mode') == 'clarify':
         ctx.add_step(node='clarify', verdict='ask', latency_ms=0)
@@ -1032,6 +1055,7 @@ def run(ctx: AgentContext, question: str, values: Optional[List[float]] = None,
         'confirmed': False,
         '_emit': emit,
         'plan': plan,
+        'export_window': export_window,
         'intent_hint': INTENT.get(plan.get('inherit'), '') if plan.get('inherit') else '',
     }
 
